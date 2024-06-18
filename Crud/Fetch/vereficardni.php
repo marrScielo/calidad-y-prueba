@@ -1,6 +1,9 @@
 
 <?php
-require("/home3/ghxumdmy/public_html/gestion-contigo-voy-com/conexion/conexion.php");
+include 'config/config.php';
+require_once BASE_PATH . 'conexion/conexion.php';
+// require_once BASE_PATH_WEB . 'conexion/conexion.php';
+// require("/home3/ghxumdmy/public_html/gestion-contigo-voy-com/conexion/conexion.php");
 $con=new conexion();
 $conn=$con->conexion();
 

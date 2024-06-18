@@ -1,15 +1,18 @@
 <?php
 header('Content-Type: application/json');
 
-require_once("/home3/ghxumdmy/public_html/gestion-contigo-voy-com/conexion/conexion.php");
-        $con=new conexion();
-        $PDO=$con->conexion();
+include 'config/config.php';
+require_once CONEXION_PATH;
+
+// require_once("/home3/ghxumdmy/public_html/gestion-contigo-voy-com/conexion/conexion.php");
+$con = new conexion();
+$PDO = $con->conexion();
 
 switch ($_GET['accion']) {
 
   case 'listar':
     try {
-      $IdPsicologo = $_GET['idPsicologo']; 
+      $IdPsicologo = $_GET['idPsicologo'];
       $query = "SELECT c.IdCita as id,
                 c.IdPaciente as idpaciente,
                 p.NomPaciente AS textColor, 
@@ -24,25 +27,25 @@ switch ($_GET['accion']) {
                 c.EtiquetaCita as etiqueta
       FROM cita c
       INNER JOIN paciente p ON c.IdPaciente = p.IdPaciente
-      WHERE c.IdPsicologo = :IdPsicologo"; 
-      
+      WHERE c.IdPsicologo = :IdPsicologo";
+
       $statement = $PDO->prepare($query);
       $statement->bindParam(':IdPsicologo', $IdPsicologo, PDO::PARAM_INT);
       $statement->execute();
-      
+
       $resultado = $statement->fetchAll(PDO::FETCH_ASSOC);
       echo json_encode($resultado);
-    } catch(PDOException $e) {
+    } catch (PDOException $e) {
       echo "Error al listar citas: " . $e->getMessage();
       die();
     }
     break;
-  
+
   case 'agregar':
     try {
       $query = "INSERT INTO cita (IdPaciente, FechaInicioCita, DuracionCita, MotivoCita, EstadoCita, IdPsicologo, TipoCita, ColorFondo, CanalCita, EtiquetaCita) VALUES
                 (:IdPaciente, :FechaInicioCita, :DuracionCita, :MotivoCita, :EstadoCita, :IdPsicologo, :TipoCita, :ColorFondo, :CanalCita, :EtiquetaCita)";
-      $statement =$PDO->prepare($query);
+      $statement = $PDO->prepare($query);
       $statement->bindParam(':IdPaciente', $_POST['idpaciente']);
       $statement->bindParam(':FechaInicioCita', $_POST['inicio']);
       $statement->bindParam(':DuracionCita', $_POST['duracion']);
@@ -55,7 +58,7 @@ switch ($_GET['accion']) {
       $statement->bindParam(':EtiquetaCita', $_POST['etiqueta']);
       $statement->execute();
       echo json_encode(true);
-    } catch(PDOException $e) {
+    } catch (PDOException $e) {
       echo "Error al agregar cita: " . $e->getMessage();
       die();
     }
@@ -73,7 +76,7 @@ switch ($_GET['accion']) {
                 CanalCita = :CanalCita,
                 EtiquetaCita = :EtiquetaCita
                 WHERE IdCita = :IdCita";
-      $statement =$PDO->prepare($query);
+      $statement = $PDO->prepare($query);
       $statement->bindParam(':FechaInicioCita', $_POST['inicio']);
       $statement->bindParam(':DuracionCita', $_POST['duracion']);
       $statement->bindParam(':MotivoCita', $_POST['motivo']);
@@ -85,7 +88,7 @@ switch ($_GET['accion']) {
       $statement->bindParam(':IdCita', $_POST['id']);
       $statement->execute();
       echo json_encode(true);
-    } catch(PDOException $e) {
+    } catch (PDOException $e) {
       echo "Error al modificar cita: " . $e->getMessage();
       die();
     }
@@ -98,12 +101,9 @@ switch ($_GET['accion']) {
       $statement->bindParam(':IdCita', $_POST['id']);
       $statement->execute();
       echo json_encode(true);
-    } catch(PDOException $e) {
+    } catch (PDOException $e) {
       echo "Error al borrar cita: " . $e->getMessage();
       die();
     }
     break;
 }
-
-?>
-

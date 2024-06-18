@@ -3,7 +3,9 @@ class userModelPaciente{
     private $PDO;
     public function __construct()
     {
-        require_once("C:/xampp/htdocs/PaginaPHP/ContigoVoy170524/conexion/conexion.php");
+        include 'config/config.php';
+        require_once CONEXION_PATH;
+        // require_once("C:/xampp/htdocs/PaginaPHP/ContigoVoy170524/conexion/conexion.php");
         $con=new conexion();
         $this->PDO=$con->conexion();
 

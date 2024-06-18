@@ -1,5 +1,8 @@
 <?php
-  require("/home3/ghxumdmy/public_html/gestion-contigo-voy-com/conexion/conexion.php");
+include 'config/config.php';
+require_once BASE_PATH . 'conexion/conexion.php';
+// require_once BASE_PATH_WEB . 'conexion/conexion.php';
+//   require("/home3/ghxumdmy/public_html/gestion-contigo-voy-com/conexion/conexion.php");
 
 // Obtener el valor del ID del paciente ingresado
 $patientId = $_POST['patientId'];

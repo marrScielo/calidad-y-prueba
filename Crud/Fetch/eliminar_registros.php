@@ -1,6 +1,9 @@
 <?php
-// Incluir el archivo de conexión
-require("/home3/ghxumdmy/public_html/gestion-contigo-voy-com/conexion/conexion.php"); // Asegúrate de que la ruta sea correcta
+// Incluir el archivo de 
+include 'config/config.php';
+require_once BASE_PATH . 'conexion/conexion.php';
+// require_once BASE_PATH_WEB . 'conexion/conexion.php';
+// require("/home3/ghxumdmy/public_html/gestion-contigo-voy-com/conexion/conexion.php"); // Asegúrate de que la ruta sea correcta
 
 // Verificar si se ha recibido una solicitud POST con los IDs a eliminar
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ids'])) {

@@ -3,7 +3,9 @@ class usernameControlerCita{
     private $model;
     public function __construct()
     {
-        require_once("C:/xampp/htdocs/PaginaPHP/ContigoVoy170524/Modelo/Cita/ModelCita.php");
+        include 'config/config.php';
+        require_once MODELCITAPATH;
+        // require_once("C:/xampp/htdocs/PaginaPHP/ContigoVoy170524/Modelo/Cita/ModelCita.php");
         $this->model=new UserModelCita();
     }
 
