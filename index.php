@@ -2,50 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link	href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet"/>
-    <link rel="icon" href="issets/images/contigovoyico.ico">
-    <link rel="stylesheet" href="Issets/css/login.css" />
-    <title>Psicologa</title>
+    <title>ContigoVoy</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/inicio-header.css">
+	<link rel="stylesheet" href="css/estilos-banner.css">
+	<link rel="stylesheet" href="css/estilos-carrusel.css">
+	<link rel="stylesheet" href="css/estilos-especialidades.css">
+	<link rel="stylesheet" href="css/estilos-blog.css">
+	<link rel="stylesheet" href="css/estilos-footer.css">
+	<link rel="stylesheet" href="css/estilos-footer2.css">
 </head>
 <body>
-  <div class="container">
-		<span class="form__title">Acceder</span>
-		<form method="post" action="Controlador/login/ControllerLogin.php" class="form">
-			<div class="form__group">
-				<i class="ri-user-line form__icon"></i>
-				<input for="usu" 
-          type="text" 
-          placeholder="Usuario" 
-          name="usu" id="usu" 
-          required 
-          class="form__input" />
-				<span class="form__bar"></span>
-			</div>
-			<div class="form__group">
-				<i class="ri-lock-line form__icon"></i>
-				<input
-					autocomplete="cc-number"
-					type="password"
-					placeholder="Contraseña"
-					required
-          			name="pass" id="pass"
-					class="form__input"
-				/>
-				<span class="form__bar"></span>
-			</div>
-			<br>
-			<?php
-			if(isset($_GET['error']) && $_GET['error'] == 1){
-			    echo "<p class='form__switch2' >Usuario o password son invalidos</p>";
-			}
-			?>
-			<button type="submit" class="form__button">Ingresar</button>
-			
-			<p class="form__switch">
-				Olvidaste la Contraseña<a href="#">Aqui</a>
-			</p>
-		</form>
-	</div>
+
+<?php include 'Componentes/header.php'; ?>
+
+<div class="banner">
+    <div class="banner-content">
+        <h1>DESCUBRE TU MEJOR <br> VERSIÓN</h1>
+        <p>Encuentra equilibrio <br> y bienestar emocional <br> aquí</p>
+        <a href="psicologos.php" class="btn">Solicitar Servicio</a>
+    </div>
+    </div>
+    <div class="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="img/beneficio1.jpg" alt="">
+            <div class="carousel-caption">
+                <h3>Texto para beneficio 1</h3>
+                <p>Descripción adicional para beneficio 1.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/beneficio2.jpg" alt="">
+            <div class="carousel-caption">
+                <h3>Texto para beneficio 2</h3>
+                <p>Descripción adicional para beneficio 2.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/beneficio4.jpg" alt="">
+            <div class="carousel-caption">
+                <h3>Texto para beneficio 4</h3>
+                <p>Descripción adicional para beneficio 4.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/beneficio3.jpg" alt="">
+            <div class="carousel-caption">
+                <h3>Texto para beneficio 3</h3>
+                <p>Descripción adicional para beneficio 3.</p>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" onclick="prevSlide()">&#10094;</a>
+    <a class="carousel-control-next" onclick="nextSlide()">&#10095;</a>
+</div>
+<script src="js/carrusel.js"></script>
+
+    <?php include 'Componentes/especialidades.php'; ?>
+
+
+	<div class="image-container">
+        <img src="img/fondo-blog.jpg" alt="Fondo Blog">
+        <div class="image-content">
+            <h3>Visitar nuestro Blog</h3>
+            <p>Nuestros psicólogos escriben artículos <br> que adaptan la psicología a tus <br> necesidades, ayudándote a entender, <br> cambiar y vivir mejor.</p>
+            <a href="blog.php">VER BLOG</a>
+        </div>
+    </div>
+
+    <?php include 'Componentes/footer.php'; ?>
+</div>
+</body>
 </html>
