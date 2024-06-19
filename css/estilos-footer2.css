@@ -1,6 +1,6 @@
 /* Estilos para el footer rosado */
 .footer-rosado {
-    background-color: #ff8bde; /* Color de fondo rosado */
+    background-color: #f19294; /* Color de fondo rosado */
     color: white; /* Color de texto blanco */
     padding: 30px;
     text-align: center;
@@ -39,3 +39,8 @@
 .logo {
     max-width: 150px; /* Tamaño máximo para la imagen */
 }
+
+.bn {
+    filter: brightness(0) invert(1); /* Ajuste de brillo y color */
+}
+
