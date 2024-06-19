@@ -3,7 +3,7 @@ class PsicologosModel {
     private $servername = "localhost";
     private $username = "root";
     private $password = "";
-    private $dbname = "contigo_voy_api";
+    private $dbname = "contigovoy2";
     private $conn;
 
     public function __construct() {
