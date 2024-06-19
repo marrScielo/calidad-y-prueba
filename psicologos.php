@@ -46,7 +46,7 @@ if (!empty($nombreBuscar)) {
             width: calc(30% - 16px); /* Ajusta el ancho para cuatro columnas por fila */
             box-sizing: border-box;
             border-radius: 8px;
-            background-color: #4CAF50; /* Color celeste */
+            background-color: #FB8CE4; /* Color rosado */
             color: white; /* Texto blanco */
             text-align: center;
         }
@@ -66,7 +66,7 @@ if (!empty($nombreBuscar)) {
         .whatsapp-link {
             display: block;
             margin-top: 10px;
-            background-color: #25D366; /* Color verde WhatsApp */
+            background-color: #17D7E7; /* Color celeste WhatsApp */
             color: white;
             padding: 10px 15px;
             text-decoration: none;
