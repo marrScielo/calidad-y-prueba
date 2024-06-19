@@ -1,6 +1,6 @@
 /* Estilos para el footer celeste */
 .footer-celeste {
-    background-color: #31c7f5; /* Color de fondo celeste */
+    background-color: #56b9b3; /* Color de fondo celeste */
     color: white; /* Color de texto blanco */
     padding: 80px 20px;
     text-align: center;
@@ -31,7 +31,7 @@
 .btn-rosado {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #ff8bde; /* Color del botón rosado */
+    background-color: #f19294; /* Color del botón rosado */
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -40,5 +40,5 @@
 }
 
 .btn-rosado:hover {
-    background-color: #ff8bde; /* Color del botón rosado al pasar el ratón */
+    background-color: #f19294; /* Color del botón rosado al pasar el ratón */
 }

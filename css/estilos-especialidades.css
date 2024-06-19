@@ -1,7 +1,5 @@
-.icon-grid-container {
-    text-align: center;
-    max-width: 800px;
-    margin: 20px auto;
+.container {
+    margin-bottom: 30px;
 }
 .icon-grid-title {
     font-size: 2em;
@@ -19,15 +17,15 @@
 }
 .icon-item a {
     text-decoration: none;
-    color: #007bff; /* Color celeste para los íconos */
+    color: #56b9b3; /* Color celeste para los íconos */
     display: block;
 }
 .icon-item i {
-    font-size: 2em;
+    font-size: 50px;
     transition: color 0.3s;
 }
 .icon-item a:hover i {
-    color: #007bff; /* Color al pasar el cursor */
+    color: #56b9b3; /* Color al pasar el cursor */
 }
 .icon-caption {
     margin-top: 10px;
