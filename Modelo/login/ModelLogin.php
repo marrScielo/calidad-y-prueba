@@ -1,4 +1,7 @@
+
 <?php
+
+/*
 class Login
 {
     private $PDO;
@@ -35,3 +38,75 @@ class Login
         }
     }
 }
+*/
+
+class Login
+{
+    private $PDO;
+
+    public function __construct()
+    {
+        include_once $_SERVER['DOCUMENT_ROOT'].'/ContigoVoy/config/config.php';
+        require_once CONEXION_PATH;
+        $con = new conexion();
+        $this->PDO = $con->conexion();
+
+        // Verificar si la conexión fue exitosa
+        if (!($this->PDO instanceof PDO)) {
+            die("Conexión fallida: " . $this->PDO);
+        }
+    }
+
+    public function validarDatos($email, $password)
+    {
+    if ($_POST) {
+        session_start();
+        $email = $_POST['usu'];
+        $password = $_POST['pass'];
+
+        $this->PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $statement = $this->PDO->prepare("SELECT * FROM usuarios WHERE email = :email AND password = :password");
+        $statement->bindParam(":email", $email);
+        $statement->bindParam(":password", $password);
+        $statement->execute();
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            $_SESSION['email'] = $user["email"];
+            $_SESSION['id'] = $user["id"];
+            $_SESSION['rol'] = $user["rol"];
+
+            // Verificar el rol específico 'psicologo'
+            if ($user['rol'] == 'psicologo') {
+                // Buscar el IdPsicologo en la tabla 'psicologo'
+                $psicologoStatement = $this->PDO->prepare("SELECT IdPsicologo, NombrePsicologo FROM psicologo WHERE usuario_id = :usuario_id");
+                $psicologoStatement->bindParam(":usuario_id", $user["id"]);
+                $psicologoStatement->execute();
+                $psicologo = $psicologoStatement->fetch(PDO::FETCH_ASSOC);
+
+                if ($psicologo) {
+                    $_SESSION['IdPsicologo'] = $psicologo["IdPsicologo"];
+                    $_SESSION['NombrePsicologo'] = $psicologo["NombrePsicologo"];
+                    header("Location: /ContigoVoy/Vista/Dashboards.php");
+                    exit();
+                } else {
+                    // Redirigir a una página de error si no se encuentra el psicólogo correspondiente
+                    header("Location: /ContigoVoy/index.php?error=no_psicologo");
+                    exit();
+                }
+            } elseif ($user['rol'] == 'administrador') {
+                header("Location: /ContigoVoy/usuarios.php");
+                exit();
+            } else {
+                // Redirigir a una página genérica o de error si el rol no es reconocido
+                header("Location: /ContigoVoy/index.php?error=rol_no_reconocido");
+                exit();
+            }
+        } else {
+            header("Location: /ContigoVoy/index.php?error=1");
+            exit();
+        }
+    }
+    }
+}
+?>

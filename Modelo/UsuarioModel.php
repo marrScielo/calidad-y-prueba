@@ -3,7 +3,7 @@ class UsuarioModel {
     private $servername = "localhost";
     private $username = "root";
     private $password = "";
-    private $dbname = "contigovoy2";
+    private $dbname = "contigovoy3";
     private $conn;
 
     public function __construct() {
