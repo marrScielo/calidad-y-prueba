@@ -1,7 +1,7 @@
 <?php
 class conexion{
     private $host="localhost";
-    private $dbname="psicologiamaster";
+    private $dbname="contigovoy2";
     private $user="root";
     private $password="";
 
