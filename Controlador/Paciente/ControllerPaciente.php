@@ -3,9 +3,11 @@ class usernameControlerPaciente{
     private $model;
     public function __construct()
     {
-        include 'config/config.php';
+        //include 'config/config.php';
+        include_once $_SERVER['DOCUMENT_ROOT'].'/ContigoVoy/config/config.php';
+        // require_once("C:/xampp/htdocs/PaginaPHP/ContigoVoy/Modelo/Paciente/ModelPaciente.php");
         require_once MODELPACIENTEPATH;
-        // require_once("C:/xampp/htdocs/PaginaPHP/ContigoVoy170524/Modelo/Paciente/ModelPaciente.php");
+
         $this->model=new UserModelPaciente();
     }
 

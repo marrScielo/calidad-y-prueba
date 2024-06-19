@@ -6,12 +6,7 @@
     <title>Blog</title>
     <link rel="stylesheet" href="css/inicio-header.css">
     <style>
-        /* Estilos específicos para los posts del blog */
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
+        /* Estilos específicos para los posts del blog */       
         .blog-posts {
             display: flex;
             flex-wrap: wrap;

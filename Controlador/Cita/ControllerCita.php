@@ -3,9 +3,11 @@ class usernameControlerCita{
     private $model;
     public function __construct()
     {
-        include 'config/config.php';
+        //include 'config/config.php';
+        include_once $_SERVER['DOCUMENT_ROOT'].'/ContigoVoy/config/config.php';
+        // require_once("C:/xampp/htdocs/PaginaPHP/ContigoVoy/Modelo/Cita/ModelCita.php");
         require_once MODELCITAPATH;
-        // require_once("C:/xampp/htdocs/PaginaPHP/ContigoVoy170524/Modelo/Cita/ModelCita.php");
+        
         $this->model=new UserModelCita();
     }
 
