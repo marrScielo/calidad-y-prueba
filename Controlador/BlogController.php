@@ -7,6 +7,7 @@ class BlogController{
 
     public function __construct() {
         $db = new DatabaseController();
+        $db->getConnection();
         $this->blogModel = new Blog($db);
     }
 
