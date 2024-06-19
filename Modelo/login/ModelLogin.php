@@ -4,7 +4,9 @@ class Login
     private $PDO;
     public function __construct()
     {
-        include 'config/config.php';
+        //include 'config/config.php';
+        include_once $_SERVER['DOCUMENT_ROOT'].'/ContigoVoy/config/config.php';
+        
         require_once CONEXION_PATH;
         // require("C:/xampp/htdocs/ContigoVoy/conexion/conexion.php");
         $con = new conexion();
