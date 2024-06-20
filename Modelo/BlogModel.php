@@ -27,7 +27,7 @@ class Blog {
                 inner join
                     psicologos psico
                 on
-                    p.psicologo_id = psico.id
+                    p.psicologo_id = psico.IdPSicologo
             ");
             //Para acceder a los datos se debe colocar $post['post_id'] o $post['psicologo_nombre']
             while($row = $consulta->fetch(PDO::FETCH_ASSOC)){

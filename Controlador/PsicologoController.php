@@ -1,19 +1,21 @@
 <?php
-require_once 'Modelo/PsicologoModel.php';
+require_once 'DatabaseController.php';
+require_once './Modelo/PsicologoModel.php';
 
 class PsicologosController {
-    private $model;
+    private $psicologoModel;
 
     public function __construct() {
-        $this->model = new PsicologosModel();
+        $db = new DatabaseController();
+        $this->psicologoModel = new PsicologosModel($db);
     }
 
     public function mostrarPsicologos() {
-        return $this->model->getPsicologos();
+        return $this->psicologoModel->getPsicologos();
     }
 
     public function buscarPorNombre($nombre) {
-        return $this->model->buscarPorNombre($nombre);
+        return $this->psicologoModel->buscarPorNombre($nombre);
     }
 }
 ?>

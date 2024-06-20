@@ -1,3 +1,16 @@
+<?php
+
+require_once './Controlador/BlogController.php';
+require_once './Modelo/BlogModel.php';
+
+$db = new DatabaseController();
+$db->getConnection();
+
+$blogControlador = new BlogController($db);
+$blogs = $blogControlador->show();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
