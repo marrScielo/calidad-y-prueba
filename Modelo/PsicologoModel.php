@@ -1,99 +1,41 @@
 <?php
+// Incluir el controlador de la base de datos
+include 'Controlador/DatabaseController.php';
 
-class PsicologosModel
-{
+try {
+    // Crear una instancia de DatabaseController
+    $dbController = new DatabaseController();
 
-    private $conn;
+    // Obtener la conexión PDO
+    $conn = $dbController->getConnection();
 
-    public function __construct($db)
-    {
-        $this->conn = $db->getConnection();
-    }
-    public function getPsicologos()
-    {
-        $psicologos = [];
-        try {
-            //Obtenemos el id, el tema, la especialidad, la descripcion, la imagen y el nombre del psicologo que lo publicó.
-            $consulta = $this->conn->query("SELECT NombrePsicologo, celular, email 
-                       CASE WHEN virtual = 1 THEN precio_virtual ELSE NULL END as precio_virtual,
-                       CASE WHEN presencial = 1 THEN precio_presencial ELSE NULL END as precio_presencial
-                FROM psicologos");
-            //Para acceder a los datos se debe colocar $post['post_id'] o $post['psicologo_nombre']
-            while($row = $consulta->fetch(PDO::FETCH_ASSOC)) {
-                // Verificar si los precios están disponibles antes de agregarlos
-                if (!empty($row['precio_virtual'])) {
-                    $row['precio_virtual'] = "S/." . htmlspecialchars($row['precio_virtual']);
-                }
-                if (!empty($row['precio_presencial'])) {
-                    $row['precio_presencial'] = "S/." . htmlspecialchars($row['precio_presencial']);
-                }
-                $psicologos[] = $row;
-            }
-        } catch (PDOException $e) {
-            echo "Error en la consulta: " . $e->getMessage();
+    // Realizar la consulta SQL
+    $sql = "SELECT NombrePsicologo, celular, email, video FROM psicologos LIMIT 9";
+    $stmt = $conn->query($sql);
+
+    if ($stmt !== false && $stmt->rowCount() > 0) {
+        // Salida de datos de cada fila
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Extraer el ID del video de YouTube de la URL
+            preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $row["video"], $matches);
+            $video_id = $matches[1];
+            echo "<div class='psicologo-container'>";
+            echo "<p style='text-align: center; font-weight: bold;'>" . $row["NombrePsicologo"]. "</p>";
+            echo "<p><strong>Contacto: +51</strong> " . $row["celular"]. "<br>";
+            echo "<strong>Email:</strong> " . $row["email"]. "</p>";
+            echo "<iframe width='100%' height='200' src='https://www.youtube.com/embed/$video_id' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+            // Botón de WhatsApp con el número del psicólogo
+            echo "<a href='https://api.whatsapp.com/send?phone=51{$row["celular"]}' target='_blank'><button style='background-color: #28a745; color: white; padding: 10px 20px; border: none; cursor: pointer;'>Contactar por WhatsApp</button></a>";
+            echo "</div>";
         }
-        return $psicologos;
+    } else {
+        echo "0 resultados";
     }
-    /*
-    public function getPsicologos() {
-        // Realizar la consulta
-        $sql = "SELECT NombrePsicologo, celular, email, fotoPerfil, sexo, 
-                       CASE WHEN virtual = 1 THEN precio_virtual ELSE NULL END as precio_virtual,
-                       CASE WHEN presencial = 1 THEN precio_presencial ELSE NULL END as precio_presencial
-                FROM psicologos";
-        $result = $this->conn->query($sql);
+    
+    // Cerrar conexión
+    $conn = null;
 
-        $psicologos = [];
-        // Comprobar si hay resultados y guardarlos en un arreglo
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                // Verificar si los precios están disponibles antes de agregarlos
-                if (!empty($row['precio_virtual'])) {
-                    $row['precio_virtual'] = "S/." . htmlspecialchars($row['precio_virtual']);
-                }
-                if (!empty($row['precio_presencial'])) {
-                    $row['precio_presencial'] = "S/." . htmlspecialchars($row['precio_presencial']);
-                }
-                $psicologos[] = $row;
-            }
-        }
-
-        return $psicologos;
-    }
-*/
-    public function buscarPorNombre($nombre)
-    {
-        // Escapar caracteres especiales
-        $nombre = $this->conn->real_escape_string($nombre);
-        // Realizar la consulta con filtro por nombre
-        $sql = "SELECT NombrePsicologo, celular, email, fotoPerfil, sexo, 
-                       CASE WHEN virtual = 1 THEN precio_virtual ELSE NULL END as precio_virtual,
-                       CASE WHEN presencial = 1 THEN precio_presencial ELSE NULL END as precio_presencial
-                FROM psicologos 
-                WHERE NombrePsicologo LIKE '%$nombre%'";
-        $result = $this->conn->query($sql);
-
-        $psicologos = [];
-        // Comprobar si hay resultados y guardarlos en un arreglo
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                // Verificar si los precios están disponibles antes de agregarlos
-                if (!empty($row['precio_virtual'])) {
-                    $row['precio_virtual'] = "S/." . htmlspecialchars($row['precio_virtual']);
-                }
-                if (!empty($row['precio_presencial'])) {
-                    $row['precio_presencial'] = "S/." . htmlspecialchars($row['precio_presencial']);
-                }
-                $psicologos[] = $row;
-            }
-        }
-
-        return $psicologos;
-    }
-
-    public function __destruct()
-    {
-        // Cerrar la conexión
-        $this->conn->close();
-    }
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
 }
+?>
