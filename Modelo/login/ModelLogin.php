@@ -46,7 +46,7 @@ class Login
 
     public function __construct()
     {
-        include_once $_SERVER['DOCUMENT_ROOT'].'/ContigoVoy/config/config.php';
+        include_once '../../Controlador/DatabaseController.php';
         require_once CONEXION_PATH;
         $con = new DatabaseController();
         $this->PDO = $con->getConnection();
