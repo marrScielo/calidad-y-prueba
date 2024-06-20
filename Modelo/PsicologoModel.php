@@ -1,78 +1,43 @@
 <?php
-class PsicologosModel {
-    private $servername = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $dbname = "contigovoy2";
-    private $conn;
+// Archivo: consultar_psicologos.php
 
-    public function __construct() {
-        // Crear la conexión
-        $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
-        // Verificar la conexión
-        if ($this->conn->connect_error) {
-            die("Conexión fallida: " . $this->conn->connect_error);
-        }
-    }
+// Conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "contigovoy3";
 
-    public function getPsicologos() {
-        // Realizar la consulta
-        $sql = "SELECT NombrePsicologo, celular, email, fotoPerfil, sexo, 
-                       CASE WHEN virtual = 1 THEN precio_virtual ELSE NULL END as precio_virtual,
-                       CASE WHEN presencial = 1 THEN precio_presencial ELSE NULL END as precio_presencial
-                FROM psicologos";
-        $result = $this->conn->query($sql);
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-        $psicologos = [];
-        // Comprobar si hay resultados y guardarlos en un arreglo
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                // Verificar si los precios están disponibles antes de agregarlos
-                if (!empty($row['precio_virtual'])) {
-                    $row['precio_virtual'] = "S/." . htmlspecialchars($row['precio_virtual']);
-                }
-                if (!empty($row['precio_presencial'])) {
-                    $row['precio_presencial'] = "S/." . htmlspecialchars($row['precio_presencial']);
-                }
-                $psicologos[] = $row;
-            }
-        }
-
-        return $psicologos;
-    }
-
-    public function buscarPorNombre($nombre) {
-        // Escapar caracteres especiales
-        $nombre = $this->conn->real_escape_string($nombre);
-        // Realizar la consulta con filtro por nombre
-        $sql = "SELECT NombrePsicologo, celular, email, fotoPerfil, sexo, 
-                       CASE WHEN virtual = 1 THEN precio_virtual ELSE NULL END as precio_virtual,
-                       CASE WHEN presencial = 1 THEN precio_presencial ELSE NULL END as precio_presencial
-                FROM psicologos 
-                WHERE NombrePsicologo LIKE '%$nombre%'";
-        $result = $this->conn->query($sql);
-
-        $psicologos = [];
-        // Comprobar si hay resultados y guardarlos en un arreglo
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                // Verificar si los precios están disponibles antes de agregarlos
-                if (!empty($row['precio_virtual'])) {
-                    $row['precio_virtual'] = "S/." . htmlspecialchars($row['precio_virtual']);
-                }
-                if (!empty($row['precio_presencial'])) {
-                    $row['precio_presencial'] = "S/." . htmlspecialchars($row['precio_presencial']);
-                }
-                $psicologos[] = $row;
-            }
-        }
-
-        return $psicologos;
-    }
-
-    public function __destruct() {
-        // Cerrar la conexión
-        $this->conn->close();
-    }
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
 }
+
+// Realizar la consulta, limitando a 9 resultados inicialmente
+$sql = "SELECT NombrePsicologo, celular, email, video FROM psicologo LIMIT 9";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Salida de datos de cada fila
+    while($row = $result->fetch_assoc()) {
+        // Extraer el ID del video de YouTube de la URL
+        preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $row["video"], $matches);
+        $video_id = $matches[1];
+        echo "<div class='psicologo-container'>";
+        echo "<p style='text-align: center; font-weight: bold;'>" . $row["NombrePsicologo"]. "</p>";
+        echo "<p><strong>Contacto: +51</strong> " . $row["celular"]. "<br>";
+        echo "<strong>Email:</strong> " . $row["email"]. "</p>";
+        echo "<iframe width='100%' height='200' src='https://www.youtube.com/embed/$video_id' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+        // Botón de WhatsApp con el número del psicólogo
+        echo "<a href='https://api.whatsapp.com/send?phone=51{$row["celular"]}' target='_blank'><button style='background-color: #28a745; color: white; padding: 10px 20px; border: none; cursor: pointer;'>Contactar por WhatsApp</button></a>";
+        echo "</div>";
+    }
+} else {
+    echo "0 resultados";
+}
+
+// Cerrar conexión
+$conn->close();
 ?>
