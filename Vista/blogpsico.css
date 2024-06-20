@@ -1,0 +1,123 @@
+        /* Estilo para el modal principal */
+        /* Estilo para el modal principal */
+        /* Estilo para el modal principal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.1);
+            ;
+        }
+
+        .modal-content {
+            position: relative;
+            /* Añade esta línea para que la posición absoluta de la 'x' sea relativa al modal */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 70%;
+            max-width: 80%;
+            box-shadow: 0 2rem 3rem var(--color-light);
+            border-radius: 20px;
+            position: relative;
+            /* Añade esta línea para que la posición absoluta de la 'x' sea relativa al modal */
+        }
+
+        .modal-content-detail {
+            position: relative;
+            /* Añade esta línea para que la posición absoluta de la 'x' sea relativa al modal */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 70%;
+            max-width: 600px;
+            box-shadow: 0 2rem 3rem var(--color-light);
+            border-radius: 20px;
+            position: relative;
+
+        }
+
+        .modal-content h2 {
+            color: #52C291;
+        }
+
+        .modal-content-detail h2 {
+            color: #52C291;
+        }
+
+        /* Estilo para el botón de cerrar el modal (la 'x') */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1;
+            /* Añade esta línea para que la 'x' aparezca sobre el contenido del modal */
+        }
+
+        /* Estilo para el botón de cerrar el modal (la 'x') cuando se pasa el ratón sobre él */
+        .close:hover {
+            color: red;
+        }
+
+        /* Estilo para resaltar el título de cada paciente */
+        .patient-div p:first-child {
+            font-weight: bold;
+        }
+
+        /* Agrega estilos a la tabla */
+        .table-container {
+            background-color: var(--color-white);
+            /*box-shadow: var(--box-shadow);*/
+            border-radius: 30px;
+            grid-row: 1;
+            padding: 1rem 0rem 1.5rem 0rem;
+            overflow: auto;
+            /* Agrega desplazamiento si la tabla es larga */
+        }
+
+        /* Estilos para la tabla */
+        table {
+            width: 100%;
+            margin-top: 0.5rem;
+            border-spacing: 0.5rem;
+        }
+
+        /* Estilos para las celdas de la tabla */
+        td {
+            text-align: center;
+        }
+
+        /* Estilos para el botón "Ver Detalles" dentro del modal de historial */
+        .ver-detalles-button {
+
+            width: 130px;
+            height: 30px;
+            border-radius: 30px;
+            font-size: 10.2px;
+            background-color: #52C291;
+            color: white;
+            justify-content: flex-end;
+
+            /* Transición suave para el color de fondo */
+        }
+
+        .ver-detalles-button:hover {
+            color: var(--color-dark);
+            font-weight: 700;
+            cursor: pointer;
+            background-color: var(--color-white);
+            border: 1.5px solid var(--color-primary);
+            transition: all 0.5s ease-in-out;
+        }
+
+        /* Resto de tu estilo para el modal */
+        /* ... */
