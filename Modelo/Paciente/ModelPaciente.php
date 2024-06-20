@@ -335,7 +335,7 @@ public function ver($IdPsicologo) {
     
     public function showPsicologo($IdPsicologo)
     {
-        $statement = $this->PDO->prepare("SELECT IdPsicologo, NombrePsicologo, Passwords, FechaRegistro, Usuario, celular, email
+        $statement = $this->PDO->prepare("SELECT IdPsicologo, NombrePsicologo, Passwords, FechaRegistro, Usuario, celular, email, video
             FROM psicologo
             WHERE IdPsicologo = :IdPsicologo LIMIT 1");
         $statement->bindParam(":IdPsicologo", $IdPsicologo);
@@ -343,14 +343,15 @@ public function ver($IdPsicologo) {
         return ($statement->execute()) ? $statement->fetch() : false;
     }
     
-    public function updatePsicologo($IdPsicologo, $nombre, $usuario, $correo, $celular, $contrasena)
+    public function updatePsicologo($IdPsicologo, $nombre, $usuario, $correo, $celular, $contrasena, $video)
     {
-        $statement = $this->PDO->prepare("UPDATE psicologo SET NombrePsicologo = :nombre, Usuario = :usuario, email = :correo, celular = :celular, Passwords = :contrasena WHERE IdPsicologo = :IdPsicologo");
+        $statement = $this->PDO->prepare("UPDATE psicologo SET NombrePsicologo = :nombre, Usuario = :usuario, email = :correo, celular = :celular, Passwords = :contrasena, video = :video WHERE IdPsicologo = :IdPsicologo");
         $statement->bindParam(":nombre", $nombre);
         $statement->bindParam(":usuario", $usuario);
         $statement->bindParam(":correo", $correo);
         $statement->bindParam(":celular", $celular);
         $statement->bindParam(":contrasena", $contrasena);
+        $statement->bindParam(":video", $video);
         $statement->bindParam(":IdPsicologo", $IdPsicologo);
 
         return $statement->execute();

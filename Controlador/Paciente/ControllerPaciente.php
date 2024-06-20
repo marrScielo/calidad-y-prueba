@@ -126,9 +126,9 @@ class usernameControlerPaciente{
         return $patients;
     }
 
-    public function updatePsicologo($IdPsicologo, $nombre, $usuario, $correo, $celular, $contrasena)
+    public function updatePsicologo($IdPsicologo, $nombre, $usuario, $correo, $celular, $contrasena, $video)
     {
-        return $this->model->updatePsicologo($IdPsicologo, $nombre, $usuario, $correo, $celular, $contrasena);
+        return $this->model->updatePsicologo($IdPsicologo, $nombre, $usuario, $correo, $celular, $contrasena, $video);
     }
 }
 ?>

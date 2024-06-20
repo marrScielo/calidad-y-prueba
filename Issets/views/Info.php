@@ -17,10 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
     $correo = $_POST['correoInput'];
     $celular = $_POST['celularInput'];
     $contrasena = $_POST['contrasenaInput'];
+    $video = $_POST['videoInput'];
 
     // Crea una instancia del controlador y utiliza el método para actualizar los datos
     $Psi = new usernameControlerPaciente();
-    $result = $Psi->updatePsicologo($idPsicologo, $nombre, $usuario, $correo, $celular, $contrasena);
+    $result = $Psi->updatePsicologo($idPsicologo, $nombre, $usuario, $correo, $celular, $contrasena, $video);
 
     // Verifica el resultado de la actualización
     if ($result) {
@@ -54,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
     </div>
     <div class="profile">
         <div class="info">
-            <p>| <b><?= $_SESSION['Usuario'] ?> | </b></p>
+            <p>| <b><?= $_SESSION['NombrePsicologo'] ?> | </b></p>
         </div>
     </div>
     <a href="../issets/views/Salir.php">
@@ -109,6 +110,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
                         <a style="font-size:15px; padding:2px 15px" class="search Codigo" onclick="habilitarEdicion('contrasenaInput')">Editar</a>
                     </div>
                 </div>
+
+                <div>
+                    <h3 style="color:#49c691;font-size:17px;text-align:start;" for="videoInput">Link de Video:</h3>
+                    <div style="display: flex; gap:30px;">
+                        <input id="videoInput" style="background-color: #f6f6f9;padding:10px 15px; width:340px;border-radius:8px;margin-bottom: 10px;" type="text" name="videoInput" 
+					autocomplete="cc-number" value="<?= $psicologo['video'] ?>" readonly />
+                        <a style="font-size:15px; padding:2px 15px" class="search Codigo" onclick="habilitarEdicion('videoInput')">Editar</a>
+                    </div>
+                </div>
+
+
                 <!-- Agrega el siguiente botón de guardar al final del formulario -->
                 <input type="hidden" name="idPsicologo" value="<?= $_SESSION['IdPsicologo'] ?>">
 
@@ -131,6 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         document.getElementById('correoInput').readOnly = true;
         document.getElementById('celularInput').readOnly = true;
         document.getElementById('contrasenaInput').readOnly = true;
+        document.getElementById('videoInput').readOnly = true;
         // ... (Deshabilita otros campos)
     }
 </script>
@@ -143,6 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         document.getElementById('correoInput').readOnly = true;
         document.getElementById('celularInput').readOnly = true;
         document.getElementById('contrasenaInput').readOnly = true;
+        document.getElementById('videoInput').readOnly = true;
         // ... (Restablece otros campos a solo lectura)
     });
 </script>
