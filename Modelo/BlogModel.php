@@ -25,7 +25,7 @@ class Blog {
                 from
                     posts p
                 inner join
-                    psicologos psico
+                    psicologo psico
                 on
                     p.psicologo_id = psico.IdPSicologo
             ");

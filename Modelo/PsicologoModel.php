@@ -10,7 +10,7 @@ try {
     $conn = $dbController->getConnection();
 
     // Realizar la consulta SQL
-    $sql = "SELECT NombrePsicologo, celular, email, video FROM psicologos LIMIT 9";
+    $sql = "SELECT NombrePsicologo, celular, email, video FROM psicologo LIMIT 9";
     $stmt = $conn->query($sql);
 
     if ($stmt !== false && $stmt->rowCount() > 0) {
