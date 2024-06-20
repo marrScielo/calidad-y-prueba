@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['NombrePsicologo'], $_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'psicologo') {
+if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'psicologo') {
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -54,7 +54,18 @@ class UsuarioModel {
         $stmt = $this->conn->prepare("INSERT INTO usuarios (email, password, fotoPerfil, rol) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $email, $password, $fotoPerfil, $rol);
         $stmt->execute();
+
+        // Obtener el ID del usuario recién creado
+        $usuarioId = $stmt->insert_id;
         $stmt->close();
+
+        // Si el rol es psicologo, agregar un nuevo registro en la tabla psicologo
+        if ($rol === 'psicologo') {
+            $stmt = $this->conn->prepare("INSERT INTO psicologo (usuario_id) VALUES (?)");
+            $stmt->bind_param("i", $usuarioId);
+            $stmt->execute();
+            $stmt->close();
+        }
     }
 
     public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol) {
