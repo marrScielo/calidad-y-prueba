@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link	href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="icon" href="issets/images/contigovoyico.ico">
-    <link rel="stylesheet" href="Issets/css/login.css" />
+    <link rel="stylesheet" href="Issets/css/prueba.css" />
     <title>Psicologa</title>
 </head>
 <body>
   <div class="container">
 		<span class="form__title">Acceder</span>
-		<form method="post" action="Controlador/login/ControllerLogin.php" class="form">
+		<form method="post" action="./Controlador/login/ControllerLogin.php" class="form">
 			<div class="form__group">
 				<i class="ri-user-line form__icon"></i>
 				<input for="usu" 

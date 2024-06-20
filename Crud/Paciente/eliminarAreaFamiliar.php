@@ -3,5 +3,5 @@ require_once("../../Controlador/Paciente/ControllerAtencFamiliar.php");
 
 $obj = new usernameControlerPaciente();
 
-$obj->eliminarAreaFamiliar($_GET['id']);
+$obj->eliminar($_GET['id']);
 ?>

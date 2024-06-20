@@ -422,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
       // Realizar la solicitud AJAX al servidor
       $.ajax({
-        url: 'Fetch/fetch_paciente.php', // Archivo PHP que procesa la solicitud
+        url: '../Crud/Fetch/fetch_paciente.php', // Archivo PHP que procesa la solicitud
         method: 'POST',
         data: { codigopac: codigopac, idPsicologo: idPsicologo },
         success: function(response) {

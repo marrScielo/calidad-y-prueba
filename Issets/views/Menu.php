@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
 </head>
 <body>
 <aside>
     <div class="top">
-        <div class="logo">
-            <img src="../Issets/images/contigovoy.png" alt="">
-            <h2>Psicologa</h2>
+        <div class="">
+            <img src="../Issets/images/logo-actual.png" alt="" class="logo">
+           
         </div>
         <div class="close" id="close-btn">
             <span class="material-symbols-sharp" translate="no">close</span>

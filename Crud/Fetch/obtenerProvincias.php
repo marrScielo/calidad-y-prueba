@@ -1,21 +1,29 @@
 <?php
-include 'config/config.php';
-require_once BASE_PATH . 'conexion/conexion.php';
-// require_once BASE_PATH_WEB . 'conexion/conexion.php';
-// require("/home3/ghxumdmy/public_html/gestion-contigo-voy-com/conexion/conexion.php");
+include '../../config/config.php';
+require_once CONEXION_PATH;
+
 $con = new conexion();
 $conn = $con->conexion();
 
-// obtener_provincias.php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $departamentoId = $_POST['departamentoId'];
 
-    // Realizar la consulta SQL para obtener las provincias del departamento seleccionado
-    $statement = $conn->prepare("SELECT * FROM provincia WHERE departamento_id = :departamentoId");
-    $statement->bindParam(':departamentoId', $departamentoId);
-    $statement->execute();
-    $provincias = $statement->fetchAll();
+    try {
+        $statement = $conn->prepare("SELECT * FROM provincia WHERE departamento_id = :departamentoId");
+        $statement->bindParam(':departamentoId', $departamentoId);
+        $statement->execute();
+        $provincias = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    echo json_encode($provincias);
+        // Devolver las provincias en formato JSON
+        echo json_encode($provincias);
+    } catch (PDOException $e) {
+        // Manejo de errores en caso de excepción
+        http_response_code(500); // Código de error 500 - Internal Server Error
+        echo json_encode(array('error' => 'Error al obtener las provincias: ' . $e->getMessage()));
+    }
+} else {
+    // Manejo de solicitud incorrecta
+    http_response_code(400); // Código de error 400 - Bad Request
+    echo json_encode(array('error' => 'Solicitud incorrecta'));
 }
 ?>

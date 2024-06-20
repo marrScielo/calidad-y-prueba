@@ -7,6 +7,24 @@
     --color-hover-texto: #ffffff;
 }
 
+.btn {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.bg-celeste{
+    background-color: #48bfe3;
+}
+
+.bg-azul{
+    background-color: #6b93f3;
+}
 
 @font-face {
     font-family: 'Poppins';

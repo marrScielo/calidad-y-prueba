@@ -116,7 +116,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
               $localidad = 'es_ES';
 
               // Crear un formateador de fecha en español para el día y el mes
-              $formato_fecha = new IntlDateFormatter($localidad, IntlDateFormatter::FULL, IntlDateFormatter::NONE, null, null, 'dd \'de\' MMMM');
+              $formato_fecha = new IntlDateFormatter($localidad, IntlDateFormatter::FULL, IntlDateFormatter::NONE, null, null, "d 'de' MMMM");
 
               // Formatear la fecha actual en el formato deseado
               $fecha_formateada = $formato_fecha->format($fecha_actual);
