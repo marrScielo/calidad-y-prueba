@@ -96,6 +96,7 @@ class Login
                     exit();
                 }
             } elseif ($user['rol'] == 'administrador') {
+                $_SESSION['logeado'] = true;
                 header("Location: /ContigoVoy/usuarios.php");
                 exit();
             } else {
