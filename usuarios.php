@@ -1,36 +1,43 @@
 <?php
-// Incluir el controlador
-require_once 'Controlador/UsuariosController.php';
+session_start();
+if(isset($_SESSION['logeado'])){
+    // Incluir el controlador
+    require_once 'Controlador/UsuariosController.php';
 
-// Crear una instancia del controlador
-$usuariosController = new UsuariosController();
+    // Crear una instancia del controlador
+    $usuariosController = new UsuariosController();
 
-// Verificar las acciones CRUD
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['accion'])) {
-        switch ($_POST['accion']) {
-            case 'agregar':
-                $usuariosController->agregarUsuario($_POST['email'], $_POST['password'], $_POST['fotoPerfil'], $_POST['rol']);
-                break;
-            case 'actualizar':
-                $usuariosController->actualizarUsuario($_POST['id'], $_POST['email'], $_POST['password'], $_POST['fotoPerfil'], $_POST['rol']);
-                break;
-            case 'eliminar':
-                $usuariosController->eliminarUsuario($_POST['id']);
-                break;
+    // Verificar las acciones CRUD
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['accion'])) {
+            switch ($_POST['accion']) {
+                case 'agregar':
+                    $usuariosController->agregarUsuario($_POST['email'], $_POST['password'], $_POST['fotoPerfil'], $_POST['rol']);
+                    break;
+                case 'actualizar':
+                    $usuariosController->actualizarUsuario($_POST['id'], $_POST['email'], $_POST['password'], $_POST['fotoPerfil'], $_POST['rol']);
+                    break;
+                case 'eliminar':
+                    $usuariosController->eliminarUsuario($_POST['id']);
+                    break;
+                case 'cerrar_sesion':
+                    session_destroy();
+                    header("Location: index.php");
+                    exit();
+                    break;
+            }
         }
     }
-}
 
-// Verificar si se ha enviado un email para buscar
-$emailBuscar = isset($_GET['email']) ? $_GET['email'] : '';
+    // Verificar si se ha enviado un email para buscar
+    $emailBuscar = isset($_GET['email']) ? $_GET['email'] : '';
 
-// Llamar al método del controlador según si se busca por email o no
-if (!empty($emailBuscar)) {
-    $usuarios = $usuariosController->buscarPorEmail($emailBuscar);
-} else {
-    $usuarios = $usuariosController->mostrarUsuarios();
-}
+    // Llamar al método del controlador según si se busca por email o no
+    if (!empty($emailBuscar)) {
+        $usuarios = $usuariosController->buscarPorEmail($emailBuscar);
+    } else {
+        $usuarios = $usuariosController->mostrarUsuarios();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -175,10 +182,36 @@ if (!empty($emailBuscar)) {
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+
+        .logout-button {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .logout-button form input[type=submit] {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .logout-button form input[type=submit]:hover {
+            background-color: #c0392b;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="logout-button">
+            <form action="usuarios.php" method="POST">
+                <input type="hidden" name="accion" value="cerrar_sesion">
+                <input type="submit" value="Cerrar sesión">
+            </form>
+        </div>
+
         <div class="search-container">
             <form action="usuarios.php" method="GET">
                 <input type="text" placeholder="Buscar por email" name="email">
@@ -243,3 +276,9 @@ if (!empty($emailBuscar)) {
     </div>
 </body>
 </html>
+
+<?php
+}else{
+    header("Location: index.php");
+}
+?>

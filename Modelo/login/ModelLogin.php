@@ -83,6 +83,7 @@ class Login
                 if ($psicologo) {
                     $_SESSION['IdPsicologo'] = $psicologo["IdPsicologo"];
                     $_SESSION['NombrePsicologo'] = $psicologo["NombrePsicologo"];
+                    $_SESSION['Usuario'] = $psicologo["Usuario"];
                     header("Location: /ContigoVoy/Vista/Dashboards.php");
                     exit();
                 } else {
@@ -91,6 +92,7 @@ class Login
                     exit();
                 }
             } elseif ($user['rol'] == 'administrador') {
+                $_SESSION['logeado'] = true;
                 header("Location: /ContigoVoy/usuarios.php");
                 exit();
             } else {
