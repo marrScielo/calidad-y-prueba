@@ -48,13 +48,9 @@ class Login
     {
         include_once $_SERVER['DOCUMENT_ROOT'].'/ContigoVoy/config/config.php';
         require_once CONEXION_PATH;
-        $con = new conexion();
-        $this->PDO = $con->conexion();
+        $con = new DatabaseController();
+        $this->PDO = $con->getConnection();
 
-        // Verificar si la conexión fue exitosa
-        if (!($this->PDO instanceof PDO)) {
-            die("Conexión fallida: " . $this->PDO);
-        }
     }
 
     public function validarDatos($email, $password)

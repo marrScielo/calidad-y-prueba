@@ -8,7 +8,51 @@ class Blog {
         $this->conn = $db->getConnection();
     }
     
+    public function obtenerPsicologoId(){
+        if (isset($_SESSION['psicologo_id'])) {
+            return $_SESSION['psicologo_id'];
+        } else {
+            return null;
+        }
+    }
 
+    // CREATE BLOGS
+    public function createBlogs($tema, $especialidad, $descripcion, $imagen){
+        try {
+            // Obtener el psicologo_id utilizando el método previamente definido
+            $psicologo_id = $this->obtenerPsicologoId();
+
+            if ($psicologo_id === null) {
+                throw new Exception("No se pudo obtener el psicologo_id.");
+            }
+
+            // La consulta a la db
+            $stmt = $this->conn->prepare("INSERT INTO posts (tema, especialidad, descripcion, imagen, psicologo_id) VALUES (:tema, :especialidad, :descripcion, :imagen, :psicologo_id)");
+
+            // stmt: objeto devuelto por prepare
+            // bindParam: vincula parametros con la consulta sql
+            $stmt->bindParam(':tema', $tema);
+            $stmt->bindParam(':especialidad', $especialidad);
+            $stmt->bindParam(':descripcion', $descripcion);
+            $stmt->bindParam(':imagen', $imagen);
+            $stmt->bindParam(':psicologo_id', $psicologo_id);
+
+            // ejecutar stmt
+            $stmt->execute();
+            // Se puede retorar a blog.php o donde prefiera
+            return true;
+        } catch (PDOException $e) {
+            // Manejar errores de base de datos
+            echo "Error al guardar el artículo: " . $e->getMessage();
+            return false;
+        } catch (Exception $e) {
+            // Manejar otros errores
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    // READ BLOGS
     public function getAllBlog (){
         $posts = [];
         try{
@@ -37,5 +81,10 @@ class Blog {
             echo "Error en la consulta: " . $e->getMessage();
         }
         return $posts;
+    }
+
+    // UPDATE BLOGS
+    public function updateBlog (){
+        
     }
 }
