@@ -13,46 +13,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
         <link rel="stylesheet" href="../Issets/css/historial.css">
         <link rel="stylesheet" href="../Issets/css/main.css">
-        <link rel="stylesheet" href="blogpsico.css">
+        <link rel="stylesheet" href="../Issets/css/blogpsico1.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <style>
-            .form-container {
-                background-color: #e0f7fa;
-                padding: 20px;
-                border-radius: 10px;
-                max-width: 600px;
-                margin: 20px auto;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-            .form-group {
-                margin-bottom: 15px;
-            }
-            .form-group label {
-                display: block;
-                margin-bottom: 5px;
-            }
-            .form-group input, .form-group select, .form-group textarea {
-                width: 100%;
-                padding: 10px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-            button {
-                display: block;
-                width: 100%;
-                padding: 10px;
-                background-color: #49c691;
-                color: #fff;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-            button:hover {
-                background-color: #45a67d;
-            }
-        </style>
         <title>Blog</title>
     </head>
     <body>
@@ -87,6 +51,21 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <option value="Atención">Atención</option>
                                 <option value="Autoestima">Autoestima</option>
                                 <option value="Crianza">Crianza</option>
+                                <option value="Depresión">Depresión</option>
+                                <option value="Enfermedades Cronicas">Enfermedades Cronicas</option>
+                                <option value="Estrés">Estrés</option>
+                                <option value="Impulsividad">Impulsividad</option>
+                                <option value="Top">Top</option>
+                                <option value="Ira">Ira</option>
+                                <option value="Terapia de Pareja">Terapia de Pareja</option>
+                                <option value="Sexualidad">Sexualidad</option>
+                                <option value="Traumas">Traumas</option>
+                                <option value="Riesgo Suicida">Riesgo Suicida</option>
+                                <option value="Sentido de vida">Sentido de vida</option>
+                                <option value="Orientación Vocacional">Orientación Vocacional</option>
+                                <option value="Problemas de sueño">Problemas de sueño</option>
+                                <option value="Problemas alimenticios">Problemas alimenticios</option>
+                                <option value="Relaciones Interpersonales">Relaciones Interpersonales</option>
                             </select>
                         </div>
                         <div class="form-group">

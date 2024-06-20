@@ -22,7 +22,16 @@ if (isset($_SESSION['NombrePsicologo']) && isset($_SESSION['IdPsicologo'])) {
 
         // Ejecutar la consulta
         if ($stmt->execute()) {
-            echo "Nuevo post añadido con éxito";
+            // Cerrar la conexión
+            $stmt->close();
+            $conn->close();
+
+            // Almacenar mensaje de éxito en variable de sesión
+            $_SESSION['mensaje_blog'] = "Blog registrado correctamente.";
+
+            // Redirigir de nuevo a la página del formulario
+            header("Location: Blog.php");
+            exit();
         } else {
             echo "Error: " . $stmt->error;
         }
@@ -34,6 +43,6 @@ if (isset($_SESSION['NombrePsicologo']) && isset($_SESSION['IdPsicologo'])) {
         echo "Método de solicitud no permitido.";
     }
 } else {
-    header("Location: ../index.php");
+    header("Location: Blog.php");
 }
 ?>

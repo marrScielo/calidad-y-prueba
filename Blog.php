@@ -18,92 +18,7 @@ $blogs = $blogControlador->show();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
     <link rel="stylesheet" href="css/inicio-header.css">
-    <style>
-        /* Estilos específicos para los posts del blog */
-        .blog-posts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px; /* Espacio entre los posts */
-        }
-        .blog-post {
-            flex: 0 1 calc(30% - 20px); /* Calcula el ancho para cuatro columnas */
-            border: 1px solid #ddd;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 10px; /* Bordes redondeados */
-            transition: transform 0.2s; /* Transición suave al pasar el ratón */
-        }
-        .blog-post:hover {
-            transform: scale(1.05); /* Agrandar ligeramente al pasar el ratón */
-        }
-        .blog-post img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-            border-radius: 10px; /* Bordes redondeados */
-        }
-        .blog-post h2 {
-            margin-top: 0;
-            margin-bottom: 5px;
-            font-size: 1.5em;
-            color: #333;
-        }
-        .blog-post p {
-            margin-bottom: 10px;
-            color: #555;
-        }
-        .container {
-            display: flex;
-            gap: 20px; /* Espacio entre los contenedores */
-        }
-        .container-rosado {
-            padding: 20px;
-            flex: 1; /* Toma 1 parte del espacio disponible */
-            border-radius: 10px; /* Bordes redondeados */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-            transition: background-color 0.3s;
-        }
-        .container-rosado h2 {
-            color: #ff6f61; /* Color del texto */
-            font-family: 'Arial', sans-serif; /* Fuente personalizada */
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .filter-option {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            background-color: #ffe5e5;
-            padding: 10px;
-            border-radius: 5px; /* Bordes redondeados */
-        }
-        .filter-option input[type="checkbox"] {
-            margin-right: 10px;
-            transform: scale(1.2); /* Agrandar el checkbox */
-        }
-        .filter-option label {
-            font-size: 16px;
-            color: #555; /* Color del texto */
-            transition: color 0.3s;
-        }
-        .filter-option:hover label {
-            color: #000; /* Color del texto al pasar el ratón */
-        }
-        .container-celeste {
-            padding: 20px;
-            flex: 3; /* Toma 3 partes del espacio disponible */
-            border-radius: 10px; /* Bordes redondeados */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-            transition: background-color 0.3s;
-        }
-        .container-celeste h1 {
-            font-family: 'Arial', sans-serif; /* Fuente personalizada */
-            font-size: 2em;
-            color: #333;
-            margin-bottom: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/blog-principal1.css">
 </head>
 <body>
 
@@ -118,9 +33,10 @@ $blogs = $blogControlador->show();
                 // Generar 20 checkbox para diferentes especialidades
                 $especialidades = [
                     "Adicciones", "Ansiedad", "Atención", "Autoestima", "Crianza",
-                    "Especialidad 6", "Especialidad 7", "Especialidad 8", "Especialidad 9", "Especialidad 10",
-                    "Especialidad 11", "Especialidad 12", "Especialidad 13", "Especialidad 14", "Especialidad 15",
-                    "Especialidad 16", "Especialidad 17", "Especialidad 18", "Especialidad 19", "Especialidad 20"
+                    "Depresión", "Enfermedades Cronicas", "Estrés", "Impulsividad", "Top",
+                    "Ira", "Terapia de Pareja", "Sexualidad", "Traumas", "Riesgo Suicida",
+                    "Sentido de vida", "Orientación Vocacional", "Problemas de sueño", "Problemas alimenticios", 
+                    "Relaciones Interpersonales"
                 ];
 
                 foreach ($especialidades as $especialidad) {
