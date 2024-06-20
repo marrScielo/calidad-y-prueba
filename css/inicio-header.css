@@ -7,12 +7,11 @@ body {
 .container{
     width: 90%;
     margin: auto;
-
 }
 
 nav {
     background-color: #ffffff; /* Color de fondo del menú */
-    padding: 5px 0; /* Espaciado interno del menú */
+    padding-top: 5px 0; /* Espaciado interno del menú */
     overflow: hidden; /* Limpiar float */
     display: flex;
     justify-content: space-between;
