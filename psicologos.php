@@ -31,19 +31,17 @@
                         <h4>Juan Pérez</h4>
                         <p>"Me siento muy agradecido con el equipo de ContigoVoy por su apoyo incondicional."</p>
                     </div>
+                    <br>
+                    <div class="testimonial-item" style="background-color: #1E90FF; color: white; padding: 10px; border-radius: 5px;">
+                        <h4>María Gutiérrez</h4>
+                        <p>"Estoy muy contenta con la atención recibida por el equipo de ContigoVoy. Han sido de gran ayuda en mi proceso."</p>
+                    </div>
+                    <br>
+                    <div class="testimonial-item" style="background-color: #1E90FF; color: white; padding: 10px; border-radius: 5px;">
+                        <h4>Carlos Rodríguez</h4>
+                        <p>"Quiero expresar mi gratitud hacia ContigoVoy por su apoyo constante y profesionalismo. Me han ayudado a enfrentar mis problemas de una manera muy efectiva."</p>
+                    </div>
                 </div>
-                <br>
-                <div class="testimonial-item" style="background-color: #1E90FF; color: white; padding: 10px; border-radius: 5px;">
-                <h4>María Gutiérrez</h4>
-                <p>"Estoy muy contenta con la atención recibida por el equipo de ContigoVoy. Han sido de gran ayuda en mi proceso."</p>
-                </div>
-
-                <br>
-                <div class="testimonial-item" style="background-color: #1E90FF; color: white; padding: 10px; border-radius: 5px;">
-                <h4>Carlos Rodríguez</h4>
-                <p>"Quiero expresar mi gratitud hacia ContigoVoy por su apoyo constante y profesionalismo. Me han ayudado a enfrentar mis problemas de una manera muy efectiva."</p>
-            </div>
-
             </div>
         </div>
 
