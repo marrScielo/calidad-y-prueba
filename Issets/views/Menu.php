@@ -35,6 +35,11 @@
             <span class="material-symbols-sharp" translate="no">calendar_month</span>
             <h3>Calendario</h3>
         </a>
+        <a class="blog" href="Blog.php">
+            <span class="material-symbols-sharp" translate="no">rss_feed</span>
+            <h3>Blog</h3>
+        </a>
+
         <a class="planes" href="Salir.php">
             <span class="material-symbols-sharp" translate="no">account_balance_wallet</span>
             <h3>Planes</h3>

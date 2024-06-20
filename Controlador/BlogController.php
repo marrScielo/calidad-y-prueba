@@ -13,4 +13,8 @@ class BlogController{
     public function show(){
         return $this->blogModel->getAllBlog();
     }
+
+    public function crearBlog($tema, $especialidad, $descripcion, $imagen) {
+        return $this->blogModel->createBlogs($tema, $especialidad, $descripcion, $imagen);
+    }
 }
