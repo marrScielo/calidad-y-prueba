@@ -345,6 +345,7 @@ public function ver($IdPsicologo) {
     
     public function updatePsicologo($IdPsicologo, $nombre, $usuario, $correo, $celular, $contrasena, $video)
     {
+        /*
         $statement = $this->PDO->prepare("UPDATE psicologo SET NombrePsicologo = :nombre, Usuario = :usuario, email = :correo, celular = :celular, Passwords = :contrasena, video = :video WHERE IdPsicologo = :IdPsicologo");
         $statement->bindParam(":nombre", $nombre);
         $statement->bindParam(":usuario", $usuario);
@@ -355,6 +356,46 @@ public function ver($IdPsicologo) {
         $statement->bindParam(":IdPsicologo", $IdPsicologo);
 
         return $statement->execute();
+        */
+
+        try {
+            // Iniciar una transacción
+            $this->PDO->beginTransaction();
+    
+            // Actualizar los datos del psicólogo
+            $statement = $this->PDO->prepare("UPDATE psicologo SET NombrePsicologo = :nombre, Usuario = :usuario, email = :correo, celular = :celular, Passwords = :contrasena, video = :video WHERE IdPsicologo = :IdPsicologo");
+            $statement->bindParam(":nombre", $nombre);
+            $statement->bindParam(":usuario", $usuario);
+            $statement->bindParam(":correo", $correo);
+            $statement->bindParam(":celular", $celular);
+            $statement->bindParam(":contrasena", $contrasena);
+            $statement->bindParam(":video", $video);
+            $statement->bindParam(":IdPsicologo", $IdPsicologo);
+            $statement->execute();
+    
+            // Obtener el usuario_id del psicólogo
+            $statement = $this->PDO->prepare("SELECT usuario_id FROM psicologo WHERE IdPsicologo = :IdPsicologo");
+            $statement->bindParam(":IdPsicologo", $IdPsicologo);
+            $statement->execute();
+            $usuario_id = $statement->fetchColumn();
+    
+            if ($usuario_id) {
+                // Actualizar los datos del usuario
+                $statement = $this->PDO->prepare("UPDATE usuarios SET email = :correo, password = :contrasena WHERE id = :usuario_id");
+                $statement->bindParam(":correo", $correo);
+                $statement->bindParam(":contrasena", $contrasena);
+                $statement->bindParam(":usuario_id", $usuario_id);
+                $statement->execute();
+            }
+    
+            // Confirmar la transacción
+            $this->PDO->commit();
+            return true;
+        } catch (Exception $e) {
+            // Revertir la transacción en caso de error
+            $this->PDO->rollBack();
+            throw $e;
+        }
     }
 }
 ?>

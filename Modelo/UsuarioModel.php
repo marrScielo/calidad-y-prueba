@@ -61,8 +61,8 @@ class UsuarioModel {
 
         // Si el rol es psicologo, agregar un nuevo registro en la tabla psicologo
         if ($rol === 'psicologo') {
-            $stmt = $this->conn->prepare("INSERT INTO psicologo (usuario_id) VALUES (?)");
-            $stmt->bind_param("i", $usuarioId);
+            $stmt = $this->conn->prepare("INSERT INTO psicologo (usuario_id, Passwords, email) VALUES (?, ?, ?)");
+            $stmt->bind_param("sss", $usuarioId, $password, $email);
             $stmt->execute();
             $stmt->close();
         }
@@ -74,14 +74,29 @@ class UsuarioModel {
         $stmt->bind_param("ssssi", $email, $password, $fotoPerfil, $rol, $id);
         $stmt->execute();
         $stmt->close();
+
+        // Si el rol es psicologo, actualizar la información en la tabla psicologo
+        if ($rol === 'psicologo') {
+            $stmt = $this->conn->prepare("UPDATE psicologo SET email = ?, Passwords = ? WHERE usuario_id = ?");
+            $stmt->bind_param("ssi", $email, $password, $id);
+            $stmt->execute();
+            $stmt->close();
+        }
+
     }
 
     public function eliminarUsuario($id) {
-        // Preparar y ejecutar la consulta para eliminar un usuario
-        $stmt = $this->conn->prepare("DELETE FROM usuarios WHERE id = ?");
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $stmt->close();
+            // Primero eliminar el registro en la tabla psicologo si el usuario es un psicologo
+            $stmt = $this->conn->prepare("DELETE FROM psicologo WHERE usuario_id = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $stmt->close();
+
+            // Preparar y ejecutar la consulta para eliminar un usuario
+            $stmt = $this->conn->prepare("DELETE FROM usuarios WHERE id = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $stmt->close();
     }
 
     public function __destruct() {
