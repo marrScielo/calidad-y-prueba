@@ -31,7 +31,7 @@
     margin-bottom: 10px;
     color: #555;
 }
-.container {
+.container-blog {
     display: flex;
     gap: 20px; /* Espacio entre los contenedores */
 }

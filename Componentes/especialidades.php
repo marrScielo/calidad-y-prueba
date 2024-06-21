@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-especialidades">
     <h1 class="">Especialidades</h1>
     <div class="icon-grid">
         <div class="icon-item">

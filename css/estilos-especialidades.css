@@ -1,5 +1,9 @@
-.container {
-    margin-bottom: 30px;
+.container-especialidades {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
 }
 .icon-grid-title {
     font-size: 2em;
@@ -8,6 +12,7 @@
 .icon-grid {
     display: flex;
     flex-wrap: wrap;
+    gap: 2rem 1rem;
     justify-content: space-between;
 }
 .icon-item {

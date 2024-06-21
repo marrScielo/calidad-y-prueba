@@ -4,14 +4,15 @@ body {
     font-family: 'Poppins';
 }
 
-.container{
+.container-header{
     width: 90%;
+    padding: 1rem 1rem;
     margin: auto;
 }
 
 nav {
     background-color: #ffffff; /* Color de fondo del menú */
-    padding-top: 5px 0; /* Espaciado interno del menú */
+    padding: 0.5rem 0 ; /* Espaciado interno del menú */
     overflow: hidden; /* Limpiar float */
     display: flex;
     justify-content: space-between;
@@ -57,18 +58,17 @@ nav {
 }
 
 .nav-links li a {
-    font-size: 1.25rem;
     line-height: 1.75rem;
     text-decoration: none; /* Quitar subrayado de los enlaces */
     color: #333; /* Color inicial del texto de los enlaces */
     padding: 10px 15px; /* Espaciado interno de los enlaces */
     display: inline-block; /* Mostrar los enlaces en línea */
     transition: background-color 0.3s, color 0.3s; /* Transición suave */
-    color: #31c7f5;
+    color: #56B9B3;
 }
 
 .nav-links li a:hover {
-    background-color: #5bc0de; /* Color de fondo al pasar el ratón */
+    background-color: #56B9B3; /* Color de fondo al pasar el ratón */
     color: #ffffff; /* Color del texto al pasar el ratón */
     border-radius: 5px; /* Borde redondeado al pasar el ratón */
 }
@@ -99,5 +99,39 @@ nav {
         padding: 10px; /* Espaciado interno de los enlaces en pantallas pequeñas */
         width: 100%;
         display: block;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .nav-links li a {
+        font-size: 0.8rem;
+    }
+
+    .logo-img {
+        width: auto;
+        height: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .nav-links li a {
+        font-size: 1rem;
+    }
+
+    .logo-img {
+        width: auto;
+        height: 3rem;
+    }
+}
+
+@media (min-width: 1280px){
+    .nav-links li a {
+        font-size: 1.25rem;
+    }
+
+    .logo-img {
+        width: auto;
+        height: 3.5rem;
     }
 }
