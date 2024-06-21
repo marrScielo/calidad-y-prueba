@@ -25,7 +25,7 @@
             <li><a href="blog.php">Blog</a></li>
             <li><a href="psicologos.php">Psicólogos</a></li>
             <li class="dropdown">
-                <a href="../ContigoVoy/login.php">Iniciar Sesión</a>
+                <a href="./login.php">Iniciar Sesión</a>
             </li>
             <li><a href="#">Reservar Cita</a></li>
         </ul>

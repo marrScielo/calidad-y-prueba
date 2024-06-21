@@ -47,7 +47,7 @@ class Login
     public function __construct()
     {
         include_once '../../Controlador/DatabaseController.php';
-        require_once CONEXION_PATH;
+        //require_once CONEXION_PATH;
         $con = new DatabaseController();
         $this->PDO = $con->getConnection();
 
@@ -84,11 +84,11 @@ class Login
                     $_SESSION['IdPsicologo'] = $psicologo["IdPsicologo"];
                     $_SESSION['NombrePsicologo'] = $psicologo["NombrePsicologo"];
                     $_SESSION['Usuario'] = $psicologo["Usuario"];
-                    header("Location: /ContigoVoy/Vista/Dashboards.php");
+                    header("Location: ../../Vista/Dashboards.php");
                     exit();
                 } else {
                     // Redirigir a una página de error si no se encuentra el psicólogo correspondiente
-                    header("Location: /ContigoVoy/index.php?error=no_psicologo");
+                    header("Location: ../../login.php?error=no_psicologo");
                     exit();
                 }
             } elseif ($user['rol'] == 'administrador') {
@@ -97,11 +97,11 @@ class Login
                 exit();
             } else {
                 // Redirigir a una página genérica o de error si el rol no es reconocido
-                header("Location: /ContigoVoy/index.php?error=rol_no_reconocido");
+                header("Location: ../../login.php?error=rol_no_reconocido");
                 exit();
             }
         } else {
-            header("Location: /ContigoVoy/index.php?error=1");
+            header("Location: ../../login.php?error=1");
             exit();
         }
     }
