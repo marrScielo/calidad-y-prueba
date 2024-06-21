@@ -1,0 +1,68 @@
+/* Estilos para el footer rosado */
+.footer-rosado {
+    background-color: #f19294; /* Color de fondo rosado */
+    color: white; /* Color de texto blanco */
+    padding: 30px;
+    text-align: center;
+    position: relative; /* Añadido para facilitar el posicionamiento */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinea verticalmente los elementos */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.redes-sociales {
+    display: flex;
+}
+
+.redes-sociales a {
+    color: white;
+    font-size: 2.5em;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+
+.redes-sociales a:hover {
+    color: #f2f2f2; /* Color de los íconos al pasar el ratón */
+}
+
+.logo-container {
+    margin-left: 700px; /* Margen izquierdo para separar los elementos */
+}
+
+.logo {
+    max-width: 150px; /* Tamaño máximo para la imagen */
+    height: auto; /* Ajusta la altura automáticamente */
+}
+
+.bn {
+    filter: brightness(0) invert(1); /* Ajuste de brillo e invertido */
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: row; /* Cambia a fila en dispositivos móviles */
+        justify-content: center; /* Centra los elementos horizontalmente */
+    }
+
+    .redes-sociales {
+        margin-right: 20px; /* Espacio entre íconos y logo */
+    }
+
+    .redes-sociales a {
+        font-size: 1.8em; /* Reduce el tamaño de los íconos en dispositivos móviles */
+    }
+
+    .logo-container {
+        margin-left: 0; /* Elimina el margen izquierdo en dispositivos móviles */
+    }
+
+    .logo {
+        max-width: 100px; /* Reduce el tamaño máximo del logo */
+    }
+}

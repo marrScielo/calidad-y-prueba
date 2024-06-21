@@ -1,15 +1,15 @@
-/* Estilos para el carrusel */
 .carousel {
     position: relative;
-    max-width: 100%;
-    height: 100vh;
-    margin: auto;
+    width: 100%;
     overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .carousel-inner {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    height: 100%; /* Ocupa toda la altura del viewport */
 }
 
 .carousel-item {
@@ -20,8 +20,8 @@
 
 .carousel img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
 }
 
 .carousel-caption {
@@ -68,5 +68,45 @@
 
 .carousel-control-next {
     right: 10px; /* Ajusta la posición derecha */
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+        top: 50%; /* Alinea los botones verticalmente en el centro */
+        transform: translateY(-50%); /* Ajusta la posición vertical */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 30px;
+        height: 30px;
+        top: 50%; /* Alinea los botones verticalmente en el centro */
+        transform: translateY(-50%); /* Ajusta la posición vertical */
+    }
+}
+@media (max-width: 768px) {
+    .carousel-caption h3 {
+        font-size: 1.2em; /* Ajusta el tamaño del título */
+    }
+
+    .carousel-caption p {
+        font-size: 0.9em; /* Ajusta el tamaño del párrafo */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-caption h3 {
+        font-size: 1em; /* Ajusta el tamaño del título */
+    }
+
+    .carousel-caption p {
+        font-size: 0.8em; /* Ajusta el tamaño del párrafo */
+    }
 }
 

@@ -46,3 +46,49 @@
 .banner .btn:hover {
     background-color: #fe9594;
 }
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .banner h1 {
+        font-size: 3rem;
+    }
+
+    .banner p {
+        font-size: 1.25rem;
+    }
+
+    .banner .btn {
+        font-size: 1rem;
+        padding: 0.5rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner h1 {
+        font-size: 2.5rem;
+    }
+
+    .banner p {
+        font-size: 1rem;
+    }
+
+    .banner .btn {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner h1 {
+        font-size: 2rem;
+    }
+
+    .banner p {
+        font-size: 0.875rem;
+    }
+
+    .banner .btn {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.75rem;
+    }
+}

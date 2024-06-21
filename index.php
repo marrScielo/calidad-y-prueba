@@ -7,63 +7,131 @@
     <title>ContigoVoy</title>
     <link rel="icon" href="img/logo-actual.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <link rel="stylesheet" href="css/inicio-header1.css">
-    <link rel="stylesheet" href="css/estilos-carrusel.css">
+    <link rel="stylesheet" href="css/estilos-banner.css">
+    <link rel="stylesheet" href="css/inicio-header1.css">   
     <link rel="stylesheet" href="css/estilos-especialidades.css">
     <link rel="stylesheet" href="css/estilos-blog.css">
     <link rel="stylesheet" href="css/estilos-footer.css">
-    <link rel="stylesheet" href="css/estilos-footer2.css">
+    <link rel="stylesheet" href="css/estilos-footer2x.css">
     <link rel="stylesheet" href="css/boton-wsp.css">
 </head>
 <style>
-    /* Estilos para el banner */
-.banner {
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+.carousel {
     position: relative;
     width: 100%;
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
-    background-image: url('img/fondo-baner.jpg'); /* Imagen de fondo */
-    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
-    background-position: center; /* Centra la imagen de fondo */
-    background-repeat: no-repeat; /* No repite la imagen */
-}
-
-.banner-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white; /* Asegúrate de que el texto sea visible sobre la imagen */
-}
-
-.banner h1 {
+    overflow: hidden;
     margin: 0;
-    font-size: 3.75rem;
-    line-height: 1;
+    padding: 0;
 }
 
-.banner p {
-    margin: 1rem 0;
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%; /* Ocupa toda la altura del viewport */
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 15%; /* Ajustar según la necesidad */
+    left: 10%; /* Ajustar según la necesidad */
+    color: white;
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    max-width: 300px; /* Ajustar según la necesidad */
+}
+
+.carousel-caption h3 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.carousel-caption p {
+    margin: 20px 0 0 0; /* Ajustar márgenes según necesidad */
     font-size: 1.5em;
 }
 
-.banner .btn {
-    display: inline-block;
-    padding: 0.5rem 2rem;
-    background-color: rgba(241, 146, 148, 1); /* Color del botón */
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    text-decoration: none;
-    border-radius: 0.375rem;
-    margin-top: 2rem;
-    transition: background-color 0.3s;
-    font-size: 1.125rem;
-    line-height: 1.75rem; 
-    font-weight: 500;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    user-select: none;
+    z-index: 5; /* Asegura que los controles estén sobre las imágenes */
 }
 
-.banner .btn:hover {
-    background-color: #fe9594;
+.carousel-control-prev {
+    left: 10px; /* Ajusta la posición izquierda */
+}
+
+.carousel-control-next {
+    right: 10px; /* Ajusta la posición derecha */
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+        top: 50%; /* Alinea los botones verticalmente en el centro */
+        transform: translateY(-50%); /* Ajusta la posición vertical */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 30px;
+        height: 30px;
+        top: 50%; /* Alinea los botones verticalmente en el centro */
+        transform: translateY(-50%); /* Ajusta la posición vertical */
+    }
+}
+@media (max-width: 768px) {
+    .carousel-caption h3 {
+        font-size: 1.2em; /* Ajusta el tamaño del título */
+    }
+
+    .carousel-caption p {
+        font-size: 0.9em; /* Ajusta el tamaño del párrafo */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-caption h3 {
+        font-size: 1em; /* Ajusta el tamaño del título */
+    }
+
+    .carousel-caption p {
+        font-size: 0.8em; /* Ajusta el tamaño del párrafo */
+    }
 }
 
 </style>
@@ -119,8 +187,8 @@
             <span class="visually-hidden"></span>
         </button>
     </div>
-    <script src="js/carrusel.js"></script>
-
+    
+    
     <?php include 'Componentes/especialidades.php'; ?>
 
     <div class="image-container">
@@ -140,7 +208,7 @@
     </a>
 
     <script src="js/navabar.js"></script>
-
+    <script src = "js/carrusel.js"></script>
 </body>
 
 </html>
