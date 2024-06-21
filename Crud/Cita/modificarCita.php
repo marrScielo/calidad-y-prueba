@@ -1,5 +1,5 @@
 <?php
-require_once("../../Controlador/Cita/citaControlador.php");
+require_once("../../Controlador/Cita/ControllerCita.php");
 $obj = new usernameControlerCita();
 $FechaCitaInicio = $_POST['FechaInicioCita'];
 $HoraInicio = $_POST['HoraInicio'];

@@ -31,7 +31,7 @@ if ($row) {
   $codigopac = $row['codigopac'];
   $correo = $row['Email'];
   $telefono = $row['Telefono'];
-  $response = array('nombre' => $nombrePaciente." ".$ApMaterno." ".$ApPaterno,'id' => $IdPaciente,'correo'=> $correo,'telefono'=> $telefono,'codigopac'=>$codigopac);
+  $response = array('nombre' => $nombrePaciente . " " . $ApPaterno . " " . $ApMaterno, 'id' => $IdPaciente, 'correo' => $correo, 'telefono' => $telefono, 'codigopac' => $codigopac);
 } else {
   $response = array('error' => 'No existe ese paciente');
 }
@@ -39,5 +39,3 @@ if ($row) {
 // Devolver la respuesta en formato JSON
 header('Content-Type: application/json');
 echo json_encode($response);
-?>
-
