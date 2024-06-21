@@ -7,7 +7,7 @@
     <link	href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" href="img/logo-actual.png">
-	<link rel="stylesheet" href="css/inicio-header.css">
+	<link rel="stylesheet" href="css/inicio-header1.css">
 	<link rel="stylesheet" href="css/boton-wsp.css">
 	<link rel="stylesheet" href="css/estilos-login.css">
     <title>Psicologa</title>
@@ -72,15 +72,17 @@
 			}
 			?>
 			<button type="submit" class="form__button">Ingresar</button>
-			
+<!--			
 			<p class="form__switch">
 				Olvidaste la Contraseña<a href="#">Aqui</a>
 			</p>
+			-->
 		</form>
 	</div>
 	<!-- Botón flotante de WhatsApp -->
     <a href="https://wa.me/51915205726" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+	<script src="js/navabar.js"></script>
 </body>
 </html>
