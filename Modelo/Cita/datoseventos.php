@@ -1,10 +1,10 @@
 <?php
 header('Content-Type: application/json');
 
-include 'config/config.php';
-require_once CONEXION_PATH;
+//SOLO ACEPTA RUTAS ABSOLUTAS
+//require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");
+require_once("C:/xampp/htdocs/ContigoVoy/conexion/conexion.php");
 
-// require_once("/home3/ghxumdmy/public_html/gestion-contigo-voy-com/conexion/conexion.php");
 $con = new conexion();
 $PDO = $con->conexion();
 
@@ -16,6 +16,9 @@ switch ($_GET['accion']) {
       $query = "SELECT c.IdCita as id,
                 c.IdPaciente as idpaciente,
                 p.NomPaciente AS textColor, 
+
+                p.codigopac AS codigopac,
+
                 CONCAT(p.NomPaciente, ' ', p.ApPaterno, ' ', p.ApMaterno) AS title,
                 c.FechaInicioCita AS start,
                 c.DuracionCita AS duracion,
