@@ -25,7 +25,7 @@ try {
             echo "<strong>Email:</strong> " . $row["email"]. "</p>";
             echo "<iframe width='100%' height='200' src='https://www.youtube.com/embed/$video_id' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
             // Botón de WhatsApp con el número del psicólogo
-            echo "<a href='https://api.whatsapp.com/send?phone=51{$row["celular"]}' target='_blank'><button style='background-color: #28a745; color: white; padding: 10px 20px; border: none; cursor: pointer;'>Contactar por WhatsApp</button></a>";
+            echo "<a href='https://api.whatsapp.com/send?phone=51{$row["celular"]}' target='_blank'><button style='background-color: #F19294; color: white; padding: 10px 20px; border: none; cursor: pointer;'>Contactar por WhatsApp</button></a>";
             echo "</div>";
         }
     } else {

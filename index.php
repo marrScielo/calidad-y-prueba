@@ -8,14 +8,14 @@
     <link rel="icon" href="img/logo-actual.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/inicio-header.css">
     <link rel="stylesheet" href="css/estilos-banner.css">
-    <link rel="stylesheet" href="css/estilos-carrusel.css">
+    <link rel="stylesheet" href="css/inicio-header1.css">
     <link rel="stylesheet" href="css/estilos-especialidades.css">
-    <link rel="stylesheet" href="css/estilos-blog.css">
-    <link rel="stylesheet" href="css/estilos-footer.css">
-    <link rel="stylesheet" href="css/estilos-footer2.css">
+    <link rel="stylesheet" href="css/estilos-blog2.css">
+    <link rel="stylesheet" href="css/estilos-footer1x.css">
+    <link rel="stylesheet" href="css/estilos-footer2x.css">
     <link rel="stylesheet" href="css/boton-wsp.css">
+    <link rel="stylesheet" href="css/estilos-carrusel.css">
 </head>
 
 <body>
@@ -29,6 +29,7 @@
             <a href="psicologos.php" class="btn">Solicitar Servicio</a>
         </div>
     </div>
+    
     <div class="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -69,10 +70,9 @@
             <span class="visually-hidden"></span>
         </button>
     </div>
-    <script src="js/carrusel.js"></script>
+
 
     <?php include 'Componentes/especialidades.php'; ?>
-
 
     <div class="image-container">
         <img src="img/fondo-blog.jpg" alt="Fondo Blog">
@@ -90,6 +90,8 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <script src="js/navabar.js"></script>
+    <script src="js/carrusel.js"></script>
 </body>
 
 </html>

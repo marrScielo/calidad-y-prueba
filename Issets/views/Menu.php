@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" >
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
 </head>
@@ -41,11 +41,12 @@
             <span class="material-symbols-sharp" translate="no">rss_feed</span>
             <h3>Blog</h3>
         </a>
-
+<!-- 
         <a class="planes" href="Salir.php">
             <span class="material-symbols-sharp" translate="no">account_balance_wallet</span>
             <h3>Planes</h3>
         </a>
+-->
         <a class="privacidad" href="PoliticasSeguridad.php">
             <span class="material-symbols-sharp" translate="no">security</span>
             <h3>Politcas y Privacidad</h3>

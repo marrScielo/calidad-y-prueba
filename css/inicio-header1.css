@@ -58,12 +58,14 @@ nav {
 }
 
 .nav-links li a {
+    font-weight: 500;
     line-height: 1.75rem;
+    border-radius: 5px;
     text-decoration: none; /* Quitar subrayado de los enlaces */
     color: #333; /* Color inicial del texto de los enlaces */
     padding: 10px 15px; /* Espaciado interno de los enlaces */
     display: inline-block; /* Mostrar los enlaces en línea */
-    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+    transition: 0.3s ease-in-out; /* Transición suave */
     color: #56B9B3;
 }
 
@@ -110,7 +112,7 @@ nav {
 
     .logo-img {
         width: auto;
-        height: 2rem;
+        height: 2.5rem;
     }
 }
 

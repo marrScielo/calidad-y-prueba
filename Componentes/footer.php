@@ -4,10 +4,12 @@
             <h3>¿Eres un profesional de la salud?</h3>
             <h1>¡Te estamos buscando!</h1>
             <h3>Únete a nuestro equipo y ayúdanos a mejorar la salud de nuestra comunidad.</h3>
-            <a href="#" class="btn-rosado">Contáctanos</a>
+            <a href="https://api.whatsapp.com/send?phone=51915205726" class="btn-rosado" target="_blank">Contáctanos</a>
         </div>
     </div>
-	</footer>
+</footer>
+
+
 	<footer class="footer-rosado">
     <div class="footer-content">
         <div class="redes-sociales">

@@ -62,15 +62,18 @@ if (isset($_SESSION['NombrePsicologo'])){
                 <div class="col-sm">
                   <label class="form-label">Codigo Paciente</label>
                 <div class="input-group mb-3">
-                  <input type="text" id="codigopac" class="form-control">
-                  <button type="button" class="cod" id="button-addon2"><span style="font-size:2.2em" class="material-symbols-sharp idpaciente">search</span></button>
+                  <input type="text" id="codigopac" class="form-control" >
+                  <div id="botonb1" ><button type="button" class="cod" id="button-addon2"><span style="font-size:2.2em" class="material-symbols-sharp idpaciente">search</span></button></div>
+                  
                 </div>
                 </div>
                 <div class="col-sm">
                   <label class="form-label">Nombre Paciente</label>
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="NomPaciente">
-                    <button type="button" class="nom" id="button-addon2"><span style="font-size:2.2em" class="material-symbols-sharp nom">search</span></button>
+                    <input type="text" class="form-control" id="NomPaciente"  >
+
+                   <div id="botonb2">  <button type="button" class="nom" id="button-addon2"><span style="font-size:2.2em" class="material-symbols-sharp nom">search</span></button></div>
+                  
                   </div>
                 </div>
               </div>
@@ -198,6 +201,7 @@ if (isset($_SESSION['NombrePsicologo'])){
 
     <script src="../Issets/js/dashboard.js"></script>
     <script>
+
 document.addEventListener("DOMContentLoaded", function(){
     $('.clockpicker').clockpicker();
 
@@ -228,6 +232,12 @@ document.addEventListener("DOMContentLoaded", function(){
         $('#BotonModificar').hide();
         $('#BotonBorrar').hide();
 
+        $('#botonb1').show();
+        $('#botonb2').show();
+        $('#codigopac').prop('disabled', false);
+        $('#NomPaciente').prop('disabled', false);
+        $('#TituloCompleto').prop('disabled', false);
+
         if (info.allDay) {
           $('#FechaInicio').val(info.dateStr);
           $('#FechaFin').val(info.dateStr);
@@ -243,8 +253,19 @@ document.addEventListener("DOMContentLoaded", function(){
         $('#BotonAgregar').hide();
         $('#BotonModificar').show();
         $('#BotonBorrar').show();
+
+        $('#botonb1').hide();
+        $('#botonb2').hide();
+        $('#codigopac').prop('disabled', true);
+        $('#NomPaciente').prop('disabled', true);
+        $('#TituloCompleto').prop('disabled', true);
+
         $('#Id').val(info.event.id);
         $('#IdPaciente').val(info.event.extendedProps.idpaciente);
+
+        console.log(info.event);
+        $('#codigopac').val(info.event.extendedProps.codigopac);
+
         $('#NomPaciente').val(info.event.textColor);
         $('#TituloCompleto').val(info.event.title);
         $('#FechaInicio').val(moment(info.event.start).format("YYYY-MM-DD"));
