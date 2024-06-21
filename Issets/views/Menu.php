@@ -41,11 +41,12 @@
             <span class="material-symbols-sharp" translate="no">rss_feed</span>
             <h3>Blog</h3>
         </a>
-
+<!-- 
         <a class="planes" href="Salir.php">
             <span class="material-symbols-sharp" translate="no">account_balance_wallet</span>
             <h3>Planes</h3>
         </a>
+-->
         <a class="privacidad" href="PoliticasSeguridad.php">
             <span class="material-symbols-sharp" translate="no">security</span>
             <h3>Politcas y Privacidad</h3>
