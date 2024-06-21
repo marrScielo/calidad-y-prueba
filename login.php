@@ -5,11 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link	href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet"/>
-    <link rel="icon" href="issets/images/contigovoyico.ico">
-    <link rel="stylesheet" href="Issets/css/prueba.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="img/logo-actual.png">
+	<link rel="stylesheet" href="css/inicio-header.css">
+	<link rel="stylesheet" href="css/boton-wsp.css">
+	<link rel="stylesheet" href="css/estilos-login.css">
     <title>Psicologa</title>
+	<style>
+		.container1{
+    width: 90%;
+    margin: auto;
+}
+	</style>
 </head>
 <body>
+<header>
+    <nav class="container1">
+        <div class="logo">
+            <img src="img/logo-actual.png" alt="Contigo Voy" class="logo-img">
+        </div>
+        <div class="menu-icon" id="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="blog.php">Blog</a></li>
+            <li><a href="psicologos.php">Psicólogos</a></li>
+            <li class="dropdown">
+                <a href="../ContigoVoy/login.php">Iniciar Sesión</a>
+            </li>
+            <li><a href="#">Reservar Cita</a></li>
+        </ul>
+    </nav>
+</header>
   <div class="container">
 		<span class="form__title">Acceder</span>
 		<form method="post" action="./Controlador/login/ControllerLogin.php" class="form">
@@ -48,4 +78,9 @@
 			</p>
 		</form>
 	</div>
+	<!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/51915205726" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</body>
 </html>

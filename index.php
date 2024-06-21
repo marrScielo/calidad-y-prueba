@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ContigoVoy</title>
+    <link rel="icon" href="img/logo-actual.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/inicio-header.css">
     <link rel="stylesheet" href="css/estilos-banner.css">
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="css/estilos-blog.css">
     <link rel="stylesheet" href="css/estilos-footer.css">
     <link rel="stylesheet" href="css/estilos-footer2.css">
+    <link rel="stylesheet" href="css/boton-wsp.css">
 </head>
 
 <body>
@@ -81,7 +83,12 @@
     </div>
 
     <?php include 'Componentes/footer.php'; ?>
-    </div>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/51915205726" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
 </body>
 
 </html>
