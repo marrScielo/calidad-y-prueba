@@ -41,5 +41,5 @@
 }
 
 .image-content a:hover {
-    background-color: #31c7f5; /* Color del botón al pasar el ratón */
+    background-color: rgba(86, 185, 179, 1); /* Cambia el último valor (1) para ajustar la opacidad */
 }
