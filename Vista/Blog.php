@@ -13,7 +13,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
         <link rel="stylesheet" href="../Issets/css/historial.css">
         <link rel="stylesheet" href="../Issets/css/main.css">
-        <link rel="stylesheet" href="../Issets/css/blogpsico1.css">
+        <link rel="stylesheet" href="../Issets/css/blogpsico.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -38,14 +38,18 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     ?>
                 </div>
                 <div class="form-container">
+                <a class="button-arriba" style="padding: 10px 30px; font-size: 15px;" href="PanelBlog.php">
+                 <i id="edit-icon" class="fas fa-edit" style="margin-right: 10px;"></i>Editar y Ver Blogs
+                </a>
                     <form action="submit_blog.php" method="POST">
                         <div class="form-group">
                             <label for="topic">Tema:</label>
-                            <input type="text" id="topic" name="topic" required>
+                            <input type="text" id="topic" name="topic" placeholder="Ingrese tema" required>
                         </div>
                         <div class="form-group">
                             <label for="specialty">Especialidad:</label>
                             <select id="specialty" name="specialty" required>
+                                <option value="Adicciones">Selecciona la Especialidad</option>
                                 <option value="Adicciones">Adicciones</option>
                                 <option value="Ansiedad">Ansiedad</option>
                                 <option value="Atención">Atención</option>
@@ -74,12 +78,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         </div>
                         <div class="form-group">
                             <label for="image">Imagen URL:</label>
-                            <input type="url" id="image" name="image" required>
+                            <input type="url" id="image" name="image" placeholder="Ingrese URL de imagen" required>
                         </div>
                         <button type="submit">Enviar</button>
                     </form>
                 </div>
             </main>
+            
         </div>
         <script src="../Issets/js/dashboard.js"></script>      
     </body>
