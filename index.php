@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="css/estilos-banner.css">
     <link rel="stylesheet" href="css/inicio-header1.css">   
     <link rel="stylesheet" href="css/estilos-especialidades.css">
-    <link rel="stylesheet" href="css/estilos-blog.css">
-    <link rel="stylesheet" href="css/estilos-footer.css">
+    <link rel="stylesheet" href="css/estilos-blog1.css">
+    <link rel="stylesheet" href="css/estilos-footer1x.css">
     <link rel="stylesheet" href="css/estilos-footer2x.css">
     <link rel="stylesheet" href="css/boton-wsp.css">
 </head>

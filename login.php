@@ -9,7 +9,7 @@
     <link rel="icon" href="img/logo-actual.png">
 	<link rel="stylesheet" href="css/inicio-header1.css">
 	<link rel="stylesheet" href="css/boton-wsp.css">
-	<link rel="stylesheet" href="css/estilos-login.css">
+	<link rel="stylesheet" href="css/estilos-login1.css">
     <title>Psicologa</title>
 	<style>
 		.container1{
