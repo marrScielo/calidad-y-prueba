@@ -27,7 +27,7 @@ $blogs = $blogControlador->show();
 
 <?php include 'Componentes/header.php'; ?>
 
-    <div class="container">
+    <div class="container-blog">
         <div class="container-rosado">
             <!-- Contenido del contenedor rosado -->
             <h2>Filtrar por Especialidad</h2>
