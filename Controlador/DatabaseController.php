@@ -7,6 +7,12 @@ class DatabaseController {
     // private $database = "contigovoy3";
     // private $conn;
 
+    // private $servername = "localhost";
+    // private $username = "ghxumdmy_psicologoapk";
+    // private $password = "Psicologo123";
+    // private $database = "ghxumdmy_psicologiaMaster";
+    // private $conn;
+
     private $servername = "localhost";
     private $username = "ghxumdmy_psicologoapk";
     private $password = "Psicologo123";

@@ -7,6 +7,8 @@
         //require_once MODELlOGINPATH;
         include_once '../../Modelo/login/ModelLogin.php';
 
+        //require_once("/home3/ghxumdmy/public_html/website_ddbea1df/Modelo/login/ModelLogin.php");
+
         $validar = new Login();
         $validar->validarDatos($_POST["usu"], $_POST["pass"]);
     } else {
