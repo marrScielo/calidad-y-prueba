@@ -33,42 +33,45 @@
     <div class="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="img/beneficio1.jpg" alt="">
                 <div class="carousel-caption">
                     <h3>Especialidades</h3>
                     <p>Contamos con un grupo de psicologos especializados en una amplia variedad de temas, garantizando que puedan recibir la ayuda adecuada y especifica para sus problemas.</p>
                 </div>
+                <img src="img/beneficio1.jpg" alt="Especialidades">
             </div>
             <div class="carousel-item">
-                <img src="img/beneficio2.jpg" alt="">
                 <div class="carousel-caption">
                     <h3>Servicio Eficiente</h3>
                     <p>Agilizamos el proceso de acceso a los servicios de psicologia, agrupando los mejores psicologos en una misma plataforma.</p>
                 </div>
+                <img src="img/beneficio2.jpg" alt="Servicio-eficiente">
             </div>
             <div class="carousel-item">
-                <img src="img/beneficio4.jpg" alt="">
                 <div class="carousel-caption">
                     <h3>Beneficios</h3>
                     <p>Conoce los beneficios que podemos dar tanto a los psicologos como a sus pacientes.</p>
                 </div>
+                <img src="img/beneficio4.jpg" alt="Beneficios">
             </div>
             <div class="carousel-item">
-                <img src="img/beneficio3.jpg" alt="">
                 <div class="carousel-caption">
                     <h3>Atención de calidad</h3>
                     <p>Contamos con un grupo de psicologos especializados en una amplia variedad de temas, garantizando que puedan recibir la ayuda adecuada y especifica para sus problemas.</p>
                 </div>
+                <img src="img/beneficio3.jpg" alt="Atención-de-calidad">
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true">&#10094;</span>
-            <span class="visually-hidden"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true">&#10095;</span>
-            <span class="visually-hidden"></span>
-        </button>
+        <div class="botones">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true">&#10094;</span>
+                <span class="visually-hidden"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true">&#10095;</span>
+                <span class="visually-hidden"></span>
+            </button>
+        </div>
+        
     </div>
 
 

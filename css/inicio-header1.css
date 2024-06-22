@@ -5,65 +5,65 @@ body {
 }
 
 .container-header{
-    width: 90%;
-    padding: 1rem 1rem;
-    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 3.5rem;
+    align-items: center;
+    padding: 0.5rem 0;
 }
 
 nav {
     background-color: #ffffff; /* Color de fondo del menú */
-    padding: 0.5rem 0 ; /* Espaciado interno del menú */
-    overflow: hidden; /* Limpiar float */
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-
+.logo{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
 
 .logo-img {
     width: auto; /* Ancho máximo de la imagen */
     height: 3.5rem; /* Altura automática para mantener la proporción */
+    margin-left: 1rem;
 }
 
 .menu-icon {
     display: none; /* Ocultar el icono del menú en pantallas grandes */
     flex-direction: column;
+    gap: 0.3rem;
     cursor: pointer;
-    margin-right: 30px;
+    margin-right: 1rem;
 }
 
 .menu-icon span {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    margin: 4px 0;
+    height: 0.25rem;
+    width: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: #56B9B3;
     transition: 0.4s;
 }
 
 .nav-links {
     list-style-type: none; /* Quitar los puntos de la lista */
-    padding: 0;
-    margin: 0;
     display: flex;
+    padding: 0.5rem 0;
     align-items: center;
+    gap: 0.5rem;
 }
 
-.nav-links li {
-    margin-right: 20px; /* Espacio entre cada elemento del menú */
-}
-
-.nav-links li:last-child {
-    margin-right: 0; /* Quitar el margen derecho del último elemento */
-}
 
 .nav-links li a {
     font-weight: 500;
-    line-height: 1.75rem;
     border-radius: 5px;
     text-decoration: none; /* Quitar subrayado de los enlaces */
     color: #333; /* Color inicial del texto de los enlaces */
-    padding: 10px 15px; /* Espaciado interno de los enlaces */
     display: inline-block; /* Mostrar los enlaces en línea */
     transition: 0.3s ease-in-out; /* Transición suave */
     color: #56B9B3;
@@ -81,10 +81,14 @@ nav {
     }
 
     .nav-links {
+        position: absolute;
         display: none;
+        top: 3.5rem;
+        left: 0;
         flex-direction: column;
         width: 100%;
         background-color: #ffffff;
+        z-index: 10;
     }
 
     .nav-links.active {
@@ -98,7 +102,7 @@ nav {
     }
 
     .nav-links li a {
-        padding: 10px; /* Espaciado interno de los enlaces en pantallas pequeñas */
+        padding: 0.5rem; /* Espaciado interno de los enlaces en pantallas pequeñas */
         width: 100%;
         display: block;
     }
@@ -106,8 +110,12 @@ nav {
 
 @media (min-width: 768px) {
 
+    .nav-links{
+        gap: 2rem;
+        padding: 1rem;
+    }
     .nav-links li a {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     .logo-img {
@@ -117,8 +125,12 @@ nav {
 }
 
 @media (min-width: 1024px) {
+    .nav-links{
+        gap: 2.5rem;
+        padding: 1rem;
+    }
     .nav-links li a {
-        font-size: 1rem;
+        font-size: 1.25rem;
     }
 
     .logo-img {

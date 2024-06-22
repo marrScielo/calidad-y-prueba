@@ -10,10 +10,10 @@
 </footer>
 
 
-	<footer class="footer-rosado">
-    <div class="footer-content">
-        <div class="redes-sociales">
-        <a target="_blank" href="https://www.facebook.com/profile.php?id=61559259927318"><i class="fab fa-facebook"></i></a>
+<footer class="footer-rosado">
+    <div class="footer-content-dos">
+        <div class="redes-sociales-footer">
+            <a target="_blank" href="https://www.facebook.com/profile.php?id=61559259927318"><i class="fab fa-facebook"></i></a>
             <a target="_blank" href="https://twitter.com/ContigoVoy_pe"><i class="fab fa-twitter"></i></a>
             <a target="_blank" href="https://www.instagram.com/contigovoy.pe/"><i class="fab fa-instagram"></i></a>
             <a target="_blank" href="https://www.youtube.com/channel/UCTiafg0LZPem0OhqKiCVE2Q"><i class="fab fa-youtube"></i></a>
@@ -25,5 +25,4 @@
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    </footer>
-    
+</footer>

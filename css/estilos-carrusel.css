@@ -3,51 +3,71 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .carousel-inner {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    height: 100%; /* Ocupa toda la altura del viewport */
+    height: 20rem; /* Ocupa toda la altura del viewport */
 }
 
 .carousel-item {
     min-width: 100%;
+    height: auto;
+    display: flex;
     box-sizing: border-box;
-    position: relative;
 }
 
-.carousel img {
-    width: 100%;
+.carousel-item img {
+    width: 50%;
     height: 100%;
     object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
+    object-position: center;
 }
 
 .carousel-caption {
     background-color: #F19294;
-    opacity: 0.7;
-    position: absolute;
-    top: 15%; /* Ajustar según la necesidad */
-    left: 10%; /* Ajustar según la necesidad */
     color: white;
-    padding: 10px;
     text-align: left;
     border-radius: 5px;
-    max-width: 300px; /* Ajustar según la necesidad */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
 }
 
 .carousel-caption h3 {
-    margin: 0;
+    width: 90%;
     font-size: 2.5em;
 }
 
 .carousel-caption p {
-    margin: 20px 0 0 0; /* Ajustar márgenes según necesidad */
+    width: 90%;
     font-size: 1.5em;
 }
 
+.botones{
+    width: 97.5%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+
+}
+
+.botones button{
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: solid black 1px;
+}
+/*
 .carousel-control-prev,
 .carousel-control-next {
     position: absolute;
@@ -62,35 +82,21 @@
     cursor: pointer;
     border-radius: 50%;
     user-select: none;
-    z-index: 5; /* Asegura que los controles estén sobre las imágenes */
+    z-index: 5; /* Asegura que los controles estén sobre las imágenes 
 }
 
 .carousel-control-prev {
-    left: 10px; /* Ajusta la posición izquierda */
+    left: 10px; /* Ajusta la posición izquierda 
 }
 
 .carousel-control-next {
-    right: 10px; /* Ajusta la posición derecha */
-}
+    right: 10px; /* Ajusta la posición derecha 
+}*/
 
 /* Ajustes responsivos */
-@media (max-width: 768px) {
-    .carousel-control-prev,
-    .carousel-control-next {
-        width: 40px;
-        height: 40px;
-        top: 50%; /* Alinea los botones verticalmente en el centro */
-        transform: translateY(-50%); /* Ajusta la posición vertical */
-    }
-}
-
-@media (max-width: 480px) {
-    .carousel-control-prev,
-    .carousel-control-next {
-        width: 30px;
-        height: 30px;
-        top: 50%; /* Alinea los botones verticalmente en el centro */
-        transform: translateY(-50%); /* Ajusta la posición vertical */
+@media (min-width: 768px){
+    .carousel-inner{
+        height: 30rem;
     }
 }
 @media (max-width: 768px) {

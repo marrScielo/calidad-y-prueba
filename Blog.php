@@ -9,6 +9,13 @@ $db->getConnection();
 $blogControlador = new BlogController($db);
 $blogs = $blogControlador->show();
 
+$especialidades = [
+    "Adicciones", "Ansiedad", "Atención", "Autoestima", "Crianza",
+    "Depresión", "Enfermedades Cronicas", "Estrés", "Impulsividad", "Top",
+    "Ira", "Terapia de Pareja", "Sexualidad", "Traumas", "Riesgo Suicida",
+    "Sentido de vida", "Orientación Vocacional", "Problemas de sueño", "Problemas alimenticios", 
+    "Relaciones Interpersonales"
+];
 ?>
 
 <!DOCTYPE html>
@@ -31,16 +38,9 @@ $blogs = $blogControlador->show();
         <div class="container-rosado">
             <!-- Contenido del contenedor rosado -->
             <h2>Filtrar por Especialidad</h2>
-            <form id="filter-form">
+            <form class="filter-form" id="filter-form">
                 <?php
                 // Generar 20 checkbox para diferentes especialidades
-                $especialidades = [
-                    "Adicciones", "Ansiedad", "Atención", "Autoestima", "Crianza",
-                    "Depresión", "Enfermedades Cronicas", "Estrés", "Impulsividad", "Top",
-                    "Ira", "Terapia de Pareja", "Sexualidad", "Traumas", "Riesgo Suicida",
-                    "Sentido de vida", "Orientación Vocacional", "Problemas de sueño", "Problemas alimenticios", 
-                    "Relaciones Interpersonales"
-                ];
 
                 foreach ($especialidades as $especialidad) {
                     echo '<div class="filter-option">';

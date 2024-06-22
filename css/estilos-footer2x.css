@@ -2,41 +2,40 @@
 .footer-rosado {
     background-color: #f19294; /* Color de fondo rosado */
     color: white; /* Color de texto blanco */
-    padding: 30px;
+    width: 100%;
     text-align: center;
     position: relative; /* Añadido para facilitar el posicionamiento */
 }
 
-.footer-content {
+.footer-content-dos{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
     align-items: center; /* Alinea verticalmente los elementos */
     max-width: 1200px;
+    padding: 1rem 0;
     margin: 0 auto;
 }
 
-.redes-sociales {
+.redes-sociales-footer {
     display: flex;
+    gap: 2rem;
+    justify-content: center;
 }
 
-.redes-sociales a {
+.redes-sociales-footer a {
     color: white;
-    font-size: 2.5em;
-    margin-right: 20px;
+    font-size: 2rem;
     transition: color 0.3s ease;
 }
 
-.redes-sociales a:hover {
+.redes-sociales-footer a:hover {
     color: #f2f2f2; /* Color de los íconos al pasar el ratón */
 }
 
-.logo-container {
-    margin-left: 700px; /* Margen izquierdo para separar los elementos */
-}
-
-.logo {
-    max-width: 150px; /* Tamaño máximo para la imagen */
-    height: auto; /* Ajusta la altura automáticamente */
+.logo { /* Tamaño máximo para la imagen */
+    height: 2rem; /* Ajusta la altura automáticamente */
 }
 
 .bn {
@@ -44,25 +43,21 @@
 }
 
 /* Ajustes responsivos */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: row; /* Cambia a fila en dispositivos móviles */
-        justify-content: center; /* Centra los elementos horizontalmente */
+@media (min-width: 640px){
+    .footer-content-dos{
+        flex-direction: row;
+        gap: 6rem;
     }
+}
 
-    .redes-sociales {
-        margin-right: 20px; /* Espacio entre íconos y logo */
+@media (min-width: 768px){
+    .footer-content-dos{
+        gap: 8rem;
     }
+}
 
-    .redes-sociales a {
-        font-size: 1.8em; /* Reduce el tamaño de los íconos en dispositivos móviles */
-    }
-
-    .logo-container {
-        margin-left: 0; /* Elimina el margen izquierdo en dispositivos móviles */
-    }
-
-    .logo {
-        max-width: 100px; /* Reduce el tamaño máximo del logo */
+@media (min-width: 1024px){
+    .footer-content-dos{
+        gap: 14rem;
     }
 }

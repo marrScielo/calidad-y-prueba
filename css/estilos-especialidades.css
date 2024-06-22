@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
     padding: 2rem 0;
 }
 .icon-grid-title {
