@@ -8,7 +8,8 @@
     flex: 0 1 calc(30% - 20px); /* Calcula el ancho para cuatro columnas */
     border: 1px solid #ddd;
     padding: 15px;
-    background-color: #f9f9f9;
+    background-color: #F19294;
+    color: white;
     border-radius: 10px; /* Bordes redondeados */
     transition: transform 0.2s; /* Transición suave al pasar el ratón */
 }
@@ -25,25 +26,28 @@
     margin-top: 0;
     margin-bottom: 5px;
     font-size: 1.5em;
-    color: #333;
 }
 .blog-post p {
     margin-bottom: 10px;
-    color: #555;
 }
 .container-blog {
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     gap: 20px; /* Espacio entre los contenedores */
 }
+.mensaje-no-blogs{
+    display: none;
+    text-align: center;
+}
 .container-rosado {
-    padding: 20px;
     flex: 1; /* Toma 1 parte del espacio disponible */
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
     transition: background-color 0.3s;
 }
 .container-rosado h2 {
+    cursor: pointer;
     color: #56B9B3; /* Color del texto */
     font-family: 'Arial', sans-serif; /* Fuente personalizada */
     font-size: 1.8em;
@@ -51,13 +55,25 @@
     text-align: center;
 }
 
+.filter-form{
+    display: none;
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+    gap: 0.5rem;
+}
+
+.filter-form.show{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-height: 500px;
+}
+
 
 .filter-option {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
     background-color: #ffe5e5;
-    padding: 10px;
+    padding: 0.3rem 0.3rem;
     border-radius: 5px; /* Bordes redondeados */
 }
 .filter-option input[type="checkbox"] {
@@ -65,7 +81,7 @@
     transform: scale(1.2); /* Agrandar el checkbox */
 }
 .filter-option label {
-    font-size: 16px;
+    font-size: 0.8rem;
     color: #555; /* Color del texto */
     transition: color 0.3s;
 }
@@ -85,3 +101,16 @@
     color: #333;
     margin-bottom: 20px;
 }
+
+@media (min-width: 768px) {
+    .container-blog{
+        flex-direction: row;
+    }
+    .filter-form.show{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .container-rosado{
+        padding: 0 1rem;
+    }
+}
+
