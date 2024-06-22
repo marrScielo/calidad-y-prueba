@@ -27,12 +27,15 @@ class usernameControlerCita{
         return ($this->model->eliminar($id)) ?  header("Location:../../Vista/TablaCitas.php") : header("Location:../../Vista/TablaCitas.php");
     }
 
-    // Modificar cita completa
-    public function modificarCita($IdCita,$FechaInicio, $EstadoCita,$MotivoCita,$Duracioncita,$TipoCita,$CanalCita,$EtiquetaCita ,$ColorFondo){
-        return ($this->model->modificarCita($IdCita,$FechaInicio, $EstadoCita,$MotivoCita,$Duracioncita,$TipoCita,$CanalCita,$EtiquetaCita ,$ColorFondo)) !=false ? 
-        header("Location:../../Vista/RegCitas.php") : header("Location:../../Vista/RegCitas.php");
+    public function modificarCita($IdCita, $FechaInicio, $EstadoCita, $MotivoCita, $Duracioncita, $TipoCita, $CanalCita, $EtiquetaCita, $ColorFondo) {
+        $result = $this->model->modificarCita($IdCita, $FechaInicio, $EstadoCita, $MotivoCita, $Duracioncita, $TipoCita, $CanalCita, $EtiquetaCita, $ColorFondo);
+        if ($result) {
+            header("Location: ../../Vista/TablaCitas.php?success=1");
+        } else {
+            header("Location: ../../Vista/TablaCitas.php?error=1");
+        }
     }
-
+    
     // Mostrar datos de cita seleccionada
     public function show($id) {
         $cita = $this->model->show($id);
