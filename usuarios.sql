@@ -34,8 +34,8 @@ INSERT INTO `psicologo` (`NombrePsicologo`, `Passwords`, `FechaRegistro`, `Usuar
 VALUES ('Liz Rosa Vicuña Onofre', 'J3n01£2K', '', 'liz.vicuña2024', '916994281', 'https://www.youtube.com/watch?v=KVakLLMBQxg', 'lizrosavicunaonofre@gmail.com', LAST_INSERT_ID());
 
 -- Alexandra Senka Castro Gutiérrez
--- INSERT INTO `usuarios` (`email`, `email_verified_at`, `password`, `rol`, `fotoPerfil`, `remember_token`, `created_at`, `updated_at`)
--- VALUES ('', '', '81/nO5i77888', 'psicologo', 'https://acortar.link/aIza9l', '', '', '');
+INSERT INTO `usuarios` (`email`, `email_verified_at`, `password`, `rol`, `fotoPerfil`, `remember_token`, `created_at`, `updated_at`)
+VALUES ('alexandracastrogutierrez99.@gmail.com', '', '81/nO5i77888', 'psicologo', 'https://acortar.link/aIza9l', '', '', '');
 
--- INSERT INTO `psicologo` (`NombrePsicologo`, `Passwords`, `FechaRegistro`, `Usuario`, `celular`, `video`, `email`, `usuario_id`)
--- VALUES ('Alexandra Senka Castro Gutiérrez', '81/nO5i77888', '', 'alexandra.castro2024', '946946957', 'https://www.youtube.com/watch?v=KVakLLMBQxg', '', LAST_INSERT_ID());
+INSERT INTO `psicologo` (`NombrePsicologo`, `Passwords`, `FechaRegistro`, `Usuario`, `celular`, `video`, `email`, `usuario_id`)
+VALUES ('Alexandra Senka Castro Gutiérrez', '81/nO5i77888', '', 'alexandra.castro2024', '946946957', 'https://www.youtube.com/watch?v=KVakLLMBQxg', '', LAST_INSERT_ID());
