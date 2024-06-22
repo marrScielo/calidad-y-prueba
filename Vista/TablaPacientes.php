@@ -286,10 +286,28 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                     <h3 for="MedicamentosPrescritos">Medicamentos Prescritos</h3>
                                     <input type="text" id="MedicamentosPrescritos" class="input" value="<?= $patient[17] ?>" name="MedicamentosPrescritos" style="color: #7B7C89;" required />
                                 </div>
+
+
                                 <div class="input-group-modal" style="display: none">
                                     <h3 for="IdPsicologo">IdPsicologo</h3>
                                     <input type="text" id="IdPsicologo" class="input" value="<?= $patient[16] ?>" name="IdPsicologo" value="<?= $_SESSION['IdPsicologo'] ?>" />
                                 </div>
+                                <!-- CAMPOS ESCONDIDOS -->
+                                <div class="input-group-modal" style="display: none">
+                                    <h3 for="IdPsicologo">Provincia</h3>
+                                    <input type="text" id="IdPsicologo" class="input" value="<?= $patient[20] ?>" name="Provincia" value="<?= $patient[20] ?>" />
+                                </div>
+                                <div class="input-group-modal" style="display: none">
+                                    <h3 for="IdPsicologo">Departamento</h3>
+                                    <input type="text" id="IdPsicologo" class="input" value="<?= $patient[21] ?>" name="Departamento" value="<?= $patient[21] ?>" />
+                                </div>
+                                <div class="input-group-modal" style="display: none">
+                                    <h3 for="IdPsicologo">Distrito</h3>
+                                    <input type="text" id="IdPsicologo" class="input" value="<?= $patient[22] ?>" name="Distrito" value="<?= $patient[22] ?>" />
+                                </div>
+                                <!-- -->
+
+
                                 <br>
                                 <div class="modal-button-container">
                                     <button class="button-modal button-cancelar" onclick="closeModalEditar('<?= $patient[0] ?>')">Cancelar</button>
