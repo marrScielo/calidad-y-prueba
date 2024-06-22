@@ -3,7 +3,6 @@
 define('NOMBRE_PROYECTO', 'website_ddbea1df');
 define('BASE_PATH_WEB', '/home3/ghxumdmy/public_html/'.NOMBRE_PROYECTO.'/');*/
 
-
 // Local
 define('NOMBRE_PROYECTO','ContigoVoy'); 
 
