@@ -67,6 +67,7 @@ nav {
     display: inline-block; /* Mostrar los enlaces en línea */
     transition: 0.3s ease-in-out; /* Transición suave */
     color: #56B9B3;
+    padding: 0.5rem 0.5rem;
 }
 
 .nav-links li a:hover {
