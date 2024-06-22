@@ -9,6 +9,7 @@ class UserModelCita
         
         require_once CONEXION_PATH;
         // require_once("C:/xampp/htdocs/PaginaPHP/ContigoVoy/conexion/conexion.php");
+        //require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");
         $con = new conexion();
         $this->PDO = $con->conexion();
     }

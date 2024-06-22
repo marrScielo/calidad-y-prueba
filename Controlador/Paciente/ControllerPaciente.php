@@ -9,6 +9,9 @@ class usernameControlerPaciente
         // require_once("C:/xampp/htdocs/PaginaPHP/ContigoVoy/Modelo/Paciente/ModelPaciente.php");
         require_once MODELPACIENTEPATH;
 
+        //require_once("/home3/ghxumdmy/public_html/website_ddbea1df/Modelo/Paciente/ModelPaciente.php");
+
+
         $this->model = new UserModelPaciente();
     }
 

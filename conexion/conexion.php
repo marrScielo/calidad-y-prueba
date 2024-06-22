@@ -10,9 +10,10 @@ class conexion{
     //private $password = "Psicologo123";
     //private $database = "ghxumdmy_psicologia";
 
+
     public function conexion(){
         try{
-            $PDO=new PDO("mysql:host=".$this->host.";dbname=".$this->dbname,$this->user,$this->password);
+            $PDO=new PDO("mysql:host=".$this->servername.";dbname=".$this->database,$this->username,$this->password);
             $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $PDO;
 
