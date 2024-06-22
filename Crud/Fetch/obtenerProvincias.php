@@ -1,6 +1,9 @@
 <?php
-include '../../config/config.php';
-require_once CONEXION_PATH;
+// include '../../config/config.php';
+// require_once CONEXION_PATH;
+
+// hosting
+require("/home3/ghxumdmy/public_html/website_ddbea1df/conexion/conexion.php");
 
 $con = new conexion();
 $conn = $con->conexion();
