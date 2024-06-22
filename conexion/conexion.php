@@ -1,9 +1,16 @@
 <?php
 class conexion{
-    private $host="localhost";
-    private $dbname="contigovoy3";
-    private $user="root";
-    private $password="";
+    private $servername = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $database = "contigovoy3";
+    private $conn;
+
+    //private $servername = "localhost";
+    //private $username = "ghxumdmy_psicologoapk";
+    //private $password = "Psicologo123";
+    //private $database = "ghxumdmy_psicologia";
+    //private $conn;
 
     public function conexion(){
         try{
