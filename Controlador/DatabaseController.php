@@ -1,15 +1,12 @@
 <?php
 
 class DatabaseController {
-<<<<<<< HEAD
     // private $servername = "localhost";
     // private $username = "ghxumdmy_psicologoapk";
     // private $password = "Psicologo123";
     // private $database = "ghxumdmy_psicologiaMaster";
     // private $conn;
 
-=======
->>>>>>> 993f343ad7afdd51599dad144f151b697e1cb176
     private $servername = "localhost";
     private $username = "root";
     private $password = "";

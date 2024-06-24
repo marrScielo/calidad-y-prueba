@@ -15,7 +15,12 @@
 		.container1{
     width: 90%;
     margin: auto;
-}
+	}
+	#center-container{
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
 	</style>
 </head>
 <body>
@@ -40,6 +45,8 @@
         </ul>
     </nav>
 </header>
+
+<div id="center-container">
   <div class="container">
 		<span class="form__title">Acceder</span>
 		<form method="post" action="./Controlador/login/ControllerLogin.php" class="form">
@@ -79,6 +86,8 @@
 			-->
 		</form>
 	</div>
+</div>
+
 	<!-- Botón flotante de WhatsApp -->
     <a href="https://wa.me/51915205726" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>

@@ -28,7 +28,7 @@
             <li class="dropdown">
                 <a href="./login.php">Iniciar Sesión</a>
             </li>
-            <li><a href="#">Reservar Cita</a></li>
+            <li><a href="psicologos.php">Reservar Cita</a></li>
         </ul>
     </nav>
 </header>
