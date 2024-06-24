@@ -74,16 +74,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <div class="container-paciente-tabla">
                     <table>
                         <?php
-
-                        if ($patients === false) {
-                            // Manejar el error, por ejemplo, mostrar un mensaje y/o registrar el error
-                            echo "Error al obtener los datos de los pacientes.";
-                            $patients = [];
-                        } elseif (!is_array($patients)) {
-                            // Si $patients no es un array, forzarlo a ser un array vacío
+                        if(!$patients){
                             $patients = [];
                         }
-
                         $patientsPerPage = 7; // Cantidad de pacientes por página
                         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                         $offset = ($currentPage - 1) * $patientsPerPage;
@@ -147,9 +140,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                             </div>
                                         </td>
                                     </tr>
-
-                                <?php endforeach; ?>
-                            <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                                    <tr colspan="11">
+                                        <td>No hay pacientes registrados.</td>
+                                    </tr>
+                        <?php endif; ?>
                                 </tbody>
                     </table>
 
