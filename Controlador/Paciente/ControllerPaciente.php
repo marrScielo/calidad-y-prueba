@@ -4,11 +4,9 @@ class usernameControlerPaciente
     private $model;
     public function __construct()
     {
-        //include 'config/config.php';
-        include_once $_SERVER['DOCUMENT_ROOT'] . '/ContigoVoy/config/config.php';
-        // require_once("C:/xampp/htdocs/PaginaPHP/ContigoVoy/Modelo/Paciente/ModelPaciente.php");
-        require_once MODELPACIENTEPATH;
-
+    
+        //SOLO ACEPTA RUTAS ABSOLUTAS
+         require_once("C:/xampp/htdocs/ContigoVoy/Modelo/Paciente/ModelPaciente.php");
         //require_once("/home3/ghxumdmy/public_html/website_ddbea1df/Modelo/Paciente/ModelPaciente.php");
 
 

@@ -2,9 +2,9 @@
 
 class DatabaseController {
     // private $servername = "localhost";
-    // private $username = "ghxumdmy_psicologoapk";
-    // private $password = "Psicologo123";
-    // private $database = "ghxumdmy_psicologiaMaster";
+    // private $username = "root";
+    // private $password = "";
+    // private $database = "contigovoy3";
     // private $conn;
 
     private $servername = "localhost";
@@ -12,12 +12,6 @@ class DatabaseController {
     private $password = "";
     private $database = "contigovoy3";
     private $conn;
-
-    //private $servername = "localhost";
-    //private $username = "ghxumdmy_psicologoapk";
-    //private $password = "Psicologo123";
-    //private $database = "ghxumdmy_psicologia";
-    //private $conn;
 
     public function __construct() {
         try {
