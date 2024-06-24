@@ -2,8 +2,14 @@
 header('Content-Type: application/json');
 
 //SOLO ACEPTA RUTAS ABSOLUTAS
-//require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");
+
+//local
 require_once("C:/xampp/htdocs/ContigoVoy/conexion/conexion.php");
+
+//hosting
+//require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");
+
+
 
 $con = new conexion();
 $PDO = $con->conexion();

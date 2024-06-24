@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/estilos-especialidades.css">
     <link rel="stylesheet" href="css/estilos-blog2.css">
     <link rel="stylesheet" href="css/estilos-footer1x.css">
-    <link rel="stylesheet" href="css/estilos-footer2x.css">
+    <link rel="stylesheet" href="css/estilos-footer2.css">
     <link rel="stylesheet" href="css/boton-wsp.css">
     <link rel="stylesheet" href="css/estilos-carrusel.css">
 </head>
@@ -82,7 +82,7 @@
         <div class="image-content">
             <h3>Visitar nuestro Blog</h3>
             <p>Nuestros psicólogos escriben artículos <br> que adaptan la psicología a tus <br> necesidades, ayudándote a entender, <br> cambiar y vivir mejor.</p>
-            <a href="blog.php">VER BLOG</a>
+            <a href="Blog.php">VER BLOG</a>
         </div>
     </div>
 

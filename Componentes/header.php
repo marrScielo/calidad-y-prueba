@@ -13,7 +13,7 @@
 </head>
 <header>
     <nav class="container-header">
-        <div class="logo">
+        <div class="logo1">
             <img src="img/logo-actual.png" alt="Contigo Voy" class="logo-img">
         </div>
         <div class="menu-icon" id="menu-icon">
@@ -28,7 +28,7 @@
             <li class="dropdown">
                 <a href="./login.php">Iniciar Sesión</a>
             </li>
-            <li><a href="#">Reservar Cita</a></li>
+            <li><a href="psicologos.php">Reservar Cita</a></li>
         </ul>
     </nav>
 </header>
