@@ -5,11 +5,7 @@ class userModelPaciente
     public function __construct()
     {
         //SOLO ACEPTA RUTAS ABSOLUTAS
-
-        //local
         require_once("C:/xampp/htdocs/ContigoVoy/conexion/conexion.php");
-        
-        //hosting
         //require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");
 
         $con = new conexion();
@@ -104,7 +100,8 @@ class userModelPaciente
         FROM paciente p
         LEFT JOIN areafamiliar af ON p.IdPaciente = af.IdPaciente
         LEFT JOIN cita c ON p.IdPaciente = c.IdPaciente
-        WHERE p.IdPsicologo = :IdPsicologo");
+        WHERE p.IdPsicologo = :IdPsicologo
+        group by p.dni");
         $statement->bindValue(":IdPsicologo", $IdPsicologo);
         return ($statement->execute()) ? $statement->fetchAll() : false;
     }

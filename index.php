@@ -51,7 +51,7 @@
                     <h3>Beneficios</h3>
                     <p>Conoce los beneficios que podemos dar tanto a los psicologos como a sus pacientes.</p>
                 </div>
-                <img src="img/beneficio4.jpg" alt="Beneficios">
+                <img style="height: 100vh" src="img/beneficio4.jpg"  alt="Beneficios">
             </div>
             <div class="carousel-item">
                 <div class="carousel-caption">

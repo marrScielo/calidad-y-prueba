@@ -324,4 +324,8 @@ class UserModelCita
             return 0;
         }
     }
+    public function obtenerProximaCita($id){
+        $fechaActual = date("Y-m-d");
+        $statement = $this->PDO->prepare("Select FechaInicioCita FROM paciente where IdPsicologo = :idPsicologo ");
+    }
 }
