@@ -23,7 +23,7 @@
         </div>
         <ul class="nav-links" id="nav-links">
             <li><a href="index.php">Inicio</a></li>
-            <li><a href="blog.php">Blog</a></li>
+            <li><a href="Blog.php">Blog</a></li>
             <li><a href="psicologos.php">Psicólogos</a></li>
             <li class="dropdown">
                 <a href="./login.php">Iniciar Sesión</a>
