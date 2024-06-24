@@ -1,5 +1,5 @@
 <?php
-// /home3/ghxumdmy/public_html/website_ddbea1df
+
  require_once("../../Controlador/Cita/ControllerCita.php");
 //$ruta_local = "/Controlador/Cita/ControllerCita.php";
 //$ruta_hosting = "/home3/ghxumdmy/public_html/website_ddbea1df";
