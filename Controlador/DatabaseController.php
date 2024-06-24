@@ -1,12 +1,14 @@
 <?php
 
 class DatabaseController {
+    // hosting
     // private $servername = "localhost";
-    // private $username = "root";
-    // private $password = "";
-    // private $database = "contigovoy3";
+    // private $username = "ghxumdmy_psicologoapk";
+    // private $password = "Psicologo123";
+    // private $database = "ghxumdmy_psicologia";
     // private $conn;
 
+    //local
     private $servername = "localhost";
     private $username = "root";
     private $password = "";

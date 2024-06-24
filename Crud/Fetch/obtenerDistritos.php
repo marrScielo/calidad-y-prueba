@@ -1,7 +1,5 @@
 <?php
-// include '../../config/config.php';
-// require_once CONEXION_PATH;
-// require_once BASE_PATH . 'conexion/conexion.php';
+// local
 require '../../conexion/conexion.php';
 
 // hosting
