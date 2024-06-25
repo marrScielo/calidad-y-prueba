@@ -5,7 +5,7 @@ class UsuarioModel {
     // private $servername = "localhost";
     // private $username = "ghxumdmy_psicologoapk";
     // private $password = "Psicologo123";
-    // private $database = "ghxumdmy_psicologia";
+    // private $dbname = "ghxumdmy_psicologia";
     // private $conn;
     
     //local

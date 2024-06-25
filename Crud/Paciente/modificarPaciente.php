@@ -1,7 +1,7 @@
 <?php
 //local
 // /home3/ghxumdmy/public_html/website_ddbea1df
-require_once("../../Controlador/Paciente/ControllerAtencFamiliar.php");
+require_once("../../Controlador/Paciente/ControllerPaciente.php");
 
 //hosting
 //$ruta_local = "/Controlador/Paciente/ControllerPaciente.php";

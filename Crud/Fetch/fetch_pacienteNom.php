@@ -13,7 +13,7 @@ $idPsicologo = $_POST['idPsicologo'];
 
 $sql = "SELECT p.IdPaciente,p.NomPaciente,p.ApPaterno,p.ApMaterno, ap.Diagnostico, ap.Tratamiento, p.Email, p.Telefono, p.codigopac
         FROM paciente p
-        LEFT JOIN AtencionPaciente ap ON ap.IdPaciente = p.IdPaciente
+        LEFT JOIN atencionpaciente ap ON ap.IdPaciente = p.IdPaciente
         WHERE p.NomPaciente = :NomPaciente
         AND p.IdPsicologo = :idPsicologo";
 
