@@ -1,24 +1,3 @@
-<?php
-
-require_once './Controlador/BlogController.php';
-require_once './Modelo/BlogModel.php';
-
-$db = new DatabaseController();
-$db->getConnection();
-
-$blogControlador = new BlogController($db);
-$blogs = $blogControlador->show();
-
-$especialidades = [
-    "Adicciones", "Ansiedad", "Atención", "Autoestima", "Crianza",
-    "Depresión", "Enfermedades Cronicas", "Estrés", "Impulsividad", "Top",
-    "Ira", "Terapia de Pareja", "Sexualidad", "Traumas", "Riesgo Suicida",
-    "Sentido de vida", "Orientación Vocacional", "Problemas de sueño", "Problemas alimenticios",
-    "Relaciones Interpersonales"
-];
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,6 +16,25 @@ $especialidades = [
 
     <?php include 'Componentes/header.php'; ?>
 
+    <?php
+    require_once './Controlador/BlogController.php';
+    require_once './Modelo/BlogModel.php';
+
+    $db = new DatabaseController();
+    $db->getConnection();
+
+    $blogControlador = new BlogController($db);
+    $blogs = $blogControlador->show();
+
+    $especialidades = [
+        "Adicciones", "Ansiedad", "Atención", "Autoestima", "Crianza",
+        "Depresión", "Enfermedades Cronicas", "Estrés", "Impulsividad", "Top",
+        "Ira", "Terapia de Pareja", "Sexualidad", "Traumas", "Riesgo Suicida",
+        "Sentido de vida", "Orientación Vocacional", "Problemas de sueño", "Problemas alimenticios",
+        "Relaciones Interpersonales"
+    ];
+    ?>
+
     <div class="container-blog">
         <div class="container-rosado">
             <!-- Contenido del contenedor rosado -->
@@ -44,7 +42,6 @@ $especialidades = [
             <form class="filter-form" id="filter-form">
                 <?php
                 // Generar 20 checkbox para diferentes especialidades
-
                 foreach ($especialidades as $especialidad) {
                     echo '<div class="filter-option">';
                     echo '<input type="checkbox" class="especialidad-checkbox" value="' . htmlspecialchars($especialidad) . '">';
@@ -57,7 +54,7 @@ $especialidades = [
 
         <div class="container-celeste">
             <h1>Últimos Artículos del Blog</h1>
-            <div id="mensaje-no-blogs" class="mensaje-no-blogs">
+            <div id="mensaje-no-blogs" class="mensaje-no-blogs" style="display: none;">
                 No se encontraron blogs con la especialidad seleccionada.
             </div>
             <div class="blog-posts" id="blog-posts">
@@ -88,21 +85,20 @@ $especialidades = [
 
             const posts = document.querySelectorAll('.blog-post');
             let blogsEncontrados = false;
+
             posts.forEach(post => {
                 const postEspecialidad = post.getAttribute('data-especialidad');
                 if (selectedEspecialidades.length === 0 || selectedEspecialidades.includes(postEspecialidad)) {
                     post.style.display = 'block';
-                    let blogsEncontrados = true;
+                    blogsEncontrados = true; // Aquí corregimos el error
                 } else {
                     post.style.display = 'none';
                 }
             });
+
             if (!blogsEncontrados && selectedEspecialidades.length > 0) {
                 mostrarMensajeNoBlogs();
             } else {
-                ocultarMensajeNoBlogs();
-            }
-            if (selectedEspecialidades.length === 0) {
                 ocultarMensajeNoBlogs();
             }
         });
@@ -111,7 +107,6 @@ $especialidades = [
             document.getElementById("mensaje-no-blogs").style.display = "block";
         }
 
-        // Función para ocultar el mensaje de "No se encontraron blogs"
         function ocultarMensajeNoBlogs() {
             document.getElementById("mensaje-no-blogs").style.display = "none";
         }
