@@ -52,16 +52,16 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     </span>
                     <div class="separador"></div>
                     <div class="input-buscador">
-                    <span id="search-icon"><i class="fas fa-search"></i></span>
-                    <input type="text" id="buscarPaciente" placeholder="Buscar Paciente" class="input" required>
+                        <span id="search-icon"><i class="fas fa-search"></i></span>
+                        <input type="text" id="buscarPaciente" placeholder="Buscar Paciente" class="input" required>
                     </div>
                     <div class="input-buscador">
-                    <span id="search-icon"><i class="fas fa-search"></i></span>
-                    <input type="text" id="buscarDni" placeholder="Buscar por DNI" class="input" required>
+                        <span id="search-icon"><i class="fas fa-search"></i></span>
+                        <input type="text" id="buscarDni" placeholder="Buscar por DNI" class="input" required>
                     </div>
                     <div class="input-buscador">
-                    <span id="search-icon"><i class="fas fa-search"></i></span>
-                    <input type="text" id="buscarCodigo" placeholder="Buscar por Codigo" class="input" required>
+                        <span id="search-icon"><i class="fas fa-search"></i></span>
+                        <input type="text" id="buscarCodigo" placeholder="Buscar por Codigo" class="input" required>
                     </div>
                     <a class="button-arriba" style="padding:10px 30px; font-size:10px;" href="RegPaciente.php">
                         <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar
@@ -74,20 +74,15 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <div class="container-paciente-tabla">
                     <table>
                         <?php
-
-                        if ($patients === false) {
-                            // Manejar el error, por ejemplo, mostrar un mensaje y/o registrar el error
-                            echo "Error al obtener los datos de los pacientes.";
-                            $patients = [];
-                        } elseif (!is_array($patients)) {
-                            // Si $patients no es un array, forzarlo a ser un array vacío
-                            $patients = [];
+                        $rowsPerPage = 10;
+                        if (is_array($patients) && count($patients) > 0) {
+                            $totalPacientes = count($patients);
+                            $totalPages = ceil($totalPacientes / $rowsPerPage);
+                            $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+                            $startIndex = ($currentPage - 1) * $rowsPerPage;
+                            $endIndex = $startIndex + $rowsPerPage;
                         }
 
-                        $patientsPerPage = 7; // Cantidad de pacientes por página
-                        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-                        $offset = ($currentPage - 1) * $patientsPerPage;
-                        $patientsToDisplay = array_slice($patients, $offset, $patientsPerPage);
                         ?>
 
                         <thead>
@@ -103,7 +98,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             </tr>
                         </thead>
                         <?php if ($patients) : ?>
-                            <?php foreach ($patientsToDisplay as $patient) : ?>
+                            <?php foreach ($patients as $patient) : ?>
                                 <tbody id="myTable" class="tu-tbody-clase">
                                     <tr>
                                         <td>
@@ -147,8 +142,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                             </div>
                                         </td>
                                     </tr>
-
                                 <?php endforeach; ?>
+                            <?php else : ?>
+                                <tr colspan="11">
+                                    <td>No hay pacientes registrados.</td>
+                                </tr>
                             <?php endif; ?>
                                 </tbody>
                     </table>
@@ -158,12 +156,15 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     </div>
                 </div>
                 <div class="pagination">
-                    <?php if ($patients) : ?>
-                        <?php $totalPages = ceil(count($patients) / $patientsPerPage); ?>
-                        <?php for ($page = 1; $page <= $totalPages; $page++) : ?>
-                            <a href="?page=<?= $page ?>" class="<?= $page === $currentPage ? 'active' : '' ?>"><?= $page ?></a>
-                        <?php endfor; ?>
-                    <?php endif; ?>
+                    <?php
+                    if (isset($totalPages) && is_numeric($totalPages)) {
+                        for ($page = 1; $page <= $totalPages; $page++) {
+                    ?>
+                            <a href="?page=<?= $page ?>"><?= $page ?></a>
+                    <?php
+                        }
+                    }
+                    ?>
                 </div>
 
             </main>
@@ -463,30 +464,30 @@ if (isset($_SESSION['NombrePsicologo'])) {
             mostrarPagina(1);
         </script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#buscarPaciente').on('keyup', function() {
-            var value = $(this).val().toLowerCase();
-            $('#myTable tr').filter(function() {
-                $(this).toggle($(this).find('td:eq(1)').text().toLowerCase().indexOf(value) > -1);
-            });
-        });
+        <script>
+            $(document).ready(function() {
+                $('#buscarPaciente').on('keyup', function() {
+                    var value = $(this).val().toLowerCase();
+                    $('#myTable tr').filter(function() {
+                        $(this).toggle($(this).find('td:eq(1)').text().toLowerCase().indexOf(value) > -1);
+                    });
+                });
 
-        $('#buscarDni').on('keyup', function() {
-            var value = $(this).val().toLowerCase();
-            $('#myTable tr').filter(function() {
-                $(this).toggle($(this).find('td:eq(3)').text().toLowerCase().indexOf(value) > -1);
-            });
-        });
+                $('#buscarDni').on('keyup', function() {
+                    var value = $(this).val().toLowerCase();
+                    $('#myTable tr').filter(function() {
+                        $(this).toggle($(this).find('td:eq(3)').text().toLowerCase().indexOf(value) > -1);
+                    });
+                });
 
-        $('#buscarCodigo').on('keyup', function() {
-            var value = $(this).val().toLowerCase();
-            $('#myTable tr').filter(function() {
-                $(this).toggle($(this).find('td:eq(2)').text().toLowerCase().indexOf(value) > -1);
+                $('#buscarCodigo').on('keyup', function() {
+                    var value = $(this).val().toLowerCase();
+                    $('#myTable tr').filter(function() {
+                        $(this).toggle($(this).find('td:eq(2)').text().toLowerCase().indexOf(value) > -1);
+                    });
+                });
             });
-        });
-    });
-</script>
+        </script>
 
 
     </body>

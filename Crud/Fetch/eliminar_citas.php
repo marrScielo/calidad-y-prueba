@@ -1,7 +1,5 @@
 <?php
 // local
-// include '../../config/config.php';
-// require_once BASE_PATH . '/conexion/conexion.php';
  require '../../conexion/conexion.php';
 
 

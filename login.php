@@ -24,28 +24,8 @@
 	</style>
 </head>
 <body>
-<header>
-    <nav class="container1">
-        <div class="logo">
-            <img src="img/logo-actual.png" alt="Contigo Voy" class="logo-img">
-        </div>
-        <div class="menu-icon" id="menu-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="index.php">Inicio</a></li>
-            <li><a href="blog.php">Blog</a></li>
-            <li><a href="psicologos.php">Psicólogos</a></li>
-            <li><a href="psicologos.php">Reservar Cita</a></li>
-						<li class="dropdown">
-                <a href="../ContigoVoy/login.php">Login</a>
-            </li>
-        </ul>
-    </nav>
-</header>
 
+<?php include 'Componentes/header.php'; ?>
 <div id="center-container">
   <div class="container">
 		<span class="form__title">Acceder</span>

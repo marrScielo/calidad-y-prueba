@@ -100,7 +100,8 @@ class userModelPaciente
         FROM paciente p
         LEFT JOIN areafamiliar af ON p.IdPaciente = af.IdPaciente
         LEFT JOIN cita c ON p.IdPaciente = c.IdPaciente
-        WHERE p.IdPsicologo = :IdPsicologo");
+        WHERE p.IdPsicologo = :IdPsicologo
+        group by p.dni");
         $statement->bindValue(":IdPsicologo", $IdPsicologo);
         return ($statement->execute()) ? $statement->fetchAll() : false;
     }

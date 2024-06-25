@@ -1,10 +1,13 @@
 <?php
 class conexion{
+
+    // local
     private $servername = "localhost";
     private $username = "root";
     private $password = "";
     private $database = "contigovoy3";
 
+    // hosting
     //private $servername = "localhost";
     //private $username = "ghxumdmy_psicologoapk";
     //private $password = "Psicologo123";

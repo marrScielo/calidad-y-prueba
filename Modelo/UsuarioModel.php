@@ -1,11 +1,14 @@
 <?php
 class UsuarioModel {
+
+    //hosting 
     // private $servername = "localhost";
     // private $username = "ghxumdmy_psicologoapk";
     // private $password = "Psicologo123";
-    // private $database = "ghxumdmy_psicologiaMaster";
+    // private $database = "ghxumdmy_psicologia";
     // private $conn;
     
+    //local
     private $servername = "localhost";
     private $username = "root";
     private $password = "";

@@ -5,9 +5,13 @@ class UserModelCita
     public function __construct()
     {
         //SOLO ACEPTA RUTAS ABSOLUTAS
+
+        //local
         require_once("C:/xampp/htdocs/ContigoVoy/conexion/conexion.php");
-        //require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");
         
+        //hosting
+        //require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");
+
         $con = new conexion();
         $this->PDO = $con->conexion();
     }
@@ -319,5 +323,9 @@ class UserModelCita
         } else {
             return 0;
         }
+    }
+    public function obtenerProximaCita($id){
+        $fechaActual = date("Y-m-d");
+        $statement = $this->PDO->prepare("Select FechaInicioCita FROM paciente where IdPsicologo = :idPsicologo ");
     }
 }
