@@ -295,10 +295,8 @@ if (isset($_SESSION['NombrePsicologo'])){
                             placeholder="Ingrese algun Antecedente Medico" />
                     </div>
                     <div class="modal-button-container">
-                        <button class="button-modal button-cancelar"
-                            onclick="closeModalEditar('<?=$row[0]?>')">Cancelar</button>
-                        <button type="submit" class="button-modal button-editar">Guardar</button>
-
+                    <button type="button" class="button-modal button-cancelar" onclick="closeModalEditar('<?=$row[0]?>')">Cancelar</button>
+                    <button type="submit" class="button-modal button-editar">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -511,7 +509,3 @@ if (isset($_SESSION['NombrePsicologo'])){
   header("Location: ../Index.php");
 }
 ?>
-
-
-
-
