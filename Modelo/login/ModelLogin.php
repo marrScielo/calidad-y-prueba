@@ -93,8 +93,8 @@ class Login
                 }
             } elseif ($user['rol'] == 'administrador') {
                 $_SESSION['logeado'] = true;
-                header("Location: /ContigoVoy/usuarios.php");
-                // header("Location: ../../usuarios.php"); DESCOMENTAR ESTO PARA HOSTING
+                //header("Location: /ContigoVoy/usuarios.php");
+                header("Location: ../../usuarios.php"); 
                 exit();
             } else {
                 // Redirigir a una página genérica o de error si el rol no es reconocido
