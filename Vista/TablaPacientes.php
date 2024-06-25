@@ -324,52 +324,57 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <script src="../Issets/js/pacientes.js"></script>
         <script src="../Issets/js/dashboard.js"></script>
         <script>
-            //Funciones del modal
-            function openModalEditar(id) {
-                closeOptions(id);
-                var modal = document.getElementById('modalEditar' + id);
-                modal.classList.add('active');
+    //Funciones del modal
+    function openModalEditar(id) {
+        closeOptions(id);
+        var modal = document.getElementById('modalEditar' + id);
+        modal.classList.add('active');
+    }
+
+    function closeModalEditar(id) {
+        var modal = document.getElementById('modalEditar' + id);
+        modal.classList.remove('active');
+
+        // Resetear los valores de los campos del formulario
+        var form = modal.querySelector('form');
+        form.reset();
+    }
+
+    function openModalEliminar(id) {
+        closeOptions(id);
+        var modal = document.getElementById('modalEliminar' + id);
+        modal.classList.add('active');
+    }
+
+    function closeModalEliminar(id) {
+        var modal = document.getElementById('modalEliminar' + id);
+        modal.classList.remove('active');
+    }
+
+    function closeOptions(id) {
+        var dropdownContent = document.querySelector("#dropdown-content-" + id);
+        dropdownContent.style.display = "none";
+    }
+
+    function openOptions(id) {
+        var dropdownContent = document.querySelector("#dropdown-content-" + id);
+
+        // Comprueba si el dropdown ya está abierto
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            var dropdownContents = document.getElementsByClassName("dropdown-content");
+
+            for (var i = 0; i < dropdownContents.length; i++) {
+                dropdownContents[i].style.display = "none";
             }
 
-            function closeModalEditar(id) {
-                var modal = document.getElementById('modalEditar' + id);
-                modal.classList.remove('active');
-            }
+            dropdownContent.style.display = "block";
+            dropdownContent.style.marginLeft = "-71px";
+        }
+    }
+</script>
 
-            function openModalEliminar(id) {
-                closeOptions(id);
-                var modal = document.getElementById('modalEliminar' + id);
-                modal.classList.add('active');
-            }
-
-            function closeModalEliminar(id) {
-                var modal = document.getElementById('modalEliminar' + id);
-                modal.classList.remove('active');
-            }
-
-            function closeOptions(id) {
-                var dropdownContent = document.querySelector("#dropdown-content-" + id);
-                dropdownContent.style.display = "none";
-            }
-
-            function openOptions(id) {
-                var dropdownContent = document.querySelector("#dropdown-content-" + id);
-
-                // Comprueba si el dropdown ya está abierto
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    var dropdownContents = document.getElementsByClassName("dropdown-content");
-
-                    for (var i = 0; i < dropdownContents.length; i++) {
-                        dropdownContents[i].style.display = "none";
-                    }
-
-                    dropdownContent.style.display = "block";
-                    dropdownContent.style.marginLeft = "-71px";
-                }
-            }
-        </script>
         <script>
             $(document).ready(function() {
                 $('#Departamento').change(function() {
