@@ -38,10 +38,10 @@
             <li><a href="index.php">Inicio</a></li>
             <li><a href="blog.php">Blog</a></li>
             <li><a href="psicologos.php">Psicólogos</a></li>
-            <li class="dropdown">
-                <a href="../ContigoVoy/login.php">Iniciar Sesión</a>
+            <li><a href="psicologos.php">Reservar Cita</a></li>
+						<li class="dropdown">
+                <a href="../ContigoVoy/login.php">Login</a>
             </li>
-            <li><a href="#">Reservar Cita</a></li>
         </ul>
     </nav>
 </header>
