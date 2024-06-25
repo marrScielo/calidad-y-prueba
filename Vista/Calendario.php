@@ -476,7 +476,8 @@ $(document).ready(function() {
 
     // Realizar la solicitud AJAX al servidor
     $.ajax({
-      url: 'Fetch/fetch_pacienteNom.php', // Archivo PHP que procesa la solicitud
+      
+      url: '../Crud/Fetch/fetch_pacienteNom.php', // Archivo PHP que procesa la solicitud
       method: 'POST',
       data: { NomPaciente: NomPaciente, idPsicologo: idPsicologo },
       success: function(response) {
