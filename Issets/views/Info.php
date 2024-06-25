@@ -23,13 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
     $Psi = new usernameControlerPaciente();
     $result = $Psi->updatePsicologo($idPsicologo, $nombre, $usuario, $correo, $celular, $contrasena, $video);
 
-    // Verifica el resultado de la actualización
+    // Verificar el resultado de la actualización
     if ($result) {
-        // Actualización exitosa, redirige a la misma página para reflejar los cambios
-        header("Location: " . $_SERVER['PHP_SELF']);
+        // Redirigir a Dashboard.php con los nuevos datos como parámetros GET
+        header("Location: ../Vista/Dashboards.php?nombre=" . urlencode($nombre));
         exit();
     } else {
-        // Manejar el caso en que la actualización falla
+        // Manejar el caso en que la actualización falle
         echo "Error al actualizar los datos.";
     }
 }

@@ -1,6 +1,29 @@
 <?php
 session_start();
 if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'psicologo') {
+    // Incluir los archivos necesarios
+    require_once("../Controlador/Paciente/ControllerPaciente.php");
+    require_once("../Controlador/Cita/ControllerCita.php");
+    $PORC = new usernameControlerCita();
+    $Pac = new usernameControlerPaciente();
+
+    // Obtener el nombre actualizado del psicólogo desde los parámetros GET o la sesión
+    if (isset($_GET['nombre'])) {
+        $_SESSION['NombrePsicologo'] = $_GET['nombre'];
+    }
+    $nombrePsicologo = isset($_SESSION['NombrePsicologo']) ? $_SESSION['NombrePsicologo'] : 'Psicólogo'; // Cambia 'Psicólogo' por el valor por defecto que prefieras
+
+    // Obtener otros datos necesarios para el dashboard
+    $totalRegistrosEnCanalAtraccion = $PORC->contarCitasConfirmadasConCanal($_SESSION['IdPsicologo']);
+    $totalRegistrosEnCanalAtraccion2 = $PORC->contarCitasConfirmadasConCanal2($_SESSION['IdPsicologo']);
+    $totalRegistrosEnCanalAtraccion3 = $PORC->contarCitasConfirmadasConCanal3($_SESSION['IdPsicologo']);
+    $totalPacientes = $PORC->contarRegistrosEnPacientes($_SESSION['IdPsicologo']);
+    $totalPacientesRecientes = $PORC->contarPacientesConFechaActual($_SESSION['IdPsicologo']);
+    $totalRegistrosEnCitasConfirmado = $PORC->contarCitasConfirmadas($_SESSION['IdPsicologo']);
+    $totalRegistrosEnCitasHora = $PORC->obtenerFechasCitasConFechaActual($_SESSION['IdPsicologo']);
+    $contarPacientesUltimoMes = $PORC->contarPacientesUltimoMes($_SESSION['IdPsicologo']);
+    $Citas = $PORC->showByFecha($_SESSION['IdPsicologo']);
+    $datos = $Pac->MostrarPacientesRecientes($_SESSION['IdPsicologo']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,9 +65,9 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
       <main class="animate__animated animate__fadeIn">
         <div class="contenedor_dsh">
           <div>
-            <h4>¡Buenos dias, <?= $_SESSION['NombrePsicologo'] ?>!</h4>
+            <h4>¡Buenos días, <?= $nombrePsicologo ?>!</h4>
             <h1>Tienes <span style="color:#416cd8; font-weight: bold; font-size:20px"><?= count($totalRegistrosEnCitasHora) ?> citas</span> programadas para hoy</h1>
-          </div>
+        </div>
           <?php
           require_once '../Issets/views/Info.php';
           ?>
