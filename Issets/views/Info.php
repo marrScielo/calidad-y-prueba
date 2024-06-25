@@ -76,14 +76,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
                 <div>
                     <h3 style="color:#49c691;font-size:17px; text-align:start;" for="nombreInput">Nombre</h3>
                     <div style="display: flex; gap:30px;">
-                        <input id="nombreInput" style="background-color: #f6f6f9;padding:10px 15px; width:340px;border-radius:8px; margin-bottom: 10px;" type="text" name="nombreInput" value="<?= $psicologo['Usuario'] ?>" readonly />
+                        <input id="nombreInput" style="background-color: #f6f6f9;padding:10px 15px; width:340px;border-radius:8px; margin-bottom: 10px;" type="text" name="nombreInput" value="<?= $psicologo['NombrePsicologo'] ?>" readonly />
                         <a style="font-size:15px; padding:2px 15px" class="search Codigo" onclick="habilitarEdicion('nombreInput')">Editar</a>
                     </div>
                 </div>
                 <div>
                     <h3 style="color:#49c691;font-size:17px;text-align:start;" for="usuarioInput">Usuario</h3>
                     <div style="display: flex; gap:30px;">
-                        <input id="usuarioInput" style="background-color: #f6f6f9;padding:10px 15px; width:340px;border-radius:8px;margin-bottom: 10px;" type="text" name="usuarioInput" value="<?= $psicologo['NombrePsicologo'] ?>" readonly />
+                        <input id="usuarioInput" style="background-color: #f6f6f9;padding:10px 15px; width:340px;border-radius:8px;margin-bottom: 10px;" type="text" name="usuarioInput" value="<?= $psicologo['Usuario'] ?>" readonly />
                         <a style="font-size:15px; padding:2px 15px" class="search Codigo" onclick="habilitarEdicion('usuarioInput')">Editar</a>
                     </div>
                 </div>
