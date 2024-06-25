@@ -195,20 +195,22 @@ if (isset($_SESSION['NombrePsicologo'])){
                         </div>
                     </div>
                     <?php
-                                            /* FECHA LIMITE  */
-                                            date_default_timezone_set('America/Lima');
-                                            $fechamin = date("Y-m-d")
-                                        ?>
+                date_default_timezone_set('America/Lima');
+                $fechamin = date("Y-m-d");
+                // Formatear la fecha y la hora de la base de datos
+                $fechaCita = date("Y-m-d", strtotime($row['FechaInicioCita']));
+                $horaCita = date("H:i", strtotime($row['FechaInicioCita']));
+                ?>
                     <div class="input-group2">
-                        <div class="input-group-modal" style="width:49%">
-                            <h3 for="fecha_inicio">Fecha de Cita<b style="color:red">*</b></h3>
-                            <input type="date" id="fecha_inicio" name="fecha_inicio" min="<?= $fechamin ?>"
-                                value="<?= $fechamin ?>">
-                        </div>
-                        <div class="input-group-modal" style="width:49%">
-                            <h3 for="hora_inicio">Hora de Cita <b style="color:red">*</b></h3>
-                            <input type="time" id="hora_inicio" name="hora_inicio" value="<?=$rows['4']?>" />
-                        </div>
+                    <div class="input-group-modal" style="width:49%">
+                        <h3 for="fecha_inicio">Fecha de Cita<b style="color:red">*</b></h3>
+                        <input type="date" id="fecha_inicio" name="fecha_inicio" min="<?= $fechamin ?>"
+                            value="<?= $fechaCita ?>">
+                    </div>
+                    <div class="input-group-modal" style="width:49%">
+                        <h3 for="hora_inicio">Hora de Cita <b style="color:red">*</b></h3>
+                        <input type="time" id="hora_inicio" name="hora_inicio" value="<?= $horaCita ?>" />
+                    </div>
                     </div>
                     <br>
                     <div class="input-group2">
