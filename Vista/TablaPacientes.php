@@ -184,12 +184,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     </div>
                 </div>
                 <!-- Modal de edicion -->
-                <div id="modalEditar<?= $patient[0] ?>" class="service-modal flex-center">
+                <div id="modalEditar<?= $patient[0] ?>" class="service-modal flex-center" >
                     <div class="service-modal-body">
                         <a href="#" class="close" onclick="closeModalEditar('<?= $patient[0] ?>')">&times;</a>
-                        <div class="message_dialog">
+                        <div class="message_dialog" >
                             <h2 style="font-size:20px; color:#49c691">Modificar datos de <?= $patient[2] . " " . $patient[3] ?></h2>
-                            <form action="../Crud/Paciente/modificarPaciente.php" method="POST" class="modifica-form">
+                            <form action="../Crud/Paciente/modificarPaciente.php" method="POST" class="modifica-form" style=" max-height:90vh; overflow-y:auto;">
                                 <input type="hidden" name="id_cita" value="<?= $patient[0] ?>">
                                 <!-- EDITAR MOTIVO ESTADO FECHA DE INICIO DURACION -->
                                 <div class="input-group-modal" style="display: none">
