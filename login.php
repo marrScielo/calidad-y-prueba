@@ -24,8 +24,8 @@
 	</style>
 </head>
 <body>
-<header>
-	<?php include 'Componentes/header.php'; ?>
+
+<?php include 'Componentes/header.php'; ?>
 <div id="center-container">
   <div class="container">
 		<span class="form__title">Acceder</span>
