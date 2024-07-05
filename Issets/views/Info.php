@@ -1,4 +1,9 @@
 <?php
+$theme = 'light';
+if (isset($_COOKIE['theme'])) {
+    $theme = $_COOKIE['theme'];
+}
+
 // Incluye tus archivos con las clases necesarias
 require_once('../Controlador/Paciente/ControllerPaciente.php');
 require_once('../Modelo/Paciente/ModelPaciente.php');
@@ -38,14 +43,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 
 </style>
 <!-- El resto de tu código HTML y JavaScript -->
-<div class="top">
+<div class="top <?php echo ($theme === 'dark') ? 'dark-mode' : ''; ?>">
     <button id="menu-btn" style="display: none;">
         <span class="material-symbols-sharp" translate="no">menu</span>
     </button>
     <div class="theme-toggler">
-        <span class="material-symbols-sharp active" translate="no">light_mode</span>
-        <span class="material-symbols-sharp" translate="no">dark_mode</span>
+        <span class="material-symbols-sharp active" data-theme="light" translate="no">light_mode</span>
+        <span class="material-symbols-sharp" data-theme="dark" translate="no">dark_mode</span>
     </div>
+
     <div>
         <div>
             <a class="ajuste-info">
@@ -105,8 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
                 <div>
                     <h3 style="color:#49c691;font-size:17px;text-align:start;" for="contrasenaInput">Contraseña</h3>
                     <div style="display: flex; gap:30px;">
-                        <input id="contrasenaInput" style="background-color: #f6f6f9;padding:10px 15px; width:340px;border-radius:8px;margin-bottom: 10px;" type="password" name="contrasenaInput" 
-					autocomplete="cc-number" value="<?= $psicologo['Passwords'] ?>" readonly />
+                        <input id="contrasenaInput" style="background-color: #f6f6f9;padding:10px 15px; width:340px;border-radius:8px;margin-bottom: 10px;" type="password" name="contrasenaInput" autocomplete="cc-number" value="<?= $psicologo['Passwords'] ?>" readonly />
                         <a style="font-size:15px; padding:2px 15px" class="search Codigo" onclick="habilitarEdicion('contrasenaInput')">Editar</a>
                     </div>
                 </div>
@@ -114,8 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
                 <div>
                     <h3 style="color:#49c691;font-size:17px;text-align:start;" for="videoInput">Link de Video:</h3>
                     <div style="display: flex; gap:30px;">
-                        <input id="videoInput" style="background-color: #f6f6f9;padding:10px 15px; width:340px;border-radius:8px;margin-bottom: 10px;" type="text" name="videoInput" 
-					autocomplete="cc-number" value="<?= $psicologo['video'] ?>" readonly />
+                        <input id="videoInput" style="background-color: #f6f6f9;padding:10px 15px; width:340px;border-radius:8px;margin-bottom: 10px;" type="text" name="videoInput" autocomplete="cc-number" value="<?= $psicologo['video'] ?>" readonly />
                         <a style="font-size:15px; padding:2px 15px" class="search Codigo" onclick="habilitarEdicion('videoInput')">Editar</a>
                     </div>
                 </div>
@@ -159,4 +163,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         document.getElementById('videoInput').readOnly = true;
         // ... (Restablece otros campos a solo lectura)
     });
+</script>
+
+<script>
+    // Function to set the theme
+function setTheme(theme) {
+    // Add the dark theme class if theme is 'dark', remove otherwise
+    document.documentElement.classList.toggle('dark-theme-variables', theme === 'dark');
+    
+    // Update the active state of the buttons
+    document.querySelector('.theme-toggler .active').classList.remove('active');
+    if (theme === 'dark') {
+        document.querySelector('.theme-toggler span[data-theme="dark"]').classList.add('active');
+    } else {
+        document.querySelector('.theme-toggler span[data-theme="light"]').classList.add('active');
+    }
+    
+    // Save the selected theme in localStorage
+    localStorage.setItem('theme', theme);
+}
+
+// Function to initialize the theme on page load
+function initializeTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+}
+
+// Initialize theme when the document is loaded
+document.addEventListener('DOMContentLoaded', initializeTheme);
+
+// Add event listeners to the theme toggle buttons
+document.querySelector('.theme-toggler span[data-theme="light"]').addEventListener('click', () => setTheme('light'));
+document.querySelector('.theme-toggler span[data-theme="dark"]').addEventListener('click', () => setTheme('dark'));
+
 </script>

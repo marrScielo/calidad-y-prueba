@@ -114,3 +114,18 @@
     }
 }
 
+@media (max-width: 480px) {
+    .blog-posts {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* Una columna para dispositivos móviles */
+        gap: 20px; /* Espacio entre columnas */
+    }
+
+    .blog-post {
+        padding: 0 1rem; /* Espaciado horizontal para cada blog */
+    }
+}
+
+
+
+
