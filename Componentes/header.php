@@ -14,7 +14,7 @@
 <header>
     <nav class="container-header">
         <div class="logo1">
-            <img src="img/logo-actual.png" alt="Contigo Voy" class="logo-img">
+            <img src="img/logo-actual.webp" alt="Contigo Voy" class="logo-img">
         </div>
         <div class="menu-icon" id="menu-icon">
             <span></span>

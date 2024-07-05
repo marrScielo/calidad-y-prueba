@@ -37,28 +37,28 @@
                     <h3>Especialidades</h3>
                     <p>Contamos con un grupo de psicologos especializados en una amplia variedad de temas, garantizando que puedan recibir la ayuda adecuada y especifica para sus problemas.</p>
                 </div>
-                <img src="img/beneficio1.jpg" alt="Especialidades">
+                <img src="img/beneficio1.webp" alt="Especialidades">
             </div>
             <div class="carousel-item">
                 <div class="carousel-caption">
                     <h3>Servicio Eficiente</h3>
                     <p>Agilizamos el proceso de acceso a los servicios de psicologia, agrupando los mejores psicologos en una misma plataforma.</p>
                 </div>
-                <img src="img/beneficio2.jpg" alt="Servicio-eficiente">
+                <img src="img/beneficio2.webp" alt="Servicio-eficiente">
             </div>
             <div class="carousel-item">
                 <div class="carousel-caption">
                     <h3>Beneficios</h3>
                     <p>Conoce los beneficios que podemos dar tanto a los psicologos como a sus pacientes.</p>
                 </div>
-                <img style="height: 100vh" src="img/beneficio4.jpg"  alt="Beneficios">
+                <img style="height: 100vh" src="img/beneficio4.webp"  alt="Beneficios">
             </div>
             <div class="carousel-item">
                 <div class="carousel-caption">
                     <h3>Atención de calidad</h3>
                     <p>Contamos con un grupo de psicologos especializados en una amplia variedad de temas, garantizando que puedan recibir la ayuda adecuada y especifica para sus problemas.</p>
                 </div>
-                <img src="img/beneficio3.jpg" alt="Atención-de-calidad">
+                <img src="img/beneficio3.webp" alt="Atención-de-calidad">
             </div>
         </div>
         <div class="botones">
@@ -78,7 +78,7 @@
     <?php include 'Componentes/especialidades.php'; ?>
 
     <div class="image-container">
-        <img src="img/fondo-blog.jpg" alt="Fondo Blog">
+        <img src="img/fondo-blog.webp" alt="Fondo Blog">
         <div class="image-content">
             <h3>Visitar nuestro Blog</h3>
             <p>Nuestros psicólogos escriben artículos <br> que adaptan la psicología a tus <br> necesidades, ayudándote a entender, <br> cambiar y vivir mejor.</p>
@@ -89,7 +89,7 @@
     <?php include 'Componentes/footer.php'; ?>
 
     <!-- Botón flotante de WhatsApp -->
-    <a href="https://wa.me/51915205726" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
