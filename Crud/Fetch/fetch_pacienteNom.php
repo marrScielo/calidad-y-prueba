@@ -1,9 +1,6 @@
-<?php
-// local
-require '../../conexion/conexion.php';
 
-// hosting
-//require("/home3/ghxumdmy/public_html/website_ddbea1df/conexion/conexion.php");
+<?php
+require '../../conexion/conexion.php';
 
 $con = new conexion();
 $conn = $con->conexion();
@@ -11,7 +8,9 @@ $conn = $con->conexion();
 $NomPaciente = $_POST['NomPaciente'];
 $idPsicologo = $_POST['idPsicologo'];
 
-$sql = "SELECT p.IdPaciente,p.NomPaciente,p.ApPaterno,p.ApMaterno, ap.Diagnostico, ap.Tratamiento, p.Email, p.Telefono, p.codigopac
+$sql = "SELECT p.IdPaciente, p.NomPaciente, p.ApPaterno, p.ApMaterno, ap.Diagnostico, ap.Tratamiento, 
+               p.Email, p.Telefono, p.codigopac, ap.MotivoConsulta, ap.FormaContacto, ap.Observacion, 
+               ap.UltimosObjetivos
         FROM paciente p
         LEFT JOIN atencionpaciente ap ON ap.IdPaciente = p.IdPaciente
         WHERE p.NomPaciente = :NomPaciente
@@ -33,7 +32,24 @@ if ($row) {
   $codigopac = $row['codigopac'];
   $correo = $row['Email'];
   $telefono = $row['Telefono'];
-  $response = array('nombre' => $nombrePaciente . " " . $ApPaterno . " " . $ApMaterno, 'id' => $IdPaciente, 'correo' => $correo, 'telefono' => $telefono, 'codigopac' => $codigopac);
+  $motivoConsulta = $row['MotivoConsulta'];
+  $formaContacto = $row['FormaContacto'];
+  $observacion = $row['Observacion'];
+  $ultimosObjetivos = $row['UltimosObjetivos'];
+
+  $response = array(
+    'nombre' => $nombrePaciente . " " . $ApPaterno . " " . $ApMaterno,
+    'id' => $IdPaciente,
+    'correo' => $correo,
+    'telefono' => $telefono,
+    'codigopac' => $codigopac,
+    'diagnostico' => $row['Diagnostico'],
+    'tratamiento' => $row['Tratamiento'],
+    'motivoConsulta' => $motivoConsulta,
+    'formaContacto' => $formaContacto,
+    'observacion' => $observacion,
+    'ultimosObjetivos' => $ultimosObjetivos
+  );
 } else {
   $response = array('error' => 'No existe ese paciente');
 }
@@ -41,3 +57,4 @@ if ($row) {
 // Devolver la respuesta en formato JSON
 header('Content-Type: application/json');
 echo json_encode($response);
+?>
