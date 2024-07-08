@@ -1,3 +1,31 @@
+<?php
+
+require_once './Controlador/BlogController.php';
+require_once './Modelo/BlogModel.php';
+
+$db = new DatabaseController();
+$db->getConnection();
+
+$blogControlador = new BlogController($db);
+
+$limit = 6;  // Número de blogs por página
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
+
+$blogs = $blogControlador->show($limit, $offset);
+$totalBlogs = $blogControlador->getTotalBlogs();
+$totalPages = ceil($totalBlogs / $limit);
+
+$especialidades = [
+    "Adicciones", "Ansiedad", "Atención", "Autoestima", "Crianza",
+    "Depresión", "Enfermedades Cronicas", "Estrés", "Impulsividad", "Top",
+    "Ira", "Terapia de Pareja", "Sexualidad", "Traumas", "Riesgo Suicida",
+    "Sentido de vida", "Orientación Vocacional", "Problemas de sueño", "Problemas alimenticios",
+    "Relaciones Interpersonales"
+];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,38 +38,46 @@
     <link rel="stylesheet" href="css/blog-principal1.css">
     <link rel="icon" href="img/logo-actual.png">
     <link rel="stylesheet" href="css/boton-wsp.css">
+
+    <style>
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .pagination a {
+            color: #007bff;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border: 1px solid #007bff;
+            margin: 0 5px;
+        }
+
+        .pagination a.active,
+        .pagination a:hover {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .pagination a.disabled {
+            pointer-events: none;
+            color: #6c757d;
+            border-color: #6c757d;
+        }
+    </style>
 </head>
 
 <body>
 
     <?php include 'Componentes/header.php'; ?>
 
-    <?php
-    require_once './Controlador/BlogController.php';
-    require_once './Modelo/BlogModel.php';
-
-    $db = new DatabaseController();
-    $db->getConnection();
-
-    $blogControlador = new BlogController($db);
-    $blogs = $blogControlador->show();
-
-    $especialidades = [
-        "Adicciones", "Ansiedad", "Atención", "Autoestima", "Crianza",
-        "Depresión", "Enfermedades Cronicas", "Estrés", "Impulsividad", "Top",
-        "Ira", "Terapia de Pareja", "Sexualidad", "Traumas", "Riesgo Suicida",
-        "Sentido de vida", "Orientación Vocacional", "Problemas de sueño", "Problemas alimenticios",
-        "Relaciones Interpersonales"
-    ];
-    ?>
-
     <div class="container-blog">
         <div class="container-rosado">
-            <!-- Contenido del contenedor rosado -->
             <h2 onclick="toggleDropdownBlog()">Filtrar por Especialidad</h2>
             <form class="filter-form" id="filter-form">
                 <?php
-                // Generar 20 checkbox para diferentes especialidades
                 foreach ($especialidades as $especialidad) {
                     echo '<div class="filter-option">';
                     echo '<input type="checkbox" class="especialidad-checkbox" value="' . htmlspecialchars($especialidad) . '">';
@@ -54,7 +90,7 @@
 
         <div class="container-celeste">
             <h1>Últimos Artículos del Blog</h1>
-            <div id="mensaje-no-blogs" class="mensaje-no-blogs" style="display: none;">
+            <div id="mensaje-no-blogs" class="mensaje-no-blogs">
                 No se encontraron blogs con la especialidad seleccionada.
             </div>
             <div class="blog-posts" id="blog-posts">
@@ -74,31 +110,49 @@
                 }
                 ?>
             </div>
+
+            <!-- Paginación -->
+            <div class="pagination">
+                <?php if ($page > 1): ?>
+                    <a href="?page=<?php echo $page - 1; ?>" class="page-link">&laquo; Anterior</a>
+                <?php else: ?>
+                    <span class="page-link disabled">&laquo; Anterior</span>
+                <?php endif; ?>
+                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <a href="?page=<?php echo $i; ?>" class="page-link<?php if ($i == $page) echo ' active'; ?>"><?php echo $i; ?></a>
+                <?php endfor; ?>
+                <?php if ($page < $totalPages): ?>
+                    <a href="?page=<?php echo $page + 1; ?>" class="page-link">Siguiente &raquo;</a>
+                <?php else: ?>
+                    <span class="page-link disabled">Siguiente &raquo;</span>
+                <?php endif; ?>
+            </div>
+
         </div>
     </div>
 
     <script>
-        // JavaScript para filtrar los blogs por especialidad
-        document.getElementById('filter-form').addEventListener('change', function() {
+        document.getElementById('filter-form').addEventListener('change', function () {
             const checkboxes = document.querySelectorAll('.especialidad-checkbox');
             const selectedEspecialidades = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
 
             const posts = document.querySelectorAll('.blog-post');
             let blogsEncontrados = false;
-
             posts.forEach(post => {
                 const postEspecialidad = post.getAttribute('data-especialidad');
                 if (selectedEspecialidades.length === 0 || selectedEspecialidades.includes(postEspecialidad)) {
                     post.style.display = 'block';
-                    blogsEncontrados = true; // Aquí corregimos el error
+                    blogsEncontrados = true;
                 } else {
                     post.style.display = 'none';
                 }
             });
-
             if (!blogsEncontrados && selectedEspecialidades.length > 0) {
                 mostrarMensajeNoBlogs();
             } else {
+                ocultarMensajeNoBlogs();
+            }
+            if (selectedEspecialidades.length === 0) {
                 ocultarMensajeNoBlogs();
             }
         });
@@ -112,7 +166,6 @@
         }
     </script>
     <script src="js/navabar.js"></script>
-    <!-- Botón flotante de WhatsApp -->
     <a href="https://wa.me/51915205726" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
