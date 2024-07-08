@@ -297,22 +297,17 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     const diagnostico = link.getAttribute('data-diagnostico');
                     const tratamiento = link.getAttribute('data-tratamiento');
                     const medicamentosprescritos = link.getAttribute('data-medicamentosprescritos');
-                    const FechaInicioCita = link.getAttribute('data-FechaInicioCita');
-                    // Formatear la fecha en español
-                    const opcionesFecha = {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    };
-                    const fechaFormateada = FechaInicioCita ? new Date(FechaInicioCita).toLocaleDateString('es-ES', opcionesFecha) : 'Aún no hay cita';
+const FechaInicioCita = link.getAttribute('data-FechaInicioCita');
+const ultimosObjetivos = link.getAttribute('data-ultimosObjetivos'); // Agrega esta línea
+
+
                     // Crear el contenido de los detalles del paciente
                     const patientInfoHTML = `
         <div style="display:grid; flex-direction:row; gap:10px;">
             <div class="top-group">
                 <div class="name">
                     <h2 class="visual2">${nombres}</h2>
-                    <p class="arriba">${edad} años, ${fechaFormateada|| 'Aun no hay cita'}</p>
+                    <p class="arriba">${edad} años, ${FechaInicioCita || 'Aun no hay cita'}</p>
                     <button type="button" class="green-button" id="butto">Ver Historial Médico</button>
                 </div>
                 <div class="date">
@@ -337,8 +332,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <p class="abajo">${FechaInicioCita || 'Aun no hay cita'}</p>
             </div>
             <div class="BUT">
-       <a class="green-button" href="RegAtencionPaciente.php" id="button2" style="display: flex; align-items: center; justify-content: center;">Atencion al Paciente</a>
-
+                <button type="button" class="green-button" id="button2">Nueva Entrada</button>
             </div>
         </div>
         <form id="patientForm" style="display:none;">
