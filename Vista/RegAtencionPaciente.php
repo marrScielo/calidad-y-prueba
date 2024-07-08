@@ -86,7 +86,7 @@ if (isset($_SESSION['NombrePsicologo'])){
 				    </div>
             <div class="input-group">
 				      	<h3 for="UltimosObjetivos">Ultimos Objetivo / Objetivo alcanzado </h3>
-				      	<textarea style="resize: none; padding: 1.2em 1em 2.8em 1em;font-family: 'Poppins', sans-serif;	font-size: 14px;" type="text" id="UltimosObjetivos" name="UltimosObjetivos" placeholder="Observacion" required></textarea>
+				      	<textarea style="resize: none; padding: 1.2em 1em 2.8em 1em;font-family: 'Poppins', sans-serif;	font-size: 14px;" type="text" id="UltimosObjetivos" name="UltimosObjetivos" placeholder="Objetivos Alcanzados" required></textarea>
 				    </div>
             <div class="input-group2">
               <div class="input-group" >
