@@ -174,25 +174,35 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 </div>
 
                 <div class="container-paciente-tabla">
-                    <div class="before-details">
-                        <table>
-                            <?php foreach ($patients as $index => $patient) : ?>
-                                <tbody>
-                                    <tr <?php if ($index === 0) echo 'class="primera-fila"'; ?>>
-                                        <td>
-                                            <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>" data-diagnostico="<?= $patient['Diagnostico'] ?>" data-tratamiento="<?= $patient['Tratamiento'] ?>" data-medicamentosprescritos="<?= $patient['MedicamentosPrescritos'] ?>" data-FechaInicioCita="<?= $patient['FechaInicioCita'] ?>">
-                                                <p style="cursor: pointer;" class="nombre-paciente"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
-                                                <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?> / <?= isset($patient['MotivoConsulta']) ? $patient['MotivoConsulta'] : 'Motivo de Consulta' ?></p>
-                                            </a>
-                                        </td>
-                                        <td><?= isset($patient['FechaInicioCita']) ? substr($patient['FechaInicioCita'], 0, 10) : 'Fecha de próx cita' ?></td>
-                                        <td class="additional-column" data-patient-id="<?= $patient[0] ?>"></td>
-                                    </tr>
-                                </tbody>
-                            <?php endforeach; ?>
+    <div class="before-details">
+        <table>
+            <?php foreach ($patients as $index => $patient) : ?>
+                <tbody>
+                    <tr <?php if ($index === 0) echo 'class="primera-fila"'; ?>>
+                        <td>
+                            <a style="cursor:pointer" class="show-info"
+                               data-patient-id="<?= $patient['IdPaciente'] ?>"
+                               data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>"
+                               data-edad="<?= $patient['Edad'] ?>"
+                               data-diagnostico="<?= $patient['Diagnostico'] ?>"
+                               data-tratamiento="<?= $patient['Tratamiento'] ?>"
+                               data-medicamentosprescritos="<?= $patient['MedicamentosPrescritos'] ?>"
+                               data-FechaInicioCita="<?= $patient['FechaInicioCita'] ?>"
+                               data-ultimosObjetivos="<?= $patient['UltimosObjetivos'] ?>"> <!-- Agrega este atributo -->
+                                <p style="cursor: pointer;" class="nombre-paciente"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
+                                <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?> / <?= isset($patient['MotivoConsulta']) ? $patient['MotivoConsulta'] : 'Motivo de Consulta' ?></p>
+                            </a>
+                        </td>
+                        <td><?= isset($patient['FechaInicioCita']) ? substr($patient['FechaInicioCita'], 0, 10) : 'Fecha de próx cita' ?></td>
+                        <td class="additional-column" data-patient-id="<?= $patient[0] ?>"></td>
+                    </tr>
+                </tbody>
+            <?php endforeach; ?>
+        </table>
+    </div>
+    <div class="patient-details"></div>
+</div>
 
-                        </table>
-                    </div>
                     <div class="patient-details">
 
                     </div>
@@ -318,10 +328,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <h2 class="arriba" for="#">Tratamiento </h2>
                 <p class="abajo">${tratamiento || 'Aun no hay cita'}</p>
             </div>
-            <div class="ci-input-group">
-                <h2 class="arriba" for="#">Objetivos Alcanzados </h2>
-                <p class="abajo">${medicamentosprescritos || 'Aun no hay cita'}</p>
-            </div>
+             <div class="ci-input-group">
+            <h2 class="arriba" for="#">Últimos Objetivos</h2>
+            <p class="abajo">${ultimosObjetivos || 'Aún no hay objetivos registrados'}</p>
+        </div>
             <div class="ci-input-group">
                 <h2 class="arriba" for="#">Primera cita </h2>
                 <p class="abajo">${FechaInicioCita || 'Aun no hay cita'}</p>
