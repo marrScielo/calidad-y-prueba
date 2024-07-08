@@ -1,63 +1,65 @@
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 .search-container {
-    text-align: center;
-    margin: 20px;
+  text-align: center;
+  margin: 20px;
 }
 .search-container input[type="text"] {
-    width: 300px;
-    padding: 10px;
-    margin-right: 10px;
-    width: 1200px;
+  width: 300px;
+  padding: 10px;
+  margin-right: 10px;
+  width: 1200px;
 }
 .search-container button {
-    padding: 10px 20px;
-    background-color: #F19294;
-    color: white;
-    border: none;
-    cursor: pointer;
+  padding: 10px 20px;
+  background-color: #f19294;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 .section-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
 }
 .left-section {
-    width: 20%;
-    padding: 20px;
+  width: 20%;
+  padding: 20px;
 }
 .right-section {
-    width: 80%;
-    padding: 20px;
+  width: 80%;
+  padding: 20px;
 }
 .psicologo-container {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    flex: 1 1 calc(33.333% - 20px); /* Adjust to show 3 psicologos per row */
-    box-sizing: border-box;
-    text-align: center; /* Centrar contenido dentro del contenedor */
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  flex: 1 1 calc(33.333% - 20px); /* Adjust to show 3 psicologos per row */
+  box-sizing: border-box;
+  text-align: center; /* Centrar contenido dentro del contenedor */
 }
 .psicologo-row {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 .testimonial {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: #fff;
 }
-.link-list, .social-links {
-    list-style-type: none;
-    padding: 0;
+.link-list,
+.social-links {
+  list-style-type: none;
+  padding: 0;
 }
-.link-list li, .social-links li {
-    margin: 5px 0;
+.link-list li,
+.social-links li {
+  margin: 5px 0;
 }
 
 .pagination {
