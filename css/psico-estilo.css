@@ -59,3 +59,78 @@ body {
 .link-list li, .social-links li {
     margin: 5px 0;
 }
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    color: #007bff;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: 1px solid #007bff;
+    margin: 0 5px;
+}
+
+.pagination a.active,
+.pagination a:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination a.disabled {
+    pointer-events: none;
+    color: #6c757d;
+    border-color: #6c757d;
+}
+/* estilos-psicologos.css */
+
+.wsp-button {
+background-color: #F19294;
+color: white;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.wsp-button:hover {
+background-color: #ee6e73;
+}
+/* estilos-psicologos.css */
+
+.testimonial {
+margin-top: 20px;
+}
+
+.testimonial h3 {
+font-size: 1.5rem;
+margin-bottom: 10px;
+}
+
+.testimonial-container {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+grid-gap: 20px;
+}
+
+.testimonial-item {
+background-color: #56B9B3;
+color: white;
+padding: 15px;
+border-radius: 5px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.testimonial-item h4 {
+margin-bottom: 5px;
+font-size: 1.2rem;
+}
+
+.testimonial-item p {
+font-size: 1rem;
+line-height: 1.4;
+}
