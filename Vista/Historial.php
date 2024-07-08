@@ -295,7 +295,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
             <div class="top-group">
                 <div class="name">
                     <h2 class="visual2">${nombres}</h2>
-                    <p class="arriba">${edad} años, ${patientId || 'Aun no hay id'}</p>
                     <p class="arriba">${edad} años, ${FechaInicioCita || 'Aun no hay cita'}</p>
                     <button type="button" class="green-button" id="butto">Ver Historial Medico</button>
                 </div>
