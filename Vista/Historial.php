@@ -313,7 +313,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <p class="abajo">${tratamiento || 'Aun no hay cita'}</p>
             </div>
             <div class="ci-input-group">
-                <h2 class="arriba" for="#">Medicamentos </h2>
+                <h2 class="arriba" for="#">Objetivos Alcanzados </h2>
                 <p class="abajo">${medicamentosprescritos || 'Aun no hay cita'}</p>
             </div>
             <div class="ci-input-group">

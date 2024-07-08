@@ -1,9 +1,22 @@
 <?php
 session_start();
 if (isset($_SESSION['NombrePsicologo'])){
+    // Datos de conexión a la base de datos
+    $servidor = "localhost";
+    $usuario = "root";
+    $contrasena = "";
+    $basedatos = "contigovoy3";
+
+    // Crear conexión
+    $conexion = new mysqli($servidor, $usuario, $contrasena, $basedatos);
+
+    // Verificar conexión
+    if ($conexion->connect_error) {
+        die("Error de conexión: " . $conexion->connect_error);
+    }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +27,7 @@ if (isset($_SESSION['NombrePsicologo'])){
     <link rel="icon" href="../Issets/images/contigovoyico.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Datos del Paciento</title>
+    <title>Datos del Paciente</title>
 </head>
 <body>    
 <div class="container">
@@ -183,38 +196,60 @@ if (isset($_SESSION['NombrePsicologo'])){
     });
   });
   
-//Buscador del paciente segun su id 
   $(document).ready(function() {
-    $('.codigoaa').click(function() {
-      var codigopac = $('#codigopac').val();
-      var idPsicologo = <?php echo $_SESSION['IdPsicologo']; ?>;
+  $('.codigoaa').click(function() {
+    var codigopac = $('#codigopac').val();
+    var NomPaciente = $('#NomPaciente').val();
+    var idPsicologo = <?php echo $_SESSION['IdPsicologo']; ?>;
 
-      // Realizar la solicitud AJAX al servidor
-      $.ajax({
-        url: '../Crud/Fetch/fetch_paciente.php', // Archivo PHP que procesa la solicitud
-        method: 'POST',
-        data: { codigopac: codigopac, idPsicologo: idPsicologo },
-        success: function(response) {
-          if (response.hasOwnProperty('error')) {
-            $('#Paciente').val(response.error);
-            $('#IdPaciente').val('');
-            $('#NomPaciente').val('');
-            $('#correo').val('');
-          } else {
-            $('#Paciente').val(response.nombre);
-            $('#NomPaciente').val(response.nom);
-		        $('#IdPaciente').val(response.id);
-		        $('#correo').val(response.correo);
-          }
-        },
-        error: function() {
-          $('#Paciente').val('Error al procesar la solicitud');
-          $('#NomPaciente').val('');
+    // Realizar la solicitud AJAX al servidor
+    $.ajax({
+      url: '../Crud/Fetch/fetch_paciente.php', // Archivo PHP que procesa la solicitud
+      method: 'POST',
+      data: { codigopac: codigopac, idPsicologo: idPsicologo },
+      success: function(response) {
+        if (response.hasOwnProperty('error')) {
+          $('#Paciente').val(response.error);
           $('#IdPaciente').val('');
+          $('#codigopac').val('');
+          $('#Diagnostico').val('');
+          $('#Tratamiento').val('');
+          $('#MotivoConsulta').val('');
+          $('#FormaContacto').val('');
+          $('#Observacion').val('');
+          $('#UltimosObjetivos').val('');
+        } else {
+          // Actualizar los campos del formulario con los datos del paciente
+          $('#Paciente').val(response.nombre);
+          $('#IdPaciente').val(response.id);
+          $('#codigopac').val(codigopac); // Actualizar el campo de código paciente
+          $('#Diagnostico').val(response.diagnostico);
+          $('#Tratamiento').val(response.tratamiento);
+          $('#MotivoConsulta').val(response.motivoConsulta);
+          $('#FormaContacto').val(response.formaContacto);
+          $('#Observacion').val(response.observacion);
+          $('#UltimosObjetivos').val(response.ultimosObjetivos);
         }
-      });
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        $('#Paciente').val('Error al procesar la solicitud');
+        $('#IdPaciente').val('');
+        $('#codigopac').val('');
+        $('#Diagnostico').val('');
+        $('#Tratamiento').val('');
+        $('#MotivoConsulta').val('');
+        $('#FormaContacto').val('');
+        $('#Observacion').val('');
+        $('#UltimosObjetivos').val('');
+        console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+      }
     });
   });
+});
+
+
+
+
 
 // Buscador paciente segun su nombre 
 $(document).ready(function() {
@@ -232,20 +267,40 @@ $(document).ready(function() {
           $('#Paciente').val(response.error);
           $('#IdPaciente').val('');
           $('#codigopac').val('');
+          $('#Diagnostico').val('');
+          $('#Tratamiento').val('');
+          $('#MotivoConsulta').val('');
+          $('#FormaContacto').val('');
+          $('#Observacion').val('');
+          $('#UltimosObjetivos').val('');
         } else {
           $('#Paciente').val(response.nombre);
-		      $('#IdPaciente').val(response.id);
-		      $('#codigopac').val(response.codigopac);
+          $('#IdPaciente').val(response.id);
+          $('#codigopac').val(response.codigopac);
+          $('#Diagnostico').val(response.diagnostico);
+          $('#Tratamiento').val(response.tratamiento);
+          $('#MotivoConsulta').val(response.motivoConsulta);
+          $('#FormaContacto').val(response.formaContacto);
+          $('#Observacion').val(response.observacion);
+          $('#UltimosObjetivos').val(response.ultimosObjetivos);
         }
       },
       error: function() {
         $('#Paciente').val('Error al procesar la solicitud');
         $('#IdPaciente').val('');
         $('#codigopac').val('');
+        $('#Diagnostico').val('');
+        $('#Tratamiento').val('');
+        $('#MotivoConsulta').val('');
+        $('#FormaContacto').val('');
+        $('#Observacion').val('');
+        $('#UltimosObjetivos').val('');
       }
     });
   });
 });
+
+
 </script>
 </html>
 <?php
