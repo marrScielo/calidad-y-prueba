@@ -174,60 +174,52 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 </div>
 
                 <div class="container-paciente-tabla">
-    <div class="before-details">
-        <table>
-            <?php foreach ($patients as $index => $patient) : ?>
-                <tbody>
-                    <tr <?php if ($index === 0) echo 'class="primera-fila"'; ?>>
-                        <td>
-                            <a style="cursor:pointer" class="show-info"
-                               data-patient-id="<?= $patient['IdPaciente'] ?>"
-                               data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>"
-                               data-edad="<?= $patient['Edad'] ?>"
-                               data-diagnostico="<?= $patient['Diagnostico'] ?>"
-                               data-tratamiento="<?= $patient['Tratamiento'] ?>"
-                               data-medicamentosprescritos="<?= $patient['MedicamentosPrescritos'] ?>"
-                               data-FechaInicioCita="<?= $patient['FechaInicioCita'] ?>"
-                               data-ultimosObjetivos="<?= $patient['UltimosObjetivos'] ?>"> <!-- Agrega este atributo -->
-                                <p style="cursor: pointer;" class="nombre-paciente"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
-                                <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?> / <?= isset($patient['MotivoConsulta']) ? $patient['MotivoConsulta'] : 'Motivo de Consulta' ?></p>
-                            </a>
-                        </td>
-                        <td><?= isset($patient['FechaInicioCita']) ? substr($patient['FechaInicioCita'], 0, 10) : 'Fecha de próx cita' ?></td>
-                        <td class="additional-column" data-patient-id="<?= $patient[0] ?>"></td>
-                    </tr>
-                </tbody>
-            <?php endforeach; ?>
-        </table>
-    </div>
-    <div class="patient-details"></div>
-</div>
-
-                    <div class="patient-details">
-
+                    <div class="before-details">
+                        <table>
+                            <?php foreach ($patients as $index => $patient) : ?>
+                                <tbody>
+                                    <tr <?php if ($index === 0) echo 'class="primera-fila"'; ?>>
+                                        <td>
+                                            <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>" data-diagnostico="<?= $patient['Diagnostico'] ?>" data-tratamiento="<?= $patient['Tratamiento'] ?>" data-medicamentosprescritos="<?= $patient['MedicamentosPrescritos'] ?>" data-FechaInicioCita="<?= $patient['FechaInicioCita'] ?>" data-ultimosObjetivos="<?= $patient['UltimosObjetivos'] ?>"> <!-- Agrega este atributo -->
+                                                <p style="cursor: pointer;" class="nombre-paciente"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
+                                                <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?> / <?= isset($patient['MotivoConsulta']) ? $patient['MotivoConsulta'] : 'Motivo de Consulta' ?></p>
+                                            </a>
+                                        </td>
+                                        <td><?= isset($patient['FechaInicioCita']) ? substr($patient['FechaInicioCita'], 0, 10) : 'Fecha de próx cita' ?></td>
+                                        <td class="additional-column" data-patient-id="<?= $patient[0] ?>"></td>
+                                    </tr>
+                                </tbody>
+                            <?php endforeach; ?>
+                        </table>
                     </div>
+                    <div class="patient-details"></div>
                 </div>
 
-                <div class="modal" id="patientModal">
-                    <div class="modal-content">
-                        <span class="close" id="closeModal" onclick="closePatientModal()">&times;</span>
-                        <h2 class="modal-title">Detalles del Paciente</h2>
-                        <div class="modal-body">
-                            <!-- Aquí se mostrarán los detalles del paciente -->
-                        </div>
-                    </div>
-                </div>
-                <div class="modal" id="historyModal">
-                    <div class="modal-content-detail">
-                        <span class="close" id="closeHistoryModal" onclick="closeHistoryModal()">&times;</span>
-                        <h2 class="modal-title">Detalles del Historial del Paciente</h2>
-                        <div class="modal-body" id="historyModalBody">
-                            <!-- Aquí se mostrarán los detalles del historial del paciente -->
-                        </div>
-                    </div>
-                </div>
+                <div class="patient-details">
 
-            </main>
+                </div>
+        </div>
+
+        <div class="modal" id="patientModal">
+            <div class="modal-content">
+                <span class="close" id="closeModal" onclick="closePatientModal()">&times;</span>
+                <h2 class="modal-title">Detalles del Paciente</h2>
+                <div class="modal-body">
+                    <!-- Aquí se mostrarán los detalles del paciente -->
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="historyModal">
+            <div class="modal-content-detail">
+                <span class="close" id="closeHistoryModal" onclick="closeHistoryModal()">&times;</span>
+                <h2 class="modal-title">Detalles del Historial del Paciente</h2>
+                <div class="modal-body" id="historyModalBody">
+                    <!-- Aquí se mostrarán los detalles del historial del paciente -->
+                </div>
+            </div>
+        </div>
+
+        </main>
 
 
         </div>
@@ -297,8 +289,17 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     const diagnostico = link.getAttribute('data-diagnostico');
                     const tratamiento = link.getAttribute('data-tratamiento');
                     const medicamentosprescritos = link.getAttribute('data-medicamentosprescritos');
-const FechaInicioCita = link.getAttribute('data-FechaInicioCita');
-const ultimosObjetivos = link.getAttribute('data-ultimosObjetivos'); // Agrega esta línea
+                    const FechaInicioCita = link.getAttribute('data-FechaInicioCita');
+                    // Formatear la fecha en español
+                    const opcionesFecha = {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    };
+                    const fechaFormateada = FechaInicioCita ? new Date(FechaInicioCita).toLocaleDateString('es-ES', opcionesFecha) : 'Aún no hay cita';
+
+                    const ultimosObjetivos = link.getAttribute('data-ultimosObjetivos'); // Agrega esta línea
 
 
                     // Crear el contenido de los detalles del paciente
@@ -307,7 +308,7 @@ const ultimosObjetivos = link.getAttribute('data-ultimosObjetivos'); // Agrega e
             <div class="top-group">
                 <div class="name">
                     <h2 class="visual2">${nombres}</h2>
-                    <p class="arriba">${edad} años, ${FechaInicioCita || 'Aun no hay cita'}</p>
+                    <p class="arriba">${edad} años, ${fechaFormateada || 'Aun no hay cita'}</p>
                     <button type="button" class="green-button" id="butto">Ver Historial Médico</button>
                 </div>
                 <div class="date">
@@ -332,7 +333,8 @@ const ultimosObjetivos = link.getAttribute('data-ultimosObjetivos'); // Agrega e
                 <p class="abajo">${FechaInicioCita || 'Aun no hay cita'}</p>
             </div>
             <div class="BUT">
-                <button type="button" class="green-button" id="button2">Nueva Entrada</button>
+                <a class="green-button" href="RegAtencionPaciente.php" id="button2" style="display: flex; align-items: center; justify-content: center;">Atencion al Paciente</a>
+
             </div>
         </div>
         <form id="patientForm" style="display:none;">
