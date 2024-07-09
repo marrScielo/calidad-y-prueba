@@ -175,8 +175,12 @@ function setTheme(theme) {
     document.querySelector('.theme-toggler .active').classList.remove('active');
     if (theme === 'dark') {
         document.querySelector('.theme-toggler span[data-theme="dark"]').classList.add('active');
+
+        document.querySelector(".form-info").style.backgroundColor = "#242630";
     } else {
         document.querySelector('.theme-toggler span[data-theme="light"]').classList.add('active');
+
+        document.querySelector(".form-info").style.backgroundColor = "white";
     }
     
     // Save the selected theme in localStorage
