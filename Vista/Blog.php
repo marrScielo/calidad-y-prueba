@@ -77,7 +77,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <textarea id="description" name="description" rows="4" required></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="image">Imagen URL:</label>
+                            <label for="image">Imagen:</label>
                             <input type="url" id="image" name="image" placeholder="Ingrese URL de imagen" required>
                         </div>
                         <button type="submit">Enviar</button>
