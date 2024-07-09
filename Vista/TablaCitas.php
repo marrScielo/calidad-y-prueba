@@ -26,7 +26,6 @@ if (isset($_SESSION['NombrePsicologo'])){
             }
             .container {
                 width: 100%;
-                padding: 10px;
             }
             .center-divs{
                 min-width: 900px;
@@ -42,9 +41,7 @@ if (isset($_SESSION['NombrePsicologo'])){
             }
             }
 
-            @media (min-width: 900px) {
-
-            }
+           
 
         </style>
     <?php

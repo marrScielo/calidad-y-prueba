@@ -45,6 +45,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
         <title>Datos de Paciente</title>
     </head>
     <style>
+
+            @media (max-width: 900px) {
+                body{
+
+                }
+                .animate_animated{
+                    overflow: auto;
+                }
+                .center-divs{
+                    min-width: 800px;
+                }
+                .container-paciente-tabla{
+                    min-width: 800px;
+                }
+                .recent-updates{
+                    min-width: 800px;
+                }
+            }
         /* Estilo para el modal principal */
         /* Estilo para el modal principal */
         /* Estilo para el modal principal */
