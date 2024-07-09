@@ -64,8 +64,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
         }
 
         /* Estilo para el modal principal */
-        /* Estilo para el modal principal */
-        /* Estilo para el modal principal */
         .modal {
             display: none;
             position: fixed;
@@ -345,6 +343,24 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     const tratamiento = link.getAttribute('data-tratamiento');
                     const medicamentosprescritos = link.getAttribute('data-medicamentosprescritos');
                     const FechaInicioCita = link.getAttribute('data-FechaInicioCita');
+                    // Formatear la fecha en español
+                    const opcionesFecha = {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    };
+                    const fechaFormateada = FechaInicioCita ? new Date(FechaInicioCita).toLocaleDateString('es-ES', opcionesFecha) : 'Aún no hay cita';
+
+                    let fechaFormateadaDM = '20/07';
+                    if (FechaInicioCita) {
+                        const fecha = new Date(FechaInicioCita);
+                        const dia = String(fecha.getDate()).padStart(2, '0');
+                        const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // getMonth() devuelve un número entre 0 y 11, por lo que sumamos 1
+                        fechaFormateadaDM = `${dia}/${mes}`;
+                    }
+
+
 
                     // Crear el contenido de los detalles del paciente
                     const patientInfoHTML = `
@@ -352,12 +368,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
             <div class="top-group">
                 <div class="name">
                     <h2 class="visual2">${nombres}</h2>
-                    <p class="arriba">${edad} años, ${patientId || 'Aun no hay id'}</p>
-                    <p class="arriba">${edad} años, ${FechaInicioCita || 'Aun no hay cita'}</p>
+                    <p class="arriba">${edad} años </p>
+                    <p class="arriba">${fechaFormateada  || 'Aun no hay cita'}</p>
                     <button type="button" class="green-button" id="butto">Ver Historial Medico</button>
                 </div>
                 <div class="date">
-                    <h6>20/07</h6>
+                    <h6>${fechaFormateadaDM } </h6>
                     <p>Próxima Consulta</p>
                 </div>
             </div>
@@ -370,7 +386,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <p class="abajo">${tratamiento || 'Aun no hay cita'}</p>
             </div>
             <div class="ci-input-group">
-                <h2 class="arriba" for="#">Medicamentos </h2>
+                <h2 class="arriba" for="#">Logros alcanzados </h2>
                 <p class="abajo">${medicamentosprescritos || 'Aun no hay cita'}</p>
             </div>
             <div class="ci-input-group">
