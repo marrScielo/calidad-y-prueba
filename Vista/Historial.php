@@ -46,8 +46,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
     </head>
     <style>
         @media (max-width: 900px) {
-            body {}
-
             .animate_animated {
                 overflow: auto;
             }
