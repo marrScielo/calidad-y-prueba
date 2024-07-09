@@ -3,29 +3,29 @@ session_start();
 if (isset($_SESSION['NombrePsicologo'])) {
 ?>
 
-<?php
-require_once '../conexion/conexion.php';
+    <?php
+    require_once '../conexion/conexion.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset($_POST['observacion'])) {
-    // Obtener el ID de atención del paciente y la nueva observación del formulario
-    $patientId = $_POST['patientId'];
-    $observacion = $_POST['observacion'];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset($_POST['observacion'])) {
+        // Obtener el ID de atención del paciente y la nueva observación del formulario
+        $patientId = $_POST['patientId'];
+        $observacion = $_POST['observacion'];
 
-    // Realizar la actualización en la base de datos
-    $sql = "UPDATE atencionpaciente SET Observacion = :observacion WHERE IdAtencion = :patientId";
+        // Realizar la actualización en la base de datos
+        $sql = "UPDATE atencionpaciente SET Observacion = :observacion WHERE IdAtencion = :patientId";
 
-    try {
-        $con = new conexion();
-        $conn = $con->conexion();
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':patientId', $patientId, PDO::PARAM_INT);
-        $stmt->bindParam(':observacion', $observacion, PDO::PARAM_STR);
-        $stmt->execute();
-    } catch (PDOException $e) {
-        echo json_encode(['error' => 'Error en la conexión: ' . $e->getMessage()]);
+        try {
+            $con = new conexion();
+            $conn = $con->conexion();
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':patientId', $patientId, PDO::PARAM_INT);
+            $stmt->bindParam(':observacion', $observacion, PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo json_encode(['error' => 'Error en la conexión: ' . $e->getMessage()]);
+        }
     }
-}
-?>
+    ?>
 
 
     <!DOCTYPE html>
@@ -45,24 +45,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
         <title>Datos de Paciente</title>
     </head>
     <style>
+        @media (max-width: 900px) {
+            body {}
 
-            @media (max-width: 900px) {
-                body{
-
-                }
-                .animate_animated{
-                    overflow: auto;
-                }
-                .center-divs{
-                    min-width: 800px;
-                }
-                .container-paciente-tabla{
-                    min-width: 800px;
-                }
-                .recent-updates{
-                    min-width: 800px;
-                }
+            .animate_animated {
+                overflow: auto;
             }
+
+            .center-divs {
+                min-width: 800px;
+            }
+
+            .container-paciente-tabla {
+                min-width: 800px;
+            }
+
+            .recent-updates {
+                min-width: 800px;
+            }
+        }
+
         /* Estilo para el modal principal */
         /* Estilo para el modal principal */
         /* Estilo para el modal principal */
@@ -81,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
             ;
         }
 
-        .green-button{
+        .green-button {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -168,7 +170,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
         }
 
         /* Estilos para el botón "Ver Detalles" dentro del modal de historial */
-        .ver-detalles-button, .actualizar-nota-button, .button_update_note {
+        .ver-detalles-button,
+        .actualizar-nota-button,
+        .button_update_note {
             width: 130px;
             height: 30px;
             border-radius: 30px;
@@ -180,11 +184,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
             /* Transición suave para el color de fondo */
         }
 
-        .button_update_note{
+        .button_update_note {
             margin-top: 10px;
         }
 
-        .ver-detalles-button:hover, .actualizar-nota-button:hover, .button_update_note {
+        .ver-detalles-button:hover,
+        .actualizar-nota-button:hover,
+        .button_update_note {
             color: var(--color-dark);
             font-weight: 700;
             cursor: pointer;
@@ -374,7 +380,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
                 <p class="abajo">${FechaInicioCita || 'Aun no hay cita'}</p>
             </div>
             <div class="BUT">
-                <a href="RegAtencionPaciente.php" class="green-button" id="button2">Nueva Entrada</a>
+                <a href="RegAtencionPaciente.php" class="green-button" id="button2">Atención Paciente</a>
             </div>
         </div>
         <form id="patientForm" style="display:none;">
@@ -526,7 +532,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
                 patientModal.style.display = 'none';
             }
             // ...
-
         </script>
 
         <script>
