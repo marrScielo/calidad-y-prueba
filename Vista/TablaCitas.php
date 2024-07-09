@@ -19,6 +19,34 @@ if (isset($_SESSION['NombrePsicologo'])){
     <title>Citas</title>
 </head>
 <body>
+<style>
+            @media (max-width: 900px) {
+            body {
+
+            }
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+            .center-divs{
+                min-width: 900px;
+            }
+            .contenedor-botones{
+                min-width: 900px;
+            }
+            table{
+                min-width: 900px;
+            }
+            .animate__animated{
+                overflow: auto;
+            }
+            }
+
+            @media (min-width: 900px) {
+
+            }
+
+        </style>
     <?php
     require("../Controlador/Cita/ControllerCita.php");
     $obj=new usernameControlerCita();
