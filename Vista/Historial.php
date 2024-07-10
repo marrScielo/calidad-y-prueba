@@ -2,7 +2,6 @@
 session_start();
 if (isset($_SESSION['NombrePsicologo'])) {
 ?>
-
     <?php
     require_once '../conexion/conexion.php';
 
@@ -37,7 +36,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
         }
     }
     ?>
-
 
     <!DOCTYPE html>
     <html lang="en">
@@ -219,7 +217,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
         require_once("../Controlador/Paciente/ControllerPaciente.php");
         $Pac = new usernameControlerPaciente();
         $patients = $Pac->showCompletoAtencion($_SESSION['IdPsicologo']);
-
         ?>
         <div class="container">
             <?php
@@ -249,19 +246,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <?php foreach ($patients as $index => $patient) : ?>
                                 <tbody>
                                     <tr <?php if ($index === 0) echo 'class="primera-fila"'; ?>>
-                                        
+
                                         <td>
-                                            <a style="cursor:pointer" class="show-info" 
-                                                data-patient-id="<?= $patient['IdPaciente'] ?>" 
-                                                data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" 
-                                                data-edad="<?= $patient['Edad'] ?>" 
-                                                data-dni="<?= $patient['Dni'] ?>" 
-                                                data-celular="<?= $patient['Telefono'] ?>" 
-                                                data-codigo="<?= $patient['codigopac'] ?>" 
-                                                data-diagnostico="<?= $patient['Diagnostico'] ?>" 
-                                                data-enfermedad="<?= $patient['Tratamiento'] ?>" 
-                                                data-observacion="<?= $patient['Observacion'] ?>" 
-                                                data-FechaInicioCita="<?=$patient['FechaRegistro']?>">
+                                            <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>" data-dni="<?= $patient['Dni'] ?>" data-celular="<?= $patient['Telefono'] ?>" data-codigo="<?= $patient['codigopac'] ?>" data-diagnostico="<?= $patient['Diagnostico'] ?>" data-enfermedad="<?= $patient['IdEnfermedad'] ?>" data-observacion="<?= $patient['Observacion'] ?>" data-FechaInicioCita="<?= $patient['FechaRegistro'] ?>">
                                                 <p style="cursor: pointer;" class="nombre-paciente"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
                                                 <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?> / <?= isset($patient['MotivoConsulta']) ? $patient['MotivoConsulta'] : 'Motivo de Consulta' ?></p>
                                             </a>
@@ -389,6 +376,64 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         fechaFormateadaDM = `${dia}/${mes}`;
                     }
 
+                    const enfermedadId = link.getAttribute('data-enfermedad');
+
+        //             fetch(`../Crud/Fetch/obtener_clasificacion_enfermedad.php?id=${enfermedadId}`)
+        //                 .then(response => response.json())
+        //                 .then(data => {
+        //                     const {
+        //                         clasificacion
+        //                     } = data;
+
+        //                     const patientInfoHTML = `
+        //     <div style="display: grid; flex-direction: row; gap: 10px;">
+        //         <div class="top-group">
+        //             <div class="name">
+        //                 <h2 class="visual2">${nombres}</h2>
+        //                 <p class="arriba">${edad} años | DNI: ${dni}</p>
+        //                 <p class="arriba">Celular: ${celular} | Código: ${codigo} </p>
+            
+        //                 <button type="button" class="green-button" id="butto">Ver Historial Medico</button>
+        //             </div>
+        //             <div class="date">
+        //                 <h6>${fechaFormateadaDM}</h6>
+        //                 <p>Próxima Consulta</p>
+        //             </div>
+        //         </div>
+        //         <div class="ci-input-group">
+        //             <h2 class="arriba" for="#">Clasificación de Enfermedad </h2>
+        //             <p class="abajo">${clasificacion || 'Aun no hay clasificación'}</p>
+        //         </div>
+        //         <div class="ci-input-group">
+        //             <h2 class="arriba" for="#">Diagnóstico </h2>
+        //             <p class="abajo">${diagnostico || 'Aun no hay diagnóstico'}</p>
+        //         </div>
+        //         <div class="ci-input-group">
+        //             <h2 class="arriba" for="#">Observación </h2>
+        //             <p class="abajo">${observacion || 'Aun no hay observación'}</p>
+        //         </div>
+        //         <div class="ci-input-group">
+        //             <h2 class="arriba" for="#">Última cita </h2>
+        //             <p class="abajo">${fechaFormateada || 'Aun no hay cita'}</p>
+        //         </div>
+        //         <div class="BUT">
+        //             <a href="RegAtencionPaciente.php" class="green-button" id="button2">Atención Paciente</a>
+        //         </div>
+        //     </div>
+        //     <form id="patientForm" style="display:none;">
+        //         <label for="patientId">Ingrese el ID del paciente:</label>
+        //         <input type="text" id="patientId" name="patientId" required>
+        //         <button type="button" id="showAllPatientsButton">Mostrar Detalles del Paciente</button>
+        //     </form>
+        // `;
+
+        //                     // Aquí actualizas el DOM con patientInfoHTML
+        //                     document.getElementById('patientInfoContainer').innerHTML = patientInfoHTML;
+        //                 })
+        //                 .catch(error => {
+        //                     console.error('Error al obtener la clasificación de la enfermedad:', error);
+        //                 });
+
 
 
                     // Crear el contenido de los detalles del paciente
@@ -399,7 +444,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                     <h2 class="visual2">${nombres}</h2>
                                     <p class="arriba">${edad} años | DNI: ${dni}</p>
                                     <p class="arriba">Celular: ${celular} | Código: ${codigo} </p>
-            
+
                                     <button type="button" class="green-button" id="butto">Ver Historial Medico</button>
                                 </div>
                                 <div class="date">
@@ -409,7 +454,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             </div>
                             <div class="ci-input-group">
                                 <h2 class="arriba" for="#">Enfermedad </h2>
-                                <p class="abajo">${enfermedad || 'Aun no hay enfermedad'}</p>
+                                <p class="abajo">Id Enfermedad: ${enfermedad || 'Aun no hay enfermedad'}</p>
                             </div>
                             <div class="ci-input-group">
                                 <h2 class="arriba" for="#">Diagnóstico </h2>
@@ -433,6 +478,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <button type="button" id="showAllPatientsButton">Mostrar Detalles del Paciente</button>
                         </form>
                     `;
+
+
 
                     // Mostrar la información en el elemento .patient-details
                     patientDetails.innerHTML = patientInfoHTML;

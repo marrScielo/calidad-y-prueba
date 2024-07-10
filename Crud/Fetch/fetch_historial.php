@@ -43,7 +43,7 @@ $sql = "SELECT
             paciente p
         LEFT JOIN 
             atencionpaciente a ON p.IdPaciente = a.IdPaciente 
-         LEFT JOIN 
+        LEFT JOIN 
             enfermedad e ON a.IdEnfermedad = e.IdEnfermedad 
         WHERE 
             p.IdPaciente = :patientId";
