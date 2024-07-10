@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
         $stmt->execute();
     } catch (PDOException $e) {
         echo json_encode(['error' => 'Error en la conexión: ' . $e->getMessage()]);
-    }
+    }}
     ?>
 
 
