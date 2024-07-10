@@ -249,13 +249,24 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <?php foreach ($patients as $index => $patient) : ?>
                                 <tbody>
                                     <tr <?php if ($index === 0) echo 'class="primera-fila"'; ?>>
+                                        
                                         <td>
-                                            <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>" data-diagnostico="<?= $patient['Diagnostico'] ?>" data-tratamiento="<?= $patient['Tratamiento'] ?>" data-medicamentosprescritos="<?= $patient['MedicamentosPrescritos'] ?>" data-FechaInicioCita="<?= $patient['FechaInicioCita'] ?>">
+                                            <a style="cursor:pointer" class="show-info" 
+                                                data-patient-id="<?= $patient['IdPaciente'] ?>" 
+                                                data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" 
+                                                data-edad="<?= $patient['Edad'] ?>" 
+                                                data-dni="<?= $patient['Dni'] ?>" 
+                                                data-celular="<?= $patient['Telefono'] ?>" 
+                                                data-codigo="<?= $patient['codigopac'] ?>" 
+                                                data-diagnostico="<?= $patient['Diagnostico'] ?>" 
+                                                data-enfermedad="<?= $patient['Tratamiento'] ?>" 
+                                                data-observacion="<?= $patient['Observacion'] ?>" 
+                                                data-FechaInicioCita="<?=$patient['FechaRegistro']?>">
                                                 <p style="cursor: pointer;" class="nombre-paciente"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
                                                 <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?> / <?= isset($patient['MotivoConsulta']) ? $patient['MotivoConsulta'] : 'Motivo de Consulta' ?></p>
                                             </a>
                                         </td>
-                                        <td><?= isset($patient['FechaInicioCita']) ? substr($patient['FechaInicioCita'], 0, 10) : 'Fecha de próx cita' ?></td>
+                                        <td><?= isset($patient['FechaRegistro']) ? substr($patient['FechaRegistro'], 0, 10) : 'Fecha de próx cita' ?></td>
                                         <td class="additional-column" data-patient-id="<?= $patient[0] ?>"></td>
                                     </tr>
                                 </tbody>
@@ -354,9 +365,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     // Obtener los datos del paciente
                     const nombres = link.getAttribute('data-nombres');
                     const edad = link.getAttribute('data-edad');
+                    const dni = link.getAttribute('data-dni');
+                    const celular = link.getAttribute('data-celular');
+                    const codigo = link.getAttribute('data-codigo');
+                    const enfermedad = link.getAttribute('data-enfermedad');
                     const diagnostico = link.getAttribute('data-diagnostico');
-                    const tratamiento = link.getAttribute('data-tratamiento');
-                    const medicamentosprescritos = link.getAttribute('data-medicamentosprescritos');
+                    const observacion = link.getAttribute('data-observacion');
                     const FechaInicioCita = link.getAttribute('data-FechaInicioCita');
                     // Formatear la fecha en español
                     const opcionesFecha = {
@@ -379,45 +393,46 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                     // Crear el contenido de los detalles del paciente
                     const patientInfoHTML = `
-        <div style="display:grid; flex-direction:row; gap:10px;">
-            <div class="top-group">
-                <div class="name">
-                    <h2 class="visual2">${nombres}</h2>
-                    <p class="arriba">${edad} años </p>
-                    <p class="arriba">${fechaFormateada  || 'Aun no hay cita'}</p>
-                    <button type="button" class="green-button" id="butto">Ver Historial Medico</button>
-                </div>
-                <div class="date">
-                    <h6>${fechaFormateadaDM } </h6>
-                    <p>Próxima Consulta</p>
-                </div>
-            </div>
-            <div class="ci-input-group">
-                <h2 class="arriba" for="#">Diagnostico </h2>
-                <p class="abajo">${diagnostico || 'Aun no hay cita'}</p>
-            </div>
-            <div class="ci-input-group">
-                <h2 class="arriba" for="#">Tratamiento </h2>
-                <p class="abajo">${tratamiento || 'Aun no hay cita'}</p>
-            </div>
-            <div class="ci-input-group">
-                <h2 class="arriba" for="#">Logros alcanzados </h2>
-                <p class="abajo">${medicamentosprescritos || 'Aun no hay cita'}</p>
-            </div>
-            <div class="ci-input-group">
-                <h2 class="arriba" for="#">Primera cita </h2>
-                <p class="abajo">${FechaInicioCita || 'Aun no hay cita'}</p>
-            </div>
-            <div class="BUT">
-                <a href="RegAtencionPaciente.php" class="green-button" id="button2">Atención Paciente</a>
-            </div>
-        </div>
-        <form id="patientForm" style="display:none;">
-            <label for="patientId">Ingrese el ID del paciente:</label>
-            <input type="text" id="patientId" name="patientId" required>
-            <button type="button" id="showAllPatientsButton">Mostrar Detalles del Paciente</button>
-        </form>
-    `;
+                        <div style="display:grid; flex-direction:row; gap:10px;">
+                            <div class="top-group">
+                                <div class="name">
+                                    <h2 class="visual2">${nombres}</h2>
+                                    <p class="arriba">${edad} años | DNI: ${dni}</p>
+                                    <p class="arriba">Celular: ${celular} | Código: ${codigo} </p>
+            
+                                    <button type="button" class="green-button" id="butto">Ver Historial Medico</button>
+                                </div>
+                                <div class="date">
+                                    <h6>${fechaFormateadaDM } </h6>
+                                    <p>Próxima Consulta</p>
+                                </div>
+                            </div>
+                            <div class="ci-input-group">
+                                <h2 class="arriba" for="#">Enfermedad </h2>
+                                <p class="abajo">${enfermedad || 'Aun no hay enfermedad'}</p>
+                            </div>
+                            <div class="ci-input-group">
+                                <h2 class="arriba" for="#">Diagnóstico </h2>
+                                <p class="abajo">${diagnostico || 'Aun no hay diagnóstico'}</p>
+                            </div>
+                            <div class="ci-input-group">
+                                <h2 class="arriba" for="#">Observación </h2>
+                                <p class="abajo">${observacion || 'Aun no hay observacion'}</p>
+                            </div>
+                            <div class="ci-input-group">
+                                <h2 class="arriba" for="#">Última cita </h2>
+                                <p class="abajo">${fechaFormateada  || 'Aun no hay cita'}</p>
+                            </div>
+                            <div class="BUT">
+                                <a href="RegAtencionPaciente.php" class="green-button" id="button2">Atención Paciente</a>
+                            </div>
+                        </div>
+                        <form id="patientForm" style="display:none;">
+                            <label for="patientId">Ingrese el ID del paciente:</label>
+                            <input type="text" id="patientId" name="patientId" required>
+                            <button type="button" id="showAllPatientsButton">Mostrar Detalles del Paciente</button>
+                        </form>
+                    `;
 
                     // Mostrar la información en el elemento .patient-details
                     patientDetails.innerHTML = patientInfoHTML;
