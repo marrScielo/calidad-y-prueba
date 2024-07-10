@@ -18,6 +18,94 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <title>Blog</title>
+        <style>
+            .cerrar-info:hover{
+                color: #49c691;
+            }
+            
+            /* Media queries para dispositivos móviles */
+            @media only screen and (max-width: 600px) {
+            .form-container {
+                padding: 10px;
+                margin: 1px;
+                margin-left: -30px;
+                max-width: 100%;
+                box-shadow: none;
+            }
+            .form-group label {
+                font-size: 14px;
+            }
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 14px;
+                padding: 8px;
+            }
+            button {
+                font-size: 14px;
+                padding: 8px;
+            }
+            .modal-content, .modal-content-detail {
+                width: 90%;
+                padding: 10px;
+            }
+
+            #top_fixed{
+                margin-left: 20px;
+                font-size: 10px; 
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 5px;
+                margin-top: 8px;
+            }
+            #profile_fixed{
+                display: none;
+            }
+            .cerrar-info{
+
+                width: 130px;
+                margin-left: 10px;
+            }
+
+            
+            }
+
+            /* Media queries para tabletas */
+            @media only screen and (min-width: 601px) and (max-width: 1024px) {
+            .form-container {
+                padding: 15px;
+                margin: 15px;
+                max-width: 90%;
+                box-shadow: none;
+            }
+            .form-group label {
+                font-size: 16px;
+            }
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 16px;
+                padding: 10px;
+            }
+            button {
+                font-size: 16px;
+                padding: 10px;
+            }
+            .modal-content, .modal-content-detail {
+                width: 80%;
+                padding: 15px;
+            }
+
+            #top_fixed{
+                margin-top: 8px;
+            }
+
+            #profile_fixed{
+                display: none;
+            }
+            }
+
+        </style>
     </head>
     <body>
         <?php
@@ -77,7 +165,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <textarea id="description" name="description" rows="4" required></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="image">Imagen URL:</label>
+                            <label for="image">Imagen:</label>
                             <input type="url" id="image" name="image" placeholder="Ingrese URL de imagen" required>
                         </div>
                         <button type="submit">Enviar</button>

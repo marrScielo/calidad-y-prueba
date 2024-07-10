@@ -3,8 +3,8 @@ session_start();
 if (isset($_SESSION['NombrePsicologo'])) {
 ?>
 
-<?php
-require_once '../conexion/conexion.php';
+    <?php
+    require_once '../conexion/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset($_POST['observacion']) && isset($_POST['diagnostico']) && isset($_POST['tratamiento']) && isset($_POST['objetivos'])) {
     // Obtener los valores del formulario
@@ -35,8 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
     } catch (PDOException $e) {
         echo json_encode(['error' => 'Error en la conexión: ' . $e->getMessage()]);
     }
-}
-?>
+    ?>
 
 
     <!DOCTYPE html>
@@ -56,26 +55,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
         <title>Datos de Paciente</title>
     </head>
     <style>
-
-            @media (max-width: 900px) {
-                body{
-
-                }
-                .animate_animated{
-                    overflow: auto;
-                }
-                .center-divs{
-                    min-width: 800px;
-                }
-                .container-paciente-tabla{
-                    min-width: 800px;
-                }
-                .recent-updates{
-                    min-width: 800px;
-                }
+        @media (max-width: 900px) {
+            .animate_animated {
+                overflow: auto;
             }
-        /* Estilo para el modal principal */
-        /* Estilo para el modal principal */
+
+            .center-divs {
+                min-width: 800px;
+            }
+
+            .container-paciente-tabla {
+                min-width: 800px;
+            }
+
+            .recent-updates {
+                min-width: 800px;
+            }
+        }
+
         /* Estilo para el modal principal */
         .modal {
             display: none;
@@ -92,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
             ;
         }
 
-        .green-button{
+        .green-button {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -179,7 +176,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
         }
 
         /* Estilos para el botón "Ver Detalles" dentro del modal de historial */
-        .ver-detalles-button, .actualizar-nota-button, .button_update_note {
+        .ver-detalles-button,
+        .actualizar-nota-button,
+        .button_update_note {
             width: 130px;
             height: 30px;
             border-radius: 30px;
@@ -191,11 +190,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
             /* Transición suave para el color de fondo */
         }
 
-        .button_update_note{
+        .button_update_note {
             margin-top: 10px;
         }
 
-        .ver-detalles-button:hover, .actualizar-nota-button:hover, .button_update_note {
+        .ver-detalles-button:hover,
+        .actualizar-nota-button:hover,
+        .button_update_note {
             color: var(--color-dark);
             font-weight: 700;
             cursor: pointer;
@@ -355,6 +356,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
                     const tratamiento = link.getAttribute('data-tratamiento');
                     const medicamentosprescritos = link.getAttribute('data-medicamentosprescritos');
                     const FechaInicioCita = link.getAttribute('data-FechaInicioCita');
+                    // Formatear la fecha en español
+                    const opcionesFecha = {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    };
+                    const fechaFormateada = FechaInicioCita ? new Date(FechaInicioCita).toLocaleDateString('es-ES', opcionesFecha) : 'Aún no hay cita';
+
+                    let fechaFormateadaDM = '20/07';
+                    if (FechaInicioCita) {
+                        const fecha = new Date(FechaInicioCita);
+                        const dia = String(fecha.getDate()).padStart(2, '0');
+                        const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // getMonth() devuelve un número entre 0 y 11, por lo que sumamos 1
+                        fechaFormateadaDM = `${dia}/${mes}`;
+                    }
+
+
 
                     // Crear el contenido de los detalles del paciente
                     const patientInfoHTML = `
@@ -362,12 +381,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
             <div class="top-group">
                 <div class="name">
                     <h2 class="visual2">${nombres}</h2>
-                    <p class="arriba">${edad} años, ${patientId || 'Aun no hay id'}</p>
-                    <p class="arriba">${edad} años, ${FechaInicioCita || 'Aun no hay cita'}</p>
+                    <p class="arriba">${edad} años </p>
+                    <p class="arriba">${fechaFormateada  || 'Aun no hay cita'}</p>
                     <button type="button" class="green-button" id="butto">Ver Historial Medico</button>
                 </div>
                 <div class="date">
-                    <h6>20/07</h6>
+                    <h6>${fechaFormateadaDM } </h6>
                     <p>Próxima Consulta</p>
                 </div>
             </div>
@@ -380,7 +399,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
                 <p class="abajo">${tratamiento || 'Aun no hay cita'}</p>
             </div>
             <div class="ci-input-group">
-                <h2 class="arriba" for="#">Medicamentos </h2>
+                <h2 class="arriba" for="#">Logros alcanzados </h2>
                 <p class="abajo">${medicamentosprescritos || 'Aun no hay cita'}</p>
             </div>
             <div class="ci-input-group">
@@ -388,7 +407,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
                 <p class="abajo">${FechaInicioCita || 'Aun no hay cita'}</p>
             </div>
             <div class="BUT">
-                <a href="RegAtencionPaciente.php" class="green-button" id="button2">Nueva Entrada</a>
+                <a href="RegAtencionPaciente.php" class="green-button" id="button2">Atención Paciente</a>
             </div>
         </div>
         <form id="patientForm" style="display:none;">
@@ -549,7 +568,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
                 patientModal.style.display = 'none';
             }
             // ...
-
         </script>
 
         <script>
