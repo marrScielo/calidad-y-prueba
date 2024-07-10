@@ -59,9 +59,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
             </a>
         </div>
     </div>
+
     <div class="profile">
         <div class="info">
-            <p>| <b><?= $_SESSION['NombrePsicologo'] ?> | </b></p>
+            <div></div>
+            <p><?= $_SESSION['NombrePsicologo'] ?></p>
+            <div></div>
         </div>
     </div>
     <a href="../Issets/views/Salir.php">

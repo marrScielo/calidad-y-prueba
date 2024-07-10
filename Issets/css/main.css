@@ -356,6 +356,15 @@ main .theme-toggler span.active {
 .info{
     font-size: 15px;
     font-weight: bold;
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.info>div{
+    height: 24px;
+    width: 2px;
+    background-color: #000;
 }
 
 .cerrar-info{
