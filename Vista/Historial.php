@@ -2,6 +2,32 @@
 session_start();
 if (isset($_SESSION['NombrePsicologo'])) {
 ?>
+
+    <?php
+    require_once '../conexion/conexion.php';
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset($_POST['observacion'])) {
+        // Obtener el ID de atención del paciente y la nueva observación del formulario
+        $patientId = $_POST['patientId'];
+        $observacion = $_POST['observacion'];
+
+        // Realizar la actualización en la base de datos
+        $sql = "UPDATE atencionpaciente SET Observacion = :observacion WHERE IdAtencion = :patientId";
+
+        try {
+            $con = new conexion();
+            $conn = $con->conexion();
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':patientId', $patientId, PDO::PARAM_INT);
+            $stmt->bindParam(':observacion', $observacion, PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo json_encode(['error' => 'Error en la conexión: ' . $e->getMessage()]);
+        }
+    }
+    ?>
+
+
     <!DOCTYPE html>
     <html lang="en">
 
@@ -19,8 +45,24 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <title>Datos de Paciente</title>
     </head>
     <style>
-        /* Estilo para el modal principal */
-        /* Estilo para el modal principal */
+        @media (max-width: 900px) {
+            .animate_animated {
+                overflow: auto;
+            }
+
+            .center-divs {
+                min-width: 800px;
+            }
+
+            .container-paciente-tabla {
+                min-width: 800px;
+            }
+
+            .recent-updates {
+                min-width: 800px;
+            }
+        }
+
         /* Estilo para el modal principal */
         .modal {
             display: none;
@@ -35,6 +77,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
             align-items: center;
             background-color: rgba(0, 0, 0, 0.1);
             ;
+        }
+
+        .green-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-content {
@@ -118,8 +166,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
         }
 
         /* Estilos para el botón "Ver Detalles" dentro del modal de historial */
-        .ver-detalles-button {
-
+        .ver-detalles-button,
+        .actualizar-nota-button,
+        .button_update_note {
             width: 130px;
             height: 30px;
             border-radius: 30px;
@@ -131,7 +180,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
             /* Transición suave para el color de fondo */
         }
 
-        .ver-detalles-button:hover {
+        .button_update_note {
+            margin-top: 10px;
+        }
+
+        .ver-detalles-button:hover,
+        .actualizar-nota-button:hover,
+        .button_update_note {
             color: var(--color-dark);
             font-weight: 700;
             cursor: pointer;
@@ -168,7 +223,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         <span id="search-icon"><i class="fas fa-search"></i></span>
                         <input type="text" id="myInput" placeholder="Buscar Paciente" class="input" required>
                     </div>
-                    <a class="button-arriba" style="padding:10px 30px; font-size:10px;" href="RegPaciente.php">
+                    <a class="button-arriba" style="padding:10px 30px; font-size:10px;" href="RegAtencionPaciente.php">
                         <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Paciente
                     </a>
                 </div>
@@ -180,7 +235,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <tbody>
                                     <tr <?php if ($index === 0) echo 'class="primera-fila"'; ?>>
                                         <td>
-                                            <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>" data-diagnostico="<?= $patient['Diagnostico'] ?>" data-tratamiento="<?= $patient['Tratamiento'] ?>" data-medicamentosprescritos="<?= $patient['MedicamentosPrescritos'] ?>" data-FechaInicioCita="<?= $patient['FechaInicioCita'] ?>" data-ultimosObjetivos="<?= $patient['UltimosObjetivos'] ?>"> <!-- Agrega este atributo -->
+                                            <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>" data-diagnostico="<?= $patient['Diagnostico'] ?>" data-tratamiento="<?= $patient['Tratamiento'] ?>" data-medicamentosprescritos="<?= $patient['MedicamentosPrescritos'] ?>" data-FechaInicioCita="<?= $patient['FechaInicioCita'] ?>">
                                                 <p style="cursor: pointer;" class="nombre-paciente"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
                                                 <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?> / <?= isset($patient['MotivoConsulta']) ? $patient['MotivoConsulta'] : 'Motivo de Consulta' ?></p>
                                             </a>
@@ -190,36 +245,34 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                     </tr>
                                 </tbody>
                             <?php endforeach; ?>
+
                         </table>
                     </div>
-                    <div class="patient-details"></div>
+                    <div class="patient-details">
+
+                    </div>
                 </div>
 
-                <div class="patient-details">
-
+                <div class="modal" id="patientModal">
+                    <div class="modal-content">
+                        <span class="close" id="closeModal" onclick="closePatientModal()">&times;</span>
+                        <h2 class="modal-title">Detalles del Paciente</h2>
+                        <div class="modal-body">
+                            <!-- Aquí se mostrarán los detalles del paciente -->
+                        </div>
+                    </div>
                 </div>
-        </div>
-
-        <div class="modal" id="patientModal">
-            <div class="modal-content">
-                <span class="close" id="closeModal" onclick="closePatientModal()">&times;</span>
-                <h2 class="modal-title">Detalles del Paciente</h2>
-                <div class="modal-body">
-                    <!-- Aquí se mostrarán los detalles del paciente -->
+                <div class="modal" id="historyModal">
+                    <div class="modal-content-detail">
+                        <span class="close" id="closeHistoryModal" onclick="closeHistoryModal()">&times;</span>
+                        <h2 class="modal-title">Detalles del Historial del Paciente</h2>
+                        <div class="modal-body" id="historyModalBody">
+                            <!-- Aquí se mostrarán los detalles del historial del paciente -->
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="modal" id="historyModal">
-            <div class="modal-content-detail">
-                <span class="close" id="closeHistoryModal" onclick="closeHistoryModal()">&times;</span>
-                <h2 class="modal-title">Detalles del Historial del Paciente</h2>
-                <div class="modal-body" id="historyModalBody">
-                    <!-- Aquí se mostrarán los detalles del historial del paciente -->
-                </div>
-            </div>
-        </div>
 
-        </main>
+            </main>
 
 
         </div>
@@ -299,7 +352,14 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     };
                     const fechaFormateada = FechaInicioCita ? new Date(FechaInicioCita).toLocaleDateString('es-ES', opcionesFecha) : 'Aún no hay cita';
 
-                    const ultimosObjetivos = link.getAttribute('data-ultimosObjetivos'); // Agrega esta línea
+                    let fechaFormateadaDM = '20/07';
+                    if (FechaInicioCita) {
+                        const fecha = new Date(FechaInicioCita);
+                        const dia = String(fecha.getDate()).padStart(2, '0');
+                        const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // getMonth() devuelve un número entre 0 y 11, por lo que sumamos 1
+                        fechaFormateadaDM = `${dia}/${mes}`;
+                    }
+
 
 
                     // Crear el contenido de los detalles del paciente
@@ -308,11 +368,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
             <div class="top-group">
                 <div class="name">
                     <h2 class="visual2">${nombres}</h2>
-                    <p class="arriba">${edad} años, ${fechaFormateada || 'Aun no hay cita'}</p>
-                    <button type="button" class="green-button" id="butto">Ver Historial Médico</button>
+                    <p class="arriba">${edad} años </p>
+                    <p class="arriba">${fechaFormateada  || 'Aun no hay cita'}</p>
+                    <button type="button" class="green-button" id="butto">Ver Historial Medico</button>
                 </div>
                 <div class="date">
-                    <h6>20/07</h6>
+                    <h6>${fechaFormateadaDM } </h6>
                     <p>Próxima Consulta</p>
                 </div>
             </div>
@@ -324,17 +385,16 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <h2 class="arriba" for="#">Tratamiento </h2>
                 <p class="abajo">${tratamiento || 'Aun no hay cita'}</p>
             </div>
-             <div class="ci-input-group">
-            <h2 class="arriba" for="#">Últimos Objetivos</h2>
-            <p class="abajo">${ultimosObjetivos || 'Aún no hay objetivos registrados'}</p>
-        </div>
+            <div class="ci-input-group">
+                <h2 class="arriba" for="#">Logros alcanzados </h2>
+                <p class="abajo">${medicamentosprescritos || 'Aun no hay cita'}</p>
+            </div>
             <div class="ci-input-group">
                 <h2 class="arriba" for="#">Primera cita </h2>
                 <p class="abajo">${FechaInicioCita || 'Aun no hay cita'}</p>
             </div>
             <div class="BUT">
-                <a class="green-button" href="RegAtencionPaciente.php" id="button2" style="display: flex; align-items: center; justify-content: center;">Atencion al Paciente</a>
-
+                <a href="RegAtencionPaciente.php" class="green-button" id="button2">Atención Paciente</a>
             </div>
         </div>
         <form id="patientForm" style="display:none;">
@@ -384,7 +444,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                                     // Agregar subtítulos a la tabla
                                     var headerRow = table.createTHead().insertRow(0);
-                                    var headers = ['Paciente', 'Fecha Inicio Cita', 'Duración Cita', 'información']; // Cambiado a 'Nombre Completo'
+                                    var headers = ['Paciente', 'Fecha Inicio Cita', 'Duración Cita', 'información', 'Acciones']; // Cambiado a 'Nombre Completo'
                                     headers.forEach(function(headerText) {
                                         var th = document.createElement('th');
                                         th.appendChild(document.createTextNode(headerText));
@@ -428,6 +488,29 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                                         // Agregar botón a la columna de acciones
                                         cell4.appendChild(button);
+
+                                        // Crear botón "Actualizar Nota" en la columna acciones
+                                        var cell5 = row.insertCell(4);
+                                        var actualizarNotaButton = document.createElement('button');
+                                        actualizarNotaButton.className = 'actualizar-nota-button';
+                                        actualizarNotaButton.innerHTML = 'Actualizar Nota';
+                                        actualizarNotaButton.onclick = function() {
+                                            // Aquí puedes agregar el código para actualizar la nota
+                                            // Abre el modal de historial
+                                            var historyModal = document.getElementById('historyModal');
+                                            historyModal.style.display = 'flex';
+
+                                            // Muestra los detalles del historial en el cuerpo del modal
+                                            var historyModalBody = document.getElementById('historyModalBody');
+                                            historyModalBody.innerHTML = `
+                                                <form action="Historial.php" method="POST">
+                                                    <input type="hidden" name="patientId" value="${registro.IdAtencion}" />
+                                                    <textarea name="observacion" id="notaTextArea">${registro.Observacion}</textarea>
+                                                    <input type="submit" value="Actualizar Nota" class="button_update_note">
+                                                </form>
+                                            `;
+                                        };
+                                        cell5.appendChild(actualizarNotaButton);
                                     });
 
                                     tableContainer.appendChild(table);
@@ -462,7 +545,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 var patientModal = document.getElementById('patientModal');
                 patientModal.style.display = 'none';
             }
-
             // ...
         </script>
 

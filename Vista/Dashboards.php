@@ -40,6 +40,26 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
+    <style>
+            @media (max-width: 900px) {
+            body {
+
+            }
+            .center-divs{
+                min-width: 800px;
+            }
+            .contenedor_dsh{
+                min-width: 800px;
+            }
+            .animate__animated{
+                overflow: auto;
+            }
+           
+            }
+
+           
+
+        </style>
     <?php
     require_once("../Controlador/Paciente/ControllerPaciente.php");
     require_once("../Controlador/Cita/ControllerCita.php");

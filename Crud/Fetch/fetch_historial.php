@@ -2,9 +2,6 @@
 // local
 require '../../conexion/conexion.php';
 
-// hosting
-//require("/home3/ghxumdmy/public_html/website_ddbea1df/conexion/conexion.php");
-
 // Obtener el valor del ID del paciente ingresado
 $patientId = $_POST['patientId'];
 
@@ -15,16 +12,19 @@ $sql = "SELECT
             c.DuracionCita, 
             c.MotivoCita, 
             c.TipoCita, 
-            c.DuracionCita, 
-            c.CanalCita
+            c.CanalCita,
+            a.Observacion,
+            a.IdAtencion
         FROM 
             paciente p
         LEFT JOIN 
             cita c ON p.IdPaciente = c.IdPaciente
+        LEFT JOIN 
+            atencionpaciente a ON p.IdPaciente = a.IdPaciente
         WHERE 
-            p.IdPaciente = :patientId";
-
-
+            p.IdPaciente = :patientId
+        GROUP BY 
+            c.IdCita, a.IdAtencion";
 
 $con = new conexion();
 $conn = $con->conexion();
@@ -34,6 +34,9 @@ $stmt->execute();
 
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// Aquí deberías tener lógica adicional para manejar las observaciones únicas por cita
+// Esto podría incluir un proceso de actualización si encuentras observaciones repetidas
+
 if ($rows) {
     $response = array('patientDetails' => $rows);
 } else {
@@ -42,3 +45,4 @@ if ($rows) {
 
 header('Content-Type: application/json');
 echo json_encode($response);
+?>
