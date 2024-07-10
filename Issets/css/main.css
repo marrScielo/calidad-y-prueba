@@ -442,6 +442,10 @@ aside .sidebar a.active span{
     margin-left: calc(1rem - 4px);
 }
 
+aside .sidebar a.active:hover{
+    color: #ffffff;
+}
+
 aside .sidebar a:hover {
     color: var(--color-primary);
 }
