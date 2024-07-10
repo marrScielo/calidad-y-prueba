@@ -6,13 +6,21 @@ if (isset($_SESSION['NombrePsicologo'])) {
 <?php
 require_once '../conexion/conexion.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset($_POST['observacion'])) {
-    // Obtener el ID de atención del paciente y la nueva observación del formulario
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset($_POST['observacion']) && isset($_POST['diagnostico']) && isset($_POST['tratamiento']) && isset($_POST['objetivos'])) {
+    // Obtener los valores del formulario
     $patientId = $_POST['patientId'];
+    $diagnostico = $_POST['diagnostico'];
+    $tratamiento = $_POST['tratamiento'];
     $observacion = $_POST['observacion'];
+    $objetivos = $_POST['objetivos'];
 
     // Realizar la actualización en la base de datos
-    $sql = "UPDATE atencionpaciente SET Observacion = :observacion WHERE IdAtencion = :patientId";
+    $sql = "UPDATE atencionpaciente 
+            SET Observacion = :observacion, 
+                Diagnostico = :diagnostico, 
+                Tratamiento = :tratamiento, 
+                UltimosObjetivos = :objetivos 
+            WHERE IdAtencion = :patientId";
 
     try {
         $con = new conexion();
@@ -20,6 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':patientId', $patientId, PDO::PARAM_INT);
         $stmt->bindParam(':observacion', $observacion, PDO::PARAM_STR);
+        $stmt->bindParam(':diagnostico', $diagnostico, PDO::PARAM_STR);
+        $stmt->bindParam(':tratamiento', $tratamiento, PDO::PARAM_STR);
+        $stmt->bindParam(':objetivos', $objetivos, PDO::PARAM_STR);
         $stmt->execute();
     } catch (PDOException $e) {
         echo json_encode(['error' => 'Error en la conexión: ' . $e->getMessage()]);
@@ -191,6 +202,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
             background-color: var(--color-white);
             border: 1.5px solid var(--color-primary);
             transition: all 0.5s ease-in-out;
+        }
+        #notaTextArea{
+            height: 100px;
         }
 
         /* Resto de tu estilo para el modal */
@@ -424,7 +438,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
 
                                     // Agregar subtítulos a la tabla
                                     var headerRow = table.createTHead().insertRow(0);
-                                    var headers = ['Paciente', 'Fecha Inicio Cita', 'Duración Cita', 'información', 'Acciones']; // Cambiado a 'Nombre Completo'
+                                    var headers = ['Paciente', 'Fecha De Atencion', 'Enfermedad', 'Actualizar', 'Acciones']; // Cambiado a 'Nombre Completo'
                                     headers.forEach(function(headerText) {
                                         var th = document.createElement('th');
                                         th.appendChild(document.createTextNode(headerText));
@@ -441,14 +455,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
                                         // Combina nombre y apellido en un solo campo
                                         cell1.innerHTML = `${registro.NomPaciente} ${registro.ApPaterno}`;
 
-                                        cell2.innerHTML = registro.FechaInicioCita;
-                                        cell3.innerHTML = registro.DuracionCita;
+                                        cell2.innerHTML = registro.FechaRegistro;
+                                        cell3.innerHTML = registro.Clasificacion;
 
                                         // Crear botón para cada registro
                                         var cell4 = row.insertCell(3); // Agregada esta línea para la nueva columna
                                         var button = document.createElement('button');
                                         button.className = 'ver-detalles-button'; // Agrega esta línea para asignar una clase
-                                        button.innerHTML = 'Ver Detalles';
+                                        button.innerHTML = 'Actualizar Enfermedad';
                                         button.onclick = function() {
                                             // Abre el modal de historial
                                             var historyModal = document.getElementById('historyModal');
@@ -473,7 +487,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
                                         var cell5 = row.insertCell(4);
                                         var actualizarNotaButton = document.createElement('button');
                                         actualizarNotaButton.className = 'actualizar-nota-button';
-                                        actualizarNotaButton.innerHTML = 'Actualizar Nota';
+                                        actualizarNotaButton.innerHTML = 'Actualizar Notas';
                                         actualizarNotaButton.onclick = function() {
                                             // Aquí puedes agregar el código para actualizar la nota
                                             // Abre el modal de historial
@@ -485,7 +499,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
                                             historyModalBody.innerHTML = `
                                                 <form action="Historial.php" method="POST">
                                                     <input type="hidden" name="patientId" value="${registro.IdAtencion}" />
+
+                                                    <p>Diagnostico: </p>
+                                                    <textarea name="diagnostico" id="notaTextArea">${registro.Diagnostico}</textarea>
+                                                    <p>Tratamiento: </p>
+                                                    <textarea name="tratamiento" id="notaTextArea">${registro.Tratamiento}</textarea>
+                                                    <p>Observacion: </p>
                                                     <textarea name="observacion" id="notaTextArea">${registro.Observacion}</textarea>
+                                                    <p>Objetivos Alcanzados: </p>
+                                                    <textarea name="objetivos" id="notaTextArea">${registro.UltimosObjetivos}</textarea>
+
                                                     <input type="submit" value="Actualizar Nota" class="button_update_note">
                                                 </form>
                                             `;
