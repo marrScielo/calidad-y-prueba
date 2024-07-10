@@ -6,35 +6,36 @@ if (isset($_SESSION['NombrePsicologo'])) {
     <?php
     require_once '../conexion/conexion.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset($_POST['observacion']) && isset($_POST['diagnostico']) && isset($_POST['tratamiento']) && isset($_POST['objetivos'])) {
-    // Obtener los valores del formulario
-    $patientId = $_POST['patientId'];
-    $diagnostico = $_POST['diagnostico'];
-    $tratamiento = $_POST['tratamiento'];
-    $observacion = $_POST['observacion'];
-    $objetivos = $_POST['objetivos'];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset($_POST['observacion']) && isset($_POST['diagnostico']) && isset($_POST['tratamiento']) && isset($_POST['objetivos'])) {
+        // Obtener los valores del formulario
+        $patientId = $_POST['patientId'];
+        $diagnostico = $_POST['diagnostico'];
+        $tratamiento = $_POST['tratamiento'];
+        $observacion = $_POST['observacion'];
+        $objetivos = $_POST['objetivos'];
 
-    // Realizar la actualización en la base de datos
-    $sql = "UPDATE atencionpaciente 
+        // Realizar la actualización en la base de datos
+        $sql = "UPDATE atencionpaciente 
             SET Observacion = :observacion, 
                 Diagnostico = :diagnostico, 
                 Tratamiento = :tratamiento, 
                 UltimosObjetivos = :objetivos 
             WHERE IdAtencion = :patientId";
 
-    try {
-        $con = new conexion();
-        $conn = $con->conexion();
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':patientId', $patientId, PDO::PARAM_INT);
-        $stmt->bindParam(':observacion', $observacion, PDO::PARAM_STR);
-        $stmt->bindParam(':diagnostico', $diagnostico, PDO::PARAM_STR);
-        $stmt->bindParam(':tratamiento', $tratamiento, PDO::PARAM_STR);
-        $stmt->bindParam(':objetivos', $objetivos, PDO::PARAM_STR);
-        $stmt->execute();
-    } catch (PDOException $e) {
-        echo json_encode(['error' => 'Error en la conexión: ' . $e->getMessage()]);
-    }}
+        try {
+            $con = new conexion();
+            $conn = $con->conexion();
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':patientId', $patientId, PDO::PARAM_INT);
+            $stmt->bindParam(':observacion', $observacion, PDO::PARAM_STR);
+            $stmt->bindParam(':diagnostico', $diagnostico, PDO::PARAM_STR);
+            $stmt->bindParam(':tratamiento', $tratamiento, PDO::PARAM_STR);
+            $stmt->bindParam(':objetivos', $objetivos, PDO::PARAM_STR);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo json_encode(['error' => 'Error en la conexión: ' . $e->getMessage()]);
+        }
+    }
     ?>
 
 
@@ -204,7 +205,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
             border: 1.5px solid var(--color-primary);
             transition: all 0.5s ease-in-out;
         }
-        #notaTextArea{
+
+        #notaTextArea {
             height: 100px;
         }
 
@@ -457,7 +459,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
 
                                     // Agregar subtítulos a la tabla
                                     var headerRow = table.createTHead().insertRow(0);
-                                    var headers = ['Paciente', 'Fecha De Atencion', 'Enfermedad', 'Actualizar', 'Acciones']; // Cambiado a 'Nombre Completo'
+                                    var headers = ['#', 'Paciente', 'Fecha De Atencion', 'Enfermedad', 'Actualizar', 'Acciones']; // Cambiado a 'Nombre Completo'
                                     headers.forEach(function(headerText) {
                                         var th = document.createElement('th');
                                         th.appendChild(document.createTextNode(headerText));
@@ -465,20 +467,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['patientId']) && isset
                                     });
 
                                     // Agregar datos a la tabla
-                                    response.patientDetails.forEach(function(registro) {
+                                    response.patientDetails.forEach(function(registro, index) {
                                         var row = table.insertRow();
-                                        var cell1 = row.insertCell(0);
-                                        var cell2 = row.insertCell(1);
-                                        var cell3 = row.insertCell(2);
-
+                                        var cell0 = row.insertCell(0);
+                                        var cell1 = row.insertCell(1);
+                                        var cell2 = row.insertCell(2);
+                                        var cell3 = row.insertCell(3);
+                                        // Set the row number in cell0
+                                        cell0.innerHTML = index + 1;
                                         // Combina nombre y apellido en un solo campo
                                         cell1.innerHTML = `${registro.NomPaciente} ${registro.ApPaterno}`;
-
                                         cell2.innerHTML = registro.FechaRegistro;
                                         cell3.innerHTML = registro.Clasificacion;
-
                                         // Crear botón para cada registro
-                                        var cell4 = row.insertCell(3); // Agregada esta línea para la nueva columna
+                                        var cell4 = row.insertCell(4); // Agregada esta línea para la nueva columna
                                         var button = document.createElement('button');
                                         button.className = 'ver-detalles-button'; // Agrega esta línea para asignar una clase
                                         button.innerHTML = 'Actualizar Enfermedad';
