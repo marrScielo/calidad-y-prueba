@@ -15,6 +15,7 @@ class conexion
     //private $database = "ghxumdmy_psicologia";
 
     private $pdo;
+    
 
     public function __construct()
     {
@@ -51,4 +52,10 @@ class conexion
             return null; // Manejar errores según tu lógica de aplicación
         }
     }
+
+    public function getPDO()
+    {
+        return $this->pdo;
+    }
+
 }

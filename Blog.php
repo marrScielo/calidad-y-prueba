@@ -75,8 +75,10 @@ $especialidades = [
                 } else {
                     foreach ($blogs as $post) {
                         echo '<div class="blog-post" data-especialidad="' . htmlspecialchars($post['post_especialidad']) . '">';
+                        echo '<a href="blog-details.php?id=' . intval($post['post_id']) . '">';
                         echo '<img src="' . htmlspecialchars($post['post_imagen']) . '" alt="' . htmlspecialchars($post['post_tema']) . '">';
                         echo '<h2>' . htmlspecialchars($post['post_tema']) . '</h2>';
+                        echo '</a>';
                         echo '<p><strong>Especialidad:</strong> ' . htmlspecialchars($post['post_especialidad']) . '</p>';
                         echo '<p>' . htmlspecialchars($post['post_descripcion']) . '</p>';
                         echo '<p><strong>Publicado por Lic. </strong> ' . htmlspecialchars($post['psicologo_nombre']) . '</p>';
@@ -86,19 +88,21 @@ $especialidades = [
                 ?>
             </div>
 
+
+
             <!-- Paginación -->
             <div class="pagination">
-                <?php if ($page > 1): ?>
+                <?php if ($page > 1) : ?>
                     <a href="?page=<?php echo $page - 1; ?>" class="page-link">&laquo; Anterior</a>
-                <?php else: ?>
+                <?php else : ?>
                     <span class="page-link disabled">&laquo; Anterior</span>
                 <?php endif; ?>
-                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
                     <a href="?page=<?php echo $i; ?>" class="page-link<?php if ($i == $page) echo ' active'; ?>"><?php echo $i; ?></a>
                 <?php endfor; ?>
-                <?php if ($page < $totalPages): ?>
+                <?php if ($page < $totalPages) : ?>
                     <a href="?page=<?php echo $page + 1; ?>" class="page-link">Siguiente &raquo;</a>
-                <?php else: ?>
+                <?php else : ?>
                     <span class="page-link disabled">Siguiente &raquo;</span>
                 <?php endif; ?>
             </div>
@@ -107,7 +111,7 @@ $especialidades = [
     </div>
 
     <script>
-        document.getElementById('filter-form').addEventListener('change', function () {
+        document.getElementById('filter-form').addEventListener('change', function() {
             const checkboxes = document.querySelectorAll('.especialidad-checkbox');
             const selectedEspecialidades = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
 
@@ -140,7 +144,7 @@ $especialidades = [
             document.getElementById("mensaje-no-blogs").style.display = "none";
         }
 
-        document.getElementById('search-button').addEventListener('click', function () {
+        document.getElementById('search-button').addEventListener('click', function() {
             const searchInput = document.getElementById('search-input').value.toLowerCase();
             const posts = document.querySelectorAll('.blog-post');
             let blogsEncontrados = false;
