@@ -35,38 +35,9 @@ $especialidades = [
     <title>Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/inicio-header1.css">
-    <link rel="stylesheet" href="css/blog-principal1.css">
+    <link rel="stylesheet" href="css/blog1.css">
     <link rel="icon" href="img/logo-actual.png">
     <link rel="stylesheet" href="css/boton-wsp.css">
-
-    <style>
-        .pagination {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .pagination a {
-            color: #007bff;
-            padding: 8px 16px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-            border: 1px solid #007bff;
-            margin: 0 5px;
-        }
-
-        .pagination a.active,
-        .pagination a:hover {
-            background-color: #007bff;
-            color: white;
-            border-color: #007bff;
-        }
-
-        .pagination a.disabled {
-            pointer-events: none;
-            color: #6c757d;
-            border-color: #6c757d;
-        }
-    </style>
 </head>
 
 <body>
@@ -77,6 +48,10 @@ $especialidades = [
         <div class="container-rosado">
             <h2 onclick="toggleDropdownBlog()">Filtrar por Especialidad</h2>
             <form class="filter-form" id="filter-form">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Buscar...">
+                    <button type="button" id="search-button">Buscar</button>
+                </div>
                 <?php
                 foreach ($especialidades as $especialidad) {
                     echo '<div class="filter-option">';
@@ -164,6 +139,27 @@ $especialidades = [
         function ocultarMensajeNoBlogs() {
             document.getElementById("mensaje-no-blogs").style.display = "none";
         }
+
+        document.getElementById('search-button').addEventListener('click', function () {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const posts = document.querySelectorAll('.blog-post');
+            let blogsEncontrados = false;
+            posts.forEach(post => {
+                const postTitle = post.querySelector('h2').textContent.toLowerCase();
+                const postDescription = post.querySelector('p').textContent.toLowerCase();
+                if (postTitle.includes(searchInput) || postDescription.includes(searchInput)) {
+                    post.style.display = 'block';
+                    blogsEncontrados = true;
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+            if (!blogsEncontrados) {
+                mostrarMensajeNoBlogs();
+            } else {
+                ocultarMensajeNoBlogs();
+            }
+        });
     </script>
     <script src="js/navabar.js"></script>
     <a href="https://wa.me/51915205726" class="whatsapp-float" target="_blank">
