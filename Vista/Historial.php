@@ -35,6 +35,39 @@ if (isset($_SESSION['NombrePsicologo'])) {
             echo json_encode(['error' => 'Error en la conexión: ' . $e->getMessage()]);
         }
     }
+
+
+    // NUEVO CODIGO : PARA IMPLEMENTAR ACTUALIZACION DE LA NOTA
+    // **********************************************************************************
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['dni']) && isset($_POST['nota'])) {
+            $dni = $_POST['dni'];
+            $nota = $_POST['nota'];
+            $con = new conexion();
+            $conn = $con->conexion();
+            $stmt = $conn->prepare("UPDATE paciente SET nota = :nota WHERE Dni = :dni");
+            $stmt->bindParam(':dni', $dni, PDO::PARAM_INT);
+            $stmt->bindParam(':nota', $nota, PDO::PARAM_STR);
+            $stmt->execute();
+            echo "Nota actualizada";
+            exit;
+        }
+    }
+    
+    $nota = "";
+    if (isset($_GET['dni'])) {
+        $dni = $_GET['dni'];
+        $con = new conexion();
+        $conn = $con->conexion();
+        $stmt = $conn->prepare("SELECT nota FROM paciente WHERE Dni = :dni");
+        $stmt->bindParam(':dni', $dni, PDO::PARAM_INT);
+        $stmt->execute();
+        $nota = $stmt->fetchColumn();
+    }
+
+    // ***************************************************************************************************
+
     ?>
 
     <!DOCTYPE html>
@@ -177,7 +210,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
         /* Estilos para el botón "Ver Detalles" dentro del modal de historial */
         .ver-detalles-button,
         .actualizar-nota-button,
-        .button_update_note {
+        .button_update_note,
+        #addNotaBtn,
+        #actualizarBtn
+         {
             width: 130px;
             height: 30px;
             border-radius: 30px;
@@ -210,6 +246,18 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
         /* Resto de tu estilo para el modal */
         /* ... */
+
+
+        /** ************ NUEVOS DISEÑOS PARA EL BLOC */
+        #notaTextarea2 {
+            display: none; /* Oculto por defecto */
+            width: 100%;
+            height: 100px;
+        }
+        #actualizarBtn {
+            display: none; /* Oculto por defecto */
+        }
+
     </style>
 
     <body>
@@ -236,29 +284,30 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         <input type="text" id="myInput" placeholder="Buscar Paciente" class="input" required>
                     </div>
                     <a class="button-arriba" style="padding:10px 30px; font-size:10px;" href="RegAtencionPaciente.php">
-                        <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Atención
+                        <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Paciente
                     </a>
                 </div>
 
                 <div class="container-paciente-tabla">
                     <div class="before-details">
                         <table>
+                        <tbody>
                             <?php foreach ($patients as $index => $patient) : ?>
-                                <tbody>
+
                                     <tr <?php if ($index === 0) echo 'class="primera-fila"'; ?>>
 
                                         <td>
-                                            <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>" data-dni="<?= $patient['Dni'] ?>" data-celular="<?= $patient['Telefono'] ?>" data-codigo="<?= $patient['codigopac'] ?>" data-diagnostico="<?= $patient['Diagnostico'] ?>" data-enfermedad="<?= $patient['IdEnfermedad'] ?>" data-observacion="<?= $patient['Observacion'] ?>" data-FechaInicioCita="<?= $patient['FechaRegistro'] ?>">
-                                                <p style="cursor: pointer; font-weight:600" class="nombre-paciente"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
+                                            <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>" data-dni="<?= $patient['Dni'] ?>" data-celular="<?= $patient['Telefono'] ?>" data-codigo="<?= $patient['codigopac'] ?>" data-diagnostico="<?= $patient['Diagnostico'] ?>" data-enfermedad="<?= $patient['IdEnfermedad'] ?>" data-observacion="<?= $patient['Observacion'] ?>" data-FechaInicioCita="<?= $patient['FechaRegistro'] ?>" data-nota="<?= $patient['nota'] ?>">
+                                                <p style="cursor: pointer;" class="nombre-paciente"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
                                                 <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?> </p>
                                             </a>
                                         </td>
                                         <td><?= isset($patient['FechaRegistro']) ? substr($patient['FechaRegistro'], 0, 10) : 'Fecha de próx cita' ?></td>
                                         <td class="additional-column" data-patient-id="<?= $patient[0] ?>"></td>
                                     </tr>
-                                </tbody>
-                            <?php endforeach; ?>
 
+                            <?php endforeach; ?>
+                            </tbody>
                         </table>
                     </div>
                     <div class="patient-details">
@@ -269,7 +318,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <div class="modal" id="patientModal">
                     <div class="modal-content">
                         <span class="close" id="closeModal" onclick="closePatientModal()">&times;</span>
-                        <h2   class="modal-title">Historial de Atenciones </h2>
+                        <h2 class="modal-title">Historial de Atenciones </h2>
                         <div class="modal-body">
                             <!-- Aquí se mostrarán los detalles del paciente -->
                         </div>
@@ -343,15 +392,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                     // Obtener el ID del paciente desde el atributo data
                     const patientId = link.getAttribute('data-patient-id');
-
                     // Ocultar las columnas adicionales
                     additionalColumns.forEach(column => {
                         column.classList.add('hidden');
                         containerpacientetabla.classList.add('active');
                     });
 
-                    //cambiossss
-                    
                     // Obtener los datos del paciente
                     const nombres = link.getAttribute('data-nombres');
                     const edad = link.getAttribute('data-edad');
@@ -362,6 +408,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     const diagnostico = link.getAttribute('data-diagnostico');
                     const observacion = link.getAttribute('data-observacion');
                     const FechaInicioCita = link.getAttribute('data-FechaInicioCita');
+                    const nota = link.getAttribute('data-nota');
                     // Formatear la fecha en español
                     const opcionesFecha = {
                         weekday: 'long',
@@ -438,9 +485,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
         //                 });
 
 
-
+                    /***** AGREGANDO NUEVOS CAMPOS PARA TEXTEAREA ************ */
                     // Crear el contenido de los detalles del paciente
-                    
                     const patientInfoHTML = `
                         <div style="display:grid; flex-direction:row; gap:10px;">
                             <div class="top-group">
@@ -456,16 +502,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                     <p>Ultima Atención</p>
                                 </div>
                             </div>
-
                             <div class="ci-input-group" style="display: none;">
                                 <h2 class="arriba" for="#">Enfermedad </h2>
                                 <p class="abajo">Id Enfermedad: ${enfermedad || 'Aun no hay enfermedad'}</p>
                             </div>
-
                             <div class="ci-input-group">
                                 <h1  for="#">ÚLTIMA ATENCIÓN </h1>
                             </div>
-
                             <div class="ci-input-group">
                                 <h2 class="arriba" for="#">Diagnóstico </h2>
                                 <p class="abajo">${diagnostico || 'Aun no hay diagnóstico'}</p>
@@ -474,15 +517,28 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <h2 class="arriba" for="#">Observación </h2>
                                 <p class="abajo">${observacion || 'Aun no hay observacion'}</p>
                             </div>
-
+                            <div class="ci-input-group">
+                                <h2 class="arriba" for="#">Observación </h2>
+                                <p class="abajo">${observacion || 'Aun no hay observacion'}</p>
+                            </div>
                             <div class="ci-input-group">
                                 <h2 class="arriba" for="#">Fecha Atención </h2>
                                 <p class="abajo">${fechaFormateada  || 'Aun no hay cita'}</p>
                             </div>
-                            
+
+                            <br>
+                            <textarea id="notaTextarea2">${nota  || 'Aun no comentarios'}</textarea>
+                            <br>
+                            <button id="actualizarBtn">Actualizar</button>
+
+                            <button id="addNotaBtn">Add Nota</button>
+
                             <div class="BUT">
                                 <a href="RegAtencionPaciente.php" class="green-button" id="button2">Atención Paciente</a>
                             </div>
+
+                            
+
                         </div>
                         <form id="patientForm" style="display:none;">
                             <label for="patientId">Ingrese el ID del paciente:</label>
@@ -501,6 +557,45 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                     // Actualizar la variable currentPatientId
                     currentPatientId = patientId;
+
+
+     // ************************** NUEVO CODIGO PARA IMPLEMENTAR ACTUALIZACION DE NOTAS ********************************
+
+                        document.getElementById('addNotaBtn').addEventListener('click', function() {
+                        const textarea2 = document.getElementById('notaTextarea2');
+                        const actualizarBtn = document.getElementById('actualizarBtn');
+                        
+                        textarea2.style.display = 'block';
+                        actualizarBtn.style.display = 'block';
+
+                            // Aquí obtendremos el campo nota de la base de datos
+                            fetch('?dni=' + dni)
+                                .then(response => response.text())
+                                .then(data => {
+                                    textarea.value = data;
+                                });
+                        });
+
+                            document.getElementById('actualizarBtn').addEventListener('click', function() {
+                                const nota = document.getElementById('notaTextarea2').value;
+
+                                fetch('', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/x-www-form-urlencoded'
+                                    },
+                                    body: 'dni=' + dni + '&nota=' + encodeURIComponent(nota)
+                                })
+                                .then(response => response.text())
+                                .then(data => {
+                                    alert('Nota actualizada');
+                                    // Ocultar textarea y botón actualizar
+                                    document.getElementById('notaTextarea2').style.display = 'none';
+                                    document.getElementById('actualizarBtn').style.display = 'none';
+                                });
+                            });
+
+                // **************************************************************************************************
 
                     butto.addEventListener('click', function() {
                         var patientModal = document.getElementById('patientModal');
@@ -542,8 +637,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                                     // Agregar datos a la tabla
                                     response.patientDetails.forEach(function(registro, index) {
-                                        
-
                                         var row = table.insertRow();
                                         var cell0 = row.insertCell(0);
                                         var cell1 = row.insertCell(1);
@@ -646,6 +739,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 patientModal.style.display = 'none';
             }
             // ...
+
+            
+
+
+
+
+
         </script>
 
         <script>
