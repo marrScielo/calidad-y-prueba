@@ -236,7 +236,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         <input type="text" id="myInput" placeholder="Buscar Paciente" class="input" required>
                     </div>
                     <a class="button-arriba" style="padding:10px 30px; font-size:10px;" href="RegAtencionPaciente.php">
-                        <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Paciente
+                        <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Atención
                     </a>
                 </div>
 
@@ -249,7 +249,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                                         <td>
                                             <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>" data-dni="<?= $patient['Dni'] ?>" data-celular="<?= $patient['Telefono'] ?>" data-codigo="<?= $patient['codigopac'] ?>" data-diagnostico="<?= $patient['Diagnostico'] ?>" data-enfermedad="<?= $patient['IdEnfermedad'] ?>" data-observacion="<?= $patient['Observacion'] ?>" data-FechaInicioCita="<?= $patient['FechaRegistro'] ?>">
-                                                <p style="cursor: pointer;" class="nombre-paciente"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
+                                                <p style="cursor: pointer; font-weight:600" class="nombre-paciente"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
                                                 <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?> / <?= isset($patient['MotivoConsulta']) ? $patient['MotivoConsulta'] : 'Motivo de Consulta' ?></p>
                                             </a>
                                         </td>
@@ -269,7 +269,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <div class="modal" id="patientModal">
                     <div class="modal-content">
                         <span class="close" id="closeModal" onclick="closePatientModal()">&times;</span>
-                        <h2 class="modal-title">Detalles del Paciente</h2>
+                        <h2   class="modal-title">Historial de Atenciones </h2>
                         <div class="modal-body">
                             <!-- Aquí se mostrarán los detalles del paciente -->
                         </div>
@@ -340,6 +340,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
             showInfoLinks.forEach(link => {
                 link.addEventListener('click', function() {
+
                     // Obtener el ID del paciente desde el atributo data
                     const patientId = link.getAttribute('data-patient-id');
 
@@ -349,6 +350,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         containerpacientetabla.classList.add('active');
                     });
 
+                    //cambiossss
+                    
                     // Obtener los datos del paciente
                     const nombres = link.getAttribute('data-nombres');
                     const edad = link.getAttribute('data-edad');
@@ -449,7 +452,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 </div>
                                 <div class="date">
                                     <h6>${fechaFormateadaDM } </h6>
-                                    <p>Próxima Consulta</p>
+                                    <p>Ultima Atención</p>
                                 </div>
                             </div>
                             <div class="ci-input-group">
@@ -465,7 +468,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <p class="abajo">${observacion || 'Aun no hay observacion'}</p>
                             </div>
                             <div class="ci-input-group">
-                                <h2 class="arriba" for="#">Última cita </h2>
+                                <h2 class="arriba" for="#">Última Atención </h2>
                                 <p class="abajo">${fechaFormateada  || 'Aun no hay cita'}</p>
                             </div>
                             <div class="BUT">
@@ -530,6 +533,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                                     // Agregar datos a la tabla
                                     response.patientDetails.forEach(function(registro, index) {
+                                        
+
                                         var row = table.insertRow();
                                         var cell0 = row.insertCell(0);
                                         var cell1 = row.insertCell(1);
