@@ -108,7 +108,7 @@ class userModelPaciente
 
     public function getAllAtencPatients($IdPsicologo)
     {
-        $query = "SELECT p.*, ate.*, c.FechaInicioCita
+       /* $query = "SELECT p.*, ate.*, c.FechaInicioCita
                   FROM paciente p
                   LEFT JOIN atencionpaciente ate ON p.IdPaciente = ate.IdPaciente
                   LEFT JOIN (
@@ -118,9 +118,24 @@ class userModelPaciente
                   ) c_max ON p.IdPaciente = c_max.IdPaciente
                   LEFT JOIN cita c ON c_max.IdPaciente = c.IdPaciente
                       AND c_max.MaxFechaInicioCita = c.FechaInicioCita
-                  WHERE p.IdPsicologo = :IdPsicologo";
+                  WHERE p.IdPsicologo = :IdPsicologo";*/
 
-        $query .= " GROUP BY p.IdPaciente"; // Agregar GROUP BY para evitar duplicados
+
+                  $query = "SELECT 
+                  p.*, ate.*
+                FROM 
+                  paciente p
+                LEFT JOIN (
+                  SELECT 
+                    IdPaciente, MAX(FechaRegistro) as MaxFechaAtencion
+                  FROM 
+                    atencionpaciente
+                  GROUP BY 
+                    IdPaciente
+                ) latest ON p.IdPaciente = latest.IdPaciente
+                LEFT JOIN atencionpaciente ate ON latest.IdPaciente = ate.IdPaciente AND ate.FechaRegistro = latest.MaxFechaAtencion
+                WHERE 
+                  p.IdPsicologo = :IdPsicologo";
 
         $statement = $this->PDO->prepare($query);
         $statement->bindParam(":IdPsicologo", $IdPsicologo);

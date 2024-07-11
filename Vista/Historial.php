@@ -250,7 +250,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                         <td>
                                             <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>" data-dni="<?= $patient['Dni'] ?>" data-celular="<?= $patient['Telefono'] ?>" data-codigo="<?= $patient['codigopac'] ?>" data-diagnostico="<?= $patient['Diagnostico'] ?>" data-enfermedad="<?= $patient['IdEnfermedad'] ?>" data-observacion="<?= $patient['Observacion'] ?>" data-FechaInicioCita="<?= $patient['FechaRegistro'] ?>">
                                                 <p style="cursor: pointer; font-weight:600" class="nombre-paciente"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
-                                                <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?> / <?= isset($patient['MotivoConsulta']) ? $patient['MotivoConsulta'] : 'Motivo de Consulta' ?></p>
+                                                <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?> </p>
                                             </a>
                                         </td>
                                         <td><?= isset($patient['FechaRegistro']) ? substr($patient['FechaRegistro'], 0, 10) : 'Fecha de próx cita' ?></td>
@@ -440,6 +440,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
 
                     // Crear el contenido de los detalles del paciente
+                    
                     const patientInfoHTML = `
                         <div style="display:grid; flex-direction:row; gap:10px;">
                             <div class="top-group">
@@ -455,10 +456,16 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                     <p>Ultima Atención</p>
                                 </div>
                             </div>
-                            <div class="ci-input-group">
+
+                            <div class="ci-input-group" style="display: none;">
                                 <h2 class="arriba" for="#">Enfermedad </h2>
                                 <p class="abajo">Id Enfermedad: ${enfermedad || 'Aun no hay enfermedad'}</p>
                             </div>
+
+                            <div class="ci-input-group">
+                                <h1  for="#">ÚLTIMA ATENCIÓN </h1>
+                            </div>
+
                             <div class="ci-input-group">
                                 <h2 class="arriba" for="#">Diagnóstico </h2>
                                 <p class="abajo">${diagnostico || 'Aun no hay diagnóstico'}</p>
@@ -467,10 +474,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <h2 class="arriba" for="#">Observación </h2>
                                 <p class="abajo">${observacion || 'Aun no hay observacion'}</p>
                             </div>
+
                             <div class="ci-input-group">
-                                <h2 class="arriba" for="#">Última Atención </h2>
+                                <h2 class="arriba" for="#">Fecha Atención </h2>
                                 <p class="abajo">${fechaFormateada  || 'Aun no hay cita'}</p>
                             </div>
+                            
                             <div class="BUT">
                                 <a href="RegAtencionPaciente.php" class="green-button" id="button2">Atención Paciente</a>
                             </div>
