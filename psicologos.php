@@ -9,6 +9,73 @@
     <link rel="icon" href="img/logo-actual.png">
     <link rel="stylesheet" href="css/boton-wsp.css">
     <title>Psicologos</title>
+    <style>
+
+        @media (max-width: 768px) {
+            .search-container input[type="text"] {
+                width: 80%;
+            }
+
+            .section-container {
+                flex-direction: column;
+            }
+
+            .left-section, .right-section {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .psicologo-container {
+                flex: 1 1 100%;
+                margin: 10px 0;
+            }
+
+            .testimonial-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-container {
+                margin: 10px;
+            }
+            
+            .search-container button {
+                margin-top: 10px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .search-container input[type="text"] {
+                width: 70%;
+            }
+
+            .section-container {
+                flex-direction: column;
+            }
+
+            .left-section, .right-section {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .psicologo-container {
+                flex: 1 1 48%;
+                margin: 10px;
+            }
+
+            .testimonial-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .search-container {
+                margin: 15px;
+            }
+            
+            .search-container button {
+                margin-top: 5px;
+            }
+        }
+
+    </style>
 </head>
 <body>
     <?php include 'Componentes/header.php'; ?>
