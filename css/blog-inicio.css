@@ -43,3 +43,22 @@
 .image-content a:hover {
     background-color: rgba(86, 185, 179, 1); /* Cambia el último valor (1) para ajustar la opacidad */
 }
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .image-content {
+        width: 90%; /* Reducir el ancho del contenido para pantallas más pequeñas */
+        max-width: 300px; /* Reducir el ancho máximo del contenido */
+    }
+
+    .image-content h3 {
+        font-size: 1.3em; /* Reducir el tamaño del título para pantallas más pequeñas */
+    }
+
+    .image-content p {
+        font-size: 0.8em; /* Reducir el tamaño del párrafo para pantallas más pequeñas */
+    }
+
+    .image-content a {
+        font-size: 0.8em; /* Reducir el tamaño del texto del enlace para pantallas más pequeñas */
+    }
+}

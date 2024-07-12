@@ -1,0 +1,37 @@
+.contactanos{
+    display: flex;
+    margin: 0 3rem;
+}
+
+.texto-contactanos{
+    padding: 0 2rem;
+}
+
+.texto-contactanos h2{
+    margin-top: 0;
+}
+
+.contactanos>form{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 0.5rem;
+    padding: 0 2rem;
+}
+
+.formulario-contactanos>input{
+    padding: 0.5rem 0.5rem;
+}
+
+.formulario-contactanos #email{
+    grid-column: span 2 / span 2;
+}
+
+.formulario-contactanos #mensaje{
+    grid-column: span 2 / span 2;
+}
+
+.formulario-contactanos #enviar{
+    grid-column: span 2 / span 2;
+    background-color: #F19394;
+    border: none;
+}
