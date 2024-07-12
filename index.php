@@ -86,7 +86,9 @@
         </div>
     </div>
 
-    <?php include 'Componentes/footer.php'; ?>
+    <?php include 'Componentes/opiniones.php'; ?>
+
+    <?php include 'Componentes/footer_new.php'; ?>
 
     <!-- Botón flotante de WhatsApp -->
     <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank">
