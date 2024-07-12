@@ -26,6 +26,7 @@
             <li><a href="Blog.php">Blog</a></li>
             <li><a href="psicologos.php">Psicólogos</a></li>
             <li><a href="psicologos.php">Reservar Cita</a></li>
+            <li><a href="Contactanos.php">Contáctanos</a></li>
             <li class="dropdown">
                 <a href="./login.php">Login</a>
             </li>
