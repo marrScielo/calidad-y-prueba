@@ -5,7 +5,7 @@ require '../../conexion/conexion.php';
 // Obtener el valor del ID del paciente ingresado
 $patientId = $_POST['patientId'];
 
-$sql = "SELECT 
+/*$sql = "SELECT 
             p.NomPaciente, 
             p.ApPaterno, 
             c.FechaInicioCita, 
@@ -24,7 +24,30 @@ $sql = "SELECT
         WHERE 
             p.IdPaciente = :patientId
         GROUP BY 
-            c.IdCita, a.IdAtencion";
+            c.IdCita, a.IdAtencion";*/
+
+
+$sql = "SELECT 
+            p.NomPaciente, 
+            p.ApPaterno, 
+
+            a.FechaRegistro,
+            a.Observacion,
+            a.IdAtencion,
+            a.Diagnostico,
+            a.Tratamiento,
+            a.UltimosObjetivos,
+
+            e.Clasificacion
+        FROM 
+            paciente p
+        LEFT JOIN 
+            atencionpaciente a ON p.IdPaciente = a.IdPaciente 
+        LEFT JOIN 
+            enfermedad e ON a.IdEnfermedad = e.IdEnfermedad 
+        WHERE 
+            p.IdPaciente = :patientId";
+
 
 $con = new conexion();
 $conn = $con->conexion();

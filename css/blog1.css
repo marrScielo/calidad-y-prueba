@@ -1,5 +1,5 @@
- /* Estilos específicos para los posts del blog */
- .blog-posts {
+/* Estilos específicos para los posts del blog */
+.blog-posts {
     display: flex;
     flex-wrap: wrap;
     gap: 20px; /* Espacio entre los posts */
@@ -36,7 +36,7 @@
     flex-direction: column;
     gap: 20px; /* Espacio entre los contenedores */
 }
-.mensaje-no-blogs{
+.mensaje-no-blogs {
     display: none;
     text-align: center;
 }
@@ -54,21 +54,12 @@
     margin-bottom: 20px;
     text-align: center;
 }
-
-.filter-form{
-    display: none;
-    max-height: 0;
-    transition: max-height 0.3s ease-out;
-    gap: 0.5rem;
-}
-
-.filter-form.show{
-    display: grid;
+.filter-form {
+    display: grid; /* Cambiado de 'none' a 'grid' para que siempre se muestre */
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    max-height: 500px;
+    gap: 0.5rem;
+    max-height: none; /* Cambiado de '0' a 'none' para evitar restricciones de altura */
 }
-
-
 .filter-option {
     display: flex;
     align-items: center;
@@ -102,14 +93,72 @@
     margin-bottom: 20px;
 }
 
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    color: #007bff;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: 1px solid #007bff;
+    margin: 0 5px;
+}
+
+.pagination a.active,
+.pagination a:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination a.disabled {
+    pointer-events: none;
+    color: #6c757d;
+    border-color: #6c757d;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: center; /* Centra el contenedor de búsqueda */
+}
+
+.search-container input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    flex: 1;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #56B9B3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color: #56B9B3;
+}
+
 @media (min-width: 768px) {
-    .container-blog{
+    .container-blog {
         flex-direction: row;
     }
-    .filter-form.show{
+    .filter-form {
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
-    .container-rosado{
+    .container-rosado {
         padding: 0 1rem;
     }
 }
@@ -120,12 +169,7 @@
         grid-template-columns: repeat(1, 1fr); /* Una columna para dispositivos móviles */
         gap: 20px; /* Espacio entre columnas */
     }
-
     .blog-post {
         padding: 0 1rem; /* Espaciado horizontal para cada blog */
     }
 }
-
-
-
-

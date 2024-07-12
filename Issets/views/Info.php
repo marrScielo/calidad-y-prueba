@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 
 </style>
 <!-- El resto de tu código HTML y JavaScript -->
-<div class="top <?php echo ($theme === 'dark') ? 'dark-mode' : ''; ?>">
+<div class="top <?php echo ($theme === 'dark') ? 'dark-mode' : ''; ?>" id="top_fixed">
     <button id="menu-btn" style="display: none;">
         <span class="material-symbols-sharp" translate="no">menu</span>
     </button>
@@ -52,15 +52,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         <span class="material-symbols-sharp" data-theme="dark" translate="no">dark_mode</span>
     </div>
 
-    <div>
-        <div>
+    <div id="fixed_settings_container">
+        <div id="fixed_settings">
             <a class="ajuste-info">
                 <span class="material-symbols-sharp" translate="no">settings</span>
             </a>
         </div>
     </div>
-
-    <div class="profile">
+    <div class="profile" id="profile_fixed">
         <div class="info">
             <div></div>
             <p><?= $_SESSION['NombrePsicologo'] ?></p>
