@@ -6,6 +6,11 @@ $pdo = $conexion->getPDO();
 if (isset($_GET['id'])) {
     $postId = intval($_GET['id']);
     $query = "SELECT * FROM posts WHERE id = :post_id";
+
+    $query = "SELECT posts.*, psicologo.NombrePsicologo AS psicologo_nombre 
+          FROM posts 
+          LEFT JOIN psicologo ON posts.psicologo_id = psicologo.idPsicologo
+          WHERE posts.id = :post_id";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':post_id', $postId, PDO::PARAM_INT);
     $stmt->execute();
@@ -14,10 +19,17 @@ if (isset($_GET['id'])) {
         $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // Fetch recommended articles
-        $especialidad = $post['especialidad'];
+        /*$especialidad = $post['especialidad'];
         $recommendedQuery = "SELECT * FROM posts WHERE especialidad = :especialidad AND id != :post_id LIMIT 3";
         $recommendedStmt = $pdo->prepare($recommendedQuery);
         $recommendedStmt->bindParam(':especialidad', $especialidad, PDO::PARAM_STR);
+        $recommendedStmt->bindParam(':post_id', $postId, PDO::PARAM_INT);
+        $recommendedStmt->execute();
+        $recommendedPosts = $recommendedStmt->fetchAll(PDO::FETCH_ASSOC);*/
+
+        //TRAE ARTICULOS ALEATORIOS
+        $recommendedQuery = "SELECT * FROM posts WHERE id != :post_id ORDER BY RAND() LIMIT 3";
+        $recommendedStmt = $pdo->prepare($recommendedQuery);
         $recommendedStmt->bindParam(':post_id', $postId, PDO::PARAM_INT);
         $recommendedStmt->execute();
         $recommendedPosts = $recommendedStmt->fetchAll(PDO::FETCH_ASSOC);
@@ -85,7 +97,9 @@ if (isset($_GET['id'])) {
         }
 
         .recommended-articles {
-            margin-top: 40px;
+            display: flex;
+             flex-direction: row;
+             justify-content: space-between;
         }
 
         .recommended-articles h3 {
@@ -97,7 +111,12 @@ if (isset($_GET['id'])) {
         .recommended-articles .article {
             margin-bottom: 20px;
             text-align: left;
+            width: 30%;
         }
+        .recommended-articles img {
+            width: 100%;
+        }
+
 
         .recommended-articles .article h4 {
             font-size: 1.2em;
@@ -139,24 +158,39 @@ if (isset($_GET['id'])) {
             .recommended-articles .article p {
                 font-size: 0.8em;
             }
+           
         }
+
+        .informacion{
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+            }
     </style>
     <div class="container">
         <div class="blog-post">
             <img class="image-post" src="<?php echo htmlspecialchars($post['imagen']); ?>" alt="<?php echo htmlspecialchars($post['tema']); ?>">
             <h2><?php echo htmlspecialchars($post['tema']); ?></h2>
-            <p><strong>Especialidad:</strong> <?php echo htmlspecialchars($post['especialidad']); ?></p>
+            <hr>
+            <div class="informacion">   
+                 <p><strong>Publicado por Lic. </strong> <?php echo htmlspecialchars($post['psicologo_nombre']); ?></p>
+                <p><strong>Especialidad:</strong> <?php echo htmlspecialchars($post['especialidad']); ?></p>
+                
+            </div>
+           
+            <hr>
             <p><?php echo htmlspecialchars($post['descripcion']); ?></p>
-            <p><strong>Publicado por Lic. </strong> <?php echo htmlspecialchars($post['psicologo_id']); ?></p>
+           
         </div>
-
+        <hr>
+        <h3>Artículos Recomendados</h3>
         <div class="recommended-articles">
-            <h3>Artículos Recomendados</h3>
+            
             <?php foreach ($recommendedPosts as $recommendedPost): ?>
                 <div class="article">
                     <h4><a href="blog-details.php?id=<?php echo intval($recommendedPost['id']); ?>"><?php echo htmlspecialchars($recommendedPost['tema']); ?></a></h4>
-                    <img class="image-post" src="<?php echo htmlspecialchars($post['imagen']); ?>" alt="<?php echo htmlspecialchars($post['tema']); ?>">
-                    <p><?php echo htmlspecialchars($recommendedPost['descripcion']); ?></p>
+                    <img class="image-post" src="<?php echo htmlspecialchars($recommendedPost['imagen']); ?>" alt="<?php echo htmlspecialchars($post['tema']); ?>">
+                 
                 </div>
             <?php endforeach; ?>
         </div>
