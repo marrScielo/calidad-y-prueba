@@ -11,13 +11,12 @@
     <link rel="stylesheet" href="css/estilos-banner.css">
     <link rel="stylesheet" href="css/inicio-header1.css">
     <link rel="stylesheet" href="css/estilos-especialidades.css">
-    <link rel="stylesheet" href="css/estilos-blog2.css">
+    <link rel="stylesheet" href="css/blog-inicio.css">
     <link rel="stylesheet" href="css/estilos-footer1x.css">
     <link rel="stylesheet" href="css/estilos-footer2.css">
     <link rel="stylesheet" href="css/boton-wsp.css">
     <link rel="stylesheet" href="css/estilos-carrusel.css">
 </head>
-
 <body>
 
     <?php include 'Componentes/header.php'; ?>
@@ -81,12 +80,14 @@
         <img src="img/fondo-blog.webp" alt="Fondo Blog">
         <div class="image-content">
             <h3>Visitar nuestro Blog</h3>
-            <p>Nuestros psicólogos escriben artículos <br> que adaptan la psicología a tus <br> necesidades, ayudándote a entender, <br> cambiar y vivir mejor.</p>
+            <p>Nuestros psicólogos escriben artículos que adaptan la psicología a tus necesidades, ayudándote a entender, cambiar y vivir mejor.</p>
             <a href="Blog.php">VER BLOG</a>
         </div>
     </div>
 
-    <?php include 'Componentes/footer.php'; ?>
+    <?php include 'Componentes/opiniones.php'; ?>
+
+    <?php include 'Componentes/footer_new.php'; ?>
 
     <!-- Botón flotante de WhatsApp -->
     <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank">

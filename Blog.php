@@ -65,6 +65,10 @@ $especialidades = [
             }
         }
 
+        a  {
+    text-decoration: none;
+            }
+        
         
     </style>
 </head>
@@ -84,11 +88,12 @@ $especialidades = [
                 <?php
                 foreach ($especialidades as $especialidad) {
                     echo '<div class="filter-option">';
-                    echo '<input type="checkbox" class="especialidad-checkbox" value="' . htmlspecialchars($especialidad) . '">';
-                    echo '<label>' . htmlspecialchars($especialidad) . '</label>';
+                    echo '<input style="cursor: pointer;" type="checkbox" class="especialidad-checkbox" id="' . htmlspecialchars($especialidad) . '" value="' . htmlspecialchars($especialidad) . '">';
+                    echo '<label style="cursor: pointer;" for="' . htmlspecialchars($especialidad) . '">' . htmlspecialchars($especialidad) . '</label>'; // Eliminar los espacios adicionales
                     echo '</div>';
                 }
                 ?>
+
             </form>
         </div>
 
@@ -108,8 +113,8 @@ $especialidades = [
                         echo '<img src="' . htmlspecialchars($post['post_imagen']) . '" alt="' . htmlspecialchars($post['post_tema']) . '">';
                         echo '<h2>' . htmlspecialchars($post['post_tema']) . '</h2>';
                         echo '</a>';
-                        echo '<p><strong>Especialidad:</strong> ' . htmlspecialchars($post['post_especialidad']) . '</p>';
-                        echo '<p>' . htmlspecialchars($post['post_descripcion']) . '</p>';
+                        //echo '<p><strong>Especialidad:</strong> ' . htmlspecialchars($post['post_especialidad']) . '</p>';
+                        //echo '<p>' . htmlspecialchars($post['post_descripcion']) . '</p>';
                         echo '<p><strong>Publicado por Lic. </strong> ' . htmlspecialchars($post['psicologo_nombre']) . '</p>';
                         echo '</div>';
                     }

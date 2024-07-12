@@ -8,8 +8,8 @@
     flex: 0 1 calc(30% - 20px); /* Calcula el ancho para cuatro columnas */
     border: 1px solid #ddd;
     padding: 15px;
-    background-color: #F19294;
     color: white;
+    background-color:aliceblue;
     border-radius: 10px; /* Bordes redondeados */
     transition: transform 0.2s; /* Transición suave al pasar el ratón */
 }
@@ -17,17 +17,21 @@
     transform: scale(1.05); /* Agrandar ligeramente al pasar el ratón */
 }
 .blog-post img {
-    max-width: 100%;
-    height: auto;
+    height: 200px;
+    width: 300px;
     margin-bottom: 10px;
     border-radius: 10px; /* Bordes redondeados */
 }
 .blog-post h2 {
+    text-align: center;
+
+    color: black;
     margin-top: 0;
     margin-bottom: 5px;
     font-size: 1.5em;
 }
 .blog-post p {
+    color: #333;
     margin-bottom: 10px;
 }
 .container-blog {

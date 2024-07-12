@@ -93,24 +93,6 @@
             <p><span class="icon">&#x1F4DA;</span> Mejora en la calidad de vida.</p>
             <p><span class="icon">&#x1F64F;</span> Atención personalizada y empática.</p>
             <p><span class="icon">&#x1F496;</span> Ayuda en la resolución de problemas.</p>
-
-            <div class="testimonial">
-                <h3>Testimonios de Pacientes</h3>
-                <div class="testimonial-container">
-                    <div class="testimonial-item">
-                        <h4>Juan Pérez</h4>
-                        <p>"Me siento muy agradecido con el equipo de ContigoVoy por su apoyo incondicional."</p>
-                    </div>
-                    <div class="testimonial-item">
-                        <h4>María Gutiérrez</h4>
-                        <p>"Estoy muy contenta con la atención recibida por el equipo de ContigoVoy. Han sido de gran ayuda en mi proceso."</p>
-                    </div>
-                    <div class="testimonial-item">
-                        <h4>Carlos Rodríguez</h4>
-                        <p>"Quiero expresar mi gratitud hacia ContigoVoy por su apoyo constante y profesionalismo. Me han ayudado a enfrentar mis problemas de una manera muy efectiva."</p>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="right-section">
