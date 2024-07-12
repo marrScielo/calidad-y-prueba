@@ -38,6 +38,35 @@ $especialidades = [
     <link rel="stylesheet" href="css/blog1.css">
     <link rel="icon" href="img/logo-actual.png">
     <link rel="stylesheet" href="css/boton-wsp.css">
+    <style>
+
+        @media (max-width: 768px) {
+            .filter-form{
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+            .blog-post {
+                width: 17rem;
+            }
+            .blog-posts {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); /* Una columna para dispositivos móviles */
+                gap: 20px; /* Espacio entre columnas */
+            }
+        }
+
+        @media (max-width: 550px) {
+            .blog-post {
+                width: 20rem;
+            }
+            .blog-posts {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr); /* Una columna para dispositivos móviles */
+                gap: 20px; /* Espacio entre columnas */
+            }
+        }
+
+        
+    </style>
 </head>
 
 <body>
