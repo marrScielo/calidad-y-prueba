@@ -79,7 +79,7 @@
     <div class="image-container">
         <img src="img/fondo-blog.webp" alt="Fondo Blog">
         <div class="image-content">
-            <h3>Visitar nuestro Blog</h3>
+            <h3>Visita nuestro Blog</h3>
             <p>Nuestros psicólogos escriben artículos que adaptan la psicología a tus necesidades, ayudándote a entender, cambiar y vivir mejor.</p>
             <a href="Blog.php">VER BLOG</a>
         </div>
