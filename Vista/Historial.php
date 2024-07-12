@@ -55,6 +55,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             }
 
             .container-paciente-tabla {
+                display: flex;
                 min-width: 800px;
             }
 
@@ -194,6 +195,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             border: 1.5px solid var(--color-primary);
             transition: all 0.5s ease-in-out;
         }
+        
 
         /* Resto de tu estilo para el modal */
         /* ... */
