@@ -44,10 +44,13 @@
     background-color: rgba(86, 185, 179, 1); /* Cambia el último valor (1) para ajustar la opacidad */
 }
 /* Media queries para pantallas más pequeñas */
-@media (max-width: 768px) {
+@media (width < 500px) {
+    .image-container {
+        height: 500px; 
+    }
     .image-content {
         width: 90%; /* Reducir el ancho del contenido para pantallas más pequeñas */
-        max-width: 300px; /* Reducir el ancho máximo del contenido */
+        max-width: 210px; /* Reducir el ancho máximo del contenido */
     }
 
     .image-content h3 {
@@ -55,10 +58,10 @@
     }
 
     .image-content p {
-        font-size: 0.8em; /* Reducir el tamaño del párrafo para pantallas más pequeñas */
+        font-size: 1em;
     }
 
     .image-content a {
-        font-size: 0.8em; /* Reducir el tamaño del texto del enlace para pantallas más pequeñas */
+        font-size: 1em; /* Reducir el tamaño del texto del enlace para pantallas más pequeñas */
     }
 }
