@@ -7,10 +7,11 @@ if (isset($_GET['id'])) {
     $postId = intval($_GET['id']);
     $query = "SELECT * FROM posts WHERE id = :post_id";
 
-    $query = "SELECT posts.*, psicologo.NombrePsicologo AS psicologo_nombre 
-          FROM posts 
-          LEFT JOIN psicologo ON posts.psicologo_id = psicologo.idPsicologo
-          WHERE posts.id = :post_id";
+    $query = "SELECT posts.*, psicologo.NombrePsicologo AS psicologo_nombre, usuarios.fotoPerfil
+              FROM posts 
+              LEFT JOIN psicologo ON posts.psicologo_id = psicologo.idPsicologo
+              LEFT JOIN usuarios ON psicologo.usuario_id = usuarios.id
+              WHERE posts.id = :post_id";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':post_id', $postId, PDO::PARAM_INT);
     $stmt->execute();
@@ -18,16 +19,25 @@ if (isset($_GET['id'])) {
     if ($stmt->rowCount() > 0) {
         $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Fetch recommended articles
-        /*$especialidad = $post['especialidad'];
-        $recommendedQuery = "SELECT * FROM posts WHERE especialidad = :especialidad AND id != :post_id LIMIT 3";
-        $recommendedStmt = $pdo->prepare($recommendedQuery);
-        $recommendedStmt->bindParam(':especialidad', $especialidad, PDO::PARAM_STR);
-        $recommendedStmt->bindParam(':post_id', $postId, PDO::PARAM_INT);
-        $recommendedStmt->execute();
-        $recommendedPosts = $recommendedStmt->fetchAll(PDO::FETCH_ASSOC);*/
+        // Formatear la fecha
+        $fechaOriginal = $post['fecha'];
+        $fechaFormateada = date("d/m/Y", strtotime($fechaOriginal));
 
-        //TRAE ARTICULOS ALEATORIOS
+        // Calcular el tiempo transcurrido desde la publicación
+        $fechaPublicacion = new DateTime($fechaOriginal);
+        $fechaActual = new DateTime();
+        $intervalo = $fechaPublicacion->diff($fechaActual);
+
+        if ($intervalo->h < 1) {
+            $tiempoTranscurrido = $intervalo->i . ' minutos';
+        } elseif ($intervalo->h < 24) {
+            $tiempoTranscurrido = $intervalo->h . ' horas';
+        } else {
+            $dias = $intervalo->d;
+            $tiempoTranscurrido = $dias . ($dias > 1 ? ' días' : ' día');
+        }
+
+        // Fetch recommended articles
         $recommendedQuery = "SELECT * FROM posts WHERE id != :post_id ORDER BY RAND() LIMIT 3";
         $recommendedStmt = $pdo->prepare($recommendedQuery);
         $recommendedStmt->bindParam(':post_id', $postId, PDO::PARAM_INT);
@@ -117,7 +127,6 @@ if (isset($_GET['id'])) {
             width: 100%;
         }
 
-
         .recommended-articles .article h4 {
             font-size: 1.2em;
             color: #333;
@@ -158,39 +167,63 @@ if (isset($_GET['id'])) {
             .recommended-articles .article p {
                 font-size: 0.8em;
             }
-           
         }
 
-        .informacion{
-                display: flex;
-                flex-direction: row;
-                gap: 20px;
-            }
+        .informacion {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        .especialidad_style {
+            background: #56B9B3;
+            color: black;
+            padding: 0.2rem 2rem;
+            border-radius: 1rem;
+        }
+
+        .container_fecha {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .content_blog{
+            text-align: justify;
+            line-height: 1rem;
+        }
     </style>
     <div class="container">
+        <span class="especialidad_style"><?php echo htmlspecialchars($post['especialidad']); ?></span>
         <div class="blog-post">
-            <img class="image-post" src="<?php echo htmlspecialchars($post['imagen']); ?>" alt="<?php echo htmlspecialchars($post['tema']); ?>">
             <h2><?php echo htmlspecialchars($post['tema']); ?></h2>
+            <img class="image-post" src="<?php echo htmlspecialchars($post['imagen']); ?>" alt="<?php echo htmlspecialchars($post['tema']); ?>">
             <hr>
-            <div class="informacion">   
-                 <p><strong>Publicado por Lic. </strong> <?php echo htmlspecialchars($post['psicologo_nombre']); ?></p>
-                <p><strong>Especialidad:</strong> <?php echo htmlspecialchars($post['especialidad']); ?></p>
-                
+            <div class="container_fecha">
+                <div>
+                    <p>Publicado: <?php echo htmlspecialchars($fechaFormateada); ?></p>
+                </div>
+                <div>
+                    <p><?php echo htmlspecialchars($tiempoTranscurrido); ?></p>
+                </div>
             </div>
-           
             <hr>
-            <p><?php echo htmlspecialchars($post['descripcion']); ?></p>
-           
+            <div class="informacion">
+                <?php if (!empty($post['fotoPerfil'])): ?>
+                    <img src="<?php echo htmlspecialchars($post['fotoPerfil']); ?>" alt="Foto de perfil" style="width: 50px; height: 50px; border-radius: 50%;">
+                <?php endif; ?>
+                <p>By <?php echo htmlspecialchars($post['psicologo_nombre']); ?></p>
+            </div>
+            <hr>
+            <h2><?php echo htmlspecialchars($post['tema']); ?></h2>
+            <p class="content_blog"><?php echo htmlspecialchars($post['descripcion']); ?></p>
         </div>
         <hr>
         <h3>Artículos Recomendados</h3>
         <div class="recommended-articles">
-            
             <?php foreach ($recommendedPosts as $recommendedPost): ?>
                 <div class="article">
                     <h4><a href="blog-details.php?id=<?php echo intval($recommendedPost['id']); ?>"><?php echo htmlspecialchars($recommendedPost['tema']); ?></a></h4>
-                    <img class="image-post" src="<?php echo htmlspecialchars($recommendedPost['imagen']); ?>" alt="<?php echo htmlspecialchars($post['tema']); ?>">
-                 
+                    <img class="image-post" src="<?php echo htmlspecialchars($recommendedPost['imagen']); ?>" alt="<?php echo htmlspecialchars($recommendedPost['tema']); ?>">
                 </div>
             <?php endforeach; ?>
         </div>
