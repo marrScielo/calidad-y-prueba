@@ -21,7 +21,7 @@
                 <input id="nombre" type="text" placeholder="Nombre">
                 <input id="telefono" type="number" placeholder="Telefono">
                 <input id="email" type="email" placeholder="Email">
-                <textarea id="mensaje" type="text" placeholder="Mensaje" class="textarea"></textarea>
+                <textarea id="mensaje" type="text" placeholder="Mensaje"></textarea>
                 <input id="enviar" type="submit" value="Enviar">
             </form>
         </div>
