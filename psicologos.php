@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="css/boton-wsp.css">
     <title>Psicologos</title>
     <style>
+        @media (width < 550px) {
+            .left-section, .right-section {
+                padding: 0px !important;
+            }
+        }
 
         @media (max-width: 768px) {
             .search-container input[type="text"] {
