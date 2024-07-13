@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="css/estilos-footer1x.css">
     <link rel="stylesheet" href="css/estilos-footer2.css">
     <link rel="stylesheet" href="css/boton-wsp.css">
-    <link rel="stylesheet" href="css/estilos-carrusel.css">
 </head>
 <body>
 
@@ -28,51 +27,9 @@
             <a href="psicologos.php" class="btn">Solicitar Servicio</a>
         </div>
     </div>
-    
-    <div class="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="carousel-caption">
-                    <h3>Especialidades</h3>
-                    <p>Contamos con un grupo de psicologos especializados en una amplia variedad de temas, garantizando que puedan recibir la ayuda adecuada y especifica para sus problemas.</p>
-                </div>
-                <img src="img/beneficio1.webp" alt="Especialidades">
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-caption">
-                    <h3>Servicio Eficiente</h3>
-                    <p>Agilizamos el proceso de acceso a los servicios de psicologia, agrupando los mejores psicologos en una misma plataforma.</p>
-                </div>
-                <img src="img/beneficio2.webp" alt="Servicio-eficiente">
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-caption">
-                    <h3>Beneficios</h3>
-                    <p>Conoce los beneficios que podemos dar tanto a los psicologos como a sus pacientes.</p>
-                </div>
-                <img style="height: 100vh" src="img/beneficio4.webp"  alt="Beneficios">
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-caption">
-                    <h3>Atención de calidad</h3>
-                    <p>Contamos con un grupo de psicologos especializados en una amplia variedad de temas, garantizando que puedan recibir la ayuda adecuada y especifica para sus problemas.</p>
-                </div>
-                <img src="img/beneficio3.webp" alt="Atención-de-calidad">
-            </div>
-        </div>
-        <div class="botones">
-            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true">&#10094;</span>
-                <span class="visually-hidden"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true">&#10095;</span>
-                <span class="visually-hidden"></span>
-            </button>
-        </div>
-        
-    </div>
+   
 
+    <?php include 'Componentes/slider.php'; ?>
 
     <?php include 'Componentes/especialidades.php'; ?>
 
@@ -95,7 +52,6 @@
     </a>
 
     <script src="js/navabar.js"></script>
-    <script src="js/carrusel.js"></script>
 </body>
 
 </html>
