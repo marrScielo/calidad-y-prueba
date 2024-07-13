@@ -55,9 +55,16 @@ $especialidades = [
         }
 
         @media (max-width: 550px) {
-            .blog-post {
-                width: 20rem;
+            .container-celeste{
+                padding: 0px !important;
             }
+            .blog-post {
+                text-align: center;
+                width: 90%;
+                margin: 0 auto;
+
+            }
+
             .blog-posts {
                 display: grid;
                 grid-template-columns: repeat(1, 1fr); /* Una columna para dispositivos móviles */
