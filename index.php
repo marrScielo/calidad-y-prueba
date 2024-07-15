@@ -45,6 +45,7 @@
     <?php include 'Componentes/opiniones.php'; ?>
 
     <?php include 'Componentes/preguntas.php'; ?>
+    <?php include 'Componentes/plus.php'; ?>
 
     <?php include 'Componentes/footer_new.php'; ?>
 

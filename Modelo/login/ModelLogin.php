@@ -57,8 +57,8 @@ class Login
     {
     if ($_POST) {
         session_start();
-        $email = $_POST['usu'];
-        $password = $_POST['pass'];
+        $email = trim($_POST['usu']);
+        $password = trim($_POST['pass']);
 
         $this->PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $statement = $this->PDO->prepare("SELECT * FROM usuarios WHERE email = :email AND password = :password");
