@@ -566,9 +566,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         document.getElementById('addNotaBtn').addEventListener('click', function() {
                         const textarea2 = document.getElementById('notaTextarea2');
                         const actualizarBtn = document.getElementById('actualizarBtn');
+                        const addNotaBtn = document.getElementById('addNotaBtn');
                         
                         textarea2.style.display = 'block';
                         actualizarBtn.style.display = 'block';
+                        addNotaBtn.style.display = 'none';
 
                             // Aquí obtendremos el campo nota de la base de datos
                             fetch('?dni=' + dni)
@@ -580,7 +582,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                             document.getElementById('actualizarBtn').addEventListener('click', function() {
                                 const nota = document.getElementById('notaTextarea2').value;
+                                const addNotaBtn = document.getElementById('addNotaBtn');
 
+                                
                                 fetch('', {
                                     method: 'POST',
                                     headers: {
@@ -594,6 +598,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                     // Ocultar textarea y botón actualizar
                                     document.getElementById('notaTextarea2').style.display = 'none';
                                     document.getElementById('actualizarBtn').style.display = 'none';
+                                    addNotaBtn.style.display = 'block';
                                 });
                             });
 
