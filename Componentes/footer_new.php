@@ -15,7 +15,7 @@
     }
 
     .content_2{
-      font-weight: bold;
+      font-weight: 600;
       font-style: italic;
 
     }
@@ -23,7 +23,7 @@
     #link_footer{
       color: black;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
       transition: 0.3s ease-in-out all;
       padding: 0.4rem;
     }
