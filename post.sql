@@ -17,7 +17,7 @@ VALUES ('Neurociencia de las Adicciones: Descubrimientos Recientes y Su Impacto 
 INSERT INTO `posts` (`tema`, `especialidad`, `descripcion`, `imagen`, `psicologo_id`)
 VALUES ('Terapias Innovadoras para la Adicción: Enfoques Prometedores y Resultados Esperados', 'Adicciones', 'Explora nuevas terapias y tecnologías que están siendo utilizadas por psicólogos para tratar las adicciones, como la realidad virtual y la terapia de exposición.', 'https://images.pexels.com/photos/965879/pexels-photo-965879.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', '1');
 
-Ansiedad
+-- Ansiedad
 INSERT INTO `posts` (`tema`, `especialidad`, `descripcion`, `imagen`, `psicologo_id`)
  VALUES ('Técnicas de Respiración y Relajación para Reducir la Ansiedad', 'Ansiedad', 'Ofrece ejercicios prácticos de respiración y técnicas de relajación que los individuos pueden usar para reducir los síntomas de ansiedad en situaciones cotidianas.', 'https://images.pexels.com/photos/775417/pexels-photo-775417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', '1');
 
