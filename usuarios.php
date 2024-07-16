@@ -202,6 +202,19 @@ if(isset($_SESSION['logeado'])){
         .logout-button form input[type=submit]:hover {
             background-color: #c0392b;
         }
+
+        .gestion-contactenos-btn {
+            background-color: #f45231; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -212,6 +225,8 @@ if(isset($_SESSION['logeado'])){
                 <input type="submit" value="Cerrar sesión">
             </form>
         </div>
+
+        <a href="gestion_contactanos.php" class="gestion-contactenos-btn">Gestionar Contactenos</a>
 
         <div class="search-container">
             <form action="usuarios.php" method="GET">
