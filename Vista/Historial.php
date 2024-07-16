@@ -286,7 +286,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         <input type="text" id="myInput" placeholder="Buscar Paciente" class="input" required>
                     </div>
                     <a class="button-arriba" style="padding:10px 30px; font-size:10px;" href="RegAtencionPaciente.php">
-                        <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Paciente
+                        <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Atencion
                     </a>
                 </div>
 
@@ -299,7 +299,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                     <tr <?php if ($index === 0) echo 'class="primera-fila"'; ?>>
 
                                         <td>
-                                            <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>" data-dni="<?= $patient['Dni'] ?>" data-celular="<?= $patient['Telefono'] ?>" data-codigo="<?= $patient['codigopac'] ?>" data-diagnostico="<?= $patient['Diagnostico'] ?>" data-enfermedad="<?= $patient['IdEnfermedad'] ?>" data-observacion="<?= $patient['Observacion'] ?>" data-FechaInicioCita="<?= $patient['FechaRegistro'] ?>" data-nota="<?= $patient['nota'] ?>">
+                                            <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>" data-dni="<?= $patient['Dni'] ?>" data-celular="<?= $patient['Telefono'] ?>" data-codigo="<?= $patient['codigopac'] ?>" data-diagnostico="<?= $patient['Diagnostico'] ?>" data-enfermedad="<?= $patient['IdEnfermedad'] ?>" data-observacion="<?= $patient['Observacion'] ?>" data-FechaInicioCita="<?= $patient['FechaRegistro'] ?>" data-nota="<?= $patient['nota'] ?>" data-objetivo="<?= $patient['UltimosObjetivos'] ?>">
                                                 <p style="cursor: pointer;" class="nombre-paciente"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
                                                 <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?> </p>
                                             </a>
@@ -411,6 +411,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     const observacion = link.getAttribute('data-observacion');
                     const FechaInicioCita = link.getAttribute('data-FechaInicioCita');
                     const nota = link.getAttribute('data-nota');
+                    const objetivo = link.getAttribute('data-objetivo');
                     // Formatear la fecha en español
                     const opcionesFecha = {
                         weekday: 'long',
@@ -520,20 +521,20 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <p class="abajo">${observacion || 'Aun no hay observacion'}</p>
                             </div>
                             <div class="ci-input-group">
-                                <h2 class="arriba" for="#">Observación </h2>
-                                <p class="abajo">${observacion || 'Aun no hay observacion'}</p>
+                                <h2 class="arriba" for="#">Ultimos Objetivos </h2>
+                                <p class="abajo">${objetivo || 'Aun no hay objetivos'}</p>
                             </div>
                             <div class="ci-input-group">
                                 <h2 class="arriba" for="#">Fecha Atención </h2>
-                                <p class="abajo">${fechaFormateada  || 'Aun no hay cita'}</p>
+                                <p class="abajo">${fechaFormateada  || 'Aun no hay previa atención'}</p>
                             </div>
 
                             <br>
                             <textarea id="notaTextarea2">${nota  || 'Aun no comentarios'}</textarea>
                             <br>
-                            <button id="actualizarBtn">Actualizar</button>
+                            <button styler=" cursor: pointer;" id="actualizarBtn">Actualizar</button>
 
-                            <button id="addNotaBtn">Add Nota</button>
+                            <button style=" cursor: pointer;" id="addNotaBtn">Editar Nota</button>
 
                             <div class="BUT">
                                 <a href="RegAtencionPaciente.php" class="green-button" id="button2">Atención Paciente</a>
