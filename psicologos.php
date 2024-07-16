@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/inicio-header1.css">
     <link rel="stylesheet" href="css/psico-estilo.css">
-    <link rel="icon" href="img/logo-actual.png">
+    <link rel="icon" href="img/logo-actual.webp">
     <link rel="stylesheet" href="css/boton-wsp.css">
     <title>Psicologos</title>
+    <meta name="description" content="Reserva tu cita con nuestro psicólogo profesional. Encuentra información sobre su especialidad, contacto y disponibilidad. Comienza tu camino hacia el bienestar emocional con una consulta personalizada.">
     <style>
         @media (width < 550px) {
             .left-section, .right-section {
