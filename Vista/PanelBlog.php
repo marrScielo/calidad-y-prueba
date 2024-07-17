@@ -164,7 +164,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <th>ID</th>
                                 <th>Tema</th>
                                 <th>Especialidad</th>
-                                <th>Descripción</th>
                                 <th>Imagen</th>
                                 <th>Acciones</th>
                             </tr>
@@ -187,7 +186,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 echo "<td>" . htmlspecialchars($post['id']) . "</td>";
                                 echo "<td>" . htmlspecialchars($post['tema']) . "</td>";
                                 echo "<td>" . htmlspecialchars($post['especialidad']) . "</td>";
-                                echo "<td>" . htmlspecialchars($post['descripcion']) . "</td>";
                                 echo "<td><img src='" . htmlspecialchars($post['imagen']) . "' alt='Imagen del blog' class='small-img'></td>";
                                 echo "<td class='action-buttons'>";
                                 echo "<a href='#' class='edit-button' data-id='" . htmlspecialchars($post['id']) . "' data-tema='" . htmlspecialchars($post['tema']) . "' data-especialidad='" . htmlspecialchars($post['especialidad']) . "' data-descripcion='" . htmlspecialchars($post['descripcion']) . "' data-imagen='" . htmlspecialchars($post['imagen']) . "'>Editar</a>";

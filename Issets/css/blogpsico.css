@@ -141,16 +141,4 @@ td {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #49c691;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #45a67d;
-}
+

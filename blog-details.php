@@ -215,7 +215,7 @@ if (isset($_GET['id'])) {
             </div>
             <hr>
             <h2><?php echo htmlspecialchars($post['tema']); ?></h2>
-            <p class="content_blog"><?php echo htmlspecialchars($post['descripcion']); ?></p>
+            <p class="content_blog"><?php echo ($post['descripcion']); ?></p>
         </div>
         <hr>
         <h3>Artículos Recomendados</h3>
