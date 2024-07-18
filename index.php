@@ -30,7 +30,7 @@
 
     <div class="banner">
         <div class="banner-content">
-            <h1>DESCUBRE TU MEJOR <br> VERSIÓN</h1>
+            <h1>DESCUBRE TU MEJOR <br> VERSION</h1>
             <p>Encuentra equilibrio <br> y bienestar emocional <br> aquí</p>
             <a href="psicologos.php" class="btn">Solicitar Servicio</a>
         </div>
