@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ContigoVoy</title>
@@ -17,6 +18,11 @@
     <link rel="stylesheet" href="css/estilos-footer1x.css">
     <link rel="stylesheet" href="css/estilos-footer2.css">
     <link rel="stylesheet" href="css/boton-wsp.css">
+    <style>
+        .fa-whatsapp{
+            margin-left: 2.2rem;
+        }
+    </style>
 </head>
 <body>
 
