@@ -3,6 +3,8 @@
 require_once './Controlador/BlogController.php';
 require_once './Modelo/BlogModel.php';
 
+
+
 $db = new DatabaseController();
 $db->getConnection();
 
@@ -12,9 +14,18 @@ $limit = 6;  // Número de blogs por página
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
-$blogs = $blogControlador->show($limit, $offset);
-$totalBlogs = $blogControlador->getTotalBlogs();
+$especialidadesSeleccionadas = isset($_GET['especialidades']) ? explode(',', $_GET['especialidades']) : [];
+
+// $blogs = $blogControlador->show($limit, $offset, $especialidadesSeleccionadas);
+// $totalBlogs = $blogControlador->getTotalBlogs($especialidadesSeleccionadas);
+// $totalPages = ceil($totalBlogs / $limit);
+
+$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+
+$blogs = $blogControlador->show($limit, $offset, $especialidadesSeleccionadas, $searchTerm);
+$totalBlogs = $blogControlador->getTotalBlogs($especialidadesSeleccionadas, $searchTerm);
 $totalPages = ceil($totalBlogs / $limit);
+
 
 $especialidades = [
     "Adicciones", "Ansiedad", "Atención", "Autoestima", "Crianza",
@@ -40,25 +51,29 @@ $especialidades = [
     <link rel="icon" href="img/logo-actual.webp">
     <link rel="stylesheet" href="css/boton-wsp.css">
     <style>
-
         @media (max-width: 768px) {
-            .filter-form{
+            .filter-form {
                 grid-template-columns: repeat(1, minmax(0, 1fr));
             }
+
             .blog-post {
                 width: 17rem;
             }
+
             .blog-posts {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr); /* Una columna para dispositivos móviles */
-                gap: 20px; /* Espacio entre columnas */
+                grid-template-columns: repeat(2, 1fr);
+                /* Una columna para dispositivos móviles */
+                gap: 20px;
+                /* Espacio entre columnas */
             }
         }
 
         @media (max-width: 550px) {
-            .container-celeste{
+            .container-celeste {
                 padding: 0px !important;
             }
+
             .blog-post {
                 text-align: center;
                 width: 90%;
@@ -68,16 +83,16 @@ $especialidades = [
 
             .blog-posts {
                 display: grid;
-                grid-template-columns: repeat(1, 1fr); /* Una columna para dispositivos móviles */
-                gap: 20px; /* Espacio entre columnas */
+                grid-template-columns: repeat(1, 1fr);
+                /* Una columna para dispositivos móviles */
+                gap: 20px;
+                /* Espacio entre columnas */
             }
         }
 
-        a  {
-    text-decoration: none;
-            }
-        
-        
+        a {
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -101,7 +116,6 @@ $especialidades = [
                     echo '</div>';
                 }
                 ?>
-
             </form>
         </div>
 
@@ -157,25 +171,11 @@ $especialidades = [
             const checkboxes = document.querySelectorAll('.especialidad-checkbox');
             const selectedEspecialidades = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
 
-            const posts = document.querySelectorAll('.blog-post');
-            let blogsEncontrados = false;
-            posts.forEach(post => {
-                const postEspecialidad = post.getAttribute('data-especialidad');
-                if (selectedEspecialidades.length === 0 || selectedEspecialidades.includes(postEspecialidad)) {
-                    post.style.display = 'block';
-                    blogsEncontrados = true;
-                } else {
-                    post.style.display = 'none';
-                }
-            });
-            if (!blogsEncontrados && selectedEspecialidades.length > 0) {
-                mostrarMensajeNoBlogs();
-            } else {
-                ocultarMensajeNoBlogs();
-            }
-            if (selectedEspecialidades.length === 0) {
-                ocultarMensajeNoBlogs();
-            }
+            // Construir la query string
+            const queryString = `?page=1&especialidades=${selectedEspecialidades.join(',')}`;
+
+            // Recargar la página con los filtros aplicados
+            window.location.href = window.location.pathname + queryString;
         });
 
         function mostrarMensajeNoBlogs() {
@@ -186,20 +186,31 @@ $especialidades = [
             document.getElementById("mensaje-no-blogs").style.display = "none";
         }
 
-        document.getElementById('search-button').addEventListener('click', function() {
-            const searchInput = document.getElementById('search-input').value.toLowerCase();
+        document.getElementById('search-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevenir el comportamiento predeterminado del botón de envío
+
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
             const posts = document.querySelectorAll('.blog-post');
+
             let blogsEncontrados = false;
             posts.forEach(post => {
-                const postTitle = post.querySelector('h2').textContent.toLowerCase();
-                const postDescription = post.querySelector('p').textContent.toLowerCase();
-                if (postTitle.includes(searchInput) || postDescription.includes(searchInput)) {
-                    post.style.display = 'block';
-                    blogsEncontrados = true;
-                } else {
-                    post.style.display = 'none';
+                const postTitleElement = post.querySelector('.post-title');
+                const postDescriptionElement = post.querySelector('.post-description');
+
+                // Verificar que los elementos existen antes de acceder a sus propiedades
+                if (postTitleElement && postDescriptionElement) {
+                    const postTitle = postTitleElement.textContent.toLowerCase();
+                    const postDescription = postDescriptionElement.textContent.toLowerCase();
+
+                    if (postTitle.includes(searchTerm) || postDescription.includes(searchTerm)) {
+                        post.style.display = 'block';
+                        blogsEncontrados = true;
+                    } else {
+                        post.style.display = 'none';
+                    }
                 }
             });
+
             if (!blogsEncontrados) {
                 mostrarMensajeNoBlogs();
             } else {
@@ -207,6 +218,8 @@ $especialidades = [
             }
         });
     </script>
+
+
     <script src="js/navabar.js"></script>
     <a href="https://wa.me/51915205726" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>

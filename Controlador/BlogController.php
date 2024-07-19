@@ -10,12 +10,12 @@ class BlogController {
         $this->blogModel = new Blog($db);
     }
 
-    public function show($limit, $offset) {
-        return $this->blogModel->getAllBlog($limit, $offset);
+    public function show($limit, $offset, $especialidades = []) {
+        return $this->blogModel->getAllBlog($limit, $offset, $especialidades);
     }
 
-    public function getTotalBlogs() {
-        return $this->blogModel->getTotalBlogs();
+    public function getTotalBlogs($especialidades = []) {
+        return $this->blogModel->getTotalBlogs($especialidades);
     }
 
     public function crearBlog($tema, $especialidad, $descripcion, $imagen) {
