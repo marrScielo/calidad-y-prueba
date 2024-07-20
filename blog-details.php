@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
     $query = "SELECT * FROM posts WHERE id = :post_id";
 
     $query = "SELECT posts.*, psicologo.NombrePsicologo AS psicologo_nombre, usuarios.fotoPerfil
-              FROM posts 
+              FROM posts
               LEFT JOIN psicologo ON posts.psicologo_id = psicologo.idPsicologo
               LEFT JOIN usuarios ON psicologo.usuario_id = usuarios.id
               WHERE posts.id = :post_id";
@@ -84,15 +84,18 @@ if (isset($_GET['id'])) {
 
         .blog-post img.image-post {
             max-width: 100%;
-            height: 15rem !important;
-            border-radius: 8px;
+            width: 100% !important;
+            background-size: cover;
+            object-fit: cover;
+            height: 20rem !important;
+            border-radius: 3%;
             margin-bottom: 20px;
         }
 
         .blog-post h2 {
             font-size: 2em;
             margin: 10px 0;
-            color: #333;
+            color: #000000;
         }
 
         .blog-post p {
@@ -108,14 +111,14 @@ if (isset($_GET['id'])) {
 
         .recommended-articles {
             display: flex;
-             flex-direction: row;
-             justify-content: space-between;
+            flex-direction: row;
+            justify-content: space-between;
         }
 
         .recommended-articles h3 {
             font-size: 1.5em;
             margin-bottom: 20px;
-            color: #333;
+            color: #a1a4b2 !important;
         }
 
         .recommended-articles .article {
@@ -123,6 +126,7 @@ if (isset($_GET['id'])) {
             text-align: left;
             width: 30%;
         }
+
         .recommended-articles img {
             width: 100%;
         }
@@ -176,8 +180,8 @@ if (isset($_GET['id'])) {
         }
 
         .especialidad_style {
-            background: #56B9B3;
-            color: black;
+            background: #98d8df;
+            color: #333333;
             padding: 0.2rem 2rem;
             border-radius: 1rem;
         }
@@ -187,7 +191,7 @@ if (isset($_GET['id'])) {
             justify-content: space-between;
         }
 
-        .content_blog{
+        .content_blog {
             text-align: justify;
             line-height: 1rem;
         }
@@ -196,31 +200,32 @@ if (isset($_GET['id'])) {
         <span class="especialidad_style"><?php echo htmlspecialchars($post['especialidad']); ?></span>
         <div class="blog-post">
             <h2><?php echo htmlspecialchars($post['tema']); ?></h2>
-            <img class="image-post" src="<?php echo htmlspecialchars($post['imagen']); ?>" alt="<?php echo htmlspecialchars($post['tema']); ?>">
+            <img loading="lazy" class="image-post" src="<?php echo htmlspecialchars($post['imagen']); ?>" alt="<?php echo htmlspecialchars($post['tema']); ?>">
             <hr>
             <div class="container_fecha">
-                <div>
-                    <p>Publicado: <?php echo htmlspecialchars($fechaFormateada); ?></p>
-                </div>
-                <div>
-                    <p><?php echo htmlspecialchars($tiempoTranscurrido); ?></p>
-                </div>
+                <p>Publicado: <?php echo htmlspecialchars($fechaFormateada); ?></p>
+                <p><?php echo htmlspecialchars($tiempoTranscurrido); ?></p>
             </div>
             <hr>
             <div class="informacion">
-                <?php if (!empty($post['fotoPerfil'])): ?>
-                    <img src="<?php echo htmlspecialchars($post['fotoPerfil']); ?>" alt="Foto de perfil" style="width: 50px; height: 50px; border-radius: 50%;">
-                <?php endif; ?>
+                <?php
+                // Define the URL of the default image
+                $defaultImage = 'https://images.pexels.com/photos/5699456/pexels-photo-5699456.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'; // Reemplaza con la ruta a tu imagen por defecto
+                ?>
+                <img src="<?php echo !empty($post['fotoPerfil']) ? htmlspecialchars($post['fotoPerfil']) : $defaultImage; ?>" alt="Foto de perfil" style="width: 50px; height: 50px; border-radius: 50%; background-size:cover; object-fit:cover;">
                 <p>By <?php echo htmlspecialchars($post['psicologo_nombre']); ?></p>
             </div>
-            <hr>
+
+            <!-- <hr> -->
+             <br />
             <h2><?php echo htmlspecialchars($post['tema']); ?></h2>
             <p class="content_blog"><?php echo ($post['descripcion']); ?></p>
         </div>
-        <hr>
+        <!-- <hr> -->
+        <br/>
         <h3>Artículos Recomendados</h3>
         <div class="recommended-articles">
-            <?php foreach ($recommendedPosts as $recommendedPost): ?>
+            <?php foreach ($recommendedPosts as $recommendedPost) : ?>
                 <div class="article">
                     <h4><a href="blog-details.php?id=<?php echo intval($recommendedPost['id']); ?>"><?php echo htmlspecialchars($recommendedPost['tema']); ?></a></h4>
                     <img class="image-post" src="<?php echo htmlspecialchars($recommendedPost['imagen']); ?>" alt="<?php echo htmlspecialchars($recommendedPost['tema']); ?>">

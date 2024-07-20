@@ -1,9 +1,6 @@
 <?php
-
 require_once './Controlador/BlogController.php';
 require_once './Modelo/BlogModel.php';
-
-
 
 $db = new DatabaseController();
 $db->getConnection();
@@ -15,17 +12,11 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
 $especialidadesSeleccionadas = isset($_GET['especialidades']) ? explode(',', $_GET['especialidades']) : [];
-
-// $blogs = $blogControlador->show($limit, $offset, $especialidadesSeleccionadas);
-// $totalBlogs = $blogControlador->getTotalBlogs($especialidadesSeleccionadas);
-// $totalPages = ceil($totalBlogs / $limit);
-
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 
 $blogs = $blogControlador->show($limit, $offset, $especialidadesSeleccionadas, $searchTerm);
 $totalBlogs = $blogControlador->getTotalBlogs($especialidadesSeleccionadas, $searchTerm);
 $totalPages = ceil($totalBlogs / $limit);
-
 
 $especialidades = [
     "Adicciones", "Ansiedad", "Atención", "Autoestima", "Crianza",
@@ -34,11 +25,10 @@ $especialidades = [
     "Sentido de vida", "Orientación Vocacional", "Problemas de sueño", "Problemas alimenticios",
     "Relaciones Interpersonales"
 ];
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -63,9 +53,7 @@ $especialidades = [
             .blog-posts {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                /* Una columna para dispositivos móviles */
                 gap: 20px;
-                /* Espacio entre columnas */
             }
         }
 
@@ -78,15 +66,12 @@ $especialidades = [
                 text-align: center;
                 width: 90%;
                 margin: 0 auto;
-
             }
 
             .blog-posts {
                 display: grid;
                 grid-template-columns: repeat(1, 1fr);
-                /* Una columna para dispositivos móviles */
                 gap: 20px;
-                /* Espacio entre columnas */
             }
         }
 
@@ -97,9 +82,7 @@ $especialidades = [
 </head>
 
 <body>
-
     <?php include 'Componentes/header.php'; ?>
-
     <div class="container-blog">
         <div class="container-rosado">
             <h2 onclick="toggleDropdownBlog()">Filtrar por Especialidad</h2>
@@ -112,7 +95,7 @@ $especialidades = [
                 foreach ($especialidades as $especialidad) {
                     echo '<div class="filter-option">';
                     echo '<input style="cursor: pointer;" type="checkbox" class="especialidad-checkbox" id="' . htmlspecialchars($especialidad) . '" value="' . htmlspecialchars($especialidad) . '">';
-                    echo '<label style="cursor: pointer;" for="' . htmlspecialchars($especialidad) . '">' . htmlspecialchars($especialidad) . '</label>'; // Eliminar los espacios adicionales
+                    echo '<label style="cursor: pointer;" for="' . htmlspecialchars($especialidad) . '">' . htmlspecialchars($especialidad) . '</label>';
                     echo '</div>';
                 }
                 ?>
@@ -135,16 +118,12 @@ $especialidades = [
                         echo '<img src="' . htmlspecialchars($post['post_imagen']) . '" alt="' . htmlspecialchars($post['post_tema']) . '">';
                         echo '<h2>' . htmlspecialchars($post['post_tema']) . '</h2>';
                         echo '</a>';
-                        //echo '<p><strong>Especialidad:</strong> ' . htmlspecialchars($post['post_especialidad']) . '</p>';
-                        //echo '<p>' . htmlspecialchars($post['post_descripcion']) . '</p>';
                         echo '<p><strong>Publicado por Lic. </strong> ' . htmlspecialchars($post['psicologo_nombre']) . '</p>';
                         echo '</div>';
                     }
                 }
                 ?>
             </div>
-
-
 
             <!-- Paginación -->
             <div class="pagination">
@@ -162,7 +141,6 @@ $especialidades = [
                     <span class="page-link disabled">Siguiente &raquo;</span>
                 <?php endif; ?>
             </div>
-
         </div>
     </div>
 
@@ -170,9 +148,30 @@ $especialidades = [
         document.getElementById('filter-form').addEventListener('change', function() {
             const checkboxes = document.querySelectorAll('.especialidad-checkbox');
             const selectedEspecialidades = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
 
             // Construir la query string
-            const queryString = `?page=1&especialidades=${selectedEspecialidades.join(',')}`;
+            let queryString = `?page=1`;
+            if (selectedEspecialidades.length > 0) {
+                queryString += `&especialidades=${selectedEspecialidades.join(',')}`;
+            }
+            if (searchTerm) {
+                queryString += `&search=${encodeURIComponent(searchTerm)}`;
+            }
+
+            // Recargar la página con los filtros aplicados
+            window.location.href = window.location.pathname + queryString;
+        });
+
+        document.getElementById('search-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevenir el comportamiento predeterminado del botón de envío
+
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const checkboxes = document.querySelectorAll('.especialidad-checkbox');
+            const selectedEspecialidades = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+
+            // Construir la query string
+            const queryString = `?page=1&especialidades=${selectedEspecialidades.join(',')}&search=${searchTerm}`;
 
             // Recargar la página con los filtros aplicados
             window.location.href = window.location.pathname + queryString;
@@ -185,40 +184,7 @@ $especialidades = [
         function ocultarMensajeNoBlogs() {
             document.getElementById("mensaje-no-blogs").style.display = "none";
         }
-
-        document.getElementById('search-button').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevenir el comportamiento predeterminado del botón de envío
-
-            const searchTerm = document.getElementById('search-input').value.toLowerCase();
-            const posts = document.querySelectorAll('.blog-post');
-
-            let blogsEncontrados = false;
-            posts.forEach(post => {
-                const postTitleElement = post.querySelector('.post-title');
-                const postDescriptionElement = post.querySelector('.post-description');
-
-                // Verificar que los elementos existen antes de acceder a sus propiedades
-                if (postTitleElement && postDescriptionElement) {
-                    const postTitle = postTitleElement.textContent.toLowerCase();
-                    const postDescription = postDescriptionElement.textContent.toLowerCase();
-
-                    if (postTitle.includes(searchTerm) || postDescription.includes(searchTerm)) {
-                        post.style.display = 'block';
-                        blogsEncontrados = true;
-                    } else {
-                        post.style.display = 'none';
-                    }
-                }
-            });
-
-            if (!blogsEncontrados) {
-                mostrarMensajeNoBlogs();
-            } else {
-                ocultarMensajeNoBlogs();
-            }
-        });
     </script>
-
 
     <script src="js/navabar.js"></script>
     <a href="https://wa.me/51915205726" class="whatsapp-float" target="_blank">
@@ -226,7 +192,6 @@ $especialidades = [
     </a>
 
     <script src="js/filtroEspecialidadBlog.js"></script>
-
 </body>
 
 </html>

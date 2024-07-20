@@ -205,7 +205,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         <div style="text-align: start" id="formtext" class="form-group">
                             <label style="text-align: center;" for="description">Descripción:</label>
                             <!--<textarea id="description" name="description" rows="4" required></textarea>-->
-                            <textarea id="summernote" name="description" required></textarea>
+                            <textarea style="text-align: start;" id="summernote" name="description" required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="image">Imagen:</label>

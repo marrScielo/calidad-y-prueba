@@ -1,14 +1,17 @@
 <?php
 
-class Blog {
+class Blog
+{
     private $conn;
-    
+
     // Conexión del modelo con la base de datos
-    public function __construct($db){
+    public function __construct($db)
+    {
         $this->conn = $db->getConnection();
     }
-    
-    public function obtenerPsicologoId(){
+
+    public function obtenerPsicologoId()
+    {
         if (isset($_SESSION['psicologo_id'])) {
             return $_SESSION['psicologo_id'];
         } else {
@@ -17,7 +20,8 @@ class Blog {
     }
 
     // CREATE BLOGS
-    public function createBlogs($tema, $especialidad, $descripcion, $imagen){
+    public function createBlogs($tema, $especialidad, $descripcion, $imagen)
+    {
         try {
             $psicologo_id = $this->obtenerPsicologoId();
 
@@ -65,7 +69,7 @@ class Blog {
     //                 p.psicologo_id = psico.IdPSicologo
     //             WHERE 1=1
     //         ";
-    
+
     //         $params = [];
     //         if (!empty($especialidades)) {
     //             $placeholders = [];
@@ -75,15 +79,15 @@ class Blog {
     //             }
     //             $query .= " AND p.especialidad IN (" . implode(',', $placeholders) . ")";
     //         }
-    
+
     //         // Añadir LIMIT y OFFSET sin parámetros
     //         $query .= " LIMIT $limit OFFSET $offset";
-    
+
     //         $consulta = $this->conn->prepare($query);
-    
+
     //         // Vincula los parámetros de especialidades
     //         $consulta->execute($params);
-    
+
     //         while ($row = $consulta->fetch(PDO::FETCH_ASSOC)) {
     //             $posts[] = $row;
     //         }
@@ -92,8 +96,9 @@ class Blog {
     //     }
     //     return $posts;
     // }
-    
-    public function getAllBlog($limit = 10, $offset = 0, $especialidades = [], $searchTerm = '') {
+
+    public function getAllBlog($limit = 10, $offset = 0, $especialidades = [], $searchTerm = '')
+    {
         $posts = [];
         try {
             // Construir la consulta base
@@ -113,29 +118,34 @@ class Blog {
                     p.psicologo_id = psico.IdPSicologo
                 WHERE 1=1
             ";
-    
+
             $params = [];
             if (!empty($especialidades)) {
-                $placeholders = [];
-                foreach ($especialidades as $key => $especialidad) {
-                    $placeholders[] = '?';
-                    $params[] = $especialidad;
-                }
+                $placeholders = array_fill(0, count($especialidades), '?');
                 $query .= " AND p.especialidad IN (" . implode(',', $placeholders) . ")";
+                $params = array_merge($params, $especialidades);
             }
-    
+
             if (!empty($searchTerm)) {
                 $query .= " AND (p.tema LIKE ? OR p.descripcion LIKE ?)";
                 $params[] = "%$searchTerm%";
                 $params[] = "%$searchTerm%";
             }
-    
+
             // Añadir LIMIT y OFFSET directamente en la consulta
-            $query .= " LIMIT $limit OFFSET $offset";
-    
+            $query .= " LIMIT ? OFFSET ?";
+            $params[] = (int)$limit;
+            $params[] = (int)$offset;
+
             $consulta = $this->conn->prepare($query);
-            $consulta->execute($params);
-    
+
+            // Vincular los parámetros
+            foreach ($params as $index => $param) {
+                $consulta->bindValue($index + 1, $param, is_int($param) ? PDO::PARAM_INT : PDO::PARAM_STR);
+            }
+
+            $consulta->execute();
+
             while ($row = $consulta->fetch(PDO::FETCH_ASSOC)) {
                 $posts[] = $row;
             }
@@ -144,49 +154,56 @@ class Blog {
         }
         return $posts;
     }
-    
-    public function getTotalBlogs($especialidades = [], $searchTerm = '') {
+
+    public function getTotalBlogs($especialidades = [], $searchTerm = '')
+    {
         try {
-            // Construir la consulta base
-            $query = "SELECT COUNT(*) as total FROM posts WHERE 1=1";
-    
+            $query = "
+                SELECT COUNT(*) as total
+                FROM posts p
+                WHERE 1=1
+            ";
+
             $params = [];
             if (!empty($especialidades)) {
-                $placeholders = [];
-                foreach ($especialidades as $key => $especialidad) {
-                    $placeholders[] = '?';
-                    $params[] = $especialidad;
-                }
-                $query .= " AND especialidad IN (" . implode(',', $placeholders) . ")";
+                $placeholders = array_fill(0, count($especialidades), '?');
+                $query .= " AND p.especialidad IN (" . implode(',', $placeholders) . ")";
+                $params = array_merge($params, $especialidades);
             }
-    
+
             if (!empty($searchTerm)) {
                 $query .= " AND (p.tema LIKE ? OR p.descripcion LIKE ?)";
                 $params[] = "%$searchTerm%";
                 $params[] = "%$searchTerm%";
             }
-    
+
             $consulta = $this->conn->prepare($query);
+
+            // Vincular los parámetros
+            foreach ($params as $index => $param) {
+                $consulta->bindValue($index + 1, $param, PDO::PARAM_STR);
+            }
+
             $consulta->execute($params);
-    
+
             $row = $consulta->fetch(PDO::FETCH_ASSOC);
             return $row['total'];
         } catch (PDOException $e) {
             echo "Error en la consulta: " . $e->getMessage();
+            return 0;
         }
-        return 0;
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     // public function getTotalBlogs($especialidades = []) {
     //     try {
     //         // Construye la consulta base
     //         $query = "SELECT COUNT(*) as total FROM posts WHERE 1=1";
-    
+
     //         $params = [];
     //         if (!empty($especialidades)) {
     //             $placeholders = [];
@@ -196,10 +213,10 @@ class Blog {
     //             }
     //             $query .= " AND especialidad IN (" . implode(',', $placeholders) . ")";
     //         }
-    
+
     //         $consulta = $this->conn->prepare($query);
     //         $consulta->execute($params);
-    
+
     //         $row = $consulta->fetch(PDO::FETCH_ASSOC);
     //         return $row['total'];
     //     } catch (PDOException $e) {
@@ -207,16 +224,16 @@ class Blog {
     //     }
     //     return 0;
     // }
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
 
     // UPDATE BLOGS
-    public function updateBlog (){
-        
+    public function updateBlog()
+    {
     }
 }
