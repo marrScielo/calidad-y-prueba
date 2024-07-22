@@ -55,9 +55,49 @@ $especialidades = [
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
+
+            .pagination .page-link:not(.active):not(.disabled) {
+                display: none;
+            }
+
+            .pagination .page-link.active {
+                display: inline-block;
+            }
+
+            .pagination .page-link:first-child,
+            .pagination .page-link:last-child {
+                display: inline-block;
+            }
+
+            .pagination .page-link:first-child+.page-link,
+            .pagination .page-link:last-child+.page-link {
+                display: inline-block;
+            }
+
+            .pagination .page-link:first-child+.page-link+.page-link,
+            .pagination .page-link:last-child+.page-link+.page-link {
+                display: inline-block;
+            }
+
+            .pagination .page-link:first-child+.page-link+.page-link+.page-link,
+            .pagination .page-link:last-child+.page-link+.page-link+.page-link {
+                display: none;
+            }
+
+            .pagination .page-link:first-child+.page-link+.page-link+.page-link+.page-link {
+                display: inline-block;
+            }
+
+            .pagination .page-link:last-child+.page-link+.page-link+.page-link+.page-link {
+                display: inline-block;
+            }
         }
 
         @media (max-width: 550px) {
+            .container-rosado {
+                box-shadow: none !important;
+            }
+
             .container-celeste {
                 padding: 0px !important;
             }
@@ -72,6 +112,46 @@ $especialidades = [
                 display: grid;
                 grid-template-columns: repeat(1, 1fr);
                 gap: 20px;
+            }
+
+            .filter-option {
+                display: none;
+            }
+
+            .pagination .page-link:not(.active):not(.disabled) {
+                display: none;
+            }
+
+            .pagination .page-link.active {
+                display: inline-block;
+            }
+
+            .pagination .page-link:first-child,
+            .pagination .page-link:last-child {
+                display: inline-block;
+            }
+
+            .pagination .page-link:first-child+.page-link,
+            .pagination .page-link:last-child+.page-link {
+                display: inline-block;
+            }
+
+            .pagination .page-link:first-child+.page-link+.page-link,
+            .pagination .page-link:last-child+.page-link+.page-link {
+                display: inline-block;
+            }
+
+            .pagination .page-link:first-child+.page-link+.page-link+.page-link,
+            .pagination .page-link:last-child+.page-link+.page-link+.page-link {
+                display: none;
+            }
+
+            .pagination .page-link:first-child+.page-link+.page-link+.page-link+.page-link {
+                display: inline-block;
+            }
+
+            .pagination .page-link:last-child+.page-link+.page-link+.page-link+.page-link {
+                display: inline-block;
             }
         }
 
@@ -132,15 +212,28 @@ $especialidades = [
                 <?php else : ?>
                     <span class="page-link disabled">&laquo; Anterior</span>
                 <?php endif; ?>
-                <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+
+                <?php if ($page > 3) : ?>
+                    <a href="?page=1" class="page-link">1</a>
+                    <span class="page-link">...</span>
+                <?php endif; ?>
+
+                <?php for ($i = max(1, $page - 2); $i <= min($totalPages, $page + 2); $i++) : ?>
                     <a href="?page=<?php echo $i; ?>" class="page-link<?php if ($i == $page) echo ' active'; ?>"><?php echo $i; ?></a>
                 <?php endfor; ?>
+
+                <?php if ($page < $totalPages - 2) : ?>
+                    <span class="page-link">...</span>
+                    <a href="?page=<?php echo $totalPages; ?>" class="page-link"><?php echo $totalPages; ?></a>
+                <?php endif; ?>
+
                 <?php if ($page < $totalPages) : ?>
                     <a href="?page=<?php echo $page + 1; ?>" class="page-link">Siguiente &raquo;</a>
                 <?php else : ?>
                     <span class="page-link disabled">Siguiente &raquo;</span>
                 <?php endif; ?>
             </div>
+
         </div>
     </div>
 

@@ -28,14 +28,18 @@ if (isset($_GET['id'])) {
         $fechaActual = new DateTime();
         $intervalo = $fechaPublicacion->diff($fechaActual);
 
-        if ($intervalo->h < 1) {
-            $tiempoTranscurrido = $intervalo->i . ' minutos';
-        } elseif ($intervalo->h < 24) {
+        if ($intervalo->d > 0) {
+            // Si han pasado días, mostramos el tiempo en horas
+            $tiempoTranscurrido = ($intervalo->d * 24) + $intervalo->h . ' horas';
+        } elseif ($intervalo->h > 0) {
+            // Si han pasado horas, mostramos el tiempo en horas
             $tiempoTranscurrido = $intervalo->h . ' horas';
         } else {
-            $dias = $intervalo->d;
-            $tiempoTranscurrido = $dias . ($dias > 1 ? ' días' : ' día');
+            // Si han pasado menos de una hora, mostramos el tiempo en minutos
+            $tiempoTranscurrido = $intervalo->i . ' minutos';
         }
+
+
 
         // Fetch recommended articles
         $recommendedQuery = "SELECT * FROM posts WHERE id != :post_id ORDER BY RAND() LIMIT 3";
@@ -78,9 +82,7 @@ if (isset($_GET['id'])) {
             border-radius: 8px;
         }
 
-        .blog-post {
-            text-align: center;
-        }
+
 
         .blog-post img.image-post {
             max-width: 100%;
@@ -93,6 +95,7 @@ if (isset($_GET['id'])) {
         }
 
         .blog-post h2 {
+            text-align: center;
             font-size: 2em;
             margin: 10px 0;
             color: #000000;
@@ -217,12 +220,12 @@ if (isset($_GET['id'])) {
             </div>
 
             <!-- <hr> -->
-             <br />
+            <br />
             <h2><?php echo htmlspecialchars($post['tema']); ?></h2>
             <p class="content_blog"><?php echo ($post['descripcion']); ?></p>
         </div>
         <!-- <hr> -->
-        <br/>
+        <br />
         <h3>Artículos Recomendados</h3>
         <div class="recommended-articles">
             <?php foreach ($recommendedPosts as $recommendedPost) : ?>

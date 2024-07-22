@@ -14,6 +14,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <link rel="stylesheet" href="../Issets/css/historial.css">
         <link rel="stylesheet" href="../Issets/css/main.css">
         <link rel="stylesheet" href="../Issets/css/blogpsico.css">
+        <link rel="stylesheet" href="../Issets/css/summernote.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -202,11 +203,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <option value="Relaciones Interpersonales">Relaciones Interpersonales</option>
                             </select>
                         </div>
-                        <div style="text-align: start" id="formtext" class="form-group">
+                        <div style="text-align: start;" id="formtext" class="form-group">
                             <label style="text-align: center;" for="description">Descripción:</label>
-                            <!--<textarea id="description" name="description" rows="4" required></textarea>-->
-                            <textarea style="text-align: start;" id="summernote" name="description" required></textarea>
+                            <textarea id="summernote" name="description" required></textarea>
                         </div>
+                        <!--<textarea id="description" name="description" rows="4" required></textarea>-->
                         <div class="form-group">
                             <label for="image">Imagen:</label>
                             <input type="url" id="image" name="image" placeholder="Ingrese URL de imagen" required>
@@ -228,7 +229,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <script src="../Issets/js/dashboard.js"></script>
         <script>
             $('#summernote').summernote({
-                placeholder: 'Comienza a ecribir tu post',
+                placeholder: 'Comienza a escribir tu post',
                 tabsize: 2,
                 height: 180,
                 toolbar: [
@@ -239,7 +240,14 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     ['table', ['table']],
                     ['insert', ['link', 'picture', 'video']],
                     ['view', ['fullscreen', 'codeview', 'help']]
-                ]
+                ],
+                callbacks: {
+                    onPaste: function(e) {
+                        var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+                        e.preventDefault();
+                        document.execCommand('insertText', false, bufferText);
+                    }
+                }
             });
         </script>
     </body>
