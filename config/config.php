@@ -1,6 +1,6 @@
 <?php
 /*  Hosting
-define('NOMBRE_PROYECTO', 'website_ddbea1df');
+define('NOMBRE_PROYECTO', 'website_1cf5dd5d');
 define('BASE_PATH_WEB', '/home3/ghxumdmy/public_html/'.NOMBRE_PROYECTO.'/');*/
 
 // Local

@@ -9,7 +9,7 @@ class usernameControlerCita{
         require_once ("C:/xampp/htdocs/ContigoVoy/Modelo/Cita/ModelCita.php");    
         
         //hosting
-        //require_once("/home3/ghxumdmy/public_html/website_ddbea1df/Modelo/Cita/ModelCita.php");
+        //require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/Modelo/Cita/ModelCita.php");
         
         $this->model=new UserModelCita();
     }

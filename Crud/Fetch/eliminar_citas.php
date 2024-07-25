@@ -4,7 +4,7 @@
 
 
 // hosting
-//require("/home3/ghxumdmy/public_html/website_ddbea1df/conexion/conexion.php");
+//require("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");
 
 // Verificar si se ha recibido una solicitud POST con los IDs a eliminar
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ids'])) {

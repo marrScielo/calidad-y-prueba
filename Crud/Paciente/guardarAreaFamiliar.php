@@ -1,7 +1,7 @@
 <?php
 //local
 //include '../../config/config.php';
-// /home3/ghxumdmy/public_html/website_ddbea1df
+// /home3/ghxumdmy/public_html/website_1cf5dd5d
 require_once("../../Controlador/Paciente/ControllerPaciente.php");
 
 

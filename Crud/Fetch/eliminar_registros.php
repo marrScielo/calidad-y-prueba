@@ -3,7 +3,7 @@
 require '../../conexion/conexion.php';
 
 // hosting
-//require("/home3/ghxumdmy/public_html/website_ddbea1df/conexion/conexion.php");
+//require("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");
 
 
 // ejemplo require_once BASE_PATH_WEB . 'conexion/conexion.php';
