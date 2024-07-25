@@ -11,11 +11,16 @@
             justify-content: center;
             align-items: center;
             max-width: 100%;
-            margin: 20px;
-            padding: 20px;
             background-color: #ffffff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            background-image: url('img/fondo-confia-nosotros.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 3em 0;
+            max-width: 123.75rem; /* 1980px convertido a rem (1980/16) */
+            margin: 0 auto;
         }
 
         .column {
@@ -24,8 +29,12 @@
             box-sizing: border-box;
         }
 
+        .image-column {
+            text-align: center;
+        }
+
         .image-column img {
-            max-width: 100%;
+            max-width: 50%;
             border-radius: 8px;
         }
 
@@ -45,7 +54,7 @@
         }
 
         .text-column .benefits li::before {
-            content: "✔";
+            content: "+";
             color: #56B9B3;
             position: absolute;
             left: 0;
@@ -75,7 +84,7 @@
         .cta-button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #56B9B3;
+            background-color: #F2B8B8;
             color: #ffffff;
             text-align: center;
             border: none;
@@ -157,30 +166,16 @@
 <body>
     <div class="container_plus">
         <div class="column image-column">
-            <img src="img/plus.webp" alt="Psicologo Plus">
+            <img src="img/confia-nosotros.jpg" alt="Psicologo Plus" width="40%">
         </div>
         <div class="column text-column">
-            <h2>¿Por qué confiar en ContigoVoy Plus?</h2>
-            <p>En ContigoVoy Plus, nos dedicamos a brindar el mejor servicio de apoyo psicológico con los siguientes beneficios:</p>
+            <h2>¿Por qué confiar en ContigoVoy?</h2>
+            <p>Nuestros psicólogos son profesionales colegiados con un trato cercano. Ya han ayudado a miles de pacientes a mejorar su calidad de vida.</p>
             <ul class="benefits">
                 <li>Sesiones privadas, confidenciales y seguras</li>
                 <li>Ahorra tiempo y desplazamientos</li>
                 <li>Tú decides donde y cuándo realizar las sesiones</li>
             </ul>
-            <div class="cards">
-                <div class="card">
-                    <h3>+10000</h3>
-                    <p>Citas realizadas</p>
-                </div>
-                <div class="card">
-                    <h3>+10</h3>
-                    <p>Años de experiencia</p>
-                </div>
-                <div class="card">
-                    <h3>100%</h3>
-                    <p>Psicólogos colegiados</p>
-                </div>
-            </div>
             <button class="cta-button" onclick="window.location.href='psicologos.php';">Pide Cita</button>
         </div>
     </div>

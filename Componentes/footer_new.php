@@ -4,80 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
-  <style>
-    .footer_container{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .content_2{
-      font-weight: 600;
-      font-style: italic;
-
-    }
-
-    #link_footer{
-      color: black;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s ease-in-out all;
-      padding: 0.4rem;
-    }
-
-    #link_footer:hover{
-      background: #56B9B3;
-      color: white;
-    }
-
-    #social_media_links{
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s ease-in-out all;
-      padding: 0.4rem;
-    }
-
-    #social_media_links:hover{
-      background: #56B9B3;
-      color: white;
-    }
-
-  </style>
-
-
 </head>
 <body>
-  
-<footer class="footer-celeste">
-    <div class="footer-content">
-        <div>
-            <h3>¿Eres un profesional de la salud?</h3>
-            <h1>¡Te estamos buscando!</h1>
-            <h3>Únete a nuestro equipo y ayúdanos a mejorar la salud de nuestra comunidad.</h3>
-            <a href="https://api.whatsapp.com/send?phone=51915205726" class="btn-rosado" target="_blank">Contáctanos</a>
-        </div>
+<footer class="footer-main">
+  <section class="footer-container">
+    <img src="img/Logo-blanco.svg" alt="Logo" class="logo"> 
+    <div class="container-text">
+      <p class="nuestro-objetivo">Somos un centro de Psicología online. Si buscas psicólogo online, ponte en contacto con nosotros y estaremos encantados de atenderte.</p>
+      <p class="trastornos">*Relaciones de pareja *Depresión *Crecimiento personal</p>
+      <p class="trastornos">*Sexualidad Autoestima *Conflictos Familiares *Ansiedad</p>
+      <p class="trastornos">*Insomnio *Trastorno obsesivo compulsivo</p>
     </div>
-</footer>
-
-
-<footer class="footer-rosado">
-  <div class="footer_container">
-    <div>
-      <img src="img/logo-actual.webp" alt="Logo" class="logo bn">
-    </div>
-    <div>
-      <p class="content_2">Somos un centro de Psicología online. Si buscar psicólogo online, ponte en contacto con nostros y estaremos encantados de atenderte. 😀</p>
-    </div>
+      
     <div class="redes-sociales-footer">
-      <a id="social_media_links" target="_blank" href="https://www.facebook.com/profile.php?id=61559259927318"><i class="fab fa-facebook"></i></a>
-      <a id="social_media_links" target="_blank" href="https://twitter.com/ContigoVoy_pe"><i class="fab fa-twitter"></i></a>
-      <a id="social_media_links" target="_blank" href="https://www.instagram.com/contigovoy.pe/"><i class="fab fa-instagram"></i></a>
-      <a id="social_media_links" target="_blank" href="https://www.youtube.com/channel/UCTiafg0LZPem0OhqKiCVE2Q"><i class="fab fa-youtube"></i></a>
-      <a id="social_media_links" target="_blank" href="https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}"><i class="fab fa-whatsapp"></i></a>
-      <a id="social_media_links" target="_blank" href="https://www.tiktok.com/@contigovoy.pe"><i class="fab fa-tiktok"></i></a>
+      <a id="social_media_links" target="_blank" href="https://www.facebook.com/profile.php?id=61559259927318">
+        <img src="img/fb.png" alt="facebook">
+      </a>
+      <a id="social_media_links" target="_blank" href="https://twitter.com/ContigoVoy_pe">
+        <img src="img/twitter.png" alt="twitter">
+      </a>
+      <a id="social_media_links" target="_blank" href="https://www.instagram.com/contigovoy.pe/">
+        <img src="img/instagram.png" alt="instagram">
+      </a>
+      <a id="social_media_links" target="_blank" href="https://www.youtube.com/channel/UCTiafg0LZPem0OhqKiCVE2Q">
+        <img src="img/youtube.png" alt="youtube">
+      </a>
+      <a id="social_media_links" target="_blank" href="https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}">
+        <img src="img/whatsapp.png" alt="whatsapp">
+      </a>
+      <a id="social_media_links" target="_blank" href="https://www.tiktok.com/@contigovoy.pe">
+        <img src="img/tiktok.png" alt="tiktok">
+      </a>
     </div>
     <div>
       <a id="link_footer" href="#">Políticas de Privacidad</a>
@@ -91,7 +48,7 @@
     <div>
       <a id="link_footer" href="#">Contacto</a>
     </div>
-  </div>
+  </section>
 </footer>
 
 

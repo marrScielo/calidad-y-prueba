@@ -1,0 +1,112 @@
+.footer-main {
+    background-image: url("../img/FINAL-100.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 3em 0;
+    max-width: 123.75rem; /* 1980px convertido a rem (1980/16) */
+    margin: 0 auto;
+}
+
+.footer-container {
+    display: flex;
+    max-width: 85%;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+
+.nuestro-objetivo {
+    color: #ffff;
+    font-weight: 500; 
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.trastornos{
+    color: #ffff;
+    font-weight: 400;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.logo {
+    filter: brightness(0) invert(1); /* Cambia el color del logo a blanco */
+    width: 13%;
+}
+
+.redes-sociales-footer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.redes-sociales-footer a {
+    color: #fff; 
+    margin: 0 0.625em; /* 10px convertido a em (10/16) */
+    font-size: 1.5em; /* 24px convertido a em (24/16) */
+    text-decoration: none;
+}
+
+.redes-sociales-footer img {
+    width: 1.7em;
+}
+
+#link_footer {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s ease-in-out all;
+    padding: 0.4rem;
+    font-size: 1.25em;
+} 
+
+#link_footer:hover {
+    background: #56b9b3;
+    color: white;
+}
+
+@media (max-width: 48em) { /* 768px convertido a em (768/16) */
+    .footer-content-dos {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .redes-sociales-footer {
+        justify-content: flex-start;
+    }
+
+    .logo-container {
+        text-align: right;
+    }
+
+    .redes-sociales-footer a {
+        margin: 0 0.3125em; /* 5px convertido a em (5/16) */
+        font-size: 1.25em; /* 20px convertido a em (20/16) */
+    }
+
+    .logo {
+        width: 25%;
+    }
+}
+
+@media (max-width: 30em) { /* 480px convertido a em (480/16) */
+    .footer-content-dos {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+  
+    .redes-sociales-footer {
+        justify-content: flex-start;
+    }
+  
+    .redes-sociales-footer a {
+        margin: 0 0.1875em; /* 3px convertido a em (3/16) */
+    }
+
+    .logo {
+        width: 35%;
+    }
+}
