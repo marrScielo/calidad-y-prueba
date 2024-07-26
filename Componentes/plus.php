@@ -40,11 +40,17 @@
 
         .text-column h2 {
             margin-top: 0;
+            color: #57BAB5
+        }
+
+        .text-column p {
+            color: #57BAB5
         }
 
         .text-column .benefits {
             list-style-type: none;
             padding: 0;
+            color: #57BAB5
         }
 
         .text-column .benefits li {
@@ -97,6 +103,8 @@
         .cta-button:hover {
             background-color: #21758f;
         }
+
+        
 
         /* Responsive Styles */
         @media (max-width: 1024px) {
