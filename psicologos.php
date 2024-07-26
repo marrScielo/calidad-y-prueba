@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/header-style.css">
     <link rel="stylesheet" href="css/psico-estilo.css">
+    <link rel="stylesheet" href="css/estilos-footer.css">
     <link rel="icon" href="img/logo-actual.webp">
     <link rel="stylesheet" href="css/boton-wsp.css">
     <title>Psicologos</title>
@@ -156,5 +158,6 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     <script src="js/navabar.js"></script>
+    <?php include 'Componentes/footer_new.php'; ?>
 </body>
 </html>

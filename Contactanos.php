@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/header-style.css">
+    <link rel="stylesheet" href="css/estilos-footer.css">
     <title>Contáctanos</title>
     <style>
         @import url('css/styles.css');
@@ -294,6 +295,7 @@
     </section>
 
     <script src="js/navabar.js"></script>
+    <?php include 'Componentes/footer_new.php'; ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const inputs = document.querySelectorAll('.input-text');
