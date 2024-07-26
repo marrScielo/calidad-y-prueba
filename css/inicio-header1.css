@@ -2,24 +2,34 @@
 body {
     font-family: 'Poppins';
 }
-
-.container-header{
+header{
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    height: 3.5rem;
-    align-items: center;
-    padding: 0.5rem 0;
+    position: absolute;
+    top: 0;
+    background-color: white;
+    .container-header{
+        max-width: 1980px;
+        margin: 0 auto;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       padding: 1em 3em;
+       .logo1 img{
+        height: 3em;
+      }
+    }
 }
 
-nav {
-    background-color: #ffffff; /* Color de fondo del menú */
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+@media (width <= 800px) {
+    header{
+        .container-header{
+           padding: 1em 1em;
+        
+        }
+    }
 }
+
+
 
 .logo{
     height: 100%;
@@ -131,11 +141,6 @@ nav {
     }
     .nav-links li a {
         font-size: 1.25rem;
-    }
-
-    .logo-img {
-        width: auto;
-        height: 3rem;
     }
 }
 

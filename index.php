@@ -28,20 +28,23 @@
 
     <?php include 'Componentes/header.php'; ?>
 
-    <div class="banner">
+<!--     <div class="banner">
         <div class="banner-content">
             <h1>DESCUBRE TU MEJOR <br> VERSION</h1>
             <p>Encuentra equilibrio <br> y bienestar emocional <br> aquí</p>
             <a href="psicologos.php" class="btn">Solicitar Servicio</a>
         </div>
-    </div>
+    </div> -->
    
+    <?php include 'Componentes/index_section1.php'; ?>
+    <?php include 'Componentes/index_section2.php'; ?>
+    <?php include 'Componentes/index_section3.php'; ?>
 
-    <?php include 'Componentes/slider.php'; ?>
+   <!--  <?php include 'Componentes/slider.php'; ?> -->
 
-    <?php include 'Componentes/especialidades.php'; ?>
-
-    <div class="image-container">
+<!--     <?php include 'Componentes/especialidades.php'; ?>
+ -->
+ <!--    <div class="image-container">
         <img src="img/fondo-blog.webp" alt="Fondo Blog">
         <div class="image-content">
             <h3>Visita nuestro Blog</h3>
@@ -49,9 +52,9 @@
             <a href="Blog.php">VER BLOG</a>
         </div>
     </div>
-
-    <?php include 'Componentes/opiniones.php'; ?>
-
+ -->
+<!--     <?php include 'Componentes/opiniones.php'; ?>
+ -->
     <?php include 'Componentes/preguntas.php'; ?>
     <?php include 'Componentes/plus.php'; ?>
 
