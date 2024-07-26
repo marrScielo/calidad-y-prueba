@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/inicio-header1.css">
+    <link rel="stylesheet" href="css/header-style.css">
     <link rel="stylesheet" href="css/psico-estilo.css">
     <link rel="icon" href="img/logo-actual.webp">
     <link rel="stylesheet" href="css/boton-wsp.css">
@@ -92,17 +92,17 @@
     </div>
 
     <div class="section-container">
-        <div class="left-section">
+        <!-- <div class="left-section">
             <h2>¿Por qué consultar a un Psicólogo?</h2>
             <p><span class="icon">&#x1F468;</span> Profesionalismo y apoyo emocional.</p>
             <p><span class="icon">&#x1F4AC;</span> Confidencialidad y seguridad.</p>
             <p><span class="icon">&#x1F4DA;</span> Mejora en la calidad de vida.</p>
             <p><span class="icon">&#x1F64F;</span> Atención personalizada y empática.</p>
             <p><span class="icon">&#x1F496;</span> Ayuda en la resolución de problemas.</p>
-        </div>
+        </div> -->
 
         <div class="right-section">
-            <h2>Nuestro Equipo ContigoVoy</h2>
+            <h2>Nuestro Equipo</h2>
             <div id="psicologos-container" class="psicologo-row">
                 <?php include 'Modelo/PsicologoModel.php'; ?>
             </div>
