@@ -72,6 +72,7 @@
                             display: grid;
                             grid-template-columns: repeat(auto-fill, minmax(min(20em, 100%), 1fr));
                             ol {
+                                list-style-type: none;
                                 display: flex;
                                 flex-flow: row;
                                 gap: 2em;

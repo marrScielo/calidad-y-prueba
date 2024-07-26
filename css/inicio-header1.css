@@ -4,16 +4,16 @@ body {
 }
 header{
     width: 100%;
-    /* position: fixed; */
     top: 0;
     background-color: white;
+    z-index: 99;
     .container-header{
         max-width: 1980px;
         margin: 0 auto;
        display: flex;
        justify-content: space-between;
        align-items: center;
-       padding: 0.5em 1em;
+       padding: .5em 1.5em;
        .logo1 img{
         height: 3em;
       }

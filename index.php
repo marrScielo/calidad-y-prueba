@@ -18,11 +18,7 @@
     <!-- <link rel="stylesheet" href="css/estilos-footer1x.css"> -->
     <link rel="stylesheet" href="css/estilos-footer.css">
     <link rel="stylesheet" href="css/boton-wsp.css">
-    <style>
-        .fa-whatsapp{
-            margin-left: 2.2rem;
-        }
-    </style>
+
 </head>
 <body>
 
@@ -55,7 +51,7 @@
  -->
 <!--     <?php include 'Componentes/opiniones.php'; ?>
  -->
-    <?php include 'Componentes/preguntas.php'; ?>
+ 
     <?php include 'Componentes/plus.php'; ?>
 
     <?php include 'Componentes/footer_new.php'; ?>

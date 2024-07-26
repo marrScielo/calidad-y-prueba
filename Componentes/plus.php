@@ -17,11 +17,16 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            padding: 3em 0;
+            padding: 5em 0;
             max-width: 123.75rem; /* 1980px convertido a rem (1980/16) */
             margin: 0 auto;
         }
 
+        .column_Info{
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
         .content-wrapper {
             max-width: 85%;
             display: flex;
@@ -99,6 +104,7 @@
         }
 
         .cta-button {
+           
             display: inline-block;
             padding: 10px 20px;
             background-color: #F2B8B8;
@@ -109,6 +115,7 @@
             text-decoration: none;
             font-size: 16px;
             cursor: pointer;
+            width: max-content;
         }
 
         .cta-button:hover {
@@ -187,11 +194,12 @@
             }
 
             .text-column h2 {
-                font-size: 1.5em; /* Reducir tamaño de la letra */
+                font-size: 3em; /* Reducir tamaño de la letra */
+                padding-bottom: .6em;
             }
 
             .text-p {
-                font-size: 1em; /* Reducir tamaño de la letra */
+                font-size: 1.3em; /* Reducir tamaño de la letra */
             }
 
             .cards {
@@ -206,6 +214,7 @@
             }
 
             .cta-button {
+         
                 width: 100%;
                 text-align: center;
             }
@@ -218,7 +227,7 @@
             <div class="column image-column">
                 <img src="img/confia-nosotros.jpg" alt="Psicologo Plus">
             </div>
-            <div class="column text-column">
+            <div class="column text-column column_Info" >
                 <h2>¿Por qué confiar en ContigoVoy?</h2>
                 <p class="text-p">Nuestros psicólogos son profesionales colegiados con un trato cercano. Ya han ayudado a miles de pacientes a mejorar su calidad de vida.</p>
                 <ul class="benefits">
