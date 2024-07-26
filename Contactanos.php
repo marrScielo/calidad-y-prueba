@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="css/inicio-header1.css">
     <title>Contáctanos</title>
     <style>
+        @import url('css/styles.css');
+
         * {
             padding: 0;
             margin: 0;
+
         }
 
         .contactanos-contenedor {
@@ -100,13 +103,154 @@
             border-radius: 0.3rem;
         }
 
-        #enviar{
+        #enviar {
             color: white;
             transition: 0.5s ease-in-out all;
         }
 
-        #enviar:hover{
+        #enviar:hover {
             background: #E07A74;
+        }
+
+        .contactanos-contenido {
+            border-radius: 15px;
+            box-shadow: 10px 10px 20px #babecc,
+                -10px -10px 20px #ffffff;
+        }
+
+        /* Importación de fuentes */
+        @import url('https://fonts.googleapis.com/css?family=Raleway:300');
+        @import url('https://fonts.googleapis.com/css?family=Lusitana:400,700');
+
+
+
+
+
+        .texto-contactanos {
+            flex: 1;
+            /* Permite que el texto ocupe el espacio disponible */
+            padding-right: 20px;
+            /* Espaciado derecho para separar del formulario */
+        }
+
+        .imagen-contacto {
+            max-width: 100%;
+            /* Asegura que la imagen no se desborde del contenedor */
+            height: auto;
+            /* Mantiene la proporción de la imagen */
+        }
+
+        /* Estilos para el formulario de contacto en esta sección específica */
+        .contacto-formulario {
+            max-width: 500px;
+            /* Ajusta el ancho máximo del formulario de contacto */
+            margin: 0;
+            /* Elimina los márgenes predeterminados */
+            padding: 20px;
+            /* Espaciado interior para el formulario */
+            background-color: #ffffff;
+            /* Fondo blanco para el formulario */
+            border-radius: 8px;
+            /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Sombra sutil para el contenedor */
+        }
+
+        .contacto-formulario .title {
+            text-align: center;
+            font-family: Raleway, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 36px;
+            line-height: 48px;
+            padding-bottom: 48px;
+        }
+
+        /* Estilos para el formulario */
+        .contacto-formulario .contact-form {
+            display: flex;
+            flex-wrap: wrap;
+            /* Permite que los elementos se envuelvan en la siguiente línea si es necesario */
+            gap: 20px;
+            /* Espaciado entre los elementos del formulario */
+            margin: 0;
+            /* Elimina los márgenes predeterminados */
+        }
+
+        .contacto-formulario .contact-form .form-field {
+            position: relative;
+            margin-bottom: 20px;
+            /* Espaciado inferior entre los campos del formulario */
+            width: calc(50% - 20px);
+            /* Ancho del campo con espaciado ajustado */
+        }
+
+        .contacto-formulario .contact-form .form-field.col.x-100 {
+            width: 100%;
+            /* Ancho completo para columnas de 100% */
+        }
+
+        .contacto-formulario .contact-form .input-text {
+            display: block;
+            width: 100%;
+            height: 36px;
+            border-width: 0 0 2px 0;
+            border-color: #000;
+            font-family: Lusitana, serif;
+            font-size: 18px;
+            line-height: 26px;
+            font-weight: 400;
+
+        }
+
+        .contacto-formulario .contact-form .input-text:focus {
+            outline: none;
+            /* Elimina el contorno al enfocar el campo */
+        }
+
+        .contacto-formulario .contact-form .input-text:focus+.label,
+        .contacto-formulario .contact-form .input-text.not-empty+.label {
+            transform: translateY(-24px);
+            /* Mueve la etiqueta hacia arriba al enfocar el campo */
+        }
+
+        .input-text.has-content:not(:focus)+.label {
+            opacity: 0;
+        }
+
+        .contacto-formulario .contact-form .label {
+            position: absolute;
+            left: 20px;
+            bottom: 11px;
+            font-family: Lusitana, serif;
+            font-size: 18px;
+            line-height: 26px;
+            font-weight: 400;
+            color: #888;
+            cursor: text;
+            transition: transform 0.2s ease-in-out, font-size 0.5s ease-in-out, color 0.2s ease-in-out;
+            /* Transición suave para el movimiento de la etiqueta */
+        }
+
+        .contacto-formulario .contact-form .submit-btn {
+            display: inline-block;
+            background-color: #000;
+            color: #fff;
+            font-family: Raleway, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 16px;
+            line-height: 24px;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            /* Cambia el cursor a mano al pasar sobre el botón */
+        }
+
+        /* Alineación centrada */
+        .contacto-formulario .align-center {
+            text-align: center;
+            /* Centra el contenido dentro del campo */
         }
     </style>
 </head>
@@ -121,16 +265,59 @@
                 <!-- Imagen agregada debajo del texto -->
                 <img src="img/plus.webp" alt="Imagen de contacto" class="imagen-contacto">
             </div>
-            <form class="formulario-contactanos" action="./Controlador/ContactoController.php?action=create" method="post">
-                <input id="nombre" type="text" placeholder="Nombre" name="nombre">
-                <input id="telefono" type="number" placeholder="Telefono" name="telefono">
-                <input id="email" type="email" placeholder="Email" name="email">
-                <textarea id="mensaje" type="text" placeholder="Mensaje" name="mensaje"></textarea>
-                <input id="enviar" type="submit" value="Enviar">
-            </form>
+            <div class="contacto-formulario">
+                <h1 class="title"></h1>
+                <form class="contact-form row">
+                    <div class="form-field col x-50">
+                        <input id="name" class="input-text js-input" type="text" required>
+                        <label class="label" for="name">Nombre</label>
+                    </div>
+                    <div class="form-field col x-50">
+                        <input id="phone" class="input-text js-input" type="tel" pattern="\d{9}" required>
+                        <label class="label" for="phone">Telefono</label>
+                    </div>
+                    <div class="form-field col x-100">
+                        <input id="email" class="input-text js-input" type="email" required>
+                        <label class="label" for="email">E-mail</label>
+                    </div>
+
+                    <div class="form-field col x-100">
+                        <input id="message" class="input-text js-input" type="text" required>
+                        <label class="label" for="message">Mensaje</label>
+                    </div>
+                    <div class="form-field col x-100 align-center">
+                        <input class="submit-btn" type="submit" value="Enviar">
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
+
     <script src="js/navabar.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.input-text');
+
+            inputs.forEach(input => {
+                // Restaura el estado inicial cuando la página se carga
+                if (input.value.trim() !== '') {
+                    input.classList.add('has-content');
+                } else {
+                    input.classList.remove('has-content');
+                }
+
+                // Maneja el evento de entrada del campo
+                input.addEventListener('input', function() {
+                    if (this.value.trim() !== '') {
+                        this.classList.add('has-content');
+                    } else {
+                        this.classList.remove('has-content');
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>
