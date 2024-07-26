@@ -1,102 +1,273 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<style>
+  /* Reset para enlaces */
+  a,
+  a:hover,
+  a:focus,
+  a:active {
+    text-decoration: none;
+    outline: none;
+    color: #6f6f6f;
+    transition: color 0.2s ease-in-out;
+  }
 
-  <style>
-    .footer_container{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-    }
+  a:hover,
+  a:focus {
+    color: #ffb606;
+  }
 
-    .content_2{
-      font-weight: 600;
-      font-style: italic;
+  /* Reset para listas */
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-    }
+  /* Ajuste de imágenes */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 
-    #link_footer{
-      color: black;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s ease-in-out all;
-      padding: 0.4rem;
-    }
+  /* Estilos de sección */
+  section {
+    padding: 60px 0;
+    min-height: 100vh;
+  }
 
-    #link_footer:hover{
-      background: #56B9B3;
-      color: white;
-    }
+  /* Estilos del pie de página */
+  .footer {
+    padding: 100px 0 0;
+    background-color: #030a16;
+    color: #fff;
+  }
 
-    #social_media_links{
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s ease-in-out all;
-      padding: 0.4rem;
-    }
+  .footer .footer-content {
+    width: 90%;
+    margin: 0 auto !important;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
 
-    #social_media_links:hover{
-      background: #56B9B3;
-      color: white;
-    }
+  .footer .widget1 {
+    display: flex;
+    flex-direction: column;
+  }
 
-  </style>
+  .footer .logo-img {
+    max-width: 200px;
+  }
 
+  .footer h5 {
+    font-weight: 600;
+    margin-bottom: 28px;
+    font-size: 21px;
+  }
 
-</head>
-<body>
-  
-<footer class="footer-celeste">
-    <div class="footer-content">
-        <div>
-            <h3>¿Eres un profesional de la salud?</h3>
-            <h1>¡Te estamos buscando!</h1>
-            <h3>Únete a nuestro equipo y ayúdanos a mejorar la salud de nuestra comunidad.</h3>
-            <a href="https://api.whatsapp.com/send?phone=51915205726" class="btn-rosado" target="_blank">Contáctanos</a>
+  .footer .widget1 p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 26px;
+  }
+
+  .footer .socialLinks {
+    margin-top: 28px;
+  }
+
+  .footer .socialLinks ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer .socialLinks ul li {
+    display: inline-block;
+  }
+
+  .footer .socialLinks ul li a {
+    display: block;
+    margin: 0 2px;
+    width: 40px;
+    height: 40px;
+    background: #fafafa;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+
+  .footer .socialLinks ul li a .fa-facebook-f {
+    color: #4267b2;
+  }
+
+  .footer .socialLinks ul li a .fa-twitter {
+    color: #1da1f2;
+  }
+
+  .footer .socialLinks ul li a .fa-instagram {
+    color: #dd5044;
+  }
+
+  .footer .socialLinks ul li a .fa-linkedin-in {
+    color: #0177b5;
+  }
+
+  .footer .socialLinks ul li a:hover {
+    color: #fff;
+  }
+
+  .footer .socialLinks ul li a:hover .fa-facebook-f {
+    background: #4267b2;
+  }
+
+  .footer .socialLinks ul li a:hover .fa-twitter {
+    background: #1da1f2;
+  }
+
+  .footer .socialLinks ul li a:hover .fa-instagram {
+    background: #dd5044;
+  }
+
+  .footer .socialLinks ul li a:hover .fa-linkedin-in {
+    background: #0177b5;
+  }
+
+  .footer .widget2 .media {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .footer .widget2 .media img {
+    margin-right: 20px;
+    max-width: 100px;
+  }
+
+  .footer .widget2 .media p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    line-height: 26px;
+    margin: 0;
+  }
+
+  .footer .widget2 .media span {
+    font-size: 12px;
+    color: #ffb606;
+    text-transform: uppercase;
+    margin-top: 15px;
+  }
+
+  .footer .widget3 ul,
+  .footer .widget4 ul {
+    padding: 0;
+  }
+
+  .footer .widget3 ul li,
+  .footer .widget4 ul li {
+    margin-bottom: 13px;
+  }
+
+  .footer .widget3 ul li a,
+  .footer .widget4 ul li a {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: capitalize;
+    display: block;
+    margin: 0;
+  }
+
+  .footer .widget3 ul li a:hover,
+  .footer .widget4 ul li a:hover {
+    color: #ffb606;
+  }
+
+  .footer .widget3 h5,
+  .footer .widget4 h5 {
+    margin-bottom: 22px;
+    font-size: 21px;
+  }
+
+  /* Estilos para el copyright */
+  .copyRightArea {
+    margin-top: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 0;
+    text-align: center;
+    background-color: #030a16;
+    /* Same as footer background */
+  }
+
+  .copyRightArea p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+  }
+</style>
+
+<footer class="footer">
+  <div class="footer-content container">
+    <div class="widget1">
+      <div class="logo-img">
+        <img src="img/logo-actual.webp" class="bn" alt="">
+      </div>
+      <p>Somos un centro de Psicología online. Si buscas psicólogo online, ponte en contacto con nostros y estaremos encantados de atenderte.</p>
+      <div class="socialLinks">
+        <ul>
+          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="widget2">
+      <h5>Latest News</h5>
+      <div class="media">
+        <img class="img-fluid" src="https://i.ibb.co/CKNmhMX/blog1.jpg" alt="">
+        <div class="media-body">
+          <div class="content">
+            <a href="#">
+              <p>Did son unreserved themselves indulgence its</p>
+            </a>
+            <span>Aug 17, 2019</span>
+          </div>
         </div>
+      </div>
+      <div class="media">
+        <img class="img-fluid" src="https://i.ibb.co/m5yGbdR/blog2.jpg" alt="">
+        <div class="media-body">
+          <div class="content">
+            <a href="#">
+              <p>Rapturous am eagerness it as resolving household</p>
+            </a>
+            <span>Aug 17, 2019</span>
+          </div>
+        </div>
+      </div>
     </div>
-</footer>
-
-
-<footer class="footer-rosado">
-  <div class="footer_container">
-    <div>
-      <img src="img/logo-actual.webp" alt="Logo" class="logo bn">
+    <div class="widget3">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Skills</a></li>
+        <li><a href="#">Career</a></li>
+      </ul>
     </div>
-    <div>
-      <p class="content_2">Somos un centro de Psicología online. Si buscar psicólogo online, ponte en contacto con nostros y estaremos encantados de atenderte. 😀</p>
-    </div>
-    <div class="redes-sociales-footer">
-      <a id="social_media_links" target="_blank" href="https://www.facebook.com/profile.php?id=61559259927318"><i class="fab fa-facebook"></i></a>
-      <a id="social_media_links" target="_blank" href="https://twitter.com/ContigoVoy_pe"><i class="fab fa-twitter"></i></a>
-      <a id="social_media_links" target="_blank" href="https://www.instagram.com/contigovoy.pe/"><i class="fab fa-instagram"></i></a>
-      <a id="social_media_links" target="_blank" href="https://www.youtube.com/channel/UCTiafg0LZPem0OhqKiCVE2Q"><i class="fab fa-youtube"></i></a>
-      <a id="social_media_links" target="_blank" href="https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}"><i class="fab fa-whatsapp"></i></a>
-      <a id="social_media_links" target="_blank" href="https://www.tiktok.com/@contigovoy.pe"><i class="fab fa-tiktok"></i></a>
-    </div>
-    <div>
-      <a id="link_footer" href="#">Políticas de Privacidad</a>
-    </div>
-    <div>
-      <a id="link_footer" href="#">Aviso Legal</a>
-    </div>
-    <div>
-      <a id="link_footer" href="#">Políticas de cookies</a>
-    </div>
-    <div>
-      <a id="link_footer" href="#">Contacto</a>
+    <div class="widget4">
+      <h5>Other Links</h5>
+      <ul>
+        <li><a href="#">ThemeForest</a></li>
+        <li><a href="#">GraphicRiver</a></li>
+        <li><a href="#">CodeCanyon</a></li>
+        <li><a href="#">VideoHive</a></li>
+        <li><a href="#">RedPen</a></li>
+        <li><a href="#">CodePen</a></li>
+      </ul>
     </div>
   </div>
+  <div class="copyRightArea">
+    <p>&copy; Copyright All rights reserved 2024.</p>
+  </div>
 </footer>
-
-
-
-
-
-</body>
-</html>

@@ -11,11 +11,29 @@
             justify-content: center;
             align-items: center;
             max-width: 100%;
-            margin: 20px;
-            padding: 20px;
             background-color: #ffffff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            background-image: url('img/fondo-confia-nosotros.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 5em 0;
+            max-width: 123.75rem; /* 1980px convertido a rem (1980/16) */
+            margin: 0 auto;
+        }
+
+        .column_Info{
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+        .content-wrapper {
+            max-width: 85%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
         }
 
         .column {
@@ -24,18 +42,31 @@
             box-sizing: border-box;
         }
 
+        .image-column {
+            text-align: center;
+        }
+
         .image-column img {
-            max-width: 100%;
-            border-radius: 8px;
+            max-width: 50%;
+            border-radius: 1.5em;
+            transform: scaleX(-1); /* Reflejar imagen */
         }
 
         .text-column h2 {
             margin-top: 0;
+            color: #57BAB5;
+            font-size: 2em;
+        }
+
+        .text-p {
+            color: #57BAB5;
+            font-size: 1.3em;
         }
 
         .text-column .benefits {
             list-style-type: none;
             padding: 0;
+            color: #57BAB5;
         }
 
         .text-column .benefits li {
@@ -45,7 +76,7 @@
         }
 
         .text-column .benefits li::before {
-            content: "✔";
+            content: "+";
             color: #56B9B3;
             position: absolute;
             left: 0;
@@ -73,9 +104,10 @@
         }
 
         .cta-button {
+           
             display: inline-block;
             padding: 10px 20px;
-            background-color: #56B9B3;
+            background-color: #F2B8B8;
             color: #ffffff;
             text-align: center;
             border: none;
@@ -83,6 +115,7 @@
             text-decoration: none;
             font-size: 16px;
             cursor: pointer;
+            width: max-content;
         }
 
         .cta-button:hover {
@@ -114,6 +147,10 @@
                 align-items: flex-start;
             }
 
+            .content-wrapper {
+                max-width: 90%;
+            }
+
             .cards {
                 flex-direction: column;
                 align-items: center;
@@ -136,6 +173,35 @@
         }
 
         @media (max-width: 480px) {
+            .content-wrapper {
+                max-width: 95%;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .image-column {
+                order: -1;
+                width: 100%;
+            }
+
+            .image-column img {
+                max-width: 80%; /* Aumentar el tamaño de la imagen */
+            }
+
+            .text-column {
+                width: 100%;
+                text-align: center;
+            }
+
+            .text-column h2 {
+                font-size: 3em; /* Reducir tamaño de la letra */
+                padding-bottom: .6em;
+            }
+
+            .text-p {
+                font-size: 1.3em; /* Reducir tamaño de la letra */
+            }
+
             .cards {
                 flex-direction: column;
                 align-items: center;
@@ -148,6 +214,7 @@
             }
 
             .cta-button {
+         
                 width: 100%;
                 text-align: center;
             }
@@ -156,32 +223,20 @@
 </head>
 <body>
     <div class="container_plus">
-        <div class="column image-column">
-            <img src="img/plus.webp" alt="Psicologo Plus">
-        </div>
-        <div class="column text-column">
-            <h2>¿Por qué confiar en ContigoVoy Plus?</h2>
-            <p>En ContigoVoy Plus, nos dedicamos a brindar el mejor servicio de apoyo psicológico con los siguientes beneficios:</p>
-            <ul class="benefits">
-                <li>Sesiones privadas, confidenciales y seguras</li>
-                <li>Ahorra tiempo y desplazamientos</li>
-                <li>Tú decides donde y cuándo realizar las sesiones</li>
-            </ul>
-            <div class="cards">
-                <div class="card">
-                    <h3>+10000</h3>
-                    <p>Citas realizadas</p>
-                </div>
-                <div class="card">
-                    <h3>+10</h3>
-                    <p>Años de experiencia</p>
-                </div>
-                <div class="card">
-                    <h3>100%</h3>
-                    <p>Psicólogos colegiados</p>
-                </div>
+        <div class="content-wrapper">
+            <div class="column image-column">
+                <img src="img/confia-nosotros.jpg" alt="Psicologo Plus">
             </div>
-            <button class="cta-button" onclick="window.location.href='psicologos.php';">Pide Cita</button>
+            <div class="column text-column column_Info" >
+                <h2>¿Por qué confiar en ContigoVoy?</h2>
+                <p class="text-p">Nuestros psicólogos son profesionales colegiados con un trato cercano. Ya han ayudado a miles de pacientes a mejorar su calidad de vida.</p>
+                <ul class="benefits">
+                    <li class="text-p">Sesiones privadas, confidenciales y seguras</li>
+                    <li class="text-p">Ahorra tiempo y desplazamientos</li>
+                    <li class="text-p">Tú decides donde y cuándo realizar las sesiones</li>
+                </ul>
+                <button class="cta-button" onclick="window.location.href='psicologos.php';">Pide Cita</button>
+            </div>
         </div>
     </div>
 </body>

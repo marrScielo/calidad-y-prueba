@@ -36,7 +36,8 @@ $especialidades = [
     <title>Blog</title>
     <meta name="description" content="Explora nuestro blog donde psicólogos profesionales comparten artículos, consejos y recursos sobre salud mental, bienestar emocional, terapia y más. Mantente informado y mejora tu calidad de vida con nuestros contenidos especializados.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/inicio-header1.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/header-style.css">
     <link rel="stylesheet" href="css/blog1.css">
     <link rel="icon" href="img/logo-actual.webp">
     <link rel="stylesheet" href="css/boton-wsp.css">
@@ -163,19 +164,28 @@ $especialidades = [
 
 <body>
     <?php include 'Componentes/header.php'; ?>
+
+    <section class="descripcion-blog">
+        <h1>Blog de psicología</h1>
+        <p>Contigo Voy es una plataforma de terapia online que cuenta con un amplio equipo de psicólogos expertos en terapia psicológica. En nuestro blog de Psicología encontrarás los mejores artículos de Salud Mental. Aquí están disponibles los mejores consejos para superar problemas emocionales y los mejores recursos para mejorar tu salud mental. Nuestro blog de Psicología es un espacio de conexión con el bienestar mental y el crecimiento personal. </p>
+    </section>
+
     <div class="container-blog">
+
+
+
         <div class="container-rosado">
-            <h2 onclick="toggleDropdownBlog()">Filtrar por Especialidad</h2>
+            <!-- <h2 onclick="toggleDropdownBlog()">Filtrar por Especialidad</h2> -->
             <form class="filter-form" id="filter-form">
                 <div class="search-container">
-                    <input type="text" id="search-input" placeholder="Buscar...">
-                    <button type="button" id="search-button">Buscar</button>
+                    <!-- <input type="text" id="search-input" placeholder="Buscar..."> -->
+                    <button type="button" id="search-button">Categoría</button>
                 </div>
                 <?php
                 foreach ($especialidades as $especialidad) {
                     echo '<div class="filter-option">';
                     echo '<input style="cursor: pointer;" type="checkbox" class="especialidad-checkbox" id="' . htmlspecialchars($especialidad) . '" value="' . htmlspecialchars($especialidad) . '">';
-                    echo '<label style="cursor: pointer;" for="' . htmlspecialchars($especialidad) . '">' . htmlspecialchars($especialidad) . '</label>';
+                    echo '<label for="' . htmlspecialchars($especialidad) . '">' . htmlspecialchars($especialidad) . '</label>';
                     echo '</div>';
                 }
                 ?>
@@ -183,7 +193,7 @@ $especialidades = [
         </div>
 
         <div class="container-celeste">
-            <h1>Últimos Artículos del Blog</h1>
+
             <div id="mensaje-no-blogs" class="mensaje-no-blogs">
                 No se encontraron blogs con la especialidad seleccionada.
             </div>
@@ -194,7 +204,7 @@ $especialidades = [
                 } else {
                     foreach ($blogs as $post) {
                         echo '<div class="blog-post" data-especialidad="' . htmlspecialchars($post['post_especialidad']) . '">';
-                        echo '<a href="blog-details.php?id=' . intval($post['post_id']) . '">';
+                        echo '<a href="detalle-blog.php?id=' . intval($post['post_id']) . '">';
                         echo '<img src="' . htmlspecialchars($post['post_imagen']) . '" alt="' . htmlspecialchars($post['post_tema']) . '">';
                         echo '<h2>' . htmlspecialchars($post['post_tema']) . '</h2>';
                         echo '</a>';
@@ -236,6 +246,7 @@ $especialidades = [
 
         </div>
     </div>
+
 
     <script>
         document.getElementById('filter-form').addEventListener('change', function() {

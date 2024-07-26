@@ -1,0 +1,158 @@
+body {
+  font-family: "Poppins";
+}
+header {
+  width: 100%;
+  top: 0;
+  background-color: #fff;
+  z-index: 99;
+  position: -webkit-sticky;
+  position: sticky;
+  transition: background-color 0.3s ease;
+}
+
+.main-header-navigation {
+  max-width: 1980px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 0.5em 1.5em; */
+}
+
+.logo1 img {
+  height: 3em;
+}
+
+@media (width <= 800px) {
+  header {
+    .container-header {
+      padding: 1em 1em;
+    }
+  }
+}
+
+.logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: auto; /* Ancho máximo de la imagen */
+  height: 3.5rem; /* Altura automática para mantener la proporción */
+  margin-left: 1rem;
+}
+
+.menu-icon {
+  display: none; /* Ocultar el icono del menú en pantallas grandes */
+  flex-direction: column;
+  gap: 0.3rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.menu-icon span {
+  height: 0.25rem;
+  width: 2.5rem;
+  border-radius: 0.5rem;
+  background-color: #00856f;
+  transition: 0.4s;
+}
+
+.nav-links {
+  list-style-type: none; /* Quitar los puntos de la lista */
+  display: flex;
+  padding: 0.5rem 0;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-links li a {
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #56B9B3;
+  display: inline-block;
+  transition: 0.3s ease-in-out;
+  padding: 0.5rem 0.5rem;
+}
+
+.nav-links li a:hover {
+  color: #56B9B3;
+}
+
+/* Al hacer scroll hacia abajo */
+header.scrolled {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: flex; /* Mostrar el icono del menú en pantallas pequeñas */
+  }
+
+  .nav-links {
+    position: absolute;
+    display: none;
+    top: 3.5rem;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 10;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin-right: 0; /* Quitar el margen entre los elementos del menú en pantallas pequeñas */
+    text-align: center; /* Centrar los enlaces en pantallas pequeñas */
+    width: 100%;
+  }
+
+  .nav-links li a {
+    padding: 0.5rem; /* Espaciado interno de los enlaces en pantallas pequeñas */
+    width: 100%;
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    gap: 2rem;
+    padding: 1rem;
+  }
+  .nav-links li a {
+    font-size: 1rem;
+  }
+
+  .logo-img {
+    width: auto;
+    height: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-links {
+    gap: 2.5rem;
+    padding: 1rem;
+  }
+  .nav-links li a {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .nav-links li a {
+    font-size: 1.25rem;
+  }
+
+  .logo-img {
+    width: auto;
+    height: 3.5rem;
+  }
+}

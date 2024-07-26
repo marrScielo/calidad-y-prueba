@@ -21,7 +21,7 @@ body {
 .section-container {
   display: flex;
   justify-content: space-between;
-  margin: 20px;
+  margin: 20px auto !important;
 }
 .left-section {
   width: 20%;
@@ -29,6 +29,7 @@ body {
 }
 .right-section {
   width: 80%;
+  margin: 0 auto;
   padding: 20px;
 }
 .psicologo-container {
