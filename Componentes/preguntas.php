@@ -7,6 +7,7 @@
         #nivel{
             width: 100%;
             background-color:#FFF1E6;
+            padding: 3em 0;
         }
         ul,
         li {
@@ -21,7 +22,6 @@
 
         h1 {
             text-align: center;
-            margin: 1em 0;
         }
 
         

@@ -4,7 +4,7 @@ body {
 }
 header{
     width: 100%;
-    position: absolute;
+    /* position: fixed; */
     top: 0;
     background-color: white;
     .container-header{
@@ -13,7 +13,7 @@ header{
        display: flex;
        justify-content: space-between;
        align-items: center;
-       padding: 1em 3em;
+       padding: 0.5em 1em;
        .logo1 img{
         height: 3em;
       }
