@@ -32,8 +32,6 @@ try {
             $video_id = isset($matches[1]) ? $matches[1] : null;
             echo "<div class='psicologo-container'>";
             echo "<p class='psicologo-nombre'>" . htmlspecialchars($row["NombrePsicologo"]) . "</p>";
-            echo "<p class='psicologo-contacto'><strong>Contacto: +51</strong> " . htmlspecialchars($row["celular"]) . "<br>";
-            echo "<strong>Email:</strong> " . htmlspecialchars($row["email"]) . "</p>";
             if ($video_id) {
                 echo "<iframe width='100%' height='200' src='https://www.youtube.com/embed/$video_id' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
             } else {
