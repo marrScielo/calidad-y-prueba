@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,17 +23,30 @@
         }
 
         .hero {
+            position: relative;
             height: 100vh;
             max-height: 1500px;
-            --opacidad-negro: 0.25;
-            background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url("ContigoVoyAssets/recursos/Recurso_6.png");
+            background-image: url("ContigoVoyAssets/recursos/Recurso_6.png");
             background-position: center;
             background-size: cover;
             display: grid;
             place-items: center;
         }
+        
+        .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
 
         .hero__content {
+            position: relative;
+            z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -57,8 +69,8 @@
         }
 
         .hero__cta {
-            text-decoration: none;
             text-transform: uppercase;
+            text-decoration: none;
             color: var(--color-light);
             background-color: var(--color-light-pink);
             border-radius: 0.5em;
@@ -74,7 +86,6 @@
         }
     </style>
 </head>
-
 <body>
     <section class="hero">
         <div class="hero__content">
@@ -90,5 +101,4 @@
         </div>
     </section>
 </body>
-
 </html>
