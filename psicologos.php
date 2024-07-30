@@ -88,14 +88,18 @@
         /* Estilo para las tarjetas */
         .psicologo-container {
             border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px;
+            padding: 1.5rem;
+            margin: 0px;
             border-radius: 10px; /* Borde redondeado */
             background-color: #f9f9f9;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra */
             box-sizing: border-box;
             text-align: center; /* Centrar contenido dentro del contenedor */
             transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1rem;
         }
 
         .psicologo-container:hover {
@@ -124,7 +128,7 @@
 
         .search-container button {
             padding: 10px 20px;
-            background-color: #56B9B3;
+            background-color: #f19294;
             color: white;
             border: none;
             cursor: pointer;
@@ -148,13 +152,13 @@
     <div class="section-container">
         <div class="right-section">
             <div class="intro-container">
-                <h2>Nuestro Equipo</h2>
+                <h2 class="title">NUESTRO EQUIPO</h2>
                 <div class="search-container">
                     <input type="text" id="searchInput" placeholder="Buscar...">
                     <button type="button" id="searchButton">Buscar</button>
                 </div>
             </div>
-            <p>
+            <p style="font-size: 1.1rem;">
                 Conozca a nuestros talentosos psicólogos, dedicados a ayudarle a alcanzar su bienestar emocional. Nuestro equipo está compuesto por profesionales altamente capacitados en diversas áreas de la psicología, listos para brindarle el apoyo que necesita.
                 Cada uno de nuestros psicólogos cuenta con una vasta experiencia en tratamientos y terapias que abarcan desde problemas emocionales y de conducta hasta orientación y asesoramiento en diversas etapas de la vida.
             </p>

@@ -31,14 +31,18 @@ try {
             preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $row["video"], $matches);
             $video_id = isset($matches[1]) ? $matches[1] : null;
             echo "<div class='psicologo-container'>";
-            echo "<p class='psicologo-nombre'>" . htmlspecialchars($row["NombrePsicologo"]) . "</p>";
+            echo "<div class='psicologo-header'>";
+            echo "<h3 class='psicologo-nombre'>" . htmlspecialchars($row["NombrePsicologo"]) . "</h3>";
+            echo "<span class='psicologo-tag'>psico-analista</span>";
+            echo "</div>";
             if ($video_id) {
                 echo "<iframe width='100%' height='200' src='https://www.youtube.com/embed/$video_id' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
             } else {
                 echo "<p>Video no disponible.</p>";
             }
+            echo "<p class='psicologo-introduction'>¡Hola! Soy " . htmlspecialchars($row["NombrePsicologo"]) . ", psicólogo clínico con más de 10 años de experiencia. Mi objetivo es ayudarte a superar tus problemas emocionales y mejorar tu calidad de vida.</p>";
             // Botón de WhatsApp con el número del psicólogo
-            echo "<a href='https://api.whatsapp.com/send?phone=51" . htmlspecialchars($row["celular"]) . "' target='_blank'><button class='wsp-button'>Contactar por WhatsApp</button></a>";
+            echo "<a href='https://api.whatsapp.com/send?phone=51" . htmlspecialchars($row["celular"]) . "' target='_blank'><button class='wsp-button'>¡Contáctame!</button></a>";
             echo "</div>";
         }
     } else {
