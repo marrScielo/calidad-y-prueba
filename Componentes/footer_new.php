@@ -28,11 +28,6 @@
     height: auto;
   }
 
-  /* Estilos de sección */
-  section {
-    padding: 60px 0;
-    min-height: 100vh;
-  }
 
   /* Estilos del pie de página */
   .footer {
@@ -54,7 +49,7 @@
     flex-direction: column;
   }
 
-  .footer .logo-img {
+  .footer .logo-container {
     max-width: 200px;
   }
 
@@ -83,7 +78,7 @@
     display: inline-block;
   }
 
-  .footer .socialLinks ul li a i{
+  .footer .socialLinks ul li a i {
     display: block;
     margin: 0 2px;
     width: 40px;
@@ -111,7 +106,7 @@
     color: #0177b5;
   }
 
-  .footer .socialLinks ul li a:hover i{
+  .footer .socialLinks ul li a:hover i {
     color: #fff;
   }
 
@@ -176,6 +171,12 @@
     margin: 0;
   }
 
+  .footer .widget3 ul li a,
+  .footer .widget4 ul li a::before {
+    content: "\2713";
+    margin-right: 3px;
+  }
+
   .footer .widget3 ul li a:hover,
   .footer .widget4 ul li a:hover {
     color: #ffb606;
@@ -202,56 +203,20 @@
     margin: 0;
   }
 
-  /* Media query para pantallas pequeñas */
-@media (max-width: 768px) {
+  .bn {
+    filter: brightness(0) invert(1);
+  }
   .footer .footer-content {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    max-width: 123.75rem !important; 
+    margin: 0 auto !important
   }
-
-  .footer .widget1, 
-  .footer .widget2, 
-  .footer .widget3, 
-  .footer .widget4 {
-    margin-bottom: 30px;
-  }
-}
-
-/* Media query para pantallas muy pequeñas */
-@media (max-width: 480px) {
-  .footer .footer-content {
-    grid-template-columns: 1fr;
-  }
-
-  .footer .socialLinks ul li {
-    display: block;
-    margin-bottom: 10px;
-  }
-
-  .footer .socialLinks ul li a {
-    width: 100%;
-    text-align: center;
-    line-height: normal;
-  }
-
-  .footer .widget1 p,
-  .footer .widget2 .media p,
-  .footer .widget3 ul li a,
-  .footer .widget4 ul li a {
-    font-size: 14px;
-  }
-
-  .footer h5 {
-    font-size: 18px;
-  }
-}
 
 </style>
 
 <footer class="footer">
   <div class="footer-content container">
     <div class="widget1">
-      <div class="logo-img">
+      <div class="logo-container">
         <img src="img/logo-actual.webp" class="bn" alt="">
       </div>
       <p>Somos un centro de Psicología online. Si buscas psicólogo online, ponte en contacto con nostros y estaremos encantados de atenderte.</p>
@@ -265,7 +230,7 @@
       </div>
     </div>
     <div class="widget2">
-      <h5>Latest News</h5>
+      <h5>Últimas noticias</h5>
       <div class="media">
         <img class="img-fluid" src="https://i.ibb.co/CKNmhMX/blog1.jpg" alt="">
         <div class="media-body">
@@ -290,25 +255,25 @@
       </div>
     </div>
     <div class="widget3">
-      <h5>Quick Links</h5>
+      <h5>Nosotros</h5>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Privacy</a></li>
-        <li><a href="#">Skills</a></li>
-        <li><a href="#">Career</a></li>
+        <li><a href="index.php">Inicio</a></li>
+        <li><a href="Blog.php">Blog</a></li>
+        <li><a href="psicologos.php">Reservar Cita</a></li>
+        <li><a href="Contactanos.php">Contáctanos</a></li>
+        <li><a href="login.php">Login</a></li>
       </ul>
     </div>
     <div class="widget4">
-      <h5>Other Links</h5>
+      <h5>Trastornos</h5>
       <ul>
-        <li><a href="#">ThemeForest</a></li>
-        <li><a href="#">GraphicRiver</a></li>
-        <li><a href="#">CodeCanyon</a></li>
-        <li><a href="#">VideoHive</a></li>
-        <li><a href="#">RedPen</a></li>
-        <li><a href="#">CodePen</a></li>
+        <li><a href="Blog.php">Adicciones</a></li>
+        <li><a href="Blog.php">Ansiedad</a></li>
+        <li><a href="Blog.php">Atención</a></li>
+        <li><a href="Blog.php">Crianza</a></li>
+        <li><a href="Blog.php">Depresión</a></li>
+        <li><a href="Blog.php">Sexualidad</a></li>
+        <li><a href="Blog.php">Traumas</a></li>
       </ul>
     </div>
   </div>
