@@ -7,7 +7,7 @@
     <link	href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	<link rel="icon" href="img/logo-actual.webp">
-	<link rel="stylesheet" href="css/inicio-header1.css">
+	<link rel="stylesheet" href="css/header-style.css">
 	<link rel="stylesheet" href="css/boton-wsp.css">
 	<link rel="stylesheet" href="css/estilos-login1.css">
     <title>Psicologa</title>

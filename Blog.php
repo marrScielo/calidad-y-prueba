@@ -171,9 +171,6 @@ $especialidades = [
     </section>
 
     <div class="container-blog">
-
-
-
         <div class="container-rosado">
             <!-- <h2 onclick="toggleDropdownBlog()">Filtrar por Especialidad</h2> -->
             <form class="filter-form" id="filter-form">
@@ -246,6 +243,8 @@ $especialidades = [
 
         </div>
     </div>
+
+    <?php include 'Componentes/footer_new.php'; ?>
 
 
     <script>

@@ -1,77 +1,92 @@
-<style>
-    * {
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-    }
+<!DOCTYPE html>
+<html lang="es">
 
-    body,
-    html {
-        scroll-behavior: smooth;
-    }
-
-    .bgSection1 {
-        height: 100svh;
-        max-height: 1500px;
-        --opacidad-negro: 0.25;
-        background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url("ContigoVoyAssets/recursos/Recurso_6.png");
-        background-position: center;
-        background-size: cover;
-        display: grid;
-        place-items: center;
-
-        h1,
-        h2 {
-            margin: 0 !important;
-            padding: 0 !important;
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Descubre tu mejor versión</title>
+    <style>
+        :root {
+            --color-light: #ffffff;
+            --color-light-pink: #f2b8b8;
         }
 
-        div {
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body,
+        html {
+            scroll-behavior: smooth;
+            font-family: Arial, sans-serif;
+        }
+
+        .hero {
+            height: 100vh;
+            max-height: 1500px;
+            --opacidad-negro: 0.25;
+            background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url("ContigoVoyAssets/recursos/Recurso_6.png");
+            background-position: center;
+            background-size: cover;
+            display: grid;
+            place-items: center;
+        }
+
+        .hero__content {
             display: flex;
-            flex-flow: column;
+            flex-direction: column;
             align-items: center;
             text-align: center;
             gap: 1.5em;
-            color: var(--light);
+            color: var(--color-light);
             padding: 0 1em;
         }
 
-        h1 {
+        .hero__title {
             font-size: 4em;
+            margin: 0;
+            padding: 0;
         }
 
-        a {
+        .hero__subtitle {
+            font-size: 1.5em;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero__cta {
             text-decoration: none;
             text-transform: uppercase;
-            color: var(--light);
-            background-color: var(--lightPink);
+            color: var(--color-light);
+            background-color: var(--color-light-pink);
             border-radius: 0.5em;
-            font-weight: bolder;
+            font-weight: bold;
             padding: 1em 2em;
             font-size: 1em;
             transition: all 0.25s ease-in-out;
         }
 
-        a:hover {
-            color: var(--lightPink);
-            background-color: var(--light);
+        .hero__cta:hover {
+            color: var(--color-light-pink);
+            background-color: var(--color-light);
         }
-    }
-</style>
+    </style>
 </head>
 
 <body>
-    <section class="bgSection1">
-        <div>
-            <h1>
-                Descubre tu mejor <br />
-                version
+    <section class="hero">
+        <div class="hero__content">
+            <h1 class="hero__title">
+                Descubre tu mejor<br>
+                versión
             </h1>
-            <h2>
-                Encuentra equilibrio <br />
-                y bienestar emocional aqui
+            <h2 class="hero__subtitle">
+                Encuentra equilibrio<br>
+                y bienestar emocional aquí
             </h2>
-            <a href="">Solicitar Servicio</a>
+            <a href="#" class="hero__cta">Solicitar Servicio</a>
         </div>
     </section>
 </body>
