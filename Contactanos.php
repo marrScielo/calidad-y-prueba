@@ -25,7 +25,6 @@
 
         .contactanos-contenido {
             display: flex;
-            margin: 0 3rem;
             border: solid #56B9B3 2px;
             width: 90%;
             align-items: flex-start;
@@ -115,8 +114,7 @@
 
         .contactanos-contenido {
             border-radius: 15px;
-            box-shadow: 10px 10px 20px #babecc,
-                -10px -10px 20px #ffffff;
+            background-color: #f7f7f7;
         }
 
         /* Importación de fuentes */
@@ -196,23 +194,24 @@
             width: 100%;
             height: 36px;
             border-width: 0 0 2px 0;
-            border-color: #000;
+            border-color: #888;
             font-family: Lusitana, serif;
             font-size: 18px;
             line-height: 26px;
             font-weight: 400;
-
         }
 
         .contacto-formulario .contact-form .input-text:focus {
             outline: none;
             /* Elimina el contorno al enfocar el campo */
+            border-color: var(--color-secundario);;
         }
 
         .contacto-formulario .contact-form .input-text:focus+.label,
         .contacto-formulario .contact-form .input-text.not-empty+.label {
             transform: translateY(-24px);
             /* Mueve la etiqueta hacia arriba al enfocar el campo */
+            color: var(--color-secundario);
         }
 
         .input-text.has-content:not(:focus)+.label {
@@ -235,7 +234,7 @@
 
         .contacto-formulario .contact-form .submit-btn {
             display: inline-block;
-            background-color: #000;
+            background-color: #f7b8b9;
             color: #fff;
             font-family: Raleway, sans-serif;
             text-transform: uppercase;
@@ -246,6 +245,12 @@
             border: none;
             cursor: pointer;
             /* Cambia el cursor a mano al pasar sobre el botón */
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .contacto-formulario .contact-form .submit-btn:hover {
+            background-color: var(--color-secundario);
         }
 
         /* Alineación centrada */
@@ -253,6 +258,7 @@
             text-align: center;
             /* Centra el contenido dentro del campo */
         }
+
     </style>
 </head>
 
@@ -287,7 +293,7 @@
                         <label class="label" for="message">Mensaje</label>
                     </div>
                     <div class="form-field col x-100 align-center">
-                        <input class="submit-btn" type="submit" value="Enviar">
+                        <input class="submit-btn" type="submit" value="Enviar Mensaje">
                     </div>
                 </form>
             </div>
