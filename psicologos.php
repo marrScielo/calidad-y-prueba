@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="css/estilos-footer.css">
     <link rel="icon" href="img/logo-actual.webp">
     <link rel="stylesheet" href="css/boton-wsp.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>Psicologos</title>
     <meta name="description" content="Reserva tu cita con nuestro psicólogo profesional. Encuentra información sobre su especialidad, contacto y disponibilidad. Comienza tu camino hacia el bienestar emocional con una consulta personalizada.">
     <style>
@@ -22,7 +24,8 @@
                 flex-direction: column;
             }
 
-            .left-section, .right-section {
+            .left-section,
+            .right-section {
                 width: 100%;
                 padding: 10px;
             }
@@ -33,13 +36,14 @@
             }
 
             .psicologo-row {
-                grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+                grid-template-columns: 1fr;
+                /* 1 columna en pantallas pequeñas */
             }
-            
+
             .search-container {
                 margin: 10px;
             }
-            
+
             .search-container button {
                 margin-top: 10px;
             }
@@ -54,7 +58,8 @@
                 flex-direction: column;
             }
 
-            .left-section, .right-section {
+            .left-section,
+            .right-section {
                 width: 100%;
                 padding: 15px;
             }
@@ -65,13 +70,14 @@
             }
 
             .psicologo-row {
-                grid-template-columns: 1fr 1fr; /* 2 columnas en pantallas medianas */
+                grid-template-columns: 1fr 1fr;
+                /* 2 columnas en pantallas medianas */
             }
-            
+
             .search-container {
                 margin: 15px;
             }
-            
+
             .search-container button {
                 margin-top: 5px;
             }
@@ -80,21 +86,25 @@
         @media (min-width: 1025px) {
             .psicologo-row {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
+                grid-template-columns: repeat(3, 1fr);
+                /* 3 columnas en pantallas grandes */
                 grid-gap: 20px;
             }
         }
-        
+
         /* Estilo para las tarjetas */
         .psicologo-container {
             border: 1px solid #ccc;
             padding: 1.5rem;
             margin: 0px;
-            border-radius: 10px; /* Borde redondeado */
+            border-radius: 10px;
+            /* Borde redondeado */
             background-color: #f9f9f9;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Sombra */
             box-sizing: border-box;
-            text-align: center; /* Centrar contenido dentro del contenedor */
+            text-align: center;
+            /* Centrar contenido dentro del contenedor */
             transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
@@ -104,7 +114,7 @@
 
         .psicologo-container:hover {
             transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         /* Nuevo estilo */
@@ -146,6 +156,7 @@
         }
     </style>
 </head>
+
 <body>
     <?php include 'Componentes/header.php'; ?>
 
@@ -217,4 +228,5 @@
     <script src="js/navabar.js"></script>
     <?php include 'Componentes/footer_new.php'; ?>
 </body>
+
 </html>
