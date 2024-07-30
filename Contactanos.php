@@ -94,6 +94,53 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .contactanos-contenido {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem 0;
+            }
+
+            .contactanos-contenido>form {
+                padding: 0 1rem;
+                width: 100%;
+                grid-template-columns: 1fr;
+            }
+
+            .texto-contactanos {
+                padding: 0 1rem;
+                max-width: 100%;
+            }
+
+            .imagen-contacto {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .contactanos-contenedor{
+                height: 600px;
+            }
+            .contactanos-contenido {
+                padding: 0.5rem;
+                margin-top: 20px;
+            }
+
+            .contactanos-contenido>form {
+                padding: 0 0.5rem;
+            }
+
+            .texto-contactanos {
+                padding: 0 0.5rem;
+            }
+
+            .contacto-formulario .contact-form .form-field {
+                width: 100%;
+            }
+            
+        }
+
         .imagen-contacto {
             max-width: 100%;
             width: 30rem;
