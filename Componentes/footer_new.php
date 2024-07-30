@@ -28,11 +28,6 @@
     height: auto;
   }
 
-  /* Estilos de sección */
-  section {
-    padding: 60px 0;
-    min-height: 100vh;
-  }
 
   /* Estilos del pie de página */
   .footer {
@@ -211,6 +206,11 @@
   .bn {
     filter: brightness(0) invert(1);
   }
+  .footer .footer-content {
+    max-width: 123.75rem !important; 
+    margin: 0 auto !important
+  }
+
 </style>
 
 <footer class="footer">
