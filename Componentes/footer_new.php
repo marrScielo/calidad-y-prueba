@@ -83,7 +83,7 @@
     display: inline-block;
   }
 
-  .footer .socialLinks ul li a {
+  .footer .socialLinks ul li a i{
     display: block;
     margin: 0 2px;
     width: 40px;
@@ -111,7 +111,7 @@
     color: #0177b5;
   }
 
-  .footer .socialLinks ul li a:hover {
+  .footer .socialLinks ul li a:hover i{
     color: #fff;
   }
 
