@@ -96,10 +96,16 @@
         }
 
         @media (max-width: 480px) {
+            .contactanos-contenedor {
+                padding: 7.5rem 0;
+                /* Añade un espaciado superior e inferior para evitar que se solape con el header y el footer */
+            }
+
             .contactanos-contenido {
                 padding: 1rem;
                 flex-direction: column;
                 gap: 1rem 0;
+                align-items: center;
             }
 
             .contactanos-contenido>form {
@@ -111,6 +117,8 @@
             .texto-contactanos {
                 padding: 0 1rem;
                 max-width: 100%;
+                text-align: center;
+                /* Opcional: Centra el texto */
             }
 
             .imagen-contacto {
@@ -119,10 +127,12 @@
             }
         }
 
+
         @media (max-width: 320px) {
-            .contactanos-contenedor{
+            .contactanos-contenedor {
                 height: 600px;
             }
+
             .contactanos-contenido {
                 padding: 0.5rem;
                 margin-top: 20px;
@@ -139,7 +149,7 @@
             .contacto-formulario .contact-form .form-field {
                 width: 100%;
             }
-            
+
         }
 
         .imagen-contacto {
@@ -252,7 +262,8 @@
         .contacto-formulario .contact-form .input-text:focus {
             outline: none;
             /* Elimina el contorno al enfocar el campo */
-            border-color: var(--color-secundario);;
+            border-color: var(--color-secundario);
+            ;
         }
 
         .contacto-formulario .contact-form .input-text:focus+.label,
@@ -306,7 +317,6 @@
             text-align: center;
             /* Centra el contenido dentro del campo */
         }
-
     </style>
 </head>
 
@@ -349,7 +359,7 @@
     </section>
 
     <script src="js/navabar.js"></script>
-    <?php include 'Componentes/footer_new.php'; ?>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const inputs = document.querySelectorAll('.input-text');
@@ -373,6 +383,7 @@
             });
         });
     </script>
+    <?php include 'Componentes/footer_new.php'; ?>
 
 </body>
 

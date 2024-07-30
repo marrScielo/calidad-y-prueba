@@ -206,11 +206,65 @@
   .bn {
     filter: brightness(0) invert(1);
   }
+
   .footer .footer-content {
-    max-width: 123.75rem !important; 
+    max-width: 123.75rem !important;
     margin: 0 auto !important
   }
 
+  /* Media query para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .footer .footer-content {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    
+    .footer .widget1,
+    .footer .widget2,
+    .footer .widget3,
+    .footer .widget4 {
+      margin-bottom: 30px;
+    }
+
+    .socialLinks ul {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px; /* Ajusta el espacio entre los íconos si es necesario */
+        justify-items: center; /* Centra los íconos horizontalmente en cada celda */
+        padding: 0;
+        margin: 0;
+    }
+
+  }
+
+  /* Media query para pantallas muy pequeñas */
+  @media (max-width: 480px) {
+    .footer .footer-content {
+      grid-template-columns: 1fr;
+    }
+
+    .footer .socialLinks ul li {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .footer .socialLinks ul li a {
+      width: 100%;
+      text-align: center;
+      line-height: normal;
+    }
+
+    .footer .widget1 p,
+    .footer .widget2 .media p,
+    .footer .widget3 ul li a,
+    .footer .widget4 ul li a {
+      font-size: 14px;
+    }
+
+    .footer h5 {
+      font-size: 18px;
+    }
+  }
 </style>
 
 <footer class="footer">
