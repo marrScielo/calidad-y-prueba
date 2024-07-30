@@ -23,6 +23,7 @@
         }
 
         .hero {
+            position: relative;
             height: 100vh;
             max-height: 1500px;
             background-image: url("ContigoVoyAssets/recursos/Recurso_6.png");
@@ -31,8 +32,21 @@
             display: grid;
             place-items: center;
         }
+        
+        .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
 
         .hero__content {
+            position: relative;
+            z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -55,6 +69,7 @@
         }
 
         .hero__cta {
+            text-transform: uppercase;
             text-decoration: none;
             color: var(--color-light);
             background-color: var(--color-light-pink);
