@@ -205,12 +205,13 @@
 
   .bn {
     filter: brightness(0) invert(1);
-  }
-  .footer .footer-content {
-    max-width: 123.75rem !important; 
-    margin: 0 auto !important
+    height: 3em;
   }
 
+  .footer .footer-content {
+    max-width: 123.75rem !important;
+    margin: 0 auto !important
+  }
 </style>
 
 <footer class="footer">

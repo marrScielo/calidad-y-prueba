@@ -171,12 +171,12 @@ $especialidades = [
     </section>
 
     <div class="container-blog">
-        <div class="container-rosado">
-            <!-- <h2 onclick="toggleDropdownBlog()">Filtrar por Especialidad</h2> -->
+        <div class="container-right">
+            <h2>Filtrar por Especialidad</h2>
             <form class="filter-form" id="filter-form">
                 <div class="search-container">
-                    <!-- <input type="text" id="search-input" placeholder="Buscar..."> -->
-                    <button type="button" id="search-button">Categoría</button>
+                    <input type="text" id="search-input" placeholder="Buscar...">
+                    <!-- <button type="button" id="search-button">Categoría</button> -->
                 </div>
                 <?php
                 foreach ($especialidades as $especialidad) {
@@ -189,7 +189,7 @@ $especialidades = [
             </form>
         </div>
 
-        <div class="container-celeste">
+        <div class="container-left">
 
             <div id="mensaje-no-blogs" class="mensaje-no-blogs">
                 No se encontraron blogs con la especialidad seleccionada.
@@ -201,11 +201,11 @@ $especialidades = [
                 } else {
                     foreach ($blogs as $post) {
                         echo '<div class="blog-post" data-especialidad="' . htmlspecialchars($post['post_especialidad']) . '">';
-                        echo '<a href="detalle-blog.php?id=' . intval($post['post_id']) . '">';
+                        echo '<a href="blog-details.php?id=' . intval($post['post_id']) . '">';
                         echo '<img src="' . htmlspecialchars($post['post_imagen']) . '" alt="' . htmlspecialchars($post['post_tema']) . '">';
                         echo '<h2>' . htmlspecialchars($post['post_tema']) . '</h2>';
                         echo '</a>';
-                        echo '<p><strong>Publicado por Lic. </strong> ' . htmlspecialchars($post['psicologo_nombre']) . '</p>';
+                        echo '<p>✍ ' . htmlspecialchars($post['psicologo_nombre']) . '</p>';
                         echo '</div>';
                     }
                 }
