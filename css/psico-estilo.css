@@ -1,51 +1,55 @@
-body {
-  font-family: Arial, sans-serif;
-}
 .search-container {
   text-align: center;
-  margin: 20px;
 }
+
 .search-container input[type="text"] {
   width: 300px;
   padding: 10px;
   margin-right: 10px;
   width: 1200px;
 }
+
 .search-container button {
   padding: 10px 20px;
-  background-color: #f19294;
+  background-color: #56B9B3; /* Color ajustado */
   color: white;
   border: none;
   cursor: pointer;
 }
+
 .section-container {
   display: flex;
   justify-content: space-between;
   margin: 20px auto !important;
 }
+
 .left-section {
   width: 20%;
   padding: 20px;
 }
+
 .right-section {
   width: 80%;
   margin: 0 auto;
   padding: 20px;
 }
+
 .psicologo-container {
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
   background-color: #f9f9f9;
-  flex: 1 1 calc(33.333% - 20px); /* Adjust to show 3 psicologos per row */
   box-sizing: border-box;
   text-align: center; /* Centrar contenido dentro del contenedor */
 }
+
 .psicologo-row {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
+  grid-gap: 20px;
 }
+
 .testimonial {
   border: 1px solid #ccc;
   padding: 10px;
@@ -53,87 +57,133 @@ body {
   border-radius: 5px;
   background-color: #fff;
 }
+
 .link-list,
 .social-links {
   list-style-type: none;
   padding: 0;
 }
+
 .link-list li,
 .social-links li {
   margin: 5px 0;
 }
 
 .pagination {
-    margin-top: 20px;
-    text-align: center;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .pagination a {
-    color: #007bff;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-    border: 1px solid #007bff;
-    margin: 0 5px;
+  color: #007bff;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid #007bff;
+  margin: 0 5px;
 }
 
 .pagination a.active,
 .pagination a:hover {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
 }
 
 .pagination a.disabled {
-    pointer-events: none;
-    color: #6c757d;
-    border-color: #6c757d;
+  pointer-events: none;
+  color: #6c757d;
+  border-color: #6c757d;
 }
-/* estilos-psicologos.css */
 
 .wsp-button {
-background-color: #F19294;
-color: white;
-padding: 10px 20px;
-border: none;
-cursor: pointer;
-transition: background-color 0.3s;
+  width: 100%;
+  background-color: #F19294; /* Color ajustado */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
 }
 
 .wsp-button:hover {
-background-color: #ee6e73;
+  background-color: #ee6e73;
 }
-/* estilos-psicologos.css */
 
 .testimonial {
-margin-top: 20px;
+  margin-top: 20px;
 }
 
 .testimonial h3 {
-font-size: 1.5rem;
-margin-bottom: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
 .testimonial-container {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-grid-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
 }
 
 .testimonial-item {
-background-color: #56B9B3;
-color: white;
-padding: 15px;
-border-radius: 5px;
-box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: #56B9B3;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .testimonial-item h4 {
-margin-bottom: 5px;
-font-size: 1.2rem;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
 }
 
 .testimonial-item p {
-font-size: 1rem;
-line-height: 1.4;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.psicologo-nombre {
+  transition: color 0.3s, transform 0.3s;
+}
+
+.psicologo-container {
+  border: 0.0625rem solid #ccc;
+  padding: 0.625rem;
+  margin: 0.625rem;
+  border-radius: 0.3125rem;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  text-align: left; /* Alinear texto a la izquierda */
+}
+
+.psicologo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.psicologo-nombre {
+  margin: 0;
+}
+
+.psicologo-tag {
+  background-color: #56B9B3; /* Color del tag */
+  color: white;
+  padding: 0.3125rem 0.625rem;
+  border-radius: 1.25rem; /* Hacer el borde más circular */
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-left: 0.625rem;
+  opacity: 0.7;
+}
+
+
+.psicologo-introduction {
+  text-align: start;
+}
+
+.title {
+  font-size: 2em;
 }

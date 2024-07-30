@@ -13,12 +13,6 @@
     <title>Psicologos</title>
     <meta name="description" content="Reserva tu cita con nuestro psicólogo profesional. Encuentra información sobre su especialidad, contacto y disponibilidad. Comienza tu camino hacia el bienestar emocional con una consulta personalizada.">
     <style>
-        @media (width < 550px) {
-            .left-section, .right-section {
-                padding: 0px !important;
-            }
-        }
-
         @media (max-width: 768px) {
             .search-container input[type="text"] {
                 width: 80%;
@@ -38,8 +32,8 @@
                 margin: 10px 0;
             }
 
-            .testimonial-container {
-                grid-template-columns: 1fr;
+            .psicologo-row {
+                grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
             }
             
             .search-container {
@@ -70,8 +64,8 @@
                 margin: 10px;
             }
 
-            .testimonial-container {
-                grid-template-columns: 1fr 1fr;
+            .psicologo-row {
+                grid-template-columns: 1fr 1fr; /* 2 columnas en pantallas medianas */
             }
             
             .search-container {
@@ -83,28 +77,91 @@
             }
         }
 
+        @media (min-width: 1025px) {
+            .psicologo-row {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
+                grid-gap: 20px;
+            }
+        }
+        
+        /* Estilo para las tarjetas */
+        .psicologo-container {
+            border: 1px solid #ccc;
+            padding: 1.5rem;
+            margin: 0px;
+            border-radius: 10px; /* Borde redondeado */
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra */
+            box-sizing: border-box;
+            text-align: center; /* Centrar contenido dentro del contenedor */
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .psicologo-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        /* Nuevo estilo */
+        .intro-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            margin-right: 10px;
+            width: 300px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #f19294;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .section-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px auto;
+        }
+
+        .right-section {
+            max-width: 85%;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
     <?php include 'Componentes/header.php'; ?>
 
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Buscar...">
-        <button type="button" id="searchButton">Buscar</button>
-    </div>
-
     <div class="section-container">
-        <!-- <div class="left-section">
-            <h2>¿Por qué consultar a un Psicólogo?</h2>
-            <p><span class="icon">&#x1F468;</span> Profesionalismo y apoyo emocional.</p>
-            <p><span class="icon">&#x1F4AC;</span> Confidencialidad y seguridad.</p>
-            <p><span class="icon">&#x1F4DA;</span> Mejora en la calidad de vida.</p>
-            <p><span class="icon">&#x1F64F;</span> Atención personalizada y empática.</p>
-            <p><span class="icon">&#x1F496;</span> Ayuda en la resolución de problemas.</p>
-        </div> -->
-
         <div class="right-section">
-            <h2>Nuestro Equipo</h2>
+            <div class="intro-container">
+                <h2 class="title">NUESTRO EQUIPO</h2>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Buscar...">
+                    <button type="button" id="searchButton">Buscar</button>
+                </div>
+            </div>
+            <p style="font-size: 1.1rem;">
+                Conozca a nuestros talentosos psicólogos, dedicados a ayudarle a alcanzar su bienestar emocional. Nuestro equipo está compuesto por profesionales altamente capacitados en diversas áreas de la psicología, listos para brindarle el apoyo que necesita.
+                Cada uno de nuestros psicólogos cuenta con una vasta experiencia en tratamientos y terapias que abarcan desde problemas emocionales y de conducta hasta orientación y asesoramiento en diversas etapas de la vida.
+            </p>
             <div id="psicologos-container" class="psicologo-row">
                 <?php include 'Modelo/PsicologoModel.php'; ?>
             </div>
