@@ -97,7 +97,7 @@
                 Encuentra equilibrio<br>
                 y bienestar emocional aquí
             </h2>
-            <a href="#" class="hero__cta">Solicitar Servicio</a>
+            <a href="psicologos.php" class="hero__cta">Solicitar Servicio</a>
         </div>
     </section>
 </body>

@@ -175,13 +175,8 @@
         const sliderContainer = document.querySelector(".sliderContainer");
         const slides = document.querySelectorAll(".sliderContainer__slide--box");
         const dots = document.querySelectorAll(".sliderDot");
-        dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            currentIndex = parseInt(dot.getAttribute('data-slide'));
-            updateSliderPosition();
-            updateDots();
-            });
-        });
+        let currentIndex = 0;
+        let interval = setInterval(autoSlide, 3000); 
 
         function updateSliderPosition() {
             sliderContainer.style.transform = `translateX(-${currentIndex * 100 / slides.length}%)`;
@@ -191,6 +186,30 @@
             dots.forEach(dot => dot.classList.remove('active'));
             dots[currentIndex].classList.add('active');
         }
+
+        function autoSlide() {
+            currentIndex++;
+            if (currentIndex === slides.length) {
+                currentIndex = 0;
+            }
+            updateSliderPosition();
+            updateDots();
+        }
+
+        function resetInterval() {
+            clearInterval(interval);
+            interval = setInterval(autoSlide, 3000);
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentIndex = parseInt(dot.getAttribute('data-slide'));
+                updateSliderPosition();
+                updateDots();
+                resetInterval(); 
+            });
+        });
+
     </script>
 
 </body>
