@@ -10,7 +10,7 @@ try {
     $conn = $dbController->getConnection();
 
     // Parámetros de paginación
-    $results_per_page = 9; // Número de resultados por página
+    $results_per_page = 6; // Número de resultados por página
     $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
     $start_from = ($page - 1) * $results_per_page;
 
