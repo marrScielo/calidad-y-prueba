@@ -165,7 +165,7 @@
 }
 
 .psicologo-tag {
-  background-color: #ff10e9a1; /* Adjusted tag color for better contrast */
+  background-color: #ee5c3f; /* Adjusted tag color for better contrast */
   color: white;
   padding: 0.3125rem 0.625rem;
   border-radius: 1.25rem;
@@ -181,7 +181,7 @@
 
 .title {
   font-size: 2em;
-  color: #56B9B3;
+  color: #1d7e90;
 }
 
 @media (max-width: 768px) {
