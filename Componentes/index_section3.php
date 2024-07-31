@@ -10,6 +10,7 @@
                 --lightPink: #f2b8b8;
                 --lightGreen: #6ed3c7;
                 --darkGreen: #57bab5;
+                --darkPink: #fca4a4;
             }
             * {
                 box-sizing: border-box;
@@ -87,7 +88,7 @@
                 color: var(--light);
                 padding: 0.8em 1.5em;
                 border-radius: 0.7em;
-                background-color: var(--darkGreen);
+                background-color: var(--darkPink);
             }
 
             @media (width<=1250px) {
@@ -207,7 +208,7 @@
     </head>
     <body>
         <section class="section-bg">
-            <img class="section-bg__image" src="ContigoVoyAssets/recursos/Recurso_8.png" />
+            <!-- <img class="section-bg__image" src="ContigoVoyAssets/recursos/Recurso_8.png" /> -->
 
             <div class="section-bg__content">
                 <span class="section-bg__text">

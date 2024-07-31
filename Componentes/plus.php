@@ -13,7 +13,7 @@
             max-width: 100%;
             background-color: #ffffff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-image: url('img/fondo-confia-nosotros.jpg');
+            background-image: url('ContigoVoyAssets/fondos/servicioEficiente.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -54,8 +54,18 @@
 
         .text-column h2 {
             margin-top: 0;
-            color: #57BAB5;
-            font-size: 2em;
+            color: #FFFF;
+            font-size: 3em;
+            
+            
+        }
+
+        .text-column h3 {
+            margin-top: 0;
+            color: #FFFF;
+            font-size: 3em;
+            text-align:end;
+            
         }
 
         .text-p {
@@ -116,6 +126,7 @@
             font-size: 16px;
             cursor: pointer;
             width: max-content;
+            
         }
 
         .cta-button:hover {
@@ -228,14 +239,15 @@
                 <img src="img/confia-nosotros.jpg" alt="Psicologo Plus">
             </div>
             <div class="column text-column column_Info" >
-                <h2>¿Por qué confiar en ContigoVoy?</h2>
+                <h2>¿Por qué confiar en</h2>
+                <h3>Contigo Voy?</h3>
                 <p class="text-p">Nuestros psicólogos son profesionales colegiados con un trato cercano. Ya han ayudado a miles de pacientes a mejorar su calidad de vida.</p>
                 <ul class="benefits">
                     <li class="text-p">Sesiones privadas, confidenciales y seguras</li>
                     <li class="text-p">Ahorra tiempo y desplazamientos</li>
                     <li class="text-p">Tú decides donde y cuándo realizar las sesiones</li>
                 </ul>
-                <button class="cta-button" onclick="window.location.href='psicologos.php';">Pide Cita</button>
+                <button class="cta-button" onclick="window.location.href='psicologos.php';">Conoce MÁS!</button>
             </div>
         </div>
     </div>
