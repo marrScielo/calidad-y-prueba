@@ -14,147 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>Psicologos</title>
     <meta name="description" content="Reserva tu cita con nuestro psicólogo profesional. Encuentra información sobre su especialidad, contacto y disponibilidad. Comienza tu camino hacia el bienestar emocional con una consulta personalizada.">
-    <style>
-        @media (max-width: 768px) {
-            .search-container input[type="text"] {
-                width: 80%;
-            }
-
-            .section-container {
-                flex-direction: column;
-            }
-
-            .left-section,
-            .right-section {
-                width: 100%;
-                padding: 10px;
-            }
-
-            .psicologo-container {
-                flex: 1 1 100%;
-                margin: 10px 0;
-            }
-
-            .psicologo-row {
-                grid-template-columns: 1fr;
-                /* 1 columna en pantallas pequeñas */
-            }
-
-            .search-container {
-                margin: 10px;
-            }
-
-            .search-container button {
-                margin-top: 10px;
-            }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .search-container input[type="text"] {
-                width: 70%;
-            }
-
-            .section-container {
-                flex-direction: column;
-            }
-
-            .left-section,
-            .right-section {
-                width: 100%;
-                padding: 15px;
-            }
-
-            .psicologo-container {
-                flex: 1 1 48%;
-                margin: 10px;
-            }
-
-            .psicologo-row {
-                grid-template-columns: 1fr 1fr;
-                /* 2 columnas en pantallas medianas */
-            }
-
-            .search-container {
-                margin: 15px;
-            }
-
-            .search-container button {
-                margin-top: 5px;
-            }
-        }
-
-        @media (min-width: 1025px) {
-            .psicologo-row {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                /* 3 columnas en pantallas grandes */
-                grid-gap: 20px;
-            }
-        }
-
-        /* Estilo para las tarjetas */
-        .psicologo-container {
-            border: 1px solid #ccc;
-            padding: 1.5rem;
-            margin: 0px;
-            border-radius: 10px;
-            /* Borde redondeado */
-            background-color: #f9f9f9;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            /* Sombra */
-            box-sizing: border-box;
-            text-align: center;
-            /* Centrar contenido dentro del contenedor */
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .psicologo-container:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Nuevo estilo */
-        .intro-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .search-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-container input[type="text"] {
-            padding: 10px;
-            margin-right: 10px;
-            width: 300px;
-        }
-
-        .search-container button {
-            padding: 10px 20px;
-            background-color: #f19294;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .section-container {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px auto;
-        }
-
-        .right-section {
-            max-width: 85%;
-            padding: 20px;
-        }
-    </style>
 </head>
 
 <body>
@@ -169,34 +28,48 @@
                     <button type="button" id="searchButton">Buscar</button>
                 </div>
             </div>
-            <p style="font-size: 1.1rem;">
-                Conozca a nuestros talentosos psicólogos, dedicados a ayudarle a alcanzar su bienestar emocional. Nuestro equipo está compuesto por profesionales altamente capacitados en diversas áreas de la psicología, listos para brindarle el apoyo que necesita.
-                Cada uno de nuestros psicólogos cuenta con una vasta experiencia en tratamientos y terapias que abarcan desde problemas emocionales y de conducta hasta orientación y asesoramiento en diversas etapas de la vida.
+            <p class="p-introduction">
+                Estamos aquí para ayudarle a alcanzar su máximo bienestar emocional. Nuestro equipo está formado por profesionales altamente capacitados en diversas áreas de la psicología, listos para brindarle el apoyo que necesita. ¡Cada uno de nuestros psicólogos tiene una vasta experiencia en tratamientos y terapias que abarcan desde problemas emocionales y de conducta hasta orientación y asesoramiento en todas las etapas de la vida! ¡Permítanos ser su guía hacia una vida más equilibrada y feliz!
             </p>
             <div id="psicologos-container" class="psicologo-row">
                 <?php include 'Modelo/PsicologoModel.php'; ?>
             </div>
 
-            <div class="pagination">
+            <<div class="pagination">
                 <?php
                 // Parámetros de paginación
                 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
                 $total_pages = isset($total_pages) ? $total_pages : 1;
 
+                // Botón Anterior
                 if ($page > 1) {
-                    echo "<a href='?page=" . ($page - 1) . "'>&laquo; Anterior</a>";
+                    echo "<a href='?page=" . ($page - 1) . "' class='prev'>&laquo; Anterior</a>";
                 } else {
-                    echo "<a href='#' class='disabled'>&laquo; Anterior</a>";
+                    echo "<span class='prev disabled'>&laquo; Anterior</span>";
                 }
 
-                for ($i = 1; $i <= $total_pages; $i++) {
-                    echo "<a href='?page=$i'" . ($i == $page ? " class='active'" : "") . ">$i</a>";
+                // Mostrar primer enlace y puntos suspensivos si es necesario
+                if ($page > 3) {
+                    echo "<a href='?page=1' class='page-link'>1</a>";
+                    echo "<span class='page-link'>...</span>";
                 }
 
+                // Mostrar enlaces de páginas cercanas
+                for ($i = max(1, $page - 2); $i <= min($total_pages, $page + 2); $i++) {
+                    echo "<a href='?page=$i' class='page-link" . ($i == $page ? " active" : "") . "'>$i</a>";
+                }
+
+                // Mostrar puntos suspensivos y último enlace si es necesario
+                if ($page < $total_pages - 2) {
+                    echo "<span class='page-link'>...</span>";
+                    echo "<a href='?page=$total_pages' class='page-link'>$total_pages</a>";
+                }
+
+                // Botón Siguiente
                 if ($page < $total_pages) {
-                    echo "<a href='?page=" . ($page + 1) . "'>Siguiente &raquo;</a>";
+                    echo "<a href='?page=" . ($page + 1) . "' class='next'>Siguiente &raquo;</a>";
                 } else {
-                    echo "<a href='#' class='disabled'>Siguiente &raquo;</a>";
+                    echo "<span class='next disabled'>Siguiente &raquo;</span>";
                 }
                 ?>
             </div>

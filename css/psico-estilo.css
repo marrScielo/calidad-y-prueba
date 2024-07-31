@@ -6,21 +6,26 @@
   width: 300px;
   padding: 10px;
   margin-right: 10px;
-  width: 1200px;
 }
 
 .search-container button {
   padding: 10px 20px;
-  background-color: #56B9B3; /* Color ajustado */
+  background-color: #F19294;
   color: white;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+  background-color: #C26E72;
 }
 
 .section-container {
   display: flex;
   justify-content: space-between;
-  margin: 20px auto !important;
+  max-width: 123.75rem;
+  margin: 0 auto;
 }
 
 .left-section {
@@ -36,18 +41,30 @@
 
 .psicologo-container {
   border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  padding: 1.5rem;
+  margin: 0;
+  border-radius: 10px;
+  background-color: #FAFAFA; /* Softer neutral background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  text-align: center; /* Centrar contenido dentro del contenedor */
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.psicologo-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .psicologo-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas grandes */
-  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+  margin: 2.5rem 0 3rem;
 }
 
 .testimonial {
@@ -70,8 +87,8 @@
 }
 
 .pagination {
-  margin-top: 20px;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .pagination a {
@@ -98,7 +115,7 @@
 
 .wsp-button {
   width: 100%;
-  background-color: #F19294; /* Color ajustado */
+  background-color: #F19294;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -108,16 +125,7 @@
 }
 
 .wsp-button:hover {
-  background-color: #ee6e73;
-}
-
-.testimonial {
-  margin-top: 20px;
-}
-
-.testimonial h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  background-color: #C26E72;
 }
 
 .testimonial-container {
@@ -131,7 +139,7 @@
   color: white;
   padding: 15px;
   border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-item h4 {
@@ -144,41 +152,28 @@
   line-height: 1.4;
 }
 
-.psicologo-nombre {
-  transition: color 0.3s, transform 0.3s;
-}
-
-.psicologo-container {
-  border: 0.0625rem solid #ccc;
-  padding: 0.625rem;
-  margin: 0.625rem;
-  border-radius: 0.3125rem;
-  background-color: #f9f9f9;
-  box-sizing: border-box;
-  text-align: left; /* Alinear texto a la izquierda */
-}
-
 .psicologo-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 0.5rem;
 }
 
 .psicologo-nombre {
   margin: 0;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .psicologo-tag {
-  background-color: #56B9B3; /* Color del tag */
+  background-color: #ff10e9a1; /* Adjusted tag color for better contrast */
   color: white;
   padding: 0.3125rem 0.625rem;
-  border-radius: 1.25rem; /* Hacer el borde más circular */
+  border-radius: 1.25rem;
   font-size: 0.9rem;
   display: inline-block;
   margin-left: 0.625rem;
-  opacity: 0.7;
+  opacity: 0.8;
 }
-
 
 .psicologo-introduction {
   text-align: start;
@@ -186,5 +181,116 @@
 
 .title {
   font-size: 2em;
-  color: rgb(87, 186, 181);
+  color: #56B9B3;
+}
+
+@media (max-width: 768px) {
+  .search-container input[type="text"] {
+      width: 80%;
+  }
+
+  .section-container {
+      flex-direction: column;
+  }
+
+  .left-section,
+  .right-section {
+      width: 100%;
+      padding: 10px;
+  }
+
+  .psicologo-container {
+      flex: 1 1 100%;
+      margin: 10px 0;
+  }
+
+  .psicologo-row {
+      grid-template-columns: 1fr;
+  }
+
+  .search-container {
+      margin: 10px;
+  }
+
+  .search-container button {
+      margin-top: 10px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .search-container input[type="text"] {
+      width: 70%;
+  }
+
+  .section-container {
+      flex-direction: column;
+  }
+
+  .left-section,
+  .right-section {
+      width: 100%;
+      padding: 15px;
+  }
+
+  .psicologo-container {
+      flex: 1 1 48%;
+      margin: 10px;
+  }
+
+  .psicologo-row {
+      grid-template-columns: 1fr 1fr;
+  }
+
+  .search-container {
+      margin: 15px;
+  }
+
+  .search-container button {
+      margin-top: 5px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .psicologo-row {
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.intro-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.p-introduction {
+  font-size: 1.1rem;
+  color: #56B9B3;
+  line-height: normal;
+  background: #F6F6F6;
+  padding: 1.5rem;
+}
+
+@media (max-width: 1025px){
+  .intro-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .left-section, .right-section {
+    width: 85%;
+    padding: 15px;
+  }
+
+  .search-container {
+    width: 100%;
+  }
+}
+
+/* Ocultar números de paginación en pantallas pequeñas */
+@media (max-width: 540px) {
+  .pagination a.page-link,
+  .pagination span.page-link {
+      display: none;
+  }
 }
