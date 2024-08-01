@@ -81,6 +81,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
         <link rel="stylesheet" href="../Issets/css/historial.css">
         <link rel="stylesheet" href="../Issets/css/main.css">
+        <link rel="icon" href="../img/Logo.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

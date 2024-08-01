@@ -8,7 +8,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="../Issets/images/contigovoyico.ico">
+    <link rel="icon" href="../img/Logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Issets/css/seguridad.css">
     <link rel="stylesheet" href="../Issets/css/main.css">

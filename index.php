@@ -7,7 +7,7 @@
     <title>ContigoVoy</title>
     <meta name="description" content="Encuentra apoyo emocional y psicológico con nuestro psicólogo profesional. Ofrecemos terapia online y presencial. Reserva tu cita ahora y comienza tu camino hacia el bienestar.">
     <meta name="keywords" content="psicólogo, terapia, apoyo emocional, salud mental, terapia online, terapia presencial, citas, reservas, bienestar emocional">
-    <link rel="icon" href="img/logo">
+    <link rel="icon" href="img/Logo.png">
     <link el="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/header-style.css">

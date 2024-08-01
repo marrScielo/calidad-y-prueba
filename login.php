@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link	href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link rel="icon" href="img/logo-actual.webp">
+	<link rel="icon" href="img/Logo.png">
 	<link rel="stylesheet" href="css/header-style.css">
 	<link rel="stylesheet" href="css/boton-wsp.css">
 	<link rel="stylesheet" href="css/estilos-login1.css">

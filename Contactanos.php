@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/header-style.css">
     <link rel="stylesheet" href="css/estilos-footer.css">
+    <link rel="icon" href="img/Logo.png">
     <title>Contáctanos</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
@@ -263,12 +264,11 @@
             outline: none;
             /* Elimina el contorno al enfocar el campo */
             border-color: var(--color-secundario);
-            ;
         }
 
         .contacto-formulario .contact-form .input-text:focus+.label,
         .contacto-formulario .contact-form .input-text.not-empty+.label {
-            transform: translateY(-24px);
+            transform: translateY(-28px);
             /* Mueve la etiqueta hacia arriba al enfocar el campo */
             color: var(--color-secundario);
         }
@@ -317,6 +317,40 @@
             text-align: center;
             /* Centra el contenido dentro del campo */
         }
+
+
+        /* Estilos generales para los campos de formulario */
+        input,
+        textarea {
+            /* Tu estilo base para inputs y textareas */
+        }
+
+        /* Estilo para campos con autofill */
+        input:-webkit-autofill,
+        textarea:-webkit-autofill {
+            background-color: #ffffff !important; /* Cambia el color de fondo a blanco o a tu preferencia */
+            -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important; /* Elimina el efecto de sombra de autofill */
+            box-shadow: 0 0 0px 1000px #ffffff inset !important; /* Asegura la eliminación del efecto de sombra en otros navegadores */
+            -webkit-text-fill-color: #000000 !important; /* Cambia el color del texto si es necesario */
+        }
+
+        /* Estilo para los campos en Firefox */
+        input:-moz-autofill,
+        textarea:-moz-autofill {
+            background-color: #ffffff !important; /* Cambia el color de fondo a blanco o a tu preferencia */
+            -moz-box-shadow: 0 0 0px 1000px #ffffff inset !important; /* Elimina el efecto de sombra de autofill */
+            box-shadow: 0 0 0px 1000px #ffffff inset !important; /* Asegura la eliminación del efecto de sombra en otros navegadores */
+            color: #000000 !important; /* Cambia el color del texto si es necesario */
+        }
+
+
+        .error-message {
+        color: red; /* Color del mensaje de error */
+        font-size: 0.875rem; /* Tamaño de la fuente */
+        margin-top: 0.25rem; /* Espaciado superior */
+        display: block; /* Asegura que el mensaje esté en una línea separada */
+}
+
     </style>
 </head>
 
@@ -332,14 +366,14 @@
             </div>
             <div class="contacto-formulario">
                 <h1 class="title"></h1>
-                <form class="contact-form row">
+                <form id="contactForm" class="contact-form row">
                     <div class="form-field col x-50">
-                        <input id="name" class="input-text js-input" type="text" required>
+                        <input id="name" class="input-text js-input" type="text" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" title="Ingresar solo letras">
                         <label class="label" for="name">Nombre</label>
                     </div>
                     <div class="form-field col x-50">
-                        <input id="phone" class="input-text js-input" type="tel" pattern="\d{9}" required>
-                        <label class="label" for="phone">Telefono</label>
+                        <input id="phone" class="input-text js-input" type="tel" pattern="\d{9}" maxlength="9" required title="Ingresar solo números">
+                        <label class="label" for="phone">Teléfono</label>
                     </div>
                     <div class="form-field col x-100">
                         <input id="email" class="input-text js-input" type="email" required>
@@ -381,10 +415,13 @@
                     }
                 });
             });
+
         });
     </script>
     <?php include 'Componentes/footer_new.php'; ?>
 
 </body>
+
+
 
 </html>

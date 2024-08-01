@@ -46,7 +46,7 @@ if(isset($_SESSION['logeado'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuarios</title>
-    <link rel="icon" href="img/logo-actual.png">
+    <link rel="icon" href="img/Logo.png">
     <style>
         /* Estilos generales */
         body, html {
