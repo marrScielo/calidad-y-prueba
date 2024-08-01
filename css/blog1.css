@@ -1,18 +1,23 @@
 .descripcion-blog {
-  color: #57bab5;
+  /* color: #57bab5; */
   width: 85%;
   margin: 0 auto;
 }
 
 .descripcion-blog h1 {
+  color: #1d7e90;
   text-align: center;
   font-size: 2em;
   text-transform: uppercase;
+  
 }
-
 .descripcion-blog p {
-  text-align: justify;
+  padding: 1.5rem;
+  background-color: #f6f6f6;
+  color: #56b9b3;
   font-weight: 400;
+  line-height: normal;
+  text-align: center;
 }
 
 .container-blog {
@@ -27,11 +32,11 @@
 
 .container-right {
   flex: 1; /* Toma 1 parte del espacio disponible */
-  background-color: #fff1e6;
+  background-color: #f8f9fa;
   transition: background-color 0.3s;
 }
 .container-right h2 {
-  color: #56b9b3;
+  color: #1d7e90;
   font-weight: 600;
   font-size: 1.5em;
   margin-bottom: 20px;
@@ -95,7 +100,7 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   height: 150px;
-  width: 350px;
+  width: 100%;
   background-size: cover;
   margin-bottom: 10px;
 }
@@ -109,7 +114,7 @@
   padding-right: 10px;
 }
 .blog-post h2:hover {
-  color: #ff525a;
+  color: #ee5c3f;
 }
 .blog-post p {
   color: #777a7c;
@@ -123,7 +128,7 @@
 }
 
 .pagination {
-  margin-top: 2rem;
+  margin-top: 4rem;
   text-align: center;
 }
 

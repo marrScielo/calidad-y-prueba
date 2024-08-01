@@ -32,7 +32,7 @@
   /* Estilos del pie de página */
   .footer {
     padding: 100px 0 0;
-    background-color: #030a16;
+    background-color: #011638;
     color: #fff;
   }
 
@@ -194,7 +194,7 @@
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     padding: 15px 0;
     text-align: center;
-    background-color: #030a16;
+    background-color: #011638;
     /* Same as footer background */
   }
 
@@ -205,6 +205,7 @@
 
   .bn {
     filter: brightness(0) invert(1);
+    height: 3em;
   }
 
   .footer .footer-content {
