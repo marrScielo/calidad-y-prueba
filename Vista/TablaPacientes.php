@@ -35,6 +35,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             .contenedor-botones{
                 min-width: 900px;
             }
+
             table{
                 min-width: 900px;
             }
@@ -155,17 +156,16 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                             </div>
                                         </td>
                                         <td>
-                                            <button class="buttonTab" onclick="openOptions(<?= $patient[0] ?>)">
-                                                <span class="material-symbols-sharp">more_vert</span>
-                                            </button>
-                                            <div id="dropdown-content-<?= $patient[0] ?>" class="dropdown-content">
-                                                <a type="button" class="btne" onclick="openModalEliminar('<?= $patient[0] ?>')">
+                                            <div id="dropdown-content-<?= $patient[0] ?>" style="display: flex;
+                                                   column-gap: 1rem;
+                                                   justify-content: space-evenly;">
+                                                <a type="button" class="btne" onclick="openModalEliminar('<?= $patient[0] ?>')" style="color: red;">
                                                     <span class="material-symbols-outlined">delete</span>
-                                                    <p>Eliminar</p>
+                                                    <p style="color:red;">Eliminar</p>
                                                 </a>
-                                                <a type="button" class="btnm" onclick="openModalEditar('<?= $patient[0] ?>')">
+                                                <a type="button" class="btnm" onclick="openModalEditar('<?= $patient[0] ?>')" style="color: blue;">
                                                     <span class="material-symbols-outlined">edit</span>
-                                                    <p>Editar</p>
+                                                    <p style="color:blue;">Editar</p>
                                                 </a>
                                             </div>
                                         </td>
@@ -354,7 +354,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <script>
     //Funciones del modal
     function openModalEditar(id) {
-        closeOptions(id);
         var modal = document.getElementById('modalEditar' + id);
         modal.classList.add('active');
     }
@@ -369,7 +368,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
     }
 
     function openModalEliminar(id) {
-        closeOptions(id);
         var modal = document.getElementById('modalEliminar' + id);
         modal.classList.add('active');
     }
