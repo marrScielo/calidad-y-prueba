@@ -159,11 +159,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                             <div id="dropdown-content-<?= $patient[0] ?>" style="display: flex;
                                                    column-gap: 1rem;
                                                    justify-content: space-evenly;">
-                                                <a type="button" class="btne" onclick="openModalEliminar('<?= $patient[0] ?>')" style="color: red;">
+                                                <a type="button" class="btne" onclick="openModalEliminar('<?= $patient[0] ?>')" style="color: red;cursor: pointer;">
                                                     <span class="material-symbols-outlined">delete</span>
                                                     <p style="color:red;">Eliminar</p>
                                                 </a>
-                                                <a type="button" class="btnm" onclick="openModalEditar('<?= $patient[0] ?>')" style="color: blue;">
+                                                <a type="button" class="btnm" onclick="openModalEditar('<?= $patient[0] ?>')" style="color: blue;cursor: pointer;">
                                                     <span class="material-symbols-outlined">edit</span>
                                                     <p style="color:blue;">Editar</p>
                                                 </a>
@@ -375,11 +375,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
     function closeModalEliminar(id) {
         var modal = document.getElementById('modalEliminar' + id);
         modal.classList.remove('active');
-    }
-
-    function closeOptions(id) {
-        var dropdownContent = document.querySelector("#dropdown-content-" + id);
-        dropdownContent.style.display = "none";
     }
 
     function openOptions(id) {

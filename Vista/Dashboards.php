@@ -116,7 +116,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
 
             // Crear un arreglo con todas las horas desde las 09:00 AM hasta las 12:00 PM
             $horas_disponibles = array();
-            for ($i = 8; $i <= 12; $i++) {
+            for ($i = 8; $i <= 24; $i++) {
               $hora = new DateTime("$i:00");
               $horas_disponibles[] = $hora;
             }
