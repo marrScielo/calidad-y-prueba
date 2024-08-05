@@ -200,8 +200,13 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
                   <?php foreach ($datos as $key) : ?>
                     <div class="message">
                       <p><b><?= $key['NomPaciente'] ?> <?= $key['ApPaterno'] ?> <?= $key['ApMaterno'] ?> (<?= $key['codigopac'] ?>)</b> <?= $key['Edad'] ?> años</p>
-                      <small class="text-muted">Registrado el: <?= $key['Fecha'] ?></small>
-                      <br>
+                      <?php
+                        // Suponiendo que la fecha en $key['Fecha'] está en formato yyyy-mm-dd
+                        $date = new DateTime($key['Fecha']);
+                        $formattedDate = $date->format('d/m/Y');
+                        ?>
+                        <small class="text-muted">Registrado el: <?= $formattedDate ?></small>
+                        <br>
                       <small class="text-muted">Hora: <?= $key['Hora'] ?></small>
                     </div>
                   <?php endforeach; ?>

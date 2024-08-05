@@ -203,14 +203,19 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <div id="modalEliminar<?= $patient[0] ?>" class="service-modal flex-center">
                     <div class="service-modal-body">
                         <a class="close" onclick="closeModalEliminar('<?= $patient[0] ?>')">&times;</a>
-                        <span style="font-size:50px; color:red" class="material-symbols-sharp">info</span>
-                        <h2 style="font-size:20px">¿Estás seguro de eliminar al paciente <?= $patient[2] . " " . $patient[3] ?>?</h2>
-                        <br>
-                        <div class="modal-button-container">
-                            <a href="../Crud/Paciente/eliminarPaciente.php?id=<?= $patient[0] ?>" class="button-modal button-delete">Eliminar</a>
+                        <div style="text-align: center; padding: 20px;">
+                            <span style="font-size:50px; color: #56B9B3;" class="material-symbols-sharp">help_outline</span>
+                            <h2 style="font-size:20px; margin-top: 10px;">¿Eliminar registro del paciente?</h2>
+                            <p>Se eliminará el registro del paciente <strong><?= $patient[2] . " " . $patient[3] ?></strong>. Esta acción no se puede deshacer.</p>
+                        </div>
+                        <div class="modal-button-container" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                            <button class="button-modal button-cancel" onclick="closeModalEliminar('<?= $patient[0] ?>')" style="background-color: #F19294; border: none; padding: 10px 20px; color: white; cursor: pointer;">Cancelar</button>
+                            <a href="../Crud/Paciente/eliminarPaciente.php?id=<?= $patient[0] ?>" class="button-modal button-accept" style="background-color: #56B9B3; border: none; padding: 10px 20px; color: white; text-decoration: none; text-align: center; cursor: pointer;">Aceptar</a>
                         </div>
                     </div>
                 </div>
+
+
                 <!-- Modal de edicion -->
                 <div id="modalEditar<?= $patient[0] ?>" class="service-modal flex-center" >
                     <div class="service-modal-body">

@@ -106,46 +106,46 @@ table {
   }
   
   /* Estilo para el círculo al inicio de la celda de hora */
-  td:first-child::before {
+  /* td:first-child::before {
     content: "";
     position: absolute;
     top: 50%;
     left: -10px;
-    /* Ajusta la posición horizontal del círculo */
+    /* Ajusta la posición horizontal del círculo
     width: 10px;
-    /* Diámetro del círculo */
+    /* Diámetro del círculo 
     height: 10px;
     border-radius: 50%;
-    /* Forma circular */
+    /* Forma circular 
     background-color: #55bdbf;
-    /* Color del círculo */
+    /* Color del círculo 
     transform: translateY(-50%);
-    /* Centrar el círculo verticalmente */
+    /* Centrar el círculo verticalmente 
     z-index: 1;
-    /* Colocar el círculo por encima de la línea */
+    /* Colocar el círculo por encima de la línea 
     transition: background-color 0.3s;
-    /* Transición de color del círculo */
+    /* Transición de color del círculo 
   }
-  
+  */
   /* Estilo para la línea horizontal en el medio de la fila */
-  tr::before {
+/*   tr::before {
     content: "";
     position: absolute;
     top: 58%;
-    /* Ajusta la posición vertical de la línea */
+    /* Ajusta la posición vertical de la línea 
     left: 0;
     right: 0;
     border-bottom: 2px solid transparent;
-    /* Inicialmente transparente */
+    /* Inicialmente transparente 
     transform: translateY(-50%);
-    /* Centrar la línea verticalmente */
+    /* Centrar la línea verticalmente 
     transition: border-color 0.5s;
-    /* Transición de color de borde */
+    /* Transición de color de borde 
     z-index: 1;
     margin-left: 10px;
   
-    /* Colocar la línea por encima de las celdas */
-  }
+    /* Colocar la línea por encima de las celdas 
+  } */
   
   /* Estilo para cambiar la línea al pasar el mouse por encima de la fila */
   tr:hover::before {
@@ -165,34 +165,36 @@ table {
   }
   
   /* Estilo para el círculo al inicio de la celda td de hora */
-  td::before {
+  /* td::before {
     content: "";
     position: absolute;
     top: 58%;
-    /* Ajusta la posición vertical del círculo */
-    left: -50%;
-    /* Ajusta la posición horizontal del círculo */
+    /* Ajusta la posición vertical del círculo 
+    left: -50%
+    /* Ajusta la posición horizontal del círculo 
     width: 10px;
-    /* Diámetro del círculo */
+    /* Diámetro del círculo 
     height: 10px;
     border-radius: 50%;
-    /* Forma circular */
+    /* Forma circular 
     background-color: #fff;
-    /* Color del círculo */
+    /* Color del círculo 
     transform: translateY(-50%);
-    /* Centrar el círculo verticalmente */
+    /* Centrar el círculo verticalmente 
     z-index: 2;
-    /* Colocar el círculo por encima de la línea */
+    /* Colocar el círculo por encima de la línea 
     transition: background-color 0.5s;
-    /* Transición de color del círculo */
-  }
+    /* Transición de color del círculo 
+    
+  } */
   
   /* Cambia el color del círculo al pasar el mouse por encima de la fila */
-  tr:hover td::before {
+/*   tr:hover td::before {
     visibility: visible;
-    background-color: #49c691;
-    /* Cambia el color del círculo a azul */
-  }
+    background-color: #49c691; /* Cambia el color del círculo a azul 
+
+ } */
+  
 
 /* ======== Datos =====*/
 main .insights {
@@ -274,9 +276,9 @@ main .insights small {
 
 /*+++++++++++++++++++++ Responsive +++++++++++++++++++++++++++++++++++++*/
 @media screen and (max-width: 1280px) {
-  td::before {
+  /* td::before {
     left: -65%;
-  }
+  } */
   main .recent-orders {
     width: 94%;
     position: absolute;

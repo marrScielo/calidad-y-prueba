@@ -11,6 +11,8 @@
     width: 100%;
     margin: 20px;
     grid-template-columns: auto 0rem;
+    overflow-x: auto; /* Agrega el scrollbar horizontal */
+    scrollbar-width: thin;
 }
 
 .hidden {
