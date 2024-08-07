@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,17 +33,17 @@
             display: grid;
             place-items: center;
         }
-        
+
         .hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 1;
-}
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
 
         .hero__content {
             position: relative;
@@ -57,6 +58,14 @@
         }
 
         .hero__title {
+            /* -webkit-text-stroke: 1px black;
+            color: white;
+            text-shadow:
+                2px 2px 0 #000,
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000; */
             font-size: 4em;
             margin: 0;
             padding: 0;
@@ -86,11 +95,12 @@
         }
     </style>
 </head>
+
 <body>
     <section class="hero">
         <div class="hero__content">
             <h1 class="hero__title">
-                Descubre tu mejor<br>
+                Descubre tu <u>mejor</u><br>
                 versión
             </h1>
             <h2 class="hero__subtitle">
@@ -101,4 +111,5 @@
         </div>
     </section>
 </body>
+
 </html>
