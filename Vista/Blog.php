@@ -23,6 +23,15 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
         <title>Blog</title>
         <style>
+
+            .hidden {
+                display: none;
+            }
+            .modal textarea {
+                width: 100%;
+                height: 100px;
+            }
+
             .cerrar-info:hover {
                 color: #49c691;
             }
@@ -206,9 +215,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         </div>
                         <div style="text-align: start;" id="formtext" class="form-group">
                             <label style="text-align: center;" for="description">Descripción:</label>
-                            <textarea id="summernote" name="description" required></textarea>
+                            <textarea id="description" name="description" rows="4" required></textarea>
+                            <textarea class="hidden" name="descriptionHtml" id="description-html" required></textarea>
                         </div>
-                        <!--<textarea id="description" name="description" rows="4" required></textarea>-->
                         <div class="form-group">
                             <label for="image">Imagen:</label>
                             <input type="url" id="image" name="image" placeholder="Ingrese URL de imagen" required>
@@ -251,8 +260,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 }
             });
         </script>
+        <script type="module" src="../Issets/js/textarea-function.js"></script>
     </body>
-
     </html>
 <?php
 } else {
