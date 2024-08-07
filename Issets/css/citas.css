@@ -1,6 +1,8 @@
 
 main .recent-citas{
     margin: 20px;
+    overflow-x: auto; /* Agrega el scrollbar horizontal */
+    scrollbar-width: thin;
 }
 
 main .recent-citas h2{

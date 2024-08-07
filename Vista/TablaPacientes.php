@@ -35,6 +35,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             .contenedor-botones{
                 min-width: 900px;
             }
+
             table{
                 min-width: 900px;
             }
@@ -155,17 +156,16 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                             </div>
                                         </td>
                                         <td>
-                                            <button class="buttonTab" onclick="openOptions(<?= $patient[0] ?>)">
-                                                <span class="material-symbols-sharp">more_vert</span>
-                                            </button>
-                                            <div id="dropdown-content-<?= $patient[0] ?>" class="dropdown-content">
-                                                <a type="button" class="btne" onclick="openModalEliminar('<?= $patient[0] ?>')">
+                                            <div id="dropdown-content-<?= $patient[0] ?>" style="display: flex;
+                                                   column-gap: 1rem;
+                                                   justify-content: space-evenly;">
+                                                <a type="button" class="btne" onclick="openModalEliminar('<?= $patient[0] ?>')" style="color: red;cursor: pointer;">
                                                     <span class="material-symbols-outlined">delete</span>
-                                                    <p>Eliminar</p>
+                                                    <p style="color:red;">Eliminar</p>
                                                 </a>
-                                                <a type="button" class="btnm" onclick="openModalEditar('<?= $patient[0] ?>')">
+                                                <a type="button" class="btnm" onclick="openModalEditar('<?= $patient[0] ?>')" style="color: blue;cursor: pointer;">
                                                     <span class="material-symbols-outlined">edit</span>
-                                                    <p>Editar</p>
+                                                    <p style="color:blue;">Editar</p>
                                                 </a>
                                             </div>
                                         </td>
@@ -203,14 +203,19 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <div id="modalEliminar<?= $patient[0] ?>" class="service-modal flex-center">
                     <div class="service-modal-body">
                         <a class="close" onclick="closeModalEliminar('<?= $patient[0] ?>')">&times;</a>
-                        <span style="font-size:50px; color:red" class="material-symbols-sharp">info</span>
-                        <h2 style="font-size:20px">¿Estás seguro de eliminar al paciente <?= $patient[2] . " " . $patient[3] ?>?</h2>
-                        <br>
-                        <div class="modal-button-container">
-                            <a href="../Crud/Paciente/eliminarPaciente.php?id=<?= $patient[0] ?>" class="button-modal button-delete">Eliminar</a>
+                        <div style="text-align: center; padding: 20px;">
+                            <span style="font-size:50px; color: #56B9B3;" class="material-symbols-sharp">help_outline</span>
+                            <h2 style="font-size:20px; margin-top: 10px;">¿Eliminar registro del paciente?</h2>
+                            <p>Se eliminará el registro del paciente <strong><?= $patient[2] . " " . $patient[3] ?></strong>. Esta acción no se puede deshacer.</p>
+                        </div>
+                        <div class="modal-button-container" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                            <button class="button-modal button-cancel" onclick="closeModalEliminar('<?= $patient[0] ?>')" style="background-color: #F19294; border: none; padding: 10px 20px; color: white; cursor: pointer;">Cancelar</button>
+                            <a href="../Crud/Paciente/eliminarPaciente.php?id=<?= $patient[0] ?>" class="button-modal button-accept" style="background-color: #56B9B3; border: none; padding: 10px 20px; color: white; text-decoration: none; text-align: center; cursor: pointer;">Aceptar</a>
                         </div>
                     </div>
                 </div>
+
+
                 <!-- Modal de edicion -->
                 <div id="modalEditar<?= $patient[0] ?>" class="service-modal flex-center" >
                     <div class="service-modal-body">
@@ -354,7 +359,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <script>
     //Funciones del modal
     function openModalEditar(id) {
-        closeOptions(id);
         var modal = document.getElementById('modalEditar' + id);
         modal.classList.add('active');
     }
@@ -369,7 +373,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
     }
 
     function openModalEliminar(id) {
-        closeOptions(id);
         var modal = document.getElementById('modalEliminar' + id);
         modal.classList.add('active');
     }
@@ -377,11 +380,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
     function closeModalEliminar(id) {
         var modal = document.getElementById('modalEliminar' + id);
         modal.classList.remove('active');
-    }
-
-    function closeOptions(id) {
-        var dropdownContent = document.querySelector("#dropdown-content-" + id);
-        dropdownContent.style.display = "none";
     }
 
     function openOptions(id) {

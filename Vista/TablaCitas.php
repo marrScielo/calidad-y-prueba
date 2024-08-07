@@ -118,17 +118,16 @@ if (isset($_SESSION['NombrePsicologo'])){
                             <td><?=$row[4]?></td>
                             <td style="color:green"><?=$row[5]?></td>
                             <td>
-                                <button class="buttonTab" onclick="openOptions(<?=$row[0]?>)">
-                                    <span class="material-symbols-sharp">more_vert</span>
-                                </button>
-                                <div id="dropdown-content-<?=$row[0]?>" class="dropdown-content">
-                                    <a type="button" class="btne" onclick="openModalEliminar('<?=$row[0]?>')">
+                                <div id="dropdown-content-<?=$row[0]?>"  style="display: flex;
+                                                   column-gap: 1rem;
+                                                   justify-content: space-evenly;">
+                                    <a type="button" class="btne" onclick="openModalEliminar('<?=$row[0]?>')" style="color: red;cursor: pointer;">
                                         <span class="material-symbols-outlined">delete</span>
-                                        <p>Eliminar</p>
+                                        <p style="color:red;">Eliminar</p>
                                     </a>
-                                    <a type="button" class="btnm" onclick="openModalEditar('<?=$row[0]?>')">
+                                    <a type="button" class="btnm" onclick="openModalEditar('<?=$row[0]?>')" style="color: blue;cursor: pointer;">
                                         <span class="material-symbols-outlined">edit</span>
-                                        <p>Editar</p>
+                                        <p style="color:blue;">Editar</p>
                                     </a>
                                 </div>
                             </td>
@@ -141,7 +140,8 @@ if (isset($_SESSION['NombrePsicologo'])){
                         <?php endif;?>
                     </tbody>
                 </table>
-                <div class="pagination">
+            </div>
+            <div class="pagination">
                     <?php
                 if (isset($totalPages) && is_numeric($totalPages)) {
                     for ($page = 1; $page <= $totalPages; $page++) {
@@ -152,7 +152,6 @@ if (isset($_SESSION['NombrePsicologo'])){
                 }
                 ?>
                 </div>
-            </div>
         </main>
         <div id="notification" style="display: none;" class="notification">
             <p id="notification-text"></p>
@@ -162,18 +161,21 @@ if (isset($_SESSION['NombrePsicologo'])){
     <?php if ($rows) :?>
     <?php foreach ($rows as $row): ?>
     <!-- Modal de eliminación -->
-    <div id="modalEliminar<?=$row[0]?>" class="service-modal flex-center">
+    <div id="modalEliminar<?= $row[0] ?>" class="service-modal flex-center">
         <div class="service-modal-body">
-            <a class="close" onclick="closeModalEliminar('<?=$row[0]?>')">&times;</a>
-            <span style="font-size:50px; color:red" class="material-symbols-sharp">info</span>
-            <h2 style="font-size:20px">¿Estás seguro de eliminar la cita de <?=$row[1]?>?</h2>
-            <br>
-            <div class="modal-button-container">
-                <a class="button-modal button-cancelar" onclick="closeModalEliminar('<?=$row[0]?>')">Cancelar</a>
-                <a href="../Crud/Cita/eliminarCita.php?id=<?=$row[0]?>" class="button-modal button-delete">Eliminar</a>
+            <a class="close" onclick="closeModalEliminar('<?= $row[0] ?>')">&times;</a>
+            <div style="text-align: center; padding: 20px;">
+                <span style="font-size:50px; color: #56B9B3;" class="material-symbols-sharp">help_outline</span>
+                <h2 style="font-size:20px; margin-top: 10px;">¿Eliminar cita?</h2>
+                <p>Se eliminará la cita de <strong><?= $row[1] ?></strong>. Esta acción no se puede deshacer.</p>
+            </div>
+            <div class="modal-button-container" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                <button class="button-modal button-cancel" onclick="closeModalEliminar('<?= $row[0] ?>')" style="background-color: #F19294; border: none; padding: 10px 20px; color: white; cursor: pointer;">Cancelar</button>
+                <a href="../Crud/Cita/eliminarCita.php?id=<?= $row[0] ?>" class="button-modal button-accept" style="background-color: #56B9B3; border: none; padding: 10px 20px; color: white; text-decoration: none; text-align: center; cursor: pointer;">Aceptar</a>
             </div>
         </div>
     </div>
+
     <?php
                             $user=$obj->show($row[0]);
                             ?>
@@ -455,7 +457,6 @@ if (isset($_SESSION['NombrePsicologo'])){
     });
     //Funciones del modal
     function openModalEditar(id) {
-        closeOptions(id);
         var modal = document.getElementById('modalEditar' + id);
         modal.classList.add('active');
     }
@@ -466,7 +467,6 @@ if (isset($_SESSION['NombrePsicologo'])){
     }
 
     function openModalEliminar(id) {
-        closeOptions(id);
         var modal = document.getElementById('modalEliminar' + id);
         modal.classList.add('active');
     }

@@ -40,7 +40,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
               <h2 class="titulo left"><strong>Seguridad</strong></h2>
               <p class="parrafo">Nuestra prioridad número uno es la seguridad de los datos de pacientes,médicos y clínica. Protegemos toda la información de modo que sus datos estén completamente a salvo de tipos sin escrúpulos que tratarán de invadir su privacidad o la de sus pacientes.</p>
 
-              <a href="" class="cta">Registrate gratis</a>
+              <!-- <a href="" class="cta">Registrate gratis</a> -->
             </div>
           </section>
           <section class="info-last">
