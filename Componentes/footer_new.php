@@ -219,7 +219,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
     }
-    
+
     .footer .widget1,
     .footer .widget2,
     .footer .widget3,
@@ -228,12 +228,14 @@
     }
 
     .socialLinks ul {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px; /* Ajusta el espacio entre los íconos si es necesario */
-        justify-items: center; /* Centra los íconos horizontalmente en cada celda */
-        padding: 0;
-        margin: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      /* Ajusta el espacio entre los íconos si es necesario */
+      justify-items: center;
+      /* Centra los íconos horizontalmente en cada celda */
+      padding: 0;
+      margin: 0;
     }
 
   }
@@ -287,24 +289,24 @@
     <div class="widget2">
       <h5>Últimas noticias</h5>
       <div class="media">
-        <img class="img-fluid" src="https://i.ibb.co/CKNmhMX/blog1.jpg" alt="">
+        <img class="img-fluid" src="https://images.pexels.com/photos/775417/pexels-photo-775417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
         <div class="media-body">
           <div class="content">
-            <a href="#">
-              <p>Did son unreserved themselves indulgence its</p>
+            <a href="Blog.php">
+              <p>Técnicas de Respiración y Relajación para Reducir la Ansiedad</p>
             </a>
-            <span>Aug 17, 2019</span>
+            <span>Agosto 05, 2024</span>
           </div>
         </div>
       </div>
       <div class="media">
-        <img class="img-fluid" src="https://i.ibb.co/m5yGbdR/blog2.jpg" alt="">
+        <img class="img-fluid" src="https://images.pexels.com/photos/22820148/pexels-photo-22820148/free-photo-of-edificio-jugando-colegio-escuela.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
         <div class="media-body">
           <div class="content">
-            <a href="#">
-              <p>Rapturous am eagerness it as resolving household</p>
+            <a href="Blog.php">
+              <p>Autoestima en Adolescentes: Construyendo una Autoimagen Positiva</p>
             </a>
-            <span>Aug 17, 2019</span>
+            <span>Julio 17, 2024</span>
           </div>
         </div>
       </div>
