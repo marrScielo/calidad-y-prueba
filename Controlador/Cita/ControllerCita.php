@@ -21,8 +21,10 @@ class usernameControlerCita{
     }
 
     // Para ver datos completos de la cita
-    public function ver($idUsuario) {
-        return ($this->model->ver($idUsuario)) ?: false;
+    public function ver($idUsuario, $page = 1, $rowsPerPage = 10)
+    {
+        $offset = ($page - 1) * $rowsPerPage;
+        return $this->model->ver($idUsuario, $rowsPerPage, $offset);
     }
 
     // Eliminar cita seleccionada 

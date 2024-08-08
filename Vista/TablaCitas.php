@@ -45,11 +45,18 @@ if (isset($_SESSION['NombrePsicologo'])){
 
         </style>
     <?php
-    require("../Controlador/Cita/ControllerCita.php");
-    $obj=new usernameControlerCita();
-    $rowscita=$obj->contarRegistrosEnCitas($_SESSION['IdPsicologo']);
-    $rows=$obj->ver($_SESSION['IdPsicologo']);
-?>
+        require("../Controlador/Cita/ControllerCita.php");
+        $obj = new usernameControlerCita();
+
+        $rowsPerPage = 2;
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+        $rowscita=$obj->contarRegistrosEnCitas($_SESSION['IdPsicologo']);
+        $rows = $obj->ver($_SESSION['IdPsicologo'], $currentPage, $rowsPerPage);
+
+        $totalRows = $obj->contarRegistrosEnCitas($_SESSION['IdPsicologo']); // Asumiendo que cuentas el número total de registros
+        $totalPages = ceil($totalRows / $rowsPerPage);
+    ?>
     <div class="container">
         <?php
     require_once '../Issets/views/Menu.php';
@@ -81,17 +88,7 @@ if (isset($_SESSION['NombrePsicologo'])){
             </div>
             <div class="recent-citas">
                 <table>
-                    <?php
-                $rowsPerPage = 10;
-                if (is_array($rows) && count($rows) > 0) {
-                    $totalRows = count($rows);
-                    $totalPages = ceil($totalRows / $rowsPerPage);
-                    $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-                    $startIndex = ($currentPage - 1) * $rowsPerPage;
-                    $endIndex = $startIndex + $rowsPerPage;
-                }
-                
-                ?>
+                    <!-- Encabezado de la tabla -->
                     <thead>
                         <tr>
                             <th><input type="checkbox" id="checkboxPrincipal" class="checkbox-principal"></th>
@@ -100,58 +97,56 @@ if (isset($_SESSION['NombrePsicologo'])){
                             <th>Motivo</th>
                             <th>Estado</th>
                             <th>Fecha de Inicio</th>
-                            <th>Duracion</th>
+                            <th>Duración</th>
                             <th>Más</th>
                         </tr>
                     </thead>
+                    
+                    <!-- Cuerpo de la tabla -->
                     <tbody id="myTable">
-                        <?php if ($rows) :?>
-                        <?php foreach ($rows as $row): ?>
-                        <tr>
-                            <td>
-                                <input type="checkbox" class="checkbox" id="checkbox<?=$row[0]?>" value="<?=$row[0]?>">
-                            </td>
-                            <td style="padding: 20px;"><?=$row[1]?></td>
-                            <td><?=$row[11]?></td>
-                            <td><?=$row[2]?></td>
-                            <td><?=$row[3]?></td>
-                            <td><?=$row[4]?></td>
-                            <td style="color:green"><?=$row[5]?></td>
-                            <td>
-                                <div id="dropdown-content-<?=$row[0]?>"  style="display: flex;
-                                                   column-gap: 1rem;
-                                                   justify-content: space-evenly;">
-                                    <a type="button" class="btne" onclick="openModalEliminar('<?=$row[0]?>')" style="color: red;cursor: pointer;">
-                                        <span class="material-symbols-outlined">delete</span>
-                                        <p style="color:red;">Eliminar</p>
-                                    </a>
-                                    <a type="button" class="btnm" onclick="openModalEditar('<?=$row[0]?>')" style="color: blue;cursor: pointer;">
-                                        <span class="material-symbols-outlined">edit</span>
-                                        <p style="color:blue;">Editar</p>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <?php endforeach;?>
-                        <?php else:?>
-                        <tr>
-                            <td colspan="11">No hay registros</td>
-                        </tr>
-                        <?php endif;?>
+                        <?php if ($rows): ?>
+                            <?php foreach ($rows as $row): ?>
+                                <tr>
+                                    <td><input type="checkbox" class="checkbox" id="checkbox<?=$row['IdCita']?>" value="<?=$row['IdCita']?>"></td>
+                                    <td style="padding: 20px;"><?=$row['NomPaciente']?></td>
+                                    <td><?=$row['codigopac']?></td>
+                                    <td><?=$row['MotivoCita']?></td>
+                                    <td><?=$row['EstadoCita']?></td>
+                                    <td><?=$row['FechaInicioCita']?></td>
+                                    <td style="color:green"><?=$row['Duracioncita']?></td>
+                                    <td>
+                                        <div id="dropdown-content-<?=$row['IdCita']?>" style="display: flex; column-gap: 1rem; justify-content: space-evenly;">
+                                            <a type="button" class="btne" onclick="openModalEliminar('<?=$row['IdCita']?>')" style="color: red;cursor: pointer;">
+                                                <span class="material-symbols-outlined">delete</span>
+                                                <p style="color:red;">Eliminar</p>
+                                            </a>
+                                            <a type="button" class="btnm" onclick="openModalEditar('<?=$row['IdCita']?>')" style="color: blue;cursor: pointer;">
+                                                <span class="material-symbols-outlined">edit</span>
+                                                <p style="color:blue;">Editar</p>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="8">No hay registros.</td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
+
+            <!-- Paginación -->
             <div class="pagination">
-                    <?php
-                if (isset($totalPages) && is_numeric($totalPages)) {
+                <?php
+                if ($totalPages > 1) {
                     for ($page = 1; $page <= $totalPages; $page++) {
-                        ?>
-                    <a href="?page=<?=$page?>"><?=$page?></a>
-                    <?php
+                        echo "<a href='?page=$page'>$page</a> ";
                     }
                 }
                 ?>
-                </div>
+            </div>
         </main>
         <div id="notification" style="display: none;" class="notification">
             <p id="notification-text"></p>

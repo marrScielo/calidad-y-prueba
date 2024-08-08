@@ -36,16 +36,23 @@ class UserModelCita
     }
 
     // Para ver datos completos de la cita
-    public function ver($idUsuario)
+    public function ver($idUsuario, $limit, $offset)
     {
-        $statement = $this->PDO->prepare("SELECT c.IdCita,p.NomPaciente,c.MotivoCita,c.EstadoCita,c.FechaInicioCita,c.Duracioncita,c.TipoCita,c.ColorFondo,ps.NombrePsicologo,c.CanalCita,c.EtiquetaCita,p.codigopac FROM cita c
-                                        INNER JOIN paciente p on c.IdPaciente=p.IdPaciente
-                                        INNER JOIN psicologo ps on c.IdPsicologo=ps.IdPsicologo
-                                        WHERE c.IdPsicologo = :idUsuario");
-        $statement->bindValue(':idUsuario', $idUsuario);
-        return ($statement->execute()) ? $statement->fetchaLL() : false;
+        $statement = $this->PDO->prepare("SELECT c.IdCita, p.NomPaciente, c.MotivoCita, c.EstadoCita, c.FechaInicioCita, c.Duracioncita, c.TipoCita, c.ColorFondo, ps.NombrePsicologo, c.CanalCita, c.EtiquetaCita, p.codigopac
+                                          FROM cita c
+                                          INNER JOIN paciente p ON c.IdPaciente = p.IdPaciente
+                                          INNER JOIN psicologo ps ON c.IdPsicologo = ps.IdPsicologo
+                                          WHERE c.IdPsicologo = :idUsuario
+                                          LIMIT :limit OFFSET :offset");
+    
+        $statement->bindValue(':idUsuario', $idUsuario, PDO::PARAM_INT);
+        $statement->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $statement->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $statement->execute();
+    
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    
     // Eliminar cita seleccionada 
     public function eliminar($id)
     {
