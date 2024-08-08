@@ -121,47 +121,76 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             </tr>
                         </thead>
                         
-                        <!-- Cuerpo de la tabla -->
                         <tbody id="myTable" class="tu-tbody-clase">
-                            <?php if ($patients) : ?>
-                                <?php foreach ($patients as $patient) : ?>
-                                    <tr>
-                                        <td><input type="checkbox" class="checkbox" id="checkbox<?= $patient[0] ?>" value="<?= $patient[0] ?>"></td>
-                                        <td style="text-align: start; font-weight:bold;padding: 14px;">
-                                            <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient[0] ?>"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></a>
-                                        </td>
-                                        <td class="additional-column" style="font-weight:bold;"><?= $patient['codigopac'] ?></td>
-                                        <td class="additional-column" style="font-weight:bold;"><?= $patient['Dni'] ?></td>
-                                        <td class="additional-column" style="font-weight:bold;width:25%;text-align: start; margin-left:4%; padding-left: 3%;"><?= $patient['Email'] ?></td>
-                                        <td class="additional-column" style="font-weight:bold;"><?= $patient['Telefono'] ?></td>
-                                        <td class="additional-column">
-                                            <div style="display: flex;justify-content: center;margin-top: 2%;">
-                                                <a class="buttoncita" style="width: 110px; padding:6px; font-size:10px;" href="RegCitas.php">
-                                                    <span class="material-symbols-sharp">add</span>Crear Cita
-                                                </a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div id="dropdown-content-<?= $patient[0] ?>" style="display: flex; column-gap: 1rem; justify-content: space-evenly;">
-                                                <a type="button" class="btne" onclick="openModalEliminar('<?= $patient[0] ?>')" style="color: red;cursor: pointer;">
-                                                    <span class="material-symbols-outlined">delete</span>
-                                                    <p style="color:red;">Eliminar</p>
-                                                </a>
-                                                <a type="button" class="btnm" onclick="openModalEditar('<?= $patient[0] ?>')" style="color: blue;cursor: pointer;">
-                                                    <span class="material-symbols-outlined">edit</span>
-                                                    <p style="color:blue;">Editar</p>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            <?php else : ?>
-                                <tr>
-                                    <td colspan="8">No hay pacientes registrados.</td>
-                                </tr>
-                            <?php endif; ?>
-                        </tbody>
+    <?php if ($patients) : ?>
+        <?php foreach ($patients as $patient) : ?>
+            <tr>
+                <td>
+                    <input type="checkbox" class="checkbox" id="checkbox<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>" value="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>">
+                </td>
+                <td style="text-align: start; font-weight:bold;padding: 14px;">
+                    <a style="cursor:pointer" class="show-info" 
+                       data-patient-id="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>" 
+                       data-codigo="<?= htmlspecialchars($patient['codigopac'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                       data-nombres="<?= htmlspecialchars(($patient['NomPaciente'] ?? '') . ' ' . ($patient['ApPaterno'] ?? '') . ' ' . ($patient['ApMaterno'] ?? ''), ENT_QUOTES, 'UTF-8') ?>" 
+                       data-dni="<?= htmlspecialchars($patient['Dni'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                       data-genero="<?= htmlspecialchars($patient['Genero'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                       data-edad="<?= htmlspecialchars($patient['Edad'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                       data-estadocivil="<?= htmlspecialchars($patient['EstadoCivil'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                       data-email="<?= htmlspecialchars($patient['Email'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                       data-celular="<?= htmlspecialchars($patient['Telefono'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                       data-nombre-madre="<?= htmlspecialchars($patient['NomMadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                       data-estado-madre="<?= htmlspecialchars($patient['EstadoMadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                       data-nombre-padre="<?= htmlspecialchars($patient['NomPadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                       data-estado-padre="<?= htmlspecialchars($patient['EstadoPadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                       data-cant-hermanos="<?= htmlspecialchars($patient['CantHermanos'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                       data-antecedentes-familiares="<?= htmlspecialchars($patient['HistorialFamiliar'] ?? '', ENT_QUOTES, 'UTF-8') ?>">
+                        <?= htmlspecialchars($patient['NomPaciente'] ?? '', ENT_QUOTES, 'UTF-8') ?> <?= htmlspecialchars($patient['ApPaterno'] ?? '', ENT_QUOTES, 'UTF-8') ?>
+                    </a>
+                    <a class="buttoncita" style="display:none; width: 110px; padding:6px; font-size:10px; margin-top: 4.5%; margin-bottom: 0%;" href="RegCitas.php">
+                        <div style="display: flex;">
+                            <span class="material-symbols-sharp">add</span>Crear Cita
+                        </div>
+                    </a>
+                </td>
+                <td class="additional-column" style="font-weight:bold;"><?= htmlspecialchars($patient['codigopac'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
+                <td class="additional-column" style="font-weight:bold;"><?= htmlspecialchars($patient['Dni'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
+                <td class="additional-column" style="font-weight:bold;width:25%;text-align: start; margin-left:4%; padding-left: 3%;">
+                    <?= htmlspecialchars($patient['Email'] ?? '', ENT_QUOTES, 'UTF-8') ?>
+                </td>
+                <td class="additional-column" style="font-weight:bold;"><?= htmlspecialchars($patient['Telefono'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
+                <td class="additional-column">
+                    <div style="display: flex;justify-content: center;margin-top: 2%;">
+                        <a class="buttoncita" style="width: 110px; padding:6px; font-size:10px;" href="RegCitas.php">
+                            <span class="material-symbols-sharp">add</span>Crear Cita
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <div id="dropdown-content-<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>" style="display: flex; column-gap: 1rem; justify-content: space-evenly;">
+                        <a type="button" class="btne" onclick="openModalEliminar('<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>')" style="color: red;cursor: pointer;">
+                            <span class="material-symbols-outlined">delete</span>
+                            <p style="color:red;">Eliminar</p>
+                        </a>
+                        <a type="button" class="btnm" onclick="openModalEditar('<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>')" style="color: blue;cursor: pointer;">
+                            <span class="material-symbols-outlined">edit</span>
+                            <p style="color:blue;">Editar</p>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php else : ?>
+        <tr colspan="11">
+            <td>No hay pacientes registrados.</td>
+        </tr>
+    <?php endif; ?>
+</tbody>
+
                     </table>
+                    <div class="patient-details">
+
+                    </div>
                 </div>
 
                 <!-- Paginación -->
