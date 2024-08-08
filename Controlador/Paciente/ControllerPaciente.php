@@ -49,11 +49,12 @@ class usernameControlerPaciente
     }
 
 
-    // Mostrar datos del paciente seleccionado
-    public function showCompleto($IdPsicologo)
+    public function showCompleto($IdPsicologo, $page = 1, $rowsPerPage = 10)
     {
-        return ($this->model->getAllPatients($IdPsicologo)) ?: false;
+        $offset = ($page - 1) * $rowsPerPage;
+        return ($this->model->getAllAtencPatientsLimitOffset($IdPsicologo, $rowsPerPage, $offset)) ?: false;
     }
+    
 
     // Mostrar datos del paciente seleccionado
     public function showCompletoAtencion($IdPsicologo)

@@ -57,10 +57,15 @@ if (isset($_SESSION['NombrePsicologo'])) {
         $obj = new usernameControlerPaciente();
         $objcita = new usernameControlerCita();
 
+        $rowsPerPage = 5;
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+        $patients = $obj->showCompleto($_SESSION['IdPsicologo'], $currentPage, $rowsPerPage);
+
         $rowscita = $objcita->contarRegistrosEnPacientes($_SESSION['IdPsicologo']);
 
-        // Obtener la lista de pacientes
-        $patients = $obj->showCompleto($_SESSION['IdPsicologo']);
+        $totalPacientes = $rowscita;  // Asumiendo que cuentas el número total de registros
+        $totalPages = ceil($totalPacientes / $rowsPerPage);
         ?>
         <div class="container">
             <?php
@@ -102,51 +107,32 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 </div>
                 <div class="container-paciente-tabla">
                     <table>
-                        <?php
-                        $rowsPerPage = 10;
-                        if (is_array($patients) && count($patients) > 0) {
-                            $totalPacientes = count($patients);
-                            $totalPages = ceil($totalPacientes / $rowsPerPage);
-                            $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-                            $startIndex = ($currentPage - 1) * $rowsPerPage;
-                            $endIndex = $startIndex + $rowsPerPage;
-                        }
-
-                        ?>
-
+                        <!-- Encabezado de la tabla -->
                         <thead>
                             <tr>
                                 <th><input type="checkbox" id="checkboxPrincipal" class="checkbox-principal"></th>
-                                <th style="text-align: start; ">Paciente</th>
+                                <th style="text-align: start;">Paciente</th>
                                 <th class="additional-column">Codigo</th>
                                 <th class="additional-column">DNI</th>
                                 <th class="additional-column">Email</th>
                                 <th class="additional-column">Celular</th>
                                 <th class="additional-column">Cita</th>
-                                <th class="additional-column"> Más</th>
+                                <th class="additional-column">Más</th>
                             </tr>
                         </thead>
-                        <?php if ($patients) : ?>
-                            <?php foreach ($patients as $patient) : ?>
-                                <tbody id="myTable" class="tu-tbody-clase">
+                        
+                        <!-- Cuerpo de la tabla -->
+                        <tbody id="myTable" class="tu-tbody-clase">
+                            <?php if ($patients) : ?>
+                                <?php foreach ($patients as $patient) : ?>
                                     <tr>
-                                        <td>
-                                            <input type="checkbox" class="checkbox" id="checkbox<?= $patient[0] ?>" value="<?= $patient[0] ?>">
-                                        </td>
+                                        <td><input type="checkbox" class="checkbox" id="checkbox<?= $patient[0] ?>" value="<?= $patient[0] ?>"></td>
                                         <td style="text-align: start; font-weight:bold;padding: 14px;">
-                                            <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient[0] ?>" data-codigo="<?= $patient['codigopac'] ?>" data-nombres="<?= $patient['NomPaciente'] ?>  <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-dni="<?= $patient['Dni'] ?>" data-genero="<?= $patient['Genero'] ?>" data-edad="<?= $patient['Edad'] ?>" data-estadocivil="<?= $patient['EstadoCivil'] ?>" data-email="<?= $patient['Email'] ?>" data-celular="<?= $patient['Telefono'] ?>" data-nombre-madre="<?= $patient['NomMadre'] ?>" data-estado-madre="<?= $patient['EstadoMadre'] ?>" data-nombre-padre="<?= $patient['NomPadre'] ?>" data-estado-padre="<?= $patient['EstadoPadre'] ?>" data-cant-hermanos="<?= $patient['CantHermanos'] ?>" data-antecedentes-familiares="<?= $patient['HistorialFamiliar'] ?>">
-                                                <?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?>
-                                            </a>
-                                            <a class=" buttoncita" style="display:none;   width: 110px; padding:6px; font-size:10px;margin-top: 4.5%;margin-bottom: 0%;" href="RegCitas.php">
-                                                <div style="display: flex;">
-                                                    <span class="material-symbols-sharp">add</span>Crear Cita
-                                                </div>
-                                            </a>
+                                            <a style="cursor:pointer" class="show-info" data-patient-id="<?= $patient[0] ?>"><?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></a>
                                         </td>
                                         <td class="additional-column" style="font-weight:bold;"><?= $patient['codigopac'] ?></td>
                                         <td class="additional-column" style="font-weight:bold;"><?= $patient['Dni'] ?></td>
-                                        <td class="additional-column" style="font-weight:bold;width:25%;text-align: start; margin-left:4%; padding-left: 3%;">
-                                            <?= $patient['Email'] ?></td>
+                                        <td class="additional-column" style="font-weight:bold;width:25%;text-align: start; margin-left:4%; padding-left: 3%;"><?= $patient['Email'] ?></td>
                                         <td class="additional-column" style="font-weight:bold;"><?= $patient['Telefono'] ?></td>
                                         <td class="additional-column">
                                             <div style="display: flex;justify-content: center;margin-top: 2%;">
@@ -156,9 +142,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                             </div>
                                         </td>
                                         <td>
-                                            <div id="dropdown-content-<?= $patient[0] ?>" style="display: flex;
-                                                   column-gap: 1rem;
-                                                   justify-content: space-evenly;">
+                                            <div id="dropdown-content-<?= $patient[0] ?>" style="display: flex; column-gap: 1rem; justify-content: space-evenly;">
                                                 <a type="button" class="btne" onclick="openModalEliminar('<?= $patient[0] ?>')" style="color: red;cursor: pointer;">
                                                     <span class="material-symbols-outlined">delete</span>
                                                     <p style="color:red;">Eliminar</p>
@@ -172,29 +156,24 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else : ?>
-                                <tr colspan="11">
-                                    <td>No hay pacientes registrados.</td>
+                                <tr>
+                                    <td colspan="8">No hay pacientes registrados.</td>
                                 </tr>
                             <?php endif; ?>
-                                </tbody>
+                        </tbody>
                     </table>
-
-                    <div class="patient-details">
-
-                    </div>
                 </div>
+
+                <!-- Paginación -->
                 <div class="pagination">
                     <?php
-                    if (isset($totalPages) && is_numeric($totalPages)) {
+                    if ($totalPages > 1) {
                         for ($page = 1; $page <= $totalPages; $page++) {
-                    ?>
-                            <a href="?page=<?= $page ?>"><?= $page ?></a>
-                    <?php
+                            echo "<a href='?page=$page'>$page</a> ";
                         }
                     }
                     ?>
                 </div>
-
             </main>
         </div>
         <?php if (!empty($patients)) : ?>
@@ -465,34 +444,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     }
                 });
             }
-        </script>
-        <script>
-            var paginationLinks = document.getElementsByClassName('pagination')[0].getElementsByTagName('a');
-
-            for (var i = 0; i < paginationLinks.length; i++) {
-                paginationLinks[i].addEventListener('click', function(event) {
-                    event.preventDefault();
-                    var page = parseInt(this.getAttribute('href').split('=')[1]);
-                    mostrarPagina(page);
-                });
-            }
-
-            function mostrarPagina(page) {
-                var rows = document.getElementById('myTable').getElementsByTagName('tr');
-
-                for (var i = 0; i < rows.length; i++) {
-                    rows[i].style.display = 'none';
-                }
-
-                var startIndex = (page - 1) * <?= $rowsPerPage ?>;
-                var endIndex = startIndex + <?= $rowsPerPage ?>;
-
-                for (var i = startIndex; i < endIndex && i < rows.length; i++) {
-                    rows[i].style.display = 'table-row';
-                }
-            }
-
-            mostrarPagina(1);
         </script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>

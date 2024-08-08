@@ -96,14 +96,44 @@ class userModelPaciente
     // Mostrar datos del paciente seleccionado 
     public function getAllPatients($IdPsicologo)
     {
-        $statement = $this->PDO->prepare("SELECT p.IdPaciente ,p.*, af.*, c.*
+        $statement = $this->PDO->prepare("SELECT p.IdPaciente, p.*, af.*, c.*
         FROM paciente p
         LEFT JOIN areafamiliar af ON p.IdPaciente = af.IdPaciente
         LEFT JOIN cita c ON p.IdPaciente = c.IdPaciente
         WHERE p.IdPsicologo = :IdPsicologo
-        group by p.dni");
+        GROUP BY p.dni
+        LIMIT 5");
         $statement->bindValue(":IdPsicologo", $IdPsicologo);
         return ($statement->execute()) ? $statement->fetchAll() : false;
+    }
+    
+    public function getAllAtencPatientsLimitOffset($IdPsicologo, $limit, $offset)
+    {
+        $query = "SELECT 
+                    p.*, ate.*
+                  FROM 
+                    paciente p
+                  LEFT JOIN (
+                    SELECT 
+                      IdPaciente, MAX(FechaRegistro) as MaxFechaAtencion
+                    FROM 
+                      atencionpaciente
+                    GROUP BY 
+                      IdPaciente
+                  ) latest ON p.IdPaciente = latest.IdPaciente
+                  LEFT JOIN atencionpaciente ate ON latest.IdPaciente = ate.IdPaciente AND ate.FechaRegistro = latest.MaxFechaAtencion
+                  WHERE 
+                    p.IdPsicologo = :IdPsicologo
+                  LIMIT :limit OFFSET :offset";
+    
+        $statement = $this->PDO->prepare($query);
+        $statement->bindParam(":IdPsicologo", $IdPsicologo, PDO::PARAM_INT);
+        $statement->bindParam(":limit", $limit, PDO::PARAM_INT);
+        $statement->bindParam(":offset", $offset, PDO::PARAM_INT);
+        $statement->execute();
+    
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
     }
 
     public function getAllAtencPatients($IdPsicologo)
