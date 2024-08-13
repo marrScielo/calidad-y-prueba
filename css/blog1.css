@@ -2,19 +2,21 @@
   /* color: #57bab5; */
   width: 85%;
   margin: 0 auto;
+  
+
 }
 
 .descripcion-blog h1 {
-  color: #1d7e90;
+  color: #ffffff;
   text-align: center;
-  font-size: 2em;
+  font-size: 3em;
   text-transform: uppercase;
   
 }
 .descripcion-blog p {
   padding: 1.5rem;
-  background-color: #f6f6f6;
-  color: #56b9b3;
+  /* background-color: #f6f6f6; */
+  color: #ffffff;
   font-weight: 400;
   line-height: normal;
   text-align: center;
@@ -46,7 +48,7 @@
 .container-left {
   padding: 20px;
   flex: 3;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
   transition: background-color 0.3s;
 }
 .filter-form {
@@ -106,7 +108,7 @@
 }
 .blog-post h2 {
   text-align: start;
-  color: #212529;
+  color: #534489;
   margin-top: 0;
   margin-bottom: 5px;
   font-size: 1.125em;
@@ -114,7 +116,7 @@
   padding-right: 10px;
 }
 .blog-post h2:hover {
-  color: #ee5c3f;
+  color: #9897d1;
 }
 .blog-post p {
   color: #777a7c;
@@ -187,6 +189,38 @@
 .search-container button:hover {
   background-color: #56b9b3;
 }
+
+.pagination .page-link {
+  color: #534489; /* Color para los números no seleccionados */
+  padding: 10px;
+  text-decoration: none;
+  border: 2px solid #534489;
+  margin: 0 5px;
+  border-radius: 50%; /* Hace que la forma sea circular */
+  width: 25px; /* Ancho del círculo */
+  height: 25px; /* Altura del círculo */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold; /* Texto más grueso */
+}
+
+.pagination .page-link.active {
+  color: white; /* Color para el número seleccionado */
+  background-color: #534489;
+  border: 2px solid #534489;
+}
+
+.pagination .page-link:hover {
+  background-color: #534489;
+  color: white;
+}
+
+.pagination .disabled {
+  pointer-events: none; /* Desactiva los botones de Anterior/Siguiente si no se puede avanzar */
+  opacity: 0.5; /* Reduce la opacidad */
+}
+
 
 @media (min-width: 768px) {
   .container-blog {
