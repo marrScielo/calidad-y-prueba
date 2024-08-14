@@ -1,3 +1,7 @@
+:root {
+  --text-color: #534489;
+  --old-text-color: #56b9b3;
+}
 body {
   font-family: "Poppins";
 }
@@ -22,7 +26,7 @@ header {
 }
 
 .logo1 img {
-  height: 3em;
+  height: 4rem;
 }
 
 @media (width <= 800px) {
@@ -57,7 +61,7 @@ header {
   height: 0.25rem;
   width: 2.5rem;
   border-radius: 0.5rem;
-  background-color: #00856f;
+  background-color: var(--text-color);
   transition: 0.4s;
 }
 
@@ -73,19 +77,54 @@ header {
   font-size: 16px;
   font-weight: 500;
   text-decoration: none;
-  color: #56B9B3;
+  color: #483285;
   display: inline-block;
   transition: 0.3s ease-in-out;
   padding: 0.5rem 0.5rem;
 }
 
 .nav-links li a:hover {
-  color: #56B9B3;
+  color: var(--text-color);
 }
 
 /* Al hacer scroll hacia abajo */
 header.scrolled {
   border-bottom: 1px solid #e8e8e8;
+}
+
+.header-bar {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 768px) {
+    position: absolute;
+  }
+  .search-box {
+    padding-right: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    @media (max-width: 768px) {
+      display: none;
+    }
+    input {
+      padding: 0.2rem 1rem;
+      border: 1px solid #e8e8e8;
+      border-radius: 0.5rem;
+      width: 250px;
+      font-size: 1rem;
+      color: var(--text-color);
+    }
+    button {
+      border: none;
+      border-radius: 0.5rem;
+      background: none;
+      color: var(--text-color);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -94,9 +133,9 @@ header.scrolled {
   }
 
   .nav-links {
-    position: absolute;
+    position: fixed;
     display: none;
-    top: 3.5rem;
+    top: 3.6rem;
     left: 0;
     flex-direction: column;
     width: 100%;
