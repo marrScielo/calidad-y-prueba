@@ -19,12 +19,12 @@ class UsuariosController {
         return $this->model->buscarPorEmail($email);
     }
 
-    public function agregarUsuario($email, $password, $fotoPerfil, $rol) {
-        return $this->model->agregarUsuario($email, $password, $fotoPerfil, $rol);
+    public function agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id) {
+        return $this->model->agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id);
     }
 
-    public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol) {
-        return $this->model->actualizarUsuario($id, $email, $password, $fotoPerfil, $rol);
+    public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion) {
+        return $this->model->actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion);
     }
 
     public function eliminarUsuario($id) {

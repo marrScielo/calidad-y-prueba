@@ -58,7 +58,7 @@ class UsuarioModel {
         return $usuarios;
     }
 
-    public function agregarUsuario($email, $password, $fotoPerfil, $rol) {
+    public function agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion='', $speciality_id=0) {
         // Preparar y ejecutar la consulta para insertar un nuevo usuario
         $stmt = $this->conn->prepare("INSERT INTO usuarios (email, password, fotoPerfil, rol) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $email, $password, $fotoPerfil, $rol);
@@ -70,8 +70,8 @@ class UsuarioModel {
 
         // Si el rol es psicologo, agregar un nuevo registro en la tabla psicologo
         if ($rol === 'psicologo') {
-            $stmt = $this->conn->prepare("INSERT INTO psicologo (usuario_id, Passwords, email) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $usuarioId, $password, $email);
+            $stmt = $this->conn->prepare("INSERT INTO psicologo (usuario_id, Passwords, email, introduccion, especialidad_id) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("isssi", $usuarioId, $password, $email, $introduccion, $speciality_id);
             $stmt->execute();
             $stmt->close();
         }
