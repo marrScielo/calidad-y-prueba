@@ -25,7 +25,9 @@
                 <h2 class="title">NUESTRO EQUIPO</h2>
                 <div class="search-container">
                     <input type="text" id="searchInput" placeholder="Buscar...">
-                    <button type="button" id="searchButton">Buscar</button>
+                    <button type="button" id="searchButton">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
             </div>
             <p class="p-introduction">
