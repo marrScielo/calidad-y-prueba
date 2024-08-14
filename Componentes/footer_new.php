@@ -1,340 +1,282 @@
 <style>
-  /* Reset para enlaces */
-  a,
-  a:hover,
-  a:focus,
-  a:active {
-    text-decoration: none;
-    outline: none;
-    color: #6f6f6f;
-    transition: color 0.2s ease-in-out;
+  .footer {
+    width: 100%;
+    height: 700px;
+    background: rgb(155, 150, 186);
+    background: linear-gradient(90deg, rgba(155, 150, 186, 1) 0%, rgba(108, 89, 182, 1) 100%);
+    display: grid;
+    grid-template-columns: 350px 1fr 350px;
+    color: #fff;
   }
 
-  a:hover,
-  a:focus {
-    color: #ffb606;
+  .footer .principal:first-child {
+    grid-column: 2/3;
+    grid-row: 1/2;
   }
 
-  /* Reset para listas */
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  .principal {
+    width: auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: 1fr 1fr 2fr 3fr 3fr 1fr;
+    gap: 10px;
   }
 
-  /* Ajuste de imágenes */
-  img {
-    max-width: 100%;
+  .principal div {
+    width: auto;
     height: auto;
   }
 
-
-  /* Estilos del pie de página */
-  .footer {
-    padding: 100px 0 0;
-    background-color: #011638;
-    color: #fff;
+  .principal div:first-child {
+    grid-column: 1/9;
+    grid-row: 1/2;
   }
 
-  .footer .footer-content {
-    width: 90%;
-    margin: 0 auto !important;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+  .principal div:nth-child(2) {
+    grid-column: 1/9;
+    grid-row: 2/3;
   }
 
-  .footer .widget1 {
+  .principal div:nth-child(3) {
+    grid-column: 1/3;
+    grid-row: 3/4;
+  }
+
+  .principal div:nth-child(4) {
+    grid-column: 3/5;
+    grid-row: 3/4;
+  }
+
+  .principal div:nth-child(5) {
+    grid-column: 5/7;
+    grid-row: 3/4;
+  }
+
+  .principal div:nth-child(6) {
+    grid-column: 7/9;
+    grid-row: 3/4;
+  }
+
+  .principal div:nth-child(7) {
+    grid-column: 1/3;
+    grid-row: 4/5;
+  }
+
+  .principal div:nth-child(8) {
+    grid-column: 3/5;
+    grid-row: 4/5;
+  }
+
+  .principal div:nth-child(9) {
+    grid-column: 5/7;
+    grid-row: 4/5;
+  }
+
+  .principal div:nth-child(10) {
+    grid-column: 7/9;
+    grid-row: 4/5;
+  }
+
+  .principal div:nth-child(11) {
+    grid-column: 2/4;
+    grid-row: 5/6;
+  }
+
+  .principal div:nth-child(12) {
+    grid-column: 4/6;
+    grid-row: 5/6;
+  }
+
+  .principal div:nth-child(13) {
+    grid-column: 6/8;
+    grid-row: 5/6;
+  }
+
+  .principal div:nth-child(14) {
+    grid-column: 1/9;
+    grid-row: 6/7;
+  }
+
+  .redes {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    border-bottom: 3px solid #fff;
+  }
+
+  .redes ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    list-style: none;
+    margin-right: 5px;
+    gap: 5px;
+  }
+
+  .redes ul li {
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border-radius: 100%;
+  }
+
+  .redes ul li img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .titulo {
+    text-align: center;
+    margin: auto;
+  }
+
+  .contacto {
+    align-items: center;
+    margin: auto;
+    list-style: none;
     display: flex;
     flex-direction: column;
-  }
-
-  .footer .logo-container {
-    max-width: 200px;
-  }
-
-  .footer h5 {
-    font-weight: 600;
-    margin-bottom: 28px;
-    font-size: 21px;
-  }
-
-  .footer .widget1 p {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-top: 26px;
-  }
-
-  .footer .socialLinks {
-    margin-top: 28px;
-  }
-
-  .footer .socialLinks ul {
-    margin: 0;
-    padding: 0;
-  }
-
-  .footer .socialLinks ul li {
-    display: inline-block;
-  }
-
-  .footer .socialLinks ul li a i {
-    display: block;
-    margin: 0 2px;
-    width: 40px;
-    height: 40px;
-    background: #fafafa;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
-    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-  }
-
-  .footer .socialLinks ul li a .fa-facebook-f {
-    color: #4267b2;
-  }
-
-  .footer .socialLinks ul li a .fa-twitter {
-    color: #1da1f2;
-  }
-
-  .footer .socialLinks ul li a .fa-instagram {
-    color: #dd5044;
-  }
-
-  .footer .socialLinks ul li a .fa-linkedin-in {
-    color: #0177b5;
-  }
-
-  .footer .socialLinks ul li a:hover i {
-    color: #fff;
-  }
-
-  .footer .socialLinks ul li a:hover .fa-facebook-f {
-    background: #4267b2;
-  }
-
-  .footer .socialLinks ul li a:hover .fa-twitter {
-    background: #1da1f2;
-  }
-
-  .footer .socialLinks ul li a:hover .fa-instagram {
-    background: #dd5044;
-  }
-
-  .footer .socialLinks ul li a:hover .fa-linkedin-in {
-    background: #0177b5;
-  }
-
-  .footer .widget2 .media {
-    display: flex;
     align-items: center;
-    margin-bottom: 20px;
-  }
-
-  .footer .widget2 .media img {
-    margin-right: 20px;
-    max-width: 100px;
-  }
-
-  .footer .widget2 .media p {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 600;
-    line-height: 26px;
-    margin: 0;
-  }
-
-  .footer .widget2 .media span {
-    font-size: 12px;
-    color: #ffb606;
-    text-transform: uppercase;
-    margin-top: 15px;
-  }
-
-  .footer .widget3 ul,
-  .footer .widget4 ul {
-    padding: 0;
-  }
-
-  .footer .widget3 ul li,
-  .footer .widget4 ul li {
-    margin-bottom: 13px;
-  }
-
-  .footer .widget3 ul li a,
-  .footer .widget4 ul li a {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.6);
-    text-transform: capitalize;
-    display: block;
-    margin: 0;
-  }
-
-  .footer .widget3 ul li a,
-  .footer .widget4 ul li a::before {
-    content: "\2713";
-    margin-right: 3px;
-  }
-
-  .footer .widget3 ul li a:hover,
-  .footer .widget4 ul li a:hover {
-    color: #ffb606;
-  }
-
-  .footer .widget3 h5,
-  .footer .widget4 h5 {
-    margin-bottom: 22px;
-    font-size: 21px;
-  }
-
-  /* Estilos para el copyright */
-  .copyRightArea {
-    margin-top: 50px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 15px 0;
+    justify-content: center;
+    gap: 10px;
     text-align: center;
-    background-color: #011638;
-    /* Same as footer background */
   }
 
-  .copyRightArea p {
-    color: rgba(255, 255, 255, 0.6);
-    margin: 0;
+  .contacto li {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
   }
 
-  .bn {
-    filter: brightness(0) invert(1);
-    height: 3em;
+  .contacto li img {
+    width: 100%;
+    height: 100%;
   }
 
-  .footer .footer-content {
-    max-width: 123.75rem !important;
-    margin: 0 auto !important
+  .nosotros {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+    gap: 10px;
+    font-family: 'Montserrat Medium';
   }
 
-  /* Media query para pantallas pequeñas */
-  @media (max-width: 768px) {
-    .footer .footer-content {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
-    .footer .widget1,
-    .footer .widget2,
-    .footer .widget3,
-    .footer .widget4 {
-      margin-bottom: 30px;
-    }
-
-    .socialLinks ul {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      /* Ajusta el espacio entre los íconos si es necesario */
-      justify-items: center;
-      /* Centra los íconos horizontalmente en cada celda */
-      padding: 0;
-      margin: 0;
-    }
-
+  .nosotros .textosup {
+    font-size: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #fff;
   }
 
-  /* Media query para pantallas muy pequeñas */
-  @media (max-width: 480px) {
-    .footer .footer-content {
-      grid-template-columns: 1fr;
-    }
+  .nosotros .textoinf {
+    font-size: 13px;
+  }
 
-    .footer .socialLinks ul li {
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    .footer .socialLinks ul li a {
-      width: 100%;
-      text-align: center;
-      line-height: normal;
-    }
-
-    .footer .widget1 p,
-    .footer .widget2 .media p,
-    .footer .widget3 ul li a,
-    .footer .widget4 ul li a {
-      font-size: 14px;
-    }
-
-    .footer h5 {
-      font-size: 18px;
-    }
+  .logo img {
+    width: 100%;
+    height: 70%;
+  }
+  .copy{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-top: 3px solid #fff;    
   }
 </style>
 
 <footer class="footer">
-  <div class="footer-content container">
-    <div class="widget1">
-      <div class="logo-container">
-        <img src="img/logo-actual.webp" class="bn" alt="">
-      </div>
-      <p>Somos un centro de Psicología online. Si buscas psicólogo online, ponte en contacto con nostros y estaremos encantados de atenderte.</p>
-      <div class="socialLinks">
-        <ul>
-          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="widget2">
-      <h5>Últimas noticias</h5>
-      <div class="media">
-        <img class="img-fluid" src="https://images.pexels.com/photos/775417/pexels-photo-775417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
-        <div class="media-body">
-          <div class="content">
-            <a href="Blog.php">
-              <p>Técnicas de Respiración y Relajación para Reducir la Ansiedad</p>
-            </a>
-            <span>Agosto 05, 2024</span>
-          </div>
-        </div>
-      </div>
-      <div class="media">
-        <img class="img-fluid" src="https://images.pexels.com/photos/22820148/pexels-photo-22820148/free-photo-of-edificio-jugando-colegio-escuela.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
-        <div class="media-body">
-          <div class="content">
-            <a href="Blog.php">
-              <p>Autoestima en Adolescentes: Construyendo una Autoimagen Positiva</p>
-            </a>
-            <span>Julio 17, 2024</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="widget3">
-      <h5>Nosotros</h5>
+  <div class="principal">
+    <div class="redes">
       <ul>
-        <li><a href="index.php">Inicio</a></li>
-        <li><a href="Blog.php">Blog</a></li>
-        <li><a href="psicologos.php">Reservar Cita</a></li>
-        <li><a href="Contactanos.php">Contáctanos</a></li>
-        <li><a href="login.php">Login</a></li>
+        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 11-8.png" alt="Facebook"></a></li>
+        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 12-8.png" alt="Twitter"></a></li>
+        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 13-8.png" alt="Instagram"></a></li>
+        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 14-8.png" alt="YouTube"></a></li>
+        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 15-8.png" alt="Whatsapp"></a></li>
+        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 16-8.png" alt="TikTok"></a></li>
       </ul>
     </div>
-    <div class="widget4">
-      <h5>Trastornos</h5>
-      <ul>
-        <li><a href="Blog.php">Adicciones</a></li>
-        <li><a href="Blog.php">Ansiedad</a></li>
-        <li><a href="Blog.php">Atención</a></li>
-        <li><a href="Blog.php">Crianza</a></li>
-        <li><a href="Blog.php">Depresión</a></li>
-        <li><a href="Blog.php">Sexualidad</a></li>
-        <li><a href="Blog.php">Traumas</a></li>
-      </ul>
+    <div class="titulo">Atencion al usuario</div>
+    <div class="contacto">
+      <div class="icono">
+        <li><img src="../../ContigoVoy/img/CELULAR-8.png" alt="Celular"></li>
+      </div>
+      <div class="textosup">Linea de soporte</div>
+      <div class="textoinf">(+51) 666 666 666 Ext. 1111</div>
+      <div></div>
     </div>
-  </div>
-  <div class="copyRightArea">
-    <p>&copy; Copyright All rights reserved 2024.</p>
+    <div class="contacto">
+      <div class="icono">
+        <li><img src="../../ContigoVoy/img/CELULAR-8.png" alt="Celular"></li>
+      </div>
+      <div class="textosup">Linea administrativa</div>
+      <div class="textoinf">(57+1) 5185353 Ext. 1000</div>
+      <div></div>
+    </div>
+    <div class="contacto">
+      <div class="icono">
+        <li><img src="../../ContigoVoy/img/MENSAJE-8.png" alt="Mensaje"></li>
+      </div>
+      <div class="textosup">Correo Electronico</div>
+      <div class="textoinf">CONTIGO.VOY@gmail.com</div>
+      <div></div>
+    </div>
+    <div class="contacto">
+      <div class="icono">
+        <li><img src="../../ContigoVoy/img/UBICACION-8.png" alt="Ubicacion"></li>
+      </div>
+      <div class="textosup">Calle 73 # 7 – 31, Torre B Piso 2,
+        Bogotá D.C., Colombia
+        C.P. 110221180
+      </div>
+    </div>
+    <div class="nosotros">
+      <div class="textosup">Quiénes somos</div>
+      <div class="textoinf">¿Qué es Contigo Voy?<br>
+        Es una marca que ofrece apoyo<br>
+        emocional y psicológico,<br>
+        proporcionando un entorno<br>
+        seguro y confiable para el<br>
+        bienestar de los clientes</div>
+    </div>
+    <div class="nosotros">
+      <div class="textosup">¡Conéctate ya!</div>
+      <div class="textoinf">¡Afiliate a Contigo Voy!<br>
+        Psicolog@s afiliados<br>
+        Las empresa lider en Perú</div>
+    </div>
+    <div class="nosotros">
+      <div class="textosup">Servicios</div>
+      <div class="textoinf">Herramientas de colaboración<br>
+        Gestión de proyectos<br>
+        Conectividad avanzada</div>
+    </div>
+    <div class="nosotros">
+      <div class="textosup">Noticias y eventos</div>
+      <div class="textoinf">Noticias<br>
+        Eventos</div>
+    </div>
+    <div class="logo">
+      <img src="../../ContigoVoy/img/Recurso 13-8.png" alt="Logo">
+    </div>
+    <div class="links">
+      <div class="textosup">Intranet</div>
+      <div class="textoinf">log Contigo Voy</div>
+      <div class="textosup">Contacto</div>
+      <div class="textoinf">Soporte <br>
+        Contactanos</div>
+    </div>
+    <div class="links">
+      <div class="textosup">Colaoracion</div>
+      <div class="textoinf">Convocatorias<br>
+        Proyectos<br>
+        Pulicaciones<br>
+        Red de oportunidades<br>
+        Comunidad de salud digital</div>
+    </div>
+    <div class="copy">© Copyright All rights reserved 2024</div>
   </div>
 </footer>
