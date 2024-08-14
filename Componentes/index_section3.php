@@ -9,8 +9,8 @@
                 --light: white;
                 --lightPink: #f2b8b8;
                 --lightGreen: #6ed3c7;
-                --darkGreen: #57bab5;
-                --darkPink: #fca4a4;
+                --darkGreen: #9897d1;
+                --darkPink: #9897d1;
             }
             * {
                 box-sizing: border-box;
@@ -25,13 +25,15 @@
                 max-width: 1980px;
                 margin: 0 auto;
                 max-height: 1500px;
-                background-image: url("ContigoVoyAssets/fondos/comoPodemosAyudarte.jpg");
-                background-size: cover;
-                background-position-y: -5em;
-                padding: 3em 0;
+                background-image: url("ContigoVoyAssets/fondos/comopodemosrecursonuevo.jpg");
+                
+                /* padding: 3em 0; */
                 display: flex;
                 flex-flow: column;
                 gap: 1em;
+                background-size: cover;
+                padding-bottom: 7em;
+                padding-top: 7em;
             }
             .section-bg__title {
                 margin: 0 !important;
@@ -42,10 +44,13 @@
                 width: 10em;
             }
             .section-bg__content {
-                padding-top: 0em;
+                /* padding: 150px; */
                 display: flex;
                 flex-flow: row wrap;
                 gap: 1.5em;
+                width: 90%;
+                align-self: center;
+
             }
             .section-bg__text {
                 flex: 1;
@@ -56,14 +61,15 @@
                 color: var(--darkGreen);
             }
             .section-bg__text h2 {
-                font-size: 3em;
+                font-size: 2.8em;
             }
             .section-bg__text p {
-                font-size: 1.3em;
+                font-size: 1.5em;
+                text-wrap: balance;
             }
             .section-bg__list {
                 flex: 1;
-                padding: 7em 3em;
+                padding: 7em 0em;
                 display: flex;
                 justify-content: center;
             }
@@ -77,10 +83,14 @@
                 display: flex;
                 flex-flow: row;
                 gap: 2em;
+                
             }
             .section-bg__list ol:nth-child(2) {
                 position: relative;
                 right: 2em;
+            }
+            .section-bg__list ol + ol {
+                margin-left: -4px; 
             }
             .section-bg__list li {
                 height: fit-content;
@@ -145,7 +155,6 @@
 
             @media (max-width: 900px) {
                 .section-bg__list-content {
-                    padding: 0 20em;
                     grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
                 }
             }
@@ -212,7 +221,7 @@
 
             <div class="section-bg__content">
                 <span class="section-bg__text">
-                    <h2>¿Como podemos ayudarte?</h2>
+                    <h2>¿Cómo podemos ayudarte?</h2>
                     <p>
                         Nuestros psicologos online cuentan con distintas especialidades. Las sesiones se adaptan a las necesidades de cada paciente
                     </p>
@@ -238,7 +247,7 @@
                             <li>Ira</li>
                             <li>Sexualidad</li>
                             <li>Traumas</li>
-                            <li>Riesgo Sexual</li>
+                            <li style="white-space: nowrap;">Riesgo Sexual</li>
                         </ol>
                     </div>
                 </span>

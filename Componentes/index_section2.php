@@ -10,7 +10,7 @@
             --color-light: #ffffff;
             --color-light-pink: #f2b8b8;
             --color-light-green: #6ed3c7;
-            --color-dark-green: #57bab5;
+            --color-description: #534489;
         }
 
         * {
@@ -25,30 +25,32 @@
         }
 
         .sectionService {
-            max-width: 1980px;
+            background-image: url("ContigoVoyAssets/fondos/servicio-eficiente.jpg");
+            background-size: 100% 100%; /* Ajusta el ancho al 100% y la altura de manera proporcional */
+            width: 100%;
+            max-width: 1980px; 
             margin: 0 auto;
             overflow: hidden;
             position: relative;
         }
 
+
         .sliderContainer {
             display: flex;
             transition: transform 0.5s ease-in-out;
-            width: 300%; /* Ajuste para hacer que el contenedor se ajuste al ancho del contenedor principal */
+            /* width: 300%;  *//* Ajuste para hacer que el contenedor se ajuste al ancho del contenedor principal */
         }
 
         .sliderContainer__slide {
-            background-image: url("ContigoVoyAssets/fondos/servicioEficiente.jpg");
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-size: cover;
-            background-position: center;
-            padding: 5em 0;
+            padding: 4em 0;
         }
 
         .sliderContainer__slide--box {
+            width: 90%;
             padding: 5em 0;
             display: flex;
             flex-flow: row wrap;
@@ -65,18 +67,19 @@
             flex-direction: column;
             gap: 2em;
             justify-content: center;
-            align-items: center;
+            /* align-items: center; */
         }
 
         .service__title {
-            font-size: 3em;
+            font-size: 2.8em;
             color: var(--color-light);
         }
 
         .service__description {
-            font-size: 1.3em;
-            text-align: center;
-            color: var(--color-dark-green);
+            text-wrap: pretty;
+            font-size: 1.5em;
+            text-align: start;
+            color: var(--color-description);
         }
 
         .service__image {
@@ -124,6 +127,9 @@
             .service__content, .service__image {
                 padding: 0;
             }
+            .service__description {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -137,11 +143,11 @@
                         <p class="service__description">Agilizamos el proceso de acceso a los servicios de psicología, agrupando los mejores psicólogos en una misma plataforma.</p>
                     </div>
                     <div class="service__image">
-                        <img class="service__image-content" src="ContigoVoyAssets/recursos/1_1.png" alt="Representación de servicio eficiente" />
+                        <img class="service__image-content" src="ContigoVoyAssets/recursos/2.png" alt="Representación de servicio eficiente" />
                     </div>
                 </div>
             </li>
-            <li class="sliderContainer__slide">
+<!--             <li class="sliderContainer__slide">
                 <div class="sliderContainer__slide--box">
                     <div class="service__content">
                         <h2 class="service__title">Consulta Psicológica</h2>
@@ -162,17 +168,17 @@
                         <img class="service__image-content" src="ContigoVoyAssets/recursos/1_3.png" alt="Representación de confidencialidad y seguridad" />
                     </div>
                 </div>
-            </li>
+            </li> -->
         </ol>
-        <div class="sliderButtons">
+        <!-- <div class="sliderButtons">
             <button class="sliderDot active" data-slide="0"></button>
             <button class="sliderDot" data-slide="1"></button>
             <button class="sliderDot" data-slide="2"></button>
-        </div>
+        </div> -->
     </section>
 
     <script>
-        const sliderContainer = document.querySelector(".sliderContainer");
+        /* const sliderContainer = document.querySelector(".sliderContainer");
         const slides = document.querySelectorAll(".sliderContainer__slide--box");
         const dots = document.querySelectorAll(".sliderDot");
         let currentIndex = 0;
@@ -208,7 +214,7 @@
                 updateDots();
                 resetInterval(); 
             });
-        });
+        }); */
 
     </script>
 

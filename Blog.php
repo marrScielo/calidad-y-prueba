@@ -216,9 +216,9 @@ $especialidades = [
             <!-- Paginación -->
             <div class="pagination">
                 <?php if ($page > 1) : ?>
-                    <a href="?page=<?php echo $page - 1; ?>" class="page-link">&laquo; Anterior</a>
+                    <a href="?page=<?php echo $page - 1; ?>" class="page-link">&laquo;</a> <!-- Símbolo de anterior -->
                 <?php else : ?>
-                    <span class="page-link disabled">&laquo; Anterior</span>
+                    <span class="page-link disabled">&laquo;</span> <!-- Símbolo de anterior deshabilitado -->
                 <?php endif; ?>
 
                 <?php if ($page > 3) : ?>
@@ -236,11 +236,12 @@ $especialidades = [
                 <?php endif; ?>
 
                 <?php if ($page < $totalPages) : ?>
-                    <a href="?page=<?php echo $page + 1; ?>" class="page-link">Siguiente &raquo;</a>
+                    <a href="?page=<?php echo $page + 1; ?>" class="page-link">&raquo;</a> <!-- Símbolo de siguiente -->
                 <?php else : ?>
-                    <span class="page-link disabled">Siguiente &raquo;</span>
+                    <span class="page-link disabled">&raquo;</span> <!-- Símbolo de siguiente deshabilitado -->
                 <?php endif; ?>
             </div>
+
 
         </div>
     </div>
