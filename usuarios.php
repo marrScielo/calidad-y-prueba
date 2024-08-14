@@ -17,7 +17,7 @@ if(isset($_SESSION['logeado'])){
                     $usuariosController->agregarUsuario($_POST['email'], $_POST['password'], $_POST['fotoPerfil'], $_POST['rol'], $_POST['introduccion_new_user'], $_POST['speciality_new_user']);
                     break;
                 case 'actualizar':
-                    $usuariosController->actualizarUsuario($_POST['id'], $_POST['email'], $_POST['password'], $_POST['fotoPerfil'], $_POST['rol'], $_POST['introduccion_user'], $_POST['speciality_new_user']);
+                    $usuariosController->actualizarUsuario($_POST['id'], $_POST['email'], $_POST['password'], $_POST['fotoPerfil'], $_POST['rol'], $_POST['introduccion_user'], $_POST['especialidad_user']);
                     break;
                 case 'eliminar':
                     $usuariosController->eliminarUsuario($_POST['id']);
@@ -254,7 +254,7 @@ if(isset($_SESSION['logeado'])){
                 <select name="speciality_new_user" id="speciality_new_user">
                     <?php foreach ($especialidadesController->getEspecialidades() as $especialidad): ?>
                         <option value="<?= $especialidad['id'] ?>"><?= $especialidad['nombre'] ?></option>
-                    <?php endforeach; ?>|
+                    <?php endforeach; ?>
                 </select>
                 <textarea name="introduccion_new_user" id="introduccion_new_user" placeholder="Introducción"></textarea>
                 <input type="submit" value="Agregar Usuario">
@@ -275,7 +275,7 @@ if(isset($_SESSION['logeado'])){
                 if($usuario['rol'] == 'psicologo'){
                     $psicologo = $psicologoController->getPsicologoByIdUser($usuario['id']);
                     if($psicologo != null){
-                        $especialidad = $especialidadesController->getEspecialidadById($psicologo['especialidad_id']);
+                        $especialidad_id = $especialidadesController->getEspecialidadById($psicologo['especialidad_id']);
                         $usuario['introduccion'] = $psicologo['introduccion']??'';
                     }
                 }
@@ -308,9 +308,10 @@ if(isset($_SESSION['logeado'])){
                             <textarea name="introduccion_user" id="introduccion_user_<?= htmlspecialchars($usuario['id']) ?>" placeholder="Introducción" style="display: <?= $usuario['rol'] == 'psicologo' ? 'block' : 'none' ?>;"><?= htmlspecialchars(trim($usuario['introduccion'])) ?>
                             </textarea>
                             <select name="especialidad_user" id="especialidad_user_<?= htmlspecialchars($usuario['id']) ?>"
-                            style="display: <?= $usuario['rol'] == 'psicologo' ? 'block' : 'none' ?>;" onchange="toggleIntroduccion(this)">
+                            style="display: <?= $usuario['rol'] == 'psicologo' ? 'block' : 'none' ?>;">
                                 <?php foreach ($especialidadesController->getEspecialidades() as $especialidad): ?>
-                                    <option value="<?= $especialidad['id'] ?>" <?= $especialidad['id'] == $especialidad['id'] ? 'selected' : '' ?>><?= $especialidad['nombre'] ?></option>
+                                    <option value="<?= $especialidad['id'] ?>" <?= $especialidad_id["id"] == $especialidad['id'] ? 'selected' : '' ?>>
+                                        <?= $especialidad['nombre'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <input type="submit" value="Actualizar" style="background-color: #3498db; color: white;">

@@ -77,18 +77,25 @@ class UsuarioModel {
         }
     }
 
-    public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol) {
+    public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion='', $speciality_id=0) {
         // Preparar y ejecutar la consulta para actualizar un usuario existente
         $stmt = $this->conn->prepare("UPDATE usuarios SET email = ?, password = ?, fotoPerfil = ?, rol = ? WHERE id = ?");
         $stmt->bind_param("ssssi", $email, $password, $fotoPerfil, $rol, $id);
         $stmt->execute();
         $stmt->close();
+        $speciality_id = intval($speciality_id);
+        // Agrega depuración para verificar el valor antes de la consulta
+        error_log("especialidad_id: " . $speciality_id);
 
-        // Si el rol es psicologo, actualizar la información en la tabla psicologo
         if ($rol === 'psicologo') {
-            $stmt = $this->conn->prepare("UPDATE psicologo SET email = ?, Passwords = ? WHERE usuario_id = ?");
-            $stmt->bind_param("ssi", $email, $password, $id);
-            $stmt->execute();
+            $stmt = $this->conn->prepare("UPDATE psicologo SET email = ?, Passwords = ?, introduccion = ?, especialidad_id = ? WHERE usuario_id = ?");
+            if ($stmt === false) {
+                die("Error en la preparación de la consulta: " . $this->conn->error);
+            }
+            $stmt->bind_param("sssii", $email, $password, $introduccion, $speciality_id, $id);
+            if ($stmt->execute() === false) {
+                die("Error en la ejecución de la consulta: " . $stmt->error);
+            }
             $stmt->close();
         }
 

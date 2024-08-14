@@ -23,8 +23,8 @@ class UsuariosController {
         return $this->model->agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id);
     }
 
-    public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion) {
-        return $this->model->actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion);
+    public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id) {
+        return $this->model->actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id);
     }
 
     public function eliminarUsuario($id) {
