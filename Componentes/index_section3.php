@@ -9,8 +9,8 @@
                 --light: white;
                 --lightPink: #f2b8b8;
                 --lightGreen: #6ed3c7;
-                --darkGreen: #57bab5;
-                --darkPink: #fca4a4;
+                --darkGreen: #9897d1;
+                --darkPink: #9897d1;
             }
             * {
                 box-sizing: border-box;
@@ -25,7 +25,7 @@
                 max-width: 1980px;
                 margin: 0 auto;
                 max-height: 1500px;
-                background-image: url("ContigoVoyAssets/fondos/comoPodemosAyudarte.jpg");
+                background-image: url("ContigoVoyAssets/fondos/comopodemosrecursonuevo.jpg");
                 background-size: cover;
                 background-position-y: -5em;
                 padding: 3em 0;
@@ -43,9 +43,11 @@
             }
             .section-bg__content {
                 padding-top: 0em;
+                padding: 150px;
                 display: flex;
                 flex-flow: row wrap;
                 gap: 1.5em;
+
             }
             .section-bg__text {
                 flex: 1;
@@ -56,7 +58,7 @@
                 color: var(--darkGreen);
             }
             .section-bg__text h2 {
-                font-size: 3em;
+                font-size: 30px;
             }
             .section-bg__text p {
                 font-size: 1.3em;
@@ -77,10 +79,14 @@
                 display: flex;
                 flex-flow: row;
                 gap: 2em;
+                
             }
             .section-bg__list ol:nth-child(2) {
                 position: relative;
                 right: 2em;
+            }
+            .section-bg__list ol + ol {
+                margin-left: -4px; 
             }
             .section-bg__list li {
                 height: fit-content;
@@ -238,7 +244,7 @@
                             <li>Ira</li>
                             <li>Sexualidad</li>
                             <li>Traumas</li>
-                            <li>Riesgo Sexual</li>
+                            <li style="white-space: nowrap;">Riesgo Sexual</li>
                         </ol>
                     </div>
                 </span>
