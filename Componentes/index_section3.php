@@ -26,9 +26,7 @@
                 margin: 0 auto;
                 max-height: 1500px;
                 background-image: url("ContigoVoyAssets/fondos/comopodemosrecursonuevo.jpg");
-                background-size: cover;
-                background-position-y: -5em;
-                padding: 3em 0;
+                /* padding: 3em 0; */
                 display: flex;
                 flex-flow: column;
                 gap: 1em;
@@ -42,8 +40,7 @@
                 width: 10em;
             }
             .section-bg__content {
-                padding-top: 0em;
-                padding: 150px;
+                /* padding: 150px; */
                 display: flex;
                 flex-flow: row wrap;
                 gap: 1.5em;
