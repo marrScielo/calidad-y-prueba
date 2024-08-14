@@ -50,7 +50,7 @@
         }
 
         .sliderContainer__slide--box {
-            width: 85%;
+            width: 90%;
             padding: 5em 0;
             display: flex;
             flex-flow: row wrap;
@@ -71,7 +71,7 @@
         }
 
         .service__title {
-            font-size: 3em;
+            font-size: 2.8em;
             color: var(--color-light);
         }
 
