@@ -26,13 +26,32 @@
         .hero {
             position: relative;
             height: 100vh;
-            max-height: 1500px;
-            background-image: url("ContigoVoyAssets/recursos/Recurso_6.png");
+            max-height: 500px;
+            background-image: url("ContigoVoyAssets/recursos/Recursonuevo.jpg");
             background-position: center;
             background-size: cover;
             display: grid;
             place-items: center;
         }
+        .bottom{
+            display:flex;
+            justify-content: flex-end; 
+            width: 100%;
+            padding: 5rem; 
+            margin top: 1rem;
+        }
+        .bottom .info{
+            border: 2px solid black;
+            text-decoration: none;
+            color: #FFFFFF;
+            background-color: transparent;
+            border-radius: 0.5em;
+            font-weight: bold;
+            padding: 1em 2em;
+            font-size: 1em;
+            
+        }
+        
 
         .hero::before {
             content: "";
@@ -108,6 +127,9 @@
                 y bienestar emocional aquí
             </h2>
             <a href="psicologos.php" class="hero__cta">Solicitar Servicio</a>
+        </div>
+        <div class="bottom">
+            <a href="psicologos.php"class="info">Mas información aqui..</a>
         </div>
     </section>
 </body>
