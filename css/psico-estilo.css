@@ -95,20 +95,19 @@
 }
 
 .pagination a {
-  color: #fff;
-  background: #9897d1;
+  color: #007bff;
   padding: 8px 16px;
   text-decoration: none;
   transition: background-color 0.3s;
-  border: 1px solid #9897d1;
+  border: 1px solid #007bff;
   margin: 0 5px;
 }
 
 .pagination a.active,
 .pagination a:hover {
-  background-color: #7f7ebf;
+  background-color: #007bff;
   color: white;
-  border-color: #7f7ebf;
+  border-color: #007bff;
 }
 
 .pagination a.disabled {
