@@ -54,7 +54,7 @@
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
 }
 
@@ -166,6 +166,10 @@
 .psicologo-nombre {
   margin: 0;
   transition: color 0.3s, transform 0.3s;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .psicologo-tag {
@@ -181,11 +185,24 @@
 
 .psicologo-introduction {
   text-align: start;
+  flex: 1;
 }
 
 .title {
   font-size: 2em;
   color: #1d7e90;
+}
+
+.psicologo-video-not-found {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background-color: #c0c0ef;
+  color: #721c24;
+  border-radius: 5px;
+  margin: 0;
 }
 
 @media (max-width: 768px) {

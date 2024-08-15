@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Descubre tu mejor versión</title>
     <style>
         :root {
             --color-light: #ffffff;
@@ -113,7 +107,6 @@
             background-color: var(--color-light);
         }
     </style>
-</head>
 
 <body>
     <section class="hero">
@@ -132,6 +125,3 @@
             <a href="psicologos.php"class="info">Mas información aqui..</a>
         </div>
     </section>
-</body>
-
-</html>
