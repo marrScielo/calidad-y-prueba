@@ -2,6 +2,14 @@
   --text-color: #534489;
   --old-text-color: #56b9b3;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
 body {
   font-family: "Poppins";
   background-image: url("../img/blog.jpg");
@@ -58,6 +66,7 @@ header {
   list-style-type: none;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
 }
 
@@ -122,10 +131,10 @@ header.scrolled {
   .nav-links {
     position: fixed;
     display: none;
-    top: 3.6rem;
+    top: 4rem;
     left: 0;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
     background-color: #ffffff;
     z-index: 10;
   }
@@ -136,11 +145,11 @@ header.scrolled {
 
   .nav-links li {
     margin-right: 0; /* Quitar el margen entre los elementos del menú en pantallas pequeñas */
-    text-align: center; /* Centrar los enlaces en pantallas pequeñas */
     width: 100%;
   }
 
   .nav-links li a {
+    text-align: center;
     font-size: 10px;
     padding: 0.5rem; /* Espaciado interno de los enlaces en pantallas pequeñas */
     width: 100%;
