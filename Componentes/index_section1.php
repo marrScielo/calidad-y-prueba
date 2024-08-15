@@ -24,23 +24,21 @@
         }
 
         .hero {
+            padding-top: 100px;
             position: relative;
+            place-items: center;
             height: 100vh;
             max-height: 500px;
             background-image: url("ContigoVoyAssets/recursos/Recursonuevo.jpg");
             background-position: center;
             background-size: cover;
-            display: grid;
-            place-items: center;
+            display: grid;.
         }
-        .bottom{
+        .info{
+            position:relative;
+            left:500px; 
             display:flex;
-            justify-content: flex-end; 
-            width: 100%;
-            padding: 5rem; 
-            margin top: 1rem;
-        }
-        .bottom .info{
+            justify-content: flex-end;
             border: 2px solid black;
             text-decoration: none;
             color: #FFFFFF;
@@ -52,8 +50,10 @@
             
         }
         
+        
 
         .hero::before {
+            place-items: center;
             content: "";
             position: absolute;
             top: 0;
@@ -65,6 +65,7 @@
         }
 
         .hero__content {
+            place-items: center;
             position: relative;
             z-index: 2;
             display: flex;
@@ -85,18 +86,21 @@
                 1px -1px 0 #000,
                 -1px 1px 0 #000,
                 1px 1px 0 #000; */
-            font-size: 4em;
+            font-size:3.5em;
             margin: 0;
             padding: 0;
+            place-items: center;
         }
 
         .hero__subtitle {
-            font-size: 1.5em;
+            place-items: center;
+            font-size: 1.3em;
             margin: 0;
             padding: 0;
         }
 
         .hero__cta {
+            place-items: center;
             text-transform: uppercase;
             text-decoration: none;
             color: var(--color-light);
@@ -104,7 +108,7 @@
             border-radius: 0.5em;
             font-weight: bold;
             padding: 1em 2em;
-            font-size: 1em;
+            font-size: 0.8em;
             transition: all 0.25s ease-in-out;
         }
 
@@ -112,6 +116,27 @@
             color: var(--color-light-pink);
             background-color: var(--color-light);
         }
+        @media (max-width: 1920px) {
+            .info{                
+                top:-70px;                
+            } 
+        
+        @media (max-width:390px)  {
+            
+            .info{
+                top:50%;
+                left:5px;
+            }
+        }   
+        @media (max-width:900px) {
+            .info{
+                left: 5px;
+                top:50%;
+            }
+            
+        }    
+        }
+        
     </style>
 </head>
 
@@ -127,10 +152,9 @@
                 y bienestar emocional aquí
             </h2>
             <a href="psicologos.php" class="hero__cta">Solicitar Servicio</a>
-        </div>
-        <div class="bottom">
             <a href="psicologos.php"class="info">Mas información aqui..</a>
         </div>
+        
     </section>
 </body>
 
