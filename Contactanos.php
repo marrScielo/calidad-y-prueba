@@ -18,350 +18,99 @@
 
         }
 
-        .contactanos-contenedor {
-            height: calc(100vh - 4.5rem);
+        .container-contact{
+            display: flex;
+            flex-direction: row;
+            width: 90%;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            max-width: 1200px;
+            color: #534489;
+        }
+
+        .parrafo-principal{
+            text-wrap: balance;
+            padding-top: 2em;
+            padding-bottom: 2em;
+        }
+
+        .icon-name {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 1rem;
         }
 
-        .contactanos-contenido {
+        .redes {
             display: flex;
-            border: solid #56B9B3 2px;
-            width: 90%;
-            align-items: flex-start;
-            justify-content: space-between;
-            padding: 2rem;
-            gap: 2rem;
-            box-sizing: border-box;
+            flex-direction: row;
+            align-items: center;
         }
 
-        .texto-contactanos {
-            padding: 0 3rem;
-            max-width: 40%;
-        }
-
-        .texto-contactanos h2 {
-            margin-top: 0;
-            color: #1d7e90;
-        }
-
-        .contactanos-contenido>form {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1rem 0.5rem;
-            padding: 0 2rem;
-            width: 50%;
-            box-sizing: border-box;
-        }
-
-        .formulario-contactanos>input,
-        .formulario-contactanos #mensaje {
-            padding: 0.5rem;
-            border: solid #56B9B3 1px;
-            border-radius: 0.3rem;
-        }
-
-        .formulario-contactanos #email {
-            grid-column: span 2;
-        }
-
-        .formulario-contactanos #mensaje {
-            grid-column: span 2;
-            height: 6rem;
-            resize: vertical;
-        }
-
-        .formulario-contactanos #enviar {
-            grid-column: span 2;
-            background-color: #F19394;
-            border: none;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .contactanos-contenido {
-                flex-direction: column;
-                gap: 3rem 0;
-            }
-
-            .contactanos-contenido>form {
-                padding: 0 3rem;
-                width: 100%;
-            }
-
-            .texto-contactanos {
-                padding: 0 1.5rem;
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .contactanos-contenedor {
-                padding: 7.5rem 0;
-                /* Añade un espaciado superior e inferior para evitar que se solape con el header y el footer */
-            }
-
-            .contactanos-contenido {
-                padding: 1rem;
-                flex-direction: column;
-                gap: 1rem 0;
-                align-items: center;
-            }
-
-            .contactanos-contenido>form {
-                padding: 0 1rem;
-                width: 100%;
-                grid-template-columns: 1fr;
-            }
-
-            .texto-contactanos {
-                padding: 0 1rem;
-                max-width: 100%;
-                text-align: center;
-                /* Opcional: Centra el texto */
-            }
-
-            .imagen-contacto {
-                width: 100%;
-                height: auto;
-            }
-        }
-
-
-        @media (max-width: 320px) {
-            .contactanos-contenedor {
-                height: 600px;
-            }
-
-            .contactanos-contenido {
-                padding: 0.5rem;
-                margin-top: 20px;
-            }
-
-            .contactanos-contenido>form {
-                padding: 0 0.5rem;
-            }
-
-            .texto-contactanos {
-                padding: 0 0.5rem;
-            }
-
-            .contacto-formulario .contact-form .form-field {
-                width: 100%;
-            }
-
-        }
-
-        .imagen-contacto {
-            max-width: 100%;
-            width: 30rem;
-            height: auto;
-            margin-top: 1rem;
-            border: 2px solid #56B9B3;
-            border-radius: 0.3rem;
-        }
-
-        #enviar {
-            color: white;
-            transition: 0.5s ease-in-out all;
-        }
-
-        #enviar:hover {
-            background: #E07A74;
-        }
-
-        .contactanos-contenido {
-            border-radius: 15px;
-            background-color: #f7f7f7;
-        }
-
-        /* Importación de fuentes */
-        @import url('https://fonts.googleapis.com/css?family=Raleway:300');
-        @import url('https://fonts.googleapis.com/css?family=Lusitana:400,700');
-
-
-
-
-
-        .texto-contactanos {
-            flex: 1;
-            /* Permite que el texto ocupe el espacio disponible */
-            padding-right: 20px;
-            /* Espaciado derecho para separar del formulario */
-        }
-
-        .imagen-contacto {
-            max-width: 100%;
-            /* Asegura que la imagen no se desborde del contenedor */
-            height: auto;
-            /* Mantiene la proporción de la imagen */
-        }
-
-        /* Estilos para el formulario de contacto en esta sección específica */
-        .contacto-formulario {
-            max-width: 500px;
-            /* Ajusta el ancho máximo del formulario de contacto */
-            margin: 0;
-            /* Elimina los márgenes predeterminados */
-            padding: 20px;
-            /* Espaciado interior para el formulario */
-            background-color: #ffffff;
-            /* Fondo blanco para el formulario */
-            border-radius: 8px;
-            /* Bordes redondeados */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            /* Sombra sutil para el contenedor */
-        }
-
-        .contacto-formulario .title {
-            text-align: center;
-            font-family: Raleway, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 36px;
-            line-height: 48px;
-            padding-bottom: 48px;
-        }
-
-        /* Estilos para el formulario */
-        .contacto-formulario .contact-form {
+        .redes ul {
             display: flex;
-            flex-wrap: wrap;
-            /* Permite que los elementos se envuelvan en la siguiente línea si es necesario */
-            gap: 20px;
-            /* Espaciado entre los elementos del formulario */
-            margin: 0;
-            /* Elimina los márgenes predeterminados */
+            flex-direction: row;
+            justify-content: end;
+            align-items: center;
+            list-style: none;
+            margin-right: 5px;
+            gap: 5px;
         }
 
-        .contacto-formulario .contact-form .form-field {
-            position: relative;
-            margin-bottom: 20px;
-            /* Espaciado inferior entre los campos del formulario */
-            width: calc(50% - 20px);
-            /* Ancho del campo con espaciado ajustado */
+        .redes ul li {
+            width: 35px;
+            height: 35px;
+            background-color: white;
+            border-radius: 100%;
         }
 
-        .contacto-formulario .contact-form .form-field.col.x-100 {
+        .redes ul li img {
             width: 100%;
-            /* Ancho completo para columnas de 100% */
+            height: 100%;
         }
-
-        .contacto-formulario .contact-form .input-text {
-            display: block;
-            width: 100%;
-            height: 36px;
-            border-width: 0 0 2px 0;
-            border-color: #888;
-            font-family: Lusitana, serif;
-            font-size: 18px;
-            line-height: 26px;
-            font-weight: 400;
-        }
-
-        .contacto-formulario .contact-form .input-text:focus {
-            outline: none;
-            /* Elimina el contorno al enfocar el campo */
-            border-color: var(--color-secundario);
-        }
-
-        .contacto-formulario .contact-form .input-text:focus+.label,
-        .contacto-formulario .contact-form .input-text.not-empty+.label {
-            transform: translateY(-28px);
-            /* Mueve la etiqueta hacia arriba al enfocar el campo */
-            color: var(--color-secundario);
-        }
-
-        .input-text.has-content:not(:focus)+.label {
-            opacity: 0;
-        }
-
-        .contacto-formulario .contact-form .label {
-            position: absolute;
-            left: 20px;
-            bottom: 11px;
-            font-family: Lusitana, serif;
-            font-size: 18px;
-            line-height: 26px;
-            font-weight: 400;
-            color: #888;
-            cursor: text;
-            transition: transform 0.2s ease-in-out, font-size 0.5s ease-in-out, color 0.2s ease-in-out;
-            /* Transición suave para el movimiento de la etiqueta */
-        }
-
-        .contacto-formulario .contact-form .submit-btn {
-            display: inline-block;
-            background-color: #f7b8b9;
-            color: #fff;
-            font-family: Raleway, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 16px;
-            line-height: 24px;
-            padding: 8px 16px;
-            border: none;
-            cursor: pointer;
-            /* Cambia el cursor a mano al pasar sobre el botón */
-            width: 100%;
-            border-radius: 15px;
-        }
-
-        .contacto-formulario .contact-form .submit-btn:hover {
-            background-color: var(--color-secundario);
-        }
-
-        /* Alineación centrada */
-        .contacto-formulario .align-center {
-            text-align: center;
-            /* Centra el contenido dentro del campo */
-        }
-
-
-        /* Estilos generales para los campos de formulario */
-        input,
-        textarea {
-            /* Tu estilo base para inputs y textareas */
-        }
-
-        /* Estilo para campos con autofill */
-        input:-webkit-autofill,
-        textarea:-webkit-autofill {
-            background-color: #ffffff !important; /* Cambia el color de fondo a blanco o a tu preferencia */
-            -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important; /* Elimina el efecto de sombra de autofill */
-            box-shadow: 0 0 0px 1000px #ffffff inset !important; /* Asegura la eliminación del efecto de sombra en otros navegadores */
-            -webkit-text-fill-color: #000000 !important; /* Cambia el color del texto si es necesario */
-        }
-
-        /* Estilo para los campos en Firefox */
-        input:-moz-autofill,
-        textarea:-moz-autofill {
-            background-color: #ffffff !important; /* Cambia el color de fondo a blanco o a tu preferencia */
-            -moz-box-shadow: 0 0 0px 1000px #ffffff inset !important; /* Elimina el efecto de sombra de autofill */
-            box-shadow: 0 0 0px 1000px #ffffff inset !important; /* Asegura la eliminación del efecto de sombra en otros navegadores */
-            color: #000000 !important; /* Cambia el color del texto si es necesario */
-        }
-
-
-        .error-message {
-        color: red; /* Color del mensaje de error */
-        font-size: 0.875rem; /* Tamaño de la fuente */
-        margin-top: 0.25rem; /* Espaciado superior */
-        display: block; /* Asegura que el mensaje esté en una línea separada */
-}
 
     </style>
 </head>
 
 <body>
     <?php include 'Componentes/header.php'; ?>
-    <section class="contactanos-contenedor">
+    <section>
+        <div>
+            <img src="img/contactanos.JPG" alt="Hero contactanos" width="100%">
+        </div>
+       <div class="container-contact">
+       <div>
+            <p class="parrafo-principal">"La psicología es como una lupa para entender 
+                ómo funcionan nuestras mentes y cómo nos 
+                omportamos, y nos da herramientas geniales
+                para mejorar nuestra vida y nuestras relaciones."
+            </p>
+            <div class="icon-name">
+                <img src="ContigoVoyAssets/recursos/2.png" alt="Luana Farela" width="60px">
+                <p>Luana farela</p>
+            </div>
+            <div>
+                <img src="" alt="">
+                <p>Luana farela@outlook.com</p>
+            </div>
+            <div class="redes">
+                <ul>
+                    <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 11-8.png" alt="Facebook"></a></li>
+                    <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 12-8.png" alt="Twitter"></a></li>
+                    <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 13-8.png" alt="Instagram"></a></li>
+                    <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 14-8.png" alt="YouTube"></a></li>
+                    <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 16-8.png" alt="TikTok"></a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </section>
+    <!-- <section class="contactanos-contenedor">
         <div class="contactanos-contenido">
             <div class="texto-contactanos">
                 <h2>Contáctanos</h2>
                 <p>Estamos a su disposición para cualquier duda o consulta. En menos de 24h te respondemos.</p>
-                <!-- Imagen agregada debajo del texto -->
+            
                 <img src="img/plus.webp" alt="Imagen de contacto" class="imagen-contacto">
             </div>
             <div class="contacto-formulario">
@@ -390,12 +139,12 @@
                 </form>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <script src="js/navabar.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+       /*  document.addEventListener('DOMContentLoaded', function() {
             const inputs = document.querySelectorAll('.input-text');
 
             inputs.forEach(input => {
@@ -416,12 +165,9 @@
                 });
             });
 
-        });
+        }); */
     </script>
-    <?php include 'Componentes/footer_new.php'; ?>
+   <!--  <?php include 'Componentes/footer_new.php'; ?> -->
 
 </body>
-
-
-
 </html>
