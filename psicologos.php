@@ -7,8 +7,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/header-style.css">
-    <link rel="stylesheet" href="css/psico-estilo.css">
     <link rel="stylesheet" href="css/estilos-footer.css">
+    <link rel="stylesheet" href="css/psico-estilo.css">
     <link rel="icon" href="img/Logo.png">
     <link rel="stylesheet" href="css/boton-wsp.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -100,8 +100,35 @@
     <a href="https://wa.me/51915205726" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+    <?php 
+        // include_once 'Componentes/footer_new.php';
+        include_once 'modales/modal-video.php';
+    ?>
     <script src="js/navabar.js"></script>
-    <?php include 'Componentes/footer_new.php'; ?>
+    <script>
+        let linkVideoSelected = '';
+        const modalVideo = document.querySelector('#videoModal');
+        const videoModalSource = document.querySelector('#videoModalSource');
+        const psicologos = document.querySelector('#psicologos-container');
+        const videoModalClose = document.querySelector('#videoModalClose');
+        psicologos.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log(e.target.className !== 'psicologo-video-overlay');
+            if (e.target.className !== 'psicologo-video-overlay') {
+                return;
+            }
+            const video = e.target.previousElementSibling;
+            videoModalSource.src = video.src+'?autoplay=1';
+            modalVideo.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        videoModalClose.addEventListener('click', () => {
+            modalVideo.style.display = 'none';
+            videoModalSource.src = '';
+            document.body.style.overflow = 'auto';
+            document.body.style.overflowX = 'hidden';
+        });
+    </script>
 </body>
 
 </html>

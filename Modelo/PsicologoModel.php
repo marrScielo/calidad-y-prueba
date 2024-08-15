@@ -36,7 +36,10 @@ try {
             echo "<span class='psicologo-tag'>".htmlspecialchars($row["Especialidad"])."</span>";
             echo "</div>";
             if ($video_id) {
-                echo "<iframe width='100%' height='200' src='https://www.youtube.com/embed/$video_id' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+                echo "<div class='psicologo-video-container' style='position:relative;cursor: pointer;'>";
+                echo "<iframe class='psicologo-video' width='100%' height='200' src='https://www.youtube.com/embed/$video_id' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+                echo "<div class='psicologo-video-overlay' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent;'></div>";
+                echo "</div>";
             } else {
                 echo "<p class='psicologo-video-not-found'>Video no disponible.</p>";
             }

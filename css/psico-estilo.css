@@ -1,3 +1,15 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  overflow-x: hidden;
+}
 .search-container {
   text-align: center;
 }
@@ -27,7 +39,8 @@
   display: flex;
   justify-content: space-between;
   background: #fff;
-  max-width: 123.75rem;
+  width: 100vw;
+  overflow-x: hidden;
   margin: 0 auto;
 }
 
@@ -315,5 +328,32 @@
   .pagination a.page-link,
   .pagination span.page-link {
     display: none;
+  }
+}
+
+/*
+    MODAL
+*/
+
+.videoModal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  .close {
+    color: #000;
+    float: right;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-left: 10px;
+    cursor: pointer;
   }
 }
