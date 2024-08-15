@@ -38,7 +38,7 @@ try {
             if ($video_id) {
                 echo "<iframe width='100%' height='200' src='https://www.youtube.com/embed/$video_id' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
             } else {
-                echo "<p>Video no disponible.</p>";
+                echo "<p class='psicologo-video-not-found'>Video no disponible.</p>";
             }
             echo "<p class='psicologo-introduction'>". htmlspecialchars($row["introduccion"]) ."</p>";
             // Botón de WhatsApp con el número del psicólogo

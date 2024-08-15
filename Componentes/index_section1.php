@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Descubre tu mejor versión</title>
     <style>
         :root {
             --color-light: #ffffff;
@@ -138,7 +132,6 @@
         }
         
     </style>
-</head>
 
 <body>
     <section class="hero">
@@ -156,6 +149,3 @@
         </div>
         
     </section>
-</body>
-
-</html>

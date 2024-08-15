@@ -54,7 +54,7 @@
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
 }
 
@@ -95,19 +95,20 @@
 }
 
 .pagination a {
-  color: #007bff;
+  color: #fff;
+  background: #9897d1;
   padding: 8px 16px;
   text-decoration: none;
   transition: background-color 0.3s;
-  border: 1px solid #007bff;
+  border: 1px solid #9897d1;
   margin: 0 5px;
 }
 
 .pagination a.active,
 .pagination a:hover {
-  background-color: #007bff;
+  background-color: #7f7ebf;
   color: white;
-  border-color: #007bff;
+  border-color: #7f7ebf;
 }
 
 .pagination a.disabled {
@@ -165,6 +166,10 @@
 .psicologo-nombre {
   margin: 0;
   transition: color 0.3s, transform 0.3s;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .psicologo-tag {
@@ -180,11 +185,24 @@
 
 .psicologo-introduction {
   text-align: start;
+  flex: 1;
 }
 
 .title {
   font-size: 2em;
   color: #1d7e90;
+}
+
+.psicologo-video-not-found {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background-color: #c0c0ef;
+  color: #721c24;
+  border-radius: 5px;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
