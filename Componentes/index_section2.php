@@ -2,7 +2,7 @@
     <style>
         :root {
             --color-light: #ffffff;
-            --color-light-pink: #f2b8b8;
+            --color-light-pink: #9897d1;
             --color-light-green: #6ed3c7;
             --color-description: #534489;
         }
