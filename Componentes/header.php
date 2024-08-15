@@ -12,12 +12,12 @@
             <span></span>
         </div>
         <div class="header-bar">
-            <div class="search-box">
+            <!-- <div class="search-box">
                 <input type="search">
                 <button>
                     <i class="fas fa-search"></i>
                 </button>
-            </div>
+            </div> -->
             <ul class="nav-links" id="nav-links">
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="Blog.php">Blog</a></li>
