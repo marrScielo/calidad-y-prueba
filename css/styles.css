@@ -8,7 +8,6 @@
   --color-hover-texto: #ffffff;
 }
 
-
 .btn {
   border: none;
   color: white;
@@ -27,7 +26,6 @@
 .bg-azul {
   background-color: #6b93f3;
 }
-
 
 @font-face {
   font-family: "Poppins";
@@ -125,4 +123,7 @@
   src: url("/fonts/Poppins-BlackItalic.ttf") format("truetype");
   font-weight: 900;
   font-style: italic;
+}
+html {
+  font-family: "Poppins";
 }
