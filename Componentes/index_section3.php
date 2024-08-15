@@ -26,12 +26,14 @@
                 margin: 0 auto;
                 max-height: 1500px;
                 background-image: url("ContigoVoyAssets/fondos/comopodemosrecursonuevo.jpg");
-                background-size: cover;
-                background-position-y: -5em;
-                padding: 3em 0;
+                
+                /* padding: 3em 0; */
                 display: flex;
                 flex-flow: column;
                 gap: 1em;
+                background-size: cover;
+                padding-bottom: 7em;
+                padding-top: 7em;
             }
             .section-bg__title {
                 margin: 0 !important;
@@ -42,11 +44,12 @@
                 width: 10em;
             }
             .section-bg__content {
-                padding-top: 0em;
-                padding: 150px;
+                /* padding: 150px; */
                 display: flex;
                 flex-flow: row wrap;
                 gap: 1.5em;
+                width: 90%;
+                align-self: center;
 
             }
             .section-bg__text {
@@ -58,14 +61,15 @@
                 color: var(--darkGreen);
             }
             .section-bg__text h2 {
-                font-size: 30px;
+                font-size: 2.8em;
             }
             .section-bg__text p {
-                font-size: 1.3em;
+                font-size: 1.5em;
+                text-wrap: balance;
             }
             .section-bg__list {
                 flex: 1;
-                padding: 7em 3em;
+                padding: 7em 0em;
                 display: flex;
                 justify-content: center;
             }
@@ -151,7 +155,6 @@
 
             @media (max-width: 900px) {
                 .section-bg__list-content {
-                    padding: 0 20em;
                     grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
                 }
             }
@@ -218,7 +221,7 @@
 
             <div class="section-bg__content">
                 <span class="section-bg__text">
-                    <h2>¿Como podemos ayudarte?</h2>
+                    <h2>¿Cómo podemos ayudarte?</h2>
                     <p>
                         Nuestros psicologos online cuentan con distintas especialidades. Las sesiones se adaptan a las necesidades de cada paciente
                     </p>

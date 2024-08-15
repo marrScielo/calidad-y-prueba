@@ -173,25 +173,29 @@ $especialidades = [
 
     <div class="container-blog">
         <div class="container-right">
-            <h2>Filtrar por Especialidad</h2>
+            <!-- <h2>Filtrar por Especialidad</h2> -->
             <form class="filter-form" id="filter-form">
                 <div class="search-container">
                     <input type="text" id="search-input" placeholder="Buscar...">
-                    <!-- <button type="button" id="search-button">Categoría</button> -->
                 </div>
-                <?php
-                foreach ($especialidades as $especialidad) {
-                    echo '<div class="filter-option">';
-                    echo '<input style="cursor: pointer;" type="checkbox" class="especialidad-checkbox" id="' . htmlspecialchars($especialidad) . '" value="' . htmlspecialchars($especialidad) . '">';
-                    echo '<label for="' . htmlspecialchars($especialidad) . '">' . htmlspecialchars($especialidad) . '</label>';
-                    echo '</div>';
-                }
-                ?>
+
+               <!-- Dropdown para las categorías -->
+                <div class="dropdown">
+                    <button type="button" class="dropbtn">CATEGORÍA &#9660;</button> <!-- Botón desplegable -->
+                    <div class="dropdown-content">
+                        <?php foreach ($especialidades as $especialidad) : ?>
+                            <div class="filter-option">
+                                <input style="cursor: pointer;" type="checkbox" class="especialidad-checkbox" id="<?= htmlspecialchars($especialidad); ?>" value="<?= htmlspecialchars($especialidad); ?>">
+                                <label for="<?= htmlspecialchars($especialidad); ?>"><?= htmlspecialchars($especialidad); ?></label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
             </form>
         </div>
 
         <div class="container-left">
-
             <div id="mensaje-no-blogs" class="mensaje-no-blogs">
                 No se encontraron blogs con la especialidad seleccionada.
             </div>
@@ -241,18 +245,22 @@ $especialidades = [
                     <span class="page-link disabled">&raquo;</span> <!-- Símbolo de siguiente deshabilitado -->
                 <?php endif; ?>
             </div>
-
-
         </div>
     </div>
 
     <?php include 'Componentes/footer_new.php'; ?>
 
-
     <script>
-        document.getElementById('filter-form').addEventListener('change', function() {
+        document.querySelector('.dropbtn').addEventListener('click', function () {
+            const dropdownContent = document.querySelector('.dropdown-content');
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.getElementById('filter-form').addEventListener('change', function () {
             const checkboxes = document.querySelectorAll('.especialidad-checkbox');
-            const selectedEspecialidades = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+            const selectedEspecialidades = Array.from(checkboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
             const searchTerm = document.getElementById('search-input').value.toLowerCase();
 
             // Construir la query string
@@ -263,20 +271,6 @@ $especialidades = [
             if (searchTerm) {
                 queryString += `&search=${encodeURIComponent(searchTerm)}`;
             }
-
-            // Recargar la página con los filtros aplicados
-            window.location.href = window.location.pathname + queryString;
-        });
-
-        document.getElementById('search-button').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevenir el comportamiento predeterminado del botón de envío
-
-            const searchTerm = document.getElementById('search-input').value.toLowerCase();
-            const checkboxes = document.querySelectorAll('.especialidad-checkbox');
-            const selectedEspecialidades = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
-
-            // Construir la query string
-            const queryString = `?page=1&especialidades=${selectedEspecialidades.join(',')}&search=${searchTerm}`;
 
             // Recargar la página con los filtros aplicados
             window.location.href = window.location.pathname + queryString;
