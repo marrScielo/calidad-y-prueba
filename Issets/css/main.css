@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
 :root {
   --color-primary: #49c691;
   --color-danger: #6a91f4;
@@ -57,7 +56,7 @@ html {
 body {
   width: 100vw;
   height: 100vh;
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 0.88rem;
   background: var(--color-background);
   user-select: none;

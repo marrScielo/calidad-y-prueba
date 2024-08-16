@@ -10,14 +10,13 @@ ul {
 }
 
 body {
-  font-family: "Poppins";
+  font-family: "Montserrat";
   background-image: url("../img/blog.jpg");
   background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
   background-position: center; /* Centra la imagen en el contenedor */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
 header {
-  width: 100vw;
   height: 5rem;
   top: 0;
   left: 0;
@@ -70,7 +69,7 @@ header {
 }
 
 .nav-links li a {
-  font-family: "Poppins";
+  font-family: "Montserrat", sans-serif;
   font-size: 1rem;
   text-decoration: none;
   color: #483285;
