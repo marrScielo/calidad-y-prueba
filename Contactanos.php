@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/header-style.css">
     <link rel="stylesheet" href="css/estilos-footer.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="img/Logo.png">
     <title>Contáctanos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
         * {
             padding: 0;
             margin: 0;
-
+            box-sizing: border-box;
         }
 
         .contactanos-contenedor {
@@ -54,7 +54,9 @@
             width: 50%;
             box-sizing: border-box;
         }
-
+        .formulario-contactanos>label{
+            font-family: 'Montserrat', sans-serif;
+        }
         .formulario-contactanos>input,
         .formulario-contactanos #mensaje {
             padding: 0.5rem;
@@ -176,10 +178,10 @@
             background-color: #f7f7f7;
         }
 
-        /* Importación de fuentes */
+        /* Importación de fuentes
         @import url('https://fonts.googleapis.com/css?family=Raleway:300');
         @import url('https://fonts.googleapis.com/css?family=Lusitana:400,700');
-
+ */
 
 
 
@@ -216,7 +218,8 @@
 
         .contacto-formulario .title {
             text-align: center;
-            font-family: Raleway, sans-serif;
+            /* font-family: Raleway, sans-serif; */
+            font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
             letter-spacing: 3px;
             font-size: 36px;
@@ -254,7 +257,8 @@
             height: 36px;
             border-width: 0 0 2px 0;
             border-color: #888;
-            font-family: Lusitana, serif;
+            /* font-family: Lusitana, serif; */
+            font-family: 'Montserrat', sans-serif;
             font-size: 18px;
             line-height: 26px;
             font-weight: 400;
@@ -281,7 +285,8 @@
             position: absolute;
             left: 20px;
             bottom: 11px;
-            font-family: Lusitana, serif;
+            /* font-family: Lusitana, serif; */
+            font-family: 'Montserrat', sans-serif;
             font-size: 18px;
             line-height: 26px;
             font-weight: 400;
@@ -295,7 +300,8 @@
             display: inline-block;
             background-color: #f7b8b9;
             color: #fff;
-            font-family: Raleway, sans-serif;
+            /* font-family: Raleway, sans-serif; */
+            font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-size: 16px;
