@@ -27,12 +27,15 @@
             margin: auto;
             max-width: 1200px;
             color: #534489;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
         }
 
         .parrafo-principal{
             text-wrap: balance;
             padding-top: 2em;
             padding-bottom: 2em;
+            font-size: 1.2em;
         }
 
         .icon-name {
@@ -45,6 +48,7 @@
             display: flex;
             flex-direction: row;
             align-items: center;
+            align-self: center;
         }
 
         .redes ul {
@@ -69,6 +73,85 @@
             height: 100%;
         }
 
+        .email-name {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .container-left{
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            width: 40%;
+        }
+
+        .contact-form {
+            padding: 20px;
+            width: 400px;
+        }
+
+        .contact-form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #524388;
+        }
+
+        .contact-form .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        .contact-form button {
+            padding: 10px;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #524388;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #e0e0e0;
+        }
+
+        @media(max-width: 768px){
+            .container-contact {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .container-left {
+                width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+
+            .contact-form{
+                width: initial;
+            }
+        }
+
+
     </style>
 </head>
 
@@ -79,7 +162,7 @@
             <img src="img/contactanos.JPG" alt="Hero contactanos" width="100%">
         </div>
        <div class="container-contact">
-       <div>
+       <div class="container-left">
             <p class="parrafo-principal">"La psicología es como una lupa para entender 
                 ómo funcionan nuestras mentes y cómo nos 
                 omportamos, y nos da herramientas geniales
@@ -89,8 +172,8 @@
                 <img src="ContigoVoyAssets/recursos/2.png" alt="Luana Farela" width="60px">
                 <p>Luana farela</p>
             </div>
-            <div>
-                <img src="" alt="">
+            <div class="email-name">
+                <img src="img/email.png" alt="email">
                 <p>Luana farela@outlook.com</p>
             </div>
             <div class="redes">
@@ -104,68 +187,26 @@
             </div>
         </div>
         
-    </section>
-    <!-- <section class="contactanos-contenedor">
-        <div class="contactanos-contenido">
-            <div class="texto-contactanos">
-                <h2>Contáctanos</h2>
-                <p>Estamos a su disposición para cualquier duda o consulta. En menos de 24h te respondemos.</p>
-            
-                <img src="img/plus.webp" alt="Imagen de contacto" class="imagen-contacto">
-            </div>
-            <div class="contacto-formulario">
-                <h1 class="title"></h1>
-                <form id="contactForm" class="contact-form row">
-                    <div class="form-field col x-50">
-                        <input id="name" class="input-text js-input" type="text" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" title="Ingresar solo letras">
-                        <label class="label" for="name">Nombre</label>
-                    </div>
-                    <div class="form-field col x-50">
-                        <input id="phone" class="input-text js-input" type="tel" pattern="\d{9}" maxlength="9" required title="Ingresar solo números">
-                        <label class="label" for="phone">Teléfono</label>
-                    </div>
-                    <div class="form-field col x-100">
-                        <input id="email" class="input-text js-input" type="email" required>
-                        <label class="label" for="email">E-mail</label>
-                    </div>
-
-                    <div class="form-field col x-100">
-                        <input id="message" class="input-text js-input" type="text" required>
-                        <label class="label" for="message">Mensaje</label>
-                    </div>
-                    <div class="form-field col x-100 align-center">
-                        <input class="submit-btn" type="submit" value="Enviar Mensaje">
-                    </div>
-                </form>
-            </div>
+        <div>
+            <form class="contact-form">
+                <label for="nombre">Nombre</label>
+                <div class="input-group">
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+                    <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos">
+                </div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email">
+                <label for="comentario">Comentario o mensaje</label>
+                <textarea id="comentario" name="comentario" placeholder="Comentario o mensaje"></textarea>
+                <button type="submit">Enviar</button>
+             </form>
         </div>
-    </section> -->
 
-    <script src="js/navabar.js"></script>
+    </section>
+
 
     <script>
-       /*  document.addEventListener('DOMContentLoaded', function() {
-            const inputs = document.querySelectorAll('.input-text');
 
-            inputs.forEach(input => {
-                // Restaura el estado inicial cuando la página se carga
-                if (input.value.trim() !== '') {
-                    input.classList.add('has-content');
-                } else {
-                    input.classList.remove('has-content');
-                }
-
-                // Maneja el evento de entrada del campo
-                input.addEventListener('input', function() {
-                    if (this.value.trim() !== '') {
-                        this.classList.add('has-content');
-                    } else {
-                        this.classList.remove('has-content');
-                    }
-                });
-            });
-
-        }); */
     </script>
    <!--  <?php include 'Componentes/footer_new.php'; ?> -->
 
