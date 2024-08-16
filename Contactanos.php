@@ -19,6 +19,7 @@
         }
 
         .container-contact{
+            font-family: "Montserrat", sans-serif;
             display: flex;
             flex-direction: row;
             width: 90%;
