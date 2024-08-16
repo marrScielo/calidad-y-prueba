@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Servicio Eficiente - Agilizamos el proceso de acceso a los servicios de psicología, agrupando los mejores psicólogos en una misma plataforma." />
-    <title>Servicio Eficiente - Contigo Voy</title>
+
     <style>
         :root {
             --color-light: #ffffff;
-            --color-light-pink: #f2b8b8;
+            --color-light-pink: #9897d1;
             --color-light-green: #6ed3c7;
             --color-description: #534489;
         }
@@ -132,7 +126,6 @@
             }
         }
     </style>
-</head>
 <body>
     <section class="sectionService">
         <ol class="sliderContainer">
@@ -218,5 +211,3 @@
 
     </script>
 
-</body>
-</html>

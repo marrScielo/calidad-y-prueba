@@ -68,7 +68,7 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="css/header-style.css">
     <link rel="icon" href="img/Logo.png">
     <link rel="stylesheet" href="css/boton-wsp.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
 
 </head>
@@ -87,7 +87,7 @@ if (isset($_GET['id'])) {
 
 
 
-        .blog-post img.image-post {
+        /* .blog-post img.image-post {
             max-width: 100%;
             width: 100% !important;
             background-size: cover;
@@ -95,24 +95,35 @@ if (isset($_GET['id'])) {
             height: 20rem !important;
             border-radius: 3%;
             margin-bottom: 20px;
-        }
+        } */
+         .blog-post img.image-post{
+        float: right;
+        margin-right: 0;
+        margin-left:10px;
+        width: 50%;
+         }
 
-        .blog-post h2 {
-            text-align: center;
+        .blog-post h2 {            
+            text-align: justify;
             font-size: 2em;
             margin: 10px 0;
             color: #000000;
         }
-
+        .contenidos{
+            min-height:250px;
+        }
         .blog-post p {
+            text-align: justify !important;
             font-size: 1em;
             line-height: 1.6;
             color: #666;
             margin: 10px 0;
+            
         }
 
         .blog-post p strong {
             color: #333;
+            
         }
 
         .recommended-articles {
@@ -122,6 +133,7 @@ if (isset($_GET['id'])) {
         }
 
         .recommended-articles h3 {
+            
             font-size: 1.5em;
             margin-bottom: 20px;
             color: #a1a4b2 !important;
@@ -206,7 +218,7 @@ if (isset($_GET['id'])) {
         <span class="especialidad_style"><?php echo htmlspecialchars($post['especialidad']); ?></span>
         <div class="blog-post">
             <h2><?php echo htmlspecialchars($post['tema']); ?></h2>
-            <img loading="lazy" class="image-post" src="<?php echo htmlspecialchars($post['imagen']); ?>" alt="<?php echo htmlspecialchars($post['tema']); ?>">
+            <!-- <img loading="lazy" class="image-post" src="<?php echo htmlspecialchars($post['imagen']); ?>" alt="<?php echo htmlspecialchars($post['tema']); ?>">  -->
             <hr>
             <div class="container_fecha">
                 <p>Publicado: <?php echo htmlspecialchars($fechaFormateada); ?></p>
@@ -224,8 +236,10 @@ if (isset($_GET['id'])) {
 
             <!-- <hr> -->
             <br />
+            <img loading="lazy" class="image-post" src="<?php echo htmlspecialchars($post['imagen']); ?>" alt="<?php echo htmlspecialchars($post['tema']); ?>">
             <h2><?php echo htmlspecialchars($post['tema']); ?></h2>
-            <p class="content_blog"><?php echo ($post['descripcion']); ?></p>
+            <p class="content_bg contenidos"><?php echo ($post['descripcion']); ?></p> 
+
         </div>
         <!-- <hr> -->
         <br />

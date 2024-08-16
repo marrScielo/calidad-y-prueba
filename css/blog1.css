@@ -65,18 +65,47 @@
   border: 2px solid #fff;
 }
 
+/* Estilo para los checkboxes */
 .filter-option input[type="checkbox"] {
-  margin-right: 10px;
-  transform: scale(1.2);
+    margin-right: 10px;
+    transform: scale(1.2);
+    appearance: none; /* Eliminamos el estilo predeterminado */
+    width: 14px;
+    height: 14px;
+    border: 2px solid #534489;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
 }
+
+/* Estilo para el checkbox cuando está marcado */
+.filter-option input[type="checkbox"]:checked {
+    background-color: #534489;
+    border: 2px solid #534489;
+}
+
+.filter-option input[type="checkbox"]:checked::before {
+    content: '\2713'; /* Símbolo de check */
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+}
+
+
+
+
 .filter-option label {
   font-size: 1em;
-  color: #57bab5;
+  color: #9897d1;
   font-weight: 400;
   transition: color 0.3s;
 }
 .filter-option:hover label {
-  color: #63d3c7;
+  color: #534489;
   cursor: pointer;
 }
 
@@ -220,6 +249,76 @@
   pointer-events: none; /* Desactiva los botones de Anterior/Siguiente si no se puede avanzar */
   opacity: 0.5; /* Reduce la opacidad */
 }
+
+/* Estilo para el contenedor del dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+
+/* Estilo para el botón del dropdown */
+.dropbtn {
+  background-color: #534489;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border-radius: 5px;
+}
+
+/* Contenedor del contenido del dropdown */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(233, 232, 232);
+  min-width: 100%;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  max-height: 480px; /* Controla la altura del dropdown */
+  overflow-y: auto;
+  border-radius: 5px;
+  padding: 5px 0;
+}
+
+/* Mostrar el contenido cuando se hace clic */
+.dropdown.active .dropdown-content {
+  display: block;
+}
+
+/* Estilo para las opciones dentro del dropdown */
+.filter-option {
+  padding: 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* Estilo para las opciones cuando se seleccionan */
+.filter-option:hover {
+  background-color: #adacdbcb;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .dropbtn {
+      font-size: 14px;
+      padding: 8px;
+  }
+
+  .dropdown-content {
+      max-height: 150px;
+  }
+
+  .filter-option {
+      padding: 8px;
+  }
+}
+
 
 
 @media (min-width: 768px) {

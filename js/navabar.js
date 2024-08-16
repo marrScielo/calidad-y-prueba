@@ -3,10 +3,13 @@ document.getElementById("menu-icon").addEventListener("click", function () {
   navLinks.classList.toggle("active");
 });
 
-$(".js-input").keyup(function () {
-  if ($(this).val()) {
-    $(this).addClass("not-empty");
-  } else {
-    $(this).removeClass("not-empty");
-  }
-});
+// COMENTADO PORQUE GENERA ERROR EN LA CONSOLA
+// TODO: Revisar si se necesita
+
+// $(".js-input").keyup(function () {
+//   if ($(this).val()) {
+//     $(this).addClass("not-empty");
+//   } else {
+//     $(this).removeClass("not-empty");
+//   }
+// });

@@ -186,7 +186,7 @@ if (isset($_SESSION['NombrePsicologo'])){
                     <div class="input-group-modal">
                         <h3 for="motivo">Motivo de la Consutla <b style="color:red">*</b></h3>
                         <textarea
-                            style="resize: none; padding: 1.2em 1em 2.8em 1em;font-family: 'Poppins', sans-serif;	font-size: 14px;"
+                            style="resize: none; padding: 1.2em 1em 2.8em 1em;font-family: 'Montserrat', sans-serif;	font-size: 14px;"
                             type="text" id="motivo" name="motivo" required><?=$row['2']?></textarea>
                     </div>
                     <br>
