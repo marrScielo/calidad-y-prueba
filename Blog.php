@@ -19,10 +19,25 @@ $totalBlogs = $blogControlador->getTotalBlogs($especialidadesSeleccionadas, $sea
 $totalPages = ceil($totalBlogs / $limit);
 
 $especialidades = [
-    "Adicciones", "Ansiedad", "Atención", "Autoestima", "Crianza",
-    "Depresión", "Enfermedades Cronicas", "Estrés", "Impulsividad", "Top",
-    "Ira", "Terapia de Pareja", "Sexualidad", "Traumas", "Riesgo Suicida",
-    "Sentido de vida", "Orientación Vocacional", "Problemas de sueño", "Problemas alimenticios",
+    "Adicciones",
+    "Ansiedad",
+    "Atención",
+    "Autoestima",
+    "Crianza",
+    "Depresión",
+    "Enfermedades Cronicas",
+    "Estrés",
+    "Impulsividad",
+    "Top",
+    "Ira",
+    "Terapia de Pareja",
+    "Sexualidad",
+    "Traumas",
+    "Riesgo Suicida",
+    "Sentido de vida",
+    "Orientación Vocacional",
+    "Problemas de sueño",
+    "Problemas alimenticios",
     "Relaciones Interpersonales"
 ];
 ?>

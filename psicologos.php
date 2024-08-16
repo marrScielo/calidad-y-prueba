@@ -74,8 +74,8 @@
                     echo "<span class='next disabled'>Siguiente &raquo;</span>";
                 }
                 ?>
-            </div>
         </div>
+    </div>
     </div>
 
     <script>
