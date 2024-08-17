@@ -33,11 +33,6 @@
      <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-
-   
-
-   
-
     <script src="js/navabar.js"></script>
 </body>
 

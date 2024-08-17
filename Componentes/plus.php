@@ -70,6 +70,7 @@
         }
 
         .text-p {
+            text-wrap: balance;
             color: #fff;
             font-size: 1.5em;
         }
@@ -115,7 +116,7 @@
         }
 
         .cta-button {
-           
+            font-family: Montserrat, sans-serif;
             display: inline-block;
             padding: 10px 20px;
             background-color: #9897d1;
