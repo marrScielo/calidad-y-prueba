@@ -165,8 +165,8 @@
        <div class="container-contact">
        <div class="container-left">
             <p class="parrafo-principal">"La psicología es como una lupa para entender 
-                ómo funcionan nuestras mentes y cómo nos 
-                omportamos, y nos da herramientas geniales
+                cómo funcionan nuestras mentes y cómo nos 
+                comportamos, y nos da herramientas geniales
                 para mejorar nuestra vida y nuestras relaciones."
             </p>
             <div class="icon-name">

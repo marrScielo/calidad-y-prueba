@@ -40,7 +40,7 @@
                 <?php include 'Modelo/PsicologoModel.php'; ?>
             </div>
 
-            <<div class="pagination">
+            <div class="pagination">
                 <?php
                 // Parámetros de paginación
                 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
