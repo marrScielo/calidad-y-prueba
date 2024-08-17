@@ -112,24 +112,25 @@
         }
         @media (max-width: 1920px) {
             .info{                
-                top:-70px;                
-            } 
-        
-        @media (max-width:390px)  {
-            
-            .info{
-                top:50%;
-                left:5px;
+                top:-70px; 
             }
-        }   
+        }
+        
+         @media (max-width: 1300px) {
+            .info{                
+                top:auto; 
+                left: 300px;
+            }
+         }
+        
         @media (max-width:900px) {
             .info{
-                left: 5px;
-                top:50%;
+                left: auto;
+                top:auto;
             }
             
         }    
-        }
+        
         
     </style>
 
