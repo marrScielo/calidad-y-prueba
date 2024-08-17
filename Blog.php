@@ -313,7 +313,7 @@ $especialidades = [
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="js/filtroEspecialidadBlog.js"></script>
+    <!-- <script src="js/filtroEspecialidadBlog.js"></script> -->
 </body>
 
 </html>
