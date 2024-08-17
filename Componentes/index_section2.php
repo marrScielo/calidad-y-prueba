@@ -15,7 +15,7 @@
 
         body, html {
             scroll-behavior: smooth;
-            font-family: Arial, sans-serif;
+            font-family: "Montserrat", sans-serif;
         }
 
         .sectionService {
