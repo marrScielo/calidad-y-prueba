@@ -53,7 +53,7 @@ $total_pages = ceil($total_rows / $records_per_page);
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: "Montserrat", sans-serif;
             background-color: #f4f4f9;
             margin: 0;
             padding: 0;

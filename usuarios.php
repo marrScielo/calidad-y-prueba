@@ -54,7 +54,7 @@ if(isset($_SESSION['logeado'])){
         body, html {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: "Montserrat", sans-serif;
         }
 
         /* Estilos para el contenedor principal */
