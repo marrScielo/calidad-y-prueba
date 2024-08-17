@@ -116,7 +116,7 @@
 
   .redes ul li {
     width: 35px;
-    height: 80%;
+    height: 35px;
     background-color: white;
     border-radius: 100%;
   }
@@ -166,9 +166,8 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    margin: 0 10px;
     gap: 10px;
-    font-family: 'Montserrat Medium';
+    font-family: 'Montserrat';
   }
 
   .nosotros .textosup {
@@ -178,7 +177,7 @@
   }
 
   .nosotros .textoinf {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .logoo img {
@@ -266,6 +265,13 @@
       margin: 10px 0;
     }
 
+    .nosotros .textosup{
+      font-size: 18px;
+    }
+
+    .nosotros .textoinf{
+      font-size: 12px;
+    }
   }
 
   @media only screen and (min-width: 481px) and (max-width: 768px) {
