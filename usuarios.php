@@ -49,178 +49,8 @@ if(isset($_SESSION['logeado'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuarios</title>
     <link rel="icon" href="img/Logo.png">
-    <style>
-        /* Estilos generales */
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: "Montserrat", sans-serif;
-        }
-
-        /* Estilos para el contenedor principal */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Estilos para el formulario de búsqueda */
-        .search-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .search-container input[type=text] {
-            padding: 10px;
-            width: 300px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .search-container input[type=submit] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .search-container input[type=submit]:hover {
-            background-color: #45a049;
-        }
-
-        /* Estilos para la tabla de usuarios */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f4f4f4;
-        }
-
-        /* Estilos para el formulario de CRUD */
-        .form-container {
-            margin-bottom: 30px;
-        }
-
-        .form-container form {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        .form-container form input[type=text], 
-        .form-container form input[type=password], 
-        .form-container form input[type=url],
-        .form-container form select,
-        .form-container form textarea {
-            padding: 10px;
-            width: 48%;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .form-container form input[type=submit] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .form-container form input[type=submit]:hover {
-            background-color: #45a049;
-        }
-
-        /* Estilos para las acciones */
-        .acciones {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .acciones form {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-
-        .acciones form input[type=submit] {
-            width: auto;
-            padding: 5px 10px;
-            margin-top: 5px;
-        }
-
-        .acciones form input[type=submit]:hover {
-            background-color: #45a049;
-        }
-
-        .acciones form select,
-        .acciones form input[type=text],
-        .acciones form input[type=password],
-        .acciones form input[type=url],
-        .acciones form textarea
-        {
-            padding: 5px;
-            margin-top: 5px;
-            width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .logout-button {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
-        }
-
-        .logout-button form input[type=submit] {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .logout-button form input[type=submit]:hover {
-            background-color: #c0392b;
-        }
-
-        .gestion-contactenos-btn {
-            background-color: #f45231; /* Green */
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/usuarios.css">
 </head>
 <body>
     <div class="container">
@@ -230,9 +60,7 @@ if(isset($_SESSION['logeado'])){
                 <input type="submit" value="Cerrar sesión">
             </form>
         </div>
-
         <a href="gestion_contactanos.php" class="gestion-contactenos-btn">Gestionar Contactenos</a>
-
         <div class="search-container">
             <form action="usuarios.php" method="GET">
                 <input type="text" placeholder="Buscar por email" name="email">
@@ -300,7 +128,7 @@ if(isset($_SESSION['logeado'])){
                             <input type="text" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" required>
                             <input type="password" name="password" value="<?= htmlspecialchars($usuario['password']) ?>" required>
                             <input type="url" name="fotoPerfil" value="<?= htmlspecialchars($usuario['fotoPerfil']) ?>" required>
-                            <select name="rol" required onchange="toggleIntroduccion(this)">
+                            <select name="rol" required onchange="toggleShowLabelsPyscho(this)">
                                 <option value="psicologo" <?= $usuario['rol'] == 'psicologo' ? 'selected' : '' ?>>Psicologo</option>
                                 <option value="paciente" <?= $usuario['rol'] == 'paciente' ? 'selected' : '' ?>>Paciente</option>
                                 <option value="administrador" <?= $usuario['rol'] == 'administrador' ? 'selected' : '' ?>>Administrador</option>
@@ -323,7 +151,6 @@ if(isset($_SESSION['logeado'])){
     </div>
 </body>
 <script>
-    console.log('Hola desde el script');
     const rolNewUser = document.getElementById('rol_new_user');
     const specialityNewUser = document.getElementById('speciality_new_user');
     const introduccionNewUser = document.getElementById('introduccion_new_user');
@@ -339,7 +166,7 @@ if(isset($_SESSION['logeado'])){
         }
     });
 
-    function toggleIntroduccion(selectElement) {
+    function toggleShowLabelsPyscho(selectElement) {
         let userId = selectElement.parentElement.querySelector('input[name="id"]').value;
         let introduccionField = document.getElementById('introduccion_user_' + userId);
         let especialidadField = document.getElementById('especialidad_user_' + userId);
