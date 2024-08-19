@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="img/Logo.png">
     <!--  Estilos propios -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/header-style.css">
     <link rel="stylesheet" href="css/estilos-footer.css">
+    
     <link rel="stylesheet" href="css/psico-estilo.css">
-    <link rel="icon" href="img/Logo.png">
     <link rel="stylesheet" href="css/boton-wsp.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- Google fonts -->
-
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Psicologos</title>
     <meta name="description" content="Reserva tu cita con nuestro psicólogo profesional. Encuentra información sobre su especialidad, contacto y disponibilidad. Comienza tu camino hacia el bienestar emocional con una consulta personalizada.">
 </head>
@@ -80,7 +80,14 @@
         </div>
     </div>
     </div>
-
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/51915205726" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <?php 
+        include_once 'Componentes/footer_new.php';
+        include_once 'modales/modal-video.php';
+    ?>
     <script>
         document.getElementById("searchButton").addEventListener("click", function() {
             var input = document.getElementById("searchInput").value.toUpperCase();
@@ -98,15 +105,6 @@
             }
         });
     </script>
-
-    <!-- Botón flotante de WhatsApp -->
-    <a href="https://wa.me/51915205726" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    <?php 
-        // include_once 'Componentes/footer_new.php';
-        include_once 'modales/modal-video.php';
-    ?>
     <script src="js/navabar.js"></script>
     <script>
         let linkVideoSelected = '';
@@ -121,7 +119,8 @@
                 return;
             }
             const video = e.target.previousElementSibling;
-            videoModalSource.src = video.src+'?autoplay=1';
+            // videoModalSource.src = video.src+'?autoplay=1';
+            videoModalSource.src = video.src;
             modalVideo.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         });
