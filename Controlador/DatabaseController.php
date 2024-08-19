@@ -1,18 +1,11 @@
 <?php
-
+require_once __DIR__.'/../config/credenciales-db.php';
 class DatabaseController {
-    // hosting
-    // private $servername = "localhost";
-    // private $username = "ghxumdmy_psicologoapk";
-    // private $password = "Psicologo123";
-    // private $database = "ghxumdmy_psicologia";
-    // private $conn;
-
-    //local
-    private $servername = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $database = "contigovoy3";
+    
+    private $servername = CONFIG_DB['servername'];
+    private $username = CONFIG_DB['username'];
+    private $password = CONFIG_DB['password'];
+    private $database = CONFIG_DB['database'];
     private $conn;
 
     public function __construct() {
@@ -29,5 +22,3 @@ class DatabaseController {
         return $this->conn;
     }
 }
-
-?>

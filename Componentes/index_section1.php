@@ -1,8 +1,7 @@
 
     <style>
-        :root {
+        /* :root {
             --color-light: #ffffff;
-            --color-light-pink: #f2b8b8;
         }
 
         * {
@@ -14,8 +13,8 @@
         body,
         html {
             scroll-behavior: smooth;
-            font-family: Arial, sans-serif;
-        }
+            font-family: "Montserrat", sans-serif;
+        } */
 
         .hero {
             padding-top: 100px;
@@ -72,14 +71,6 @@
         }
 
         .hero__title {
-            /* -webkit-text-stroke: 1px black;
-            color: white;
-            text-shadow:
-                2px 2px 0 #000,
-                -1px -1px 0 #000,
-                1px -1px 0 #000,
-                -1px 1px 0 #000,
-                1px 1px 0 #000; */
             font-size:3.5em;
             margin: 0;
             padding: 0;
@@ -112,28 +103,28 @@
         }
         @media (max-width: 1920px) {
             .info{                
-                top:-70px;                
-            } 
-        
-        @media (max-width:390px)  {
-            
-            .info{
-                top:50%;
-                left:5px;
+                top:-70px; 
             }
-        }   
+        }
+        
+         @media (max-width: 1300px) {
+            .info{                
+                top:auto; 
+                left: 300px;
+            }
+         }
+        
         @media (max-width:900px) {
             .info{
-                left: 5px;
-                top:50%;
+                left: auto;
+                top:auto;
             }
             
         }    
-        }
+        
         
     </style>
 
-<body>
     <section class="hero">
         <div class="hero__content">
             <h1 class="hero__title">

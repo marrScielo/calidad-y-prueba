@@ -1,9 +1,7 @@
+
 .descripcion-blog {
-  /* color: #57bab5; */
   width: 85%;
   margin: 0 auto;
-  
-
 }
 
 .descripcion-blog h1 {
@@ -11,11 +9,10 @@
   text-align: center;
   font-size: 3em;
   text-transform: uppercase;
-  
 }
+
 .descripcion-blog p {
   padding: 1.5rem;
-  /* background-color: #f6f6f6; */
   color: #ffffff;
   font-weight: 400;
   line-height: normal;
@@ -33,83 +30,85 @@
 }
 
 .container-right {
-  flex: 1; /* Toma 1 parte del espacio disponible */
-  background-color: #f8f9fa;
+  flex: 1;
+  
   transition: background-color 0.3s;
 }
-.container-right h2 {
-  color: #1d7e90;
-  font-weight: 600;
-  font-size: 1.5em;
-  margin-bottom: 20px;
-  text-align: center;
-}
+
 
 .container-left {
   padding: 20px;
   flex: 3;
-  /* background-color: #f8f9fa; */
   transition: background-color 0.3s;
 }
+
 .filter-form {
   margin: 1rem 1rem 2rem 1rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.5rem;
-  max-height: none; /* Cambiado de '0' a 'none' para evitar restricciones de altura */
+  max-height: none;
 }
+
+
+
+
 .filter-option {
   display: flex;
   align-items: center;
   padding: 0.3rem 0.3rem;
   border: 2px solid #fff;
+  overflow: hidden;
 }
 
-/* Estilo para los checkboxes */
 .filter-option input[type="checkbox"] {
-    margin-right: 10px;
-    transform: scale(1.2);
-    appearance: none; /* Eliminamos el estilo predeterminado */
-    width: 14px;
-    height: 14px;
-    border: 2px solid #534489;
-    border-radius: 3px;
-    cursor: pointer;
-    position: relative;
+  margin-right: 10px;
+  background-color: #fff;
+  transform: scale(1.2);
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #534489;
+  cursor: pointer;
+  position: relative;
 }
 
-/* Estilo para el checkbox cuando está marcado */
 .filter-option input[type="checkbox"]:checked {
-    background-color: #534489;
-    border: 2px solid #534489;
+  background-color: #534489;
+  border: 1px solid #534489;
 }
 
 .filter-option input[type="checkbox"]:checked::before {
-    content: '\2713'; /* Símbolo de check */
-    color: white;
-    font-weight: bold;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 16px;
+  content: '\2713';
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
 }
-
-
-
 
 .filter-option label {
   font-size: 1em;
   color: #9897d1;
   font-weight: 400;
   transition: color 0.3s;
+  overflow: hidden;
+  white-space: normal; /* Permitir el ajuste en múltiples líneas */
+  word-wrap: break-word; /* Ajuste de palabras para evitar desbordamiento */
+  flex: 1;
 }
+
 .filter-option:hover label {
   color: #534489;
   cursor: pointer;
 }
 
-/* Estilos específicos para los posts del blog */
+
+
+
+
 .blog-posts {
   display: flex;
   justify-content: center;
@@ -120,13 +119,15 @@
 .blog-post {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   border-radius: 10px;
-  flex: 0 1 calc(30% - 20px); /* Calcula el ancho para cuatro columnas */
+  flex: 0 1 calc(30% - 20px);
   background-color: #fff;
-  transition: transform 0.2s; /* Transición suave al pasar el ratón */
+  transition: transform 0.2s;
 }
+
 .blog-post:hover {
   transform: scale(1.05);
 }
+
 .blog-post img {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -135,6 +136,7 @@
   background-size: cover;
   margin-bottom: 10px;
 }
+
 .blog-post h2 {
   text-align: start;
   color: #534489;
@@ -144,15 +146,18 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
 .blog-post h2:hover {
   color: #9897d1;
 }
+
 .blog-post p {
   color: #777a7c;
   margin-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
 }
+
 .mensaje-no-blogs {
   display: none;
   text-align: center;
@@ -189,7 +194,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  justify-content: center; /* Centra el contenedor de búsqueda */
+  justify-content: center;
 }
 
 .search-container input[type="text"] {
@@ -220,22 +225,22 @@
 }
 
 .pagination .page-link {
-  color: #534489; /* Color para los números no seleccionados */
+  color: #534489;
   padding: 10px;
   text-decoration: none;
   border: 2px solid #534489;
   margin: 0 5px;
-  border-radius: 50%; /* Hace que la forma sea circular */
-  width: 25px; /* Ancho del círculo */
-  height: 25px; /* Altura del círculo */
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold; /* Texto más grueso */
+  font-weight: bold;
 }
 
 .pagination .page-link.active {
-  color: white; /* Color para el número seleccionado */
+  color: white;
   background-color: #534489;
   border: 2px solid #534489;
 }
@@ -246,103 +251,152 @@
 }
 
 .pagination .disabled {
-  pointer-events: none; /* Desactiva los botones de Anterior/Siguiente si no se puede avanzar */
-  opacity: 0.5; /* Reduce la opacidad */
+  pointer-events: none;
+  opacity: 0.5;
 }
 
-/* Estilo para el contenedor del dropdown */
 .dropdown {
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: 98%;
+  background-color: #ffffff;
+  padding: 7px;
+  border-radius: 5px;
 }
 
-
-/* Estilo para el botón del dropdown */
 .dropbtn {
-  background-color: #534489;
+  background-color: #a19ebb;
   color: white;
   padding: 10px;
   font-size: 16px;
+  font-weight: bold;
   border: none;
   cursor: pointer;
   width: 100%;
   text-align: left;
   border-radius: 5px;
+
+  display: flex;
+  justify-content: space-between; /* Distribuye espacio entre el texto y la flecha */
+  align-items: center; /* Centra verticalmente el texto y la flecha */
 }
 
-/* Contenedor del contenido del dropdown */
+.arrow {
+  margin-left: 10px; /* Espacio entre el texto y la flecha */
+  font-size: 16px; /* Tamaño inicial de la flecha */
+}
+
 .dropdown-content {
   display: none;
-  position: absolute;
-  background-color: rgb(233, 232, 232);
+  background-color: rgb(231, 231, 231);
   min-width: 100%;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  max-height: 480px; /* Controla la altura del dropdown */
+  max-height: 475px;
   overflow-y: auto;
   border-radius: 5px;
   padding: 5px 0;
+  box-sizing: border-box;
+  scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
+  -ms-overflow-style: none; /* Oculta la barra de desplazamiento en IE y Edge */
 }
 
-/* Mostrar el contenido cuando se hace clic */
+.dropdown-content::-webkit-scrollbar {
+  display: none; /* Oculta la barra de desplazamiento en Chrome, Safari y Opera */
+}
+
+
 .dropdown.active .dropdown-content {
   display: block;
 }
 
-/* Estilo para las opciones dentro del dropdown */
-.filter-option {
-  padding: 10px;
-  text-align: left;
-  white-space: nowrap;
+.dropdown.active .dropbtn {
+  width: 100%; /* Asegura que el botón se ajuste al ancho del dropdown */
 }
 
-/* Estilo para las opciones cuando se seleccionan */
-.filter-option:hover {
-  background-color: #adacdbcb;
+.dropdown.active + .container-right {
+  height: calc(100% - 480px); /* Ajusta el tamaño de .container-right según el dropdown */
 }
 
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .dropbtn {
-      font-size: 14px;
-      padding: 8px;
-  }
-
-  .dropdown-content {
-      max-height: 150px;
-  }
-
-  .filter-option {
-      padding: 8px;
-  }
+.dropdown + .container-right {
+  height: 100%; /* Ajusta el tamaño de .container-right cuando el dropdown está cerrado */
 }
-
-
 
 @media (min-width: 768px) {
   .container-blog {
     flex-direction: row;
   }
+
   .filter-form {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
+
   .container-rosado {
     padding: 0 1rem;
+  }
+  .dropdown{
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .blog-posts {
     display: grid;
-    grid-template-columns: repeat(
-      1,
-      1fr
-    ); /* Una columna para dispositivos móviles */
-    gap: 20px; /* Espacio entre columnas */
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
   }
-  .blog-post {
-    padding: 0 1rem; /* Espaciado horizontal para cada blog */
+
+  .dropdown {
+    display: none;
   }
 }
+
+@media (max-width: 550px) {
+  .dropdown {
+    display: none;
+  }
+}
+
+
+.container-right {
+  flex: 1;
+  transition: background-color 0.3s;
+  overflow: hidden; /* Asegura que el contenido no se desborde */
+  word-wrap: break-word; /* Ajusta las palabras largas para que se quiebren en la línea siguiente */
+}
+
+.container-right p {
+  overflow: hidden; /* Oculta cualquier contenido desbordado */
+  text-overflow: ellipsis; /* Añade "..." si el texto se desborda */
+  white-space: normal; /* Permite el ajuste del texto en múltiples líneas */
+  word-wrap: break-word; /* Ajuste de palabras para evitar desbordamiento */
+}
+
+@media (max-width: 872px) {
+  .container-right {
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    padding: 15px; /* Ajusta el padding para pantallas pequeñas */
+    margin-left: auto; /* Empuja el input hacia la derecha */
+    margin-right: 0;
+  }
+
+  .container-right p {
+    font-size: 0.9em; /* Reduce el tamaño del texto para evitar desbordamiento */
+    line-height: 1.4em; /* Asegura una buena legibilidad */
+  }
+
+  .dropbtn {
+    font-size: 14px; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+    padding: 8px; /* Ajusta el relleno para pantallas más pequeñas */
+  }
+  
+  .arrow {
+    font-size: 14px; /* Ajusta el tamaño de la flecha en pantallas más pequeñas */
+    margin-left: 1px; /* Reduce el espacio entre el texto y la flecha */
+  }
+
+  .search-container input[type="text"] {
+    margin-left: auto; /* Empuja el input hacia la derecha */
+    margin-right: 0;
+  }
+}
+

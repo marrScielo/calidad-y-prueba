@@ -1,156 +1,158 @@
 :root {
-  --text-color: #534489;
-  --old-text-color: #56b9b3;
-}
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+    --text-color: #534489;
+    --old-text-color: #56b9b3;
 }
 
 body {
-  font-family: "Montserrat";
-  background-image: url("../img/blog.jpg");
-  background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
-  background-position: center; /* Centra la imagen en el contenedor */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-image: url('../img/blog.jpg');
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+    background-position: center; /* Centra la imagen en el contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    margin: 0;
+    padding: 0;
 }
 header {
-  height: 5rem;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  z-index: 99;
-  position: sticky;
-  transition: background-color 0.3s ease;
+    height: 80px;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 99;
+    position: sticky;
+    transition: background-color 0.3s ease;
+
+    width: 100%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Añade sombra para dar más contraste */
+}
+main {
+    margin-top: 80px; /* Ajusta el contenido para evitar que se superponga con el header */
+    padding: 16px;
 }
 
 .main-header-navigation {
-  max-width: 1980px;
-  height: 100%;
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    max-width: 1980px;
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .main-header-logo {
-  display: block;
-  height: 4rem;
+    display: block;
+    height: 64px;
 }
 .main-header-logo img {
-  height: 100%;
-  margin: 0;
+    height: 100%;
+    margin: 0;
 }
 
 .header-menu-icon {
-  display: none;
-  flex-direction: column;
-  gap: 0.3rem;
-  cursor: pointer;
-  margin-right: 1rem;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+    margin-right: 16px;
 }
 
 .header-menu-icon span {
-  height: 0.25rem;
-  width: 2.5rem;
-  border-radius: 0.5rem;
-  background-color: var(--text-color);
-  transition: 0.4s;
+    height: 4px;
+    width: 40px;
+    border-radius: 0.5rem;
+    background-color: var(--text-color);
+    transition: 0.4s;
 }
 
 .nav-links {
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .nav-links li a {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-  text-decoration: none;
-  color: #483285;
-  display: inline-block;
-  transition: 0.3s ease-in-out;
-  padding: 0.5rem 0.5rem;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #483285;
+    display: inline-block;
+    transition: 0.3s ease-in-out;
+    padding: 0.5rem 0.5rem;
 }
 
 .nav-links li a:hover {
-  color: var(--text-color);
+    color: var(--text-color);
 }
 
 /* Al hacer scroll hacia abajo */
 header.scrolled {
-  border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
 }
 
 .header-bar {
-  display: flex;
-  flex-direction: column;
-  @media (max-width: 768px) {
-    position: absolute;
-  }
-  .search-box {
-    padding-right: 1.8rem;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 0.5rem;
+    flex-direction: column;
     @media (max-width: 768px) {
-      display: none;
+        position: absolute;
     }
-    input {
-      padding: 0.2rem 1rem;
-      border: 1px solid #e8e8e8;
-      border-radius: 0.5rem;
-      width: 250px;
-      font-size: 1rem;
-      color: var(--text-color);
+    .search-box {
+        padding-right: 1.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.5rem;
+        @media (max-width: 768px) {
+            display: none;
+        }
+        input {
+            padding: 0.2rem 1rem;
+            border: 1px solid #e8e8e8;
+            border-radius: 0.5rem;
+            width: 250px;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        button {
+            border: none;
+            border-radius: 0.5rem;
+            background: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
     }
-    button {
-      border: none;
-      border-radius: 0.5rem;
-      background: none;
-      color: var(--text-color);
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-  }
 }
 
 @media (max-width: 768px) {
-  .header-menu-icon {
-    display: flex; /* Mostrar el icono del menú en pantallas pequeñas */
-  }
+    .header-menu-icon {
+        display: flex; /* Mostrar el icono del menú en pantallas pequeñas */
+    }
 
-  .nav-links {
-    position: fixed;
-    display: none;
-    top: 4rem;
-    left: 0;
-    flex-direction: column;
-    width: 100vw;
-    background-color: #ffffff;
-    z-index: 10;
-  }
+    .nav-links {
+        position: fixed;
+        display: none;
+        top: 4rem;
+        left: 0;
+        flex-direction: column;
+        width: 100vw;
+        background-color: #ffffff;
+        z-index: 10;
+    }
 
-  .nav-links.active {
-    display: flex;
-  }
+    .nav-links.active {
+        display: flex;
+    }
 
-  .nav-links li {
-    margin-right: 0; /* Quitar el margen entre los elementos del menú en pantallas pequeñas */
-    width: 100%;
-  }
+    .nav-links li {
+        margin-right: 0; /* Quitar el margen entre los elementos del menú en pantallas pequeñas */
+        width: 100%;
+    }
 
-  .nav-links li a {
-    text-align: center;
-    font-size: 10px;
-    padding: 0.5rem; /* Espaciado interno de los enlaces en pantallas pequeñas */
-    width: 100%;
-    display: block;
-  }
+    .nav-links li a {
+        text-align: center;
+        font-size: 10px;
+        padding: 0.5rem; /* Espaciado interno de los enlaces en pantallas pequeñas */
+        width: 100%;
+        display: block;
+    }
 }

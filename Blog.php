@@ -51,6 +51,7 @@ $especialidades = [
     <title>Blog</title>
     <meta name="description" content="Explora nuestro blog donde psicólogos profesionales comparten artículos, consejos y recursos sobre salud mental, bienestar emocional, terapia y más. Mantente informado y mejora tu calidad de vida con nuestros contenidos especializados.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/header-style.css">
     <link rel="stylesheet" href="css/blog1.css">
@@ -196,7 +197,7 @@ $especialidades = [
 
                <!-- Dropdown para las categorías -->
                 <div class="dropdown">
-                    <button type="button" class="dropbtn">CATEGORÍA &#9660;</button> <!-- Botón desplegable -->
+                    <button type="button" class="dropbtn">CATEGORÍA <span class="arrow">&#9660;</span></button> <!-- Botón desplegable -->
                     <div class="dropdown-content">
                         <?php foreach ($especialidades as $especialidad) : ?>
                             <div class="filter-option">
@@ -268,8 +269,15 @@ $especialidades = [
     <script>
         document.querySelector('.dropbtn').addEventListener('click', function () {
             const dropdownContent = document.querySelector('.dropdown-content');
-            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-        });
+            // dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+            if (dropdownContent.style.display === 'block') {
+                dropdownContent.style.display = 'none';
+                containerRight.style.height = '100%';
+            } else {
+                dropdownContent.style.display = 'block';
+                containerRight.style.height = `calc(100% - ${dropdownContent.clientHeight}px)`;
+            }
+            });
 
         document.getElementById('filter-form').addEventListener('change', function () {
             const checkboxes = document.querySelectorAll('.especialidad-checkbox');
@@ -305,7 +313,7 @@ $especialidades = [
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="js/filtroEspecialidadBlog.js"></script>
+    <!-- <script src="js/filtroEspecialidadBlog.js"></script> -->
 </body>
 
 </html>

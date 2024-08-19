@@ -3,9 +3,9 @@
     <nav class="main-header-navigation">
         <div class="main-header-navigation__container u-container logo1">
             <a href="https://contigo-voy.com/" class="main-header-logo">
-                <img src="img/logo.gif" alt="Contigo Voy" class="main-header-logo__image logo-img">
+                <img src="img/logo.gif" alt="Contigo Voy" class="main-header-logo__image ">
             </a>
-        </div>
+        </div>  
         <div class="header-menu-icon" id="menu-icon">
             <span></span>
             <span></span>
