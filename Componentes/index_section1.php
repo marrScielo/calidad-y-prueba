@@ -125,7 +125,6 @@
         
     </style>
 
-<body>
     <section class="hero">
         <div class="hero__content">
             <h1 class="hero__title">

@@ -126,7 +126,6 @@
             }
         }
     </style>
-<body>
     <section class="sectionService">
         <ol class="sliderContainer">
             <li class="sliderContainer__slide">

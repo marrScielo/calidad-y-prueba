@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
     <style>
         /* Variables de color */
         /* :root {
@@ -99,9 +94,7 @@
 
         /* Media Queries */
         @media (max-width: 1250px) {
-            html, body {
-                font-size: 0.8em;
-            }
+            
             .section-bg {
                 background-position-x: -0.5em;
             }
@@ -203,8 +196,6 @@
             }
         }
     </style>
-</head>
-<body>
     <section class="section-bg">
         <div class="section-bg__content">
             <div class="section-bg__text">
@@ -235,8 +226,6 @@
             </div>
         </div>
     </section>
-</body>
-</html> 
 
 <!-- FLEX  -->
 <!-- 

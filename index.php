@@ -9,7 +9,7 @@
     <meta name="keywords" content="psicólogo, terapia, apoyo emocional, salud mental, terapia online, terapia presencial, citas, reservas, bienestar emocional">
     <link rel="icon" href="img/Logo.png">
     <link rel="stylesheet" href="./css/normalize.css">
-    <link el="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/header-style.css">
     <link rel="stylesheet" href="./css/estilos-banner.css">
     <link rel="stylesheet" href="./css/estilos-especialidades.css">

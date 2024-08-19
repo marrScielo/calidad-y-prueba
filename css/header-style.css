@@ -3,13 +3,6 @@
     --old-text-color: #56b9b3;
 }
 
-@font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-}
-
 body {
     background-image: url('../img/blog.jpg');
     background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
@@ -79,6 +72,7 @@ main {
 
 .nav-links li a {
     font-size: 16px;
+    font-weight: 500;
     text-decoration: none;
     color: #483285;
     display: inline-block;
