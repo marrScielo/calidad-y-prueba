@@ -258,7 +258,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: 98%;
   background-color: #ffffff;
   padding: 7px;
   border-radius: 5px;
@@ -283,6 +283,7 @@
 
 .arrow {
   margin-left: 10px; /* Espacio entre el texto y la flecha */
+  font-size: 16px; /* Tamaño inicial de la flecha */
 }
 
 .dropdown-content {
@@ -308,6 +309,10 @@
   display: block;
 }
 
+.dropdown.active .dropbtn {
+  width: 100%; /* Asegura que el botón se ajuste al ancho del dropdown */
+}
+
 .dropdown.active + .container-right {
   height: calc(100% - 480px); /* Ajusta el tamaño de .container-right según el dropdown */
 }
@@ -328,6 +333,9 @@
   .container-rosado {
     padding: 0 1rem;
   }
+  .dropdown{
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -341,3 +349,54 @@
     display: none;
   }
 }
+
+@media (max-width: 550px) {
+  .dropdown {
+    display: none;
+  }
+}
+
+
+.container-right {
+  flex: 1;
+  transition: background-color 0.3s;
+  overflow: hidden; /* Asegura que el contenido no se desborde */
+  word-wrap: break-word; /* Ajusta las palabras largas para que se quiebren en la línea siguiente */
+}
+
+.container-right p {
+  overflow: hidden; /* Oculta cualquier contenido desbordado */
+  text-overflow: ellipsis; /* Añade "..." si el texto se desborda */
+  white-space: normal; /* Permite el ajuste del texto en múltiples líneas */
+  word-wrap: break-word; /* Ajuste de palabras para evitar desbordamiento */
+}
+
+@media (max-width: 872px) {
+  .container-right {
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    padding: 15px; /* Ajusta el padding para pantallas pequeñas */
+    margin-left: auto; /* Empuja el input hacia la derecha */
+    margin-right: 0;
+  }
+
+  .container-right p {
+    font-size: 0.9em; /* Reduce el tamaño del texto para evitar desbordamiento */
+    line-height: 1.4em; /* Asegura una buena legibilidad */
+  }
+
+  .dropbtn {
+    font-size: 14px; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+    padding: 8px; /* Ajusta el relleno para pantallas más pequeñas */
+  }
+  
+  .arrow {
+    font-size: 14px; /* Ajusta el tamaño de la flecha en pantallas más pequeñas */
+    margin-left: 1px; /* Reduce el espacio entre el texto y la flecha */
+  }
+
+  .search-container input[type="text"] {
+    margin-left: auto; /* Empuja el input hacia la derecha */
+    margin-right: 0;
+  }
+}
+
