@@ -18,7 +18,7 @@
             box-sizing: border-box;
         }
 
-        .container-contact{
+        .container-contact {
             font-family: "Montserrat", sans-serif;
             display: flex;
             flex-direction: row;
@@ -32,7 +32,7 @@
             margin-bottom: 3rem;
         }
 
-        .parrafo-principal{
+        .parrafo-principal {
             text-wrap: balance;
             padding-top: 2em;
             padding-bottom: 2em;
@@ -80,7 +80,7 @@
             gap: 1rem;
         }
 
-        .container-left{
+        .container-left {
             display: flex;
             flex-direction: column;
             gap: 1em;
@@ -135,7 +135,7 @@
             background-color: #e0e0e0;
         }
 
-        @media(max-width: 768px){
+        @media(max-width: 768px) {
             .container-contact {
                 flex-direction: column;
                 gap: 2rem;
@@ -147,12 +147,23 @@
                 text-align: center;
             }
 
-            .contact-form{
+            .contact-form {
                 width: initial;
             }
         }
 
+        footer {
+            height: 50px;
+            max-height: 50px;
+            background-color: #fff;
+            text-align: center;
+            padding-top: 15px;
+        }
 
+        footer div {
+            font-size: 18px;
+            color: #8E769B;
+        }
     </style>
 </head>
 
@@ -195,21 +206,42 @@
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre">
                     <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos">
                 </div>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Email">
-                <label for="comentario">Comentario o mensaje</label>
-                <textarea id="comentario" name="comentario" placeholder="Comentario o mensaje"></textarea>
-                <button type="submit">Enviar</button>
-             </form>
-        </div>
+                <div class="email-name">
+                    <img src="img/email.png" alt="email">
+                    <p>Luana farela@outlook.com</p>
+                </div>
+                <div class="redes">
+                    <ul>
+                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 11-8.png" alt="Facebook"></a></li>
+                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 12-8.png" alt="Twitter"></a></li>
+                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 13-8.png" alt="Instagram"></a></li>
+                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 14-8.png" alt="YouTube"></a></li>
+                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 16-8.png" alt="TikTok"></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <form class="contact-form">
+                    <label for="nombre">Nombre</label>
+                    <div class="input-group">
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+                        <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos">
+                    </div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Email">
+                    <label for="comentario">Comentario o mensaje</label>
+                    <textarea id="comentario" name="comentario" placeholder="Comentario o mensaje"></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+
 
     </section>
 
-
-    <script>
-
-    </script>
-   <!--  <?php include 'Componentes/footer_new.php'; ?> -->
-
+    <footer>
+        <div>Copyright &copy; 2024 CONTIGO VOY</div>
+    </footer>
 </body>
+
 </html>
