@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/estilos-especialidades.css">
     <link rel="stylesheet" href="css/blog-inicio.css">
     <link rel="stylesheet" href="css/boton-wsp.css">
+    <link rel="stylesheet" href="css/indexseccion.css">
 </head>
 
 <body>

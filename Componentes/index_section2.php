@@ -1,6 +1,6 @@
 
     <style>
-        :root {
+        /* :root {
             --color-light: #ffffff;
             --color-light-pink: #9897d1;
             --color-light-green: #6ed3c7;
@@ -16,7 +16,7 @@
         body, html {
             scroll-behavior: smooth;
             font-family: "Montserrat", sans-serif;
-        }
+        } */
 
         .sectionService {
             background-image: url("ContigoVoyAssets/fondos/servicio-eficiente.jpg");
@@ -139,75 +139,8 @@
                         <img class="service__image-content" src="ContigoVoyAssets/recursos/2.png" alt="Representación de servicio eficiente" />
                     </div>
                 </div>
-            </li>
-<!--             <li class="sliderContainer__slide">
-                <div class="sliderContainer__slide--box">
-                    <div class="service__content">
-                        <h2 class="service__title">Consulta Psicológica</h2>
-                        <p class="service__description">Desbloquea una experiencia de terapia sin complicaciones con nuestra innovadora plataforma. Desde la comodidad de tu hogar, puedes explorar perfiles detallados de psicólogos expertos.</p>
-                    </div>
-                    <div class="service__image">
-                        <img class="service__image-content" src="ContigoVoyAssets/recursos/1_2.png" alt="Representación de consulta psicológica" />
-                    </div>
-                </div>
-            </li>
-            <li class="sliderContainer__slide">
-                <div class="sliderContainer__slide--box">
-                    <div class="service__content">
-                        <h2 class="service__title">Confidencialidad y Seguridad</h2>
-                        <p class="service__description">Tu bienestar es nuestra prioridad. En nuestra plataforma, la confidencialidad y la seguridad son esenciales. Cada sesión de terapia se lleva a cabo en un entorno encriptado y protegido.</p>
-                    </div>
-                    <div class="service__image">
-                        <img class="service__image-content" src="ContigoVoyAssets/recursos/1_3.png" alt="Representación de confidencialidad y seguridad" />
-                    </div>
-                </div>
-            </li> -->
+            </li>          
         </ol>
-        <!-- <div class="sliderButtons">
-            <button class="sliderDot active" data-slide="0"></button>
-            <button class="sliderDot" data-slide="1"></button>
-            <button class="sliderDot" data-slide="2"></button>
-        </div> -->
     </section>
 
-    <script>
-        /* const sliderContainer = document.querySelector(".sliderContainer");
-        const slides = document.querySelectorAll(".sliderContainer__slide--box");
-        const dots = document.querySelectorAll(".sliderDot");
-        let currentIndex = 0;
-        let interval = setInterval(autoSlide, 3000); 
-
-        function updateSliderPosition() {
-            sliderContainer.style.transform = `translateX(-${currentIndex * 100 / slides.length}%)`;
-        }
-
-        function updateDots() {
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[currentIndex].classList.add('active');
-        }
-
-        function autoSlide() {
-            currentIndex++;
-            if (currentIndex === slides.length) {
-                currentIndex = 0;
-            }
-            updateSliderPosition();
-            updateDots();
-        }
-
-        function resetInterval() {
-            clearInterval(interval);
-            interval = setInterval(autoSlide, 3000);
-        }
-
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                currentIndex = parseInt(dot.getAttribute('data-slide'));
-                updateSliderPosition();
-                updateDots();
-                resetInterval(); 
-            });
-        }); */
-
-    </script>
 

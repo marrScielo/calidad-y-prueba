@@ -1,261 +1,242 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <style>
-            :root {
-                --light: white;
-                --lightPink: #f2b8b8;
-                --lightGreen: #6ed3c7;
-                --darkGreen: #9897d1;
-                --darkPink: #9897d1;
-            }
-            * {
-                box-sizing: border-box;
-                padding: 0;
-                margin: 0;
-            }
-            body,
-            html {
-                scroll-behavior: smooth;
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Variables de color */
+        /* :root {
+            --light: white;
+            --lightPink: #f2b8b8;
+            --lightGreen: #6ed3c7;
+            --darkGreen: #9897d1;
+            --darkPink: #9897d1;
+        }
+
+        /* Estilos generales */
+        /* * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body, html {
+            scroll-behavior: smooth;
+        } */ 
+
+        .section-bg {
+            max-width: 1980px;
+            margin: 0 auto;
+            background-image: url("ContigoVoyAssets/fondos/comopodemosrecursonuevo.jpg");
+            background-size: cover;
+            padding: 7em 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        /* Estilos de contenido */
+        .section-bg__content {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5em;
+        }
+
+        .section-bg__text {
+            flex: 1;
+            padding: 7em 3em;
+            display: flex;
+            flex-direction: column;
+            gap: 2em;
+            color: var(--darkGreen);
+        }
+
+        .section-bg__text h2 {
+            font-size: 2.8em;
+        }
+
+        .section-bg__text p {
+            font-size: 1.5em;
+            text-wrap: balance;
+        }
+
+        /* Estilos de la lista */
+        .section-bg__list {
+            flex: 1;
+            padding: 7em 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .section-bg__list-content {
+            display: grid;
+            gap: 1em;
+            grid-template-columns: repeat(auto-fill, minmax(min(20em, 100%), 1fr));
+        }
+
+        .section-bg__list ol {
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+            gap: 2em;
+        }
+
+        .section-bg__list ol:nth-child(2) {
+            position: relative;
+            right: 2em;
+        }
+
+        .section-bg__list li {
+            text-align: center;
+            color: var(--light);
+            padding: 0.8em 1.5em;
+            border-radius: 0.7em;
+            background-color: var(--darkPink);
+        }
+
+        /* Media Queries */
+        @media (max-width: 1250px) {
+            html, body {
+                font-size: 0.8em;
             }
             .section-bg {
-                max-width: 1980px;
-                margin: 0 auto;
-                max-height: 1500px;
-                background-image: url("ContigoVoyAssets/fondos/comopodemosrecursonuevo.jpg");
-                
-                /* padding: 3em 0; */
-                display: flex;
-                flex-flow: column;
-                gap: 1em;
-                background-size: cover;
-                padding-bottom: 7em;
-                padding-top: 7em;
-            }
-            .section-bg__title {
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            .section-bg__image {
-                align-self: center;
-                width: 10em;
+                background-position-x: -0.5em;
             }
             .section-bg__content {
-                /* padding: 150px; */
-                display: flex;
-                flex-flow: row wrap;
-                gap: 1.5em;
-                width: 90%;
-                align-self: center;
-
+                flex-direction: column;
+                text-align: center;
             }
-            .section-bg__text {
-                flex: 1;
-                padding: 7em 3em;
-                display: flex;
-                flex-flow: column;
-                gap: 2em;
-                color: var(--darkGreen);
-            }
-            .section-bg__text h2 {
-                font-size: 2.8em;
-            }
-            .section-bg__text p {
-                font-size: 1.5em;
-                text-wrap: balance;
+            .section-bg__text, .section-bg__list {
+                padding: 1em;
             }
             .section-bg__list {
-                flex: 1;
-                padding: 7em 0em;
-                display: flex;
-                justify-content: center;
+                display: block;
             }
             .section-bg__list-content {
-                gap: 1em;
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(min(20em, 100%), 1fr));
+                padding: 0;
+                grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
             }
             .section-bg__list ol {
-                list-style-type: none;
-                display: flex;
-                flex-flow: row;
-                gap: 2em;
-                
+                flex-direction: column;
             }
             .section-bg__list ol:nth-child(2) {
-                position: relative;
-                right: 2em;
+                right: 0;
             }
-            .section-bg__list ol + ol {
-                margin-left: -4px; 
+        }
+
+        @media (max-width: 1260px) {
+            .section-bg__list-content {
+                padding: 0 18em;
             }
-            .section-bg__list li {
-                height: fit-content;
-                text-align: center;
-                color: var(--light);
-                padding: 0.8em 1.5em;
-                border-radius: 0.7em;
-                background-color: var(--darkPink);
+        }
+
+        @media (max-width: 1100px) {
+            .section-bg__list-content {
+                padding: 0 16em;
             }
+        }
 
-            @media (width<=1250px) {
-                html,
-                body {
-                    font-size: 0.8em;
-                }
-                .section-bg {
-                    background-position-x: -0.5em;
-                    background-position-y: 0em;
-                }
-                .section-bg__content {
-                    flex-flow: column;
-                    text-align: center;
-                }
-                .section-bg__text,
-                .section-bg__list {
-                    padding: 1em 1em;
-                }
-                .section-bg__list {
-                    display: block;
-                }
-                .section-bg__list-content {
-                    padding: 0;
-                }
-                .section-bg__list ol {
-                    flex-flow: column;
-                }
-                .section-bg__list ol:nth-child(2) {
-                    right: 0;
-                }
+        @media (max-width: 1000px) {
+            .section-bg__list-content {
+                padding: 0 15em;
             }
+        }
 
-            @media (max-width: 1260px) {
-                .section-bg__list-content {
-                    padding: 0 18em;
-                    grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
-                }
+        @media (max-width: 900px) {
+            .section-bg__list-content {
+                grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
             }
+        }
 
-            @media (max-width: 1100px) {
-                .section-bg__list-content {
-                    padding: 0 16em;
-                    grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
-                }
+        @media (max-width: 800px) {
+            .section-bg__list-content {
+                padding: 0 10em;
             }
+        }
 
-            @media (max-width: 1000px) {
-                .section-bg__list-content {
-                    padding: 0 15em;
-                    grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
-                }
+        @media (max-width: 700px) {
+            .section-bg__list-content {
+                padding: 0 3em;
             }
+        }
 
-            @media (max-width: 900px) {
-                .section-bg__list-content {
-                    grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
-                }
+        @media (max-width: 600px) {
+            .section-bg__list-content {
+                padding: 0 2em;
             }
+        }
 
-            @media (max-width: 800px) {
-                .section-bg__list-content {
-                    padding: 0 10em;
-                    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-                }
+        @media (max-width: 500px) {
+            .section-bg__list-content {
+                padding: 0 2em;
+                grid-template-columns: repeat(auto-fill, minmax(11em, 1fr));
             }
+        }
 
-            @media (max-width: 700px) {
-                .section-bg__list-content {
-                    padding: 0 3em;
-                    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-                }
+        @media (max-width: 450px) {
+            .section-bg__list-content {
+                padding: 0 2em;
+                grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
             }
+        }
 
-            @media (max-width: 600px) {
-                .section-bg__list-content {
-                    padding: 0 2em;
-                    grid-template-columns: repeat(auto-fill, minmax(13em, 1fr));
-                }
+        @media (max-width: 400px) {
+            .section-bg__list-content {
+                padding: 0 2em;
+                grid-template-columns: repeat(auto-fill, minmax(8em, 1fr));
             }
+        }
 
-            @media (max-width: 500px) {
-                .section-bg__list-content {
-                    padding: 0 2em;
-                    grid-template-columns: repeat(auto-fill, minmax(11em, 1fr));
-                }
+        @media (max-width: 350px) {
+            .section-bg__list-content {
+                padding: 0 1em;
+                grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
             }
+        }
 
-            @media (max-width: 450px) {
-                .section-bg__list-content {
-                    padding: 0 2em;
-                    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
-                }
+        @media (min-width: 1900px) {
+            .section-bg {
+                background-position-y: 0em;
             }
-
-            @media (max-width: 400px) {
-                .section-bg__list-content {
-                    padding: 0 2em;
-                    grid-template-columns: repeat(auto-fill, minmax(8em, 1fr));
-                }
-            }
-
-            @media (max-width: 350px) {
-                .section-bg__list-content {
-                    padding: 0 1em;
-                    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-                }
-            }
-
-            @media (width<=1900px) {
-                .section-bg {
-                    background-position-y: 0em;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <section class="section-bg">
-            <!-- <img class="section-bg__image" src="ContigoVoyAssets/recursos/Recurso_8.png" /> -->
-
-            <div class="section-bg__content">
-                <span class="section-bg__text">
-                    <h2>¿Cómo podemos ayudarte?</h2>
-                    <p>
-                        Nuestros psicologos online cuentan con distintas especialidades. Las sesiones se adaptan a las necesidades de cada paciente
-                    </p>
-                </span>
-
-                <span class="section-bg__list">
-                    <div class="section-bg__list-content">
-                        <ol>
-                            <li>Adicciones</li>
-                            <li>Ansiedad</li>
-                            <li>Atencion</li>
-                            <li>Crianza</li>
-                        </ol>
-
-                        <ol>
-                            <li>Depresion</li>
-                            <li>Estres</li>
-                            <li>Impulsividad</li>
-                            <li>Top</li>
-                        </ol>
-
-                        <ol>
-                            <li>Ira</li>
-                            <li>Sexualidad</li>
-                            <li>Traumas</li>
-                            <li style="white-space: nowrap;">Riesgo Sexual</li>
-                        </ol>
-                    </div>
-                </span>
+        }
+    </style>
+</head>
+<body>
+    <section class="section-bg">
+        <div class="section-bg__content">
+            <div class="section-bg__text">
+                <h2>¿Cómo podemos ayudarte?</h2>
+                <p>Nuestros psicólogos online cuentan con distintas especialidades. Las sesiones se adaptan a las necesidades de cada paciente.</p>
             </div>
-        </section>
-    </body>
-</html>
-
+            <div class="section-bg__list">
+                <div class="section-bg__list-content">
+                    <ol>
+                        <li>Adicciones</li>
+                        <li>Ansiedad</li>
+                        <li>Atención</li>
+                        <li>Crianza</li>
+                    </ol>
+                    <ol>
+                        <li>Depresión</li>
+                        <li>Estrés</li>
+                        <li>Impulsividad</li>
+                        <li>TOC</li>
+                    </ol>
+                    <ol>
+                        <li>Ira</li>
+                        <li>Sexualidad</li>
+                        <li>Traumas</li>
+                        <li style="white-space: nowrap;">Riesgo Sexual</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html> 
 
 <!-- FLEX  -->
 <!-- 

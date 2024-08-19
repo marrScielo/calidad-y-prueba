@@ -1,8 +1,7 @@
 
     <style>
-        :root {
+        /* :root {
             --color-light: #ffffff;
-            --color-light-pink: #f2b8b8;
         }
 
         * {
@@ -15,7 +14,7 @@
         html {
             scroll-behavior: smooth;
             font-family: "Montserrat", sans-serif;
-        }
+        } */
 
         .hero {
             padding-top: 100px;
@@ -72,14 +71,6 @@
         }
 
         .hero__title {
-            /* -webkit-text-stroke: 1px black;
-            color: white;
-            text-shadow:
-                2px 2px 0 #000,
-                -1px -1px 0 #000,
-                1px -1px 0 #000,
-                -1px 1px 0 #000,
-                1px 1px 0 #000; */
             font-size:3.5em;
             margin: 0;
             padding: 0;
