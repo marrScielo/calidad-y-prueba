@@ -119,8 +119,8 @@
                 return;
             }
             const video = e.target.previousElementSibling;
-            // videoModalSource.src = video.src+'?autoplay=1';
-            videoModalSource.src = video.src;
+            videoModalSource.src = video.src+'?autoplay=1';
+            // videoModalSource.src = video.src;
             modalVideo.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         });
