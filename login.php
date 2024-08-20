@@ -15,17 +15,11 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<title>Psicologa</title>
 	<style>
-		.container1 {
-			width: 90%;
-			margin: 0 auto;
-		}
-
 		#center-container {
-			width: 100%;
+			height: 100vh;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			margin: 0 auto;
 		}
 	</style>
 </head>

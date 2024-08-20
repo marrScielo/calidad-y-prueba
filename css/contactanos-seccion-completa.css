@@ -195,15 +195,14 @@
 }
 
 footer {
-    height: 50px;
-    max-height: 50px;
     background-color: #fff;
     text-align: center;
     padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 footer div {
-    font-size: 18px;
+    font-size: 16px;
     color: #8E769B;
 }
 
