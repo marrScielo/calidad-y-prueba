@@ -17,14 +17,10 @@
     <link rel="stylesheet" href="./css/estilos-especialidades.css">
     <link rel="stylesheet" href="./css/blog-inicio.css">
     <link rel="stylesheet" href="./css/boton-wsp.css">
+    <link rel="stylesheet" href="css/indexseccion.css">
+    <link rel="stylesheet" href="css/estilos-footer.css">
     <!--  Iconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/header-style.css">
-    <link rel="stylesheet" href="css/estilos-banner.css">
-    <link rel="stylesheet" href="css/estilos-especialidades.css">
-    <link rel="stylesheet" href="css/blog-inicio.css">
-    <link rel="stylesheet" href="css/boton-wsp.css">
-    <link rel="stylesheet" href="css/indexseccion.css">
     <!-- OG -->
     <meta property="og:title" content="ContigoVoy">
     <meta property="og:description"

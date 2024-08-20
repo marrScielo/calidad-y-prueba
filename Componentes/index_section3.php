@@ -67,7 +67,8 @@
 
     .section-bg__list-content {
         display: grid;
-        gap: 1em;
+        column-gap: 1rem;
+        row-gap: 2rem;
         grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
         height: fit-content;
     }
@@ -106,7 +107,7 @@
 
         .section-bg__text,
         .section-bg__list {
-            padding: 1em;
+            padding: .5rem;
         }
 
         .section-bg__list {
@@ -185,14 +186,13 @@
 
     @media (max-width: 400px) {
         .section-bg__list-content {
-            padding: 0 2em;
             grid-template-columns: repeat(auto-fill, minmax(8em, 1fr));
         }
     }
 
     @media (max-width: 350px) {
         .section-bg__list-content {
-            padding: 0 1em;
+            padding: 0;
             grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
         }
     }
