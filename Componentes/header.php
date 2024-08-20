@@ -34,4 +34,17 @@
         header.classList.remove('scrolled');
       }
     });
+
+        // Obtiene la URL actual
+    const currentLocation = window.location.pathname;
+
+    // Obtiene todos los elementos <a> dentro de la navegación
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    // Recorre todos los enlaces y compara su href con la URL actual
+    navLinks.forEach(link => {
+        if (link.href.includes(`${currentLocation}`)) {
+            link.classList.add('active');
+        }
+    });
 </script>

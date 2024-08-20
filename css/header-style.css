@@ -82,6 +82,20 @@ main {
 
 .nav-links li a:hover {
     color: var(--text-color);
+    background-color: transparent;
+}
+
+
+.nav-links a.active {
+    background-color: #9897d1; /* Color de fondo para la sección activa */
+    color: white; /* Color del texto de la sección activa */
+    border-radius: 5px; /* Puedes ajustar este valor según tu diseño */
+}
+
+.nav-links a:hover {
+    background-color: #9897d1; /* Mismo color al hacer hover */
+    color: white;
+    border-radius: 5px;
 }
 
 /* Al hacer scroll hacia abajo */
