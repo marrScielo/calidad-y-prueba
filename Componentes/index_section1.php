@@ -105,20 +105,20 @@
 
     @media (max-width: 1920px) {
         .info {
-            top: -70px;
+            margin-top: 5px;
         }
     }
 
     @media (max-width: 1300px) {
         .info {
-            top: auto;
+            top:
         }
     }
 
     @media (max-width:900px) {
         .info {
             left: auto;
-            top: auto;
+
         }
 
         .hero {
