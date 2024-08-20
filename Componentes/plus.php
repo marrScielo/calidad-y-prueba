@@ -4,7 +4,6 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        max-width: 100%;
         background-color: #ffffff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         background-image: url('ContigoVoyAssets/fondos/porque-confiar.jpg');
@@ -12,8 +11,7 @@
         background-position: center;
         background-repeat: no-repeat;
         padding: 5em 0;
-        max-width: 123.75rem;
-        /* 1980px convertido a rem (1980/16) */
+        /* max-width: 1980px; */
         margin: 0 auto;
     }
 
@@ -24,7 +22,7 @@
     }
 
     .content-wrapper {
-        width: 90%;
+        /* width: 90%; */
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
