@@ -1,0 +1,134 @@
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    /* background-color: #fff; */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* .blog-post img.image-post {
+            max-width: 100%;
+            width: 100% !important;
+            background-size: cover;
+            object-fit: cover;
+            height: 20rem !important;
+            border-radius: 3%;
+            margin-bottom: 20px;
+        } */
+.blog-post img.image-post {
+    float: right;
+    margin-right: 0;
+    margin-left: 10px;
+    width: 50%;
+}
+
+.blog-post h2 {
+    text-align: justify;
+    font-size: 2em;
+    margin: 10px 0;
+    color: #000000;
+}
+
+.contenidos {
+    min-height: 250px;
+}
+
+.blog-post p {
+    text-align: justify !important;
+    font-size: 1em;
+    line-height: 1.6;
+    color: #666;
+    margin: 10px 0;
+}
+
+.blog-post p strong {
+    color: #333;
+}
+
+.recommended-articles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.recommended-articles h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #a1a4b2 !important;
+}
+
+.recommended-articles .article {
+    margin-bottom: 20px;
+    text-align: left;
+    width: 30%;
+}
+
+.recommended-articles img {
+    width: 100%;
+}
+
+.recommended-articles .article h4 {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.recommended-articles .article p {
+    font-size: 1em;
+    color: #666;
+}
+
+.recommended-articles .article a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .blog-post h2 {
+        font-size: 1.5em;
+    }
+
+    .blog-post p {
+        font-size: 0.9em;
+    }
+
+    .recommended-articles h3 {
+        font-size: 1.2em;
+    }
+
+    .recommended-articles .article h4 {
+        font-size: 1em;
+    }
+
+    .recommended-articles .article p {
+        font-size: 0.8em;
+    }
+}
+
+.informacion {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.especialidad_style {
+    background: #98d8df;
+    color: #333333;
+    padding: 0.2rem 2rem;
+    border-radius: 1rem;
+}
+
+.container_fecha {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content_blog {
+    text-align: justify;
+    line-height: 1rem;
+}

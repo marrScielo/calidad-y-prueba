@@ -4,8 +4,10 @@ $dbController = new DatabaseController();
 $conn = $dbController->getConnection();
 
 
-class EspecialidadController{
-    public function getEspecialidades(){
+class EspecialidadController
+{
+    public function getEspecialidades()
+    {
         global $conn;
         try {
             $sql = "SELECT * FROM especialidad";
@@ -15,9 +17,10 @@ class EspecialidadController{
             throw new Exception("Error al obtener las especialidades: " . $e->getMessage());
         }
     }
-    public function getEspecialidadById($id){
+    public function getEspecialidadById($id)
+    {
         global $conn;
-        if(!isset($id)){
+        if (!isset($id)) {
             throw new Exception("El id de la especialidad es requerido");
         }
         try {
