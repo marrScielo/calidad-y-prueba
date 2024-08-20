@@ -170,15 +170,15 @@
 
 <body>
     <?php include 'Componentes/header.php'; ?>
-    <section>
+<section>
         <div>
             <img src="img/contactanos.JPG" alt="Hero contactanos" width="100%">
         </div>
        <div class="container-contact">
        <div class="container-left">
             <p class="parrafo-principal">"La psicología es como una lupa para entender 
-                cómo funcionan nuestras mentes y cómo nos 
-                comportamos, y nos da herramientas geniales
+                ómo funcionan nuestras mentes y cómo nos 
+                omportamos, y nos da herramientas geniales
                 para mejorar nuestra vida y nuestras relaciones."
             </p>
             <div class="icon-name">
@@ -207,37 +207,13 @@
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre">
                     <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos">
                 </div>
-                <div class="email-name">
-                    <img src="img/email.png" alt="email">
-                    <p>Luana farela@outlook.com</p>
-                </div>
-                <div class="redes">
-                    <ul>
-                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 11-8.png" alt="Facebook"></a></li>
-                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 12-8.png" alt="Twitter"></a></li>
-                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 13-8.png" alt="Instagram"></a></li>
-                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 14-8.png" alt="YouTube"></a></li>
-                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 16-8.png" alt="TikTok"></a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div>
-                <form class="contact-form">
-                    <label for="nombre">Nombre</label>
-                    <div class="input-group">
-                        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
-                        <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos">
-                    </div>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Email">
-                    <label for="comentario">Comentario o mensaje</label>
-                    <textarea id="comentario" name="comentario" placeholder="Comentario o mensaje"></textarea>
-                    <button type="submit">Enviar</button>
-                </form>
-            </div>
-
-
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email">
+                <label for="comentario">Comentario o mensaje</label>
+                <textarea id="comentario" name="comentario" placeholder="Comentario o mensaje"></textarea>
+                <button type="submit">Enviar</button>
+             </form>
+        </div>
     </section>
 
     <footer>
