@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link el="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/header-style.css">
-    <link rel="stylesheet" href="css/estilos-footer.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="./css/header-style.css">
+    <link rel="stylesheet" href="./css/estilo-footer.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/estilo-contactanos.css">
     <link rel="icon" href="img/Logo.png">
     <title>Contáctanos</title>
     <style>
@@ -220,6 +221,7 @@
     <footer>
         <div>Copyright &copy; 2024 CONTIGO VOY</div>
     </footer>
+    <script src="./js/navabar.js"></script>
 </body>
 
 </html>
