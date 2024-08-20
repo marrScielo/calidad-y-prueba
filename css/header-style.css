@@ -150,7 +150,7 @@ header.scrolled {
 
     .nav-links li a {
         text-align: center;
-        font-size: 10px;
+        font-size: 13px;
         padding: 0.5rem; /* Espaciado interno de los enlaces en pantallas pequeñas */
         width: 100%;
         display: block;
