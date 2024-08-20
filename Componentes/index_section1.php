@@ -117,6 +117,7 @@
 
     @media (max-width:900px) {
         .info {
+            left: auto;
             top: auto;
         }
 
