@@ -1,5 +1,4 @@
-
-    <style>
+<style>
         /* :root {
             --color-light: #ffffff;
             --color-light-pink: #9897d1;
@@ -19,6 +18,7 @@
         } */
 
         .sectionService {
+            
             background-image: url("ContigoVoyAssets/fondos/servicio-eficiente.jpg");
             background-size: 100% 100%; /* Ajusta el ancho al 100% y la altura de manera proporcional */
             width: 100%;
@@ -53,7 +53,7 @@
         .service__content,
         .service__image {
             flex: 1;
-            padding: 0 3em;
+            /* padding: 0 3em; */
         }
 
         .service__content {
@@ -111,21 +111,44 @@
         @media (max-width: 1000px) {
             .sliderContainer {
                 text-align: center;
-            }
+            } 
             .sliderContainer__slide--box {
-                padding: 0 3em;
+                padding: 0 1em;
                 text-align: center;
                 flex-direction: column;
                 gap: 3em;
             }
-            .service__content, .service__image {
-                padding: 0;
-            }
+            
             .service__description {
                 text-align: center;
             }
         }
+        @media (max-width: 812px) {
+            /* .sliderContainer__slide--box{
+                padding:0 auto;
+            } */
+            
+            .service__description{
+                font-size: 2 rem;
+                padding: 5px 10px;
+            }
+            .service__title {
+            font-size: 2.3em;
+            
+            }
+            .sliderContainer__slide--box{
+                padding: 0 auto ;
+            
+            }
+            .service__content,
+            .service__image {
+            flex: 1;
+            padding: 0 auto;
+        }
+            
+        }
     </style>
+<body>
     <section class="sectionService">
         <ol class="sliderContainer">
             <li class="sliderContainer__slide">
@@ -141,5 +164,3 @@
             </li>          
         </ol>
     </section>
-
-
