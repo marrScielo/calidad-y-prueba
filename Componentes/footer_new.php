@@ -225,7 +225,7 @@
     font-size: 12px;
   }
 
-  @media (max-width: 480px) {
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
     .footer {
       height: 1450px;
       grid-template-columns: 20px 1fr 5px;
@@ -265,11 +265,11 @@
       margin: 10px 0;
     }
 
-    .nosotros .textosup {
+    .nosotros .textosup{
       font-size: 18px;
     }
 
-    .nosotros .textoinf {
+    .nosotros .textoinf{
       font-size: 12px;
     }
   }
@@ -374,8 +374,16 @@
         'copyright copyright copyright copyright '
     }
   }
-
-  @media only screen and (min-width: 1281px) {}
+  @media only screen and (min-width: 1281px) {
+    .footer {
+      max-height: 650px;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .principal{
+      min-width: 1000px;
+      max-height: 1000px;
+    }
+  }
 </style>
 
 <footer class="footer">
