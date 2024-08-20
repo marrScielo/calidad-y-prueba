@@ -1,0 +1,217 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.contactanos-contenedor{
+    height: calc(100vh - 4.5rem);
+    display: flex;
+    align-items: center;
+}
+
+.contactanos-contenido{
+    display: flex;
+    margin: 0 3rem;
+    border: solid #56B9B3 2px;
+    width: 90%;
+    align-items: start;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.texto-contactanos{
+    padding: 0 3rem;
+}
+
+.texto-contactanos h2{
+    margin-top: 0;
+    color: #56B9B3;
+}
+
+.contactanos-contenido>form{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 0.5rem;
+    padding: 0 2rem;
+}
+
+.formulario-contactanos>input{
+    padding: 0.5rem 0.5rem;
+    border: solid #56B9B3 1px;
+    border-radius: 0.3rem;
+}
+
+.formulario-contactanos #email{
+    grid-column: span 2 / span 2;
+}
+
+.formulario-contactanos #mensaje{
+    grid-column: span 2 / span 2;
+    height: 6rem;
+    padding: 0.5rem 0.5rem;
+    border: solid #56B9B3 1px;
+    border-radius: 0.3rem;
+    resize: vertical;
+}
+
+.formulario-contactanos #enviar{
+    grid-column: span 2 / span 2;
+    background-color: #F19394;
+    border: none;
+}
+
+.container-contact {
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 1200px;
+    color: #534489;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.parrafo-principal {
+    text-wrap: balance;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    font-size: 1.2em;
+}
+
+.icon-name {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.redes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+}
+
+.redes ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    list-style: none;
+    margin-right: 5px;
+    gap: 5px;
+}
+
+.redes ul li {
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border-radius: 100%;
+}
+
+.redes ul li img {
+    width: 100%;
+    height: 100%;
+}
+
+.email-name {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.container-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 40%;
+}
+
+.contact-form {
+    padding: 20px;
+    width: 400px;
+}
+
+.contact-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #524388;
+}
+
+.contact-form .input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.contact-form textarea {
+    height: 150px;
+    resize: none;
+}
+
+.contact-form button {
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #524388;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #e0e0e0;
+}
+
+@media(max-width: 768px) {
+    .container-contact {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .container-left {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-form {
+        width: initial;
+    }
+}
+
+footer {
+    background-color: #fff;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+footer div {
+    font-size: 16px;
+    color: #8E769B;
+}
+
+@media (max-width: 768px){
+    .contactanos-contenido{
+        flex-direction: column;
+        gap: 3rem 0;
+    }
+    .contactanos-contenido>form{
+        padding: 0 3rem;
+    }
+}
