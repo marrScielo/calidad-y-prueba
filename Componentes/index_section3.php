@@ -117,7 +117,7 @@
 
         .section-bg__list-content {
             padding: 0;
-            grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
         }
 
         .section-bg__list ol {
@@ -149,7 +149,8 @@
 
     @media (max-width: 900px) {
         .section-bg__list-content {
-            grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+            font-size: 1rem;
         }
     }
 
