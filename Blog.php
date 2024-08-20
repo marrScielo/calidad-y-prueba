@@ -8,7 +8,7 @@ $db->getConnection();
 $blogControlador = new BlogController($db);
 
 $limit = 6;  // Número de blogs por página
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
 
 $especialidadesSeleccionadas = isset($_GET['especialidades']) ? explode(',', $_GET['especialidades']) : [];
@@ -49,7 +49,8 @@ $especialidades = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
-    <meta name="description" content="Explora nuestro blog donde psicólogos profesionales comparten artículos, consejos y recursos sobre salud mental, bienestar emocional, terapia y más. Mantente informado y mejora tu calidad de vida con nuestros contenidos especializados.">
+    <meta name="description"
+        content="Explora nuestro blog donde psicólogos profesionales comparten artículos, consejos y recursos sobre salud mental, bienestar emocional, terapia y más. Mantente informado y mejora tu calidad de vida con nuestros contenidos especializados.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
@@ -65,7 +66,11 @@ $especialidades = [
 
     <section class="descripcion-blog">
         <h1>Blog de psicología</h1>
-        <p>Contigo Voy es una plataforma de terapia online que cuenta con un amplio equipo de psicólogos expertos en terapia psicológica. En nuestro blog de Psicología encontrarás los mejores artículos de Salud Mental. Aquí están disponibles los mejores consejos para superar problemas emocionales y los mejores recursos para mejorar tu salud mental. Nuestro blog de Psicología es un espacio de conexión con el bienestar mental y el crecimiento personal. </p>
+        <p>Contigo Voy es una plataforma de terapia online que cuenta con un amplio equipo de psicólogos expertos en
+            terapia psicológica. En nuestro blog de Psicología encontrarás los mejores artículos de Salud Mental. Aquí
+            están disponibles los mejores consejos para superar problemas emocionales y los mejores recursos para
+            mejorar tu salud mental. Nuestro blog de Psicología es un espacio de conexión con el bienestar mental y el
+            crecimiento personal. </p>
     </section>
 
     <div class="container-blog">
@@ -76,14 +81,18 @@ $especialidades = [
                     <input type="text" id="search-input" placeholder="Buscar...">
                 </div>
 
-               <!-- Dropdown para las categorías -->
+                <!-- Dropdown para las categorías -->
                 <div class="dropdown">
-                    <button type="button" class="dropbtn">CATEGORÍA <span class="arrow">&#9660;</span></button> <!-- Botón desplegable -->
+                    <button type="button" class="dropbtn">CATEGORÍA <span class="arrow">&#9660;</span></button>
+                    <!-- Botón desplegable -->
                     <div class="dropdown-content">
-                        <?php foreach ($especialidades as $especialidad) : ?>
+                        <?php foreach ($especialidades as $especialidad): ?>
                             <div class="filter-option">
-                                <input style="cursor: pointer;" type="checkbox" class="especialidad-checkbox" id="<?= htmlspecialchars($especialidad); ?>" value="<?= htmlspecialchars($especialidad); ?>">
-                                <label for="<?= htmlspecialchars($especialidad); ?>"><?= htmlspecialchars($especialidad); ?></label>
+                                <input style="cursor: pointer;" type="checkbox" class="especialidad-checkbox"
+                                    id="<?= htmlspecialchars($especialidad); ?>"
+                                    value="<?= htmlspecialchars($especialidad); ?>">
+                                <label
+                                    for="<?= htmlspecialchars($especialidad); ?>"><?= htmlspecialchars($especialidad); ?></label>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -116,29 +125,30 @@ $especialidades = [
 
             <!-- Paginación -->
             <div class="pagination">
-                <?php if ($page > 1) : ?>
+                <?php if ($page > 1): ?>
                     <a href="?page=<?php echo $page - 1; ?>" class="page-link">&laquo;</a> <!-- Símbolo de anterior -->
-                <?php else : ?>
+                <?php else: ?>
                     <span class="page-link disabled">&laquo;</span> <!-- Símbolo de anterior deshabilitado -->
                 <?php endif; ?>
 
-                <?php if ($page > 3) : ?>
+                <?php if ($page > 3): ?>
                     <a href="?page=1" class="page-link">1</a>
                     <span class="page-link">...</span>
                 <?php endif; ?>
 
-                <?php for ($i = max(1, $page - 2); $i <= min($totalPages, $page + 2); $i++) : ?>
-                    <a href="?page=<?php echo $i; ?>" class="page-link<?php if ($i == $page) echo ' active'; ?>"><?php echo $i; ?></a>
+                <?php for ($i = max(1, $page - 2); $i <= min($totalPages, $page + 2); $i++): ?>
+                    <a href="?page=<?php echo $i; ?>" class="page-link<?php if ($i == $page)
+                           echo ' active'; ?>"><?php echo $i; ?></a>
                 <?php endfor; ?>
 
-                <?php if ($page < $totalPages - 2) : ?>
+                <?php if ($page < $totalPages - 2): ?>
                     <span class="page-link">...</span>
                     <a href="?page=<?php echo $totalPages; ?>" class="page-link"><?php echo $totalPages; ?></a>
                 <?php endif; ?>
 
-                <?php if ($page < $totalPages) : ?>
+                <?php if ($page < $totalPages): ?>
                     <a href="?page=<?php echo $page + 1; ?>" class="page-link">&raquo;</a> <!-- Símbolo de siguiente -->
-                <?php else : ?>
+                <?php else: ?>
                     <span class="page-link disabled">&raquo;</span> <!-- Símbolo de siguiente deshabilitado -->
                 <?php endif; ?>
             </div>
@@ -158,7 +168,7 @@ $especialidades = [
                 dropdownContent.style.display = 'block';
                 containerRight.style.height = `calc(100% - ${dropdownContent.clientHeight}px)`;
             }
-            });
+        });
 
         document.getElementById('filter-form').addEventListener('change', function () {
             const checkboxes = document.querySelectorAll('.especialidad-checkbox');

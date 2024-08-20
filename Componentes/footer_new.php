@@ -225,7 +225,7 @@
     font-size: 12px;
   }
 
-  @media only screen and (min-width: 320px) and (max-width: 480px) {
+  @media (max-width: 480px) {
     .footer {
       height: 1450px;
       grid-template-columns: 20px 1fr 5px;
@@ -265,11 +265,11 @@
       margin: 10px 0;
     }
 
-    .nosotros .textosup{
+    .nosotros .textosup {
       font-size: 18px;
     }
 
-    .nosotros .textoinf{
+    .nosotros .textoinf {
       font-size: 12px;
     }
   }
