@@ -20,7 +20,7 @@
         } */
 
     .section-bg {
-        max-width: 1980px;
+        max-width: 1900px;
         margin: 0 auto;
         background-image: url("ContigoVoyAssets/fondos/comopodemosrecursonuevo.jpg");
         background-size: cover;
@@ -32,7 +32,7 @@
 
     /* Estilos de contenido */
     .section-bg__content {
-        width: 90%;
+        width: 82%;
         margin: 0 auto;
         display: flex;
         flex-wrap: wrap;
@@ -117,7 +117,7 @@
 
         .section-bg__list-content {
             padding: 0;
-            grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+            grid-template-columns: repeat(3, 1fr);
         }
 
         .section-bg__list ol {
@@ -131,21 +131,10 @@
 
     @media (max-width: 1260px) {
         .section-bg__list-content {
-            padding: 0 18em;
+            padding: 0 10rem;
         }
     }
 
-    @media (max-width: 1100px) {
-        .section-bg__list-content {
-            padding: 0 16em;
-        }
-    }
-
-    @media (max-width: 1000px) {
-        .section-bg__list-content {
-            padding: 0 15em;
-        }
-    }
 
     @media (max-width: 900px) {
         .section-bg__list-content {
