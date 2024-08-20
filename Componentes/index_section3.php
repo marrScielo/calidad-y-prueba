@@ -101,8 +101,8 @@
         }
 
         .section-bg__content {
-            flex-direction: column;
             text-align: center;
+            display: block;
         }
 
         .section-bg__text,
@@ -111,6 +111,7 @@
         }
 
         .section-bg__list {
+            margin-block: .7rem;
             display: block;
         }
 
