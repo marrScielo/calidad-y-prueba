@@ -23,7 +23,12 @@
         justify-content: center;
         align-items: center;
         gap: 2.5rem;
-        padding: 4rem 0;
+        padding: 4rem 1rem;
+
+        @media (max-width: 768px) {
+            gap: 0;
+
+        }
     }
 
     .column {
@@ -40,29 +45,62 @@
         object-fit: contain;
         border-radius: 1.5em;
         transform: scaleX(-1);
+
+        @media (max-width: 1096px) {
+            width: 95%;
+            max-height: 600px;
+        }
+
+        @media (max-width: 768px) {
+            width: 100%;
+            max-height: 500px;
+
+        }
+
+        @media (max-width: 480px) {
+            width: 95%;
+            max-height: 300px;
+
+        }
     }
 
-    .text-column h2 {
-        margin-top: 0;
-        color: #FFFF;
-        font-size: 2.8em;
+
+
+
+    .text-column {
+        h2 {
+            margin-top: 0;
+            color: #FFFF;
+            font-size: 2.8rem;
+
+            @media (max-width: 868px) {
+                font-size: 2rem;
+            }
+        }
+
+        h3 {
+            margin-top: 0;
+            color: #FFFF;
+            font-size: 2.8rem;
+            text-align: end;
+
+            @media (max-width: 868px) {
+                font-size: 2rem;
+            }
+        }
+
+        .text-p {
+            text-wrap: balance;
+            color: #fff;
+            font-size: 1.5rem;
+
+            @media (max-width: 868px) {
+                font-size: 1.1rem;
+            }
+        }
     }
 
-    .text-column h3 {
-        margin-top: 0;
-        color: #FFFF;
-        font-size: 2.8em;
-        text-align: end;
-
-    }
-
-    .text-p {
-        text-wrap: balance;
-        color: #fff;
-        font-size: 1.5em;
-    }
-
-    .text-column .benefits {
+    .text-column .text-column .benefits {
         list-style-type: none;
         padding: 0;
         color: #fff;
@@ -142,13 +180,14 @@
     }
 
     @media (max-width: 768px) {
+        .content-wrapper {
+            flex-direction: column;
+            align-items: center;
+        }
+
         .container_plus {
             flex-direction: column;
             align-items: flex-start;
-        }
-
-        .content-wrapper {
-            max-width: 90%;
         }
 
         .cards {
@@ -173,11 +212,7 @@
     }
 
     @media (max-width: 480px) {
-        .content-wrapper {
-            max-width: 95%;
-            flex-direction: column;
-            align-items: center;
-        }
+
 
         .image-column {
             order: -1;
