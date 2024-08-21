@@ -37,17 +37,16 @@
 </head>
 
 <body>
-
-    <?php include 'Componentes/header.php'; ?>
-    <?php include 'Componentes/index_section1.php'; ?>
-    <?php include 'Componentes/index_section2.php'; ?>
-    <?php include 'Componentes/index_section3.php'; ?>
-    <!--     
-    <?php include 'Componentes/especialidades.php'; ?>
-    <?php include 'Componentes/opiniones.php'; ?> 
-    -->
-    <?php include 'Componentes/plus.php'; ?>
-    <?php include 'Componentes/footer_new.php'; ?>
+    <?php include_once 'Componentes/header.php'; ?>
+    <main class="">
+        <?php include_once 'Componentes/index_section1.php';
+        include_once 'Componentes/index_section2.php';
+        include_once 'Componentes/index_section3.php';
+        // include_once 'Componentes/especialidades.php';
+        // include_once 'Componentes/opiniones.php';
+        include_once 'Componentes/plus.php'; ?>
+    </main>
+    <?php include_once 'Componentes/footer_new.php'; ?>
     <!-- Botón flotante de WhatsApp -->
     <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
