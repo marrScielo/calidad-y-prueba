@@ -1,40 +1,15 @@
 <style>
-    /* :root {
-            --color-light: #ffffff;
-            --color-light-pink: #9897d1;
-            --color-light-green: #6ed3c7;
-            --color-description: #534489;
-        }
-
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-        }
-
-        body, html {
-            scroll-behavior: smooth;
-            font-family: "Montserrat", sans-serif;
-        } */
-
     .sectionService {
-
+        width: 100%;
+        margin: 0 auto;
         background-image: url("ContigoVoyAssets/fondos/servicio-eficiente.jpg");
         background-size: 100% 100%;
-        /* Ajusta el ancho al 100% y la altura de manera proporcional */
-        width: 100%;
-        max-width: 1980px;
-        margin: 0 auto;
-        overflow: hidden;
-        position: relative;
+        padding-block: 3rem;
     }
-
 
     .sliderContainer {
         display: flex;
         transition: transform 0.5s ease-in-out;
-        /* width: 300%;  */
-        /* Ajuste para hacer que el contenedor se ajuste al ancho del contenedor principal */
     }
 
     .sliderContainer__slide {
@@ -42,12 +17,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 4em 0;
     }
 
     .sliderContainer__slide--box {
-        width: 90%;
-        padding: 5em 0;
+        padding: 5rem 0;
         display: flex;
         flex-flow: row wrap;
     }
@@ -128,10 +101,6 @@
     }
 
     @media (max-width: 812px) {
-        /* .sliderContainer__slide--box{
-                padding:0 auto;
-            } */
-
         .service__description {
             font-size: 2 rem;
             padding: 5px 10px;
@@ -163,7 +132,7 @@
 
 <body>
     <section class="sectionService">
-        <ol class="sliderContainer">
+        <ol class="sliderContainer container-section">
             <li class="sliderContainer__slide">
                 <div class="sliderContainer__slide--box">
                     <div class="service__content">

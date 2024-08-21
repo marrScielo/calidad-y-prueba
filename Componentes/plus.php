@@ -5,14 +5,10 @@
         justify-content: center;
         align-items: center;
         background-color: #ffffff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         background-image: url('ContigoVoyAssets/fondos/porque-confiar.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        padding: 5em 0;
-        /* max-width: 1980px; */
-        margin: 0 auto;
     }
 
     .column_Info {
@@ -22,30 +18,28 @@
     }
 
     .content-wrapper {
-        /* width: 90%; */
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        margin: 0 auto;
+        gap: 2.5rem;
+        padding: 4rem 0;
     }
 
     .column {
         flex: 1;
-        padding: 20px 0;
-        box-sizing: border-box;
-        padding-right: 1.5em;
     }
 
     .image-column {
-        text-align: center;
+        flex: 1;
     }
 
     .image-column img {
-        max-width: 50%;
+        width: 70%;
+        max-height: 700px;
+        object-fit: contain;
         border-radius: 1.5em;
         transform: scaleX(-1);
-        /* Reflejar imagen */
     }
 
     .text-column h2 {
@@ -229,7 +223,7 @@
 </style>
 
 <div class="container_plus">
-    <div class="content-wrapper">
+    <div class="content-wrapper container-section">
         <div class="column image-column">
             <img src="img/confia-nosotros.jpg" alt="Psicologo Plus">
         </div>
