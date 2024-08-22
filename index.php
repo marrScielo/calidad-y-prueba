@@ -17,8 +17,9 @@
     <link rel="stylesheet" href="./css/estilos-especialidades.css">
     <link rel="stylesheet" href="./css/blog-inicio.css">
     <link rel="stylesheet" href="./css/boton-wsp.css">
-    <link rel="stylesheet" href="css/indexseccion.css">
-    <link rel="stylesheet" href="css/estilos-footer.css">
+    <link rel="stylesheet" href="./css/indexseccion.css">
+    <link rel="stylesheet" href="./css/estilos-footer.css">
+    <!-- <link rel="stylesheet" href="./css/styles.min.css"> -->
     <!--  Iconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- OG -->
@@ -47,7 +48,6 @@
         include_once 'Componentes/plus.php'; ?>
     </main>
     <?php include_once 'Componentes/footer_new.php'; ?>
-    <!-- Botón flotante de WhatsApp -->
     <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
