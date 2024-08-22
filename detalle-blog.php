@@ -107,7 +107,7 @@ if (isset($_GET['id'])) {
             width: 100%;
             background-size: cover;
             object-fit: cover;
-            height: 20rrem;
+            height: 20rem;
             border-radius: 10px;
             margin-bottom: 20px;
         }
@@ -212,8 +212,8 @@ if (isset($_GET['id'])) {
         .especialidad_style {
             background: #98d8df;
             color: #333;
-            padding: 0.2rem 2rrem;
-            border-radius: 1rrem;
+            padding: 0.2rem 2rem;
+            border-radius: 1rem;
         }
 
         .container_fecha {

@@ -119,8 +119,8 @@
 .especialidad_style {
     background: #98d8df;
     color: #333333;
-    padding: 0.2rem 2rrem;
-    border-radius: 1rrem;
+    padding: 0.2rem 2rem;
+    border-radius: 1rem;
 }
 
 .container_fecha {
@@ -130,5 +130,5 @@
 
 .content_blog {
     text-align: justify;
-    line-height: 1rrem;
+    line-height: 1rem;
 }

@@ -15,7 +15,7 @@ a {
 }
 
 .descripcion-blog p {
-    padding: 1.5rrem;
+    padding: 1.5rem;
     color: #ffffff;
     font-weight: 400;
     line-height: normal;
@@ -44,17 +44,17 @@ a {
 }
 
 .filter-form {
-    margin: 1rem 0rem 2rem 0rrem;
+    margin: 1rem 0rem 2rem 0rem;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.5rrem;
+    gap: 0.5rem;
     max-height: none;
 }
 
 .filter-option {
     display: flex;
     align-items: center;
-    padding: 0.3rem 0.3rrem;
+    padding: 0.3rem 0.3rem;
     border: 2px solid #fff;
     overflow: hidden;
 }
@@ -158,7 +158,7 @@ a {
 }
 
 .pagination {
-    margin-top: 4rrem;
+    margin-top: 4rem;
     text-align: center;
 }
 
@@ -325,7 +325,7 @@ a {
     }
 
     .container-rosado {
-        padding: 0 1rrem;
+        padding: 0 1rem;
     }
 }
 
@@ -395,7 +395,7 @@ a {
     }
 
     .blog-post {
-        width: 17rrem;
+        width: 17rem;
     }
 
     .blog-posts {

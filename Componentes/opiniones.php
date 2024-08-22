@@ -5,21 +5,21 @@
 
   .title {
     text-align: center;
-    font-size: 2rrem;
+    font-size: 2rem;
     color: #56B9B3;
   }
 
   .container_body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rrem;
+    gap: 1rem;
   }
 
   .content {
     font-style: italic;
     text-align: justify;
-    line-height: 1rrem;
-    margin: 1rrem;
+    line-height: 1rem;
+    margin: 1rem;
     font-weight: light;
   }
 

@@ -6,7 +6,7 @@
 
 .contactanos-contenido {
     display: flex;
-    margin: 0 3rrem;
+    margin: 0 3rem;
     border: solid #56b9b3 2px;
     width: 90%;
     align-items: start;
@@ -15,7 +15,7 @@
 }
 
 .texto-contactanos {
-    padding: 0 3rrem;
+    padding: 0 3rem;
 }
 
 .texto-contactanos h2 {
@@ -26,14 +26,14 @@
 .contactanos-contenido > form {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem 0.5rrem;
-    padding: 0 2rrem;
+    gap: 1rem 0.5rem;
+    padding: 0 2rem;
 }
 
 .formulario-contactanos > input {
-    padding: 0.5rem 0.5rrem;
+    padding: 0.5rem 0.5rem;
     border: solid #56b9b3 1px;
-    border-radius: 0.3rrem;
+    border-radius: 0.3rem;
 }
 
 .formulario-contactanos #email {
@@ -42,10 +42,10 @@
 
 .formulario-contactanos #mensaje {
     grid-column: span 2 / span 2;
-    height: 6rrem;
-    padding: 0.5rem 0.5rrem;
+    height: 6rem;
+    padding: 0.5rem 0.5rem;
     border: solid #56b9b3 1px;
-    border-radius: 0.3rrem;
+    border-radius: 0.3rem;
     resize: vertical;
 }
 
@@ -65,8 +65,8 @@
     margin: auto;
     max-width: 1200px;
     color: #534489;
-    margin-top: 3rrem;
-    margin-bottom: 3rrem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 .parrafo-principal {
@@ -79,7 +79,7 @@
 .icon-name {
     display: flex;
     align-items: center;
-    gap: 1rrem;
+    gap: 1rem;
 }
 
 .redes {
@@ -114,7 +114,7 @@
 .email-name {
     display: flex;
     align-items: center;
-    gap: 1rrem;
+    gap: 1rem;
 }
 
 .container-left {
@@ -178,7 +178,7 @@
 @media (max-width: 768px) {
     .container-contact {
         flex-direction: column;
-        gap: 2rrem;
+        gap: 2rem;
     }
 
     .container-left {
@@ -210,6 +210,6 @@ footer div {
         gap: 3rem 0;
     }
     .contactanos-contenido > form {
-        padding: 0 3rrem;
+        padding: 0 3rem;
     }
 }

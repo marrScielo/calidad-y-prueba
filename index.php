@@ -10,7 +10,7 @@
     <meta name="keywords"
         content="psicólogo, terapia, apoyo emocional, salud mental, terapia online, terapia presencial, citas, reservas, bienestar emocional">
     <link rel="icon" href="img/Logo.png">
-    <!-- <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/header-style.css">
     <link rel="stylesheet" href="./css/estilos-banner.css">
@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="./css/blog-inicio.css">
     <link rel="stylesheet" href="./css/boton-wsp.css">
     <link rel="stylesheet" href="./css/indexseccion.css">
-    <link rel="stylesheet" href="./css/estilos-footer.css"> -->
-    <link rel="stylesheet" href="./css/styles.min.css">
+    <link rel="stylesheet" href="./css/estilos-footer.css">
+    <!-- <link rel="stylesheet" href="./css/styles.min.css"> -->
     <!--  Iconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- OG -->

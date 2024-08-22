@@ -57,7 +57,7 @@ main {
 .header-menu-icon span {
     height: 4px;
     width: 40px;
-    border-radius: 0.5rrem;
+    border-radius: 0.5rem;
     background-color: var(--text-color);
     transition: 0.4s;
 }
@@ -67,7 +67,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rrem;
+    gap: 0.5rem;
 }
 
 .nav-links li a {
@@ -77,7 +77,7 @@ main {
     color: #483285;
     display: inline-block;
     transition: 0.3s ease-in-out;
-    padding: 0.5rem 0.5rrem;
+    padding: 0.5rem 0.5rem;
 }
 
 .nav-links li a:hover {
@@ -109,28 +109,28 @@ header.scrolled {
         position: absolute;
     }
     .search-box {
-        padding-right: 1.8rrem;
+        padding-right: 1.8rem;
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        gap: 0.5rrem;
+        gap: 0.5rem;
         @media (max-width: 768px) {
             display: none;
         }
         input {
-            padding: 0.2rem 1rrem;
+            padding: 0.2rem 1rem;
             border: 1px solid #e8e8e8;
-            border-radius: 0.5rrem;
+            border-radius: 0.5rem;
             width: 250px;
-            font-size: 1rrem;
+            font-size: 1rem;
             color: var(--text-color);
         }
         button {
             border: none;
-            border-radius: 0.5rrem;
+            border-radius: 0.5rem;
             background: none;
             color: var(--text-color);
-            font-size: 1.2rrem;
+            font-size: 1.2rem;
             cursor: pointer;
         }
     }
@@ -144,7 +144,7 @@ header.scrolled {
     .nav-links {
         position: fixed;
         display: none;
-        top: 4rrem;
+        top: 4rem;
         left: 0;
         flex-direction: column;
         width: 100vw;
@@ -164,7 +164,7 @@ header.scrolled {
     .nav-links li a {
         text-align: center;
         font-size: 13px;
-        padding: 0.5rrem; /* Espaciado interno de los enlaces en pantallas pequeñas */
+        padding: 0.5rem; /* Espaciado interno de los enlaces en pantallas pequeñas */
         width: 100%;
         display: block;
     }

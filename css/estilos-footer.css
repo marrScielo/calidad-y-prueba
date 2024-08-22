@@ -4,7 +4,7 @@
     background-position: center;
     background-repeat: no-repeat;
     padding: 3em 0;
-    max-width: 123.75rrem; /* 1980px convertido a rem (1980/16) */
+    max-width: 123.75rem; /* 1980px convertido a rem (1980/16) */
     margin: 0 auto;
 }
 
@@ -58,7 +58,7 @@
     text-decoration: none;
     font-weight: 500;
     transition: 0.3s ease-in-out all;
-    padding: 0.4rrem;
+    padding: 0.4rem;
     font-size: 1.25rem;
 }
 

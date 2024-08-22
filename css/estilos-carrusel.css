@@ -10,7 +10,7 @@
 .carousel-inner {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    height: 20rrem; /* Ocupa toda la altura del viewport */
+    height: 20rem; /* Ocupa toda la altura del viewport */
 }
 
 .carousel-item {
@@ -59,8 +59,8 @@
 
 .botones button {
     border-radius: 50%;
-    width: 2rrem;
-    height: 2rrem;
+    width: 2rem;
+    height: 2rem;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
     border: solid black 1px;
@@ -94,7 +94,7 @@
 /* Ajustes responsivos */
 @media (min-width: 768px) {
     .carousel-inner {
-        height: 30rrem;
+        height: 30rem;
     }
 }
 @media (max-width: 768px) {

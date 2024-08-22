@@ -21,8 +21,8 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 2.5rrem;
-    padding: 4rem 1rrem;
+    gap: 2.5rem;
+    padding: 4rem 1rem;
 
     @media (max-width: 768px) {
         gap: 0;
@@ -64,31 +64,31 @@
     h2 {
         margin-top: 0;
         color: #ffff;
-        font-size: 2.8rrem;
+        font-size: 2.8rem;
 
         @media (max-width: 868px) {
-            font-size: 2rrem;
+            font-size: 2rem;
         }
     }
 
     h3 {
         margin-top: 0;
         color: #ffff;
-        font-size: 2.8rrem;
+        font-size: 2.8rem;
         text-align: end;
 
         @media (max-width: 868px) {
-            font-size: 2rrem;
+            font-size: 2rem;
         }
     }
 
     .text-p {
         text-wrap: balance;
         color: #fff;
-        font-size: 1.5rrem;
+        font-size: 1.5rem;
 
         @media (max-width: 868px) {
-            font-size: 1.1rrem;
+            font-size: 1.1rem;
         }
     }
 }
@@ -220,12 +220,12 @@
     }
 
     .text-column h2 {
-        font-size: 2.4rrem;
-        padding-bottom: 0.6rrem;
+        font-size: 2.4rem;
+        padding-bottom: 0.6rem;
     }
 
     .text-p {
-        font-size: 1.1rrem;
+        font-size: 1.1rem;
     }
 
     .cards {
