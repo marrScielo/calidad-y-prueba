@@ -25,7 +25,6 @@
         background-position: center;
         background-size: cover;
         display: grid;
-        .
     }
 
     .info {

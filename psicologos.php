@@ -132,6 +132,7 @@
             document.body.style.overflowX = 'hidden';
         });
     </script>
+    <?php include 'Componentes/footer_new.php'; ?>
 </body>
 
 </html>
