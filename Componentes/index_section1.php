@@ -1,8 +1,18 @@
-<style>
-    /* :root {
-            --color-light: #ffffff;
-        }
+<section class="hero">
+    <div class="hero__content">
+        <h1 class="hero__title">
+            Descubre tu <u>mejor</u><br>
+            versión
+        </h1>
+        <h2 class="hero__subtitle">
+            Encuentra equilibrio<br>
+            y bienestar emocional aquí
+        </h2>
+        <a href="psicologos.php" class="hero__cta">Solicitar Servicio</a>
+        <a href="psicologos.php" class="info">Mas información aqui..</a>
+    </div>
 
+<<<<<<< HEAD
         * {
             box-sizing: border-box;
             padding: 0;
@@ -295,3 +305,6 @@
         </div>
         
     </section> -->
+=======
+</section>
+>>>>>>> 4312ecc41a557fe7d40d4614b14fc9a31815fc48

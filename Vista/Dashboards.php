@@ -1,65 +1,66 @@
 <?php
 session_start();
 if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'psicologo') {
-    // Incluir los archivos necesarios
-    require_once("../Controlador/Paciente/ControllerPaciente.php");
-    require_once("../Controlador/Cita/ControllerCita.php");
-    $PORC = new usernameControlerCita();
-    $Pac = new usernameControlerPaciente();
+  // Incluir los archivos necesarios
+  require_once("../Controlador/Paciente/ControllerPaciente.php");
+  require_once("../Controlador/Cita/ControllerCita.php");
+  $PORC = new usernameControlerCita();
+  $Pac = new usernameControlerPaciente();
 
-    // Obtener el nombre actualizado del psicólogo desde los parámetros GET o la sesión
-    if (isset($_GET['nombre'])) {
-        $_SESSION['NombrePsicologo'] = $_GET['nombre'];
-    }
-    $nombrePsicologo = isset($_SESSION['NombrePsicologo']) ? $_SESSION['NombrePsicologo'] : 'Psicólogo'; // Cambia 'Psicólogo' por el valor por defecto que prefieras
+  // Obtener el nombre actualizado del psicólogo desde los parámetros GET o la sesión
+  if (isset($_GET['nombre'])) {
+    $_SESSION['NombrePsicologo'] = $_GET['nombre'];
+  }
+  $nombrePsicologo = isset($_SESSION['NombrePsicologo']) ? $_SESSION['NombrePsicologo'] : 'Psicólogo'; // Cambia 'Psicólogo' por el valor por defecto que prefieras
 
-    // Obtener otros datos necesarios para el dashboard
-    $totalRegistrosEnCanalAtraccion = $PORC->contarCitasConfirmadasConCanal($_SESSION['IdPsicologo']);
-    $totalRegistrosEnCanalAtraccion2 = $PORC->contarCitasConfirmadasConCanal2($_SESSION['IdPsicologo']);
-    $totalRegistrosEnCanalAtraccion3 = $PORC->contarCitasConfirmadasConCanal3($_SESSION['IdPsicologo']);
-    $totalPacientes = $PORC->contarRegistrosEnPacientes($_SESSION['IdPsicologo']);
-    $totalPacientesRecientes = $PORC->contarPacientesConFechaActual($_SESSION['IdPsicologo']);
-    $totalRegistrosEnCitasConfirmado = $PORC->contarCitasConfirmadas($_SESSION['IdPsicologo']);
-    $totalRegistrosEnCitasHora = $PORC->obtenerFechasCitasConFechaActual($_SESSION['IdPsicologo']);
-    $contarPacientesUltimoMes = $PORC->contarPacientesUltimoMes($_SESSION['IdPsicologo']);
-    $Citas = $PORC->showByFecha($_SESSION['IdPsicologo']);
-    $datos = $Pac->MostrarPacientesRecientes($_SESSION['IdPsicologo']);
-?>
-<!DOCTYPE html>
-<html lang="en">
+  // Obtener otros datos necesarios para el dashboard
+  $totalRegistrosEnCanalAtraccion = $PORC->contarCitasConfirmadasConCanal($_SESSION['IdPsicologo']);
+  $totalRegistrosEnCanalAtraccion2 = $PORC->contarCitasConfirmadasConCanal2($_SESSION['IdPsicologo']);
+  $totalRegistrosEnCanalAtraccion3 = $PORC->contarCitasConfirmadasConCanal3($_SESSION['IdPsicologo']);
+  $totalPacientes = $PORC->contarRegistrosEnPacientes($_SESSION['IdPsicologo']);
+  $totalPacientesRecientes = $PORC->contarPacientesConFechaActual($_SESSION['IdPsicologo']);
+  $totalRegistrosEnCitasConfirmado = $PORC->contarCitasConfirmadas($_SESSION['IdPsicologo']);
+  $totalRegistrosEnCitasHora = $PORC->obtenerFechasCitasConFechaActual($_SESSION['IdPsicologo']);
+  $contarPacientesUltimoMes = $PORC->contarPacientesUltimoMes($_SESSION['IdPsicologo']);
+  $Citas = $PORC->showByFecha($_SESSION['IdPsicologo']);
+  $datos = $Pac->MostrarPacientesRecientes($_SESSION['IdPsicologo']);
+  ?>
+  <!DOCTYPE html>
+  <html lang="en">
+
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link rel="icon" href="../img/Logo.png">
     <link rel="stylesheet" href="../Issets/css/dashboard.css">
     <link rel="stylesheet" href="../Issets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
+
   <body>
     <style>
-            @media (max-width: 900px) {
-            body {
+      @media (max-width: 900px) {
+        body {}
 
-            }
-            .center-divs{
-                min-width: 800px;
-            }
-            .contenedor_dsh{
-                min-width: 800px;
-            }
-            .animate__animated{
-                overflow: auto;
-            }
-           
-            }
+        .center-divs {
+          min-width: 800px;
+        }
 
-           
+        .contenedor_dsh {
+          min-width: 800px;
+        }
 
-        </style>
+        .animate__animated {
+          overflow: auto;
+        }
+
+      }
+    </style>
     <?php
     require_once("../Controlador/Paciente/ControllerPaciente.php");
     require_once("../Controlador/Cita/ControllerCita.php");
@@ -86,8 +87,10 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
         <div class="contenedor_dsh">
           <div>
             <h4>¡Buenos días, <?= $nombrePsicologo ?>!</h4>
-            <h1>Tienes <span style="color:#416cd8; font-weight: bold; font-size:20px"><?= count($totalRegistrosEnCitasHora) ?> citas</span> programadas para hoy</h1>
-        </div>
+            <h1>Tienes <span
+                style="color:#416cd8; font-weight: bold; font-size:20px"><?= count($totalRegistrosEnCitasHora) ?>
+                citas</span> programadas para hoy</h1>
+          </div>
           <?php
           require_once '../Issets/views/Info.php';
           ?>
@@ -178,7 +181,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
             </div>
             <div class="contend_table">
               <table>
-                <?php foreach ($todas_las_citas as $cita) : ?>
+                <?php foreach ($todas_las_citas as $cita): ?>
                   <tr>
                     <td><?= $cita['HoraMinutos']->format('H:i A') ?></td>
                     <td>
@@ -196,21 +199,22 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
             <h2>Pacientes Recientes</h2>
             <div class="updates">
               <div class="update">
-                <?php if ($datos) : ?>
-                  <?php foreach ($datos as $key) : ?>
+                <?php if ($datos): ?>
+                  <?php foreach ($datos as $key): ?>
                     <div class="message">
-                      <p><b><?= $key['NomPaciente'] ?> <?= $key['ApPaterno'] ?> <?= $key['ApMaterno'] ?> (<?= $key['codigopac'] ?>)</b> <?= $key['Edad'] ?> años</p>
+                      <p><b><?= $key['NomPaciente'] ?>       <?= $key['ApPaterno'] ?>       <?= $key['ApMaterno'] ?>
+                          (<?= $key['codigopac'] ?>)</b> <?= $key['Edad'] ?> años</p>
                       <?php
-                        // Suponiendo que la fecha en $key['Fecha'] está en formato yyyy-mm-dd
-                        $date = new DateTime($key['Fecha']);
-                        $formattedDate = $date->format('d/m/Y');
-                        ?>
-                        <small class="text-muted">Registrado el: <?= $formattedDate ?></small>
-                        <br>
+                      // Suponiendo que la fecha en $key['Fecha'] está en formato yyyy-mm-dd
+                      $date = new DateTime($key['Fecha']);
+                      $formattedDate = $date->format('d/m/Y');
+                      ?>
+                      <small class="text-muted">Registrado el: <?= $formattedDate ?></small>
+                      <br>
                       <small class="text-muted">Hora: <?= $key['Hora'] ?></small>
                     </div>
                   <?php endforeach; ?>
-                <?php else : ?>
+                <?php else: ?>
                   <p style="text-align: center;">No hay Pacientes<a href="RegPaciente.php"> Agregar nuevo paciente </a> </p>
                 <?php endif; ?>
               </div>
@@ -221,7 +225,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
             </div>
           </div>
         </div>
-                  
+
         <!--<h2>Estadisticas</h2>-->
         <div class="center-divs">
           <div class="insights" style="color: #49c691; ">
@@ -237,7 +241,8 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
             <div class="expenses">
               <div class="middle">
                 <h3 class="estadistica_h3">
-                  <span style=" font-weight: bold; font-size:40px"><?= $totalPacientesRecientes ?></span> <br> Nuevos pacientes
+                  <span style=" font-weight: bold; font-size:40px"><?= $totalPacientesRecientes ?></span> <br> Nuevos
+                  pacientes
                 </h3>
               </div>
             </div>
@@ -245,7 +250,8 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
             <div class="income">
               <div class="middle">
                 <h3 class="estadistica_h3">
-                  <span style=" font-weight: bold; font-size:40px"><?= $totalRegistrosEnCitasConfirmado ?></span> <br> Citas Confirmadas
+                  <span style=" font-weight: bold; font-size:40px"><?= $totalRegistrosEnCitasConfirmado ?></span> <br>
+                  Citas Confirmadas
                 </h3>
               </div>
             </div>
@@ -303,7 +309,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
   </body>
 
   </html>
-<?php
+  <?php
 } else {
   header("Location: ../index.php");
 }

@@ -28,13 +28,12 @@ a {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 3rem 0;
+  /* gap: 5px;
+  padding: 3rem 0;  */
 }
 
 .container-right {
-  flex: 1;
-  
+  flex: 1;  
   transition: background-color 0.3s;
 }
 

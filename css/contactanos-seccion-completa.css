@@ -1,67 +1,62 @@
-*{
-    padding: 0;
-    margin: 0;
-}
-
-.contactanos-contenedor{
+.contactanos-contenedor {
     height: calc(100vh - 4.5rem);
     display: flex;
     align-items: center;
 }
 
-.contactanos-contenido{
+.contactanos-contenido {
     display: flex;
     margin: 0 3rem;
-    border: solid #56B9B3 2px;
+    border: solid #56b9b3 2px;
     width: 90%;
     align-items: start;
     justify-content: center;
     padding: 2rem 0;
 }
 
-.texto-contactanos{
+.texto-contactanos {
     padding: 0 3rem;
 }
 
-.texto-contactanos h2{
+.texto-contactanos h2 {
     margin-top: 0;
-    color: #56B9B3;
+    color: #56b9b3;
 }
 
-.contactanos-contenido>form{
+.contactanos-contenido > form {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem 0.5rem;
     padding: 0 2rem;
 }
 
-.formulario-contactanos>input{
+.formulario-contactanos > input {
     padding: 0.5rem 0.5rem;
-    border: solid #56B9B3 1px;
+    border: solid #56b9b3 1px;
     border-radius: 0.3rem;
 }
 
-.formulario-contactanos #email{
+.formulario-contactanos #email {
     grid-column: span 2 / span 2;
 }
 
-.formulario-contactanos #mensaje{
+.formulario-contactanos #mensaje {
     grid-column: span 2 / span 2;
     height: 6rem;
     padding: 0.5rem 0.5rem;
-    border: solid #56B9B3 1px;
+    border: solid #56b9b3 1px;
     border-radius: 0.3rem;
     resize: vertical;
 }
 
-.formulario-contactanos #enviar{
+.formulario-contactanos #enviar {
     grid-column: span 2 / span 2;
-    background-color: #F19394;
+    background-color: #f19394;
     border: none;
 }
 
 .container-contact {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: row;
     width: 90%;
@@ -163,7 +158,10 @@
 }
 
 .contact-form button {
-    padding: 10px;
+    padding: 15px 50px;
+    margin-left: 30%;
+    font-size: 16px;
+    text-align: center;
     background-color: #fff;
     border: none;
     border-radius: 5px;
@@ -177,7 +175,7 @@
     background-color: #e0e0e0;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     .container-contact {
         flex-direction: column;
         gap: 2rem;
@@ -203,15 +201,15 @@ footer {
 
 footer div {
     font-size: 16px;
-    color: #8E769B;
+    color: #8e769b;
 }
 
-@media (max-width: 768px){
-    .contactanos-contenido{
+@media (max-width: 768px) {
+    .contactanos-contenido {
         flex-direction: column;
         gap: 3rem 0;
     }
-    .contactanos-contenido>form{
+    .contactanos-contenido > form {
         padding: 0 3rem;
     }
 }
