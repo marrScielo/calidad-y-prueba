@@ -6,7 +6,7 @@
 
 .contactanos-contenido {
     display: flex;
-    margin: 0 3rem;
+    margin: 0 3rrem;
     border: solid #56b9b3 2px;
     width: 90%;
     align-items: start;
@@ -15,7 +15,7 @@
 }
 
 .texto-contactanos {
-    padding: 0 3rem;
+    padding: 0 3rrem;
 }
 
 .texto-contactanos h2 {
@@ -26,14 +26,14 @@
 .contactanos-contenido > form {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem 0.5rem;
-    padding: 0 2rem;
+    gap: 1rem 0.5rrem;
+    padding: 0 2rrem;
 }
 
 .formulario-contactanos > input {
-    padding: 0.5rem 0.5rem;
+    padding: 0.5rem 0.5rrem;
     border: solid #56b9b3 1px;
-    border-radius: 0.3rem;
+    border-radius: 0.3rrem;
 }
 
 .formulario-contactanos #email {
@@ -42,10 +42,10 @@
 
 .formulario-contactanos #mensaje {
     grid-column: span 2 / span 2;
-    height: 6rem;
-    padding: 0.5rem 0.5rem;
+    height: 6rrem;
+    padding: 0.5rem 0.5rrem;
     border: solid #56b9b3 1px;
-    border-radius: 0.3rem;
+    border-radius: 0.3rrem;
     resize: vertical;
 }
 
@@ -65,21 +65,21 @@
     margin: auto;
     max-width: 1200px;
     color: #534489;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 3rrem;
+    margin-bottom: 3rrem;
 }
 
 .parrafo-principal {
     text-wrap: balance;
-    padding-top: 2em;
-    padding-bottom: 2em;
-    font-size: 1.2em;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-size: 1.2rem;
 }
 
 .icon-name {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1rrem;
 }
 
 .redes {
@@ -114,13 +114,13 @@
 .email-name {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1rrem;
 }
 
 .container-left {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 1rem;
     width: 40%;
 }
 
@@ -178,7 +178,7 @@
 @media (max-width: 768px) {
     .container-contact {
         flex-direction: column;
-        gap: 2rem;
+        gap: 2rrem;
     }
 
     .container-left {
@@ -210,6 +210,6 @@ footer div {
         gap: 3rem 0;
     }
     .contactanos-contenido > form {
-        padding: 0 3rem;
+        padding: 0 3rrem;
     }
 }

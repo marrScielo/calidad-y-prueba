@@ -1,145 +1,145 @@
 body {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.6rem;
-  color: #fff;
-  background-color: #fff;
-  margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rrem;
+    color: #fff;
+    background-color: #fff;
+    margin: 0;
 }
 button,
 input {
-  font-weight: bold;
-  font: inherit;
-  border: none;
-  outline: none;
+    font-weight: bold;
+    font: inherit;
+    border: none;
+    outline: none;
 }
 .container {
-  margin-top: 30px;
-  position: relative;
-  isolation: isolate;
-  width: 25rem; /* Cambia el ancho de 33rem a 25rem */
-  padding: 5rem 1.5rem; /* Ajusta el padding para reducir el tamaño */
-  color: #fff;
-  background-color: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 1px 1rem rgba(0, 0, 0, 0.1);
-  font-size: 70%;
+    margin-top: 30px;
+    position: relative;
+    isolation: isolate;
+    width: 25rrem; /* Cambia el ancho de 33rem a 25rem */
+    padding: 5rem 1.5rrem; /* Ajusta el padding para reducir el tamaño */
+    color: #fff;
+    background-color: #fff;
+    border-radius: 1rrem;
+    box-shadow: 0 1px 1rem rgba(0, 0, 0, 0.1);
+    font-size: 70%;
 }
 .container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 5rem;
-  background-color: #1d7e90;
-  /* rgba(86, 185, 179, 1); */
-  border-radius: 1rem 1rem 100% 100%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 5rrem;
+    background-color: #1d7e90;
+    /* rgba(86, 185, 179, 1); */
+    border-radius: 1rem 1rem 100% 100%;
 }
 .form__title {
-  position: absolute;
-  top: 2rem; /* Ajusta la posición superior */
-  text-align: center;
-  font-weight: bold;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2rem; /* Reduce el tamaño de fuente */
+    position: absolute;
+    top: 2rrem; /* Ajusta la posición superior */
+    text-align: center;
+    font-weight: bold;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rrem; /* Reduce el tamaño de fuente */
 }
 
 .form {
-  padding: 2.5rem 1rem; /* Ajusta el padding del formulario */
-  background-color: inherit;
+    padding: 2.5rem 1rrem; /* Ajusta el padding del formulario */
+    background-color: inherit;
 }
 .form__group {
-  position: relative;
-  display: flex;
-  align-items: baseline;
-  margin-inline: auto;
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    margin-inline: auto;
 }
 .form__icon {
-  font-size: 1.5rem; /* Reduce el tamaño del icono */
-  margin-right: 1rem;
-  color: #56b9b3;
+    font-size: 1.5rrem; /* Reduce el tamaño del icono */
+    margin-right: 1rrem;
+    color: #56b9b3;
 }
 .form__input {
-  position: relative;
-  font-weight: bold;
-  color: #9274b3;
-  width: 100%;
-  margin-top: 1.5rem;
-  padding-block: 0.75rem; /* Reduce el padding */
+    position: relative;
+    font-weight: bold;
+    color: #9274b3;
+    width: 100%;
+    margin-top: 1.5rrem;
+    padding-block: 0.75rrem; /* Reduce el padding */
 }
 .form__input::placeholder {
-  color: #9274b3;
+    color: #9274b3;
 }
 .form__bar {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.1);
-  width: 100%;
-  height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 1px;
 }
 .form__bar::before {
-  content: "";
-  position: absolute;
-  background-color: #f19294;
-  width: 100%;
-  height: 2px;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s;
+    content: '';
+    position: absolute;
+    background-color: #f19294;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s;
 }
 .form__input:focus + .form__bar::before,
 .form__input:valid + .form__bar::before {
-  transform: scaleX(1);
+    transform: scaleX(1);
 }
 
 .form__button {
-  display: block;
-  margin: 2.5rem auto 3rem;
-  padding: 0.75rem 3rem; /* Ajusta el padding del botón */
-  background-color: rgba(
-    241,
-    146,
-    148,
-    1
-  ); /* Cambia el último valor (1) para ajustar la opacidad */
-  color: #fff;
-  border-radius: 3rem;
-  cursor: pointer;
+    display: block;
+    margin: 2.5rem auto 3rrem;
+    padding: 0.75rem 3rrem; /* Ajusta el padding del botón */
+    background-color: rgba(
+        241,
+        146,
+        148,
+        1
+    ); /* Cambia el último valor (1) para ajustar la opacidad */
+    color: #fff;
+    border-radius: 3rrem;
+    cursor: pointer;
 }
 .form__button:hover {
-  background-color: #f19294;
+    background-color: #f19294;
 }
 .form__switch {
-  font-size: 1.5rem;
-  text-align: center;
-  color: #a1a1a1;
+    font-size: 1.5rrem;
+    text-align: center;
+    color: #a1a1a1;
 }
 .form__switch2 {
-  font-size: 1.5rem;
-  text-align: center;
-  color: red;
+    font-size: 1.5rrem;
+    text-align: center;
+    color: red;
 }
 .form__switch a {
-  text-decoration: none;
-  color: #6600ec;
+    text-decoration: none;
+    color: #6600ec;
 }
 .form__switch a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 @media screen and (min-width: 43.75em) {
-  .container::before {
-    height: 20rem; /* Ajusta la altura del antesudo para pantallas grandes */
-  }
-  .form__title {
-    left: 10rem;
-    transform: none;
-  }
-  .form {
-    transform: translateX(10rem);
-    border-radius: inherit;
-    box-shadow: inherit;
-  }
+    .container::before {
+        height: 20rrem; /* Ajusta la altura del antesudo para pantallas grandes */
+    }
+    .form__title {
+        left: 10rrem;
+        transform: none;
+    }
+    .form {
+        transform: translateX(10rem);
+        border-radius: inherit;
+        box-shadow: inherit;
+    }
 }

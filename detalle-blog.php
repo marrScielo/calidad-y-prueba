@@ -107,20 +107,20 @@ if (isset($_GET['id'])) {
             width: 100%;
             background-size: cover;
             object-fit: cover;
-            height: 20rem;
+            height: 20rrem;
             border-radius: 10px;
             margin-bottom: 20px;
         }
 
         .content h2 {
             text-align: center;
-            font-size: 2em;
+            font-size: 2rem;
             margin: 10px 0;
             color: #fff;
         }
 
         .content p {
-            font-size: 1em;
+            font-size: 1rem;
             line-height: 1.6;
             color: #fff;
 
@@ -212,8 +212,8 @@ if (isset($_GET['id'])) {
         .especialidad_style {
             background: #98d8df;
             color: #333;
-            padding: 0.2rem 2rem;
-            border-radius: 1rem;
+            padding: 0.2rem 2rrem;
+            border-radius: 1rrem;
         }
 
         .container_fecha {
@@ -246,7 +246,8 @@ if (isset($_GET['id'])) {
     <?php include 'Componentes/header.php'; ?>
     <div class="container">
         <div class="articulo-img">
-            <img loading="lazy" class="image-post" src="<?php echo htmlspecialchars($post['imagen']); ?>" alt="<?php echo htmlspecialchars($post['tema']); ?>">
+            <img loading="lazy" class="image-post" src="<?php echo htmlspecialchars($post['imagen']); ?>"
+                alt="<?php echo htmlspecialchars($post['tema']); ?>">
         </div>
         <div class="content">
             <h2><?php echo htmlspecialchars($post['tema']); ?></h2>
@@ -272,7 +273,7 @@ if (isset($_GET['id'])) {
             </div>
             <h4>Últimos artículos:</h4>
             <ul>
-                <?php foreach ($recommendedPosts as $recommendedPost) : ?>
+                <?php foreach ($recommendedPosts as $recommendedPost): ?>
                     <li>
                         <a href="blog-details.php?id=<?php echo intval($recommendedPost['id']); ?>">
                             <?php echo htmlspecialchars($recommendedPost['tema']); ?>

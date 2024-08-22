@@ -1,10 +1,10 @@
 .footer-main {
-    background-image: url("../img/FINAL-100.jpg");
+    background-image: url('../img/FINAL-100.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding: 3em 0;
-    max-width: 123.75rem; /* 1980px convertido a rem (1980/16) */
+    max-width: 123.75rrem; /* 1980px convertido a rem (1980/16) */
     margin: 0 auto;
 }
 
@@ -15,22 +15,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5em;
+    gap: 1.5rem;
 }
-
 
 .nuestro-objetivo {
     color: #ffff;
-    font-weight: 500; 
+    font-weight: 500;
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.3rem;
 }
 
-.trastornos{
+.trastornos {
     color: #ffff;
     font-weight: 400;
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.3rem;
 }
 
 .logo {
@@ -44,14 +43,14 @@
 }
 
 .redes-sociales-footer a {
-    color: #fff; 
-    margin: 0 0.625em; /* 10px convertido a em (10/16) */
-    font-size: 1.5em; /* 24px convertido a em (24/16) */
+    color: #fff;
+    margin: 0 0.625rem; /* 10px convertido a em (10/16) */
+    font-size: 1.5rem; /* 24px convertido a em (24/16) */
     text-decoration: none;
 }
 
 .redes-sociales-footer img {
-    width: 1.7em;
+    width: 1.7rem;
 }
 
 #link_footer {
@@ -59,16 +58,17 @@
     text-decoration: none;
     font-weight: 500;
     transition: 0.3s ease-in-out all;
-    padding: 0.4rem;
-    font-size: 1.25em;
-} 
+    padding: 0.4rrem;
+    font-size: 1.25rem;
+}
 
 #link_footer:hover {
     background: #56b9b3;
     color: white;
 }
 
-@media (max-width: 48em) { /* 768px convertido a em (768/16) */
+@media (max-width: 48em) {
+    /* 768px convertido a em (768/16) */
     .footer-content-dos {
         flex-direction: row;
         justify-content: space-between;
@@ -83,8 +83,8 @@
     }
 
     .redes-sociales-footer a {
-        margin: 0 0.3125em; /* 5px convertido a em (5/16) */
-        font-size: 1.25em; /* 20px convertido a em (20/16) */
+        margin: 0 0.3125rem; /* 5px convertido a em (5/16) */
+        font-size: 1.25rem; /* 20px convertido a em (20/16) */
     }
 
     .logo {
@@ -92,18 +92,19 @@
     }
 }
 
-@media (max-width: 30em) { /* 480px convertido a em (480/16) */
+@media (max-width: 30em) {
+    /* 480px convertido a em (480/16) */
     .footer-content-dos {
         flex-direction: row;
         justify-content: space-between;
     }
-  
+
     .redes-sociales-footer {
         justify-content: flex-start;
     }
-  
+
     .redes-sociales-footer a {
-        margin: 0 0.1875em; /* 3px convertido a em (3/16) */
+        margin: 0 0.1875rem; /* 3px convertido a em (3/16) */
     }
 
     .logo {

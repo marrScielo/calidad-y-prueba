@@ -19,7 +19,7 @@ body {
     color: #7f7ebf;
     cursor: pointer;
     transition: background-color 0.3s;
-    font-size: 1.5rem;
+    font-size: 1.5rrem;
 }
 
 .search-container button:hover {
@@ -48,7 +48,7 @@ body {
 
 .psicologo-container {
     border: 1px solid #ccc;
-    padding: 1.5rem;
+    padding: 1.5rrem;
     margin: 0;
     border-radius: 10px;
     background-color: #fafafa; /* Softer neutral background */
@@ -59,7 +59,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 1rem;
+    gap: 1rrem;
 }
 
 .psicologo-container:hover {
@@ -70,8 +70,8 @@ body {
 .psicologo-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2rem;
-    margin: 2.5rem 0 3rem;
+    grid-gap: 2rrem;
+    margin: 2.5rem 0 3rrem;
 }
 
 .testimonial {
@@ -95,7 +95,7 @@ body {
 
 .pagination {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2rrem;
 }
 
 .pagination a {
@@ -151,11 +151,11 @@ body {
 
 .testimonial-item h4 {
     margin-bottom: 5px;
-    font-size: 1.2rem;
+    font-size: 1.2rrem;
 }
 
 .testimonial-item p {
-    font-size: 1rem;
+    font-size: 1rrem;
     line-height: 1.4;
 }
 
@@ -163,7 +163,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.5rrem;
 }
 
 .psicologo-nombre {
@@ -178,11 +178,11 @@ body {
 .psicologo-tag {
     background-color: #9897d1; /* Adjusted tag color for better contrast */
     color: white;
-    padding: 0.3125rem 0.625rem;
-    border-radius: 1.25rem;
-    font-size: 0.9rem;
+    padding: 0.3125rem 0.625rrem;
+    border-radius: 1.25rrem;
+    font-size: 0.9rrem;
     display: inline-block;
-    margin-left: 0.625rem;
+    margin-left: 0.625rrem;
     opacity: 0.8;
 }
 
@@ -192,7 +192,7 @@ body {
 }
 
 .title {
-    font-size: 2em;
+    font-size: 2rem;
     color: #1d7e90;
 }
 
@@ -288,11 +288,11 @@ body {
 }
 
 .p-introduction {
-    font-size: 1.1rem;
+    font-size: 1.1rrem;
     color: #fff;
     line-height: normal;
     background: #9897d1;
-    padding: 1.5rem;
+    padding: 1.5rrem;
     border-radius: 10px;
 }
 
@@ -341,7 +341,7 @@ body {
     .close {
         color: #000;
         float: right;
-        font-size: 3rem;
+        font-size: 3rrem;
         font-weight: bold;
         margin-left: 10px;
         cursor: pointer;
@@ -349,7 +349,7 @@ body {
 }
 
 .pagination {
-    margin-top: 4rem;
+    margin-top: 4rrem;
     text-align: center;
 }
 

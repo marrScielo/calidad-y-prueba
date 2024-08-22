@@ -7,13 +7,13 @@
     padding: 2rem 0;
 }
 .icon-grid-title {
-    font-size: 2em;
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 .icon-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem 1rem;
+    gap: 2rem 1rrem;
     justify-content: space-between;
 }
 .icon-item {
@@ -35,7 +35,6 @@
 }
 .icon-caption {
     margin-top: 10px;
-    font-size: 1em;
+    font-size: 1rem;
     color: #333;
 }
-

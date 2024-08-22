@@ -39,19 +39,19 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 1.5em;
+            gap: 1.5rem;
             color: var(--color-light);
-            padding: 0 1em;
+            padding: 0 1rem;
         }
 
         .hero__title {
-            font-size: 4em;
+            font-size: 4rem;
             margin: 0;
             padding: 0;
         }
 
         .hero__subtitle {
-            font-size: 1.5em;
+            font-size: 1.5rem;
             margin: 0;
             padding: 0;
         }
@@ -61,10 +61,10 @@
             text-transform: uppercase;
             color: var(--color-light);
             background-color: var(--color-light-pink);
-            border-radius: 0.5em;
+            border-radius: 0.5rem;
             font-weight: bold;
-            padding: 1em 2em;
-            font-size: 1em;
+            padding: 1em 2rem;
+            font-size: 1rem;
             transition: all 0.25s ease-in-out;
         }
 

@@ -1,14 +1,13 @@
-
 <body>
-<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <style>
-        
         /***** FONTS *****/
-        #nivel{
+        #nivel {
             width: 100%;
-            background-color:#FFF1E6;
+            background-color: #FFF1E6;
             padding: 3em 0;
         }
+
         ul,
         li {
             list-style: none;
@@ -24,13 +23,13 @@
             text-align: center;
         }
 
-        
+
         i {
-            margin-right: 1em;
+            margin-right: 1rem;
         }
 
         .faq li {
-            padding: 1.25em;
+            padding: 1.25rem;
         }
 
         .faq li.q {
@@ -52,9 +51,9 @@
             display: none;
         }
 
-        
 
-       
+
+
 
         /********* MEDIA QUERIES ************/
         @media (max-width: 800px) {
@@ -66,7 +65,7 @@
             .title {
                 width: 90%;
                 margin: 0 5%;
-                height: 3.5em;
+                height: 3.5rem;
             }
 
             .faq li {
@@ -81,36 +80,42 @@
         }
     </style>
     <div id="nivel">
-    <div id="container">
-        <h1>Preguntas Frecuentes F.A.Q.</h1>
-        <!--<div class="title">
+        <div id="container">
+            <h1>Preguntas Frecuentes F.A.Q.</h1>
+            <!--<div class="title">
             <h3>Aqui respondemos sobre preguntas</h3>
         </div>-->
 
-        <ul class="faq">
-            <li class="q"><i class="ion-chevron-right"></i>¿Que es la psicologia online?</li>
-            <li class="a">La psicología online es la prestación de servicios psicológicos a través de plataformas digitales, como videoconferencias, llamadas telefónicas y mensajería instantánea.
-            </li>
+            <ul class="faq">
+                <li class="q"><i class="ion-chevron-right"></i>¿Que es la psicologia online?</li>
+                <li class="a">La psicología online es la prestación de servicios psicológicos a través de plataformas
+                    digitales, como videoconferencias, llamadas telefónicas y mensajería instantánea.
+                </li>
 
-            <li class="q"><i class="ion-chevron-right"></i>¿Cómo funciona una sesión de terapia online?</li>
-            <li class="a">Las sesiones se realizan a través de videoconferencias seguras. Recibirás un enlace para unirte a la sesión desde tu dispositivo.</li>
+                <li class="q"><i class="ion-chevron-right"></i>¿Cómo funciona una sesión de terapia online?</li>
+                <li class="a">Las sesiones se realizan a través de videoconferencias seguras. Recibirás un enlace para
+                    unirte a la sesión desde tu dispositivo.</li>
 
-            <li class="q"><i class="ion-chevron-right"></i>¿Es efectiva la terapia online?</li>
-            <li class="a">Sí, numerosos estudios han demostrado que la terapia online puede ser tan efectiva como la terapia presencial para una variedad de problemas psicológicos.
-            </li>
+                <li class="q"><i class="ion-chevron-right"></i>¿Es efectiva la terapia online?</li>
+                <li class="a">Sí, numerosos estudios han demostrado que la terapia online puede ser tan efectiva como la
+                    terapia presencial para una variedad de problemas psicológicos.
+                </li>
 
-            <li class="q"><i class="ion-chevron-right"></i>¿Cómo puedo agendar una sesión en ContigoVoy?</li>
-            <li class="a">Puedes agendar una sesión a través de nuestra página web, llamándonos o enviándonos un correo electrónico.</li>
+                <li class="q"><i class="ion-chevron-right"></i>¿Cómo puedo agendar una sesión en ContigoVoy?</li>
+                <li class="a">Puedes agendar una sesión a través de nuestra página web, llamándonos o enviándonos un
+                    correo electrónico.</li>
 
-            <li class="q"><i class="ion-chevron-right"></i>¿Necesito algún equipo especial para la terapia online?</li>
-            <li class="a">Solo necesitas un dispositivo con acceso a internet, una cámara y un micrófono funcionales. La mayoría de los smartphones, tabletas y computadoras son adecuados.
-            </li>
+                <li class="q"><i class="ion-chevron-right"></i>¿Necesito algún equipo especial para la terapia online?
+                </li>
+                <li class="a">Solo necesitas un dispositivo con acceso a internet, una cámara y un micrófono
+                    funcionales. La mayoría de los smartphones, tabletas y computadoras son adecuados.
+                </li>
 
-        </ul>
+            </ul>
+        </div>
     </div>
-    </div>
-    
-   
+
+
 
     <script>
         // Accordian

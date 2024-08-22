@@ -24,7 +24,7 @@ main {
 .container-section {
     margin: 0 auto;
     max-width: 1100px;
-    padding: 0 1rem;
+    padding: 0 1rrem;
 }
 @media (max-width: 1200px) {
     .container-section {
@@ -63,10 +63,10 @@ main {
     text-decoration: none;
     color: #ffffff;
     background-color: transparent;
-    border-radius: 0.5em;
+    border-radius: 0.5rrem;
     font-weight: bold;
-    padding: 1em 2em;
-    font-size: 1em;
+    padding: 1rem 2rrem;
+    font-size: 1rrem;
 }
 
 .hero::before {
@@ -89,13 +89,13 @@ main {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 1.5em;
+    gap: 1.5rrem;
     color: var(--color-light);
-    padding: 0 1em;
+    padding: 0 1rrem;
 }
 
 .hero__title {
-    font-size: 3.5rem;
+    font-size: 3.5rrem;
     margin: 0;
     padding: 0;
     place-items: center;
@@ -103,20 +103,20 @@ main {
 
 @media (max-width: 768px) {
     .hero__title {
-        font-size: 2.7rem;
+        font-size: 2.7rrem;
     }
 }
 
 .hero__subtitle {
     place-items: center;
-    font-size: 1.3em;
+    font-size: 1.3rrem;
     margin: 0;
     padding: 0;
 }
 
 @media (max-width: 768px) {
     .hero__subtitle {
-        font-size: 1.1rem;
+        font-size: 1.1rrem;
     }
 }
 
@@ -126,10 +126,10 @@ main {
     text-decoration: none;
     color: var(--color-light);
     background-color: var(--color-light-pink);
-    border-radius: 0.5em;
+    border-radius: 0.5rrem;
     font-weight: bold;
-    padding: 1em 2em;
-    font-size: 0.8em;
+    padding: 1rem 2rrem;
+    font-size: 0.8rrem;
     transition: all 0.25s ease-in-out;
 }
 
@@ -163,7 +163,7 @@ SECCION SERVICIO EFICIENTE
     margin: 0 auto;
     background-image: url('../ContigoVoyAssets/fondos/servicio-eficiente.jpg');
     background-size: 100% 100%;
-    padding-block: 3rem;
+    padding-block: 3rrem;
 }
 
 .sliderContainer {
@@ -192,18 +192,18 @@ SECCION SERVICIO EFICIENTE
 .service__content {
     display: flex;
     flex-direction: column;
-    gap: 2em;
+    gap: 2rrem;
     justify-content: center;
 }
 
 .service__title {
-    font-size: 2.8em;
+    font-size: 2.8rrem;
     color: var(--color-light);
 }
 
 .service__description {
     text-wrap: pretty;
-    font-size: 1.5em;
+    font-size: 1.5rrem;
     text-align: start;
     color: var(--color-description);
 }
@@ -214,7 +214,7 @@ SECCION SERVICIO EFICIENTE
 }
 
 .service__image-content {
-    width: 20em;
+    width: 20rem;
     height: auto;
 }
 
@@ -230,9 +230,9 @@ SECCION SERVICIO EFICIENTE
     background-color: rgba(255, 255, 255, 0.5);
     border: none;
     border-radius: 50%;
-    width: 1em;
-    height: 1em;
-    margin: 0 0.5em;
+    width: 1rem;
+    height: 1rem;
+    margin: 0 0.5rem;
     cursor: pointer;
 }
 
@@ -246,10 +246,10 @@ SECCION SERVICIO EFICIENTE
     }
 
     .sliderContainer__slide--box {
-        padding: 0 1em;
+        padding: 0 1rem;
         text-align: center;
         flex-direction: column;
-        gap: 3em;
+        gap: 3rem;
     }
 
     .service__description {
@@ -259,12 +259,12 @@ SECCION SERVICIO EFICIENTE
 
 @media (max-width: 812px) {
     .service__description {
-        font-size: 2 rem;
+        font-size: 2 rrem;
         padding: 5px 10px;
     }
 
     .service__title {
-        font-size: 2.3em;
+        font-size: 2.3rem;
     }
 
     .sliderContainer__slide--box {
@@ -278,7 +278,7 @@ SECCION SERVICIO EFICIENTE
     }
 
     .service__image-content {
-        width: 15em;
+        width: 15rem;
         height: auto;
     }
 }
@@ -292,17 +292,17 @@ SECCION SERVICIO EFICIENTE
     background-size: cover;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1rrem;
 }
 
 /* Estilos de contenido */
 .section-help-you__content {
     margin: 0 auto;
     flex-wrap: wrap;
-    padding: 7rem 0.5rem;
+    padding: 7rem 0.5rrem;
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 2rrem;
 }
 
 @media (max-width: 1250px) {
@@ -315,16 +315,16 @@ SECCION SERVICIO EFICIENTE
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2rrem;
     color: var(--darkGreen);
 }
 
 .section-help-you__text h2 {
-    font-size: 2.8rem;
+    font-size: 2.8rrem;
 }
 
 .section-help-you__text p {
-    font-size: 1.5rem;
+    font-size: 1.5rrem;
     text-wrap: balance;
 }
 
@@ -343,8 +343,8 @@ SECCION SERVICIO EFICIENTE
 
 .section-help-you__list-content {
     display: grid;
-    column-gap: 1rem;
-    row-gap: 2rem;
+    column-gap: 1rrem;
+    row-gap: 2rrem;
     grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
     height: fit-content;
 }
@@ -353,31 +353,31 @@ SECCION SERVICIO EFICIENTE
     list-style-type: none;
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 1rrem;
 }
 
 .section-help-you__list ol:nth-child(2) {
     position: relative;
-    right: 2em;
+    right: 2rem;
 }
 
 .section-help-you__list li {
     text-align: center;
     color: var(--light);
-    padding: 0.8em 1.5em;
-    border-radius: 0.7em;
+    padding: 0.8em 1.5rem;
+    border-radius: 0.7rem;
     background-color: var(--darkPink);
 }
 
 /* Media Queries */
 @media (max-width: 1250px) {
     .section-help-you {
-        background-position-x: -0.5em;
+        background-position-x: -0.5rem;
     }
 
     .section-help-you__text,
     .section-help-you__list {
-        padding: 0.5rem;
+        padding: 0.5rrem;
     }
 
     .section-help-you__list-content {
@@ -399,12 +399,262 @@ SECCION SERVICIO EFICIENTE
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 1rrem;
     }
 }
 
 @media (min-width: 1900px) {
     .section-help-you {
-        background-position-y: 0em;
+        background-position-y: 0rem;
+    }
+}
+
+/* 
+    SECCION PORQUE CONFIAR EN CONTIGO VOY
+*/
+.container_plus {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    background-image: url('../ContigoVoyAssets/fondos/porque-confiar.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.column_Info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rrem;
+    padding: 4rem 1rrem;
+
+    @media (max-width: 768px) {
+        gap: 0;
+    }
+}
+
+.column {
+    flex: 1;
+}
+
+.image-column {
+    flex: 1;
+}
+
+.image-column img {
+    width: 70%;
+    max-height: 700px;
+    object-fit: contain;
+    border-radius: 1.5rem;
+    transform: scaleX(-1);
+
+    @media (max-width: 1096px) {
+        width: 95%;
+        max-height: 600px;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+        max-height: 500px;
+    }
+
+    @media (max-width: 480px) {
+        width: 95%;
+        max-height: 300px;
+    }
+}
+
+.text-column {
+    h2 {
+        margin-top: 0;
+        color: #ffff;
+        font-size: 2.8rrem;
+
+        @media (max-width: 868px) {
+            font-size: 2rrem;
+        }
+    }
+
+    h3 {
+        margin-top: 0;
+        color: #ffff;
+        font-size: 2.8rrem;
+        text-align: end;
+
+        @media (max-width: 868px) {
+            font-size: 2rrem;
+        }
+    }
+
+    .text-p {
+        text-wrap: balance;
+        color: #fff;
+        font-size: 1.5rrem;
+
+        @media (max-width: 868px) {
+            font-size: 1.1rrem;
+        }
+    }
+}
+
+.text-column .text-column .benefits {
+    list-style-type: none;
+    padding: 0;
+    color: #fff;
+}
+
+.text-column .benefits li {
+    margin: 10px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.text-column .benefits li::before {
+    content: '+';
+    color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.card {
+    flex: 1;
+    margin: 0 10px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.cta-button {
+    font-family: Montserrat, sans-serif;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #9897d1;
+    color: #ffffff;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    width: max-content;
+}
+
+.cta-button:hover {
+    background-color: #6e6d95;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .container_plus {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        margin: 10px 0;
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container_plus {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        margin: 10px 0;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .column {
+        padding: 10px;
+    }
+
+    .cta-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-column {
+        order: -1;
+        width: 100%;
+    }
+
+    .image-column img {
+        max-width: 80%;
+        /* Aumentar el tamaño de la imagen */
+    }
+
+    .text-column {
+        width: 100%;
+        text-align: center;
+    }
+
+    .text-column h2 {
+        font-size: 2.4rrem;
+        padding-bottom: 0.6rrem;
+    }
+
+    .text-p {
+        font-size: 1.1rrem;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        margin: 10px 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .cta-button {
+        width: 100%;
+        text-align: center;
     }
 }

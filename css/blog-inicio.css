@@ -21,32 +21,42 @@
 }
 
 .image-content h3 {
-    font-size: 2em;
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 
 .image-content p {
-    font-size: 1.2em;
+    font-size: 1.2rem;
     margin-bottom: 20px;
 }
 
 .image-content a {
     display: inline-block;
     padding: 10px 20px;
-    background-color: rgba(86, 185, 179, 1); /* Cambia el último valor (1) para ajustar la opacidad */
+    background-color: rgba(
+        86,
+        185,
+        179,
+        1
+    ); /* Cambia el último valor (1) para ajustar la opacidad */
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 .image-content a:hover {
-    background-color: rgba(86, 185, 179, 1); /* Cambia el último valor (1) para ajustar la opacidad */
+    background-color: rgba(
+        86,
+        185,
+        179,
+        1
+    ); /* Cambia el último valor (1) para ajustar la opacidad */
 }
 /* Media queries para pantallas más pequeñas */
 @media (width < 500px) {
     .image-container {
-        height: 500px; 
+        height: 500px;
     }
     .image-content {
         width: 90%; /* Reducir el ancho del contenido para pantallas más pequeñas */
@@ -54,14 +64,14 @@
     }
 
     .image-content h3 {
-        font-size: 1.3em; /* Reducir el tamaño del título para pantallas más pequeñas */
+        font-size: 1.3rem; /* Reducir el tamaño del título para pantallas más pequeñas */
     }
 
     .image-content p {
-        font-size: 1em;
+        font-size: 1rem;
     }
 
     .image-content a {
-        font-size: 1em; /* Reducir el tamaño del texto del enlace para pantallas más pequeñas */
+        font-size: 1rem; /* Reducir el tamaño del texto del enlace para pantallas más pequeñas */
     }
 }

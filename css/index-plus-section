@@ -13,7 +13,7 @@
 .column_Info {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 1rem;
 }
 
 .content-wrapper {
@@ -21,8 +21,8 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 2.5rem;
-    padding: 4rem 1rem;
+    gap: 2.5rrem;
+    padding: 4rem 1rrem;
 
     @media (max-width: 768px) {
         gap: 0;
@@ -41,7 +41,7 @@
     width: 70%;
     max-height: 700px;
     object-fit: contain;
-    border-radius: 1.5em;
+    border-radius: 1.5rem;
     transform: scaleX(-1);
 
     @media (max-width: 1096px) {
@@ -64,31 +64,31 @@
     h2 {
         margin-top: 0;
         color: #ffff;
-        font-size: 2.8rem;
+        font-size: 2.8rrem;
 
         @media (max-width: 868px) {
-            font-size: 2rem;
+            font-size: 2rrem;
         }
     }
 
     h3 {
         margin-top: 0;
         color: #ffff;
-        font-size: 2.8rem;
+        font-size: 2.8rrem;
         text-align: end;
 
         @media (max-width: 868px) {
-            font-size: 2rem;
+            font-size: 2rrem;
         }
     }
 
     .text-p {
         text-wrap: balance;
         color: #fff;
-        font-size: 1.5rem;
+        font-size: 1.5rrem;
 
         @media (max-width: 868px) {
-            font-size: 1.1rem;
+            font-size: 1.1rrem;
         }
     }
 }
@@ -220,12 +220,12 @@
     }
 
     .text-column h2 {
-        font-size: 2.4rem;
-        padding-bottom: 0.6rem;
+        font-size: 2.4rrem;
+        padding-bottom: 0.6rrem;
     }
 
     .text-p {
-        font-size: 1.1rem;
+        font-size: 1.1rrem;
     }
 
     .cards {
