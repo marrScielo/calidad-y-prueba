@@ -390,18 +390,18 @@
   <div class="principal">
     <div class="redes">
       <ul>
-        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 11-8.png" alt="Facebook"></a></li>
-        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 12-8.png" alt="Twitter"></a></li>
-        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 13-8.png" alt="Instagram"></a></li>
-        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 14-8.png" alt="YouTube"></a></li>
-        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 15-8.png" alt="Whatsapp"></a></li>
-        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 16-8.png" alt="TikTok"></a></li>
+        <li><a href=""><img src="img/ICONOS REDES SOCIALES/Recurso 11-8.png" alt="Facebook"></a></li>
+        <li><a href=""><img src="img/ICONOS REDES SOCIALES/Recurso 12-8.png" alt="Twitter"></a></li>
+        <li><a href=""><img src="img/ICONOS REDES SOCIALES/Recurso 13-8.png" alt="Instagram"></a></li>
+        <li><a href=""><img src="img/ICONOS REDES SOCIALES/Recurso 14-8.png" alt="YouTube"></a></li>
+        <li><a href=""><img src="img/ICONOS REDES SOCIALES/Recurso 15-8.png" alt="Whatsapp"></a></li>
+        <li><a href=""><img src="img/ICONOS REDES SOCIALES/Recurso 16-8.png" alt="TikTok"></a></li>
       </ul>
     </div>
     <div class="titulo">Atencion al usuario</div>
     <div class="contacto">
       <div class="icono">
-        <li><img src="../../ContigoVoy/img/CELULAR-8.png" alt="Celular"></li>
+        <li><img src="img/CELULAR-8.png" alt="Celular"></li>
       </div>
       <div class="textosup">Linea de soporte</div>
       <div class="textoinf">(+51) 666 666 666 Ext. 1111</div>
@@ -409,7 +409,7 @@
     </div>
     <div class="contacto">
       <div class="icono">
-        <li><img src="../../ContigoVoy/img/CELULAR-8.png" alt="Celular"></li>
+        <li><img src="img/CELULAR-8.png" alt="Celular"></li>
       </div>
       <div class="textosup">Linea administrativa</div>
       <div class="textoinf">(57+1) 5185353 Ext. 1000</div>
@@ -417,7 +417,7 @@
     </div>
     <div class="contacto">
       <div class="icono">
-        <li><img style="height: 75%" src="../../ContigoVoy/img/MENSAJE-8.png" alt="Mensaje"></li>
+        <li><img style="height: 75%" src="img/MENSAJE-8.png" alt="Mensaje"></li>
       </div>
       <div class="textosup">Correo Electronico</div>
       <div class="textoinf">CONTIGO.VOY@gmail.com</div>
@@ -425,7 +425,7 @@
     </div>
     <div class="contacto">
       <div class="icono">
-        <li><img style="height: 85%;width: 60%;" src="../../ContigoVoy/img/UBICACION-8.png" alt="Ubicacion"></li>
+        <li><img style="height: 85%;width: 60%;" src="img/UBICACION-8.png" alt="Ubicacion"></li>
       </div>
       <div class="textosup">Calle 73 # 7 – 31, Torre B Piso 2,
         Bogotá D.C., Colombia
@@ -459,7 +459,7 @@
         Eventos</div>
     </div>
     <div class="logoo">
-      <img src="../../ContigoVoy/img/Recurso 13-8.png" alt="Logo">
+      <img src="img/Recurso 13-8.png" alt="Logo">
     </div>
     <div class="links">
       <div class="textosup">Intranet</div>
