@@ -390,12 +390,12 @@
   <div class="principal">
     <div class="redes">
       <ul>
-        <li><a href=""><img src="img/ICONOS REDES SOCIALES/Recurso 11-8.png" alt="Facebook"></a></li>
-        <li><a href=""><img src="img/ICONOS REDES SOCIALES/Recurso 12-8.png" alt="Twitter"></a></li>
-        <li><a href=""><img src="img/ICONOS REDES SOCIALES/Recurso 13-8.png" alt="Instagram"></a></li>
-        <li><a href=""><img src="img/ICONOS REDES SOCIALES/Recurso 14-8.png" alt="YouTube"></a></li>
-        <li><a href=""><img src="img/ICONOS REDES SOCIALES/Recurso 15-8.png" alt="Whatsapp"></a></li>
-        <li><a href=""><img src="img/ICONOS REDES SOCIALES/Recurso 16-8.png" alt="TikTok"></a></li>
+        <li><a href=""><img src="img/icons/facebook.png" alt="Facebook"></a></li>
+        <li><a href=""><img src="img/icons/twitter.png" alt="Twitter"></a></li>
+        <li><a href=""><img src="img/icons/instagram.png" alt="Instagram"></a></li>
+        <li><a href=""><img src="img/icons/youtube.png" alt="YouTube"></a></li>
+        <li><a href=""><img src="img/icons/whatsapp.png" alt="Whatsapp"></a></li>
+        <li><a href=""><img src="img/icons/tiktok.png" alt="TikTok"></a></li>
       </ul>
     </div>
     <div class="titulo">Atencion al usuario</div>
