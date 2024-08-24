@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link el="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="./css/header-style.css">
-    <link rel="stylesheet" href="./css/estilo-footer.css">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/contactanos-seccion-completa.css">
+    <link rel="stylesheet" href="css/header-style.css">
+    <link rel="stylesheet" href="css/estilo-footer.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/contactanos-seccion-completa.css">
     <link rel="icon" href="img/Logo.png">
     <title>Contáctanos</title>
 </head>
@@ -37,15 +37,15 @@
                 </div>
                 <div class="redes">
                     <ul>
-                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 11-8.png"
+                        <li><a href=""><img src="img/icons/facebook.png"
                                     alt="Facebook"></a></li>
-                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 12-8.png"
+                        <li><a href=""><img src="img/icons/twitter.png"
                                     alt="Twitter"></a></li>
-                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 13-8.png"
+                        <li><a href=""><img src="img/icons/instagram.png"
                                     alt="Instagram"></a></li>
-                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 14-8.png"
+                        <li><a href=""><img src="img/icons/youtube.png"
                                     alt="YouTube"></a></li>
-                        <li><a href=""><img src="../../ContigoVoy/img/ICONOS REDES SOCIALES/Recurso 16-8.png"
+                        <li><a href=""><img src="img/icons/tiktok.png"
                                     alt="TikTok"></a></li>
                     </ul>
                 </div>
@@ -70,7 +70,7 @@
     <footer>
         <div>Copyright &copy; 2024 CONTIGO VOY</div>
     </footer>
-    <script src="./js/navabar.js"></script>
+    <script src="js/navabar.js"></script>
 </body>
 
 </html>

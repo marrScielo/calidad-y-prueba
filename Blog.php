@@ -60,6 +60,16 @@ $especialidades = [
     <link rel="stylesheet" href="css/boton-wsp.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
+<style>
+    .search-container h2 {
+        margin-top: 10px;
+        color: #9897d1;
+    }
+
+    .dropdown-content.open {
+        display: block;
+    }
+</style>
 
 <body>
     <?php include 'Componentes/header.php'; ?>
@@ -83,9 +93,13 @@ $especialidades = [
 
                 <!-- Dropdown para las categorías -->
                 <div class="dropdown">
+                    <div class="search-container">
+                        <h2>Filtrar por Especialidad</h2>
+                    </div>
+
+
                     <button type="button" class="dropbtn">CATEGORÍA <span class="arrow">&#9660;</span></button>
-                    <!-- Botón desplegable -->
-                    <div class="dropdown-content">
+                    <div class="dropdown-content open">
                         <?php foreach ($especialidades as $especialidad): ?>
                             <div class="filter-option">
                                 <input style="cursor: pointer;" type="checkbox" class="especialidad-checkbox"
@@ -97,7 +111,6 @@ $especialidades = [
                         <?php endforeach; ?>
                     </div>
                 </div>
-
             </form>
         </div>
 
@@ -113,6 +126,7 @@ $especialidades = [
                     foreach ($blogs as $post) {
                         echo '<div class="blog-post" data-especialidad="' . htmlspecialchars($post['post_especialidad']) . '">';
                         echo '<a href="blog-details.php?id=' . intval($post['post_id']) . '">';
+                        // echo '<h3>' . htmlspecialchars($post['post_especialidad']) . '</h2>';
                         echo '<img src="' . htmlspecialchars($post['post_imagen']) . '" alt="' . htmlspecialchars($post['post_tema']) . '">';
                         echo '<h2>' . htmlspecialchars($post['post_tema']) . '</h2>';
                         echo '</a>';
@@ -138,7 +152,7 @@ $especialidades = [
 
                 <?php for ($i = max(1, $page - 2); $i <= min($totalPages, $page + 2); $i++): ?>
                     <a href="?page=<?php echo $i; ?>" class="page-link<?php if ($i == $page)
-                           echo ' active'; ?>"><?php echo $i; ?></a>
+                                                                            echo ' active'; ?>"><?php echo $i; ?></a>
                 <?php endfor; ?>
 
                 <?php if ($page < $totalPages - 2): ?>
@@ -157,46 +171,53 @@ $especialidades = [
 
     <?php include 'Componentes/footer_new.php'; ?>
 
+
+
     <script>
-        document.querySelector('.dropbtn').addEventListener('click', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const dropdownContent = document.querySelector('.dropdown-content');
-            // dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-            if (dropdownContent.style.display === 'block') {
-                dropdownContent.style.display = 'none';
-                containerRight.style.height = '100%';
-            } else {
-                dropdownContent.style.display = 'block';
-                containerRight.style.height = `calc(100% - ${dropdownContent.clientHeight}px)`;
+            const containerRight = document.querySelector('.container-right'); // Asegúrate de que este selector sea correcto
+
+            // Mostrar el contenido desplegable al cargar la página
+            dropdownContent.style.display = 'block';
+            containerRight.style.height = `calc(100% - ${dropdownContent.clientHeight}px)`;
+
+            document.querySelector('.dropbtn').addEventListener('click', function() {
+                if (dropdownContent.style.display === 'block') {
+                    dropdownContent.style.display = 'none';
+                    containerRight.style.height = '100%';
+                } else {
+                    dropdownContent.style.display = 'block';
+                    containerRight.style.height = `calc(100% - ${dropdownContent.clientHeight}px)`;
+                }
+            });
+
+            document.getElementById('filter-form').addEventListener('change', function() {
+                const checkboxes = document.querySelectorAll('.especialidad-checkbox');
+                const selectedEspecialidades = Array.from(checkboxes)
+                    .filter(checkbox => checkbox.checked)
+                    .map(checkbox => checkbox.value);
+                const searchTerm = document.getElementById('search-input').value.toLowerCase();
+                // Construir la query string
+                let queryString = `?page=1`;
+                if (selectedEspecialidades.length > 0) {
+                    queryString += `&especialidades=${selectedEspecialidades.join(',')}`;
+                }
+                if (searchTerm) {
+                    queryString += `&search=${encodeURIComponent(searchTerm)}`;
+                }
+                // Recargar la página con los filtros aplicados
+                window.location.href = window.location.pathname + queryString;
+            });
+
+            function mostrarMensajeNoBlogs() {
+                document.getElementById("mensaje-no-blogs").style.display = "block";
+            }
+
+            function ocultarMensajeNoBlogs() {
+                document.getElementById("mensaje-no-blogs").style.display = "none";
             }
         });
-
-        document.getElementById('filter-form').addEventListener('change', function () {
-            const checkboxes = document.querySelectorAll('.especialidad-checkbox');
-            const selectedEspecialidades = Array.from(checkboxes)
-                .filter(checkbox => checkbox.checked)
-                .map(checkbox => checkbox.value);
-            const searchTerm = document.getElementById('search-input').value.toLowerCase();
-
-            // Construir la query string
-            let queryString = `?page=1`;
-            if (selectedEspecialidades.length > 0) {
-                queryString += `&especialidades=${selectedEspecialidades.join(',')}`;
-            }
-            if (searchTerm) {
-                queryString += `&search=${encodeURIComponent(searchTerm)}`;
-            }
-
-            // Recargar la página con los filtros aplicados
-            window.location.href = window.location.pathname + queryString;
-        });
-
-        function mostrarMensajeNoBlogs() {
-            document.getElementById("mensaje-no-blogs").style.display = "block";
-        }
-
-        function ocultarMensajeNoBlogs() {
-            document.getElementById("mensaje-no-blogs").style.display = "none";
-        }
     </script>
 
     <script src="js/navabar.js"></script>
