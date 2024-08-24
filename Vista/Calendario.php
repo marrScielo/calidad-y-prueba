@@ -14,7 +14,7 @@ if (isset($_SESSION['NombrePsicologo'])){
     <link rel="stylesheet" href="../Issets/fullcalendar/main.css">
     <link rel="stylesheet" href="../Issets/css/calendario.css">
     <link rel="stylesheet" href="../Issets/css/main.css">
-    <link rel="icon" href="../img/Logo.png">
+    <link rel="icon" href="../img/favicon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> 
     <script src="../Issets/Bootstrap/jquery-3.6.0.min.js"></script>

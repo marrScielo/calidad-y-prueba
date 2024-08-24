@@ -9,7 +9,7 @@
         content="Encuentra apoyo emocional y psicológico con nuestro psicólogo profesional. Ofrecemos terapia online y presencial. Reserva tu cita ahora y comienza tu camino hacia el bienestar.">
     <meta name="keywords"
         content="psicólogo, terapia, apoyo emocional, salud mental, terapia online, terapia presencial, citas, reservas, bienestar emocional">
-    <link rel="icon" href="img/Logo.png">
+    <link rel="icon" href="img/favicon.png">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/header-style.css">
