@@ -63,7 +63,7 @@ $especialidades = [
 <style>
     .search-container h2 {
         margin-top: 10px;
-        color: #9897d1;
+        color: #a19ebb;
     }
 
     .dropdown-content.open {
