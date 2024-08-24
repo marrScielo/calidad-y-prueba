@@ -56,7 +56,7 @@ $especialidades = [
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/header-style.css">
     <link rel="stylesheet" href="css/blog-seccion-principal.css">
-    <link rel="icon" href="img/Logo.png">
+    <link rel="icon" href="img/favicon.png">
     <link rel="stylesheet" href="css/boton-wsp.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/header-style.css">
     <link rel="stylesheet" href="css/estilos-footer.css">
     <link rel="stylesheet" href="css/reservar-cita-psicologos.css">
-    <link rel="icon" href="img/Logo.png">
+    <link rel="icon" href="img/favicon.png">
     <link rel="stylesheet" href="css/boton-wsp.css">
     <link rel="stylesheet" href="css/styles.css">
     <!-- Google fonts -->
