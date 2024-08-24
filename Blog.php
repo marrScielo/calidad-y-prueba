@@ -113,6 +113,7 @@ $especialidades = [
                     foreach ($blogs as $post) {
                         echo '<div class="blog-post" data-especialidad="' . htmlspecialchars($post['post_especialidad']) . '">';
                         echo '<a href="blog-details.php?id=' . intval($post['post_id']) . '">';
+                        // echo '<h3>' . htmlspecialchars($post['post_especialidad']) . '</h2>';
                         echo '<img src="' . htmlspecialchars($post['post_imagen']) . '" alt="' . htmlspecialchars($post['post_tema']) . '">';
                         echo '<h2>' . htmlspecialchars($post['post_tema']) . '</h2>';
                         echo '</a>';
