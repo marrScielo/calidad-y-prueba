@@ -35,7 +35,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
     <title>Dashboard</title>
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
-    <link rel="icon" href="../img/Logo.png">
+    <link rel="icon" href="../img/favicon.png">
     <link rel="stylesheet" href="../Issets/css/dashboard.css">
     <link rel="stylesheet" href="../Issets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />

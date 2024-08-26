@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/estilo-footer.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/contactanos-seccion-completa.css">
-    <link rel="icon" href="img/Logo.png">
+    <link rel="icon" href="img/favicon.png">
     <title>Contáctanos</title>
 </head>
 

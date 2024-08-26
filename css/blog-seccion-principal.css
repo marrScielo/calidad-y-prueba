@@ -15,11 +15,15 @@ a {
 }
 
 .descripcion-blog p {
-    padding: 1.5rem;
-    color: #ffffff;
-    font-weight: 400;
-    line-height: normal;
+    padding: 2rem;
+    background-color: #fff;
+    color:#534489;
+    margin-bottom: 20px;
+    font-weight: 450;
+    border-radius: 10px;
+    line-height: 1.6;
     text-align: center;
+    
 }
 
 .container-blog {
@@ -111,34 +115,53 @@ a {
 }
 
 .blog-post {
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    border-radius: 10px;
-    flex: 0 1 calc(30% - 20px);
-    background-color: #fff;
-    transition: transform 0.2s;
+  position: relative; 
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-radius: 10px;
+  flex: 0 1 calc(30% - 20px);
+  background-color: #fff;
+  transition: transform 0.2s;
+  overflow: hidden; 
 }
 
 .blog-post:hover {
     transform: scale(1.05);
 }
 
+/* .blog-post h3 {
+  position: absolute; 
+  top: 0;
+  left: 0; 
+  right: 0; 
+  color: #ffffff; 
+  background-color: #534489ce; 
+  padding: 5px 10px; 
+  margin: 10px 10px 0 150px; 
+  text-align: end; 
+  border-radius: 10px; 
+  font-size: 0.8rem; 
+  font-weight: normal; 
+  display: inline-block; 
+} */
+
 .blog-post img {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    height: 150px;
-    width: 100%;
-    background-size: cover;
-    margin-bottom: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 170px;
+  width: 100%;
+  background-size: cover;
+  margin-bottom: 10px;
+  display: block; 
 }
 
 .blog-post h2 {
     text-align: start;
     color: #534489;
-    margin-top: 0;
-    margin-bottom: 5px;
+    border-radius: 10px;
+    margin: 10px;
     font-size: 1.125rem;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 6px;
+
 }
 
 .blog-post h2:hover {
