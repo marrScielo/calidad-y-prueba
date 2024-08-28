@@ -7,7 +7,7 @@ class UserModelCita
         //SOLO ACEPTA RUTAS ABSOLUTAS
 
         //local
-        require_once("C:/xampp/htdocs/ContigoVoy/conexion/conexion.php");
+        require_once(__DIR__."/../../conexion/conexion.php");
         
         //hosting
         //require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");

@@ -5,7 +5,7 @@ class userModelPaciente
     public function __construct()
     {
         //SOLO ACEPTA RUTAS ABSOLUTAS
-        require_once("C:/xampp/htdocs/ContigoVoy/conexion/conexion.php");
+        require_once(__DIR__ . "/../../conexion/conexion.php");
         //require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");
 
         $con = new conexion();
