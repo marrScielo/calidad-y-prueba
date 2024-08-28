@@ -6,6 +6,7 @@ class UsuarioModel {
     private $username = CONFIG_DB['username'];
     private $password = CONFIG_DB['password'];
     private $database = CONFIG_DB['database'];
+private $dbname = "contigovoy3";
 
     private $conn;
 
