@@ -7,7 +7,7 @@ const CONFIG_DB = [
     'database' => 'contigovoy3'
 ];
 // hosting
-// const config_db = [
+// const CONFIG_DB = [
 //     'servername' => 'localhost',
 //     'username' => 'ghxumdmy_psicologoapk',
 //     'password' => 'Psicologo123',
