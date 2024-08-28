@@ -102,7 +102,7 @@ if (isset($_GET['id'])) {
             <br />
             <img loading="lazy" class="image-post" src="<?php echo htmlspecialchars($post['imagen']); ?>"
                 alt="<?php echo htmlspecialchars($post['tema']); ?>">
-            <h2><?php echo htmlspecialchars($post['tema']); ?></h2>
+            <!-- <h2><?php echo htmlspecialchars($post['tema']); ?></h2> -->
             <p class="content_bg contenidos"><?php echo nl2br(htmlspecialchars($post['descripcion'])); ?></p>
 
             <!-- <p class="content_bg contenidos">
