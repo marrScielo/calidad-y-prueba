@@ -1,4 +1,3 @@
-
 <?php
 
 /*
@@ -60,21 +59,21 @@ class Login
         $email = trim($_POST['usu']);
         $password = trim($_POST['pass']);
 
-        $this->PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $statement = $this->PDO->prepare("SELECT * FROM usuarios WHERE email = :email AND password = :password");
+        // verify if the email exists in the database
+        $statement = $this->PDO->prepare("SELECT * FROM usuarios WHERE email = :email");
         $statement->bindParam(":email", $email);
-        $statement->bindParam(":password", $password);
         $statement->execute();
         $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-        if ($user) {
+        // compare the password with the hash stored in the database
+        if ($user && password_verify($password, $user['password'])) {
             $_SESSION['email'] = $user["email"];
             $_SESSION['id'] = $user["id"];
             $_SESSION['rol'] = $user["rol"];
 
-            // Verificar el rol específico 'psicologo'
+            // check the specific role 'psicologo'
             if ($user['rol'] == 'psicologo') {
-                // Buscar el IdPsicologo en la tabla 'psicologo'
+                // search the IdPsicologo in the 'psicologo' table
                 $psicologoStatement = $this->PDO->prepare("SELECT IdPsicologo, NombrePsicologo FROM psicologo WHERE usuario_id = :usuario_id");
                 $psicologoStatement->bindParam(":usuario_id", $user["id"]);
                 $psicologoStatement->execute();
@@ -87,7 +86,7 @@ class Login
                     header("Location: ../../Vista/Dashboards.php");
                     exit();
                 } else {
-                    // Redirigir a una página de error si no se encuentra el psicólogo correspondiente
+                    // Redirect to an error page if the corresponding psychologist is not found
                     header("Location: ../../login.php?error=no_psicologo");
                     exit();
                 }
@@ -97,7 +96,7 @@ class Login
                 header("Location: ../../usuarios.php"); 
                 exit();
             } else {
-                // Redirigir a una página genérica o de error si el rol no es reconocido
+                // Redirect to a generic or error page if the role is not recognized
                 header("Location: ../../login.php?error=rol_no_reconocido");
                 exit();
             }
