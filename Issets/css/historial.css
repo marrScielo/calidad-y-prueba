@@ -1,5 +1,5 @@
 /*---Para ubicar el side navbar y la vista de forma correcta---*/
-.containerTotal{
+.containerTotal {
     display: grid;
     width: 96%;
     margin: 0 auto;
@@ -7,19 +7,19 @@
     grid-template-columns: 17rem auto;
 }
 /*----------------Estilos de la casilla de buscar--------------*/
-.input-group input{
-	width: auto;
-	padding: 12px 15px;
-	border-radius: 15px;
+.input-group input {
+    width: auto;
+    padding: 12px 15px;
+    border-radius: 15px;
     font-weight: bold;
     font-size: 14px;
-	background-color: transparent;
+    background-color: transparent;
     color: var(--color-warning);
     outline: 1px solid var(--color-warning);
     height: 100%;
     transition: color 1s;
 }
-.input-group input::placeholder{
+.input-group input::placeholder {
     color: var(--color-warning);
 }
 /*------------Estilos del boton de agregar paciente------------*/
@@ -32,7 +32,7 @@
     background-color: transparent;
     color: var(--color-warning);
     cursor: pointer;
-    border-radius: 15px ;
+    border-radius: 15px;
     border: 0.1em var(--color-warning); /* Color del borde */
     padding: 12px 15px;
     outline: 1px solid var(--color-warning);
@@ -41,10 +41,9 @@
 .button:hover {
     color: black;
     cursor: pointer;
-
 }
 /*------------Estilos del container paciente------------*/
-.container-paciente-tabla{
+.container-paciente-tabla {
     width: 100%;
     align-items: center;
     padding-top: 2rem;
@@ -69,24 +68,25 @@
     grid-row: 1; /* Esto coloca .before-details en la primera fila */
     padding: 1rem 0rem 1.5rem 0rem;
 }
-.container-paciente-tabla.active .before-details{/*---------------------------------------------------------------------------------------------------------------*/
+.container-paciente-tabla.active .before-details {
+    /*---------------------------------------------------------------------------------------------------------------*/
     max-height: 435px; /* Establece la altura máxima deseada */
-    overflow-y: auto; 
+    overflow-y: auto;
     border-radius: 30px 0px 0px 30px;
     padding: 1rem 0rem 1.5rem 0rem;
 }
 /*-----------Container de la derecha (detalles)------------*/
 
 /*------------Grupo TOP-------------*/
-.top-group{
+.top-group {
     display: flex;
     flex-direction: row;
     gap: 20px;
     justify-content: space-between;
 }
 /*------------Sub grupo de TOP (fecha) Derecha-------------*/
-.date{
-    background-color: #6A92F4;
+.date {
+    background-color: #6a92f4;
     height: 90px;
     width: 120px;
     border-radius: 0px 20px;
@@ -96,18 +96,18 @@
     flex-direction: column;
     color: white;
 }
-.date p{
+.date p {
     color: white;
 }
 /*----Sub grupo de TOP (nombre,años,historial) Izquierda---*/
-.name{
+.name {
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: start;
     gap: 2px;
-    }
-.visual2{ 
+}
+.visual2 {
     color: #6a92f4;
     font-size: 22px;
     font-weight: bold;
@@ -117,23 +117,23 @@
     margin-left: 1rem;
     margin-top: 1rem;
 }
-.ci-input-group .arriba{
+.ci-input-group .arriba {
     font-size: 18px;
     font-weight: 600;
     color: #8fbbc8;
 }
-.ci-input-group .abajo{
+.ci-input-group .abajo {
     font-size: 14px;
     font-weight: 500;
     text-align: start;
 }
-.arriba{
+.arriba {
     font-size: 14px;
     font-weight: 700;
     text-align: start;
 }
 /*---------Tabla (registros del inicio de la vista)---------*/
-table{
+table {
     width: 100%;
     margin-top: 0.5rem;
     border-spacing: 0.5rem;
@@ -141,30 +141,28 @@ table{
 /*----------------Tabla cuando este en active---------------*/
 
 .container-paciente-tabla.active table {
-    width:100%;
+    width: 100%;
     margin-top: 0rem;
     border-spacing: 0;
 }
-.container-paciente-tabla.active table tr.primera-fila td:first-child{
+.container-paciente-tabla.active table tr.primera-fila td:first-child {
     border-top-left-radius: 20px !important;
-}   
-.container-paciente-tabla.active table td{
+}
+.container-paciente-tabla.active table td {
     text-align: start;
     padding-bottom: 1rem;
     padding-top: 1rem;
-    border-bottom: 1px solid var(--color-warning);
-    border-top: 1px solid var(--color-warning);
 }
-.container-paciente-tabla.active table tr td:first-child{
+.container-paciente-tabla.active table tr td:first-child {
     padding-left: 2rem;
-} 
-
-.container-paciente-tabla.active table tr {
-    background-color: #d5e1ef; 
 }
+
 .container-paciente-tabla.active table tr.selected {
-    background-color: #6A92F4; 
+    background-color: #6a92f4;
     color: white;
+    p {
+        color: white;
+    }
 }
 /*---------------Container de detalles paciente-------------*/
 .patient-details {
@@ -188,15 +186,15 @@ table{
     justify-content: flex-end;
     display: flex;
 }
-.green-button{
+.green-button {
     width: 130px;
     height: 30px;
     border-radius: 30px;
     font-size: 10.2px;
-    background-color: #52C291;
+    background-color: #52c291;
     color: white;
 }
-.green-button:hover{
+.green-button:hover {
     color: var(--color-dark);
     font-weight: 700;
     cursor: pointer;
@@ -208,50 +206,50 @@ table{
 /*--------------------- Responsive -------------------------*/
 @media (max-width: 950px) {
     /*Arriba----------------------*/
-    .input-group input{
+    .input-group input {
         font-size: 0.8rem;
         width: 90%;
     }
-    .button{
+    .button {
         font-size: 0.8rem;
         padding: 9px 12px;
     }
     /*Izquierda-------------------*/
-    .before-details{
+    .before-details {
         padding: 0.5rem 0rem 0.5rem 0rem;
     }
-    .container-paciente-tabla.active .before-details{
+    .container-paciente-tabla.active .before-details {
         padding: 0.5rem 0rem 0.5rem 0rem;
     }
-    .container-paciente-tabla.active table{
+    .container-paciente-tabla.active table {
         font-size: 9px;
     }
     /*Derecha---------------------*/
-    .date h2{
+    .date h2 {
         font-size: 1.5rem;
     }
-    .date p{
+    .date p {
         font-size: 0.7rem;
     }
-    .date{
+    .date {
         height: 70px;
         width: 100px;
     }
-    .visual2{
+    .visual2 {
         font-size: 1.3rem;
     }
-    .ci-input-group .arriba{
+    .ci-input-group .arriba {
         font-size: 1rem;
     }
-    .ci-input-group .abajo{
+    .ci-input-group .abajo {
         font-size: 0.7rem;
     }
-    .green-button{
+    .green-button {
         width: 115px;
         height: 25px;
         border-radius: 30px;
         font-size: 10px;
-        background-color: #52C291;
+        background-color: #52c291;
         color: white;
     }
 }
