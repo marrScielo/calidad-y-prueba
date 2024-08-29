@@ -6,6 +6,7 @@ class UsuarioModel {
     private $username = CONFIG_DB['username'];
     private $password = CONFIG_DB['password'];
     private $database = CONFIG_DB['database'];
+private $dbname = "contigovoy3";
 
     private $conn;
 
@@ -53,9 +54,10 @@ class UsuarioModel {
     }
 
     public function agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion='', $speciality_id=0) {
+        $hashPassword = password_hash($password, PASSWORD_DEFAULT);
         // Preparar y ejecutar la consulta para insertar un nuevo usuario
         $stmt = $this->conn->prepare("INSERT INTO usuarios (email, password, fotoPerfil, rol) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $email, $password, $fotoPerfil, $rol);
+        $stmt->bind_param("ssss", $email, $hashPassword, $fotoPerfil, $rol);
         $stmt->execute();
 
         // Obtener el ID del usuario recién creado
@@ -65,16 +67,17 @@ class UsuarioModel {
         // Si el rol es psicologo, agregar un nuevo registro en la tabla psicologo
         if ($rol === 'psicologo') {
             $stmt = $this->conn->prepare("INSERT INTO psicologo (usuario_id, Passwords, email, introduccion, especialidad_id) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("isssi", $usuarioId, $password, $email, $introduccion, $speciality_id);
+            $stmt->bind_param("isssi", $usuarioId, $hashPassword, $email, $introduccion, $speciality_id);
             $stmt->execute();
             $stmt->close();
         }
     }
 
     public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion='', $speciality_id=0) {
+        $hashPassword = password_hash($password, PASSWORD_DEFAULT);
         // Preparar y ejecutar la consulta para actualizar un usuario existente
         $stmt = $this->conn->prepare("UPDATE usuarios SET email = ?, password = ?, fotoPerfil = ?, rol = ? WHERE id = ?");
-        $stmt->bind_param("ssssi", $email, $password, $fotoPerfil, $rol, $id);
+        $stmt->bind_param("ssssi", $email, $hashPassword, $fotoPerfil, $rol, $id);
         $stmt->execute();
         $stmt->close();
         $speciality_id = intval($speciality_id);
@@ -86,7 +89,7 @@ class UsuarioModel {
             if ($stmt === false) {
                 die("Error en la preparación de la consulta: " . $this->conn->error);
             }
-            $stmt->bind_param("sssii", $email, $password, $introduccion, $speciality_id, $id);
+            $stmt->bind_param("sssii", $email, $hashPassword, $introduccion, $speciality_id, $id);
             if ($stmt->execute() === false) {
                 die("Error en la ejecución de la consulta: " . $stmt->error);
             }

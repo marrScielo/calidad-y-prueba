@@ -6,7 +6,7 @@ class usernameControlerCita{
         //SOLO ACEPTA RUTAS ABSOLUTAS
 
         //local
-        require_once ("C:/xampp/htdocs/ContigoVoy/Modelo/Cita/ModelCita.php");    
+        require_once (__DIR__."/../../Modelo/Cita/ModelCita.php");    
         
         //hosting
         //require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/Modelo/Cita/ModelCita.php");

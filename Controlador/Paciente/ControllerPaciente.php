@@ -8,7 +8,7 @@ class usernameControlerPaciente
         //SOLO ACEPTA RUTAS ABSOLUTAS
         
         //local
-        require_once("C:/xampp/htdocs/ContigoVoy/Modelo/Paciente/ModelPaciente.php");
+        require_once (__DIR__."/../../Modelo/Paciente/ModelPaciente.php");
         
         //hosting
         //require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/Modelo/Paciente/ModelPaciente.php");

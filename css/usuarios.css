@@ -55,6 +55,13 @@ th {
     background-color: #f4f4f4;
 }
 
+table .user_data_pass {
+    max-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* 
     Estilos para el formulario de CRUD 
 */
