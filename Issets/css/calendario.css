@@ -15,7 +15,7 @@ a {
 #Calendario1{
     padding: 3em;
     border-radius: 2em;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     box-shadow: 0 2rem 3rem  rgba(132, 139, 200, 0.18);
 }
 #Calendario1 .fc-event {

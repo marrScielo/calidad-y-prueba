@@ -2,180 +2,186 @@
 session_start();
 if (isset($_SESSION['NombrePsicologo'])) {
     ?>
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../Issets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
-        <link rel="stylesheet" href="../Issets/css/historial.css">
-        <link rel="stylesheet" href="../Issets/css/main.css">
-        <link rel="stylesheet" href="../Issets/css/panelblog.css">
-        <link rel="icon" href="../img/favicon.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <title>Panel de Blogs</title>
-        <style>
-            /* Estilos para tablets (pantallas de hasta 768px de ancho) */
-                @media (max-width: 768px) {
-                    .container {
-                        flex-direction: column;
-                        padding: 10px;
-                    }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../Issets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet" href="../Issets/css/historial.css">
+    <link rel="stylesheet" href="../Issets/css/main.css">
+    <link rel="stylesheet" href="../Issets/css/panelblog.css">
+    <link rel="icon" href="../img/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Panel de Blogs</title>
+    <style>
+    /* Estilos para tablets (pantallas de hasta 768px de ancho) */
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            padding: 10px;
+        }
 
-                    .form-container {
-                        width: 100%;
-                        padding: 10px;
-                    }
+        .form-container {
+            width: 100%;
+            padding: 10px;
+        }
 
-                    table {
-                        width: 100%;
-                        display: block;
-                        overflow-x: auto;
-                    }
+        table {
+            width: 100%;
+            display: block;
+            overflow-x: auto;
+        }
 
-                    th, td {
-                        font-size: 14px;
-                        padding: 8px;
-                    }
+        th,
+        td {
+            font-size: 14px;
+            padding: 8px;
+        }
 
-                    .action-buttons {
-                        flex-direction: column;
-                        gap: 5px;
-                    }
+        .action-buttons {
+            flex-direction: column;
+            gap: 5px;
+        }
 
-                    .action-buttons a {
-                        padding: 5px;
-                        font-size: 14px;
-                    }
+        .action-buttons a {
+            padding: 5px;
+            font-size: 14px;
+        }
 
-                    .modal-content {
-                        width: 100%;
-                        padding: 15px;
-                    }
+        .modal-content {
+            width: 100%;
+            padding: 15px;
+        }
 
-                    .modal-body input, .modal-body textarea {
-                        font-size: 14px;
-                        padding: 8px;
-                    }
+        .modal-body input,
+        .modal-body textarea {
+            font-size: 14px;
+            padding: 8px;
+        }
 
-                    .modal-footer button {
-                        font-size: 14px;
-                        padding: 8px 15px;
-                    }
-                    #profile_fixed{
-                        display: none;
-                    }
-                }
+        .modal-footer button {
+            font-size: 14px;
+            padding: 8px 15px;
+        }
 
-            /* Media queries para dispositivos móviles */
-            @media only screen and (max-width: 600px) {
-                    .form-container {
-                        width: 100%;
-                        padding: 5px;
-                    }
+        #profile_fixed {
+            display: none;
+        }
+    }
 
-                    th, td {
-                        font-size: 12px;
-                        padding: 5px;
-                    }
+    /* Media queries para dispositivos móviles */
+    @media only screen and (max-width: 600px) {
+        .form-container {
+            width: 100%;
+            padding: 5px;
+        }
 
-                    .action-buttons {
-                        flex-direction: column;
-                        gap: 3px;
-                    }
+        th,
+        td {
+            font-size: 12px;
+            padding: 5px;
+        }
 
-                    .action-buttons a {
-                        padding: 3px;
-                        font-size: 12px;
-                    }
+        .action-buttons {
+            flex-direction: column;
+            gap: 3px;
+        }
 
-                    .modal-content {
-                        width: 100%;
-                        padding: 10px;
-                    }
+        .action-buttons a {
+            padding: 3px;
+            font-size: 12px;
+        }
 
-                    .modal-body input, .modal-body textarea {
-                        font-size: 12px;
-                        padding: 5px;
-                    }
+        .modal-content {
+            width: 100%;
+            padding: 10px;
+        }
 
-                    .modal-footer button {
-                        font-size: 12px;
-                        padding: 5px 10px;
-                    }
+        .modal-body input,
+        .modal-body textarea {
+            font-size: 12px;
+            padding: 5px;
+        }
 
-
-                    .center-divs h4{
-                        font-size: 25px;
-                        width: 250px;
-                    }
-                    
-                    #top_fixed{
-                        margin-left: -25px;
-                        font-size: 10px; 
-                        display: grid;
-                        grid-template-columns: repeat(4, 1fr);
-                        gap: 5px;
-                    }
-
-                    #profile_fixed{
-                        display: none;
-                    }
-                    .cerrar-info{
-                        width: 130px;
-                        margin-left: -20px;
-                        margin-right: 5px;
-                    }
+        .modal-footer button {
+            font-size: 12px;
+            padding: 5px 10px;
+        }
 
 
-                }
+        .center-divs h4 {
+            font-size: 25px;
+            width: 250px;
+        }
 
-        </style>
-    </head>
-    <body>
-        <?php
+        #top_fixed {
+            margin-left: -25px;
+            font-size: 10px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+
+        #profile_fixed {
+            display: none;
+        }
+
+        .cerrar-info {
+            width: 130px;
+            margin-left: -20px;
+            margin-right: 5px;
+        }
+
+
+    }
+    </style>
+</head>
+
+<body>
+    <?php
         require_once("../Controlador/Paciente/ControllerPaciente.php");
         $Pac = new usernameControlerPaciente();
         $patients = $Pac->showCompletoAtencion($_SESSION['IdPsicologo']);
         ?>
-        <div class="container">
-            <?php
+    <div class="container">
+        <?php
             require_once '../Issets/views/Menu.php';
             ?>
-            <!----------- end of aside -------->
-            <main class="animate_animated animate_fadeIn">
-                <div class="center-divs">
-                    <h4 style="color: #49c691;">Panel de Blogs</h4>
-                    <?php
+        <!----------- end of aside -------->
+        <main class="animate_animated animate_fadeIn">
+            <div class="center-divs">
+                <h4 style="color: #49c691;">Panel de Blogs</h4>
+                <?php
                     require_once '../Issets/views/Info.php';
                     ?>
-                </div>
-                <div class="form-container">
+            </div>
+            <div class="form-container">
                 <a class="button-arriba" style="padding:10px 30px; font-size:15px;" href="Blog.php">
                     <i id="search-icon" class="fas fa-arrow-circle-left add-icon" style="margin-right: 10px;"></i>Volver
                 </a>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Tema</th>
-                                <th>Especialidad</th>
-                                <th>Imagen</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tema</th>
+                            <th>Especialidad</th>
+                            <th>Imagen</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
                             require_once '../Controlador/DatabaseController.php';
                             $dbController = new DatabaseController();
                             $conn = $dbController->getConnection();
                             $psicologo_id = $_SESSION['IdPsicologo'];
-
                             $sql = "SELECT id, tema, especialidad, descripcion, imagen FROM posts WHERE psicologo_id = :psicologo_id";
                             $stmt = $conn->prepare($sql);
                             $stmt->bindParam(':psicologo_id', $psicologo_id, PDO::PARAM_INT);
@@ -195,116 +201,116 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 echo "</tr>";
                             }
                             ?>
-                        </tbody>
-                    </table>
-                </div>
-            </main>
-        </div>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
 
-        <!-- The Modal -->
-        <div id="editModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>Editar Post</h2>
-                    <span class="close">&times;</span>
-                </div>
-                <div class="modal-body">
-                    <form id="editForm" action="edit_blog_process.php" method="post">
-                        <input type="hidden" name="id" id="editId">
-                        <div>
-                            <label for="editTema">Tema:</label>
-                            <input type="text" name="tema" id="editTema">
-                        </div>
-                        <div>
-                            <label for="editEspecialidad">Especialidad:</label>
-                            <select type="text" name="especialidad" id="editEspecialidad">
+    <!-- The Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Post</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="editForm" action="edit_blog_process.php" method="post">
+                    <input type="hidden" name="id" id="editId">
+                    <div>
+                        <label for="editTema">Tema:</label>
+                        <input type="text" name="tema" id="editTema">
+                    </div>
+                    <div>
+                        <label for="editEspecialidad">Especialidad:</label>
+                        <select type="text" name="especialidad" id="editEspecialidad">
                             <option value="Adicciones">Selecciona la Especialidad</option>
-                                <option value="Adicciones">Adicciones</option>
-                                <option value="Ansiedad">Ansiedad</option>
-                                <option value="Atención">Atención</option>
-                                <option value="Autoestima">Autoestima</option>
-                                <option value="Crianza">Crianza</option>
-                                <option value="Depresión">Depresión</option>
-                                <option value="Enfermedades Cronicas">Enfermedades Cronicas</option>
-                                <option value="Estrés">Estrés</option>
-                                <option value="Impulsividad">Impulsividad</option>
-                                <option value="Top">Top</option>
-                                <option value="Ira">Ira</option>
-                                <option value="Terapia de Pareja">Terapia de Pareja</option>
-                                <option value="Sexualidad">Sexualidad</option>
-                                <option value="Traumas">Traumas</option>
-                                <option value="Riesgo Suicida">Riesgo Suicida</option>
-                                <option value="Sentido de vida">Sentido de vida</option>
-                                <option value="Orientación Vocacional">Orientación Vocacional</option>
-                                <option value="Problemas de sueño">Problemas de sueño</option>
-                                <option value="Problemas alimenticios">Problemas alimenticios</option>
-                                <option value="Relaciones Interpersonales">Relaciones Interpersonales</option>
-                            </select>
-                        </div>          
-                        <div>
-                            <label for="editDescripcion">Descripción:</label>
-                            <textarea name="descripcion" id="editDescripcion"></textarea>
-                        </div>
-                        <div>
-                            <label for="editImagen">Imagen:</label>
-                            <input type="text" name="imagen" id="editImagen">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn-cancel close">Cancelar</button>
-                            <button type="submit" class="btn-save">Guardar cambios</button>
-                        </div>
-                    </form>
-                </div>
+                            <option value="Adicciones">Adicciones</option>
+                            <option value="Ansiedad">Ansiedad</option>
+                            <option value="Atención">Atención</option>
+                            <option value="Autoestima">Autoestima</option>
+                            <option value="Crianza">Crianza</option>
+                            <option value="Depresión">Depresión</option>
+                            <option value="Enfermedades Cronicas">Enfermedades Cronicas</option>
+                            <option value="Estrés">Estrés</option>
+                            <option value="Impulsividad">Impulsividad</option>
+                            <option value="Top">Top</option>
+                            <option value="Ira">Ira</option>
+                            <option value="Terapia de Pareja">Terapia de Pareja</option>
+                            <option value="Sexualidad">Sexualidad</option>
+                            <option value="Traumas">Traumas</option>
+                            <option value="Riesgo Suicida">Riesgo Suicida</option>
+                            <option value="Sentido de vida">Sentido de vida</option>
+                            <option value="Orientación Vocacional">Orientación Vocacional</option>
+                            <option value="Problemas de sueño">Problemas de sueño</option>
+                            <option value="Problemas alimenticios">Problemas alimenticios</option>
+                            <option value="Relaciones Interpersonales">Relaciones Interpersonales</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="editDescripcion">Descripción:</label>
+                        <textarea name="descripcion" id="editDescripcion"></textarea>
+                    </div>
+                    <div>
+                        <label for="editImagen">Imagen:</label>
+                        <input type="text" name="imagen" id="editImagen">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-cancel close">Cancelar</button>
+                        <button type="submit" class="btn-save">Guardar cambios</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 
-        <script>
-            // JavaScript para manejar el modal de edición
+    <script>
+    // JavaScript para manejar el modal de edición
 
-            document.addEventListener("DOMContentLoaded", function() {
-                var modal = document.getElementById("editModal");
-                var closeElements = document.getElementsByClassName("close");
-                var editButtons = document.querySelectorAll('.edit-button');
+    document.addEventListener("DOMContentLoaded", function() {
+        var modal = document.getElementById("editModal");
+        var closeElements = document.getElementsByClassName("close");
+        var editButtons = document.querySelectorAll('.edit-button');
 
-                editButtons.forEach(button => {
-                    button.addEventListener('click', function(event) {
-                        event.preventDefault();
-                        var id = this.getAttribute('data-id');
-                        var tema = this.getAttribute('data-tema');
-                        var especialidad = this.getAttribute('data-especialidad');
-                        var descripcion = this.getAttribute('data-descripcion');
-                        var imagen = this.getAttribute('data-imagen');
+        editButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                var id = this.getAttribute('data-id');
+                var tema = this.getAttribute('data-tema');
+                var especialidad = this.getAttribute('data-especialidad');
+                var descripcion = this.getAttribute('data-descripcion');
+                var imagen = this.getAttribute('data-imagen');
 
-                        document.getElementById('editId').value = id;
-                        document.getElementById('editTema').value = tema;
-                        document.getElementById('editEspecialidad').value = especialidad;
-                        document.getElementById('editDescripcion').value = descripcion;
-                        document.getElementById('editImagen').value = imagen;
+                document.getElementById('editId').value = id;
+                document.getElementById('editTema').value = tema;
+                document.getElementById('editEspecialidad').value = especialidad;
+                document.getElementById('editDescripcion').value = descripcion;
+                document.getElementById('editImagen').value = imagen;
 
-                        modal.style.display = "flex";
-                    });
-                });
-
-                Array.from(closeElements).forEach(element => {
-                    element.addEventListener('click', function() {
-                        modal.style.display = "none";
-                    });
-                });
-
-                window.addEventListener('click', function(event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
-                    }
-                });
+                modal.style.display = "flex";
             });
-        </script>
+        });
 
-        <script src="../Issets/js/dashboard.js"></script>
-    </body>
-    </html>
-    <?php
+        Array.from(closeElements).forEach(element => {
+            element.addEventListener('click', function() {
+                modal.style.display = "none";
+            });
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+    });
+    </script>
+
+    <script src="../Issets/js/dashboard.js"></script>
+</body>
+
+</html>
+<?php
 } else {
     header("Location: ../index.php");
 }
 ?>
-       

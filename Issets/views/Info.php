@@ -178,7 +178,7 @@ function setTheme(theme) {
     if (theme === 'dark') {
         document.querySelector('.theme-toggler span[data-theme="dark"]').classList.add('active');
 
-        document.querySelector(".form-info").style.backgroundColor = "#242630";
+        document.querySelector(".form-info").style.backgroundColor = "  ";
     } else {
         document.querySelector('.theme-toggler span[data-theme="light"]').classList.add('active');
 
