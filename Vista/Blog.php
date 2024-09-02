@@ -23,7 +23,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
         <title>Blog</title>
         <style>
-
+            .form-group{{
+                background-color: #665956;} 
+            }
             .hidden {
                 display: none;
             }
