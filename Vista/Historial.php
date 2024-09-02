@@ -82,6 +82,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link rel="stylesheet" href="../Issets/css/historial.css">
     <link rel="stylesheet" href="../Issets/css/main.css">
+    <link rel="stylesheet" href="./css/index.css">
     <link rel="icon" href="../img/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -297,11 +298,57 @@ td {
             </div>
 
             <div class="container-paciente-tabla">
-                <div class="before-details">
+                <div class="container-table">
                     <table>
+                        <thead class="table-head">
+                            <tr>
+                                <th>Paciente</th>
+                                <th>Fecha de Próxima Cita</th>
+                                <th>Diagnostico</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-body">
+                            <?php foreach ($patients as $index => $patient) : 
+                                print_r( $patient);    
+                            ?>
+                            <tr style="cursor:pointer" class="show-info">
+                                <td>
+                                    <a data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?>
+                                        <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>"
+                                        data-dni="<?= $patient['Dni'] ?>" data-celular="<?= $patient['Telefono'] ?>"
+                                        data-codigo="<?= $patient['codigopac'] ?>"
+                                        data-diagnostico="<?= $patient['Diagnostico'] ?>"
+                                        data-enfermedad="<?= $patient['IdEnfermedad'] ?>"
+                                        data-observacion="<?= $patient['Observacion'] ?>"
+                                        data-FechaInicioCita="<?= $patient['FechaRegistro'] ?>"
+                                        data-nota="<?= $patient['nota'] ?>"
+                                        data-objetivo="<?= $patient['UltimosObjetivos'] ?>">
+                                        <p style="cursor: pointer;" class="nombre-paciente">
+                                            <?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
+                                    </a>
+                                </td>
+                                <td><?= isset($patient['FechaRegistro']) ? substr($patient['FechaRegistro'], 0, 10) : 'Fecha de próx cita' ?>
+                                </td>
+                                <td><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?></td>
+                                <td class="additional-column" style="display: none;"
+                                    data-patient-id="<?= $patient[0] ?>"></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <!-- <table>
+                        <thead>
+                            <tr>
+                                <th>Paciente</th>
+                                <th>Fecha de Próxima Cita</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <?php foreach ($patients as $index => $patient) : ?>
+                            <thead>
 
+                            </thead>
+                            <?php foreach ($patients as $index => $patient) : ?>
                             <tr <?php if ($index === 0) echo 'class="primera-fila"'; ?>>
 
                                 <td>
@@ -330,76 +377,105 @@ td {
 
                             <?php endforeach; ?>
                         </tbody>
-                    </table>
+                    </table> -->
                 </div>
                 <div class="patient-details" id="patient-details">
-                    <!-- Aquí se mostrarán los detalles del paciente -->
+                    <div style="display:grid; flex-direction:row; gap:10px;position:relative;" id="info-pacient">
+                        <span class="close" id="closeModal" onclick="closePatientDetails()">&times;</span>
+                        <div class="top-group">
+                            <div class="name">
+                                <h2 class="visual2" id="patient-name">${nombres}</h2>
+                                <p id="patient-info"></p>
+                                <p class="arriba" id="patient-age-dni">${edad} años | DNI: ${dni}</p>
+                                <p class="arriba" id="patient-contact">${celular} | Código: ${codigo}</p>
+                                <button type="button" class="green-button" id="view-medical-history-btn">Ver Historial
+                                    Medico</button>
+                            </div>
+                            <div class="date">
+                                <h6 id="last-appointment-date">${fechaFormateadaDM}</h6>
+                                <p>Última Atención</p>
+                            </div>
+                        </div>
+                        <div class="ci-input-group" style="display: none;">
+                            <h2 class="arriba" for="disease-info">Enfermedad</h2>
+                            <p class="abajo" id="disease-id">${enfermedad || 'Aun no hay enfermedad'}</p>
+                        </div>
+                        <div class="ci-input-group">
+                            <h1 for="last-attention">ÚLTIMA ATENCIÓN</h1>
+                        </div>
+                        <div class="ci-input-group">
+                            <h2 class="arriba" for="diagnosis-info">Diagnóstico</h2>
+                            <p class="abajo" id="diagnosis">${diagnostico || 'Aun no hay diagnóstico'}</p>
+                        </div>
+                        <div class="ci-input-group">
+                            <h2 class="arriba" for="observation-info">Observación</h2>
+                            <p class="abajo" id="observation">${observacion || 'Aun no hay observación'}</p>
+                        </div>
+                        <div class="ci-input-group">
+                            <h2 class="arriba" for="objectives-info">Últimos Objetivos</h2>
+                            <p class="abajo" id="objectives">${objetivo || 'Aun no hay objetivos'}</p>
+                        </div>
+                        <div class="ci-input-group">
+                            <h2 class="arriba" for="appointment-date-info">Fecha Atención</h2>
+                            <p class="abajo" id="appointment-date">${fechaFormateada || 'Aun no hay previa atención'}
+                            </p>
+                        </div>
 
-                </div>
-            </div>
-
-            <div class=" modal" id="patientModal">
-                <div class="modal-content">
-                    <span class="close" id="closeModal" onclick="closePatientModal()">&times;</span>
-                    <h2 class="modal-title">Historial de Atenciones </h2>
-                    <div class="modal-body">
-                        <!-- Aquí se mostrarán los detalles del paciente -->
+                        <br>
+                        <textarea id="notes-textarea">${nota || 'Aun no hay comentarios'}</textarea>
+                        <br>
+                        <button style="cursor: pointer;" id="update-btn">Actualizar</button>
+                        <button style="cursor: pointer;" id="edit-note-btn">Editar Nota</button>
+                        < <div class="BUT">
+                            <a href="RegAtencionPaciente.php" class="green-button" id="patient-attention-btn">Atención
+                                Paciente</a>
                     </div>
-                </div>
-            </div>
-            <div class="modal" id="historyModal">
-                <div class="modal-content-detail">
-                    <span class="close" id="closeHistoryModal" onclick="closeHistoryModal()">&times;</span>
-                    <h2 class="modal-title">Detalles del Historial del Paciente</h2>
-                    <div class="modal-body" id="historyModalBody">
-                        <!-- Aquí se mostrarán los detalles del historial del paciente -->
-                    </div>
-                </div>
-            </div>
 
-        </main>
 
+
+                </div>
+                <form id="patientForm" style="display:none;">
+                    <label for="patientId">Ingrese el ID del paciente:</label>
+                    <input type="text" id="patientId" name="patientId" required>
+                    <button type="button" id="showAllPatientsButton">Mostrar Detalles del Paciente</button>
+                </form>
+            </div>
+    </div>
+
+    <div class=" modal" id="patientModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal" onclick="closePatientModal()">&times;</span>
+            <h2 class="modal-title">Historial de Atenciones </h2>
+            <div class="modal-body">
+                <!-- Aquí se mostrarán los detalles del paciente -->
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="historyModal">
+        <div class="modal-content-detail">
+            <span class="close" id="closeHistoryModal" onclick="closeHistoryModal()">&times;</span>
+            <h2 class="modal-title">Detalles del Historial del Paciente</h2>
+            <div class="modal-body" id="historyModalBody">
+                <!-- Aquí se mostrarán los detalles del historial del paciente -->
+            </div>
+        </div>
+    </div>
+
+    </main>
 
     </div>
     <script src="../Issets/js/dashboard.js"></script>
     <script>
     const detailsContainer = document.querySelector('.details');
-
-    // Agrega un event listener al nombre del paciente
-    const nombrePaciente = document.querySelector('.nombre-paciente');
-    nombrePaciente.addEventListener('click', function() {
-        // Agrega una clase "open" al contenedor de detalles
-        detailsContainer.classList.add('open');
-    });
-
-    // Agrega un event listener a todas las filas de la tabla
-    var tableRows = document.querySelectorAll('table tr');
+    const infoPacient = document.querySelector('#info-pacient');
+    const tableRows = document.querySelectorAll('table tr');
     tableRows.forEach(function(row) {
-        // Encuentra el primer TD dentro de la fila
-        var firstColumn = row.querySelector('td:first-child');
 
-        // Verifica si se encontró el primer TD
-        if (firstColumn) {
-            firstColumn.addEventListener('click', function() {
-                // Remueve la clase 'selected' de todas las filas
-                tableRows.forEach(function(r) {
-                    r.classList.remove('selected');
-
-                    // Cambia el color del texto del contenido de las palabras de la fila actual a su color original
-
-                });
-
-                // Agrega la clase 'selected' a la fila actual
-                row.classList.add('selected');
-
-
-            });
-        }
     });
 
     const showInfoLinks = document.querySelectorAll('.show-info');
     const additionalColumns = document.querySelectorAll('.additional-column');
-    const containerpacientetabla = document.querySelector('.container-paciente-tabla');
+    const containerPacienteTabla = document.querySelector('.container-paciente-tabla');
     const patientDetails = document.querySelector('.patient-details');
     let currentPatientId = null; // Variable para rastrear el paciente actual
 
@@ -407,11 +483,12 @@ td {
         link.addEventListener('click', function() {
 
             // Obtener el ID del paciente desde el atributo data
-            const patientId = link.getAttribute('data-patient-id');
+            const patientId = link.querySelector("td a").getAttribute('data-patient-id');
+            console.log(patientId);
             // Ocultar las columnas adicionales
             additionalColumns.forEach(column => {
                 column.classList.add('hidden');
-                containerpacientetabla.classList.add('active');
+                containerPacienteTabla.classList.add('active');
             });
 
             // Obtener los datos del paciente
@@ -446,86 +523,28 @@ td {
             }
 
             const enfermedadId = link.getAttribute('data-enfermedad');
+            // Asignar los datos a los elementos del DOM
+            infoPacient.querySelector('#patient-name').textContent = nombres;
+            infoPacient.querySelector('#patient-info').textContent = `${edad} años | DNI: ${dni}`;
+            infoPacient.querySelector('#patient-age-dni').textContent = `${edad} años | DNI: ${dni}`;
+            infoPacient.querySelector('#patient-contact').textContent =
+                `${celular} | Código: ${codigo}`;
+            infoPacient.querySelector('#disease-id').textContent = enfermedad ||
+                'Aun no hay enfermedad';
+            infoPacient.querySelector('#diagnosis').textContent = diagnostico ||
+                'Aun no hay diagnóstico';
+            infoPacient.querySelector('#observation').textContent = observacion ||
+                'Aun no hay observación';
+            infoPacient.querySelector('#objectives').textContent = objetivo || 'Aun no hay objetivos';
+            infoPacient.querySelector('#appointment-date').textContent = fechaFormateada ||
+                'Aun no hay previa atención';
+            infoPacient.querySelector('#notes-textarea').textContent = nota || 'Aun no hay comentarios';
+            infoPacient.querySelector('#last-appointment-date').textContent = fechaFormateadaDM;
 
-
-            /***** AGREGANDO NUEVOS CAMPOS PARA TEXTEAREA ************ */
-            // Crear el contenido de los detalles del paciente
-            const patientInfoHTML = `
-                        <div style="display:grid; flex-direction:row; gap:10px;position:relative;">
-                        <span class="close" id="closeModal" onclick="closePatientDetails()">&times;</span>
-                            <div class="top-group">
-                                <div class="name">
-                                    <h2 class="visual2">${nombres}</h2>
-                                    <p class="arriba">${edad} años | DNI: ${dni}</p>
-                                    <p class="arriba">Celular: ${celular} | Código: ${codigo} </p>
-
-                                    <button type="button" class="green-button" id="butto">Ver Historial Medico</button>
-                                </div>
-                                <div class="date">
-                                    <h6>${fechaFormateadaDM } </h6>
-                                    <p>Ultima Atención</p>
-                                </div>
-                            </div>
-                            <div class="ci-input-group" style="display: none;">
-                                <h2 class="arriba" for="#">Enfermedad </h2>
-                                <p class="abajo">Id Enfermedad: ${enfermedad || 'Aun no hay enfermedad'}</p>
-                            </div>
-                            <div class="ci-input-group">
-                                <h1  for="#">ÚLTIMA ATENCIÓN </h1>
-                            </div>
-                            <div class="ci-input-group">
-                                <h2 class="arriba" for="#">Diagnóstico </h2>
-                                <p class="abajo">${diagnostico || 'Aun no hay diagnóstico'}</p>
-                            </div>
-                            <div class="ci-input-group">
-                                <h2 class="arriba" for="#">Observación </h2>
-                                <p class="abajo">${observacion || 'Aun no hay observacion'}</p>
-                            </div>
-                            <div class="ci-input-group">
-                                <h2 class="arriba" for="#">Ultimos Objetivos </h2>
-                                <p class="abajo">${objetivo || 'Aun no hay objetivos'}</p>
-                            </div>
-                            <div class="ci-input-group">
-                                <h2 class="arriba" for="#">Fecha Atención </h2>
-                                <p class="abajo">${fechaFormateada  || 'Aun no hay previa atención'}</p>
-                            </div>
-
-                            <br>
-                            <textarea id="notaTextarea2">${nota  || 'Aun no comentarios'}</textarea>
-                            <br>
-                            <button styler=" cursor: pointer;" id="actualizarBtn">Actualizar</button>
-
-                            <button style=" cursor: pointer;" id="addNotaBtn">Editar Nota</button>
-
-                            <div class="BUT">
-                                <a href="RegAtencionPaciente.php" class="green-button" id="button2">Atención Paciente</a>
-                            </div>
-
-                            
-
-                        </div>
-                        <form id="patientForm" style="display:none;">
-                            <label for="patientId">Ingrese el ID del paciente:</label>
-                            <input type="text" id="patientId" name="patientId" required>
-                            <button type="button" id="showAllPatientsButton">Mostrar Detalles del Paciente</button>
-                        </form>
-                    `;
-
-
-
-            // Mostrar la información en el elemento .patient-details
-            patientDetails.innerHTML = patientInfoHTML;
-
-            // Mostrar el cuadro de detalles
             patientDetails.style.display = 'block';
-
-            // Actualizar la variable currentPatientId
             currentPatientId = patientId;
 
-
-            // ************************** NUEVO CODIGO PARA IMPLEMENTAR ACTUALIZACION DE NOTAS ********************************
-
-            document.getElementById('addNotaBtn').addEventListener('click', function() {
+            document.getElementById('edit-note-btn').addEventListener('click', function() {
                 const textarea2 = document.getElementById('notaTextarea2');
                 const actualizarBtn = document.getElementById('actualizarBtn');
                 const addNotaBtn = document.getElementById('addNotaBtn');
@@ -542,7 +561,7 @@ td {
                     });
             });
 
-            document.getElementById('actualizarBtn').addEventListener('click', function() {
+            document.getElementById('update-btn').addEventListener('click', function() {
                 const nota = document.getElementById('notaTextarea2').value;
                 const addNotaBtn = document.getElementById('addNotaBtn');
 
@@ -566,7 +585,7 @@ td {
 
             // **************************************************************************************************
 
-            butto.addEventListener('click', function() {
+            document.querySelector("#view-medical-history-btn").addEventListener('click', function() {
                 var patientModal = document.getElementById('patientModal');
                 var modalBody = document.querySelector('.modal-body');
                 var patientId = document.getElementById('patientId').value;
@@ -720,21 +739,16 @@ td {
     }
 
     function closePatientDetails() {
+        containerPacienteTabla.classList.remove('active');
         patientDetails.style.display = 'none';
-        containerpacientetabla.style.gridTemplateColumns = '1fr';
-        patientDetails.innerHTML = '';
         tableRows.forEach(row => {
             row.classList.remove('selected');
         });
 
+
     }
-
-    // ...
     </script>
 
-    <script>
-
-    </script>
 </body>
 
 </html>
