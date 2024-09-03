@@ -298,46 +298,86 @@ td {
             </div>
 
             <div class="container-paciente-tabla">
-    <div class="container-table">
-        <table>
-            <thead class="table-head">
-                <tr>
-                    <th>Paciente</th>
-                    <th>Fecha de Próxima Cita</th>
-                    <th>Diagnostico</th>
-                </tr>
-            </thead>
-            <tbody class="table-body">
-                <?php foreach ($patients as $index => $patient) : ?>
-                    <tr style="cursor:pointer" class="show-info">
-                        <td>
-                            <a href="#" 
-                               data-patient-id="<?= htmlspecialchars($patient['IdPaciente']) ?>" 
-                               data-nombres="<?= htmlspecialchars($patient['NomPaciente']) ?> <?= htmlspecialchars($patient['ApPaterno']) ?> <?= htmlspecialchars($patient['ApMaterno']) ?>" 
-                               data-edad="<?= htmlspecialchars($patient['Edad']) ?>"
-                               data-dni="<?= htmlspecialchars($patient['Dni']) ?>" 
-                               data-celular="<?= htmlspecialchars($patient['Telefono']) ?>"
-                               data-codigo="<?= htmlspecialchars($patient['codigopac']) ?>"
-                               data-diagnostico="<?= htmlspecialchars($patient['Diagnostico']) ?>"
-                               data-enfermedad="<?= htmlspecialchars($patient['IdEnfermedad']) ?>"
-                               data-observacion="<?= htmlspecialchars($patient['Observacion']) ?>"
-                               data-FechaInicioCita="<?= htmlspecialchars($patient['FechaRegistro']) ?>"
-                               data-nota="<?= htmlspecialchars($patient['nota']) ?>"
-                               data-objetivo="<?= htmlspecialchars($patient['UltimosObjetivos']) ?>">
-                               <p style="cursor: pointer;" class="nombre-paciente">
-                                   <?= htmlspecialchars($patient['NomPaciente']) ?> <?= htmlspecialchars($patient['ApPaterno']) ?>
-                               </p>
-                            </a>
-                        </td>
-                        <td><?= isset($patient['FechaRegistro']) ? htmlspecialchars(substr($patient['FechaRegistro'], 0, 10)) : 'Fecha de próx cita' ?></td>
-                        <td><?= isset($patient['Diagnostico']) ? htmlspecialchars($patient['Diagnostico']) : 'Diagnostico' ?></td>
-                        <!-- Removed unnecessary additional column -->
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-</div>
+                <div class="container-table">
+                    <table>
+                        <thead class="table-head">
+                            <tr>
+                                <th>Paciente</th>
+                                <th>Fecha de Próxima Cita</th>
+                                <th>Diagnostico</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-body">
+                            <?php foreach ($patients as $index => $patient) :     
+                            ?>
+                            <tr style="cursor:pointer" class="show-info">
+                                <td>
+                                    <a data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?>
+                                        <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>"
+                                        data-dni="<?= $patient['Dni'] ?>" data-celular="<?= $patient['Telefono'] ?>"
+                                        data-codigo="<?= $patient['codigopac'] ?>"
+                                        data-diagnostico="<?= $patient['Diagnostico'] ?>"
+                                        data-enfermedad="<?= $patient['IdEnfermedad'] ?>"
+                                        data-observacion="<?= $patient['Observacion'] ?>"
+                                        data-FechaInicioCita="<?= $patient['FechaRegistro'] ?>"
+                                        data-nota="<?= $patient['nota'] ?>"
+                                        data-objetivo="<?= $patient['UltimosObjetivos'] ?>">
+                                        <p style="cursor: pointer;" class="nombre-paciente">
+                                            <?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
+                                    </a>
+                                </td>
+                                <td><?= isset($patient['FechaRegistro']) ? substr($patient['FechaRegistro'], 0, 10) : 'Fecha de próx cita' ?>
+                                </td>
+                                <td><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?></td>
+                                <td class="additional-column" style="display: none;"
+                                    data-patient-id="<?= $patient[0] ?>"></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <!-- <table>
+                        <thead>
+                            <tr>
+                                <th>Paciente</th>
+                                <th>Fecha de Próxima Cita</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <thead>
+
+                            </thead>
+                            <?php foreach ($patients as $index => $patient) : ?>
+                            <tr <?php if ($index === 0) echo 'class="primera-fila"'; ?>>
+
+                                <td>
+                                    <a style="cursor:pointer" class="show-info"
+                                        data-patient-id="<?= $patient['IdPaciente'] ?>"
+                                        data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>"
+                                        data-edad="<?= $patient['Edad'] ?>" data-dni="<?= $patient['Dni'] ?>"
+                                        data-celular="<?= $patient['Telefono'] ?>"
+                                        data-codigo="<?= $patient['codigopac'] ?>"
+                                        data-diagnostico="<?= $patient['Diagnostico'] ?>"
+                                        data-enfermedad="<?= $patient['IdEnfermedad'] ?>"
+                                        data-observacion="<?= $patient['Observacion'] ?>"
+                                        data-FechaInicioCita="<?= $patient['FechaRegistro'] ?>"
+                                        data-nota="<?= $patient['nota'] ?>"
+                                        data-objetivo="<?= $patient['UltimosObjetivos'] ?>">
+                                        <p style="cursor: pointer;" class="nombre-paciente">
+                                            <?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
+                                        <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?>
+                                        </p>
+                                    </a>
+                                </td>
+                                <td><?= isset($patient['FechaRegistro']) ? substr($patient['FechaRegistro'], 0, 10) : 'Fecha de próx cita' ?>
+                                </td>
+                                <td class="additional-column" data-patient-id="<?= $patient[0] ?>"></td>
+                            </tr>
+
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table> -->
+                </div>
 
                 <div class="patient-details" id="patient-details">
                     <div style="display:grid; flex-direction:row; gap:10px;position:relative;" id="info-pacient">
