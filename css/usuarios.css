@@ -78,6 +78,7 @@ table .user_data_pass {
 .form-container form input[type='text'],
 .form-container form input[type='password'],
 .form-container form input[type='url'],
+.form-container form input[type='tel'],
 .form-container form select,
 .form-container form textarea {
     padding: 10px;

@@ -19,14 +19,14 @@ class UsuariosController {
         return $this->model->buscarPorEmail($email);
     }
 
-    public function agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id) {
-        return $this->model->agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id);
+    public function agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id, $nombrePsicologo, $video, $celular) {
+        return $this->model->agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id, $nombrePsicologo, $video, $celular);
     }
-
-    public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id) {
-        return $this->model->actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id);
+    
+    public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id, $nombrePsicologo, $video, $celular) {
+        return $this->model->actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id, $nombrePsicologo, $video, $celular);
     }
-
+    
     public function eliminarUsuario($id) {
         return $this->model->eliminarUsuario($id);
     }

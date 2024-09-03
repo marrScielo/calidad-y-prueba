@@ -53,50 +53,53 @@ private $dbname = "contigovoy3";
         return $usuarios;
     }
 
-    public function agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion='', $speciality_id=0) {
+    public function agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion = '', $speciality_id = 0, $NombrePsicologo = '', $video = '', $celular = '') {
         $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+        
         // Preparar y ejecutar la consulta para insertar un nuevo usuario
         $stmt = $this->conn->prepare("INSERT INTO usuarios (email, password, fotoPerfil, rol) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $email, $hashPassword, $fotoPerfil, $rol);
         $stmt->execute();
-
+    
         // Obtener el ID del usuario recién creado
         $usuarioId = $stmt->insert_id;
         $stmt->close();
-
+    
         // Si el rol es psicologo, agregar un nuevo registro en la tabla psicologo
         if ($rol === 'psicologo') {
-            $stmt = $this->conn->prepare("INSERT INTO psicologo (usuario_id, Passwords, email, introduccion, especialidad_id) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("isssi", $usuarioId, $hashPassword, $email, $introduccion, $speciality_id);
+            $stmt = $this->conn->prepare("INSERT INTO psicologo (usuario_id, Passwords, email, introduccion, especialidad_id, NombrePsicologo, video, celular) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("isssisss", $usuarioId, $hashPassword, $email, $introduccion, $speciality_id, $NombrePsicologo, $video, $celular);
             $stmt->execute();
             $stmt->close();
         }
     }
+    
 
-    public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion='', $speciality_id=0) {
+    public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion = '', $speciality_id = 0, $NombrePsicologo = '', $video = '', $celular = '') {
         $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+    
         // Preparar y ejecutar la consulta para actualizar un usuario existente
         $stmt = $this->conn->prepare("UPDATE usuarios SET email = ?, password = ?, fotoPerfil = ?, rol = ? WHERE id = ?");
         $stmt->bind_param("ssssi", $email, $hashPassword, $fotoPerfil, $rol, $id);
         $stmt->execute();
         $stmt->close();
-        $speciality_id = intval($speciality_id);
-        // Agrega depuración para verificar el valor antes de la consulta
+    
+        // Agregar depuración para verificar el valor antes de la consulta
         error_log("especialidad_id: " . $speciality_id);
-
+    
         if ($rol === 'psicologo') {
-            $stmt = $this->conn->prepare("UPDATE psicologo SET email = ?, Passwords = ?, introduccion = ?, especialidad_id = ? WHERE usuario_id = ?");
+            // Actualizar la tabla psicologo con los nuevos campos
+            $stmt = $this->conn->prepare("UPDATE psicologo SET email = ?, Passwords = ?, introduccion = ?, especialidad_id = ?, NombrePsicologo = ?, video = ?, celular = ? WHERE usuario_id = ?");
             if ($stmt === false) {
                 die("Error en la preparación de la consulta: " . $this->conn->error);
             }
-            $stmt->bind_param("sssii", $email, $hashPassword, $introduccion, $speciality_id, $id);
+            $stmt->bind_param("sssisssi", $email, $hashPassword, $introduccion, $speciality_id, $NombrePsicologo, $video, $celular, $id);
             if ($stmt->execute() === false) {
                 die("Error en la ejecución de la consulta: " . $stmt->error);
             }
             $stmt->close();
         }
-
-    }
+    }    
 
     public function eliminarUsuario($id) {
             // Primero eliminar el registro en la tabla psicologo si el usuario es un psicologo
