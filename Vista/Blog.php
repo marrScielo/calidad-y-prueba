@@ -22,9 +22,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
         <title>Blog</title>
-        <style>
-            .form-group{{
-                background-color: #665956;} 
+        <style>          
+
+            #form-group input{
+                background-color: #black;
             }
             .hidden {
                 display: none;
@@ -158,6 +159,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 #profile_fixed {
                     display: none;
                 }
+
             }
         </style>
     </head>
@@ -186,7 +188,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     </a>
                     <form action="submit_blog.php" method="POST">
                         <div class="form-group">
-                            <label for="topic">Tema:</label>
+                            <label for="topic" >Tema:</label>
                             <input type="text" id="topic" name="topic" placeholder="Ingrese tema" required>
                         </div>
                         <div class="form-group">
