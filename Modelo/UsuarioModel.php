@@ -16,7 +16,7 @@ private $dbname = "contigovoy3";
         // Verificar la conexión
         if ($this->conn->connect_error) {
             die("Conexión fallida: " . $this->conn->connect_error);
-        }
+        }   
     }
 
     public function getUsuarios() {
