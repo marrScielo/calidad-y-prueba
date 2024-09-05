@@ -119,7 +119,6 @@ if(isset($_SESSION['logeado'])){
             <tr>
                 <th>ID</th>
                 <th>Email</th>
-                <th>Password</th>
                 <th>Foto Perfil</th>
                 <th>Rol</th>
                 <th>Acciones</th>
@@ -146,7 +145,6 @@ if(isset($_SESSION['logeado'])){
             <tr class="user_data" id="<?= htmlspecialchars($usuario['id']) ?>">
                 <td><?= htmlspecialchars($usuario['id']) ?></td>
                 <td><?= htmlspecialchars($usuario['email']) ?></td>
-                <td class="user_data_pass"><?= htmlspecialchars($usuario['password']) ?></td>
                 <td><img src="<?= htmlspecialchars($usuario['fotoPerfil']) ?>" alt="Foto Perfil" width="50"></td>
                 <td><?= htmlspecialchars($usuario['rol']) ?></td>
                 <td class="acciones">
