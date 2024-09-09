@@ -1,17 +1,20 @@
 <?php
+require_once __DIR__ . '/../Modelo/ViewModel.php';
 
-class ViewController
+class ViewController extends ViewModel
 {
-    public function getView($view)
+    public function getTemplate()
     {
-        $viewPath = __DIR__ . '/../views/' . $view . '.php';
-        if (file_exists($viewPath)) {
-            require_once $viewPath;
+        return require_once __DIR__ . '/../views/template.php';
+    }
+    public function getView()
+    {
+        if (isset($_GET["view"])) {
+            $route = explode("/", $_GET["view"]);
+            $view = ViewModel::getPathView($route[0]);
         } else {
-            echo 'Error al cargar la vista';
-            // redirect to 404 page
-            exit;
-
+            $view = "index";
         }
+        return $view;
     }
 }
