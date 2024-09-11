@@ -3,14 +3,7 @@ class usernameControlerCita{
     private $model;
     public function __construct()
     {
-        //SOLO ACEPTA RUTAS ABSOLUTAS
-
-        //local
         require_once (__DIR__."/../../Modelo/Cita/ModelCita.php");    
-        
-        //hosting
-        //require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/Modelo/Cita/ModelCita.php");
-        
         $this->model=new UserModelCita();
     }
 
@@ -18,6 +11,12 @@ class usernameControlerCita{
     public function guardar($IdPaciente, $MotivoCita, $EstadoCita, $FechaInicioCita, $DuracionCita,$FechaFinCita, $TipoCita, $ColorFondo, $IdPsicologo, $CanalCita, $EtiquetaCita) {
         $id = $this->model->insertarCita($IdPaciente, $MotivoCita, $EstadoCita, $FechaInicioCita, $DuracionCita,$FechaFinCita , $TipoCita, $ColorFondo, $IdPsicologo, $CanalCita, $EtiquetaCita);
         return ($id != false) ? header("Location:../../Vista/RegCitas.php") : header("Location:../../Vista/RegCitas.php");
+    }
+
+    public function getAll($idPsicologo, $nomPaciente = null, $codigo = null, $dateStart = null, $dateEnd = null, $limit = 10, $offset = 0)
+    {
+        return $this->model->getAll($idPsicologo, $nomPaciente, $codigo, $dateStart, $dateEnd, $limit, $offset);
+        
     }
 
     // Para ver datos completos de la cita
