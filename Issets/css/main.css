@@ -162,7 +162,9 @@ button {
   border: none;
   color: inherit;
 }
-
+.animate__animated .pagination a{
+  color: var(--color-primary);
+}
 select {
   font: inherit;
   border: none;

@@ -4,12 +4,15 @@ if (isset($_SESSION['NombrePsicologo'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="../Issets/css/citas.css">
     <link rel="stylesheet" href="../Issets/css/main.css">
     <link rel="icon" href="../img/favicon.png">
@@ -18,50 +21,50 @@ if (isset($_SESSION['NombrePsicologo'])){
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Citas</title>
 </head>
+
 <body>
-<style>
-            @media (max-width: 900px) {
-            body {
+    <style>
+    @media (max-width: 900px) {
+        body {}
 
-            }
-            .container {
-                width: 100%;
-            }
-            .center-divs{
-                min-width: 900px;
-            }
-            .contenedor-botones{
-                min-width: 900px;
-            }
-            table{
-                min-width: 900px;
-            }
-            .animate__animated{
-                overflow: auto;
-            }
-            }
+        .container {
+            width: 100%;
+        }
 
-           
+        .center-divs {
+            min-width: 900px;
+        }
 
-        </style>
+        .contenedor-botones {
+            min-width: 900px;
+        }
+
+        table {
+            min-width: 900px;
+        }
+
+        .animate__animated {
+            overflow: auto;
+        }
+    }
+    </style>
     <?php
         require("../Controlador/Cita/ControllerCita.php");
-        $obj = new usernameControlerCita();
+        $ControllerCita = new usernameControlerCita();
 
         $rowsPerPage = 2;
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-        $rowscita=$obj->contarRegistrosEnCitas($_SESSION['IdPsicologo']);
-        $rows = $obj->ver($_SESSION['IdPsicologo'], $currentPage, $rowsPerPage);
-
-        $totalRows = $obj->contarRegistrosEnCitas($_SESSION['IdPsicologo']); // Asumiendo que cuentas el número total de registros
+        $rowscita=$ControllerCita->contarRegistrosEnCitas($_SESSION['IdPsicologo']);
+        $idPsicologo = $_SESSION['idPsicologo'];
+        $rows = $ControllerCita->getAll($idPsicologo, null, null, null, null, $rowsPerPage, ($currentPage - 1) * $rowsPerPage);
+        $totalRows = $ControllerCita->contarRegistrosEnCitas($_SESSION['IdPsicologo']); // Asumiendo que cuentas el número total de registros
         $totalPages = ceil($totalRows / $rowsPerPage);
     ?>
     <div class="container">
         <?php
-    require_once '../Issets/views/Menu.php';
-    ?>
-        <!----------- fin de aside -------->
+        require_once '../Issets/views/Menu.php';
+        ?>
         <main class="animate__animated animate__fadeIn">
             <div class="center-divs">
                 <h4 style="color: #49c691;">Lista de Citas</h4>
@@ -75,13 +78,17 @@ if (isset($_SESSION['NombrePsicologo'])){
                     Citas
                 </span>
                 <div class="separador"></div>
+                <span style="display:none;" id="idPsicologo">
+                    <?= $_SESSION['idPsicologo'] ?>
+                </span>
                 <div class="input-buscador">
                     <span id="search-icon"><i class="fas fa-search"></i></span>
-                    <input type="text" id="myInput" placeholder="Buscar cita" class="input" required>
+                    <input type="text" id="CodigoPaciente" placeholder="Codigo Paciente" class="input Codigo" required>
                 </div>
-                <a class="button-arriba" style="padding:10px 30px; font-size:10px;" href="RegCitas.php">
-                    <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Cita
-                </a>
+                <div class="input-buscador">
+                    <span id="search-icon"><i class="fas fa-search"></i></span>
+                    <input type="text" id="searchForName" placeholder="Nombre Paciente" class="input nom" required>
+                </div>
                 <a class="button-eliminar" id="eliminarSeleccionados">
                     <i id="search-icon" class="fas fa-trash" style="margin-right: 10px;color:red"></i>Eliminar
                 </a>
@@ -101,37 +108,41 @@ if (isset($_SESSION['NombrePsicologo'])){
                             <th>Más</th>
                         </tr>
                     </thead>
-                    
+
                     <!-- Cuerpo de la tabla -->
                     <tbody id="myTable">
                         <?php if ($rows): ?>
-                            <?php foreach ($rows as $row): ?>
-                                <tr>
-                                    <td><input type="checkbox" class="checkbox" id="checkbox<?=$row['IdCita']?>" value="<?=$row['IdCita']?>"></td>
-                                    <td style="padding: 20px;"><?=$row['NomPaciente']?></td>
-                                    <td><?=$row['codigopac']?></td>
-                                    <td><?=$row['MotivoCita']?></td>
-                                    <td><?=$row['EstadoCita']?></td>
-                                    <td><?=$row['FechaInicioCita']?></td>
-                                    <td style="color:green"><?=$row['Duracioncita']?></td>
-                                    <td>
-                                        <div id="dropdown-content-<?=$row['IdCita']?>" style="display: flex; column-gap: 1rem; justify-content: space-evenly;">
-                                            <a type="button" class="btne" onclick="openModalEliminar('<?=$row['IdCita']?>')" style="color: red;cursor: pointer;">
-                                                <span class="material-symbols-outlined">delete</span>
-                                                <p style="color:red;">Eliminar</p>
-                                            </a>
-                                            <a type="button" class="btnm" onclick="openModalEditar('<?=$row['IdCita']?>')" style="color: blue;cursor: pointer;">
-                                                <span class="material-symbols-outlined">edit</span>
-                                                <p style="color:blue;">Editar</p>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
+                        <?php foreach ($rows as $row): ?>
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" id="checkbox<?=$row['IdCita']?>"
+                                    value="<?=$row['IdCita']?>"></td>
+                            <td style="padding: 20px;"><?=$row['NomPaciente']?></td>
+                            <td><?=$row['codigopac']?></td>
+                            <td><?=$row['MotivoCita']?></td>
+                            <td><?=$row['EstadoCita']?></td>
+                            <td><?=$row['FechaInicioCita']?></td>
+                            <td style="color:green"><?=$row['Duracioncita']?></td>
+                            <td>
+                                <div id="dropdown-content-<?=$row['IdCita']?>"
+                                    style="display: flex; column-gap: 1rem; justify-content: space-evenly;">
+                                    <a type="button" class="btne" onclick="openModalEliminar('<?=$row['IdCita']?>')"
+                                        style="color: red;cursor: pointer;">
+                                        <span class="material-symbols-outlined">delete</span>
+                                        <p style="color:red;">Eliminar</p>
+                                    </a>
+                                    <a type="button" class="btnm" onclick="openModalEditar('<?=$row['IdCita']?>')"
+                                        style="color: blue;cursor: pointer;">
+                                        <span class="material-symbols-outlined">edit</span>
+                                        <p style="color:blue;">Editar</p>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
                         <?php else: ?>
-                            <tr>
-                                <td colspan="8">No hay registros.</td>
-                            </tr>
+                        <tr>
+                            <td colspan="8">No hay registros.</td>
+                        </tr>
                         <?php endif; ?>
                     </tbody>
                 </table>
@@ -164,16 +175,19 @@ if (isset($_SESSION['NombrePsicologo'])){
                 <h2 style="font-size:20px; margin-top: 10px;">¿Eliminar cita?</h2>
                 <p>Se eliminará la cita de <strong><?= $row[1] ?></strong>. Esta acción no se puede deshacer.</p>
             </div>
-            <div class="modal-button-container" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
-                <button class="button-modal button-cancel" onclick="closeModalEliminar('<?= $row[0] ?>')" style="background-color: #F19294; border: none; padding: 10px 20px; color: white; cursor: pointer;">Cancelar</button>
-                <a href="../Crud/Cita/eliminarCita.php?id=<?= $row[0] ?>" class="button-modal button-accept" style="background-color: #56B9B3; border: none; padding: 10px 20px; color: white; text-decoration: none; text-align: center; cursor: pointer;">Aceptar</a>
+            <div class="modal-button-container"
+                style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                <button class="button-modal button-cancel" onclick="closeModalEliminar('<?= $row[0] ?>')"
+                    style="background-color: #F19294; border: none; padding: 10px 20px; color: white; cursor: pointer;">Cancelar</button>
+                <a href="../Crud/Cita/eliminarCita.php?id=<?= $row[0] ?>" class="button-modal button-accept"
+                    style="background-color: #56B9B3; border: none; padding: 10px 20px; color: white; text-decoration: none; text-align: center; cursor: pointer;">Aceptar</a>
             </div>
         </div>
     </div>
 
     <?php
-                            $user=$obj->show($row[0]);
-                            ?>
+        $user=$ControllerCita->show($row[0]);
+    ?>
     <!-- Modal de edicion -->
     <div id="modalEditar<?=$row[0]?>" class="service-modal flex-center">
         <div class="service-modal-body">
@@ -224,15 +238,15 @@ if (isset($_SESSION['NombrePsicologo'])){
                 $horaCita = date("H:i", strtotime($row['FechaInicioCita']));
                 ?>
                     <div class="input-group2">
-                    <div class="input-group-modal" style="width:49%">
-                        <h3 for="fecha_inicio">Fecha de Cita<b style="color:red">*</b></h3>
-                        <input type="date" id="fecha_inicio" name="fecha_inicio" min="<?= $fechamin ?>"
-                            value="<?= $fechaCita ?>">
-                    </div>
-                    <div class="input-group-modal" style="width:49%">
-                        <h3 for="hora_inicio">Hora de Cita <b style="color:red">*</b></h3>
-                        <input type="time" id="hora_inicio" name="hora_inicio" value="<?= $horaCita ?>" />
-                    </div>
+                        <div class="input-group-modal" style="width:49%">
+                            <h3 for="fecha_inicio">Fecha de Cita<b style="color:red">*</b></h3>
+                            <input type="date" id="fecha_inicio" name="fecha_inicio" min="<?= $fechamin ?>"
+                                value="<?= $fechaCita ?>">
+                        </div>
+                        <div class="input-group-modal" style="width:49%">
+                            <h3 for="hora_inicio">Hora de Cita <b style="color:red">*</b></h3>
+                            <input type="time" id="hora_inicio" name="hora_inicio" value="<?= $horaCita ?>" />
+                        </div>
                     </div>
                     <br>
                     <div class="input-group2">
@@ -317,8 +331,9 @@ if (isset($_SESSION['NombrePsicologo'])){
                             placeholder="Ingrese algun Antecedente Medico" />
                     </div>
                     <div class="modal-button-container">
-                    <button type="button" class="button-modal button-cancelar" onclick="closeModalEditar('<?=$row[0]?>')">Cancelar</button>
-                    <button type="submit" class="button-modal button-editar">Guardar</button>
+                        <button type="button" class="button-modal button-cancelar"
+                            onclick="closeModalEditar('<?=$row[0]?>')">Cancelar</button>
+                        <button type="submit" class="button-modal button-editar">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -372,84 +387,6 @@ if (isset($_SESSION['NombrePsicologo'])){
         var minutes = String(date.getMinutes()).padStart(2, '0');
         return hours + ':' + minutes;
     }
-    // Buscador del paciente según su id
-    $(document).ready(function() {
-        $('.Codigo').click(function() {
-            var codigoPaciente = $('#CodigoPaciente').val();
-            var idPsicologo = <?php echo $_SESSION['IdPsicologo']; ?>;
-
-            // Realizar la solicitud AJAX al servidor
-            $.ajax({
-                url: 'Fetch/fetch_paciente.php', // Archivo PHP que procesa la solicitud
-                method: 'POST',
-                data: {
-                    codigoPaciente: codigoPaciente,
-                    idPsicologo: idPsicologo
-                },
-                success: function(response) {
-                    if (response.hasOwnProperty('error')) {
-                        $('#Paciente').val(response.error);
-                        $('#IdPaciente').val('');
-                        $('#NomPaciente').val('');
-                        $('#correo').val('');
-                        $('#telefono').val('');
-                    } else {
-                        $('#Paciente').val(response.nombre);
-                        $('#NomPaciente').val(response.nom);
-                        $('#IdPaciente').val(response.id);
-                        $('#correo').val(response.correo);
-                        $('#telefono').val(response.telefono);
-                    }
-                },
-                error: function() {
-                    $('#Paciente').val('Error al procesar la solicitud');
-                    $('#NomPaciente').val('');
-                    $('#IdPaciente').val('');
-                    $('#correo').val('');
-                    $('#telefono').val('');
-                }
-            });
-        });
-    });
-    // Buscador paciente segun su nombre 
-    $(document).ready(function() {
-        $('.nom').click(function() {
-            var NomPaciente = $('#NomPaciente').val();
-            var idPsicologo = <?php echo $_SESSION['IdPsicologo']; ?>;
-
-            // Realizar la solicitud AJAX al servidor
-            $.ajax({
-                url: 'Fetch/fetch_pacienteNom.php', // Archivo PHP que procesa la solicitud
-                method: 'POST',
-                data: {
-                    NomPaciente: NomPaciente,
-                    idPsicologo: idPsicologo
-                },
-                success: function(response) {
-                    if (response.hasOwnProperty('error')) {
-                        $('#Paciente').val(response.error);
-                        $('#IdPaciente').val('');
-                        $('#CodigoPaciente').val('');
-                        $('#correo').val('');
-                        $('#telefono').val('');
-                    } else {
-                        $('#Paciente').val(response.nombre);
-                        $('#IdPaciente').val(response.id);
-                        $('#CodigoPaciente').val(response.CodigoPaciente);
-                        $('#correo').val(response.correo);
-                        $('#telefono').val(response.telefono);
-                    }
-                },
-                error: function() {
-                    $('#Paciente').val('Error al procesar la solicitud');
-                    $('#IdPaciente').val('');
-                    $('#CodigoPaciente').val('');
-                    $('#correo').val('');
-                    $('#telefono').val('');
-                }
-            });
-        });
-    });
     //Funciones del modal
     function openModalEditar(id) {
         var modal = document.getElementById('modalEditar' + id);
@@ -493,7 +430,6 @@ if (isset($_SESSION['NombrePsicologo'])){
             dropdownContent.style.marginLeft = "-71px";
         }
     }
-
     //funciones de la pagina
     var paginationLinks = document.getElementsByClassName('pagination')[0].getElementsByTagName('a');
 
@@ -523,6 +459,7 @@ if (isset($_SESSION['NombrePsicologo'])){
     mostrarPagina(1);
     </script>
 </body>
+
 </html>
 <?php
 }else{

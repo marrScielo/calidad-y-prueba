@@ -83,6 +83,7 @@ class Login
                     $_SESSION['IdPsicologo'] = $psicologo["IdPsicologo"];
                     $_SESSION['NombrePsicologo'] = $psicologo["NombrePsicologo"];
                     $_SESSION['Usuario'] = $psicologo["Usuario"];
+                    $_SESSION['idPsicologo'] = $psicologo["IdPsicologo"];
                     header("Location: ../../Vista/Dashboards.php");
                     exit();
                 } else {
