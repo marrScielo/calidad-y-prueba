@@ -4,7 +4,7 @@ class UserModelCita
     private $PDO;
     public function __construct()
     {
-        require_once(__DIR__."/../../conexion/conexion.php");
+        require_once(__DIR__ . "/../../conexion/conexion.php");
 
         $con = new conexion();
         $this->PDO = $con->conexion();
@@ -28,7 +28,8 @@ class UserModelCita
 
         return ($statement->execute()) ? $this->PDO->lastInsertId() : false;
     }
-    public function getAll($idPsicologo, $nomPaciente = null, $codigo = null, $dateStart = null, $dateEnd = null, $limit = 10, $offset = 0) {
+    public function getAll($idPsicologo, $IdCita = null, $nomPaciente = null, $codigo = null, $dateStart = null, $dateEnd = null, $limit = 10, $offset = 0)
+    {
         $query = "SELECT c.IdCita, p.NomPaciente, c.MotivoCita, c.EstadoCita, c.FechaInicioCita, c.Duracioncita, c.TipoCita, c.ColorFondo, ps.NombrePsicologo, c.CanalCita, c.EtiquetaCita, p.codigopac
                 FROM cita c
                 INNER JOIN paciente p ON c.IdPaciente = p.IdPaciente
@@ -47,13 +48,17 @@ class UserModelCita
             $query .= " AND p.codigopac LIKE :codigo";
             $params[':codigo'] = "%$codigo%";
         }
-        
+
         if ($dateStart && $dateEnd) {
             $query .= " AND c.FechaInicioCita BETWEEN :dateStart AND :dateEnd";
             $params[':dateStart'] = $dateStart;
             $params[':dateEnd'] = $dateEnd;
         }
 
+        if ($IdCita) {
+            $query .= " AND c.IdCita = :IdCita";
+            $params[':IdCita'] = $IdCita;
+        }
         // Agregar limit y offset
         $query .= " LIMIT :limit OFFSET :offset";
         $params[':limit'] = $limit;
@@ -88,15 +93,15 @@ class UserModelCita
                                           INNER JOIN psicologo ps ON c.IdPsicologo = ps.IdPsicologo
                                           WHERE c.IdPsicologo = :idUsuario
                                           LIMIT :limit OFFSET :offset");
-    
+
         $statement->bindValue(':idUsuario', $idUsuario, PDO::PARAM_INT);
         $statement->bindValue(':limit', $limit, PDO::PARAM_INT);
         $statement->bindValue(':offset', $offset, PDO::PARAM_INT);
         $statement->execute();
-    
+
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
     // Eliminar cita seleccionada 
     public function eliminar($id)
     {
@@ -375,7 +380,8 @@ class UserModelCita
             return 0;
         }
     }
-    public function obtenerProximaCita($id){
+    public function obtenerProximaCita($id)
+    {
         $fechaActual = date("Y-m-d");
         $statement = $this->PDO->prepare("Select FechaInicioCita FROM paciente where IdPsicologo = :idPsicologo ");
     }
