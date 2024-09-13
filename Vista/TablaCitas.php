@@ -47,6 +47,35 @@ if (isset($_SESSION['NombrePsicologo'])){
             overflow: auto;
         }
     }
+
+
+    /* 
+        ESTILOS USANDO BEM
+        RECOMENDACION: USAR BEM PARA DARLE ESTILOS A LOS COMPONENTES Y MANTEBER EL CODIGO LIMPIO
+       */
+    .appointmentTuple__buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .appointmentTuple__button {
+        padding: 0.5rem 1rem;
+        border: none;
+        background: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .appointmentTuple__button--edit span {
+        color: red;
+    }
+
+    .appointmentTuple__button--delete span {
+        color: blue;
+    }
     </style>
     <?php
         require("../Controlador/Cita/ControllerCita.php");
@@ -83,11 +112,21 @@ if (isset($_SESSION['NombrePsicologo'])){
                 </span>
                 <div class="input-buscador">
                     <span id="search-icon"><i class="fas fa-search"></i></span>
-                    <input type="text" id="CodigoPaciente" placeholder="Codigo Paciente" class="input Codigo" required>
+                    <input type="text" id="searchForCode" placeholder="Codigo Paciente" class="input Codigo" required>
                 </div>
                 <div class="input-buscador">
                     <span id="search-icon"><i class="fas fa-search"></i></span>
                     <input type="text" id="searchForName" placeholder="Nombre Paciente" class="input nom" required>
+                </div>
+                <div class="input-buscador">
+                    <span id="search-icon"><i class="fas fa-search"></i></span>
+                    <input type="datetime-local" id="searchForDateStart" placeholder="Fecha de Inicio"
+                        class="input date" required>
+                </div>
+                <div class="input-buscador">
+                    <span id="search-icon"><i class="fas fa-search"></i></span>
+                    <input type="datetime-local" id="searchForDateEnd" placeholder="Fecha de Fin" class="input date"
+                        required>
                 </div>
                 <a class="button-eliminar" id="eliminarSeleccionados">
                     <i id="search-icon" class="fas fa-trash" style="margin-right: 10px;color:red"></i>Eliminar
@@ -110,7 +149,7 @@ if (isset($_SESSION['NombrePsicologo'])){
                     </thead>
 
                     <!-- Cuerpo de la tabla -->
-                    <tbody id="myTable">
+                    <tbody id="appointmentsTable">
                         <?php if ($rows): ?>
                         <?php foreach ($rows as $row): ?>
                         <tr>
@@ -122,19 +161,14 @@ if (isset($_SESSION['NombrePsicologo'])){
                             <td><?=$row['EstadoCita']?></td>
                             <td><?=$row['FechaInicioCita']?></td>
                             <td style="color:green"><?=$row['Duracioncita']?></td>
-                            <td>
-                                <div id="dropdown-content-<?=$row['IdCita']?>"
-                                    style="display: flex; column-gap: 1rem; justify-content: space-evenly;">
-                                    <a type="button" class="btne" onclick="openModalEliminar('<?=$row['IdCita']?>')"
-                                        style="color: red;cursor: pointer;">
+                            <td id="appointmentId-<?=$row['IdCita']?>">
+                                <div class="appointmentTable__buttons">
+                                    <button class="appointmentTuple__button appointmentTuple__button--edit">
                                         <span class="material-symbols-outlined">delete</span>
-                                        <p style="color:red;">Eliminar</p>
-                                    </a>
-                                    <a type="button" class="btnm" onclick="openModalEditar('<?=$row['IdCita']?>')"
-                                        style="color: blue;cursor: pointer;">
+                                    </button>
+                                    <button class="appointmentTuple__button appointmentTuple__button--delete">
                                         <span class="material-symbols-outlined">edit</span>
-                                        <p style="color:blue;">Editar</p>
-                                    </a>
+                                    </button>
                                 </div>
                             </td>
                         </tr>
@@ -442,7 +476,7 @@ if (isset($_SESSION['NombrePsicologo'])){
     }
 
     function mostrarPagina(page) {
-        var rows = document.getElementById('myTable').getElementsByTagName('tr');
+        var rows = document.getElementById('appointmentsTable').getElementsByTagName('tr');
 
         for (var i = 0; i < rows.length; i++) {
             rows[i].style.display = 'none';

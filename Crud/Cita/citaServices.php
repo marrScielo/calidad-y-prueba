@@ -8,11 +8,14 @@ if(isset($_GET['NomPaciente'])){
     echo json_encode($citas);
 }elseif(isset($_GET['codigo'])){
     $codigo = $_GET['codigo'];
-    $citas = $ControllerCita->getAll(null, null, $codigo, null, null, 1, 0);
+    $citas = $ControllerCita->getAll($idPsicologo, null, $codigo, null, null, 10, 0);
     echo json_encode($citas);
-}elseif(isset($_GET['dateStart']) && isset($_GET['dateEnd'])){
+} elseif (isset($_GET['dateStart']) && isset($_GET['dateEnd'])) {
     $dateStart = $_GET['dateStart'];
     $dateEnd = $_GET['dateEnd'];
-    $citas = $ControllerCita->getAll(null, null, null, $dateStart, $dateEnd, 10, 0);
+    $citas = $ControllerCita->getAll($idPsicologo, null, null, $dateStart, $dateEnd, 10, 0);
+    echo json_encode($citas);
+}else{
+    $citas = $ControllerCita->getAll($idPsicologo, null, null, null, null, 10, 0);
     echo json_encode($citas);
 }

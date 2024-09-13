@@ -43,7 +43,7 @@ class UserModelCita
             $query .= " AND p.NomPaciente LIKE :nomPaciente";
             $params[':nomPaciente'] = "%$nomPaciente%";
         }
-        if ($codigo) {
+        if (!empty($codigo)) {
             $query .= " AND p.codigopac LIKE :codigo";
             $params[':codigo'] = "%$codigo%";
         }
@@ -60,7 +60,9 @@ class UserModelCita
         $params[':offset'] = $offset;
         // Debugging: Imprimir la consulta y los parámetros
         // echo $query;
+        // echo "<br>";
         // var_dump($params);
+        // echo "<br>";
         // Preparar y ejecutar la consulta
         $statement = $this->PDO->prepare($query);
         // Vincular los valores
