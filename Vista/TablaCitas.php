@@ -50,9 +50,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
 
             /* 
-                                                                                                                                            ESTILOS USANDO BEM
-                                                                                                                                            RECOMENDACION: USAR BEM PARA DARLE ESTILOS A LOS COMPONENTES Y MANTEBER EL CODIGO LIMPIO
-                                                                                                                                            */
+                                                                                                                                                                                                                    ESTILOS USANDO BEM
+                                                                                                                                                                                                                    RECOMENDACION: USAR BEM PARA DARLE ESTILOS A LOS COMPONENTES Y MANTEBER EL CODIGO LIMPIO
+                                                                                                                                                                                                                    */
             .appointments__header {
                 display: flex;
                 align-items: center;
@@ -106,7 +106,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         require("../Controlador/Cita/ControllerCita.php");
         $ControllerCita = new usernameControlerCita();
 
-        $rowsPerPage = 2;
+        $rowsPerPage = 10;
         $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
         $rowscita = $ControllerCita->contarRegistrosEnCitas($_SESSION['IdPsicologo']);
@@ -226,163 +226,25 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <span class="notification__progress"></span>
             </div>
         </div>
-        <?php if ($rows): ?>
-            <?php foreach ($rows as $row): ?>
-                <!-- Modal de eliminación -->
-                <div id="modalEliminar<?= $row[0] ?>" class="service-modal flex-center">
-                    <div class="service-modal-body">
-                        <a class="close" onclick="closeModalEliminar('<?= $row[0] ?>')">&times;</a>
-                        <div style="text-align: center; padding: 20px;">
-                            <span style="font-size:50px; color: #56B9B3;" class="material-symbols-sharp">help_outline</span>
-                            <h2 style="font-size:20px; margin-top: 10px;">¿Eliminar cita?</h2>
-                            <p>Se eliminará la cita de <strong><?= $row[1] ?></strong>. Esta acción no se puede deshacer.</p>
-                        </div>
-                        <div class="modal-button-container"
-                            style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
-                            <button class="button-modal button-cancel" onclick="closeModalEliminar('<?= $row[0] ?>')"
-                                style="background-color: #F19294; border: none; padding: 10px 20px; color: white; cursor: pointer;">Cancelar</button>
-                            <a href="../Crud/Cita/eliminarCita.php?id=<?= $row[0] ?>" class="button-modal button-accept"
-                                style="background-color: #56B9B3; border: none; padding: 10px 20px; color: white; text-decoration: none; text-align: center; cursor: pointer;">Aceptar</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal de edicion -->
-
-            <?php endforeach; ?>
-        <?php endif; ?>
-
-        <div id="modalEditAppointment" class="service-modal flex-center">
+        <div id="modalDeleteAppointment" class="modal-container service-modal flex-center">
             <div class="service-modal-body">
-                <a href="#" class="close" id="closeModalEditAppointment">&times;</a>
-                <div class="message_dialog">
-                    <h2 id="appointmentTitle" style="font-size:20px; color:#49c691">Edit Appointment</h2>
-                    <form id="editAppointmentForm" class="dialog">
-                        <input type="hidden" id="appointmentId" name="appointmentId">
-
-                        <div class="input-group-modal">
-                            <label for="reason">
-                                Motivo de la consulta
-                                <b style="color:red">*</b></label>
-                            <textarea id="reason" name="reason" required
-                                style="resize: none; padding: 1.2em 1em 2.8em 1em; font-family: 'Montserrat', sans-serif; font-size: 14px;"></textarea>
-                        </div>
-                        <br>
-
-                        <div class="input-group2">
-                            <div class="input-group-modal">
-                                <label for="appointmentStatus">
-                                    Estado de la cita
-                                    <b style="color:red">*</b></label>
-                                <select id="appointmentStatus" name="appointmentStatus" required>
-                                    <option value="Confirmation Required">
-                                        Se requiere confirmación
-                                    </option>
-                                    <option value="Confirmed">
-                                        Confirmada
-                                    </option>
-                                    <option value="Patient Absent">
-                                        Ausencia del paciente
-                                    </option>
-                                </select>
-                            </div>
-
-                            <div class="input-group-modal" style="width:50%; margin-left: 65px;">
-                                <label for="appointmentColor">Color de cita<b style="color:red">*</b></label>
-                                <input type="color" id="appointmentColor" name="appointmentColor">
-                                <datalist id="colorOptions">
-                                    <option value="#b4d77b">Rojo</option>
-                                    <option value="#9274b3">Verde</option>
-                                    <option value="#f38238">Azul</option>
-                                </datalist>
-                            </div>
-                        </div>
-                        <br>
-
-                        <div class="input-group2">
-                            <div class="input-group-modal" style="width:49%">
-                                <label for="startDate">Fecha de cita <b style="color:red">*</b></label>
-                                <input type="date" id="startDate" name="startDate" required>
-                            </div>
-                            <div class="input-group-modal" style="width:49%">
-                                <label for="startTime">Hora de inicio <b style="color:red">*</b></label>
-                                <input type="time" id="startTime" name="startTime" required />
-                            </div>
-                        </div>
-                        <br>
-
-                        <div class="input-group2">
-                            <div class="input-group-modal" style="width:49%">
-                                <label for="appointmentType">Tipo de cita <b style="color:red">*</b></label>
-                                <select id="appointmentType" name="appointmentType">
-                                    <option value="First Visit">Primera visita</option>
-                                    <option value="Follow-up Visit">Visita de control</option>
-                                </select>
-                            </div>
-
-                            <div class="input-group-modal" style="margin-left: 65px;">
-                                <label for="duration">Duración <b style="color:red">*</b></label>
-                                <select id="duration" name="duration" required>
-                                    <option value="5">5'</option>
-                                    <option value="10">10'</option>
-                                    <option value="15">15'</option>
-                                    <option value="20">20'</option>
-                                    <option value="30">30'</option>
-                                    <option value="40">40'</option>
-                                    <option value="45">45'</option>
-                                    <option value="50">50'</option>
-                                    <option value="60">60'</option>
-                                    <option value="90">90'</option>
-                                    <option value="120">120'</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="input-group-modal" style="display: none;">
-                            <label for="endDate">Fecha fin <b style="color:red">*</b></label>
-                            <input id="endDate" type="text" name="endDate" readonly />
-                        </div>
-
-                        <div class="input-group2">
-                            <div class="input-group-modal" style="width:58%">
-                                <label for="attractionChannel">Canal de atracción <b style="color:red">*</b></label>
-                                <select id="attractionChannel" name="attractionChannel" required>
-                                    <option value="Online Appointment">Cita online</option>
-                                    <option value="Direct Marketing">
-                                        Marketing directo
-                                    </option>
-                                    <option value="Referrals">Referidos</option>
-                                </select>
-                            </div>
-                            <div class="input-group-modal" style="width:55%">
-                                <label for="label">Etiqueta <b style="color:red">*</b></label>
-                                <select id="label" name="label" required>
-                                    <option value="Consultation">
-                                        Consulta
-                                    </option>
-                                    <option value="Referred Family">
-                                        Familia referida
-                                    </option>
-                                    <option value="Priority">
-                                        Prioridad
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                        <br>
-
-                        <div class="modal-button-container">
-                            <button type="button" class="button-modal button-cancelar button-cancel"
-                                id="cancelEditAppointment">
-                                Cancelar
-                            </button>
-                            <button type="submit" class="button-modal button-cancelar button-editar">
-                                Guardar
-                            </button>
-                        </div>
-                    </form>
+                <a class="close" id="closeModalDeleteAppointment">&times;</a>
+                <div style="text-align: center; padding: 20px;">
+                    <span style="font-size:50px; color: #56B9B3;" class="material-symbols-sharp">help_outline</span>
+                    <h2 style="font-size:20px; margin-top: 10px;">¿Eliminar cita?</h2>
+                    <p>Se eliminará la cita de <strong id="nameUser">JUANITO</strong>. Esta acción no se puede deshacer.</p>
+                </div>
+                <div class="modal-actions" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                    <button class="modal-button cancel-button" onclick="closeDeleteModal('<?= $row[0] ?>')"
+                        style="background-color: #F19294; border: none; padding: 10px 20px; color: white; cursor: pointer;">Cancelar</button>
+                    <a href="../Crud/Cita/eliminarCita.php?id=999" id="buttonDeleteAppointmentById"
+                        class="modal-button accept-button"
+                        style="background-color: #56B9B3; border: none; padding: 10px 20px; color: white; text-decoration: none; text-align: center; cursor: pointer;">Aceptar</a>
                 </div>
             </div>
         </div>
+        <!-- Modal de edicion -->
+        <?php require_once './modales/ModalEditAppointment.html'; ?>
 
         <script src="../Issets/js/dashboard.js"></script>
         <script src="../Issets/js/citas.js"></script>
@@ -430,16 +292,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 return hours + ':' + minutes;
             }
             //Funciones del modal
-            function openModalEditar(id) {
-                var modal = document.getElementById('modalEditar' + id);
-                modal.classList.add('active');
-            }
-
-            function closeModalEditar(id) {
-                var modal = document.getElementById('modalEditar' + id);
-                modal.classList.remove('active');
-            }
-
             function openModalEliminar(id) {
                 var modal = document.getElementById('modalEliminar' + id);
                 modal.classList.add('active');
@@ -472,6 +324,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     dropdownContent.style.marginLeft = "-71px";
                 }
             }
+            // TODO: Cambiar la forma de paginar, porque no esta trayendo todos los registros del servidor
             //funciones de la pagina
             var paginationLinks = document.getElementsByClassName('pagination')[0].getElementsByTagName('a');
 

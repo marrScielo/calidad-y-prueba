@@ -2,6 +2,7 @@
 require(__DIR__ . "/../../Controlador/Cita/ControllerCita.php");
 $ControllerCita = new usernameControlerCita();
 $idPsicologo = $_GET['idPsicologo'];
+// TODO: Unificar los if en uno solo
 if (isset($_GET['NomPaciente'])) {
     $nomPaciente = $_GET['NomPaciente'];
     $citas = $ControllerCita->getAll($idPsicologo, null, $nomPaciente, null, null, null, 10, 0);

@@ -1,4 +1,5 @@
 let currentAppointmentSelectedId = null
+// Elementos del DOM
 const $appointmentsTable = document.getElementById('appointmentsTable')
 const $inputSearchForName = document.getElementById('searchForName')
 const $inputSearchForCode = document.getElementById('searchForCode')
@@ -9,9 +10,48 @@ const $appointmentsRowButtons = document.querySelectorAll(
 )
 const idPsicologo = document.getElementById('idPsicologo').textContent
 const $modalEditAppointment = document.getElementById('modalEditAppointment')
+const $closeModalEditAppointment = document.getElementById(
+    'closeModalEditAppointment'
+)
+const $modalDeleteAppointment = document.getElementById(
+    'modalDeleteAppointment'
+)
+const $closeModalDeleteAppointment = document.getElementById(
+    'closeModalDeleteAppointment'
+)
 const checkboxes = document.querySelectorAll('.checkbox')
 const checkboxPrincipal = document.getElementById('checkboxPrincipal')
 const botonEliminar = document.getElementById('eliminarSeleccionados')
+
+// Eventos
+
+$closeModalEditAppointment.addEventListener('click', closeModalEditAppointment)
+$closeModalDeleteAppointment.addEventListener('click', function () {
+    $modalDeleteAppointment.classList.remove('active')
+})
+$inputSearchForName.addEventListener('input', searchAppointments)
+$inputSearchForCode.addEventListener('input', searchAppointments)
+$inputSearchForDateStart.addEventListener('change', searchAppointments)
+$inputSearchForDateEnd.addEventListener('change', searchAppointments)
+$appointmentsRowButtons.forEach((row) => {
+    row.addEventListener('click', async function (event) {
+        const idRow = row.parentElement.id.split('-')[1]
+        currentAppointmentSelectedId = idRow
+        console.log('Id de la cita seleccionada:', idRow)
+
+        const dataAppointment = await getAppointmentById(idRow)
+        // Usar closest() para verificar si se hizo clic en el botón o dentro de él
+        if (event.target.closest('.appointmentTuple__button--edit')) {
+            console.log(dataAppointment)
+            updateEditAppointmentModal(dataAppointment[0])
+        } else if (event.target.closest('.appointmentTuple__button--delete')) {
+            // TODO: Implementar eliminación de cita
+            $modalDeleteAppointment.classList.add('active')
+            updateDeleteAppointmentModal(dataAppointment[0])
+            console.log('Eliminar cita con id:', idRow)
+        }
+    })
+})
 function searchAppointments() {
     const name = $inputSearchForName.value.trim() || null
     const code = $inputSearchForCode.value.trim() || null
@@ -52,31 +92,6 @@ function searchAppointments() {
         })
         .catch((error) => console.error('Error:', error))
 }
-
-$inputSearchForName.addEventListener('input', searchAppointments)
-$inputSearchForCode.addEventListener('input', searchAppointments)
-$inputSearchForDateStart.addEventListener('change', searchAppointments)
-$inputSearchForDateEnd.addEventListener('change', searchAppointments)
-$appointmentsRowButtons.forEach((row) => {
-    row.addEventListener('click', async function (event) {
-        const idRow = row.parentElement.id.split('-')[1]
-        currentAppointmentSelectedId = idRow
-        console.log('Id de la cita seleccionada:', idRow)
-        const $buttonEdit = row.querySelector('.appointmentTuple__button--edit')
-        const $buttonDelete = row.querySelector(
-            '.appointmentTuple__button--delete'
-        )
-        // Usar closest() para verificar si se hizo clic en el botón o dentro de él
-        if (event.target.closest('.appointmentTuple__button--edit')) {
-            const dataAppointment = await getAppointmentById(idRow)
-            console.log(dataAppointment)
-            updateAppointmentModal(dataAppointment[0])
-        } else if (event.target.closest('.appointmentTuple__button--delete')) {
-            // Aquí puedes agregar lo que quieres hacer para el botón de eliminar
-            console.log('Eliminar cita con id:', idRow)
-        }
-    })
-})
 function getAppointmentById(id) {
     return fetch(
         `../Crud/Cita/citaServices.php?idPsicologo=${idPsicologo}&IdCita=${id}`
@@ -132,7 +147,7 @@ function formatDateTime(inputDate) {
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
 }
 
-function updateAppointmentModal(appointment) {
+function updateEditAppointmentModal(appointment) {
     $modalEditAppointment.querySelector('#appointmentId').value =
         appointment.IdCita
     $modalEditAppointment.querySelector(
@@ -147,6 +162,20 @@ function updateAppointmentModal(appointment) {
         appointment.Duracioncita
     $modalEditAppointment.classList.add('active')
 }
+function updateDeleteAppointmentModal(appointment) {
+    document.querySelector(
+        '#buttonDeleteAppointmentById'
+    ).href = `../Crud/Cita/eliminarCita.php?id=${appointment.IdCita}`
+    document.querySelector(
+        '#nameUser'
+    ).textContent = `${appointment.NomPaciente}`
+    console.log($modalDeleteAppointment)
+    $modalDeleteAppointment.classList.add('active')
+}
+function closeModalEditAppointment() {
+    $modalEditAppointment.classList.remove('active')
+}
+
 // ------------------------------------------------
 //          CODIGO ANTERIOR
 // ------------------------------------------------
@@ -189,7 +218,6 @@ checkboxes.forEach(function (checkbox) {
         checkboxes.forEach(function (cb) {
             if (cb.checked) {
                 almenosUnCheckboxSeleccionado = true
-                return
             }
         })
 
