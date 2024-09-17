@@ -1,0 +1,57 @@
+<div
+    id="modalDeleteAppointment"
+    class="modal-container service-modal flex-center"
+>
+    <div class="service-modal-body">
+        <a class="close" id="closeModalDeleteAppointment">&times;</a>
+        <div style="text-align: center; padding: 20px">
+            <span
+                style="font-size: 50px; color: #56b9b3"
+                class="material-symbols-sharp"
+                >help_outline</span
+            >
+            <h2 style="font-size: 20px; margin-top: 10px">¿Eliminar cita?</h2>
+            <p>
+                Se eliminará la cita de <strong id="nameUser">JUANITO</strong>.
+                Esta acción no se puede deshacer.
+            </p>
+        </div>
+        <div
+            class="modal-actions"
+            style="
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 20px;
+            "
+        >
+            <button
+                class="modal-button cancel-button"
+                style="
+                    background-color: #f19294;
+                    border: none;
+                    padding: 10px 20px;
+                    color: white;
+                    cursor: pointer;
+                "
+            >
+                Cancelar
+            </button>
+            <a
+                href="../Crud/Cita/eliminarCita.php?id=999"
+                id="buttonDeleteAppointmentById"
+                class="modal-button accept-button"
+                style="
+                    background-color: #56b9b3;
+                    border: none;
+                    padding: 10px 20px;
+                    color: white;
+                    text-decoration: none;
+                    text-align: center;
+                    cursor: pointer;
+                "
+                >Aceptar</a
+            >
+        </div>
+    </div>
+</div>

@@ -1,22 +1,20 @@
-
-main .recent-citas{
+main .recent-citas {
+    width: 100%;
     margin: 20px;
     overflow-x: auto; /* Agrega el scrollbar horizontal */
     scrollbar-width: thin;
 }
 
-main .recent-citas h2{
+main .recent-citas h2 {
     margin-bottom: 0.8rem;
 }
 
-
 table {
-    width: 100%;
     border-collapse: separate;
     border-spacing: 0 10px;
     max-height: 35%;
+    transition: all 0.3s;
 }
-
 
 /*=================== Formulario ======================*/
 form {
@@ -25,13 +23,13 @@ form {
 
 .checkout-information,
 .input-group {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .checkout-information {
-	background: #8FBBC8;
+    background: #8fbbc8;
     width: 100%;
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
@@ -40,33 +38,35 @@ form {
     transition: all 300ms ease;
 }
 
-.checkout-information:hover{
+.checkout-information:hover {
     box-shadow: none;
 }
 
-.input-group2 input, textarea, select {
+.input-group2 input,
+textarea,
+select {
     width: 100%;
     padding: 10px 15px;
     border-radius: 8px;
     background-color: var(--color-background);
-    color: #7B7C89;
+    color: #7b7c89;
 }
 
-.input-group2{
-	display: flex;
-	flex-direction: row;
-	gap: 20px;
+.input-group2 {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
 
-.input-group input{
-	width: 100%;
-	padding: 10px 15px;
-	border-radius: 8px;
-	background-color:var(--color-background);
+.input-group input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: var(--color-background);
     height: 100%;
 }
 .input-group h3 {
-    font-size: 0.80rem;
+    font-size: 0.8rem;
     color: white;
 }
 
@@ -90,5 +90,5 @@ form {
 
 .pagination .current-page {
     background-color: #49c691;
-    color: #49c691;
+    color: #49c691;
 }
