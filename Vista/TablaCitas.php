@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (isset($_SESSION['NombrePsicologo'])){
-?>
+if (isset($_SESSION['NombrePsicologo'])) {
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,54 +47,120 @@ if (isset($_SESSION['NombrePsicologo'])){
             overflow: auto;
         }
     }
+
+
+    /* 
+                                                                                                                                                                                                                    ESTILOS USANDO BEM
+                                                                                                                                                                                                                    RECOMENDACION: USAR BEM PARA DARLE ESTILOS A LOS COMPONENTES Y MANTEBER EL CODIGO LIMPIO
+                                                                                                                                                                                                                    */
+    .appointments__header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding-block: 1rem;
+
+        @media (max-width: 900px) {
+            flex-direction: column;
+        }
+    }
+
+    .appointments__filters {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+
+        .input-buscador {
+            flex-grow: 1;
+        }
+    }
+
+    .appointmentTuple__buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .appointmentTuple__button {
+        padding: 0.5rem 1rem;
+        border: none;
+        z-index: 1;
+        color: white;
+        background: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .appointmentTuple__button--edit span {
+        color: blue;
+    }
+
+    .appointmentTuple__button--delete span {
+        color: red;
+    }
     </style>
     <?php
         require("../Controlador/Cita/ControllerCita.php");
         $ControllerCita = new usernameControlerCita();
 
-        $rowsPerPage = 2;
-        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $rowsPerPage = 10;
+        $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 
-        $rowscita=$ControllerCita->contarRegistrosEnCitas($_SESSION['IdPsicologo']);
+        $rowscita = $ControllerCita->contarRegistrosEnCitas($_SESSION['IdPsicologo']);
         $idPsicologo = $_SESSION['idPsicologo'];
-        $rows = $ControllerCita->getAll($idPsicologo, null, null, null, null, $rowsPerPage, ($currentPage - 1) * $rowsPerPage);
+        $rows = $ControllerCita->getAll($idPsicologo, null, null, null, null, null, $rowsPerPage, ($currentPage - 1) * $rowsPerPage);
         $totalRows = $ControllerCita->contarRegistrosEnCitas($_SESSION['IdPsicologo']); // Asumiendo que cuentas el número total de registros
         $totalPages = ceil($totalRows / $rowsPerPage);
-    ?>
+        ?>
     <div class="container">
         <?php
-        require_once '../Issets/views/Menu.php';
-        ?>
+            require_once '../Issets/views/Menu.php';
+            ?>
         <main class="animate__animated animate__fadeIn">
             <div class="center-divs">
                 <h4 style="color: #49c691;">Lista de Citas</h4>
                 <?php
-            require_once '../Issets/views/Info.php';
-            ?>
+                    require_once '../Issets/views/Info.php';
+                    ?>
             </div>
-            <div class="contenedor-botones">
-                <span style="font-size: 15px;color: #6a90f1; ">
+            <div class="appointments__header">
+                <span style="font-size: 15px;color: #6a90f1; border-right: 3px solid #6a90f1; padding-right: 10px;">
                     <b style="font-size: 25px;color: #6a90f1;"><?= $rowscita ?></b>
                     Citas
                 </span>
-                <div class="separador"></div>
+                <div class="appointments__filters">
+                    <div class="input-buscador">
+                        <span id="search-icon"><i class="fas fa-search"></i></span>
+                        <input type="text" id="searchForCode" placeholder="Codigo Paciente" class="input Codigo"
+                            required>
+                    </div>
+                    <div class="input-buscador">
+                        <span id="search-icon"><i class="fas fa-search"></i></span>
+                        <input type="text" id="searchForName" placeholder="Nombre Paciente" class="input nom" required>
+                    </div>
+                    <div class="input-buscador">
+                        <span id="search-icon"><i class="fas fa-search"></i></span>
+                        <input type="datetime-local" id="searchForDateStart" placeholder="Fecha de Inicio"
+                            class="input date" required>
+                    </div>
+                    <div class="input-buscador">
+                        <span id="search-icon"><i class="fas fa-search"></i></span>
+                        <input type="datetime-local" id="searchForDateEnd" placeholder="Fecha de Fin" class="input date"
+                            required>
+                    </div>
+                </div>
                 <span style="display:none;" id="idPsicologo">
                     <?= $_SESSION['idPsicologo'] ?>
                 </span>
-                <div class="input-buscador">
-                    <span id="search-icon"><i class="fas fa-search"></i></span>
-                    <input type="text" id="CodigoPaciente" placeholder="Codigo Paciente" class="input Codigo" required>
-                </div>
-                <div class="input-buscador">
-                    <span id="search-icon"><i class="fas fa-search"></i></span>
-                    <input type="text" id="searchForName" placeholder="Nombre Paciente" class="input nom" required>
-                </div>
                 <a class="button-eliminar" id="eliminarSeleccionados">
                     <i id="search-icon" class="fas fa-trash" style="margin-right: 10px;color:red"></i>Eliminar
                 </a>
             </div>
-            <div class="recent-citas">
-                <table>
+            <div class="recent-citas" style="display: flex;">
+                <table style="height: 100%;flex:1;">
                     <!-- Encabezado de la tabla -->
                     <thead>
                         <tr>
@@ -110,31 +176,27 @@ if (isset($_SESSION['NombrePsicologo'])){
                     </thead>
 
                     <!-- Cuerpo de la tabla -->
-                    <tbody id="myTable">
+                    <tbody id="appointmentsTable">
                         <?php if ($rows): ?>
                         <?php foreach ($rows as $row): ?>
                         <tr>
-                            <td><input type="checkbox" class="checkbox" id="checkbox<?=$row['IdCita']?>"
-                                    value="<?=$row['IdCita']?>"></td>
-                            <td style="padding: 20px;"><?=$row['NomPaciente']?></td>
-                            <td><?=$row['codigopac']?></td>
-                            <td><?=$row['MotivoCita']?></td>
-                            <td><?=$row['EstadoCita']?></td>
-                            <td><?=$row['FechaInicioCita']?></td>
-                            <td style="color:green"><?=$row['Duracioncita']?></td>
-                            <td>
-                                <div id="dropdown-content-<?=$row['IdCita']?>"
-                                    style="display: flex; column-gap: 1rem; justify-content: space-evenly;">
-                                    <a type="button" class="btne" onclick="openModalEliminar('<?=$row['IdCita']?>')"
-                                        style="color: red;cursor: pointer;">
-                                        <span class="material-symbols-outlined">delete</span>
-                                        <p style="color:red;">Eliminar</p>
-                                    </a>
-                                    <a type="button" class="btnm" onclick="openModalEditar('<?=$row['IdCita']?>')"
-                                        style="color: blue;cursor: pointer;">
+                            <td><input type="checkbox" class="checkbox" id="checkbox<?= $row['IdCita'] ?>"
+                                    value="<?= $row['IdCita'] ?>"></td>
+                            <td style="padding: 20px;"><?= $row['NomPaciente'] ?></td>
+                            <td><?= $row['codigopac'] ?></td>
+                            <td><?= $row['MotivoCita'] ?></td>
+                            <td><?= $row['EstadoCita'] ?></td>
+                            <td><?= $row['FechaInicioCita'] ?></td>
+                            <td style="color:green"><?= $row['Duracioncita'] ?></td>
+                            <td id="appointmentId-<?= $row['IdCita'] ?>">
+                                <div class="appointmentTable__buttons">
+
+                                    <button class="appointmentTuple__button appointmentTuple__button--edit">
                                         <span class="material-symbols-outlined">edit</span>
-                                        <p style="color:blue;">Editar</p>
-                                    </a>
+                                    </button>
+                                    <button class="appointmentTuple__button appointmentTuple__button--delete">
+                                        <span class="material-symbols-outlined">delete</span>
+                                    </button>
                                 </div>
                             </td>
                         </tr>
@@ -146,17 +208,18 @@ if (isset($_SESSION['NombrePsicologo'])){
                         <?php endif; ?>
                     </tbody>
                 </table>
+                <?php require_once './modales/ModalEditAppointment.html'; ?>
             </div>
 
             <!-- Paginación -->
             <div class="pagination">
                 <?php
-                if ($totalPages > 1) {
-                    for ($page = 1; $page <= $totalPages; $page++) {
-                        echo "<a href='?page=$page'>$page</a> ";
+                    if ($totalPages > 1) {
+                        for ($page = 1; $page <= $totalPages; $page++) {
+                            echo "<a href='?page=$page'>$page</a> ";
+                        }
                     }
-                }
-                ?>
+                    ?>
             </div>
         </main>
         <div id="notification" style="display: none;" class="notification">
@@ -164,197 +227,23 @@ if (isset($_SESSION['NombrePsicologo'])){
             <span class="notification__progress"></span>
         </div>
     </div>
-    <?php if ($rows) :?>
-    <?php foreach ($rows as $row): ?>
-    <!-- Modal de eliminación -->
-    <div id="modalEliminar<?= $row[0] ?>" class="service-modal flex-center">
-        <div class="service-modal-body">
-            <a class="close" onclick="closeModalEliminar('<?= $row[0] ?>')">&times;</a>
-            <div style="text-align: center; padding: 20px;">
-                <span style="font-size:50px; color: #56B9B3;" class="material-symbols-sharp">help_outline</span>
-                <h2 style="font-size:20px; margin-top: 10px;">¿Eliminar cita?</h2>
-                <p>Se eliminará la cita de <strong><?= $row[1] ?></strong>. Esta acción no se puede deshacer.</p>
-            </div>
-            <div class="modal-button-container"
-                style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
-                <button class="button-modal button-cancel" onclick="closeModalEliminar('<?= $row[0] ?>')"
-                    style="background-color: #F19294; border: none; padding: 10px 20px; color: white; cursor: pointer;">Cancelar</button>
-                <a href="../Crud/Cita/eliminarCita.php?id=<?= $row[0] ?>" class="button-modal button-accept"
-                    style="background-color: #56B9B3; border: none; padding: 10px 20px; color: white; text-decoration: none; text-align: center; cursor: pointer;">Aceptar</a>
-            </div>
-        </div>
-    </div>
-
-    <?php
-        $user=$ControllerCita->show($row[0]);
-    ?>
-    <!-- Modal de edicion -->
-    <div id="modalEditar<?=$row[0]?>" class="service-modal flex-center">
-        <div class="service-modal-body">
-            <a href="#" class="close" onclick="closeModalEditar('<?=$row[0]?>')">&times;</a>
-            <div class="message_dialog">
-                <h2 style="font-size:20px; color:#49c691">Editar Cita de <?=$row[1]." ".$row[2]?></h2>
-                <form action="../Crud/Cita/modificarCita.php" method="POST" class="dialog">
-                    <input type="hidden" name="id_cita" value="<?=$row[0]?>">
-                    <!-- EDITAR MOTIVO ESTADO FECHA DE INICIO DURACION -->
-                    <div class="input-group-modal">
-                        <h3 for="motivo">Motivo de la Consutla <b style="color:red">*</b></h3>
-                        <textarea
-                            style="resize: none; padding: 1.2em 1em 2.8em 1em;font-family: 'Montserrat', sans-serif;	font-size: 14px;"
-                            type="text" id="motivo" name="motivo" required><?=$row['2']?></textarea>
-                    </div>
-                    <br>
-                    <div class="input-group2">
-                        <div class="input-group-modal">
-                            <h3 for="EstadoCita">Estado de la Cita <b style="color:red">*</b></h3>
-                            <select class="input" id="EstadoCita" name="EstadoCita" required>
-                                <option value="Se requiere confirmacion"
-                                    <?php if ($user['EstadoCita'] === "Se requiere confirmacion") echo "selected"; ?>>
-                                    Se requiere confirmacion</option>
-                                <option value="Confirmado"
-                                    <?php if ($user['EstadoCita'] === "Confirmado") echo "selected"; ?>>
-                                    Confirmado</option>
-                                <option value="Ausencia del paciente"
-                                    <?php if ($user['EstadoCita'] === "Ausencia del paciente") echo "selected"; ?>>
-                                    Ausencia del paciente</option>
-                            </select>
-                        </div>
-                        <div class="input-group-modal" style="width:50%; margin-left: 65px;">
-                            <h3 for="ColorFondo">Color de Cita <b style="color:red">*</b></h3>
-                            <input type="color" id="ColorFondo" value="<?=$user['ColorFondo']?>" name="ColorFondo"
-                                list="colorOptions">
-                            <datalist id="colorOptions">
-                                <option value="#b4d77b">Rojo</option>
-                                <option value="#9274b3">Verde</option>
-                                <option value="#f38238">Azul</option>
-                            </datalist>
-                        </div>
-                    </div>
-                    <?php
-                date_default_timezone_set('America/Lima');
-                $fechamin = date("Y-m-d");
-                // Formatear la fecha y la hora de la base de datos
-                $fechaCita = date("Y-m-d", strtotime($row['FechaInicioCita']));
-                $horaCita = date("H:i", strtotime($row['FechaInicioCita']));
-                ?>
-                    <div class="input-group2">
-                        <div class="input-group-modal" style="width:49%">
-                            <h3 for="fecha_inicio">Fecha de Cita<b style="color:red">*</b></h3>
-                            <input type="date" id="fecha_inicio" name="fecha_inicio" min="<?= $fechamin ?>"
-                                value="<?= $fechaCita ?>">
-                        </div>
-                        <div class="input-group-modal" style="width:49%">
-                            <h3 for="hora_inicio">Hora de Cita <b style="color:red">*</b></h3>
-                            <input type="time" id="hora_inicio" name="hora_inicio" value="<?= $horaCita ?>" />
-                        </div>
-                    </div>
-                    <br>
-                    <div class="input-group2">
-                        <div class="input-group-modal" style="width:49%">
-                            <h3 for="tipoCita">Tipo de Cita <b style="color:red">*</b></h3>
-                            <select class="input" id="tipoCita" name="tipoCita">
-                                <option value="Primera Visita"
-                                    <?php if ($user['TipoCita'] === "Primera Visita") echo "selected"; ?>>
-                                    Primera Visita</option>
-                                <option value="Visita de control"
-                                    <?php if ($user['TipoCita'] === "Visita de control") echo "selected"; ?>>
-                                    Visita de control</option>
-                            </select>
-                        </div>
-                        <div class="input-group-modal">
-                            <h3 style="margin-left: 65px;" for="duracion">Duracion <b style="color:red">*</b></h3>
-                            <select class="input" id="duracion" name="duracion" required>
-                                <option value="5" <?php if ($user['Duracioncita'] === 5) echo "selected"; ?>>5'
-                                </option>
-                                <option value="10" <?php if ($user['Duracioncita'] === 10) echo "selected"; ?>>10'
-                                </option>
-                                <option value="15" <?php if ($user['Duracioncita'] === 15) echo "selected"; ?>>15'
-                                </option>
-                                <option value="20" <?php if ($user['Duracioncita'] === 20) echo "selected"; ?>>20'
-                                </option>
-                                <option value="30" <?php if ($user['Duracioncita'] === 30) echo "selected"; ?>>30'
-                                </option>
-                                <option value="40" <?php if ($user['Duracioncita'] === 40) echo "selected"; ?>>40'
-                                </option>
-                                <option value="45" <?php if ($user['Duracioncita'] === 45) echo "selected"; ?>>45'
-                                </option>
-                                <option value="50" <?php if ($user['Duracioncita'] === 50) echo "selected"; ?>>50'
-                                </option>
-                                <option value="60" <?php if ($user['Duracioncita'] === 60) echo "selected"; ?>>60'
-                                </option>
-                                <option value="90" <?php if ($user['Duracioncita'] === 90) echo "selected"; ?>>90'
-                                </option>
-                                <option value="120" <?php if ($user['Duracioncita'] === 120) echo "selected"; ?>>120'
-                                </option>
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="input-group-modal" style="display: none;">
-                        <h3 for="FechaFin">FechaFin <b style="color:red">*</b></h3>
-                        <input id="FechaFin" type="text" name="FechaFin" readonly />
-                    </div>
-                    <div class="input-group2">
-                        <div class="input-group-modal" style="width:58%">
-                            <h3 for="CanalCita">Canal de Atraccion <b style="color:red">*</b></h3>
-                            <select class="input" id="CanalCita" name="CanalCita" required>
-                                <option value="Cita Online"
-                                    <?php if ($user['CanalCita'] === "Cita Online") echo "selected"; ?>>
-                                    Cita Online</option>
-                                <option value="Marketing Directo"
-                                    <?php if ($user['CanalCita'] === "Marketing Directo") echo "selected"; ?>>
-                                    Marketing Directo</option>
-                                <option value="Referidos"
-                                    <?php if ($user['CanalCita'] === "Referidos") echo "selected"; ?>>
-                                    Referidos</option>
-                            </select>
-                        </div>
-                        <div class="input-group-modal" style="width:55%">
-                            <h3 for="EtiquetaCita">Etiqueta <b style="color:red">*</b></h3>
-                            <select class="input" id="EtiquetaCita" name="EtiquetaCita" required>
-                                <option value="Consulta"
-                                    <?php if ($user['EtiquetaCita'] === "Consulta") echo "selected"; ?>>
-                                    Consulta</option>
-                                <option value="Familia Referida"
-                                    <?php if ($user['EtiquetaCita'] === "Familia Referida") echo "selected"; ?>>
-                                    Familia Referida</option>
-                                <option value="Prioridad"
-                                    <?php if ($user['EtiquetaCita'] === "Prioridad") echo "selected"; ?>>
-                                    Prioridad</option>
-                            </select>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="input-group-modal" style="display: none">
-                        <h3 for="IdPsicologo">IdPsicologo </h3>
-                        <input type="text" id="IdPsicologo" name="IdPsicologo" value="<?=$_SESSION['IdPsicologo']?>"
-                            placeholder="Ingrese algun Antecedente Medico" />
-                    </div>
-                    <div class="modal-button-container">
-                        <button type="button" class="button-modal button-cancelar"
-                            onclick="closeModalEditar('<?=$row[0]?>')">Cancelar</button>
-                        <button type="submit" class="button-modal button-editar">Guardar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <?php endforeach;?>
-    <?php endif;?>
+    <!-- Modales -->
+    <?php require_once './modales/ModalDeleteAppointment.html'; ?>
+    <?php require_once './modales/ModalEditAppointment.html'; ?>
 
     <script src="../Issets/js/dashboard.js"></script>
     <script src="../Issets/js/citas.js"></script>
     <script>
     // Obtener elementos del formulario
-    var fechaInicioInput = document.getElementById('FechaInicioCita');
-    var horaInicioInput = document.getElementById('HoraInicio');
-    var duracionInput = document.getElementById('DuracionCita');
-    var fechaFinInput = document.getElementById('FechaFin');
+    // var fechaInicioInput = document.getElementById('FechaInicioCita');
+    // var horaInicioInput = document.getElementById('HoraInicio');
+    // var duracionInput = document.getElementById('DuracionCita');
+    // var fechaFinInput = document.getElementById('FechaFin');
 
-    // Escuchar eventos de cambio en los campos relevantes
-    fechaInicioInput.addEventListener('change', calcularFechaFin);
-    horaInicioInput.addEventListener('change', calcularFechaFin);
-    duracionInput.addEventListener('change', calcularFechaFin);
+    // // Escuchar eventos de cambio en los campos relevantes
+    // fechaInicioInput.addEventListener('change', calcularFechaFin);
+    // horaInicioInput.addEventListener('change', calcularFechaFin);
+    // duracionInput.addEventListener('change', calcularFechaFin);
 
     // Función para calcular la fecha y hora de finalización
     function calcularFechaFin() {
@@ -388,16 +277,6 @@ if (isset($_SESSION['NombrePsicologo'])){
         return hours + ':' + minutes;
     }
     //Funciones del modal
-    function openModalEditar(id) {
-        var modal = document.getElementById('modalEditar' + id);
-        modal.classList.add('active');
-    }
-
-    function closeModalEditar(id) {
-        var modal = document.getElementById('modalEditar' + id);
-        modal.classList.remove('active');
-    }
-
     function openModalEliminar(id) {
         var modal = document.getElementById('modalEliminar' + id);
         modal.classList.add('active');
@@ -430,6 +309,7 @@ if (isset($_SESSION['NombrePsicologo'])){
             dropdownContent.style.marginLeft = "-71px";
         }
     }
+    // TODO: Cambiar la forma de paginar, porque no esta trayendo todos los registros del servidor
     //funciones de la pagina
     var paginationLinks = document.getElementsByClassName('pagination')[0].getElementsByTagName('a');
 
@@ -442,14 +322,14 @@ if (isset($_SESSION['NombrePsicologo'])){
     }
 
     function mostrarPagina(page) {
-        var rows = document.getElementById('myTable').getElementsByTagName('tr');
+        var rows = document.getElementById('appointmentsTable').getElementsByTagName('tr');
 
         for (var i = 0; i < rows.length; i++) {
             rows[i].style.display = 'none';
         }
 
-        var startIndex = (page - 1) * <?=$rowsPerPage?>;
-        var endIndex = startIndex + <?=$rowsPerPage?>;
+        var startIndex = (page - 1) * <?= $rowsPerPage ?>;
+        var endIndex = startIndex + <?= $rowsPerPage ?>;
 
         for (var i = startIndex; i < endIndex && i < rows.length; i++) {
             rows[i].style.display = 'table-row';
@@ -462,7 +342,7 @@ if (isset($_SESSION['NombrePsicologo'])){
 
 </html>
 <?php
-}else{
-  header("Location: ../Index.php");
+} else {
+    header("Location: ../Index.php");
 }
 ?>
