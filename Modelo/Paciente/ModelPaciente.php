@@ -178,7 +178,7 @@ class userModelPaciente
     // Elimianr paciente seleccionado
     public function eliminar($IdPaciente)
     {
-        $statement = $this->PDO->prepare("DELETE FROM paciente WHERE IdPaciente=:id;");
+        $statement = $this->PDO->prepare("DELETE FROM paciente WHERE Dni=:id;");
         $statement->bindParam(":id", $IdPaciente);
         return ($statement->execute()) ? true : false;
     }

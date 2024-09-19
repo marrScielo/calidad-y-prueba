@@ -153,7 +153,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         </div>
                     </a>
                 </td>
-                <td class="additional-column" style="font-weight:bold;"><?= htmlspecialchars($patient['codigopac'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
+                <td class="additional-column" style="font-weight:bold;"><?= htmlspecialchars($patient['IdPaciente'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
                 <td class="additional-column" style="font-weight:bold;"><?= htmlspecialchars($patient['Dni'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
                 <td class="additional-column" style="font-weight:bold;width:25%;text-align: start; margin-left:4%; padding-left: 3%;">
                     <?= htmlspecialchars($patient['Email'] ?? '', ENT_QUOTES, 'UTF-8') ?>
@@ -168,7 +168,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 </td>
                 <td>
                     <div id="dropdown-content-<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>" style="display: flex; column-gap: 1rem; justify-content: space-evenly;">
-                        <a type="button" class="btne" onclick="openModalEliminar('<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>')" style="color: red;cursor: pointer;">
+                        <a type="button" class="btne" onclick="openModalEliminar('<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>')" style="color: red;cursor: pointer;" href="../Crud/Paciente/eliminarPaciente.php?id=<?= $patient['Dni'] ?>">
                             <span class="material-symbols-outlined">delete</span>
                             <p style="color:red;">Eliminar</p>
                         </a>
