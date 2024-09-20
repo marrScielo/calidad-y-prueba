@@ -39,6 +39,20 @@
 			height: 20px;
 			margin-right: 10px;
 		}
+
+		.form__group {
+			position: relative;
+		}
+
+		.password-toggle {
+			position: absolute;
+			right: 10px;
+			top: 70%;
+			transform: translateY(-50%);
+			background: none;
+			border: none;
+			cursor: pointer;
+		}
 	</style>
 </head>
 
@@ -56,8 +70,11 @@
 				</div>
 				<div class="form__group">
 					<i class="ri-lock-line form__icon"></i>
-					<input autocomplete="cc-number" type="password" placeholder="Contraseña" required name="pass" id="pass" class="form__input" />
+					<input autocomplete="current-password" type="password" placeholder="Contraseña" required name="pass" id="pass" class="form__input" />
 					<span class="form__bar"></span>
+					<button type="button" id="togglePassword" class="password-toggle" aria-label="Mostrar contraseña">
+						<i class="ri-eye-line"></i>
+					</button>
 				</div>
 				<br>
 				<?php
@@ -85,6 +102,19 @@
 		<i class="fab fa-whatsapp"></i>
 	</a>
 	<script src="js/navabar.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const togglePassword = document.querySelector('#togglePassword');
+			const password = document.querySelector('#pass');
+
+			togglePassword.addEventListener('click', function() {
+				const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+				password.setAttribute('type', type);
+				this.querySelector('i').classList.toggle('ri-eye-line');
+				this.querySelector('i').classList.toggle('ri-eye-off-line');
+			});
+		});
+	</script>
 </body>
 
 </html>
