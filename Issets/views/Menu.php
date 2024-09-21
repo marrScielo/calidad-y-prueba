@@ -9,7 +9,7 @@
 <aside>
     <div class="top">
         <div class="">
-            <img src="../Issets/images/logo-actual.png" alt="" class="logo">
+            <img src="../Issets/images/logo.gif" alt="" class="logo">
            
         </div>
         <div class="close" id="close-btn">
