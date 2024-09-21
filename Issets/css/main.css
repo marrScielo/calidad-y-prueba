@@ -418,7 +418,6 @@ aside h3 {
 aside .sidebar a {
     display: flex;
     color: #6c85e5;
-    margin-left: 0.8rem;
     gap: 0.9rem;
     align-items: center;
     position: relative;

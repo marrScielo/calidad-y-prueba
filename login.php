@@ -21,6 +21,38 @@
 			justify-content: center;
 			align-items: center;
 		}
+
+		.form__error-message {
+			display: flex;
+			align-items: center;
+			color: #dc2626;
+			background-color: #fee2e2;
+			border: 1px solid #dc2626;
+			border-radius: 4px;
+			padding: 10px;
+			margin-bottom: 15px;
+			font-size: 14px;
+		}
+
+		.form__error-icon {
+			width: 20px;
+			height: 20px;
+			margin-right: 10px;
+		}
+
+		.form__group {
+			position: relative;
+		}
+
+		.password-toggle {
+			position: absolute;
+			right: 10px;
+			top: 70%;
+			transform: translateY(-50%);
+			background: none;
+			border: none;
+			cursor: pointer;
+		}
 	</style>
 </head>
 
@@ -38,13 +70,21 @@
 				</div>
 				<div class="form__group">
 					<i class="ri-lock-line form__icon"></i>
-					<input autocomplete="cc-number" type="password" placeholder="Contraseña" required name="pass" id="pass" class="form__input" />
+					<input autocomplete="current-password" type="password" placeholder="Contraseña" required name="pass" id="pass" class="form__input" />
 					<span class="form__bar"></span>
+					<button type="button" id="togglePassword" class="password-toggle" aria-label="Mostrar contraseña">
+						<i class="ri-eye-line"></i>
+					</button>
 				</div>
 				<br>
 				<?php
 				if (isset($_GET['error']) && $_GET['error'] == 1) {
-					echo "<p class='form__switch2' >Usuario o password son invalidos</p>";
+					echo "<p class='form__error-message'>
+            <svg class='form__error-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'>
+                <path fill-rule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z' clip-rule='evenodd' />
+            </svg>
+            <span>El usuario o la contraseña son inválidos. Por favor, inténtalo de nuevo.</span>
+          </p>";
 				}
 				?>
 				<button type="submit" class="form__button">Ingresar</button>
@@ -62,6 +102,19 @@
 		<i class="fab fa-whatsapp"></i>
 	</a>
 	<script src="js/navabar.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const togglePassword = document.querySelector('#togglePassword');
+			const password = document.querySelector('#pass');
+
+			togglePassword.addEventListener('click', function() {
+				const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+				password.setAttribute('type', type);
+				this.querySelector('i').classList.toggle('ri-eye-line');
+				this.querySelector('i').classList.toggle('ri-eye-off-line');
+			});
+		});
+	</script>
 </body>
 
 </html>
