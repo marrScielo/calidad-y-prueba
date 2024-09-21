@@ -5,7 +5,7 @@ const $inputSearchForName = document.getElementById('searchForName')
 const $inputSearchForCode = document.getElementById('searchForCode')
 const $inputSearchForDateStart = document.getElementById('searchForDateStart')
 const $inputSearchForDateEnd = document.getElementById('searchForDateEnd')
-const $appointmentsRowButtons = document.querySelectorAll(
+let $appointmentsRowButtons = document.querySelectorAll(
     '.appointmentTable__buttons'
 )
 const idPsicologo = document.getElementById('idPsicologo').textContent
@@ -45,24 +45,8 @@ $inputSearchForName.addEventListener('input', searchAppointments)
 $inputSearchForCode.addEventListener('input', searchAppointments)
 $inputSearchForDateStart.addEventListener('change', searchAppointments)
 $inputSearchForDateEnd.addEventListener('change', searchAppointments)
-$appointmentsRowButtons.forEach((row) => {
-    row.addEventListener('click', async function (event) {
-        const idRow = row.parentElement.id.split('-')[1]
-        currentAppointmentSelectedId = idRow
-        console.log('Id de la cita seleccionada:', idRow)
-
-        const { citas: dataAppointment } = await getAppointmentById(idRow)
-        // Usar closest() para verificar si se hizo clic en el botón o dentro de él
-        if (event.target.closest('.appointmentTuple__button--edit')) {
-            updateEditAppointmentModal(dataAppointment[0])
-        } else if (event.target.closest('.appointmentTuple__button--delete')) {
-            $modalDeleteAppointment.classList.add('active')
-            updateDeleteAppointmentModal(dataAppointment[0])
-            console.log('Eliminar cita con id:', idRow)
-        }
-    })
-})
-function searchAppointments() {
+updateEventButtonListeners()
+async function searchAppointments() {
     const name = $inputSearchForName.value.trim() || null
     const code = $inputSearchForCode.value.trim() || null
     const dateStart = formatDateTime($inputSearchForDateStart.value) || null
@@ -79,7 +63,7 @@ function searchAppointments() {
         console.log(params.toString())
     }
 
-    fetch(`../Crud/Cita/citaServices.php?${params.toString()}`)
+    await fetch(`../Crud/Cita/citaServices.php?${params.toString()}`)
         .then((response) => {
             if (!response.ok) {
                 throw new Error('Error al realizar la búsqueda.')
@@ -102,6 +86,7 @@ function searchAppointments() {
             })
         })
         .catch((error) => console.error('Error:', error))
+    updateEventButtonListeners()
 }
 async function getAppointmentById(id) {
     return fetch(
@@ -138,6 +123,30 @@ function createAppointmentRow(appointment) {
             </td>
         </tr>
     `
+}
+function updateEventButtonListeners() {
+    $appointmentsRowButtons = document.querySelectorAll(
+        '.appointmentTable__buttons'
+    )
+    $appointmentsRowButtons.forEach((row) => {
+        row.addEventListener('click', async function (event) {
+            const idRow = row.parentElement.id.split('-')[1]
+            currentAppointmentSelectedId = idRow
+            console.log('Id de la cita seleccionada:', idRow)
+
+            const { citas: dataAppointment } = await getAppointmentById(idRow)
+            // Usar closest() para verificar si se hizo clic en el botón o dentro de él
+            if (event.target.closest('.appointmentTuple__button--edit')) {
+                updateEditAppointmentModal(dataAppointment[0])
+            } else if (
+                event.target.closest('.appointmentTuple__button--delete')
+            ) {
+                $modalDeleteAppointment.classList.add('active')
+                updateDeleteAppointmentModal(dataAppointment[0])
+                console.log('Eliminar cita con id:', idRow)
+            }
+        })
+    })
 }
 function formatDateTime(inputDate) {
     if (!inputDate) return null
