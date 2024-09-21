@@ -5,7 +5,12 @@
             <h2 id="appointmentTitle" style="font-size: 20px; color: #49c691">
                 Edit Appointment
             </h2>
-            <form id="editAppointmentForm" class="dialog">
+            <form
+                id="editAppointmentForm"
+                class="dialog"
+                action="../../contigovoy/Crud/Cita/modificarCita.php"
+                method="post"
+            >
                 <input type="hidden" id="appointmentId" name="appointmentId" />
 
                 <div class="input-group-modal">
@@ -14,8 +19,8 @@
                         <b style="color: red">*</b></label
                     >
                     <textarea
-                        id="reason"
-                        name="reason"
+                        id="appointmentReason"
+                        name="appointmentReason"
                         required
                         style="
                             resize: none;
@@ -33,19 +38,12 @@
                             Estado de la cita
                             <b style="color: red">*</b></label
                         >
-                        <select
+                        <input
+                            type="text"
                             id="appointmentStatus"
                             name="appointmentStatus"
                             required
-                        >
-                            <option value="Confirmation Required">
-                                Se requiere confirmación
-                            </option>
-                            <option value="Confirmed">Confirmada</option>
-                            <option value="Patient Absent">
-                                Ausencia del paciente
-                            </option>
-                        </select>
+                        />
                     </div>
 
                     <div
@@ -59,6 +57,7 @@
                             type="color"
                             id="appointmentColor"
                             name="appointmentColor"
+                            class="color-picker"
                         />
                         <datalist id="colorOptions">
                             <option value="#b4d77b">Rojo</option>
@@ -174,7 +173,7 @@
                     <button
                         type="button"
                         class="button-modal button-cancelar button-cancel"
-                        id="cancelEditAppointment"
+                        id="btnCancelEditAppointment"
                     >
                         Cancelar
                     </button>

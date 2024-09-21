@@ -80,7 +80,11 @@ class usernameControlerCita
         return ($this->model->showByFecha($id));
     }
 
-    // Contar el total de citas     
+    // Contar el total de citas 
+    public function totalCitas($idPsicologo, $IdCita = null, $nomPaciente = null, $codigo = null, $dateStart = null, $dateEnd = null)
+    {
+        return ($this->model->totalCitas($idPsicologo, $IdCita, $nomPaciente, $codigo, $dateStart, $dateEnd))[0];
+    }
     public function contarRegistrosEnCitas($id)
     {
         return ($this->model->contarRegistrosEnCitas($id));

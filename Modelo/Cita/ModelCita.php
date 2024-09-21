@@ -152,6 +152,51 @@ class UserModelCita
     }
 
     // Contar el total de citas
+    public function totalCitas($idPsicologo, $IdCita = null, $nomPaciente = null, $codigo = null, $dateStart = null, $dateEnd = null)
+    {
+        $query = "SELECT COUNT(*) AS cantidad
+                FROM cita c
+                INNER JOIN paciente p ON c.IdPaciente = p.IdPaciente
+                INNER JOIN psicologo ps ON c.IdPsicologo = ps.IdPsicologo
+                WHERE c.IdPsicologo = :idPsicologo";
+
+        // Crear un array de parámetros y agregar condiciones opcionales
+        $params = [':idPsicologo' => $idPsicologo];
+
+        // Condicionales para agregar filtros opcionales
+        if ($nomPaciente) {
+            $query .= " AND p.NomPaciente LIKE :nomPaciente";
+            $params[':nomPaciente'] = "%$nomPaciente%";
+        }
+        if (!empty($codigo)) {
+            $query .= " AND p.codigopac LIKE :codigo";
+            $params[':codigo'] = "%$codigo%";
+        }
+
+        if ($dateStart && $dateEnd) {
+            $query .= " AND c.FechaInicioCita BETWEEN :dateStart AND :dateEnd";
+            $params[':dateStart'] = $dateStart;
+            $params[':dateEnd'] = $dateEnd;
+        }
+
+        if ($IdCita) {
+            $query .= " AND c.IdCita = :IdCita";
+            $params[':IdCita'] = $IdCita;
+        }
+        $statement = $this->PDO->prepare($query);
+        // Vincular los valores
+        foreach ($params as $key => $value) {
+            if (is_int($value)) {
+                $statement->bindValue($key, $value, PDO::PARAM_INT);
+            } else {
+                $statement->bindValue($key, $value, PDO::PARAM_STR);
+            }
+        }
+
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
     public function contarRegistrosEnCitas($id)
     {
         $statement = $this->PDO->prepare("SELECT COUNT(*) as total FROM cita WHERE IdPsicologo = :idPsicologo");

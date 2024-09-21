@@ -688,17 +688,45 @@ select {
 }
 
 .service-modal {
-    visibility: hidden;
     opacity: 0;
     max-width: 0;
     overflow-x: hidden;
-    transition: max-width 0.5s ease;
+    transition: all 0.6s ease;
+    background: none;
 }
-
-.service-modal.active {
+#modalDeleteAppointment {
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    max-width: none;
+}
+#modalDeleteAppointment.active {
     visibility: visible;
+}
+.service-modal.active {
     max-width: 600px;
     opacity: 1;
+    @media screen and (max-width: 1024px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        max-width: none;
+    }
 }
 
 .service-modal-body {

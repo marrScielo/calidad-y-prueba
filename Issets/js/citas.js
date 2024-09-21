@@ -13,6 +13,12 @@ const $modalEditAppointment = document.getElementById('modalEditAppointment')
 const $closeModalEditAppointment = document.getElementById(
     'closeModalEditAppointment'
 )
+const $btnCancelEditAppointment = document.getElementById(
+    'btnCancelEditAppointment'
+)
+const $btnCancelDeleteAppointment = document.getElementById(
+    'btnCancelDeleteAppointment'
+)
 const $modalDeleteAppointment = document.getElementById(
     'modalDeleteAppointment'
 )
@@ -29,6 +35,12 @@ $closeModalEditAppointment.addEventListener('click', closeModalEditAppointment)
 $closeModalDeleteAppointment.addEventListener('click', function () {
     $modalDeleteAppointment.classList.remove('active')
 })
+$btnCancelDeleteAppointment.addEventListener('click', function () {
+    $modalDeleteAppointment.classList.remove('active')
+})
+$btnCancelEditAppointment.addEventListener('click', function () {
+    $modalEditAppointment.classList.remove('active')
+})
 $inputSearchForName.addEventListener('input', searchAppointments)
 $inputSearchForCode.addEventListener('input', searchAppointments)
 $inputSearchForDateStart.addEventListener('change', searchAppointments)
@@ -39,13 +51,11 @@ $appointmentsRowButtons.forEach((row) => {
         currentAppointmentSelectedId = idRow
         console.log('Id de la cita seleccionada:', idRow)
 
-        const dataAppointment = await getAppointmentById(idRow)
+        const { citas: dataAppointment } = await getAppointmentById(idRow)
         // Usar closest() para verificar si se hizo clic en el botón o dentro de él
         if (event.target.closest('.appointmentTuple__button--edit')) {
-            console.log(dataAppointment)
             updateEditAppointmentModal(dataAppointment[0])
         } else if (event.target.closest('.appointmentTuple__button--delete')) {
-            // TODO: Implementar eliminación de cita
             $modalDeleteAppointment.classList.add('active')
             updateDeleteAppointmentModal(dataAppointment[0])
             console.log('Eliminar cita con id:', idRow)
@@ -57,7 +67,6 @@ function searchAppointments() {
     const code = $inputSearchForCode.value.trim() || null
     const dateStart = formatDateTime($inputSearchForDateStart.value) || null
     const dateEnd = formatDateTime($inputSearchForDateEnd.value) || null
-    console.log('Buscando citas por fecha: ' + dateStart + ' ' + dateEnd)
     const params = new URLSearchParams()
     params.append('idPsicologo', idPsicologo)
 
@@ -78,21 +87,23 @@ function searchAppointments() {
             return response.json()
         })
         .then((data) => {
+            const { citas } = data
+            console.log(data)
             $appointmentsTable.innerHTML = ''
-            if (data.length === 0) {
+            if (citas.length === 0) {
                 $appointmentsTable.innerHTML =
                     '<tr><td colspan="8">No se encontraron citas.</td></tr>'
                 return
             }
 
-            data.forEach((appointment) => {
+            citas.forEach((appointment) => {
                 $appointmentsTable.innerHTML +=
                     createAppointmentRow(appointment)
             })
         })
         .catch((error) => console.error('Error:', error))
 }
-function getAppointmentById(id) {
+async function getAppointmentById(id) {
     return fetch(
         `../Crud/Cita/citaServices.php?idPsicologo=${idPsicologo}&IdCita=${id}`
     )
@@ -100,7 +111,8 @@ function getAppointmentById(id) {
             if (!response.ok) {
                 throw new Error('Error al obtener la cita.')
             }
-            return response.json()
+            const data = response.json()
+            return data
         })
         .catch((error) => console.error('Error:', error))
 }
@@ -130,15 +142,12 @@ function createAppointmentRow(appointment) {
 function formatDateTime(inputDate) {
     if (!inputDate) return null
 
-    // Crear un nuevo objeto Date a partir del valor del input (que es YYYY-MM-DD)
     const date = new Date(inputDate)
 
-    // Obtener las partes de la fecha y hora
     const year = date.getFullYear()
     const month = String(date.getMonth() + 1).padStart(2, '0') // Los meses empiezan en 0, por eso se suma 1
     const day = String(date.getDate()).padStart(2, '0')
 
-    // Obtener la hora actual (o puedes asignar una hora fija como 00:00:00 si lo prefieres)
     const hours = String(date.getHours()).padStart(2, '0')
     const minutes = String(date.getMinutes()).padStart(2, '0')
     const seconds = String(date.getSeconds()).padStart(2, '0')
@@ -156,10 +165,15 @@ function updateEditAppointmentModal(appointment) {
     $modalEditAppointment.querySelector('#appointmentType').value =
         appointment.TipoCita
     $modalEditAppointment.querySelector('#startDate').value =
-        appointment.FechaInicioCita
-    // select
+        appointment.FechaInicioCita.split(' ')[0] // select
+    $modalEditAppointment.querySelector('#startTime').value =
+        appointment.FechaInicioCita.split(' ')[1] // select
     $modalEditAppointment.querySelector('#duration').value =
         appointment.Duracioncita
+    $modalEditAppointment.querySelector('#appointmentStatus').value =
+        appointment.EstadoCita
+    $modalEditAppointment.querySelector('#appointmentReason').value =
+        appointment.MotivoCita
     $modalEditAppointment.classList.add('active')
 }
 function updateDeleteAppointmentModal(appointment) {
