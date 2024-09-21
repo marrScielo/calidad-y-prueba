@@ -8,6 +8,7 @@ $codigo = $_GET['codigo'] ?? null;
 $dateStart = $_GET['dateStart'] ?? null;
 $dateEnd = $_GET['dateEnd'] ?? null;
 $IdCita = $_GET['IdCita'] ?? null;
+$page = $_GET['page'] ?? 0;
 
 $citas = $ControllerCita->getAll(
     $idPsicologo,
@@ -17,8 +18,20 @@ $citas = $ControllerCita->getAll(
     $dateStart,
     $dateEnd,
     10,
-    0
+    $page,
 );
-
-echo json_encode($citas);
+$countCitas = $ControllerCita->totalCitas(
+    $idPsicologo,
+    $IdCita,
+    $nomPaciente,
+    $codigo,
+    $dateStart,
+    $dateEnd,
+);
+echo json_encode(
+    array(
+        'total' => $countCitas,
+        'citas' => $citas
+    )
+);
 ?>
