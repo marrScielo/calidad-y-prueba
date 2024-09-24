@@ -92,3 +92,7 @@ select {
     background-color: #49c691;
     color: #49c691;
 }
+
+.checkout-information div {
+    margin-bottom: 8px;
+}
