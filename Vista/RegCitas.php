@@ -20,9 +20,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
   <body>
     <div class="container">
-      <?php
-      require_once '../Issets/views/Menu.php';
-      ?>
+        <?php
+        require_once '../Issets/views/Menu.php';
+        ?>
+
       <!----------- fin de aside -------->
       <main class="animate__animated animate__fadeIn">
         <?php
@@ -34,7 +35,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <div>
           <form action="../Crud/Cita/guardarCita.php" method="post">
             <h4><a href="TablaCitas.php" style="float: left;color: #6B93F3;">
-            Citas<a/></h4>
+                Citas<a /></h4>
             <br>
             <div class="checkout-information">
               <div class="input-group2">
@@ -309,24 +310,24 @@ if (isset($_SESSION['NombrePsicologo'])) {
       }
     </script>
 
-<script>
-  function validarHora() {
-    // Obtener la fecha y hora actual
-    var ahora = new Date();
+    <script>
+      function validarHora() {
+        // Obtener la fecha y hora actual
+        var ahora = new Date();
 
-    // Obtener el valor del campo de fecha y hora
-    var fechaHoraIngresada = document.getElementById('FechaInicioCita').value + 'T' + document.getElementById('HoraInicio').value + ':00';
-    var fechaHoraIngresadaDate = new Date(fechaHoraIngresada);
+        // Obtener el valor del campo de fecha y hora
+        var fechaHoraIngresada = document.getElementById('FechaInicioCita').value + 'T' + document.getElementById('HoraInicio').value + ':00';
+        var fechaHoraIngresadaDate = new Date(fechaHoraIngresada);
 
-    // Comparar la fecha y hora ingresada con la fecha y hora actual
-    if (fechaHoraIngresadaDate <= ahora) {
-      // Mostrar mensaje de error si la fecha y hora ingresada es menor o igual que la actual
-      alert('La hora ingresada debe ser mayor que la hora actual.');
-      // Limpiar el valor del campo
-      document.getElementById('HoraInicio').value = '';
-    }
-  }
-</script>
+        // Comparar la fecha y hora ingresada con la fecha y hora actual
+        if (fechaHoraIngresadaDate <= ahora) {
+          // Mostrar mensaje de error si la fecha y hora ingresada es menor o igual que la actual
+          alert('La hora ingresada debe ser mayor que la hora actual.');
+          // Limpiar el valor del campo
+          document.getElementById('HoraInicio').value = '';
+        }
+      }
+    </script>
 
   </body>
 
