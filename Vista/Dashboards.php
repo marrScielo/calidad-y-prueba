@@ -228,7 +228,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
 
         <!--<h2>Estadisticas</h2>-->
         <div class="center-divs">
-          <div class="insights" style="color: #49c691; ">
+          <div class="insights" style="color: #534489; ">
             <div class="sales">
               <div class="middle">
                 <h3 class="estadistica_h3">

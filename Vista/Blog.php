@@ -177,7 +177,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             <!----------- end of aside -------->
             <main class="animate_animated animate_fadeIn">
                 <div class="center-divs">
-                    <h4 style="color: #49c691;">Blog</h4>
+                    <h4 style="color: #534489;">Blog</h4>
                     <?php
                     require_once '../Issets/views/Info.php';
                     ?>
@@ -230,7 +230,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             display: block;
                             width: 100%;
                             padding: 10px;
-                            background-color: #49c691;
+                            background-color: #534489;
                             color: #fff;
                             border: none;
                             border-radius: 5px;

@@ -74,7 +74,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             <!----------- end of aside -------->
             <main class="animate__animated animate__fadeIn">
                 <div class="center-divs">
-                    <h4 style="color: #49c691;">Lista de Pacientes</h4>
+                    <h4 style="color: #534489;">Lista de Pacientes</h4>
                     <?php
                     require_once '../Issets/views/Info.php';
                     ?>
