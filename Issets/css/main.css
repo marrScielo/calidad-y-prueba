@@ -568,6 +568,10 @@ aside .sidebar a:hover span {
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #6a90f1;
+    color: #6a90f1;
+    input {
+        color: #6a90f1;
+    }
 }
 
 .input-buscador input::placeholder {

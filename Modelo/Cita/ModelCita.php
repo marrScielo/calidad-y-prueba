@@ -63,11 +63,7 @@ class UserModelCita
         $query .= " LIMIT :limit OFFSET :offset";
         $params[':limit'] = $limit;
         $params[':offset'] = $offset;
-        // Debugging: Imprimir la consulta y los parámetros
-        // echo $query;
-        // echo "<br>";
-        // var_dump($params);
-        // echo "<br>";
+        
         // Preparar y ejecutar la consulta
         $statement = $this->PDO->prepare($query);
         // Vincular los valores
