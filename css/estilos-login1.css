@@ -32,7 +32,7 @@ input {
     z-index: -1;
     width: 100%;
     height: 5rem;
-    background-color: #1d7e90;
+    background-color: #524388;
     /* rgba(86, 185, 179, 1); */
     border-radius: 1rem 1rem 100% 100%;
 }
@@ -59,7 +59,7 @@ input {
 .form__icon {
     font-size: 1.5rem; /* Reduce el tamaño del icono */
     margin-right: 1rem;
-    color: #56b9b3;
+    color: #524388;
 }
 .form__input {
     position: relative;
@@ -99,18 +99,13 @@ input {
     display: block;
     margin: 2.5rem auto 3rem;
     padding: 0.75rem 3rem; /* Ajusta el padding del botón */
-    background-color: rgba(
-        241,
-        146,
-        148,
-        1
-    ); /* Cambia el último valor (1) para ajustar la opacidad */
+    background-color: #9897D1; /* Cambia el último valor (1) para ajustar la opacidad */
     color: #fff;
     border-radius: 3rem;
     cursor: pointer;
 }
 .form__button:hover {
-    background-color: #f19294;
+    background-color: #524388;
 }
 .form__switch {
     font-size: 1.5rem;
