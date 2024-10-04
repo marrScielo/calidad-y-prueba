@@ -206,10 +206,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <div class="appointmentTable__buttons">
 
                                     <button class="appointmentTuple__button appointmentTuple__button--edit">
-                                        <span class="material-symbols-outlined">edit</span>
+                                        <span class="material-symbols-outlined" translate="no">edit</span>
                                     </button>
                                     <button class="appointmentTuple__button appointmentTuple__button--delete">
-                                        <span class="material-symbols-outlined">delete</span>
+                                        <span class="material-symbols-outlined" translate="no">delete</span>
                                     </button>
                                 </div>
                             </td>
