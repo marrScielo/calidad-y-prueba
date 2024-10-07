@@ -102,13 +102,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
         border-radius: 5px;
     }
 
-    .appointmentTuple__button--edit span {
+    /* .appointmentTuple__button--edit span {
         color: #6a90f1;
     }
 
     .appointmentTuple__button--delete span {
         color: red;
-    }
+    } */
 
     input.color-picker {
         color: #6a90f1;

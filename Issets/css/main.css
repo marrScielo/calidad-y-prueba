@@ -12,6 +12,9 @@
     --color-primary-variant: #534489;
     --color-dark-variant: #677483;
     --color-background: #f6f6f9;
+    --color-interactive: #6a90f1;
+    --color-main-btn: #6c85e5;
+    --color-textBtn-hover: #f0f0f0;
     --modal-bg-color: #fff;
     --bg-transparent-color: rgba(0, 0, 0, 0.1);
 
@@ -36,6 +39,9 @@
     --color-dark-variant: #a3bdcc;
     --color-light: rgba(0, 0, 0, 0.4);
     --box-shadow: 0 2rem 3rem var(--color-light);
+    --color-interactive: var(--color-dark-variant);
+    --color-main-btn: var(--color-dark-variant);
+    --color-textBtn-hover: var(--color-background);
 }
 
 * {
@@ -417,7 +423,7 @@ aside h3 {
 
 aside .sidebar a {
     display: flex;
-    color: #6c85e5;
+    color: var(--color-main-btn);
     gap: 0.9rem;
     align-items: center;
     position: relative;
@@ -497,9 +503,18 @@ aside .sidebar a:hover span {
     gap: 20px;
     align-items: center;
     padding: 0px 0px 0px 10px;
-    border-top: 1px solid #6a90f1;
-    border-bottom: 1px solid #6a90f1;
+    border-top: 1.5px solid var(--color-interactive);
+    border-bottom: 1.5px solid var(--color-interactive);
     height: 80px;
+}
+
+.contenedor-botones__span {
+    font-size: 15px;
+    color: var(--color-interactive);
+}
+.contenedor-botones__span b {
+    font-size: 25px;
+    color: var(--color-interactive);
 }
 
 .button-arriba {
@@ -509,18 +524,24 @@ aside .sidebar a:hover span {
     align-items: center;
     font-weight: bold;
     padding: 10px 30px;
-    font-size: 10px;
-    color: #6a90f1;
+    font-size: 12
+    px;
+    color: var(--color-interactive);
     cursor: pointer;
     border-radius: 10px;
-    border: 0.1em solid #6a90f1; /* Color del borde */
-    outline: 1px solid #6a90f1;
-    transition: color 1s;
+    border: 0.1em solid var(--color-interactive); /* Color del borde */
+    outline: 1px solid var(--color-interactive);
+    transition: all 1s;
 }
 
 .button-arriba:hover {
-    color: black;
+    color: var(--color-textBtn-hover);
+    background-color: var(--color-interactive);
     cursor: pointer;
+    transform: scale(1.1);
+}
+.button-arriba:hover i {
+    color: var(--color-textBtn-hover);
 }
 
 .button-eliminar {
@@ -545,14 +566,13 @@ aside .sidebar a:hover span {
 }
 
 .separador {
-    border: 1px solid #6a90f1; /* Línea negra como separador hacia arriba */
+    border: 1.2px solid var(--color-interactive); /* Línea negra como separador hacia arriba */
     height: 60px;
     width: 1px;
     margin: 0px 10px;
 }
 #search-icon {
     display: flex;
-    color: #6a90f1;
     font-size: 18px;
     align-items: center;
     justify-content: center;
@@ -567,15 +587,12 @@ aside .sidebar a:hover span {
     gap: 20px;
     padding: 10px;
     border-radius: 8px;
-    border: 1px solid #6a90f1;
-    color: #6a90f1;
-    input {
-        color: #6a90f1;
-    }
+    border: 1px solid var(--color-interactive);
+    color: var(--color-interactive);
 }
 
 .input-buscador input::placeholder {
-    color: #6a90f1;
+    color: var(--color-interactive);
     font-weight: lighter;
     font-style: italic;
     font-weight: bold;
@@ -592,6 +609,7 @@ aside .sidebar a:hover span {
     height: 100%;
     background: var(--color-background);
     background-color: transparent;
+    color: var(--color-interactive);
 }
 
 /*============= Estilo para el checkbox principal ===============*/

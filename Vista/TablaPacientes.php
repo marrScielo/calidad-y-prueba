@@ -97,9 +97,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         <span id="search-icon"><i class="fas fa-search"></i></span>
                         <input type="text" id="buscarCodigo" placeholder="Buscar por Codigo" class="input" required>
                     </div>
-                    <a class="button-arriba" style="padding:10px 30px; font-size:10px;" href="RegPaciente.php">
-                        <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar
-                        Paciente
+                    <a class="button-arriba" style="padding:10px 30px;" href="RegPaciente.php">
+                        <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Paciente
                     </a>
                     <a class="button-eliminar" id="eliminarSeleccionados">
                         <i id="search-icon" class="fas fa-trash" style="margin-right: 10px;color:red"></i>Eliminar
@@ -111,7 +110,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         <thead>
                             <tr>
                                 <th><input type="checkbox" id="checkboxPrincipal" class="checkbox-principal"></th>
-                                <th style="text-align: start;">Paciente</th>
+                                <th class="additional-column">Paciente</th>
                                 <th class="additional-column">Codigo</th>
                                 <th class="additional-column">DNI</th>
                                 <th class="additional-column">Email</th>
@@ -147,7 +146,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                        data-antecedentes-familiares="<?= htmlspecialchars($patient['HistorialFamiliar'] ?? '', ENT_QUOTES, 'UTF-8') ?>">
                         <?= htmlspecialchars($patient['NomPaciente'] ?? '', ENT_QUOTES, 'UTF-8') ?> <?= htmlspecialchars($patient['ApPaterno'] ?? '', ENT_QUOTES, 'UTF-8') ?>
                     </a>
-                    <a class="buttoncita" style="display:none; width: 110px; padding:6px; font-size:10px; margin-top: 4.5%; margin-bottom: 0%;" href="RegCitas.php">
+                    <a class="buttoncita" style="display:none; width: 110px; padding:6px; margin-top: 4.5%; margin-bottom: 0%;" href="RegCitas.php">
                         <div style="display: flex;">
                             <span class="material-symbols-sharp">add</span>Crear Cita
                         </div>
@@ -155,13 +154,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 </td>
                 <td class="additional-column" style="font-weight:bold;"><?= htmlspecialchars($patient['IdPaciente'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
                 <td class="additional-column" style="font-weight:bold;"><?= htmlspecialchars($patient['Dni'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
-                <td class="additional-column" style="font-weight:bold;width:25%;text-align: start; margin-left:4%; padding-left: 3%;">
+                <td class="additional-column" style="font-weight:bold;width:25%;text-align: center; margin-left:4%;">
                     <?= htmlspecialchars($patient['Email'] ?? '', ENT_QUOTES, 'UTF-8') ?>
                 </td>
                 <td class="additional-column" style="font-weight:bold;"><?= htmlspecialchars($patient['Telefono'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
                 <td class="additional-column">
                     <div style="display: flex;justify-content: center;margin-top: 2%;">
-                        <a class="buttoncita" style="width: 110px; padding:6px; font-size:10px;" href="RegCitas.php">
+                        <a class="buttoncita" style="width: 110px; padding:6px;" href="RegCitas.php">
                             <span class="material-symbols-sharp">add</span>Crear Cita
                         </a>
                     </div>

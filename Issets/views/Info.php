@@ -179,10 +179,56 @@ function setTheme(theme) {
         document.querySelector('.theme-toggler span[data-theme="dark"]').classList.add('active');
 
         document.querySelector(".form-info").style.backgroundColor = "  ";
+
+        document.querySelectorAll('.btne').forEach(button => {
+            button.style.color = '#FF6B6B';
+            if (button.querySelector('p')) { 
+                button.querySelector('p').style.color = '#FF6B6B';
+                return;
+            }
+            if (button.querySelector('span')) {
+                button.querySelector('span').style.color = '#FF6B6B';
+                return;
+            }
+        });
+        document.querySelectorAll('.btnm').forEach(button => {
+            button.style.color = '#4FC3F7';
+            if (button.querySelector('p')) { 
+                button.querySelector('p').style.color = '#4FC3F7';
+                return;
+            }
+            if (button.querySelector('span')) {
+                button.querySelector('span').style.color = '#4FC3F7';
+                return;
+            }
+        });
     } else {
         document.querySelector('.theme-toggler span[data-theme="light"]').classList.add('active');
 
         document.querySelector(".form-info").style.backgroundColor = "white";
+
+        document.querySelectorAll('.btne').forEach(button => {
+            button.style.color = 'red';
+            if (button.querySelector('p')) { 
+                button.querySelector('p').style.color = 'red';
+                return;
+            }
+            if (button.querySelector('span')) {
+                button.querySelector('span').style.color = 'red';
+                return;
+            }
+        });
+        document.querySelectorAll('.btnm').forEach(button => {
+            button.style.color = 'blue';
+            if (button.querySelector('p')) { 
+                button.querySelector('p').style.color = 'blue';
+                return;
+            }
+            if (button.querySelector('span')) {
+                button.querySelector('span').style.color = 'blue';
+                return;
+            }
+        });
     }
     
     // Save the selected theme in localStorage
