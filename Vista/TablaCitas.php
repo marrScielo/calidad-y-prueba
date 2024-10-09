@@ -57,7 +57,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         display: flex;
         align-items: center;
         gap: 1rem;
-        padding-block: 1rem;
+        /* padding-block: 1rem; */
 
         @media (max-width: 900px) {
             flex-direction: column;
@@ -205,10 +205,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <td id="appointmentId-<?= $row['IdCita'] ?>">
                                 <div class="appointmentTable__buttons">
 
-                                    <button class="appointmentTuple__button appointmentTuple__button--edit">
+                                    <button class="appointmentTuple__button appointmentTuple__button--edit btnm">
                                         <span class="material-symbols-outlined" translate="no">edit</span>
                                     </button>
-                                    <button class="appointmentTuple__button appointmentTuple__button--delete">
+                                    <button class="appointmentTuple__button appointmentTuple__button--delete btne">
                                         <span class="material-symbols-outlined" translate="no">delete</span>
                                     </button>
                                 </div>

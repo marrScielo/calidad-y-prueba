@@ -32,9 +32,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
             .center-divs{
                 min-width: 900px;
             }
-            .contenedor-botones{
+            /* .contenedor-botones{
                 min-width: 900px;
-            }
+            } */
 
             table{
                 min-width: 900px;
@@ -46,6 +46,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
             @media (min-width: 900px) {
 
+            }
+            .contenedor-botones {
+                .button-arriba {
+                    flex-grow: 1;
+                }
             }
 
         </style>
@@ -79,31 +84,33 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     require_once '../Issets/views/Info.php';
                     ?>
                 </div>
-                <div class="contenedor-botones">
-                    <span style="font-size: 15px;color: #6a90f1; ">
-                        <b style="font-size: 25px;color: #6a90f1;"><?= $rowscita ?></b>
-                        pacientes
+                <div class="appointments__header">
+                    <span class="numeros-pacientes">
+                        <b><?= $rowscita ?></b>
+                        Pacientes
                     </span>
-                    <div class="separador"></div>
-                    <div class="input-buscador">
-                        <span id="search-icon"><i class="fas fa-search"></i></span>
-                        <input type="text" id="buscarPaciente" placeholder="Buscar Paciente" class="input" required>
+                    <div class="contenedor-botones">
+                        <div class="input-buscador">
+                            <span id="search-icon"><i class="fas fa-search"></i></span>
+                            <input type="text" id="buscarPaciente" placeholder="Buscar Paciente" class="input" required>
+                        </div>
+                        <div class="input-buscador">
+                            <span id="search-icon"><i class="fas fa-search"></i></span>
+                            <input type="text" id="buscarDni" placeholder="Buscar por DNI" class="input" required>
+                        </div>
+                        <div class="input-buscador">
+                            <span id="search-icon"><i class="fas fa-search"></i></span>
+                            <input type="text" id="buscarCodigo" placeholder="Buscar por Codigo" class="input" required>
+                        </div>
+                        <a class="button-arriba" style="padding:10px 30px;" href="RegPaciente.php">
+                            <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Paciente
+                        </a>
                     </div>
-                    <div class="input-buscador">
-                        <span id="search-icon"><i class="fas fa-search"></i></span>
-                        <input type="text" id="buscarDni" placeholder="Buscar por DNI" class="input" required>
-                    </div>
-                    <div class="input-buscador">
-                        <span id="search-icon"><i class="fas fa-search"></i></span>
-                        <input type="text" id="buscarCodigo" placeholder="Buscar por Codigo" class="input" required>
-                    </div>
-                    <a class="button-arriba" style="padding:10px 30px;" href="RegPaciente.php">
-                        <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Paciente
-                    </a>
                     <a class="button-eliminar" id="eliminarSeleccionados">
                         <i id="search-icon" class="fas fa-trash" style="margin-right: 10px;color:red"></i>Eliminar
                     </a>
                 </div>
+                <!-- <div class="separador"></div> -->
                 <div class="container-paciente-tabla">
                     <table>
                         <!-- Encabezado de la tabla -->

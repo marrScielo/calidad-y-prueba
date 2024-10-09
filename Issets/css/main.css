@@ -497,22 +497,52 @@ aside .sidebar a:hover span {
 }
 
 /*=========== Div Buscador=============*/
+.appointments__header {
+    margin-block: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+@media (min-width: 900px) {
+    .appointments__header {
+        flex-direction: row;
+        justify-content: left;
+
+        padding: .5rem 0;
+        border-top: 1.5px solid var(--color-interactive);
+        border-bottom: 1.5px solid var(--color-interactive);
+    }
+}
 .contenedor-botones {
     display: flex;
-    flex-direction: row;
-    gap: 20px;
+    flex-wrap: wrap;
     align-items: center;
-    padding: 0px 0px 0px 10px;
-    border-top: 1.5px solid var(--color-interactive);
-    border-bottom: 1.5px solid var(--color-interactive);
-    height: 80px;
+    justify-content: center;
+    gap: 1rem;
+    height: auto;
 }
-
-.contenedor-botones__span {
+@media (min-width: 900px) {
+    .contenedor-botones {
+        padding: 10px 0;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+}
+.numeros-pacientes {
+    text-align: center;
     font-size: 15px;
     color: var(--color-interactive);
 }
-.contenedor-botones__span b {
+@media (min-width: 900px) {
+    .numeros-pacientes {
+        text-align: left;
+        border-right: 3px solid #6a90f1; 
+        padding-right: 10px;
+    }
+}
+.numeros-pacientes b {
     font-size: 25px;
     color: var(--color-interactive);
 }
@@ -524,24 +554,25 @@ aside .sidebar a:hover span {
     align-items: center;
     font-weight: bold;
     padding: 10px 30px;
-    font-size: 12
-    px;
+    font-size: 12px;
     color: var(--color-interactive);
     cursor: pointer;
     border-radius: 10px;
-    border: 0.1em solid var(--color-interactive); /* Color del borde */
-    outline: 1px solid var(--color-interactive);
-    transition: all 1s;
+    border: 0.2em solid var(--color-interactive); /* Color del borde */
+    /* outline: 1px solid var(--color-interactive); */
+    transition: all .5s ease;
 }
 
 .button-arriba:hover {
     color: var(--color-textBtn-hover);
     background-color: var(--color-interactive);
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scaleY(1.1);
 }
-.button-arriba:hover i {
-    color: var(--color-textBtn-hover);
+@media (min-width: 900px) {
+    .button-arriba:hover {
+        transform: scale(1.01);
+    }
 }
 
 .button-eliminar {
@@ -566,10 +597,15 @@ aside .sidebar a:hover span {
 }
 
 .separador {
-    border: 1.2px solid var(--color-interactive); /* Línea negra como separador hacia arriba */
-    height: 60px;
-    width: 1px;
-    margin: 0px 10px;
+    display: none;
+}
+@media (min-width: 768px) {
+    .separador {
+        border: 1.2px solid var(--color-interactive); /* Línea negra como separador hacia arriba */
+        height: 60px;
+        width: 1px;
+        margin: 0px 10px;
+    }
 }
 #search-icon {
     display: flex;
@@ -580,6 +616,7 @@ aside .sidebar a:hover span {
 
 /* Buscador */
 .input-buscador {
+    flex-grow: 1;
     display: flex;
     height: 40px;
     width: fit-content;
