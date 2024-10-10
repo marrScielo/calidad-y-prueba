@@ -397,6 +397,15 @@ aside .logo {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+    width: 68px;
+    height: 40px;
+    margin-inline: -10px;
+    margin-block-end: -20px;
+    @media (min-width: 1280px) {
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
 }
 
 aside .logo img {
@@ -480,7 +489,7 @@ aside .sidebar a:hover span {
     }
     aside .sidebar a:last-child {
         position: relative;
-        margin-top: 1.8rem;
+        /* margin-top: 1.8rem; */
     }
     .container {
         width: 94%;
