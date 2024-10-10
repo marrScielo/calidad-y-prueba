@@ -105,10 +105,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         <a class="button-arriba" style="padding:10px 30px;" href="RegPaciente.php">
                             <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Paciente
                         </a>
+                        <a class="button-eliminar" id="eliminarSeleccionados">
+                            <i id="search-icon" class="fas fa-trash" style="margin-right: 10px;"></i>Eliminar
+                        </a>
                     </div>
-                    <a class="button-eliminar" id="eliminarSeleccionados">
-                        <i id="search-icon" class="fas fa-trash" style="margin-right: 10px;color:red"></i>Eliminar
-                    </a>
                 </div>
                 <!-- <div class="separador"></div> -->
                 <div class="container-paciente-tabla">
