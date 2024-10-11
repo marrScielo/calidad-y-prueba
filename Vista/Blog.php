@@ -69,32 +69,15 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 /* Restablece la altura de línea al valor predeterminado */
             }
 
+            @media (max-width: 900px) {
+                .animate_animated {
+                    overflow: auto;
+                    padding-left: 5px;
+                }
+            }
 
             /* Media queries para dispositivos móviles */
             @media only screen and (max-width: 600px) {
-                .form-container {
-                    padding: 10px;
-                    margin: 1px;
-                    margin-left: -30px;
-                    max-width: 100%;
-                    box-shadow: none;
-                }
-
-                .form-group label {
-                    font-size: 14px;
-                }
-
-                .form-group input,
-                .form-group select,
-                .form-group textarea {
-                    font-size: 14px;
-                    padding: 8px;
-                }
-
-                button {
-                    font-size: 14px;
-                    padding: 8px;
-                }
 
                 .modal-content,
                 .modal-content-detail {
@@ -121,34 +104,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     margin-left: 10px;
                 }
 
-
-
             }
 
             /* Media queries para tabletas */
             @media only screen and (min-width: 601px) and (max-width: 1024px) {
-                .form-container {
-                    padding: 15px;
-                    margin: 15px;
-                    max-width: 90%;
-                    box-shadow: none;
-                }
-
-                .form-group label {
-                    font-size: 16px;
-                }
-
-                .form-group input,
-                .form-group select,
-                .form-group textarea {
-                    font-size: 16px;
-                    padding: 10px;
-                }
-
-                button {
-                    font-size: 16px;
-                    padding: 10px;
-                }
 
                 .modal-content,
                 .modal-content-detail {
@@ -162,8 +121,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                 #profile_fixed {
                     display: none;
-                }
+                }    
+            }
 
+            .button-arriba {
+                max-width: 90%;
+                margin-inline: auto;
             }
         </style>
     </head>
@@ -187,10 +150,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     ?>
                 </div>
                 <div class="form-container">
-                    <a class="button-arriba" style="padding: 10px 30px; font-size: 15px;" href="PanelBlog.php">
+                    <a class="button-arriba" href="PanelBlog.php">
                         <i id="edit-icon" class="fas fa-edit" style="margin-right: 10px;"></i>Editar y Ver Blogs
                     </a>
-                    <form action="submit_blog.php" method="POST">
+                    <form class="form__blog" action="submit_blog.php" method="POST">
                         <div class="form-group">
                             <label for="topic">Tema:</label>
                             <input type="text" id="topic" name="topic" placeholder="Ingrese tema" required>
@@ -230,15 +193,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <label for="image">Imagen:</label>
                             <input type="url" id="image" name="image" placeholder="Ingrese URL de imagen" required>
                         </div>
-                        <button style="
-                            display: block;
-                            width: 100%;
-                            padding: 10px;
-                            background-color: #534489;
-                            color: #fff;
-                            border: none;
-                            border-radius: 5px;
-                            cursor: pointer; " id="#button1" type="submit">Enviar</button>
+                        <button id="button1" type="submit">Enviar</button>
                     </form>
                 </div>
             </main>
