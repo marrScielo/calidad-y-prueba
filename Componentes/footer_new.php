@@ -390,12 +390,12 @@
   <div class="principal">
     <div class="redes">
       <ul>
-        <li><a href=""><img src="img/icons/facebook.png" alt="Facebook"></a></li>
-        <li><a href=""><img src="img/icons/twitter.png" alt="Twitter"></a></li>
-        <li><a href=""><img src="img/icons/instagram.png" alt="Instagram"></a></li>
-        <li><a href=""><img src="img/icons/youtube.png" alt="YouTube"></a></li>
-        <li><a href=""><img src="img/icons/whatsapp.png" alt="Whatsapp"></a></li>
-        <li><a href=""><img src="img/icons/tiktok.png" alt="TikTok"></a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61559259927318&_rdr" target="_blank"><img src="img/icons/facebook.png" alt="Facebook"></a></li>
+        <li><a href="https://x.com/ContigoVoy_pe" target="_blank"><img src="img/icons/twitter.png" alt="Twitter"></a></li>
+        <li><a href="https://www.instagram.com/contigovoy.pe/" target="_blank"><img src="img/icons/instagram.png" alt="Instagram"></a></li>
+        <li><a href="https://www.youtube.com/@contigovoype" target="_blank"><img src="img/icons/youtube.png" alt="YouTube"></a></li>
+        <li><a href="" target="_blank"><img src="img/icons/whatsapp.png" alt="Whatsapp"></a></li>
+        <li><a href="https://www.tiktok.com/@contigovoy.pe" target="_blank"><img src="img/icons/tiktok.png" alt="TikTok"></a></li>
       </ul>
     </div>
     <div class="titulo">Atencion al usuario</div>
@@ -427,7 +427,7 @@
       <div class="icono">
         <li><img style="height: 85%;width: 60%;" src="img/UBICACION-8.png" alt="Ubicacion"></li>
       </div>
-      <div class="textosup">Calle 73 # 7 – 31, Torre B Piso 2,
+      <div class="textosup">Calle 73 # 7 - 31, Torre B Piso 2,
         Bogotá D.C., Colombia
         C.P. 110221180
       </div>

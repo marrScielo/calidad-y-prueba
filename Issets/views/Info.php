@@ -169,71 +169,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 
 <script>
     // Function to set the theme
-function setTheme(theme) {
-    // Add the dark theme class if theme is 'dark', remove otherwise
+    function setTheme(theme) {
+    // Agregar la clase del tema oscuro si el tema es 'dark', eliminar de lo contrario
     document.documentElement.classList.toggle('dark-theme-variables', theme === 'dark');
     
-    // Update the active state of the buttons
-    document.querySelector('.theme-toggler .active').classList.remove('active');
-    if (theme === 'dark') {
-        document.querySelector('.theme-toggler span[data-theme="dark"]').classList.add('active');
+    // Actualizar el estado activo de los botones
+    const lightButton = document.querySelector('.theme-toggler span[data-theme="light"]');
+    const darkButton = document.querySelector('.theme-toggler span[data-theme="dark"]');
 
-        document.querySelector(".form-info").style.backgroundColor = "  ";
+    // Cambiar la clase 'active' según el tema
+    if (theme === 'dark') {
+        // Asegurarse de que el botón claro se desactive
+        lightButton.classList.remove('active');
+        darkButton.classList.add('active');
+        
+        // Cambios de estilo para el tema oscuro
+        document.querySelector(".form-info").style.backgroundColor = "  "; // Ajusta el color si es necesario
 
         document.querySelectorAll('.btne').forEach(button => {
             button.style.color = '#FF6B6B';
-            if (button.querySelector('p')) { 
-                button.querySelector('p').style.color = '#FF6B6B';
-                return;
-            }
-            if (button.querySelector('span')) {
-                button.querySelector('span').style.color = '#FF6B6B';
-                return;
-            }
         });
         document.querySelectorAll('.btnm').forEach(button => {
             button.style.color = '#4FC3F7';
-            if (button.querySelector('p')) { 
-                button.querySelector('p').style.color = '#4FC3F7';
-                return;
-            }
-            if (button.querySelector('span')) {
-                button.querySelector('span').style.color = '#4FC3F7';
-                return;
-            }
         });
     } else {
-        document.querySelector('.theme-toggler span[data-theme="light"]').classList.add('active');
-
+        // Asegurarse de que el botón oscuro se desactive
+        darkButton.classList.remove('active');
+        lightButton.classList.add('active');
+        
+        // Cambios de estilo para el tema claro
         document.querySelector(".form-info").style.backgroundColor = "white";
 
         document.querySelectorAll('.btne').forEach(button => {
             button.style.color = 'red';
-            if (button.querySelector('p')) { 
-                button.querySelector('p').style.color = 'red';
-                return;
-            }
-            if (button.querySelector('span')) {
-                button.querySelector('span').style.color = 'red';
-                return;
-            }
         });
         document.querySelectorAll('.btnm').forEach(button => {
             button.style.color = 'blue';
-            if (button.querySelector('p')) { 
-                button.querySelector('p').style.color = 'blue';
-                return;
-            }
-            if (button.querySelector('span')) {
-                button.querySelector('span').style.color = 'blue';
-                return;
-            }
         });
     }
     
-    // Save the selected theme in localStorage
+    // Guardar el tema seleccionado en localStorage
     localStorage.setItem('theme', theme);
 }
+
 
 // Function to initialize the theme on page load
 function initializeTheme() {
