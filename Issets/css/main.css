@@ -12,6 +12,9 @@
     --color-primary-variant: #534489;
     --color-dark-variant: #677483;
     --color-background: #f6f6f9;
+    --color-interactive: #6a90f1;
+    --color-main-btn: #6c85e5;
+    --color-textBtn-hover: #f0f0f0;
     --modal-bg-color: #fff;
     --bg-transparent-color: rgba(0, 0, 0, 0.1);
 
@@ -36,6 +39,9 @@
     --color-dark-variant: #a3bdcc;
     --color-light: rgba(0, 0, 0, 0.4);
     --box-shadow: 0 2rem 3rem var(--color-light);
+    --color-interactive: var(--color-dark-variant);
+    --color-main-btn: var(--color-dark-variant);
+    --color-textBtn-hover: var(--color-background);
 }
 
 * {
@@ -391,6 +397,15 @@ aside .logo {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+    width: 68px;
+    height: 40px;
+    margin-inline: -10px;
+    margin-block-end: -20px;
+    @media (min-width: 1280px) {
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
 }
 
 aside .logo img {
@@ -417,7 +432,7 @@ aside h3 {
 
 aside .sidebar a {
     display: flex;
-    color: #6c85e5;
+    color: var(--color-main-btn);
     gap: 0.9rem;
     align-items: center;
     position: relative;
@@ -474,7 +489,7 @@ aside .sidebar a:hover span {
     }
     aside .sidebar a:last-child {
         position: relative;
-        margin-top: 1.8rem;
+        /* margin-top: 1.8rem; */
     }
     .container {
         width: 94%;
@@ -491,68 +506,133 @@ aside .sidebar a:hover span {
 }
 
 /*=========== Div Buscador=============*/
+.appointments__header {
+    margin-block: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+@media (min-width: 900px) {
+    .appointments__header {
+        flex-direction: row;
+        justify-content: left;
+
+        padding: .5rem 0;
+        border-top: 1.5px solid var(--color-interactive);
+        border-bottom: 1.5px solid var(--color-interactive);
+    }
+}
 .contenedor-botones {
     display: flex;
-    flex-direction: row;
-    gap: 20px;
+    flex-wrap: wrap;
     align-items: center;
-    padding: 0px 0px 0px 10px;
-    border-top: 1px solid #6a90f1;
-    border-bottom: 1px solid #6a90f1;
-    height: 80px;
+    justify-content: center;
+    gap: 1rem;
+    height: auto;
+}
+@media (min-width: 900px) {
+    .contenedor-botones {
+        padding: 10px 0;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+}
+.numeros-pacientes {
+    text-align: center;
+    font-size: 15px;
+    color: var(--color-interactive);
+}
+@media (min-width: 900px) {
+    .numeros-pacientes {
+        text-align: left;
+        border-right: 3px solid #6a90f1; 
+        padding-right: 10px;
+    }
+}
+.numeros-pacientes b {
+    font-size: 25px;
+    color: var(--color-interactive);
 }
 
 .button-arriba {
-    height: 40px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     padding: 10px 30px;
-    font-size: 10px;
-    color: #6a90f1;
+    font-size: 12px;
+    color: var(--color-interactive);
     cursor: pointer;
     border-radius: 10px;
-    border: 0.1em solid #6a90f1; /* Color del borde */
-    outline: 1px solid #6a90f1;
-    transition: color 1s;
+    border: 0.2em solid var(--color-interactive); /* Color del borde */
+    /* outline: 1px solid var(--color-interactive); */
+    transition: all .5s ease;
 }
 
 .button-arriba:hover {
-    color: black;
+    color: var(--color-textBtn-hover);
+    background-color: var(--color-interactive);
     cursor: pointer;
+    transform: scaleY(1.1);
+}
+@media (min-width: 900px) {
+    .button-arriba:hover {
+        transform: scale(1.05);
+    }
 }
 
 .button-eliminar {
+    flex-grow: 1;
     display: none;
-    height: 40px;
+    height: 45px;
     padding: 10px 30px;
-    font-size: 10px;
+    font-size: 12px;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     color: red;
     cursor: pointer;
     border-radius: 10px;
-    border: 0.1em solid red; /* Color del borde */
-    outline: 1px solid red;
-    transition: color 1s;
+    border: 0.2em solid red; /* Color del borde */
+    transition: all .5s ease;
+}
+
+@media (min-width: 900px) {
+    .input-buscador,
+    .button-eliminar,
+    .button-arriba {
+        flex: 1 1 150px;
+    }
 }
 
 .button-eliminar:hover {
-    color: black;
+    color: white;
+    background-color: red;
     cursor: pointer;
+    transform: scaleY(1.1);
+}
+@media (min-width: 900px) {
+    .button-eliminar:hover {
+        transform: scale(1.05);
+    }
 }
 
 .separador {
-    border: 1px solid #6a90f1; /* Línea negra como separador hacia arriba */
-    height: 60px;
-    width: 1px;
-    margin: 0px 10px;
+    display: none;
+}
+@media (min-width: 768px) {
+    .separador {
+        border: 1.2px solid var(--color-interactive); /* Línea negra como separador hacia arriba */
+        height: 60px;
+        width: 1px;
+        margin: 0px 10px;
+    }
 }
 #search-icon {
     display: flex;
-    color: #6a90f1;
     font-size: 18px;
     align-items: center;
     justify-content: center;
@@ -560,22 +640,20 @@ aside .sidebar a:hover span {
 
 /* Buscador */
 .input-buscador {
+    flex-grow: 1;
     display: flex;
-    height: 40px;
+    height: 45px;
     width: fit-content;
     flex-direction: row;
     gap: 20px;
     padding: 10px;
     border-radius: 8px;
-    border: 1px solid #6a90f1;
-    color: #6a90f1;
-    input {
-        color: #6a90f1;
-    }
+    border: 1px solid var(--color-interactive);
+    color: var(--color-interactive);
 }
 
 .input-buscador input::placeholder {
-    color: #6a90f1;
+    color: var(--color-interactive);
     font-weight: lighter;
     font-style: italic;
     font-weight: bold;
@@ -592,6 +670,7 @@ aside .sidebar a:hover span {
     height: 100%;
     background: var(--color-background);
     background-color: transparent;
+    color: var(--color-interactive);
 }
 
 /*============= Estilo para el checkbox principal ===============*/

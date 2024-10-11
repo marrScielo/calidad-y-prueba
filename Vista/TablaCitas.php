@@ -57,7 +57,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         display: flex;
         align-items: center;
         gap: 1rem;
-        padding-block: 1rem;
+        /* padding-block: 1rem; */
 
         @media (max-width: 900px) {
             flex-direction: column;
@@ -102,13 +102,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
         border-radius: 5px;
     }
 
-    .appointmentTuple__button--edit span {
+    /* .appointmentTuple__button--edit span {
         color: #6a90f1;
     }
 
     .appointmentTuple__button--delete span {
         color: red;
-    }
+    } */
 
     input.color-picker {
         color: #6a90f1;
@@ -205,11 +205,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <td id="appointmentId-<?= $row['IdCita'] ?>">
                                 <div class="appointmentTable__buttons">
 
-                                    <button class="appointmentTuple__button appointmentTuple__button--edit">
-                                        <span class="material-symbols-outlined">edit</span>
+                                    <button class="appointmentTuple__button appointmentTuple__button--edit btnm">
+                                        <span class="material-symbols-outlined" translate="no">edit</span>
                                     </button>
-                                    <button class="appointmentTuple__button appointmentTuple__button--delete">
-                                        <span class="material-symbols-outlined">delete</span>
+                                    <button class="appointmentTuple__button appointmentTuple__button--delete btne">
+                                        <span class="material-symbols-outlined" translate="no">delete</span>
                                     </button>
                                 </div>
                             </td>
