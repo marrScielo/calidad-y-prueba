@@ -841,6 +841,9 @@ select {
     font-size: 20px;
     font-weight: bold;
     margin: 0 !important;
+    position: absolute; /* Posiciona la X de forma absoluta respecto a .form-info */
+    top: 10px; /* Distancia desde la parte superior del contenedor */
+    right: 20px; /* Distancia desde el lado derecho del contenedor */
 }
 
 .closeaaa:hover,

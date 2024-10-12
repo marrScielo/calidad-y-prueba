@@ -72,12 +72,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 </div>
 <div class="navigation">
     <div class="form-info">
+        <a href="#" class="closeaaa">&times;</a> <!-- La X para cerrar el modal o la sección -->
         <div style="display:flex;margin:1em;gap:20px">
             <div>
                 <h2><?= $_SESSION['Usuario'] ?></h2>
                 <h1 style="margin-top:-10px;text-align:center">#<?= $_SESSION['IdPsicologo'] ?></h1>
             </div>
-            <a href="#" class="closeaaa">&times;</a>
         </div>
         <form method="post" action="">
             <div style="margin:20px">
