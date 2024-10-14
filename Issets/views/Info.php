@@ -168,62 +168,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 </script>
 
 <script>
-    // Function to set the theme
-    function setTheme(theme) {
-    // Agregar la clase del tema oscuro si el tema es 'dark', eliminar de lo contrario
+function setTheme(theme) {
+    // Agregar o quitar la clase del tema oscuro según el tema
     document.documentElement.classList.toggle('dark-theme-variables', theme === 'dark');
     
     // Actualizar el estado activo de los botones
     const lightButton = document.querySelector('.theme-toggler span[data-theme="light"]');
     const darkButton = document.querySelector('.theme-toggler span[data-theme="dark"]');
 
-    // Cambiar la clase 'active' según el tema
+    // Cambiar la clase 'active' y asegurarse de que los botones no se activen ambos
     if (theme === 'dark') {
-        // Asegurarse de que el botón claro se desactive
         lightButton.classList.remove('active');
         darkButton.classList.add('active');
-        
-        // Cambios de estilo para el tema oscuro
-        document.querySelector(".form-info").style.backgroundColor = "  "; // Ajusta el color si es necesario
-
-        document.querySelectorAll('.btne').forEach(button => {
-            button.style.color = '#FF6B6B';
-        });
-        document.querySelectorAll('.btnm').forEach(button => {
-            button.style.color = '#4FC3F7';
-        });
     } else {
-        // Asegurarse de que el botón oscuro se desactive
         darkButton.classList.remove('active');
         lightButton.classList.add('active');
-        
-        // Cambios de estilo para el tema claro
-        document.querySelector(".form-info").style.backgroundColor = "white";
-
-        document.querySelectorAll('.btne').forEach(button => {
-            button.style.color = 'red';
-        });
-        document.querySelectorAll('.btnm').forEach(button => {
-            button.style.color = 'blue';
-        });
     }
-    
+
     // Guardar el tema seleccionado en localStorage
     localStorage.setItem('theme', theme);
-}
-
-
-// Function to initialize the theme on page load
-function initializeTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
 }
 
 // Initialize theme when the document is loaded
 document.addEventListener('DOMContentLoaded', initializeTheme);
 
 // Add event listeners to the theme toggle buttons
-document.querySelector('.theme-toggler span[data-theme="light"]').addEventListener('click', () => setTheme('light'));
-document.querySelector('.theme-toggler span[data-theme="dark"]').addEventListener('click', () => setTheme('dark'));
+document.querySelector('.theme-toggler span[data-theme="light"]').addEventListener('click', () => {
+    // Si el botón de modo claro es clicado, cambiar a oscuro
+    setTheme('dark');
+});
+
+document.querySelector('.theme-toggler span[data-theme="dark"]').addEventListener('click', () => {
+    // Si el botón de modo oscuro es clicado, cambiar a claro
+    setTheme('light');
+});
 
 </script>
