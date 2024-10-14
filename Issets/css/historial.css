@@ -1,3 +1,37 @@
+.recent-updates {
+    margin-block-start: 20px;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+}
+@media (min-width: 768px) {
+    .recent-updates {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        margin-block-start: 30px;
+    }
+}
+@media (min-width: 1024px) {
+    .recent-updates {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.input-buscador {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .input-buscador,
+    .button-arriba {
+        max-width: 400px;
+    }
+}
+
+/* "display:flex; 
+flex-direction: row; 
+gap:20px; 
+align-items: center; 
+padding: 10px 0px 0px 10px" */
+
 /*---Para ubicar el side navbar y la vista de forma correcta---*/
 .containerTotal {
     display: grid;
