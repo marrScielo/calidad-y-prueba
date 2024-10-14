@@ -928,3 +928,13 @@ select {
     transform: translateY(-50px);
     transition: 0.3s ease;
 }
+
+/* Estilos para mensajes de error */
+.error-message {
+    color: red!important;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px 0 10px;
+    display: none;
+    text-align: center;
+}

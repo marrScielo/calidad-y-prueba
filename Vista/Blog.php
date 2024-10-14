@@ -156,12 +156,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     <form class="form__blog" action="submit_blog.php" method="POST">
                         <div class="form-group">
                             <label for="topic">Tema:</label>
-                            <input type="text" id="topic" name="topic" placeholder="Ingrese tema" required>
+                            <input type="text" id="topic" name="topic" placeholder="Ingrese tema" >
+                            <span class="error-message" id="error-topic"></span>
                         </div>
                         <div class="form-group">
                             <label for="specialty">Especialidad:</label>
-                            <select id="specialty" name="specialty" required>
-                                <option value="Adicciones">Selecciona la Especialidad</option>
+                            <select id="specialty" name="specialty" >
+                                <option value="">Selecciona la Especialidad</option>
                                 <option value="Adicciones">Adicciones</option>
                                 <option value="Ansiedad">Ansiedad</option>
                                 <option value="Atención">Atención</option>
@@ -183,15 +184,19 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <option value="Problemas alimenticios">Problemas alimenticios</option>
                                 <option value="Relaciones Interpersonales">Relaciones Interpersonales</option>
                             </select>
+                            <span class="error-message" id="error-specialty"></span>
                         </div>
                         <div style="text-align: start;" id="formtext" class="form-group">
                             <label style="text-align: center;" for="description">Descripción:</label>
+                            <div id="summernote">
+                            </div>
                             <textarea id="description" name="description" class="hidden"></textarea>
-                            <div id="summernote"></div>
+                            <span class="error-message" id="error-description"></span>
                         </div>
                         <div class="form-group">
                             <label for="image">Imagen:</label>
-                            <input type="url" id="image" name="image" placeholder="Ingrese URL de imagen" required>
+                            <input type="url" id="image" name="image" placeholder="Ingrese URL de imagen" >
+                            <span class="error-message" id="error-image"></span>
                         </div>
                         <button id="button1" type="submit">Enviar</button>
                     </form>
@@ -215,26 +220,27 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     ['insert', ['link', 'picture', 'video']],
                     ['view', ['fullscreen', 'codeview', 'help']]
                 ]
-            });
-
-            const form = document.querySelector('form');
-            form.addEventListener('submit', (e) => {
-                const topic = document.querySelector('#topic').value;
-                const specialty = document.querySelector('#specialty').value;
-                const description = document.querySelector('.note-editable').innerHTML;
-                const image = document.querySelector('#image').value;
-                if (topic === '' || specialty === 'Selecciona la Especialidad' || description === '' || image === '') {
-                    e.preventDefault();
-                    alert('Por favor, llene todos los campos');
-                }
-            });
+            });          
 
             $("#summernote").on("summernote.change", function () {
                 var description = $('#summernote').summernote('code');
-                console.log(description);
-                document.querySelector('#description').value = description;
+                const texto = document.querySelector('#description').value = description;
+                // console.log(texto);
+                validateDescription(description);
             });
+
+            // Función para validar la descripción
+            function validateDescription(content) {
+                const cleanText = $('<div>').html(content).text().trim();
+                
+                if (cleanText === '') {
+                    $('#error-description').text('Por favor, ingrese una descripción.').show();
+                } else {
+                    $('#error-description').hide();
+                }
+            }
         </script>
+        <script src="../Issets/js/validationMessage.js"></script>
     </body>
 
     </html>
