@@ -76,45 +76,45 @@ a {
 .fc-prev-button,
 .fc-prev-button.fc-button,
 .fc-prev-button.fc-button-primary {
-border-color: #49c691;
-background-color: #49c691;
+border-color: #534489;
+background-color: #534489;
 /* Otros estilos que desees aplicar */
 }
 
 .fc-next-button,
 .fc-next-button.fc-button,
 .fc-next-button.fc-button-primary {
-border-color: #49c691;
-background-color: #49c691;
+border-color: #534489;
+background-color: #534489;
 /* Otros estilos que desees aplicar */
 }
 .fc-today-button.fc-button.fc-button-primary {
-border-color: #49c691;
-background-color: #49c691;
+border-color: #534489;
+background-color: #534489;
 /* Otros estilos que desees aplicar */
 }
 /* Cambiar color del botón dayGridMonth */
 .fc-dayGridMonth-button.fc-button.fc-button-primary.fc-button-active {
-background-color: #49c691;
+background-color: #534489;
 /* Otros estilos que desees aplicar */
 }
 .fc-dayGridMonth-button.fc-button.fc-button-primary.fc-button-active {
-background-color: #49c691;
+background-color: #534489;
 /* Otros estilos que desees aplicar */
 }
 .fc-dayGridMonth-button.fc-button.fc-button-primary{
-background-color: #49c691;
+background-color: #534489;
 
 }
 /* Cambiar color del botón timeGridWeek */
 .fc-timeGridWeek-button.fc-button.fc-button-primary.fc-button-active{
-background-color: #49c691;
+background-color: #534489;
 /* Otros estilos que desees aplicar */
 }
 
 /* Cambiar color del botón timeGridDay */
 .fc-timeGridDay-button.fc-button.fc-button-primary.fc-button-active {
-background-color: #49c691;
+background-color: #534489;
 /* Otros estilos que desees aplicar */
 }
 
@@ -122,7 +122,7 @@ background-color: #49c691;
 .fc-timeGridWeek-button,
 .fc-timeGridWeek-button.fc-button,
 .fc-timeGridWeek-button.fc-button-primary {
-background-color: #49c691;
+background-color: #534489;
 /* Otros estilos que desees aplicar */
 }
 
@@ -130,7 +130,7 @@ background-color: #49c691;
 .fc-timeGridDay-button,
 .fc-timeGridDay-button.fc-button,
 .fc-timeGridDay-button.fc-button-primary {
-background-color: #49c691;
+background-color: #534489;
 /* Otros estilos que desees aplicar */
 }
 .modal-content{

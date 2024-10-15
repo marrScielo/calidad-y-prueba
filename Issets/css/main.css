@@ -446,7 +446,7 @@ aside .sidebar a span {
 }
 
 aside .sidebar a.active {
-    background: #49c691;
+    background: #534489;
     color: #ffffff;
     margin-left: 0;
     border-radius: 0px 20px 20px 0px;
@@ -457,7 +457,7 @@ aside .sidebar a.active:before {
     content: '';
     width: 6px;
     height: 100%;
-    background: #49c691;
+    background: #534489;
 }
 
 aside .sidebar a.active span {
