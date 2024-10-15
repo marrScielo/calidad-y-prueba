@@ -16,6 +16,11 @@
         grid-template-columns: repeat(3, 1fr);
     }
 }
+@media (min-width: 1400px) {
+    .recent-updates {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
 .input-buscador {
     width: 100%;
 }

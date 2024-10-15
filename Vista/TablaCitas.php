@@ -96,19 +96,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
         padding: 0.5rem 1rem;
         border: none;
         z-index: 1;
-        color: white;
         background: none;
         cursor: pointer;
         border-radius: 5px;
     }
-
-    /* .appointmentTuple__button--edit span {
-        color: #6a90f1;
-    }
-
-    .appointmentTuple__button--delete span {
-        color: red;
-    } */
 
     input.color-picker {
         color: #6a90f1;
