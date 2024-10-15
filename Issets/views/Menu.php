@@ -52,7 +52,7 @@
 -->
         <a class="privacidad" href="PoliticasSeguridad.php">
             <span class="material-symbols-sharp" translate="no">security</span>
-            <h3>Politcas y Privacidad</h3>
+            <h3>Políticas y Privacidad</h3>
         </a>
     </div>
     <div class="nav-menu-btn"></div>  

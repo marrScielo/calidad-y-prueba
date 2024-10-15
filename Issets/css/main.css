@@ -15,6 +15,8 @@
     --color-interactive: #6a90f1;
     --color-main-btn: #6c85e5;
     --color-textBtn-hover: #f0f0f0;
+    --color-btne: #FF4D4D;
+    --color-btnm: #4DA6FF;
     --modal-bg-color: #fff;
     --bg-transparent-color: rgba(0, 0, 0, 0.1);
 
@@ -42,6 +44,8 @@
     --color-interactive: var(--color-dark-variant);
     --color-main-btn: var(--color-dark-variant);
     --color-textBtn-hover: var(--color-background);
+    --color-btne: #FF6B6B;
+    --color-btnm: #6AAFFF;
 }
 
 * {
@@ -725,6 +729,34 @@ aside .sidebar a:hover span {
     color: #fff;
 }
 
+/* Estilos para los iconos de eliminar y actualizar */
+.btne {
+    color: var(--color-btne);
+    p {
+        color: var(--color-btne);
+    }
+}
+.btnm {
+    color: var(--color-btnm);
+    p {
+        color: var(--color-btnm);
+    }
+}
+.btnm,
+.btne {
+    font-size: 11px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    @media (min-width: 1024px) {
+        font-size: 12px;
+    }
+}
+.btne:hover,
+.btnm:hover {
+    cursor: pointer;
+    transform: matrix(1.1, 0, 0, 1.1, 0, 0);
+}
+
 /* Estilo para el botón desplegable */
 /* Estilos para las opciones del botón */
 .dropdown-content {
@@ -841,6 +873,9 @@ select {
     font-size: 20px;
     font-weight: bold;
     margin: 0 !important;
+    position: absolute; /* Posiciona la X de forma absoluta respecto a .form-info */
+    top: 10px; /* Distancia desde la parte superior del contenedor */
+    right: 20px; /* Distancia desde el lado derecho del contenedor */
 }
 
 .closeaaa:hover,
@@ -927,4 +962,14 @@ select {
     box-shadow: var(--box-shadow);
     transform: translateY(-50px);
     transition: 0.3s ease;
+}
+
+/* Estilos para mensajes de error */
+.error-message {
+    color: red!important;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px 0 10px;
+    display: none;
+    text-align: center;
 }

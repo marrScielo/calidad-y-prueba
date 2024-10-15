@@ -23,29 +23,22 @@ if (isset($_SESSION['NombrePsicologo'])) {
     <body>
     <style>
             @media (max-width: 900px) {
-            body {
+                .container {
+                    width: 100%;
+                }
+                .center-divs{
+                    min-width: 900px;
+                }
+                /* .contenedor-botones{
+                    min-width: 900px;
+                } */
 
-            }
-            .container {
-                width: 100%;
-            }
-            .center-divs{
-                min-width: 900px;
-            }
-            /* .contenedor-botones{
-                min-width: 900px;
-            } */
-
-            table{
-                min-width: 900px;
-            }
-            .animate__animated{
-                overflow: auto;
-            }
-            }
-
-            @media (min-width: 900px) {
-
+                table{
+                    min-width: 900px;
+                }
+                .animate__animated{
+                    overflow: auto;
+                }
             }
             .contenedor-botones {
                 .button-arriba {
@@ -166,7 +159,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 </td>
                 <td class="additional-column" style="font-weight:bold;"><?= htmlspecialchars($patient['Telefono'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
                 <td class="additional-column">
-                    <div style="display: flex;justify-content: center;margin-top: 2%;">
+                    <div style="display: flex;justify-content: center;">
                         <a class="buttoncita" style="width: 110px; padding:6px;" href="RegCitas.php">
                             <span class="material-symbols-sharp">add</span>Crear Cita
                         </a>
@@ -174,13 +167,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 </td>
                 <td>
                     <div id="dropdown-content-<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>" style="display: flex; column-gap: 1rem; justify-content: space-evenly;">
-                        <a type="button" class="btne" onclick="openModalEliminar('<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>')" style="color: red;cursor: pointer;" href="../Crud/Paciente/eliminarPaciente.php?id=<?= $patient['Dni'] ?>">
+                        <a type="button" class="btne" onclick="openModalEliminar('<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>')" href="../Crud/Paciente/eliminarPaciente.php?id=<?= $patient['Dni'] ?>">
                             <span class="material-symbols-outlined">delete</span>
-                            <p style="color:red;">Eliminar</p>
+                            <p>Eliminar</p>
                         </a>
-                        <a type="button" class="btnm" onclick="openModalEditar('<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>')" style="color: blue;cursor: pointer;">
+                        <a type="button" class="btnm" onclick="openModalEditar('<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>')">
                             <span class="material-symbols-outlined">edit</span>
-                            <p style="color:blue;">Editar</p>
+                            <p>Editar</p>
                         </a>
                     </div>
                 </td>

@@ -80,9 +80,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
     <link href="../Issets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
-    <link rel="stylesheet" href="../Issets/css/historial.css">
     <link rel="stylesheet" href="../Issets/css/main.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="../Issets/css/historial.css">
     <link rel="icon" href="../img/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -96,15 +96,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
     }
 
     .center-divs {
-        min-width: 800px;
-    }
-
-    .container-paciente-tabla {
-        display: flex;
-        min-width: 800px;
-    }
-
-    .recent-updates {
         min-width: 800px;
     }
 }
@@ -203,8 +194,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 /* Estilos para la tabla */
 table {
     width: 100%;
-    margin-top: 0.5rem;
-    border-spacing: 0.5rem;
+    /* border-spacing: 0.5rem; */
 }
 
 /* Estilos para las celdas de la tabla */
@@ -285,13 +275,12 @@ td {
                     require_once '../Issets/views/Info.php';
                     ?>
             </div>
-            <div class="recent-updates"
-                style="display:flex; flex-direction: row; gap:20px; align-items: center; padding: 10px 0px 0px 10px">
+            <div class="recent-updates">
                 <div class="input-buscador">
                     <span id="search-icon"><i class="fas fa-search"></i></span>
                     <input type="text" id="myInput" placeholder="Buscar Paciente" class="input" required>
                 </div>
-                <a class="button-arriba" style="padding:10px 30px; font-size:10px;" href="RegAtencionPaciente.php">
+                <a class="button-arriba" style="padding:10px 30px;" href="RegAtencionPaciente.php">
                     <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar
                     Atencion
                 </a>
