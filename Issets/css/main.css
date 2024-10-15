@@ -15,6 +15,8 @@
     --color-interactive: #6a90f1;
     --color-main-btn: #6c85e5;
     --color-textBtn-hover: #f0f0f0;
+    --color-btne: #FF4D4D;
+    --color-btnm: #4DA6FF;
     --modal-bg-color: #fff;
     --bg-transparent-color: rgba(0, 0, 0, 0.1);
 
@@ -42,6 +44,8 @@
     --color-interactive: var(--color-dark-variant);
     --color-main-btn: var(--color-dark-variant);
     --color-textBtn-hover: var(--color-background);
+    --color-btne: #FF6B6B;
+    --color-btnm: #6AAFFF;
 }
 
 * {
@@ -446,7 +450,7 @@ aside .sidebar a span {
 }
 
 aside .sidebar a.active {
-    background: #49c691;
+    background: #534489;
     color: #ffffff;
     margin-left: 0;
     border-radius: 0px 20px 20px 0px;
@@ -457,7 +461,7 @@ aside .sidebar a.active:before {
     content: '';
     width: 6px;
     height: 100%;
-    background: #49c691;
+    background: #534489;
 }
 
 aside .sidebar a.active span {
@@ -723,6 +727,34 @@ aside .sidebar a:hover span {
     justify-content: center;
     font-size: 13px;
     color: #fff;
+}
+
+/* Estilos para los iconos de eliminar y actualizar */
+.btne {
+    color: var(--color-btne);
+    p {
+        color: var(--color-btne);
+    }
+}
+.btnm {
+    color: var(--color-btnm);
+    p {
+        color: var(--color-btnm);
+    }
+}
+.btnm,
+.btne {
+    font-size: 11px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    @media (min-width: 1024px) {
+        font-size: 12px;
+    }
+}
+.btne:hover,
+.btnm:hover {
+    cursor: pointer;
+    transform: matrix(1.1, 0, 0, 1.1, 0, 0);
 }
 
 /* Estilo para el botón desplegable */

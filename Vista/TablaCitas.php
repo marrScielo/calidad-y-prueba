@@ -69,46 +69,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
         justify-content: center;
         align-items: center;
         gap: 1rem;
+        padding: 10px 0;
         flex-wrap: wrap;
 
         .input-buscador {
             flex-grow: 1;
         }
     }
-
-    .appointmentTuple {
-        display: table-row;
-    }
-
-    .appointmentTuple td:first-of-type {
-        padding: 20px;
-    }
-
-    .appointmentTuple__buttons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .appointmentTuple__button {
-        padding: 0.5rem 1rem;
-        border: none;
-        z-index: 1;
-        color: white;
-        background: none;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-    /* .appointmentTuple__button--edit span {
-        color: #6a90f1;
-    }
-
-    .appointmentTuple__button--delete span {
-        color: red;
-    } */
 
     input.color-picker {
         color: #6a90f1;
@@ -173,8 +140,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     <i id="search-icon" class="fas fa-trash" style="margin-right: 10px;color:red"></i>Eliminar
                 </a>
             </div>
-            <div class="recent-citas" style="display: flex;">
-                <table style="height: 100%;flex:1;">
+            <div class="recent-citas">
+                <table>
                     <!-- Encabezado de la tabla -->
                     <thead>
                         <tr>
@@ -201,7 +168,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <td><?= $row['MotivoCita'] ?></td>
                             <td><?= $row['EstadoCita'] ?></td>
                             <td><?= $row['FechaInicioCita'] ?></td>
-                            <td style="color:green"><?= $row['Duracioncita'] ?></td>
+                            <td style="color:#4CAF50"><?= $row['Duracioncita'] ?></td>
                             <td id="appointmentId-<?= $row['IdCita'] ?>">
                                 <div class="appointmentTable__buttons">
 
