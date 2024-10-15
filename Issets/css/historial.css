@@ -31,12 +31,6 @@
     }
 }
 
-/* "display:flex; 
-flex-direction: row; 
-gap:20px; 
-align-items: center; 
-padding: 10px 0px 0px 10px" */
-
 /*---Para ubicar el side navbar y la vista de forma correcta---*/
 .containerTotal {
     display: grid;
@@ -83,14 +77,38 @@ padding: 10px 0px 0px 10px" */
 }
 /*------------Estilos del container paciente------------*/
 .container-paciente-tabla {
-    width: 100%;
-    align-items: center;
-    padding-top: 2rem;
-    display: grid;
-    grid-template-columns: 1fr;
+    max-width: 900px;
+    margin-inline: auto;
+    margin-top: 30px;   
+    padding: .5rem 1rem 1rem;
+    border-radius: 10px;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+}
+@media (min-width: 768px) {
+    .container-paciente-tabla {
+        padding: 1rem 2rem 2rem;
+        margin-top: 40px;
+    }
+}
+.container-table table {
+    border: none;
+}
+.table-head th {
+    font-size: 13px;
+}
+.table-body td {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-dark);
+}
+.table-body p {
+    color: var(--color-dark);
 }
 /*-Para cuando cambie a active-------*/
 .container-paciente-tabla.active {
+    max-width: 100%;
+    display: grid;
     grid-template-columns: 40% 60%;
     gap: 0rem;
     width: 100%;
@@ -166,8 +184,7 @@ padding: 10px 0px 0px 10px" */
 /*---------Tabla (registros del inicio de la vista)---------*/
 table {
     width: 100%;
-    margin-top: 0.5rem;
-    border-spacing: 0.5rem;
+    /* border-spacing: 0 0.5rem; */
 }
 /*----------------Tabla cuando este en active---------------*/
 

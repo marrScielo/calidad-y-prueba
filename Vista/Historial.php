@@ -98,11 +98,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
     .center-divs {
         min-width: 800px;
     }
-
-    .container-paciente-tabla {
-        display: flex;
-        min-width: 800px;
-    }
 }
 
 /* Estilo para el modal principal */
@@ -199,8 +194,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 /* Estilos para la tabla */
 table {
     width: 100%;
-    margin-top: 0.5rem;
-    border-spacing: 0.5rem;
+    /* border-spacing: 0.5rem; */
 }
 
 /* Estilos para las celdas de la tabla */
