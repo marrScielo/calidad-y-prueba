@@ -109,8 +109,8 @@
 .container-paciente-tabla.active {
     max-width: 100%;
     display: grid;
-    grid-template-columns: 40% 60%;
-    gap: 0rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
     width: 100%;
     grid-template-rows: auto; /* Establece grid-template-rows a auto para que ambas filas se ajusten automáticamente al contenido */
     padding-left: 2rem;
@@ -157,6 +157,7 @@
     gap: 2px;
 }
 .visual2 {
+    text-align: start;
     color: #6a92f4;
     font-size: 22px;
     font-weight: bold;
@@ -167,7 +168,7 @@
     margin-top: 1rem;
 }
 .ci-input-group .arriba {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: #8fbbc8;
 }
@@ -180,6 +181,7 @@
     font-size: 14px;
     font-weight: 700;
     text-align: start;
+    line-height: 1.5;
 }
 /*---------Tabla (registros del inicio de la vista)---------*/
 table {
@@ -234,20 +236,21 @@ table {
     display: flex;
 }
 .green-button {
-    width: 130px;
-    height: 30px;
+    margin-block-start: 10px;
+    width: 200px;
+    height: 40px;
     border-radius: 30px;
-    font-size: 10.2px;
+    font-size: 13px;
+    font-weight: 700;
     background-color: #52c291;
     color: white;
+    transition: all 0.3s ease;
 }
 .green-button:hover {
-    color: var(--color-dark);
+    color: whitesmoke;
     font-weight: 700;
     cursor: pointer;
-    background-color: var(--color-white);
-    border: 1.5px solid var(--color-primary);
-    transition: all 0.5s ease-in-out;
+    background-color: #49c691;
 }
 
 /*--------------------- Responsive -------------------------*/
