@@ -50,14 +50,14 @@ if (isset($_SESSION['NombrePsicologo'])) {
                   <h3 for="codigopac">Codigo Paciente <b style="color:red">*</b></h3>
                   <div style="display: flex; gap:5px;">
                     <input id="codigopac" type="text" name="codigopac" class="input" />
-                    <a class="search codigoaa"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
+                    <a class="search codigoaa" translate="no"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
                   </div>
                 </div>
                 <div class="input-group">
                   <h3 for="NomPaciente">Nombre Paciente <b style="color:red">*</b></h3>
                   <div style="display: flex; gap:5px;">
                     <input id="NomPaciente" type="text" name="NomPaciente" required />
-                    <a class="search nom"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
+                    <a class="search nom" translate="no"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
                   </div>
                 </div>
               </div>
