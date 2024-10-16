@@ -20,9 +20,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
   <body>
     <div class="container">
-        <?php
-        require_once '../Issets/views/Menu.php';
-        ?>
+      <?php
+      require_once '../Issets/views/Menu.php';
+      ?>
 
       <!----------- fin de aside -------->
       <main class="animate__animated animate__fadeIn">
@@ -170,6 +170,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             </div>
             <br>
             <div class="button-container">
+            <a href="javascript:history.back()" class="button">Volver</a>
               <button id="submitButton" class="button">Finalizar</button>
             </div>
           </form>
