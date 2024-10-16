@@ -332,9 +332,10 @@ td {
                         <div class="top-group">
                             <div class="name">
                                 <h2 class="visual2" id="patient-name">${nombres}</h2>
-                                <p id="patient-info"></p>
+                                <!-- <p id="patient-info"></p> -->
                                 <p class="arriba" id="patient-age-dni">${edad} años | DNI: ${dni}</p>
-                                <p class="arriba" id="patient-contact">${celular} | Código: ${codigo}</p>
+                                <p class="arriba" id="patient-phone">${celular} | Código: ${codigo}</p>
+                                <p class="arriba" id="patient-id">${celular} | Código: ${codigo}</p>
                                 <button type="button" class="green-button" id="view-medical-history-btn">Ver Historial
                                     Medico</button>
                             </div>
@@ -471,10 +472,10 @@ td {
             const enfermedadId = link.getAttribute('data-enfermedad');
             // Asignar los datos a los elementos del DOM
             infoPacient.querySelector('#patient-name').textContent = nombres;
-            infoPacient.querySelector('#patient-info').textContent = `${edad} años | DNI: ${dni}`;
+            // infoPacient.querySelector('#patient-info').textContent = `${edad} años | DNI: ${dni}`;
             infoPacient.querySelector('#patient-age-dni').textContent = `${edad} años | DNI: ${dni}`;
-            infoPacient.querySelector('#patient-contact').textContent =
-                `${celular} | Código: ${codigo}`;
+            infoPacient.querySelector('#patient-phone').textContent = `Celular: ${celular}`;
+            infoPacient.querySelector('#patient-id').textContent = `Código: ${codigo}`;
             infoPacient.querySelector('#disease-id').textContent = enfermedad ||
                 'Aun no hay enfermedad';
             infoPacient.querySelector('#diagnosis').textContent = diagnostico ||
