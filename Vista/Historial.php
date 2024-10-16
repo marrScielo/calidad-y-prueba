@@ -301,8 +301,7 @@ td {
                             ?>
                             <tr style="cursor:pointer" class="show-info">
                                 <td>
-                                    <a data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?>
-                                        <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>"
+                                    <a data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>"
                                         data-dni="<?= $patient['Dni'] ?>" data-celular="<?= $patient['Telefono'] ?>"
                                         data-codigo="<?= $patient['codigopac'] ?>"
                                         data-diagnostico="<?= $patient['Diagnostico'] ?>"
@@ -324,48 +323,7 @@ td {
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                    <!-- <table>
-                        <thead>
-                            <tr>
-                                <th>Paciente</th>
-                                <th>Fecha de Próxima Cita</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <thead>
-
-                            </thead>
-                            <?php foreach ($patients as $index => $patient) : ?>
-                            <tr <?php if ($index === 0) echo 'class="primera-fila"'; ?>>
-
-                                <td>
-                                    <a style="cursor:pointer" class="show-info"
-                                        data-patient-id="<?= $patient['IdPaciente'] ?>"
-                                        data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>"
-                                        data-edad="<?= $patient['Edad'] ?>" data-dni="<?= $patient['Dni'] ?>"
-                                        data-celular="<?= $patient['Telefono'] ?>"
-                                        data-codigo="<?= $patient['codigopac'] ?>"
-                                        data-diagnostico="<?= $patient['Diagnostico'] ?>"
-                                        data-enfermedad="<?= $patient['IdEnfermedad'] ?>"
-                                        data-observacion="<?= $patient['Observacion'] ?>"
-                                        data-FechaInicioCita="<?= $patient['FechaRegistro'] ?>"
-                                        data-nota="<?= $patient['nota'] ?>"
-                                        data-objetivo="<?= $patient['UltimosObjetivos'] ?>">
-                                        <p style="cursor: pointer;" class="nombre-paciente">
-                                            <?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?></p>
-                                        <p><?= isset($patient['Diagnostico']) ? $patient['Diagnostico'] : 'Diagnostico' ?>
-                                        </p>
-                                    </a>
-                                </td>
-                                <td><?= isset($patient['FechaRegistro']) ? substr($patient['FechaRegistro'], 0, 10) : 'Fecha de próx cita' ?>
-                                </td>
-                                <td class="additional-column" data-patient-id="<?= $patient[0] ?>"></td>
-                            </tr>
-
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table> -->
+                    
                 </div>
 
                 <div class="patient-details" id="patient-details">
@@ -473,7 +431,6 @@ td {
 
             // Obtener el ID del paciente desde el atributo data
             const patientId = link.querySelector("td a").getAttribute('data-patient-id');
-            console.log(patientId);
             // Ocultar las columnas adicionales
             additionalColumns.forEach(column => {
                 column.classList.add('hidden');
@@ -481,17 +438,17 @@ td {
             });
 
             // Obtener los datos del paciente
-            const nombres = link.getAttribute('data-nombres');
-            const edad = link.getAttribute('data-edad');
-            const dni = link.getAttribute('data-dni');
-            const celular = link.getAttribute('data-celular');
-            const codigo = link.getAttribute('data-codigo');
-            const enfermedad = link.getAttribute('data-enfermedad');
-            const diagnostico = link.getAttribute('data-diagnostico');
-            const observacion = link.getAttribute('data-observacion');
-            const FechaInicioCita = link.getAttribute('data-FechaInicioCita');
-            const nota = link.getAttribute('data-nota');
-            const objetivo = link.getAttribute('data-objetivo');
+            const nombres = link.querySelector("td a").getAttribute('data-nombres');
+            const edad = link.querySelector("td a").getAttribute('data-edad');
+            const dni = link.querySelector("td a").getAttribute('data-dni');
+            const celular = link.querySelector("td a").getAttribute('data-celular');
+            const codigo = link.querySelector("td a").getAttribute('data-codigo');
+            const diagnostico = link.querySelector("td a").getAttribute('data-diagnostico');
+            const enfermedad = link.querySelector("td a").getAttribute('data-enfermedad');
+            const observacion = link.querySelector("td a").getAttribute('data-observacion');
+            const FechaInicioCita = link.querySelector("td a").getAttribute('data-FechaInicioCita');
+            const nota = link.querySelector("td a").getAttribute('data-nota');
+            const objetivo = link.querySelector("td a").getAttribute('data-objetivo');
             // Formatear la fecha en español
             const opcionesFecha = {
                 weekday: 'long',
