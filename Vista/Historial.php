@@ -369,9 +369,10 @@ td {
                             </p>
                         </div>
 
-                        <br>
-                        <textarea id="notes-textarea">${nota || 'Aun no hay comentarios'}</textarea>
-                        <br>
+                        <div class="ci-input-group">
+                            <textarea id="notes-textarea">${nota || 'Aun no hay comentarios'}</textarea>
+                        </div>
+                        
                         <button style="cursor: pointer;" id="update-btn">Actualizar</button>
                         <button style="cursor: pointer;" id="edit-note-btn">Editar Nota</button>
                         <div class="BUT">
