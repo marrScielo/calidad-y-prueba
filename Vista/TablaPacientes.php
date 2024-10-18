@@ -161,18 +161,18 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <td class="additional-column">
                     <div style="display: flex;justify-content: center;">
                         <a class="buttoncita" style="width: 110px; padding:6px;" href="RegCitas.php">
-                            <span class="material-symbols-sharp">add</span>Crear Cita
+                            <span class="material-symbols-sharp" translate="no">add</span>Crear Cita
                         </a>
                     </div>
                 </td>
                 <td>
                     <div id="dropdown-content-<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>" style="display: flex; column-gap: 1rem; justify-content: space-evenly;">
                         <a type="button" class="btne" onclick="openModalEliminar('<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>')" href="../Crud/Paciente/eliminarPaciente.php?id=<?= $patient['Dni'] ?>">
-                            <span class="material-symbols-outlined">delete</span>
+                            <span class="material-symbols-outlined" translate="no">delete</span>
                             <p>Eliminar</p>
                         </a>
                         <a type="button" class="btnm" onclick="openModalEditar('<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>')">
-                            <span class="material-symbols-outlined">edit</span>
+                            <span class="material-symbols-outlined" translate="no">edit</span>
                             <p>Editar</p>
                         </a>
                     </div>
