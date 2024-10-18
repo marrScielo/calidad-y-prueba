@@ -3,7 +3,8 @@ main .recent-citas {
     width: 100%;
     margin: 10px 0;
     grid-template-columns: auto 0rem;
-    overflow-x: auto; /* Agrega el scrollbar horizontal */
+    overflow-x: auto;
+    /* Agrega el scrollbar horizontal */
     scrollbar-width: thin;
 }
 
@@ -18,7 +19,7 @@ table {
     transition: all 0.3s;
 }
 
-thead tr th:first-child, 
+thead tr th:first-child,
 tbody tr td:first-child {
     padding: 10px 5px;
     border-top-left-radius: 7px;
@@ -60,6 +61,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 8px;
+
 }
 
 .checkout-information {
@@ -80,7 +82,6 @@ form {
 textarea,
 select {
     width: 100%;
-    padding: 10px 15px;
     border-radius: 8px;
     background-color: var(--color-background);
     color: #7b7c89;
@@ -94,11 +95,12 @@ select {
 
 .input-group input {
     width: 100%;
-    padding: 10px 15px;
+    padding: 10px 5px;
     border-radius: 8px;
     background-color: var(--color-background);
     height: 100%;
 }
+
 .input-group h3 {
     font-size: 0.8rem;
     color: white;
