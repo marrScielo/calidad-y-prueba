@@ -83,7 +83,7 @@ input {
 .form__bar::before {
     content: '';
     position: absolute;
-    background-color: #f19294;
+    background-color: #524388;
     width: 100%;
     height: 2px;
     transform: scaleX(0);

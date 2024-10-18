@@ -169,7 +169,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             </div>
             <br>
             <div class="button-container">
-              <a href="javascript:history.back()" class="button">Volver</a>
+            <a href="TablaPacientes.php" class="button">Volver</a>
               <button id="submitButton" class="button">Finalizar</button>
             </div>
           </form>

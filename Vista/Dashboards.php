@@ -36,8 +36,8 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link rel="icon" href="../img/favicon.png">
-    <link rel="stylesheet" href="../Issets/css/dashboard.css">
     <link rel="stylesheet" href="../Issets/css/main.css">
+    <link rel="stylesheet" href="../Issets/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
@@ -47,9 +47,9 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
       @media (max-width: 900px) {
         body {}
 
-        .center-divs {
+        /* .center-divs {
           min-width: 800px;
-        }
+        } */
 
         .contenedor_dsh {
           min-width: 800px;
@@ -218,16 +218,15 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
                   <p style="text-align: center;">No hay Pacientes<a href="RegPaciente.php"> Agregar nuevo paciente </a> </p>
                 <?php endif; ?>
               </div>
-            </div>
-            <div style="justify-content: center;display: flex;">
-
-              <a href="RegPaciente.php">Agregar Paciente</a>
+              <div>
+                <a class="btn-addPacientes" href="RegPaciente.php">Agregar Paciente</a>
+              </div>
             </div>
           </div>
         </div>
 
         <!--<h2>Estadisticas</h2>-->
-        <div class="center-divs">
+        <div class="center-graficos">
           <div class="insights" style="color: #534489; ">
             <div class="sales">
               <div class="middle">
