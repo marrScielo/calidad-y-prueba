@@ -48,17 +48,17 @@ tbody tr td:last-child {
     font-weight: bold;
     font-size: 12px;
     background-color: transparent;
-    color: #49c691;
+    color: #534489;
     cursor: pointer;
     border-radius: 5px ;
-    border: 0.1em solid #49c691; /* Color del borde */
+    border: 0.1em solid #534489; /* Color del borde */
     padding: 12px 40px;
-    outline: 1px solid #49c691;
+    outline: 1px solid #534489;
     transition: all 1s;
 }
 
 .buttoncita:hover {
-    background-color: #49c691;
+    background-color: #534489;
     color: white;
     font-size: 13px;
 }
