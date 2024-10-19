@@ -281,8 +281,7 @@ td {
                     <input type="text" id="myInput" placeholder="Buscar Paciente" class="input" required>
                 </div>
                 <a class="button-arriba" style="padding:10px 30px;" href="RegAtencionPaciente.php">
-                    <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar
-                    Atencion
+                    <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Atencion
                 </a>
             </div>
 

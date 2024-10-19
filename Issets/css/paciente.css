@@ -181,6 +181,7 @@ tbody tr td:last-child {
 .input-group {
 	display: flex;
 	flex-direction: column;
+    align-self: flex-start;
 	gap: 8px;
 }
 .checkout-information {
