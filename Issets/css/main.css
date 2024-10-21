@@ -110,6 +110,7 @@ h5 {
 h6 {
     font-size: 2rem;
 }
+
 small {
     font-size: 0.7rem;
 }
@@ -147,9 +148,11 @@ tr {
     border-radius: 40px;
     /* Borde ovalado */
 }
+
 td {
     text-align: center;
 }
+
 th {
     background-color: var(--color-white);
     color: #6a90f1;
@@ -160,6 +163,7 @@ input {
     border: none;
     font-weight: bold;
 }
+
 textarea {
     font: inherit;
     border: none;
@@ -172,15 +176,18 @@ button {
     border: none;
     color: inherit;
 }
+
 .animate__animated .pagination a {
     color: var(--color-primary);
 }
+
 select {
     font: inherit;
     border: none;
     font-weight: bold;
     color: #000;
 }
+
 form {
     margin-inline: auto;
     max-width: 990px;
@@ -206,6 +213,7 @@ form {
     outline: 2px solid #49c691;
     transition: color 1s;
 }
+
 .buttonTab {
     font: inherit;
     text-decoration: none;
@@ -214,13 +222,16 @@ form {
     color: inherit;
     background-color: var(--color-white);
 }
+
 .search:hover {
     color: black;
     cursor: pointer;
 }
+
 main {
     margin: 30px 20px;
 }
+
 .container {
     display: grid;
     width: 96%;
@@ -228,10 +239,12 @@ main {
     gap: 1.5rem;
     grid-template-columns: 17rem auto;
 }
+
 .center-divs {
     display: flex;
     justify-content: space-between;
 }
+
 .notification {
     position: absolute;
     bottom: 50px;
@@ -260,22 +273,26 @@ main {
     border-radius: inherit;
     animation: load 3s 0.25s linear forwards;
 }
+
 @keyframes fade-in {
     5% {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
     }
+
     90% {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
 @keyframes load {
     to {
         transform: scaleX(1);
     }
 }
+
 .button {
     display: flex;
     justify-content: center;
@@ -301,7 +318,8 @@ main {
 .button-container {
     display: flex;
     gap: 20px;
-    justify-content: flex-end; /* Cambiamos de "right" a "flex-start" */
+    justify-content: flex-end;
+    /* Cambiamos de "right" a "flex-start" */
 }
 
 /*======== Info =========*/
@@ -371,7 +389,7 @@ main .theme-toggler span.active {
     align-items: center;
 }
 
-.info > div {
+.info>div {
     height: 24px;
     width: 2px;
     background-color: #000;
@@ -405,6 +423,7 @@ aside .logo {
     height: 40px;
     margin-inline: -10px;
     margin-block-end: -20px;
+
     @media (min-width: 1280px) {
         width: 100%;
         height: auto;
@@ -485,24 +504,30 @@ aside .sidebar a:hover span {
     aside .logo h2 {
         display: none;
     }
+
     aside .sidebar h3 {
         display: none;
     }
+
     aside .sidebar a {
         width: 4.6rem;
     }
+
     aside .sidebar a:last-child {
         position: relative;
         /* margin-top: 1.8rem; */
     }
+
     .container {
         width: 94%;
         grid-template-columns: 7rem auto;
     }
+
     .container-calendario {
         width: 94%;
         grid-template-columns: 7rem auto;
     }
+
     main .insights {
         grid-template-columns: 1fr;
         gap: 0;
@@ -518,6 +543,7 @@ aside .sidebar a:hover span {
     align-items: center;
     gap: 1rem;
 }
+
 @media (min-width: 900px) {
     .appointments__header {
         flex-direction: row;
@@ -528,6 +554,7 @@ aside .sidebar a:hover span {
         border-bottom: 1.5px solid var(--color-interactive);
     }
 }
+
 .contenedor-botones {
     display: flex;
     flex-wrap: wrap;
@@ -536,6 +563,7 @@ aside .sidebar a:hover span {
     gap: 1rem;
     height: auto;
 }
+
 @media (min-width: 900px) {
     .contenedor-botones {
         padding: 10px 0;
@@ -543,18 +571,21 @@ aside .sidebar a:hover span {
         gap: 1rem;
     }
 }
+
 .numeros-pacientes {
     text-align: center;
     font-size: 15px;
     color: var(--color-interactive);
 }
+
 @media (min-width: 900px) {
     .numeros-pacientes {
         text-align: left;
-        border-right: 3px solid #6a90f1; 
+        border-right: 3px solid #6a90f1;
         padding-right: 10px;
     }
 }
+
 .numeros-pacientes b {
     font-size: 25px;
     color: var(--color-interactive);
@@ -571,7 +602,8 @@ aside .sidebar a:hover span {
     color: var(--color-interactive);
     cursor: pointer;
     border-radius: 10px;
-    border: 0.2em solid var(--color-interactive); /* Color del borde */
+    border: 0.2em solid var(--color-interactive);
+    /* Color del borde */
     /* outline: 1px solid var(--color-interactive); */
     transition: all .5s ease;
 }
@@ -582,6 +614,7 @@ aside .sidebar a:hover span {
     cursor: pointer;
     transform: scaleY(1.1);
 }
+
 @media (min-width: 900px) {
     .button-arriba:hover {
         transform: scale(1.05);
@@ -600,11 +633,13 @@ aside .sidebar a:hover span {
     color: red;
     cursor: pointer;
     border-radius: 10px;
-    border: 0.2em solid red; /* Color del borde */
+    border: 0.2em solid red;
+    /* Color del borde */
     transition: all .5s ease;
 }
 
 @media (min-width: 900px) {
+
     .input-buscador,
     .button-eliminar,
     .button-arriba {
@@ -618,6 +653,7 @@ aside .sidebar a:hover span {
     cursor: pointer;
     transform: scaleY(1.1);
 }
+
 @media (min-width: 900px) {
     .button-eliminar:hover {
         transform: scale(1.05);
@@ -627,14 +663,17 @@ aside .sidebar a:hover span {
 .separador {
     display: none;
 }
+
 @media (min-width: 768px) {
     .separador {
-        border: 1.2px solid var(--color-interactive); /* Línea negra como separador hacia arriba */
+        border: 1.2px solid var(--color-interactive);
+        /* Línea negra como separador hacia arriba */
         height: 60px;
         width: 1px;
         margin: 0px 10px;
     }
 }
+
 #search-icon {
     display: flex;
     font-size: 18px;
@@ -689,6 +728,7 @@ aside .sidebar a:hover span {
     transition: background-color 0.3s, border-color 0.3s;
     margin-right: 10px;
 }
+
 /* Estilo para el checkbox principal cuando está marcado */
 .checkbox-principal:checked {
     color: red;
@@ -715,10 +755,13 @@ aside .sidebar a:hover span {
     border-color: #007bff;
 }
 
-.checkbox + label {
-    font-size: 16px; /* Tamaño de fuente del texto */
-    vertical-align: middle; /* Alinea verticalmente el texto con el checkbox */
+.checkbox+label {
+    font-size: 16px;
+    /* Tamaño de fuente del texto */
+    vertical-align: middle;
+    /* Alinea verticalmente el texto con el checkbox */
 }
+
 /* Estilo para el tick (✓) dentro de los checkboxes individuales cuando están marcados */
 .checkbox:checked::before {
     content: '-';
@@ -732,25 +775,31 @@ aside .sidebar a:hover span {
 /* Estilos para los iconos de eliminar y actualizar */
 .btne {
     color: var(--color-btne);
+
     p {
         color: var(--color-btne);
     }
 }
+
 .btnm {
     color: var(--color-btnm);
+
     p {
         color: var(--color-btnm);
     }
 }
+
 .btnm,
 .btne {
     font-size: 11px;
     font-weight: bold;
     transition: all 0.2s ease;
+
     @media (min-width: 1024px) {
         font-size: 12px;
     }
 }
+
 .btne:hover,
 .btnm:hover {
     cursor: pointer;
@@ -784,6 +833,7 @@ aside .sidebar a:hover span {
     text-decoration: none;
     cursor: pointer;
 }
+
 .input-group-modal input,
 textarea,
 select {
@@ -808,6 +858,7 @@ select {
     transition: all 0.6s ease;
     background: none;
 }
+
 #modalDeleteAppointment {
     position: fixed;
     visibility: hidden;
@@ -822,12 +873,15 @@ select {
     background-color: rgba(0, 0, 0, 0.5);
     max-width: none;
 }
+
 #modalDeleteAppointment.active {
     visibility: visible;
 }
+
 .service-modal.active {
     max-width: 600px;
     opacity: 1;
+
     @media screen and (max-width: 1024px) {
         position: fixed;
         top: 0;
@@ -868,14 +922,18 @@ select {
     text-decoration: none;
     cursor: pointer;
 }
+
 .closeaaa {
     color: #aaa;
     font-size: 20px;
     font-weight: bold;
     margin: 0 !important;
-    position: absolute; /* Posiciona la X de forma absoluta respecto a .form-info */
-    top: 10px; /* Distancia desde la parte superior del contenedor */
-    right: 20px; /* Distancia desde el lado derecho del contenedor */
+    position: absolute;
+    /* Posiciona la X de forma absoluta respecto a .form-info */
+    top: 10px;
+    /* Distancia desde la parte superior del contenedor */
+    right: 20px;
+    /* Distancia desde el lado derecho del contenedor */
 }
 
 .closeaaa:hover,
@@ -884,6 +942,7 @@ select {
     text-decoration: none;
     cursor: pointer;
 }
+
 .navigation {
     position: fixed;
     width: 100%;
@@ -919,6 +978,7 @@ select {
     font-size: 12px;
     font-weight: 600;
 }
+
 /* boton cancelar*/
 .button-cancelar {
     background-color: var(--color-primary);
@@ -966,10 +1026,10 @@ select {
 
 /* Estilos para mensajes de error */
 .error-message {
-    color: red!important;
-    font-size: 12px;
-    font-weight: bold;
-    margin: 5px 0 10px;
+    color: red !important;
+    font-size: 10px;
+    font-weight: normal;
+    margin: 3px 0 5px;
     display: none;
     text-align: center;
 }
