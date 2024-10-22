@@ -144,7 +144,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             <!----------- end of aside -------->
             <main class="animate_animated animate_fadeIn">
                 <div class="center-divs">
-                    <h4 style="color: #49c691;">Blog</h4>
+                    <h4 style="color: #534489;">Blog</h4>
                     <?php
                     require_once '../Issets/views/Info.php';
                     ?>
