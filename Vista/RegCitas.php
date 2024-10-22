@@ -38,21 +38,16 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 Citas<a /></h4>
             <br>
             <div class="checkout-information">
+              <a style="display: none;"></a>
               <div class="input-group2">
-                <div class="input-group" style="display: none;">
-                  <h3 for="IdPaciente">Id Paciente <b style="color:red">*</b></h3>
-                  <div style="display: none;">
-                    <input id="IdPaciente" type="text" name="IdPaciente" required />
-                  </div>
-                </div>
-                <div class="input-group" style="width: 45%;">
+                <div class="input-group" style="width: 50%;">
                   <h3 for="codigopac">Codigo Paciente <b style="color:red">*</b></h3>
                   <div style="display: flex; gap:5%">
                     <input id="codigopac" type="text" name="codigopac" class="input" />
                     <a class="search codigoaa" translate="no"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
                   </div>
                 </div>
-                <div class="input-group" style="width: 45%;">
+                <div class="input-group" style="width: 50%;">
                   <h3 for="NomPaciente">Nombre Paciente <b style="color:red">*</b></h3>
                   <div style="display: flex; gap:5%;">
                     <input id="NomPaciente" type="text" name="NomPaciente" required />
@@ -86,9 +81,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     <option value="Ausencia del paciente">Ausencia del paciente</option>
                   </select>
                 </div>
-                <div class="input-group" style="width:50%;">
-                  <h3 for="ColorFondo">Color de Cita <b style="color:red">*</b></h3>
-                  <input type="color" value="#f38238" id="ColorFondo" name="ColorFondo" list="colorOptions">
+                <div class="input-group" style="width:50%; ">
+                  <h3 for="ColorFondo">Color de Cita <b style="color:red;">*</b></h3>
+                  <input type="color" value="#f38238" id="ColorFondo" name="ColorFondo" list="colorOptions" style="height: 33px; margin-top: 10px">
                   <datalist id="colorOptions">
                     <option value="#b4d77b">Rojo</option>
                     <option value="#9274b3">Verde</option>
@@ -169,7 +164,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             </div>
             <br>
             <div class="button-container">
-            <a href="TablaPacientes.php" class="button">Volver</a>
+              <a href="TablaPacientes.php" class="button">Volver</a>
               <button id="submitButton" class="button">Finalizar</button>
             </div>
           </form>

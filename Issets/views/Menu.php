@@ -22,7 +22,7 @@
     <div class="sidebar">
         <a class="dashboard" href="Dashboards.php" >
             <span class="material-symbols-sharp" translate="no">dashboard</span>
-            <h3>Dashboard</h3>
+            <h3 translate="no">Dashboard</h3>
         </a>
         <a class="pacientes" href="TablaPacientes.php">
             <span class="material-symbols-sharp" translate="no">groups</span>
@@ -34,7 +34,7 @@
         </a>        
         <a class="historial" href="Historial.php">
             <span class="material-symbols-sharp" translate="no">history</span>
-            <h3>Historial</h3>
+            <h3 translate="no">Historial</h3>
         </a>
         <a class="calendario" href="Calendario.php">
             <span class="material-symbols-sharp" translate="no">calendar_month</span>

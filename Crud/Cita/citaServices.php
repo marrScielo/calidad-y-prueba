@@ -34,4 +34,3 @@ echo json_encode(
         'citas' => $citas
     )
 );
-?>

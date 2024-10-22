@@ -1,17 +1,18 @@
-.container-paciente-tabla.active{
+.container-paciente-tabla.active {
     display: grid;
     width: 100%;
     margin: 20px;
-    gap :1rem;
-    grid-template-columns: auto auto ;
+    gap: 1rem;
+    grid-template-columns: auto auto;
 }
 
-.container-paciente-tabla{
+.container-paciente-tabla {
     display: grid;
     width: 100%;
     margin: 10px 0;
     grid-template-columns: auto 0rem;
-    overflow-x: auto; /* Agrega el scrollbar horizontal */
+    overflow-x: auto;
+    /* Agrega el scrollbar horizontal */
     scrollbar-width: thin;
 }
 
@@ -21,9 +22,9 @@
 
 table {
     width: 100%;
-    border-collapse: separate; 
-    border-spacing: 0 10px; 
-    max-height: 35%;    
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    max-height: 35%;
 }
 
 
@@ -41,7 +42,7 @@ tbody tr td:last-child {
     border-bottom-right-radius: 7px;
 }
 
-.buttoncita{
+.buttoncita {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,8 +51,9 @@ tbody tr td:last-child {
     background-color: transparent;
     color: #534489;
     cursor: pointer;
-    border-radius: 5px ;
-    border: 0.1em solid #534489; /* Color del borde */
+    border-radius: 5px;
+    border: 0.1em solid #534489;
+    /* Color del borde */
     padding: 12px 40px;
     outline: 1px solid #534489;
     transition: all 1s;
@@ -73,10 +75,12 @@ tbody tr td:last-child {
     /* box-shadow: var(--box-shadow); */
     animation: fadeIn 0.5s ease-in-out;
 }
+
 @keyframes fadeIn {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -84,36 +88,42 @@ tbody tr td:last-child {
 
 .checkout-informationPac,
 .input-group {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 .input-group_1 {
     display: flex;
     gap: 5%;
     flex-direction: row;
     width: 50%;
 }
+
 .checkout-informationPac {
-	background: var(--color-white);
+    background: var(--color-white);
     width: 100%;
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
     text-align: center;
     transition: all 300ms ease;
 }
-.checkout-informationPac:hover{
+
+.checkout-informationPac:hover {
     box-shadow: none;
 }
-.input-group3{ /*   Añadi esta clase para mi formulario - Hans */
+
+.input-group3 {
+    /*   Añadi esta clase para mi formulario - Hans */
     display: flex;
     flex-direction: row;
     gap: 20px;
     justify-content: space-between;
 }
-.Letras{
+
+.Letras {
     display: flex;
     width: 77%;
     height: 45%;
@@ -121,48 +131,57 @@ tbody tr td:last-child {
     align-items: flex-start;
 }
 
-.visual{ /*Nueva clase creada para el forulario - Hans */
-    color: #49c691; 
+.visual {
+    /*Nueva clase creada para el forulario - Hans */
+    color: #49c691;
     font-size: 2rem;
     font-weight: bold;
 }
 
-.arriba{ /*Nueva clase creada para el formulario - Hans */
+.arriba {
+    /*Nueva clase creada para el formulario - Hans */
     color: #6A92F4;
     font-size: 15px;
     font-weight: bold;
     text-align: start;
 }
 
-.abajo{ /*Nueva clase creada para el formulario - Hans */
+.abajo {
+    /*Nueva clase creada para el formulario - Hans */
     font-size: 0.90rem;
-    color: #89BEF5; /*Añadi un cambio de color - Hans */
+    color: #89BEF5;
+    /*Añadi un cambio de color - Hans */
     font-weight: normal;
     text-align: center;
 }
 
-.input-group4{  /*   Modifique esta clase para mi formulario - Hans */
+.input-group4 {
+    /*   Modifique esta clase para mi formulario - Hans */
     display: flex;
     flex-direction: row;
     gap: 20px;
-    justify-content: space-between; /*Este codigo genera mi espaciado entre mis parrafos */
-    border-bottom: 1px solid rgb(176, 174, 174);  /*Este codigo coloca los bordes entre mis parrafos */
+    justify-content: space-between;
+    /*Este codigo genera mi espaciado entre mis parrafos */
+    border-bottom: 1px solid rgb(176, 174, 174);
+    /*Este codigo coloca los bordes entre mis parrafos */
 }
 
 
 @media (max-width: 1462px) {
     .visual {
-    color: #49c691;
-    font-size: 1.8rem;
-    font-weight: bold;
+        color: #49c691;
+        font-size: 1.8rem;
+        font-weight: bold;
     }
+
     .arriba {
         color: #6A92F4;
         font-size: 12px;
         font-weight: bold;
         text-align: start;
     }
-    .ids{
+
+    .ids {
         width: 12%;
     }
 }
@@ -170,43 +189,49 @@ tbody tr td:last-child {
 
 
 /*=========================== Formulario ==========================*/
-.input-group2 input, textarea, select {
+.input-group2 input,
+textarea,
+select {
     width: 100%;
     padding: 10px 15px;
     border-radius: 8px;
     background-color: var(--color-background);
     color: #7B7C89;
 }
+
 .checkout-information,
 .input-group {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    gap: 8px;
 }
+
 .checkout-information {
-	background: #8FBBC8;
+    background: #8FBBC8;
     width: 100%;
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
-	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: all 300ms ease;
 }
-.checkout-information:hover{
+
+.checkout-information:hover {
     box-shadow: none;
 }
 
-.input-group2{
-	display: flex;
-	flex-direction: row;
-	gap: 20px;
+.input-group2 {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
 
-.input-group input{
-	width: 100%;
-	padding: 10px 15px;
-	border-radius: 8px;
-	background-color:var(--color-background);
+.input-group input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: var(--color-background);
     height: 100%;
 }
 
@@ -235,5 +260,14 @@ tbody tr td:last-child {
 
 .pagination .current-page {
     background-color: #49c691;
-    color: #49c691;
+    color: #49c691;
+}
+
+
+
+/* Estilos para mensajes de error */
+.error-message-RegAP {
+    color: red !important;
+    font-size: 10px;
+    font-weight: bold;
 }

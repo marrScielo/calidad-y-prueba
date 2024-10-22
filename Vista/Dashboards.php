@@ -96,7 +96,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
           ?>
         </div>
         <div class="center-divs">
-          <div class="agenda">
+          <div class="agenda" translate="no">
             <?php
             $fecha_actual = new DateTime('now', new DateTimeZone('America/Lima'));
 
@@ -175,7 +175,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
               ?>
               <div style="display:flex; align-items: center;">
                 <a href="TablaCitas.php">
-                  <span style="color: #fff" class="material-symbols-sharp">add_circle</span>
+                  <span style="color: #fff" class="material-symbols-sharp" translate="no">add_circle</span>
                 </a>
               </div>
             </div>
@@ -219,7 +219,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
                 <?php endif; ?>
               </div>
               <div>
-                <a class="btn-addPacientes" href="RegPaciente.php">Agregar Paciente</a>
+                <a class="btn-addPacientes" href="RegPaciente.php" translate="no">Agregar Paciente</a>
               </div>
             </div>
           </div>
@@ -248,7 +248,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
             <!------------------- Final del expenses -------------------->
             <div class="income">
               <div class="middle">
-                <h3 class="estadistica_h3">
+                <h3 class="estadistica_h3" translate="no">
                   <span style=" font-weight: bold; font-size:40px"><?= $totalRegistrosEnCitasConfirmado ?></span> <br>
                   Citas Confirmadas
                 </h3>
@@ -257,16 +257,16 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
             <!------------------- Final del income -------------------->
           </div>
           <div class="div-grafico">
-            <h2 style="text-align: center;">Citas del Ultimo mes</h2>
+            <h2 style="text-align: center;" translate="no">Citas del Ultimo mes</h2>
             <div class="grafico2">
               <div class="grafico">
                 <canvas id="myPieChart"></canvas>
               </div>
             </div>
             <div class="texto-grafico">
-              <h5>Cita Online:<span> <?= $totalRegistrosEnCanalAtraccion ?> </span></h5>
-              <h5>Marketing Digital: <span><?= $totalRegistrosEnCanalAtraccion2 ?> </span></h5>
-              <h5>Referidos: <span><?= $totalRegistrosEnCanalAtraccion3 ?> </span></h5>
+              <h5 translate="no">Cita Online:<span> <?= $totalRegistrosEnCanalAtraccion ?> </span></h5>
+              <h5 translate="no">Marketing Digital: <span><?= $totalRegistrosEnCanalAtraccion2 ?> </span></h5>
+              <h5 translate="no">Referidos: <span><?= $totalRegistrosEnCanalAtraccion3 ?> </span></h5>
             </div>
           </div>
 

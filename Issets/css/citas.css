@@ -7,6 +7,12 @@ main .recent-citas {
     /* Agrega el scrollbar horizontal */
     scrollbar-width: thin;
 }
+@media (min-width: 1200px) {
+    main .recent-citas {
+        display: flex;
+        align-items: self-start;
+    }
+}
 
 main .recent-citas h2 {
     margin-bottom: 0.8rem;
@@ -17,6 +23,11 @@ table {
     border-spacing: 0 10px;
     max-height: 35%;
     transition: all 0.3s;
+}
+@media (min-width: 1024px) {
+    table {
+        flex: 1;
+    }
 }
 
 thead tr th:first-child,
@@ -90,8 +101,9 @@ select {
 .input-group2 {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 22px;
 }
+
 
 .input-group input {
     width: 100%;
@@ -105,6 +117,11 @@ select {
     font-size: 0.8rem;
     color: white;
 }
+
+
+
+
+
 
 .pagination {
     display: flex;
@@ -131,4 +148,8 @@ select {
 
 .checkout-information div {
     margin-bottom: 8px;
+}
+
+.service-modal.active {
+    z-index: 100;
 }
