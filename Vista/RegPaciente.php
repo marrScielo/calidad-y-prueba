@@ -70,7 +70,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                   ?>
                   <div style=" width:190px;" class="input-group">
                     <h3 for="FechaNacimiento">Fecha de nacimiento</h3>
-                    <input type="date" id="FechaNacimiento" name="FechaNacimiento" onchange="calcularEdad()" data-error-target="error-fechaNac"/>
+                    <input type="date" id="FechaNacimiento" name="FechaNacimiento" onchange="calcularEdad()" data-error-target="error-fechaNac" />
                     <span class="error-message" id="error-fechaNac"></span>
                   </div>
                   <div class="input-group">
@@ -93,7 +93,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <div class="input-group2">
                   <div style="width:190px" class="input-group">
                     <h3 for="EstadoCivil">Estado civil</h3>
-                    <select style="text-align:center" class="input" id="EstadoCivil" name="EstadoCivil" data-error-target="error-estadoCivil" >
+                    <select style="text-align:center" class="input" id="EstadoCivil" name="EstadoCivil" data-error-target="error-estadoCivil">
                       <option value="">Seleccionar</option>
                       <option value="soltero">Soltero/a</option>
                       <option value="casado">Casado/a</option>
@@ -113,7 +113,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     <span class="error-message" id="error-genero"></span>
                   </div>
                 </div>
-                <div class="input-group">
+                <div class="input-group" style="width: 100%;">
                   <h3 for="Telefono">Celular</h3>
                   <input type="tel" id="Telefono" class="input" name="Telefono" placeholder="Ejemp. 955888222" style="color: #7B7C89;" data-error-target="error-telefono" />
                   <span class="error-message" id="error-telefono"></span>
@@ -121,7 +121,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <div style="margin-left:2em" id="respuesta2"> </div>
               </div>
               <div class="checkout-information">
-                <div class="input-group">
+                <div class="input-group" style="width: 100%;">
                   <h3 for="Email">Correo Electronico</h3>
                   <input type="Email" id="Email" class="input" name="Email" style="color: #7B7C89;" data-error-target="error-email" />
                   <span class="error-message" id="error-email"></span>
@@ -165,13 +165,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     <span class="error-message" id="error-direccion"></span>
                   </div>
                 </div>
-                <div class="input-group">
-                  <h3 for="AntecedentesMedicos">Antecedentes médicos</h3>
+                <div class="input-group" style="width: 100%;">
+                  <h3 for=" AntecedentesMedicos">Antecedentes médicos</h3>
                   <input type="text" id="AntecedentesMedicos" class="input" name="AntecedentesMedicos" style="color: #7B7C89;" data-error-target="error-antecedentes" />
                   <span class="error-message" id="error-antecedentes"></span>
                 </div>
-                <div class="input-group">
-                  <h3 for="MedicamentosPrescritos">Medicamentos Prescritos</h3>
+                <div class="input-group" style="width: 100%;">
+                  <h3 for=" MedicamentosPrescritos">Medicamentos Prescritos</h3>
                   <input type="text" id="MedicamentosPrescritos" class="input" name="MedicamentosPrescritos" style="color: #7B7C89;" data-error-target="error-medicamentos" />
                   <span class="error-message" id="error-medicamentos"></span>
                 </div>

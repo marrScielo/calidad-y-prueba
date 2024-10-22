@@ -1027,9 +1027,9 @@ select {
 /* Estilos para mensajes de error */
 .error-message {
     color: red !important;
-    font-size: 10px;
-    font-weight: normal;
-    margin: 3px 0 5px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px 0 10px;
     display: none;
     text-align: center;
 }
