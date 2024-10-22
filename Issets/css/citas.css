@@ -7,6 +7,12 @@ main .recent-citas {
     /* Agrega el scrollbar horizontal */
     scrollbar-width: thin;
 }
+@media (min-width: 1200px) {
+    main .recent-citas {
+        display: flex;
+        align-items: self-start;
+    }
+}
 
 main .recent-citas h2 {
     margin-bottom: 0.8rem;
@@ -17,6 +23,11 @@ table {
     border-spacing: 0 10px;
     max-height: 35%;
     transition: all 0.3s;
+}
+@media (min-width: 1024px) {
+    table {
+        flex: 1;
+    }
 }
 
 thead tr th:first-child,
@@ -69,7 +80,7 @@ form {
     width: 100%;
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
-
+    text-align: center;
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
 }
@@ -137,4 +148,8 @@ select {
 
 .checkout-information div {
     margin-bottom: 8px;
+}
+
+.service-modal.active {
+    z-index: 100;
 }

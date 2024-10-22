@@ -180,7 +180,7 @@ td {
   margin-top: 10px;
   padding: 10px;
   border: none;
-  background-color: #49c691;
+  background-color: #534489;
   color: #fff;
   border-radius: 10px;
   font-size: 15px;
@@ -188,6 +188,6 @@ td {
   transition: all 0.3s ease;
 }
 #button1:hover {
-  background-color: #3a9c6e;
+  background-color: #534489;
   cursor: pointer;
 }
