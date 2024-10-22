@@ -882,7 +882,7 @@ select {
     max-width: 600px;
     opacity: 1;
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 1200px) {
         position: fixed;
         top: 0;
         left: 0;
