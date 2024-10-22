@@ -257,7 +257,7 @@ td {
 }
 </style>
 
-<body>
+<body translate="no">
     <?php
         require_once("../Controlador/Paciente/ControllerPaciente.php");
         $Pac = new usernameControlerPaciente();

@@ -22,7 +22,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
     <title>Citas</title>
 </head>
 
-<body>
+<body translate="no">
     <style>
     @media (max-width: 900px) {
         body {}
