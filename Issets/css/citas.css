@@ -149,3 +149,7 @@ select {
 .checkout-information div {
     margin-bottom: 8px;
 }
+
+.service-modal.active {
+    z-index: 100;
+}
