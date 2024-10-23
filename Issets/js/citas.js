@@ -1,6 +1,7 @@
 let currentAppointmentSelectedId = null
 // Elementos del DOM
 const $appointmentsTable = document.getElementById('appointmentsTable')
+const $tableContainer = document.querySelector('.recent-citas')
 const $inputSearchForName = document.getElementById('searchForName')
 const $inputSearchForCode = document.getElementById('searchForCode')
 const $inputSearchForDateStart = document.getElementById('searchForDateStart')
@@ -184,6 +185,7 @@ function updateEditAppointmentModal(appointment) {
     $modalEditAppointment.querySelector('#appointmentReason').value =
         appointment.MotivoCita
     $modalEditAppointment.classList.add('active')
+    $tableContainer.classList.add('active')
 }
 function updateDeleteAppointmentModal(appointment) {
     document.querySelector(
