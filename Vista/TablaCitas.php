@@ -169,9 +169,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                                                 <button class="appointmentTuple__button appointmentTuple__button--edit btnm">
                                                     <span class="material-symbols-outlined" translate="no">edit</span>
+                                                    <p>Editar</p>
                                                 </button>
                                                 <button class="appointmentTuple__button appointmentTuple__button--delete btne">
                                                     <span class="material-symbols-outlined" translate="no">delete</span>
+                                                    <p>Eliminar</p>
                                                 </button>
                                             </div>
                                         </td>
