@@ -43,27 +43,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
         ?>
         <div class="container-form">
           <div class="recent-updates">
-<<<<<<< HEAD
-            <form action="../Crud/Paciente/guardarAtencPaciente.php" method="post">
-              <h4>Atencion al Paciente</h4>
-              <br>
-              <div style="display:flex; flex-direction:row; gap:70px;">
-                <div class="checkout-information">
-                  <div class="input-group2">
-                    <div class="input-group" style="display:none">
-                      <h3 for="IdPaciente">Id Paciente <b style="color:red">*</b></h3>
-                      <div style="display: flex; gap:5px;">
-                        <input id="IdPaciente" type="text" name="IdPaciente" required />
-                        <a class="search id"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
-                      </div>
-                    </div>
-                    <div class="input-group">
-                      <h3 for="codigopac">Codigo Paciente <b style="color:red">*</b></h3>
-                      <div style="display: flex; gap:5px;">
-                        <input id="codigopac" type="text" name="codigopac" class="input" />
-                        <a class="search codigoaa"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
-                      </div>
-=======
             <form id="miFormulario" action="../Crud/Paciente/guardarAtencPaciente.php" method="post">
               <h4><a href="#" onclick="history.go(-1);" style="float: left;color: #6B93F3;">
                   << /a>Atencion al Paciente</h4>
@@ -86,76 +65,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         <a class="search codigoaa"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
                       </div>
                       <span class="error-message-RegAP" id="error-codigopac"></span>
->>>>>>> 905c7910e994dc02b27ccec4969d9781b359aa96
                     </div>
                     <div class="input-group">
                       <h3 for="NomPaciente">Nombre Paciente </h3>
                       <div style="display: flex; gap:5px;">
-<<<<<<< HEAD
-                        <input id="NomPaciente" type="text" name="NomPaciente" class="input" />
-                        <a class="search nom"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <h3 for="Paciente">Paciente</h3>
-                    <input id="Paciente" type="text" name="Paciente" class="input" readonly />
-                  </div>
-                  <div class="input-group2">
-                    <div class="input-group">
-                      <h3 for="MotivoConsulta">Motivo de la Consulta</h3>
-                      <input id="MotivoConsulta" type="text" name="MotivoConsulta" class="input" required />
-                    </div>
-                    <div class="input-group">
-                      <h3 for="FormaContacto">Forma de Contacto</h3>
-                      <input id="FormaContacto" type="text" name="FormaContacto" class="input" required />
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <h3 for="Diagnostico">Diagnostico</h3>
-                    <textarea style="resize: none; padding: 1.2em 1em 2.8em 1em;font-family: 'Montserrat', sans-serif;	font-size: 14px;" type="text" id="Diagnostico" name="Diagnostico" placeholder="Ingrese su diagnostico" required></textarea>
-                  </div>
-                  <div class="input-group">
-                    <h3 for="Tratamiento">Tratamiento</h3>
-                    <textarea style="resize: none; padding: 1.2em 1em 2.8em 1em;font-family: 'Montserrat', sans-serif;	font-size: 14px;" type="text" id="Tratamiento" name="Tratamiento" placeholder="Tratamiento" required></textarea>
-                  </div>
-                </div>
-                <div class="checkout-information">
-                  <div class="input-group">
-                    <h3 for="Observacion">Observacion</h3>
-                    <textarea style="resize: none; padding: 1.2em 1em 2.8em 1em;font-family: 'Montserrat', sans-serif;	font-size: 14px;" type="text" id="Observacion" name="Observacion" placeholder="Observacion" required></textarea>
-                  </div>
-                  <div class="input-group">
-                    <h3 for="UltimosObjetivos">Ultimos Objetivo / Objetivo alcanzado </h3>
-                    <textarea style="resize: none; padding: 1.2em 1em 2.8em 1em;font-family: 'Montserrat', sans-serif;	font-size: 14px;" type="text" id="UltimosObjetivos" name="UltimosObjetivos" placeholder="Objetivos Alcanzados" required></textarea>
-                  </div>
-                  <div class="input-group2">
-                    <div class="input-group">
-                      <h3 for="dsm5 ">DSM5</h3>
-                      <div style="display: flex;gap:5px;">
-                        <input id="dsm5" type="text" name="dsm5" class="input" />
-                        <a class="search btndsm5"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
-                      </div>
-                    </div>
-                    <div class="input-group">
-                      <h3 for="cea10">CEA10</h3>
-                      <div style="display: flex;gap:5px;">
-                        <input id="cea10" type="text" name="cea10" class="input" />
-                        <a class="search btncea10"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="input-group" style="flex-direction: column;    width: 100%;">
-                    <h3 for="DescripcionEnfermedad">Clasificacion</h3>
-                    <div style="display: flex; gap:5px;">
-                      <input id="DescripcionEnfermedad" type="text" name="DescripcionEnfermedad" class="input" />
-                    </div>
-                  </div>
-                  <div class="input-group" style="display: none;">
-                    <h3 for="IdEnfermedad">IdEnfermedad</h3>
-                    <input id="IdEnfermedad" type="text" name="IdEnfermedad" class="input" readonly />
-                  </div>
-=======
                         <input id="NomPaciente" type="text" name="NomPaciente" class="input" data-error-target="error-nombrepac" />
                         <a class="search nom"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
                       </div>
@@ -231,15 +144,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     <input id="IdEnfermedad" type="text" name="IdEnfermedad" class="input" readonly data-error-target="error-idEnfermedad" />
                   </div>
                   <span class="error-message-RegAP" id="error-idEnfermedad"></span>
->>>>>>> 905c7910e994dc02b27ccec4969d9781b359aa96
                 </div>
               </div>
               <br>
               <div class="button-container">
-<<<<<<< HEAD
-                <a href="Historial.php" class="button">Volver</a>
-=======
->>>>>>> 905c7910e994dc02b27ccec4969d9781b359aa96
                 <button id="submitButton" class="button">Registrar</button>
               </div>
             </form>
@@ -248,8 +156,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
       </main>
       <script src="../Issets/js/Dashboard.js"></script>
   </body>
-<<<<<<< HEAD
-=======
   <script src="../Issets/js/validationMessageGeneral.js"></script>
   <script>
     // Llamada a la función que está en el archivo externo
@@ -273,7 +179,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
       validateForm(fieldsConfig);
     });
   </script>
->>>>>>> 905c7910e994dc02b27ccec4969d9781b359aa96
   <script>
     // Buscador de la dsm5
     $(document).ready(function() {
