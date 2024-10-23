@@ -22,61 +22,64 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <title>Citas</title>
     </head>
 
-    <body>
+    <<<<<<< HEAD <body>
         <style>
             @media (max-width: 900px) {
                 body {}
 
-                .container {
-                    width: 100%;
+                =======<body translate="no"><style>@media (max-width: 900px) {
+                    body {}
+
+                    >>>>>>>a2822bdc863c0bf3a3de23e94090e0855cb95f44 .container {
+                        width: 100%;
+                    }
+
+                    .center-divs {
+                        min-width: 900px;
+                    }
+
+                    .contenedor-botones {
+                        min-width: 900px;
+                    }
+
+                    table {
+                        min-width: 900px;
+                    }
+
+                    .animate__animated {
+                        overflow: auto;
+                    }
                 }
 
-                .center-divs {
-                    min-width: 900px;
+                .appointments__header {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    /* padding-block: 1rem; */
+
+                    @media (max-width: 900px) {
+                        flex-direction: column;
+                    }
                 }
 
-                .contenedor-botones {
-                    min-width: 900px;
+                .appointments__filters {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1rem;
+                    padding: 10px 0;
+                    flex-wrap: wrap;
+
+                    .input-buscador {
+                        flex-grow: 1;
+                    }
                 }
 
-                table {
-                    min-width: 900px;
+                input.color-picker {
+                    color: #6a90f1;
+                    height: 33px;
+                    padding: 5px 10px;
                 }
-
-                .animate__animated {
-                    overflow: auto;
-                }
-            }
-
-            .appointments__header {
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-                /* padding-block: 1rem; */
-
-                @media (max-width: 900px) {
-                    flex-direction: column;
-                }
-            }
-
-            .appointments__filters {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 1rem;
-                padding: 10px 0;
-                flex-wrap: wrap;
-
-                .input-buscador {
-                    flex-grow: 1;
-                }
-            }
-
-            input.color-picker {
-                color: #6a90f1;
-                height: 33px;
-                padding: 5px 10px;
-            }
         </style>
         <?php
         require("../Controlador/Cita/ControllerCita.php");
@@ -313,7 +316,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
             mostrarPagina(1);
         </script>
-    </body>
+        </body>
 
     </html>
     <?php

@@ -78,7 +78,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     ?>
                 </div>
                 <div class="appointments__header">
-                    <span class="numeros-pacientes">
+                    <span class="numeros-pacientes" translate="no">
                         <b><?= $rowscita ?></b>
                         Pacientes
                     </span>
@@ -104,7 +104,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     </div>
                 </div>
                 <!-- <div class="separador"></div> -->
-                <div class="container-paciente-tabla">
+                <div class="container-paciente-tabla" translate="no">
                     <table>
                         <!-- Encabezado de la tabla -->
                         <thead>
