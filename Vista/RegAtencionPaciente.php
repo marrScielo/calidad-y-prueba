@@ -44,8 +44,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <div class="container-form">
           <div class="recent-updates">
             <form id="miFormulario" action="../Crud/Paciente/guardarAtencPaciente.php" method="post">
-              <h4><a href="#" onclick="history.go(-1);" style="float: left;color: #6B93F3;">
-                  << /a>Atencion al Paciente</h4>
+              <h4>
+                <a href="#" onclick="history.go(-1);" style="float: left;color: #6B93F3; display: flex; align-items: center;">
+                  <span style="font-size: 1.4em; font-weight: 700;" class="material-symbols-sharp">arrow_back</span>
+                  Atencion al Paciente
+                </a>
+              </h4>
               <br>
               <div style="display:flex; flex-direction:row; gap:70px;">
                 <div class="checkout-information">
@@ -58,7 +62,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         <a class="search id"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
                       </div>
                     </div>
-                    <div class="input-group" style="width: 45%;">
+                    <div class="input-group">
                       <h3 for="codigopac">Codigo Paciente <b style="color:red">*</b></h3>
                       <div style="display: flex; gap:5px;">
                         <input id="codigopac" type="text" name="codigopac" class="input" data-error-target="error-codigopac" />
