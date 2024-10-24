@@ -222,7 +222,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
         document.getElementById('miFormulario').addEventListener('submit', function(e) {
           e.preventDefault();
-          validateForm(fieldsConfig);
+          if (validateForm(fieldsConfig)) {
+            e.target.submit();
+          }
         });
       </script>
   </body>
