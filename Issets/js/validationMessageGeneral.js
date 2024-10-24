@@ -1,10 +1,8 @@
 // Función para inicializar la validación de cualquier campo
 function initializeValidation(inputElement, errorMessage) {
     let errorId  = inputElement.getAttribute('data-error-target');
-    console.log(errorId);
 
     let errorElement = document.getElementById(errorId);
-    console.log(errorElement);
 
     const value = inputElement.tagName === 'P' ? inputElement.innerHTML.trim() : inputElement.value.trim();
     
@@ -40,8 +38,6 @@ function validateForm(fields) {
         }
     });
 
-    // Obtener el formulario y los campos
-    const form = document.querySelector('form');
     let isValid = true;
 
     // Validar cada campo al enviar el formulario
@@ -55,7 +51,5 @@ function validateForm(fields) {
     }
 
     // Si todos los campos son válidos, enviar el formulario
-    if (isValid) {
-        form.submit();
-    }
+    return isValid;
 }
