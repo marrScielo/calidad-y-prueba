@@ -35,11 +35,18 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <div>
           <form action="../Crud/Cita/guardarCita.php" method="post">
             <h4><a href="TablaCitas.php" style="float: left;color: #6B93F3;">
-                Citas<a /></h4>
+                Citas</a></h4>
             <br>
             <div class="checkout-information">
               <a style="display: none;"></a>
               <div class="input-group2">
+                <div class="input-group" style="display:none">
+                  <h3 for="IdPaciente">Id Paciente <b style="color:red">*</b></h3>
+                  <div style="display: flex; gap:5px;">
+                    <input id="IdPaciente" type="text" name="IdPaciente" required />
+                    <a class="search id"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
+                  </div>
+                </div>
                 <div class="input-group" style="width: 50%;">
                   <h3 for="codigopac">Codigo Paciente <b style="color:red">*</b></h3>
                   <div style="display: flex; gap:5%">
