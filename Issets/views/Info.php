@@ -48,8 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         <span class="material-symbols-sharp" translate="no">menu</span>
     </button>
     <div class="theme-toggler">
-        <span class="material-symbols-sharp active" data-theme="light" translate="no">light_mode</span>
         <span class="material-symbols-sharp" data-theme="dark" translate="no">dark_mode</span>
+        <span class="material-symbols-sharp active" data-theme="light" translate="no">light_mode</span>
+
     </div>
 
     <div id="fixed_settings_container">
@@ -168,39 +169,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 </script>
 
 <script>
-function setTheme(theme) {
-    // Agregar o quitar la clase del tema oscuro según el tema
-    document.documentElement.classList.toggle('dark-theme-variables', theme === 'dark');
-    
-    // Actualizar el estado activo de los botones
-    const lightButton = document.querySelector('.theme-toggler span[data-theme="light"]');
-    const darkButton = document.querySelector('.theme-toggler span[data-theme="dark"]');
+    function setTheme(theme) {
+        // Agregar o quitar la clase del tema oscuro según el tema
+        document.documentElement.classList.toggle('dark-theme-variables', theme === 'dark');
 
-    // Cambiar la clase 'active' y asegurarse de que los botones no se activen ambos
-    if (theme === 'dark') {
-        lightButton.classList.remove('active');
-        darkButton.classList.add('active');
-    } else {
-        darkButton.classList.remove('active');
-        lightButton.classList.add('active');
+        // Actualizar el estado activo de los botones
+        const lightButton = document.querySelector('.theme-toggler span[data-theme="light"]');
+        const darkButton = document.querySelector('.theme-toggler span[data-theme="dark"]');
+
+        // Cambiar la clase 'active' y asegurarse de que los botones no se activen ambos
+        if (theme === 'dark') {
+            lightButton.classList.remove('active');
+            darkButton.classList.add('active');
+        } else {
+            darkButton.classList.remove('active');
+            lightButton.classList.add('active');
+        }
+
+        // Guardar el tema seleccionado en localStorage
+        localStorage.setItem('theme', theme);
     }
 
-    // Guardar el tema seleccionado en localStorage
-    localStorage.setItem('theme', theme);
-}
+    function initializeTheme() {
+        // Leer el tema desde localStorage
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
+    }
 
-// Initialize theme when the document is loaded
-document.addEventListener('DOMContentLoaded', initializeTheme);
+    // Inicializar el tema cuando el documento se carga
+    document.addEventListener('DOMContentLoaded', initializeTheme);
 
-// Add event listeners to the theme toggle buttons
-document.querySelector('.theme-toggler span[data-theme="light"]').addEventListener('click', () => {
-    // Si el botón de modo claro es clicado, cambiar a oscuro
-    setTheme('dark');
-});
-
-document.querySelector('.theme-toggler span[data-theme="dark"]').addEventListener('click', () => {
-    // Si el botón de modo oscuro es clicado, cambiar a claro
-    setTheme('light');
-});
-
+    // Añadir event listeners a los botones de cambio de tema
+    document.querySelector('.theme-toggler span[data-theme="light"]').addEventListener('click', () => {
+        setTheme('light');
+    });
+    document.querySelector('.theme-toggler span[data-theme="dark"]').addEventListener('click', () => {
+        setTheme('dark');
+    });
 </script>
