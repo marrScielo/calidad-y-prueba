@@ -31,8 +31,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <div class="container-form">
           <div class="recent-updates">
             <form action="../Crud/Paciente/guardarAreaFamiliar.php" method="post">
-              <h4><a href="RegPaciente.php" style="float: left; color: #6B93F3;">
-                  << /a>Datos Familiares</h4>
+              <h4 translate="no"><a href="RegPaciente.php" style="float: left; color: #6B93F3;">
+                  Datos Familiares</h4>
               <br>
               <div style="display:flex; flex-direction:row; gap:70px;">
                 <div class="checkout-information">
@@ -40,56 +40,56 @@ if (isset($_SESSION['NombrePsicologo'])) {
                   <div class="input-group2">
                     <div class="input-group" style="display:none">
                       <h3 for="IdPaciente">Id Paciente</h3>
-                      <div style="display: flex;gap:5px;">
+                      <div style="display: flex;gap:5px;" translate="no">
                         <input id="IdPaciente" type="text" name="IdPaciente" class="input" required />
                         <a class="search id"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
                       </div>
                     </div>
-                    <div class="input-group" style="width: 100%;">
+                    <div class="input-group" style="width: 100%;" translate="no">
                       <h3 for="codigopac">Codigo Paciente <b style="color:red">*</b></h3>
-                      <div style="display: flex; gap:5px;">
+                      <div style="display: flex; gap:5px;" translate="no">
                         <input id="codigopac" type="text" name="codigopac" class="input" />
                         <a class="search codigoaa"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
                       </div>
                     </div>
-                    <div class="input-group" style="width: 100%;">
+                    <div class="input-group" style="width: 100%;" translate="no">
                       <h3 for="NomPaciente">Nombre Paciente</h3>
                       <div style="display: flex; gap:5px;">
                         <input id="NomPaciente" type="text" name="NomPaciente" class="input" />
-                        <a class="search nom"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
+                        <a class="search nom" translate="no"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
                       </div>
                     </div>
                   </div>
-                  <div class="input-group" style="width: 100%;">
+                  <div class="input-group" style="width: 100%;" translate="no">
                     <h3 for="Paciente">Paciente</h3>
                     <input id="Paciente" type="text" name="Paciente" class="input" readonly />
                   </div>
-                  <div class="input-group" style="width: 100%;">
+                  <div class="input-group" style="width: 100%;" translate="no">
                     <h3 for="NomMadre">Nombre de la Madre</h3>
                     <input id="NomMadre" type="text" name="NomMadre" class="input" placeholder="Aqui tu Nombre de la Madre" required />
                   </div>
-                  <div class="input-group" style="width: 100%;">
+                  <div class="input-group" style="width: 100%;" translate="no">
                     <h3 for="EstadoMadre">Estado de la Madre</h3>
                     <input id="EstadoMadre" type="text" name="EstadoMadre" class="input" placeholder="Aqui tu Nombre de la Madre" required />
                   </div>
-                  <div class="input-group" style="width: 100%;">
+                  <div class="input-group" style="width: 100%;" translate="no">
                     <h3 for="NomPadre">Nombre del Padre</h3>
                     <input type="text" id="NomPadre" name="NomPadre" placeholder="Aqui tu Nombre del Padre" required />
                   </div>
-                  <div class="input-group" style="width: 100%;">
+                  <div class="input-group" style="width: 100%;" translate="no">
                     <h3 for="EstadoPadre">Estado de la Padre</h3>
                     <input type="text" id="EstadoPadre" name="EstadoPadre" placeholder="Aqui tu Nombre del Padre" required />
                   </div>
-                  <div class="input-group" style="width: 100%;">
+                  <div class="input-group" style="width: 100%;" translate="no">
                     <h3 for="NomApoderado">Nombre del Apoderado</h3>
                     <input type="text" id="NomApoderado" name="NomApoderado" placeholder="Aqui tu Nombre del Padre" required />
                   </div>
-                  <div class="input-group" style="width: 100%;">
+                  <div class="input-group" style="width: 100%;" translate="no">
                     <h3 for="EstadoApoderado">Estado de la Apoderado</h3>
                     <input type="text" id="EstadoApoderado" name="EstadoApoderado" placeholder="Aqui tu Nombre del Padre" required />
                   </div>
                 </div>
-                <div class="checkout-information">
+                <div class="checkout-information" translate="no">
                   <div class="input-group2">
                     <div class="input-group" style="width: 100%;">
                       <h3 for="CantHijos">Cantidad de Hijos</h3>
@@ -113,7 +113,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 </div>
               </div>
               <br>
-              <div class="button-container">
+              <div class="button-container" translate="no">
                 <button id="submitButton" class="button">Registrar</button>
               </div>
             </form>
