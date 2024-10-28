@@ -29,9 +29,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 .center-divs{
                     min-width: 900px;
                 }
-                /* .contenedor-botones{
-                    min-width: 900px;
-                } */
 
                 table{
                     min-width: 900px;
@@ -127,7 +124,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <td>
                     <input type="checkbox" class="checkbox" id="checkbox<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>" value="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>">
                 </td>
-                <td style="text-align: start; font-weight:bold;padding: 14px;">
+                <td style="font-weight:bold;padding: 10px;">
                     <a style="cursor:pointer" class="show-info" 
                        data-patient-id="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>" 
                        data-codigo="<?= htmlspecialchars($patient['codigopac'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
@@ -152,7 +149,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         </div>
                     </a>
                 </td>
-                <td class="additional-column" style="font-weight:bold;"><?= htmlspecialchars($patient['IdPaciente'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
+                <td class="additional-column" style="font-weight:bold;"><?= htmlspecialchars($patient['codigopac'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
                 <td class="additional-column" style="font-weight:bold;"><?= htmlspecialchars($patient['Dni'] ?? '', ENT_QUOTES, 'UTF-8') ?></td>
                 <td class="additional-column" style="font-weight:bold;width:25%;text-align: center; margin-left:4%;">
                     <?= htmlspecialchars($patient['Email'] ?? '', ENT_QUOTES, 'UTF-8') ?>
