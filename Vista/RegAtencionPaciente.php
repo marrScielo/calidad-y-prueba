@@ -45,10 +45,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
           <div class="recent-updates">
             <form id="miFormulario" action="../Crud/Paciente/guardarAtencPaciente.php" method="post">
               <h4>
-                <a href="#" onclick="history.go(-1);" style="float: left;color: #6B93F3; display: flex; align-items: center;">
-                  <span style="font-size: 1.4em; font-weight: 700;" class="material-symbols-sharp">arrow_back</span>
                   Atencion al Paciente
-                </a>
               </h4>
               <br>
               <div style="display:flex; flex-direction:row; gap:70px;">
@@ -151,7 +148,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 </div>
               </div>
               <br>
-              <div class="button-container">
+              <div class="button-container">     
+                <button class="button" onclick="history.go(-1); return false;">Volver</button>
                 <button id="submitButton" class="button">Registrar</button>
               </div>
             </form>
