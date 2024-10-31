@@ -183,8 +183,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
             </div>
             <br>
             <div class="button-container">
-              <a class="btn bg-celeste" href="RegAreaFamiliar.php" id="contenido" style="margin-top: 10px;display: flex;gap: 10px;font-size:15px; ">Registro Familiar</a>
-              <a class="btn bg-celeste" href="RegAtencionPaciente.php" id="contenido" style="margin-top: 10px;display: flex;gap: 10px;font-size:15px;">Atencion al Paciente</a>
+              <a class="btn bg-celeste" href="RegAreaFamiliar.php" id="contenido">Registro Familiar</a>
+              <a class="btn bg-celeste" href="RegAtencionPaciente.php" id="contenido">Atencion al Paciente</a>
               <button id="submitButton" class="btn bg-azul">Registrar</button>
             </div>
           </form>
