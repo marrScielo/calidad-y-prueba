@@ -197,7 +197,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
       </div>
       <script src="../Issets/js/dashboard.js"></script>
       <script src="../js/ubicacion.js"></script>
-      <script src="../Issets/js/validationMessageGeneral.js"></script>
       <script>
         // Llamada a la función que está en el archivo externo
         const fieldsConfig = {
@@ -227,6 +226,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
           }
         });
       </script>
+      <script src="../Issets/js/validationMessageGeneral.js" defer></script>
   </body>
 
   </html>
