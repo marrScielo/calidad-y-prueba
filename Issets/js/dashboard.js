@@ -11,6 +11,8 @@ closeBtn.addEventListener('click', () =>{
     sideMenu.style.display = 'none';    
 })
 
+/* Conflicto con la funcion del boton de cambio de tema en info.php
+
 themeToggler.addEventListener('click', () =>{
     document.body.classList.toggle('dark-theme-variables');
     
@@ -18,6 +20,8 @@ themeToggler.addEventListener('click', () =>{
     themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
 
 })
+
+*/
 
 const btnajuste = document.querySelector(".ajuste-info");
 const closea = document.querySelector(".closeaaa");

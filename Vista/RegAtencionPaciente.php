@@ -45,10 +45,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
           <div class="recent-updates">
             <form id="miFormulario" action="../Crud/Paciente/guardarAtencPaciente.php" method="post">
               <h4>
-                <a href="#" onclick="history.go(-1);" style="float: left;color: #6B93F3; display: flex; align-items: center;">
-                  <span style="font-size: 1.4em; font-weight: 700;" class="material-symbols-sharp">arrow_back</span>
-                  Atencion al Paciente
-                </a>
+                Atencion al Paciente
               </h4>
               <br>
               <div style="display:flex; flex-direction:row; gap:70px;">
@@ -136,10 +133,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
                       <span class="error-message-RegAP" id="error-cea10"></span>
                     </div>
                   </div>
-                  <div class="input-group" style="flex-direction: column;    width: 100%;">
+                  <div class="input-group" style="flex-direction: column;   width: 100%;">
                     <h3 for="DescripcionEnfermedad">Clasificacion</h3>
-                    <div style="display: flex; gap:5px;">
-                      <input id="DescripcionEnfermedad" type="text" name="DescripcionEnfermedad" class="input" data-error-target="error-enfermedad" />
+                    <div style="display: flex; gap:5px; ">
+                      <input style="width: 100%;" id="DescripcionEnfermedad" type="text" name="DescripcionEnfermedad" class="input" data-error-target="error-enfermedad" />
                     </div>
                     <span class="error-message-RegAP" id="error-enfermedad"></span>
                   </div>
@@ -152,6 +149,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
               </div>
               <br>
               <div class="button-container">
+                <button class="button" onclick="history.go(-1); return false;">Volver</button>
                 <button id="submitButton" class="button">Registrar</button>
               </div>
             </form>
@@ -180,7 +178,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
     document.getElementById('miFormulario').addEventListener('submit', function(e) {
       e.preventDefault();
-      validateForm(fieldsConfig);
+      if (validateForm(fieldsConfig)) {
+        e.target.submit();
+      }
     });
   </script>
   <script>

@@ -1,11 +1,10 @@
 // Función para inicializar la validación de cualquier campo
 function initializeValidation(inputElement, errorMessage) {
-    let errorId  = inputElement.getAttribute('data-error-target');
-
+    let errorId = inputElement.getAttribute('data-error-target');
     let errorElement = document.getElementById(errorId);
 
     const value = inputElement.tagName === 'P' ? inputElement.innerHTML.trim() : inputElement.value.trim();
-    
+
     if (value === '' || (inputElement.tagName === 'SELECT' && inputElement.value === '')) {
         if (errorElement) {
             errorElement.style.display = 'block';
@@ -22,21 +21,28 @@ function initializeValidation(inputElement, errorMessage) {
     }
 }
 
+// Función para inicializar los eventos de validación
+function initializeValidationEvents(fields) {
+    // Recorrer los campos y añadir eventos de validación
+    for (const [fieldId, errorMessage] of Object.entries(fields)) {
+        const fieldElement = document.getElementById(fieldId);
+        console.log(`Field element for ${fieldId}:`, fieldElement);
+
+        // Asegurar que el campo existe antes de agregar los eventos
+        if (fieldElement) {
+            fieldElement.addEventListener('input', () => initializeValidation(fieldElement, errorMessage));
+            fieldElement.addEventListener('change', () => initializeValidation(fieldElement, errorMessage));
+        }
+    }
+}
+
 // Función principal para validar el formulario que recibe los campos y sus mensajes
 function validateForm(fields) {
-    // Agregar el evento DOMContentLoaded
-    document.addEventListener('DOMContentLoaded', () => {
-        // Recorrer los campos y añadir eventos de validación
-        for (const [fieldId, errorMessage] of Object.entries(fields)) {
-            const fieldElement = document.getElementById(fieldId);
-
-            // Asegurar que el campo existe antes de agregar los eventos
-            if (fieldElement) {
-                fieldElement.addEventListener('input', () => initializeValidation(fieldElement, errorMessage));
-                fieldElement.addEventListener('change', () => initializeValidation(fieldElement, errorMessage));
-            }
-        }
-    });
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => initializeValidationEvents(fields));
+    } else {
+        initializeValidationEvents(fields);
+    }
 
     let isValid = true;
 

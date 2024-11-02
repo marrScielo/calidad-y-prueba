@@ -44,18 +44,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 </style>
 <!-- El resto de tu código HTML y JavaScript -->
 <div class="top <?php echo ($theme === 'dark') ? 'dark-mode' : ''; ?>" id="top_fixed">
-    <button id="menu-btn" style="display: none;">
+
+    <!-- Conflictos con el boton de cambio de tema
+    <button id="menu-btn" style="display: flex;">
         <span class="material-symbols-sharp" translate="no">menu</span>
-    </button>
+    </button> -->
+
     <div class="theme-toggler">
         <span class="material-symbols-sharp" data-theme="dark" translate="no">dark_mode</span>
         <span class="material-symbols-sharp active" data-theme="light" translate="no">light_mode</span>
-
     </div>
 
     <div id="fixed_settings_container">
         <div id="fixed_settings">
-            <a class="ajuste-info">
+            <a class="ajuste-info" id="menu-btn">
                 <span class="material-symbols-sharp" translate="no">settings</span>
             </a>
         </div>

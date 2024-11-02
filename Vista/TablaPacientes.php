@@ -29,13 +29,17 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     width: 100%;
                 }
 
-                .center-divs {
+                <<<<<<< HEAD=======.center-divs {
+                    min-width: 900px;
+                }
+
+                >>>>>>>67eb039c15af50fcdd05148360e386384faa336c .center-divs {
                     min-width: 900px;
                 }
 
                 /* .contenedor-botones{
-                                                                                                    min-width: 900px;
-                                                                                                } */
+                                                                                                            min-width: 900px;
+                                                                                                        } */
 
                 table {
                     min-width: 900px;
