@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 
     <div id="fixed_settings_container">
         <div id="fixed_settings">
-            <a class="ajuste-info">
+            <a class="ajuste-info" id="menu-btn">
                 <span class="material-symbols-sharp" translate="no">settings</span>
             </a>
         </div>
