@@ -12,7 +12,6 @@ class usernameControlerCita
     public function guardar($IdPaciente, $MotivoCita, $EstadoCita, $FechaInicioCita, $DuracionCita, $FechaFinCita, $TipoCita, $ColorFondo, $IdPsicologo, $CanalCita, $EtiquetaCita)
     {
         $id = $this->model->insertarCita($IdPaciente, $MotivoCita, $EstadoCita, $FechaInicioCita, $DuracionCita, $FechaFinCita, $TipoCita, $ColorFondo, $IdPsicologo, $CanalCita, $EtiquetaCita);
-        return ($id != false) ? header("Location:../../Vista/RegCitas.php") : header("Location:../../Vista/RegCitas.php");
     }
 
     public function getAll($idPsicologo, $IdCita = null, $nomPaciente = null, $codigo = null, $dateStart = null, $dateEnd = null, $limit = 10, $offset = 0)

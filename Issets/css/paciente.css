@@ -27,7 +27,6 @@ table {
     max-height: 35%;
 }
 
-
 thead tr th:first-child,
 tbody tr td:first-child {
     padding: 10px 5px;
@@ -91,8 +90,7 @@ tbody tr td:last-child {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-block: 5px;
 }
 
 .input-group_1 {
@@ -140,7 +138,7 @@ tbody tr td:last-child {
 
 .arriba {
     /*Nueva clase creada para el formulario - Hans */
-    color: #6A92F4;
+    color: #6a92f4;
     font-size: 15px;
     font-weight: bold;
     text-align: start;
@@ -148,8 +146,8 @@ tbody tr td:last-child {
 
 .abajo {
     /*Nueva clase creada para el formulario - Hans */
-    font-size: 0.90rem;
-    color: #89BEF5;
+    font-size: 0.9rem;
+    color: #89bef5;
     /*Añadi un cambio de color - Hans */
     font-weight: normal;
     text-align: center;
@@ -166,7 +164,6 @@ tbody tr td:last-child {
     /*Este codigo coloca los bordes entre mis parrafos */
 }
 
-
 @media (max-width: 1462px) {
     .visual {
         color: #49c691;
@@ -175,7 +172,7 @@ tbody tr td:last-child {
     }
 
     .arriba {
-        color: #6A92F4;
+        color: #6a92f4;
         font-size: 12px;
         font-weight: bold;
         text-align: start;
@@ -186,8 +183,6 @@ tbody tr td:last-child {
     }
 }
 
-
-
 /*=========================== Formulario ==========================*/
 .input-group2 input,
 textarea,
@@ -196,7 +191,7 @@ select {
     padding: 10px 15px;
     border-radius: 8px;
     background-color: var(--color-background);
-    color: #7B7C89;
+    color: #7b7c89;
 }
 
 .checkout-information,
@@ -204,14 +199,13 @@ select {
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    gap: 8px;
+    gap: 4px;
 }
 
 .checkout-information {
-    background: #8FBBC8;
+    background: #8fbbc8;
     width: 100%;
     border-radius: var(--card-border-radius);
-    padding: var(--card-padding);
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: all 300ms ease;
@@ -235,9 +229,8 @@ select {
     height: 100%;
 }
 
-
 .input-group h3 {
-    font-size: 0.80rem;
+    font-size: 0.8rem;
     color: white;
 }
 
@@ -262,8 +255,6 @@ select {
     background-color: #49c691;
     color: #49c691;
 }
-
-
 
 /* Estilos para mensajes de error */
 .error-message-RegAP {

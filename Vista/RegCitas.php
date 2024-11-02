@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['NombrePsicologo'])) {
-?>
+  ?>
   <!DOCTYPE html>
   <html lang="en">
 
@@ -9,7 +9,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link rel="stylesheet" href="../Issets/css/main.css">
     <link rel="stylesheet" href="../Issets/css/citas.css">
     <link rel="icon" href="../img/favicon.png">
@@ -33,7 +34,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         $rows = $obj->ver($_SESSION['IdPsicologo']);
         ?>
         <div>
-          <form action="../Crud/Cita/guardarCita.php" method="post">
+          <form action="../Crud/Cita/gu ardarCita.php" method="post">
             <h4><a href="TablaCitas.php" style="float: left;color: #6B93F3;">
                 Citas</a></h4>
             <br>
@@ -51,14 +52,16 @@ if (isset($_SESSION['NombrePsicologo'])) {
                   <h3 for="codigopac">Codigo Paciente <b style="color:red">*</b></h3>
                   <div style="display: flex; gap:5%">
                     <input id="codigopac" type="text" name="codigopac" class="input" />
-                    <a class="search codigoaa" translate="no"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
+                    <a class="search codigoaa" translate="no"><span style="font-size:4em"
+                        class="material-symbols-sharp">search</span></a>
                   </div>
                 </div>
                 <div class="input-group" style="width: 50%;">
                   <h3 for="NomPaciente">Nombre Paciente <b style="color:red">*</b></h3>
                   <div style="display: flex; gap:5%;">
                     <input id="NomPaciente" type="text" name="NomPaciente" required />
-                    <a class="search nom" translate="no"><span style="font-size:4em " class="material-symbols-sharp">search</span></a>
+                    <a class="search nom" translate="no"><span style="font-size:4em "
+                        class="material-symbols-sharp">search</span></a>
                   </div>
                 </div>
               </div>
@@ -76,7 +79,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
               </div>
               <div class="input-group">
                 <h3 for="MotivoCita">Motivo de la Consutla <b style="color:red">*</b></h3>
-                <textarea style="resize: none; padding: 1.2em 1em 2.8em 1em;font-family: 'Montserrat', sans-serif;	font-size: 14px;" type="text" id="MotivoCita" name="MotivoCita" required></textarea>
+                <textarea
+                  style="resize: none; padding: 1.2em 1em 2.8em 1em;font-family: 'Montserrat', sans-serif;	font-size: 14px;"
+                  type="text" id="MotivoCita" name="MotivoCita" required></textarea>
               </div>
               <div class="input-group2">
                 <div class="input-group" style="width:50%">
@@ -90,7 +95,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 </div>
                 <div class="input-group" style="width:50%; ">
                   <h3 for="ColorFondo">Color de Cita <b style="color:red;">*</b></h3>
-                  <input type="color" value="#f38238" id="ColorFondo" name="ColorFondo" list="colorOptions" style="height: 33px; margin-top: 10px">
+                  <input type="color" value="#f38238" id="ColorFondo" name="ColorFondo" list="colorOptions"
+                    style="height: 33px; margin-top: 10px">
                   <datalist id="colorOptions">
                     <option value="#b4d77b">Rojo</option>
                     <option value="#9274b3">Verde</option>
@@ -102,11 +108,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
               /* FECHA LIMITE  */
               date_default_timezone_set('America/Lima');
               $fechamin = date("Y-m-d")
-              ?>
+                ?>
               <div class="input-group2">
                 <div class="input-group" style="width: 50%">
                   <h3 for="FechaInicioCita">Fecha de Cita<b style="color:red">*</b></h3>
-                  <input type="date" id="FechaInicioCita" name="FechaInicioCita" min="<?= $fechamin ?>" value="<?= $fechamin ?>">
+                  <input type="date" id="FechaInicioCita" name="FechaInicioCita" min="<?= $fechamin ?>"
+                    value="<?= $fechamin ?>">
                 </div>
                 <div class="input-group" style="width: 50%">
                   <h3 for="HoraInicio">Hora de Cita <b style="color:red">*</b></h3>
@@ -165,7 +172,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
               </div>
               <div class="input-group" style="display: none">
                 <h3 for="IdPsicologo">IdPsicologo </h3>
-                <input type="text" id="IdPsicologo" name="IdPsicologo" value="<?= $_SESSION['IdPsicologo'] ?>" placeholder="Ingrese algun Antecedente Medico" />
+                <input type="text" id="IdPsicologo" name="IdPsicologo" value="<?= $_SESSION['IdPsicologo'] ?>"
+                  placeholder="Ingrese algun Antecedente Medico" />
               </div>
               <br>
             </div>
@@ -199,8 +207,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
         }
       });
       //Buscador del paciente segun su id 
-      $(document).ready(function() {
-        $('.codigoaa').click(function() {
+      $(document).ready(function () {
+        $('.codigoaa').click(function () {
           var codigopac = $('#codigopac').val();
           var idPsicologo = <?php echo $_SESSION['IdPsicologo']; ?>;
 
@@ -212,7 +220,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
               codigopac: codigopac,
               idPsicologo: idPsicologo
             },
-            success: function(response) {
+            success: function (response) {
               if (response.hasOwnProperty('error')) {
                 $('#Paciente').val(response.error);
                 $('#IdPaciente').val('');
@@ -225,7 +233,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 $('#correo').val(response.correo);
               }
             },
-            error: function() {
+            error: function () {
               $('#Paciente').val('Error al procesar la solicitud');
               $('#NomPaciente').val('');
               $('#IdPaciente').val('');
@@ -235,8 +243,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
       });
 
       // Buscador paciente segun su nombre 
-      $(document).ready(function() {
-        $('.nom').click(function() {
+      $(document).ready(function () {
+        $('.nom').click(function () {
           var NomPaciente = $('#NomPaciente').val();
           var idPsicologo = <?php echo $_SESSION['IdPsicologo']; ?>;
 
@@ -248,7 +256,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
               NomPaciente: NomPaciente,
               idPsicologo: idPsicologo
             },
-            success: function(response) {
+            success: function (response) {
               if (response.hasOwnProperty('error')) {
                 $('#Paciente').val(response.error);
                 $('#IdPaciente').val('');
@@ -259,7 +267,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 $('#codigopac').val(response.codigopac);
               }
             },
-            error: function() {
+            error: function () {
               $('#Paciente').val('Error al procesar la solicitud');
               $('#IdPaciente').val('');
               $('#codigopac').val('');
@@ -334,7 +342,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
   </body>
 
   </html>
-<?php
+  <?php
 } else {
   header("Location: ../Index.php");
 }
