@@ -14,6 +14,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link rel="stylesheet" href="../Issets/css/historial.css">
     <link rel="stylesheet" href="../Issets/css/main.css">
+    <link rel="stylesheet" href="../Issets/css/blogpsico.css">
     <link rel="stylesheet" href="../Issets/css/panelblog.css">
     <link rel="icon" href="../img/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -23,22 +24,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
     <style>
     /* Estilos para tablets (pantallas de hasta 768px de ancho) */
     @media (max-width: 768px) {
-        .container {
-            flex-direction: column;
-            padding: 10px;
-        }
-
-        .form-container {
-            width: 100%;
-            padding: 10px;
-        }
-
-        table {
-            width: 100%;
-            display: block;
-            overflow-x: auto;
-        }
-
         th,
         td {
             font-size: 14px;
@@ -78,11 +63,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
     /* Media queries para dispositivos móviles */
     @media only screen and (max-width: 600px) {
-        .form-container {
-            width: 100%;
-            padding: 5px;
-        }
-
         th,
         td {
             font-size: 12px;
@@ -163,10 +143,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     ?>
             </div>
             <div class="form-container">
-                <a class="button-arriba" style="padding:10px 30px; font-size:15px;" href="Blog.php">
-                    <i id="search-icon" class="fas fa-arrow-circle-left add-icon" style="margin-right: 10px;"></i>Volver
-                </a>
-                <table>
+                <table class="table__blog">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -203,6 +180,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             ?>
                     </tbody>
                 </table>
+
+                <a class="button-arriba" href="Blog.php">
+                    <i id="search-icon" class="fas fa-arrow-circle-left add-icon" style="margin-right: 10px;"></i>Volver
+                </a>
             </div>
         </main>
     </div>

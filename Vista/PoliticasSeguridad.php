@@ -22,7 +22,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
     $obj = new usernameControlerPaciente();
     $departamentos = $obj->MostrarDepartamento();
     ?>
-    <div class="containerTotal">
+    <div class="container">
       <?php
       require_once '../Issets/views/Menu.php';
       ?>
@@ -33,20 +33,17 @@ if (isset($_SESSION['NombrePsicologo'])) {
         ?>
         <section class="seguridad-section">
           <section class="wave-contenedor website">
-            <img src="../Issets/images/1img.jpeg" alt="">
             <div class="contenedor-textos-main">
-              <h5>CARACTERISTICAS</h5>
               <h2 class="titulo left"><strong>Seguridad</strong></h2>
-              <p class="parrafo">Nuestra prioridad número uno es la seguridad de los datos de pacientes,médicos y clínica.
-                Protegemos toda la información de modo que sus datos estén completamente a salvo de tipos sin escrúpulos
-                que
-                tratarán de invadir su privacidad o la de sus pacientes.</p>
-
+              <p class="parrafo">Nuestra prioridad número uno es la seguridad de los datos de pacientes,médicos y clínica. Protegemos toda la información de modo que sus datos estén completamente a salvo de tipos sin escrúpulos que tratarán de invadir su privacidad o la de sus pacientes.</p>
               <!-- <a href="" class="cta">Registrate gratis</a> -->
             </div>
+            <div class="contenedor-img">
+              <img src="../Issets/images/1img.jpeg" alt="Imagen Seguridad">
+            </div>
           </section>
-          <section class="info-last">
-            <div class="contenedor last-section">
+          <section class="info-last contenedor">
+            <div class="last-section">
               <div class="contenedor-textos-main">
                 <h2 class="titulo left"><strong>En Contigo Voy todo gira alrededor de conseguir la máxima
                     seguridad</strong>
@@ -69,26 +66,19 @@ if (isset($_SESSION['NombrePsicologo'])) {
               <img src="../Issets/images/confide.svg" alt="">
             </div>
           </section>
-          <section class="info-last">
-            <div class="contenedor last-section">
-              <h2 class="titulo left"><strong>Así es cómo Contigo Voy mantiene todo bajo llave:</strong> </h2>
+          <section class="info-last contenedor">
+            <div class="last-section">
+              <h2 class="titulo left"><strong>Así es cómo Contigo Voy mantiene todo bajo llave</strong> </h2>
               <section id="caracteristicas">
-
                 <ul>
-                  <li>✔️ Nos tomamos la ley GDPR muy en serio, y desarrollamos nuestro sistema bajo estas reglas desde el
-                    primer dia</li>
-                  <li>✔️ Acceso basado en roles para garantizar que sólo las personas asignadas puedan ver la información
-                  </li>
-                  <li>✔️ Certificado SSL de 2048 bits suministrado por Symantec Thawte, una autoridad con prestigio
-                    mundial
-                  </li>
-                  <li>✔️ Almacenamiento en la nube,con servidores en cada uno de los países donde estamos presentes</li>
-                  <li>✔️ Nuestros centros de datos son de alta seguridad utilizados por los principales bancos e
-                    instituciones finacieras</li>
-                  <li>✔️ Todos los datos que almacenamos están disponibles en todo momento para usted y pueden ser
-                    destruidos permanentemente.</li>
+                  <li>✔️ Nos tomamos la ley GDPR muy en serio, y desarrollamos nuestro sistema bajo estas reglas desde el primer día.</li>
+                  <li>✔️ Acceso basado en roles para garantizar que sólo las personas asignadas puedan ver la información.</li>
+                  <li>✔️ Certificado SSL de 2048 bits suministrado por Symantec Thawte, una autoridad con prestigio mundial.</li>
+                  <li>✔️ Almacenamiento en la nube,con servidores en cada uno de los países donde estamos presentes.</li>
+                  <li>✔️ Nuestros centros de datos son de alta seguridad utilizados por los principales bancos e instituciones finacieras.</li>
+                  <li>✔️ Todos los datos que almacenamos están disponibles en todo momento para usted y pueden ser destruidos permanentemente.</li>
                   <br>
-                  <li>Ofrezca a sus pacientes y colegas las protección que merecen</li>
+                  <li>Ofrezca a sus pacientes y colegas las protección que merecen.</li>
                 </ul>
               </section>
           </section>

@@ -4,13 +4,7 @@ class UserModelCita
     private $PDO;
     public function __construct()
     {
-        //SOLO ACEPTA RUTAS ABSOLUTAS
-
-        //local
-        require_once(__DIR__."/../../conexion/conexion.php");
-        
-        //hosting
-        //require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");
+        require_once(__DIR__ . "/../../conexion/conexion.php");
 
         $con = new conexion();
         $this->PDO = $con->conexion();
@@ -34,6 +28,57 @@ class UserModelCita
 
         return ($statement->execute()) ? $this->PDO->lastInsertId() : false;
     }
+    public function getAll($idPsicologo, $IdCita = null, $nomPaciente = null, $codigo = null, $dateStart = null, $dateEnd = null, $limit = 10, $offset = 0)
+    {
+        $query = "SELECT c.IdCita, p.NomPaciente, c.MotivoCita, c.EstadoCita, c.FechaInicioCita, c.Duracioncita, c.TipoCita, c.ColorFondo, ps.NombrePsicologo, c.CanalCita, c.EtiquetaCita, p.codigopac
+                FROM cita c
+                INNER JOIN paciente p ON c.IdPaciente = p.IdPaciente
+                INNER JOIN psicologo ps ON c.IdPsicologo = ps.IdPsicologo
+                WHERE c.IdPsicologo = :idPsicologo";
+
+        // Crear un array de parámetros y agregar condiciones opcionales
+        $params = [':idPsicologo' => $idPsicologo];
+
+        // Condicionales para agregar filtros opcionales
+        if ($nomPaciente) {
+            $query .= " AND p.NomPaciente LIKE :nomPaciente";
+            $params[':nomPaciente'] = "%$nomPaciente%";
+        }
+        if (!empty($codigo)) {
+            $query .= " AND p.codigopac LIKE :codigo";
+            $params[':codigo'] = "%$codigo%";
+        }
+
+        if ($dateStart && $dateEnd) {
+            $query .= " AND c.FechaInicioCita BETWEEN :dateStart AND :dateEnd";
+            $params[':dateStart'] = $dateStart;
+            $params[':dateEnd'] = $dateEnd;
+        }
+
+        if ($IdCita) {
+            $query .= " AND c.IdCita = :IdCita";
+            $params[':IdCita'] = $IdCita;
+        }
+        // Agregar limit y offset
+        $query .= " LIMIT :limit OFFSET :offset";
+        $params[':limit'] = $limit;
+        $params[':offset'] = $offset;
+        
+        // Preparar y ejecutar la consulta
+        $statement = $this->PDO->prepare($query);
+        // Vincular los valores
+        foreach ($params as $key => $value) {
+            if (is_int($value)) {
+                $statement->bindValue($key, $value, PDO::PARAM_INT);
+            } else {
+                $statement->bindValue($key, $value, PDO::PARAM_STR);
+            }
+        }
+
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     // Para ver datos completos de la cita
     public function ver($idUsuario, $limit, $offset)
@@ -44,15 +89,15 @@ class UserModelCita
                                           INNER JOIN psicologo ps ON c.IdPsicologo = ps.IdPsicologo
                                           WHERE c.IdPsicologo = :idUsuario
                                           LIMIT :limit OFFSET :offset");
-    
+
         $statement->bindValue(':idUsuario', $idUsuario, PDO::PARAM_INT);
         $statement->bindValue(':limit', $limit, PDO::PARAM_INT);
         $statement->bindValue(':offset', $offset, PDO::PARAM_INT);
         $statement->execute();
-    
+
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
     // Eliminar cita seleccionada 
     public function eliminar($id)
     {
@@ -103,6 +148,51 @@ class UserModelCita
     }
 
     // Contar el total de citas
+    public function totalCitas($idPsicologo, $IdCita = null, $nomPaciente = null, $codigo = null, $dateStart = null, $dateEnd = null)
+    {
+        $query = "SELECT COUNT(*) AS cantidad
+                FROM cita c
+                INNER JOIN paciente p ON c.IdPaciente = p.IdPaciente
+                INNER JOIN psicologo ps ON c.IdPsicologo = ps.IdPsicologo
+                WHERE c.IdPsicologo = :idPsicologo";
+
+        // Crear un array de parámetros y agregar condiciones opcionales
+        $params = [':idPsicologo' => $idPsicologo];
+
+        // Condicionales para agregar filtros opcionales
+        if ($nomPaciente) {
+            $query .= " AND p.NomPaciente LIKE :nomPaciente";
+            $params[':nomPaciente'] = "%$nomPaciente%";
+        }
+        if (!empty($codigo)) {
+            $query .= " AND p.codigopac LIKE :codigo";
+            $params[':codigo'] = "%$codigo%";
+        }
+
+        if ($dateStart && $dateEnd) {
+            $query .= " AND c.FechaInicioCita BETWEEN :dateStart AND :dateEnd";
+            $params[':dateStart'] = $dateStart;
+            $params[':dateEnd'] = $dateEnd;
+        }
+
+        if ($IdCita) {
+            $query .= " AND c.IdCita = :IdCita";
+            $params[':IdCita'] = $IdCita;
+        }
+        $statement = $this->PDO->prepare($query);
+        // Vincular los valores
+        foreach ($params as $key => $value) {
+            if (is_int($value)) {
+                $statement->bindValue($key, $value, PDO::PARAM_INT);
+            } else {
+                $statement->bindValue($key, $value, PDO::PARAM_STR);
+            }
+        }
+
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
     public function contarRegistrosEnCitas($id)
     {
         $statement = $this->PDO->prepare("SELECT COUNT(*) as total FROM cita WHERE IdPsicologo = :idPsicologo");
@@ -331,7 +421,8 @@ class UserModelCita
             return 0;
         }
     }
-    public function obtenerProximaCita($id){
+    public function obtenerProximaCita($id)
+    {
         $fechaActual = date("Y-m-d");
         $statement = $this->PDO->prepare("Select FechaInicioCita FROM paciente where IdPsicologo = :idPsicologo ");
     }

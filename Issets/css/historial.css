@@ -1,3 +1,36 @@
+.recent-updates {
+    margin-block-start: 20px;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+}
+@media (min-width: 768px) {
+    .recent-updates {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        margin-block-start: 30px;
+    }
+}
+@media (min-width: 1024px) {
+    .recent-updates {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (min-width: 1400px) {
+    .recent-updates {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.input-buscador {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .input-buscador,
+    .button-arriba {
+        max-width: 400px;
+    }
+}
+
 /*---Para ubicar el side navbar y la vista de forma correcta---*/
 .containerTotal {
     display: grid;
@@ -44,16 +77,40 @@
 }
 /*------------Estilos del container paciente------------*/
 .container-paciente-tabla {
-    width: 100%;
-    align-items: center;
-    padding-top: 2rem;
-    display: grid;
-    grid-template-columns: 1fr;
+    max-width: 900px;
+    margin-inline: auto;
+    margin-top: 30px;   
+    padding: .5rem 1rem 1rem;
+    border-radius: 10px;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+}
+@media (min-width: 768px) {
+    .container-paciente-tabla {
+        padding: 1rem 2rem 2rem;
+        margin-top: 40px;
+    }
+}
+.container-table table {
+    border: none;
+}
+.table-head th {
+    font-size: 13px;
+}
+.table-body td {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-dark);
+}
+.table-body p {
+    color: var(--color-dark);
 }
 /*-Para cuando cambie a active-------*/
 .container-paciente-tabla.active {
-    grid-template-columns: 40% 60%;
-    gap: 0rem;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
     width: 100%;
     grid-template-rows: auto; /* Establece grid-template-rows a auto para que ambas filas se ajusten automáticamente al contenido */
     padding-left: 2rem;
@@ -100,6 +157,7 @@
     gap: 2px;
 }
 .visual2 {
+    text-align: start;
     color: #6a92f4;
     font-size: 22px;
     font-weight: bold;
@@ -110,7 +168,7 @@
     margin-top: 1rem;
 }
 .ci-input-group .arriba {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: #8fbbc8;
 }
@@ -123,12 +181,12 @@
     font-size: 14px;
     font-weight: 700;
     text-align: start;
+    line-height: 1.5;
 }
 /*---------Tabla (registros del inicio de la vista)---------*/
 table {
     width: 100%;
-    margin-top: 0.5rem;
-    border-spacing: 0.5rem;
+    /* border-spacing: 0 0.5rem; */
 }
 /*----------------Tabla cuando este en active---------------*/
 
@@ -178,20 +236,21 @@ table {
     display: flex;
 }
 .green-button {
-    width: 130px;
-    height: 30px;
+    margin-block-start: 10px;
+    width: 200px;
+    height: 40px;
     border-radius: 30px;
-    font-size: 10.2px;
+    font-size: 13px;
+    font-weight: 700;
     background-color: #52c291;
     color: white;
+    transition: all 0.3s ease;
 }
 .green-button:hover {
-    color: var(--color-dark);
+    color: whitesmoke;
     font-weight: 700;
     cursor: pointer;
-    background-color: var(--color-white);
-    border: 1.5px solid var(--color-primary);
-    transition: all 0.5s ease-in-out;
+    background-color: #49c691;
 }
 
 /*--------------------- Responsive -------------------------*/
@@ -235,12 +294,32 @@ table {
     .ci-input-group .abajo {
         font-size: 0.7rem;
     }
-    .green-button {
-        width: 115px;
-        height: 25px;
-        border-radius: 30px;
-        font-size: 10px;
-        background-color: #52c291;
-        color: white;
+}
+#notes-textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--color-dark-variant);
+    font-size: 14px;
+    color: var(--color-dark);
+    resize: none;
+}
+#update-btn,
+#edit-note-btn {
+    margin-left: 14px;
+    background-color: var(--color-dark-variant);
+    color: var(--color-white);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 9px 12px;
+}
+@media (min-width: 1700px) {
+    #update-btn,
+    #edit-note-btn {
+        width: 70%;
+        font-size: 16px;
+        padding: 10px 15px;
     }
 }

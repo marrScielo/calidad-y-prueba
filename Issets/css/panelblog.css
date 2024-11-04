@@ -1,3 +1,43 @@
+.table__blog {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    overflow: hidden;
+}
+.table__blog thead tr {
+    border-bottom: 1px solid #333;
+}
+.table__blog thead th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+    font-size: 15px;
+}
+.table__blog thead th:first-child {
+    border-top-left-radius: 10px;
+}
+.table__blog thead th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.table__blog tbody tr:hover {
+    background-color: #f2f2f2;
+}
+.table__blog tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+.table__blog tbody td {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    border-right: 1px solid #ddd;
+}
+.table__blog tbody td:last-child {
+    border-right: none;
+}
+
 .small-img {
     width: 50px;
     height: auto;
@@ -21,10 +61,9 @@
 .delete-button {
     background-color: #f44336;
 }
-td, th {
-    text-align: center;
+/* td, th {
     vertical-align: middle;
-}
+} */
 .modal {
     display: none; /* Inicialmente oculto */
     position: fixed;
@@ -109,5 +148,10 @@ td, th {
     border-radius: 10px;
     max-width: 1000px;
     margin: 20px auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+.form-container .button-arriba {
+    margin-block-start: 1rem;
+    width: 30%;
+    margin-left: auto;
 }

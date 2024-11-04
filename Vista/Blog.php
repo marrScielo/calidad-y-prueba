@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['NombrePsicologo'])) {
-?>
+    ?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -10,26 +10,30 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../Issets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
         <link rel="stylesheet" href="../Issets/css/historial.css">
         <link rel="stylesheet" href="../Issets/css/main.css">
         <link rel="stylesheet" href="../Issets/css/blogpsico.css">
         <link rel="stylesheet" href="../Issets/css/summernote.css">
         <link rel="icon" href="../img/favicon.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <!-- summernote -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+            </script>
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
         <title>Blog</title>
-        <style>          
-
-            #form-group input{
-                background-color: #black;
+        <style>
+            #form-group input {
+                background-color: black;
             }
+
             .hidden {
                 display: none;
             }
+
             .modal textarea {
                 width: 100%;
                 height: 100px;
@@ -65,32 +69,15 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 /* Restablece la altura de línea al valor predeterminado */
             }
 
+            @media (max-width: 900px) {
+                .animate_animated {
+                    overflow: auto;
+                    padding-left: 5px;
+                }
+            }
 
             /* Media queries para dispositivos móviles */
             @media only screen and (max-width: 600px) {
-                .form-container {
-                    padding: 10px;
-                    margin: 1px;
-                    margin-left: -30px;
-                    max-width: 100%;
-                    box-shadow: none;
-                }
-
-                .form-group label {
-                    font-size: 14px;
-                }
-
-                .form-group input,
-                .form-group select,
-                .form-group textarea {
-                    font-size: 14px;
-                    padding: 8px;
-                }
-
-                button {
-                    font-size: 14px;
-                    padding: 8px;
-                }
 
                 .modal-content,
                 .modal-content-detail {
@@ -117,34 +104,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     margin-left: 10px;
                 }
 
-
-
             }
 
             /* Media queries para tabletas */
             @media only screen and (min-width: 601px) and (max-width: 1024px) {
-                .form-container {
-                    padding: 15px;
-                    margin: 15px;
-                    max-width: 90%;
-                    box-shadow: none;
-                }
-
-                .form-group label {
-                    font-size: 16px;
-                }
-
-                .form-group input,
-                .form-group select,
-                .form-group textarea {
-                    font-size: 16px;
-                    padding: 10px;
-                }
-
-                button {
-                    font-size: 16px;
-                    padding: 10px;
-                }
 
                 .modal-content,
                 .modal-content-detail {
@@ -158,8 +121,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                 #profile_fixed {
                     display: none;
-                }
+                }    
+            }
 
+            .button-arriba {
+                max-width: 90%;
+                margin-inline: auto;
             }
         </style>
     </head>
@@ -177,24 +144,25 @@ if (isset($_SESSION['NombrePsicologo'])) {
             <!----------- end of aside -------->
             <main class="animate_animated animate_fadeIn">
                 <div class="center-divs">
-                    <h4 style="color: #49c691;">Blog</h4>
+                    <h4 style="color: #534489;">Blog</h4>
                     <?php
                     require_once '../Issets/views/Info.php';
                     ?>
                 </div>
                 <div class="form-container">
-                    <a class="button-arriba" style="padding: 10px 30px; font-size: 15px;" href="PanelBlog.php">
+                    <a class="button-arriba" href="PanelBlog.php">
                         <i id="edit-icon" class="fas fa-edit" style="margin-right: 10px;"></i>Editar y Ver Blogs
                     </a>
-                    <form action="submit_blog.php" method="POST">
+                    <form class="form__blog" action="submit_blog.php" method="POST">
                         <div class="form-group">
-                            <label for="topic" >Tema:</label>
-                            <input type="text" id="topic" name="topic" placeholder="Ingrese tema" required>
+                            <label for="topic">Tema:</label>
+                            <input type="text" id="topic" name="topic" placeholder="Ingrese tema" >
+                            <span class="error-message" id="error-topic"></span>
                         </div>
                         <div class="form-group">
                             <label for="specialty">Especialidad:</label>
-                            <select id="specialty" name="specialty" required>
-                                <option value="Adicciones">Selecciona la Especialidad</option>
+                            <select id="specialty" name="specialty" >
+                                <option value="">Selecciona la Especialidad</option>
                                 <option value="Adicciones">Adicciones</option>
                                 <option value="Ansiedad">Ansiedad</option>
                                 <option value="Atención">Atención</option>
@@ -216,36 +184,33 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <option value="Problemas alimenticios">Problemas alimenticios</option>
                                 <option value="Relaciones Interpersonales">Relaciones Interpersonales</option>
                             </select>
+                            <span class="error-message" id="error-specialty"></span>
                         </div>
                         <div style="text-align: start;" id="formtext" class="form-group">
                             <label style="text-align: center;" for="description">Descripción:</label>
-                            <textarea id="description" name="description" rows="4" required></textarea>
-                            <textarea class="hidden" name="descriptionHtml" id="description-html" required></textarea>
+                            <div id="summernote">
+                            </div>
+                            <textarea id="description" name="description" class="hidden"></textarea>
+                            <span class="error-message" id="error-description"></span>
                         </div>
                         <div class="form-group">
                             <label for="image">Imagen:</label>
-                            <input type="url" id="image" name="image" placeholder="Ingrese URL de imagen" required>
+                            <input type="url" id="image" name="image" placeholder="Ingrese URL de imagen" >
+                            <span class="error-message" id="error-image"></span>
                         </div>
-                        <button style="
-                            display: block;
-                            width: 100%;
-                            padding: 10px;
-                            background-color: #49c691;
-                            color: #fff;
-                            border: none;
-                            border-radius: 5px;
-                            cursor: pointer; " id="#button1" type="submit">Enviar</button>
+                        <button id="button1" type="submit">Enviar</button>
                     </form>
                 </div>
             </main>
 
         </div>
         <script src="../Issets/js/dashboard.js"></script>
+        <script type="module" src="../Issets/js/textarea-function.js"></script>
         <script>
             $('#summernote').summernote({
-                placeholder: 'Comienza a escribir tu post',
+                placeholder: 'Ingrese la descripción del blog',
                 tabsize: 2,
-                height: 180,
+                height: 120,
                 toolbar: [
                     ['style', ['style']],
                     ['font', ['bold', 'underline', 'clear']],
@@ -254,20 +219,32 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     ['table', ['table']],
                     ['insert', ['link', 'picture', 'video']],
                     ['view', ['fullscreen', 'codeview', 'help']]
-                ],
-                callbacks: {
-                    onPaste: function(e) {
-                        var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
-                        e.preventDefault();
-                        document.execCommand('insertText', false, bufferText);
-                    }
-                }
+                ]
+            });          
+
+            $("#summernote").on("summernote.change", function () {
+                var description = $('#summernote').summernote('code');
+                const texto = document.querySelector('#description').value = description;
+                // console.log(texto);
+                validateDescription(description);
             });
+
+            // Función para validar la descripción
+            function validateDescription(content) {
+                const cleanText = $('<div>').html(content).text().trim();
+                
+                if (cleanText === '') {
+                    $('#error-description').text('Por favor, ingrese una descripción.').show();
+                } else {
+                    $('#error-description').hide();
+                }
+            }
         </script>
-        <script type="module" src="../Issets/js/textarea-function.js"></script>
+        <script src="../Issets/js/validationMessage.js"></script>
     </body>
+
     </html>
-<?php
+    <?php
 } else {
     header("Location: ../index.php");
 }

@@ -1,22 +1,71 @@
-
-main .recent-citas{
-    margin: 20px;
-    overflow-x: auto; /* Agrega el scrollbar horizontal */
+main .recent-citas {
+    display: grid;
+    width: 100%;
+    margin: 10px 0;
+    grid-template-columns: 1fr;
+    overflow-x: auto;
+    /* Agrega el scrollbar horizontal */
     scrollbar-width: thin;
+    gap: 1rem;
 }
 
-main .recent-citas h2{
+main .recent-citas.active {
+    grid-template-columns: 1fr auto;
+}
+@media (min-width: 1200px) {
+    main .recent-citas {
+        display: flex;
+        align-items: self-start;
+    }
+}
+
+main .recent-citas h2 {
     margin-bottom: 0.8rem;
 }
 
-
 table {
-    width: 100%;
     border-collapse: separate;
     border-spacing: 0 10px;
     max-height: 35%;
+    transition: all 0.3s;
+}
+@media (min-width: 1024px) {
+    table {
+        flex: 1;
+    }
 }
 
+thead tr th:first-child,
+tbody tr td:first-child {
+    padding: 10px 5px;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+thead tr th:last-child,
+tbody tr td:last-child {
+    padding: 10px 5px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+table td {
+    font-weight: 700;
+}
+
+.appointmentTable__buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    column-gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.appointmentTuple__button {
+    border: none;
+    z-index: 1;
+    background: none;
+}
 
 /*=================== Formulario ======================*/
 form {
@@ -25,13 +74,13 @@ form {
 
 .checkout-information,
 .input-group {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .checkout-information {
-	background: #8FBBC8;
+    background: #8fbbc8;
     width: 100%;
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
@@ -40,33 +89,35 @@ form {
     transition: all 300ms ease;
 }
 
-.checkout-information:hover{
+.checkout-information:hover {
     box-shadow: none;
 }
 
-.input-group2 input, textarea, select {
+.input-group2 input,
+textarea,
+select {
     width: 100%;
-    padding: 10px 15px;
     border-radius: 8px;
     background-color: var(--color-background);
-    color: #7B7C89;
+    color: #7b7c89;
 }
 
-.input-group2{
-	display: flex;
-	flex-direction: row;
-	gap: 20px;
+.input-group2 {
+    display: flex;
+    flex-direction: row;
+    gap: 22px;
 }
 
-.input-group input{
-	width: 100%;
-	padding: 10px 15px;
-	border-radius: 8px;
-	background-color:var(--color-background);
+.input-group input {
+    width: 100%;
+    padding: 10px 5px;
+    border-radius: 8px;
+    background-color: var(--color-background);
     height: 100%;
 }
+
 .input-group h3 {
-    font-size: 0.80rem;
+    font-size: 0.8rem;
     color: white;
 }
 
@@ -90,5 +141,13 @@ form {
 
 .pagination .current-page {
     background-color: #49c691;
-    color: #49c691;
+    color: #49c691;
+}
+
+.checkout-information div {
+    margin-bottom: 8px;
+}
+
+.service-modal.active {
+    z-index: 100;
 }

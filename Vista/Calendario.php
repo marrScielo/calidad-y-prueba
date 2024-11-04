@@ -36,7 +36,7 @@ if (isset($_SESSION['NombrePsicologo'])){
     <!----------- Calendario ------------------>
     <div class="container-fluid2">
       <div class="center-divs">
-        <h4 style="color: #49c691;">Calendario de Citas</h4>
+        <h4 style="color: #534489;">Calendario de Citas</h4>
         <?php
           require_once '../Issets/views/Info.php';
         ?>
@@ -63,7 +63,7 @@ if (isset($_SESSION['NombrePsicologo'])){
                   <label class="form-label">Codigo Paciente</label>
                 <div class="input-group mb-3">
                   <input type="text" id="codigopac" class="form-control" >
-                  <div id="botonb1" ><button type="button" class="cod" id="button-addon2"><span style="font-size:2.2em" class="material-symbols-sharp idpaciente">search</span></button></div>
+                  <div id="botonb1" translate="no"><button type="button" class="cod" id="button-addon2"><span style="font-size:2.2em" class="material-symbols-sharp idpaciente">search</span></button></div>
                   
                 </div>
                 </div>
@@ -72,7 +72,7 @@ if (isset($_SESSION['NombrePsicologo'])){
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" id="NomPaciente"  >
 
-                   <div id="botonb2">  <button type="button" class="nom" id="button-addon2"><span style="font-size:2.2em" class="material-symbols-sharp nom">search</span></button></div>
+                   <div id="botonb2" translate="no">  <button type="button" class="nom" id="button-addon2"><span style="font-size:2.2em" class="material-symbols-sharp nom">search</span></button></div>
                   
                   </div>
                 </div>

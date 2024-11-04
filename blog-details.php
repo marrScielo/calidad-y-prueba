@@ -19,11 +19,9 @@ if (isset($_GET['id'])) {
     if ($stmt->rowCount() > 0) {
         $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Formatear la fecha
         $fechaOriginal = $post['fecha'];
         $fechaFormateada = date("d/m/Y", strtotime($fechaOriginal));
 
-        // Calcular el tiempo transcurrido desde la publicación
         $fechaPublicacion = new DateTime($fechaOriginal);
         $fechaActual = new DateTime();
         $intervalo = $fechaPublicacion->diff($fechaActual);
@@ -97,17 +95,14 @@ if (isset($_GET['id'])) {
                     style="width: 50px; height: 50px; border-radius: 50%; background-size:cover; object-fit:cover;">
                 <p>By <?php echo htmlspecialchars($post['psicologo_nombre']); ?></p>
             </div>
-
-            <!-- <hr> -->
             <br />
             <img loading="lazy" class="image-post" src="<?php echo htmlspecialchars($post['imagen']); ?>"
                 alt="<?php echo htmlspecialchars($post['tema']); ?>">
             <!-- <h2><?php echo htmlspecialchars($post['tema']); ?></h2> -->
-            <p class="content_bg contenidos"><?php echo nl2br(htmlspecialchars($post['descripcion'])); ?></p>
 
-            <!-- <p class="content_bg contenidos">
+            <p class="content_bg contenidos">
                 <?php echo ($post['descripcion']); ?>
-            </p> -->
+            </p>
 
 
         </div>
@@ -118,7 +113,7 @@ if (isset($_GET['id'])) {
             <?php foreach ($recommendedPosts as $recommendedPost): ?>
                 <div class="article">
                     <h4><a
-                        href="blog-details.php?id=<?php echo intval($recommendedPost['id']); ?>"><?php echo htmlspecialchars($recommendedPost['tema']); ?></a>
+                            href="blog-details.php?id=<?php echo intval($recommendedPost['id']); ?>"><?php echo htmlspecialchars($recommendedPost['tema']); ?></a>
                     </h4>
                     <img class="image-post" src="<?php echo htmlspecialchars($recommendedPost['imagen']); ?>"
                         alt="<?php echo htmlspecialchars($recommendedPost['tema']); ?>">

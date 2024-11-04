@@ -36,8 +36,8 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
     <link rel="icon" href="../img/favicon.png">
-    <link rel="stylesheet" href="../Issets/css/dashboard.css">
     <link rel="stylesheet" href="../Issets/css/main.css">
+    <link rel="stylesheet" href="../Issets/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
@@ -47,9 +47,9 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
       @media (max-width: 900px) {
         body {}
 
-        .center-divs {
+        /* .center-divs {
           min-width: 800px;
-        }
+        } */
 
         .contenedor_dsh {
           min-width: 800px;
@@ -96,7 +96,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
           ?>
         </div>
         <div class="center-divs">
-          <div class="agenda">
+          <div class="agenda" translate="no">
             <?php
             $fecha_actual = new DateTime('now', new DateTimeZone('America/Lima'));
 
@@ -175,7 +175,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
               ?>
               <div style="display:flex; align-items: center;">
                 <a href="TablaCitas.php">
-                  <span style="color: #fff" class="material-symbols-sharp">add_circle</span>
+                  <span style="color: #fff" class="material-symbols-sharp" translate="no">add_circle</span>
                 </a>
               </div>
             </div>
@@ -218,17 +218,16 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
                   <p style="text-align: center;">No hay Pacientes<a href="RegPaciente.php"> Agregar nuevo paciente </a> </p>
                 <?php endif; ?>
               </div>
-            </div>
-            <div style="justify-content: center;display: flex;">
-
-              <a href="RegPaciente.php">Agregar Paciente</a>
+              <div>
+                <a class="btn-addPacientes" href="RegPaciente.php" translate="no">Agregar Paciente</a>
+              </div>
             </div>
           </div>
         </div>
 
         <!--<h2>Estadisticas</h2>-->
-        <div class="center-divs">
-          <div class="insights" style="color: #49c691; ">
+        <div class="center-graficos">
+          <div class="insights" style="color: #534489; ">
             <div class="sales">
               <div class="middle">
                 <h3 class="estadistica_h3">
@@ -249,7 +248,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
             <!------------------- Final del expenses -------------------->
             <div class="income">
               <div class="middle">
-                <h3 class="estadistica_h3">
+                <h3 class="estadistica_h3" translate="no">
                   <span style=" font-weight: bold; font-size:40px"><?= $totalRegistrosEnCitasConfirmado ?></span> <br>
                   Citas Confirmadas
                 </h3>
@@ -258,16 +257,16 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
             <!------------------- Final del income -------------------->
           </div>
           <div class="div-grafico">
-            <h2 style="text-align: center;">Citas del Ultimo mes</h2>
+            <h2 style="text-align: center;" translate="no">Citas del Ultimo mes</h2>
             <div class="grafico2">
               <div class="grafico">
                 <canvas id="myPieChart"></canvas>
               </div>
             </div>
             <div class="texto-grafico">
-              <h5>Cita Online:<span> <?= $totalRegistrosEnCanalAtraccion ?> </span></h5>
-              <h5>Marketing Digital: <span><?= $totalRegistrosEnCanalAtraccion2 ?> </span></h5>
-              <h5>Referidos: <span><?= $totalRegistrosEnCanalAtraccion3 ?> </span></h5>
+              <h5 translate="no">Cita Online:<span> <?= $totalRegistrosEnCanalAtraccion ?> </span></h5>
+              <h5 translate="no">Marketing Digital: <span><?= $totalRegistrosEnCanalAtraccion2 ?> </span></h5>
+              <h5 translate="no">Referidos: <span><?= $totalRegistrosEnCanalAtraccion3 ?> </span></h5>
             </div>
           </div>
 

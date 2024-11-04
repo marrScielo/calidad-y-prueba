@@ -44,17 +44,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 </style>
 <!-- El resto de tu código HTML y JavaScript -->
 <div class="top <?php echo ($theme === 'dark') ? 'dark-mode' : ''; ?>" id="top_fixed">
-    <button id="menu-btn" style="display: none;">
+
+    <!-- Conflictos con el boton de cambio de tema
+    <button id="menu-btn" style="display: flex;">
         <span class="material-symbols-sharp" translate="no">menu</span>
-    </button>
+    </button> -->
+
     <div class="theme-toggler">
-        <span class="material-symbols-sharp active" data-theme="light" translate="no">light_mode</span>
         <span class="material-symbols-sharp" data-theme="dark" translate="no">dark_mode</span>
+        <span class="material-symbols-sharp active" data-theme="light" translate="no">light_mode</span>
     </div>
 
     <div id="fixed_settings_container">
         <div id="fixed_settings">
-            <a class="ajuste-info">
+            <a class="ajuste-info" id="menu-btn">
                 <span class="material-symbols-sharp" translate="no">settings</span>
             </a>
         </div>
@@ -62,22 +65,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
     <div class="profile" id="profile_fixed">
         <div class="info">
             <div></div>
-            <p><?= $_SESSION['NombrePsicologo'] ?></p>
+            <p translate="no"><?= $_SESSION['NombrePsicologo'] ?></p>
             <div></div>
         </div>
     </div>
     <a href="../Issets/views/Salir.php">
-        <h3 class="cerrar-info">Cerrar Sesion</h3>
+        <h3 class="cerrar-info" translate="no">Cerrar Sesion</h3>
     </a>
 </div>
 <div class="navigation">
     <div class="form-info">
+        <a href="#" class="closeaaa">&times;</a> <!-- La X para cerrar el modal o la sección -->
         <div style="display:flex;margin:1em;gap:20px">
             <div>
                 <h2><?= $_SESSION['Usuario'] ?></h2>
                 <h1 style="margin-top:-10px;text-align:center">#<?= $_SESSION['IdPsicologo'] ?></h1>
             </div>
-            <a href="#" class="closeaaa">&times;</a>
         </div>
         <form method="post" action="">
             <div style="margin:20px">
@@ -168,38 +171,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 </script>
 
 <script>
-    // Function to set the theme
-function setTheme(theme) {
-    // Add the dark theme class if theme is 'dark', remove otherwise
-    document.documentElement.classList.toggle('dark-theme-variables', theme === 'dark');
-    
-    // Update the active state of the buttons
-    document.querySelector('.theme-toggler .active').classList.remove('active');
-    if (theme === 'dark') {
-        document.querySelector('.theme-toggler span[data-theme="dark"]').classList.add('active');
+    function setTheme(theme) {
+        // Agregar o quitar la clase del tema oscuro según el tema
+        document.documentElement.classList.toggle('dark-theme-variables', theme === 'dark');
 
-        document.querySelector(".form-info").style.backgroundColor = "  ";
-    } else {
-        document.querySelector('.theme-toggler span[data-theme="light"]').classList.add('active');
+        // Actualizar el estado activo de los botones
+        const lightButton = document.querySelector('.theme-toggler span[data-theme="light"]');
+        const darkButton = document.querySelector('.theme-toggler span[data-theme="dark"]');
 
-        document.querySelector(".form-info").style.backgroundColor = "white";
+        // Cambiar la clase 'active' y asegurarse de que los botones no se activen ambos
+        if (theme === 'dark') {
+            lightButton.classList.remove('active');
+            darkButton.classList.add('active');
+        } else {
+            darkButton.classList.remove('active');
+            lightButton.classList.add('active');
+        }
+
+        // Guardar el tema seleccionado en localStorage
+        localStorage.setItem('theme', theme);
     }
-    
-    // Save the selected theme in localStorage
-    localStorage.setItem('theme', theme);
-}
 
-// Function to initialize the theme on page load
-function initializeTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-}
+    function initializeTheme() {
+        // Leer el tema desde localStorage
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
+    }
 
-// Initialize theme when the document is loaded
-document.addEventListener('DOMContentLoaded', initializeTheme);
+    // Inicializar el tema cuando el documento se carga
+    document.addEventListener('DOMContentLoaded', initializeTheme);
 
-// Add event listeners to the theme toggle buttons
-document.querySelector('.theme-toggler span[data-theme="light"]').addEventListener('click', () => setTheme('light'));
-document.querySelector('.theme-toggler span[data-theme="dark"]').addEventListener('click', () => setTheme('dark'));
-
+    // Añadir event listeners a los botones de cambio de tema
+    document.querySelector('.theme-toggler span[data-theme="light"]').addEventListener('click', () => {
+        setTheme('light');
+    });
+    document.querySelector('.theme-toggler span[data-theme="dark"]').addEventListener('click', () => {
+        setTheme('dark');
+    });
 </script>

@@ -4,12 +4,15 @@
 <link rel="stylesheet" >
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <style>
+        
+    </style>
 </head>
 <body>
 <aside>
     <div class="top">
         <div class="">
-            <img src="../Issets/images/logo-actual.png" alt="" class="logo">
+            <img src="../Issets/images/logo.gif" alt="" class="logo">
            
         </div>
         <div class="close" id="close-btn">
@@ -19,7 +22,7 @@
     <div class="sidebar">
         <a class="dashboard" href="Dashboards.php" >
             <span class="material-symbols-sharp" translate="no">dashboard</span>
-            <h3>Dashboard</h3>
+            <h3 translate="no">Dashboard</h3>
         </a>
         <a class="pacientes" href="TablaPacientes.php">
             <span class="material-symbols-sharp" translate="no">groups</span>
@@ -31,7 +34,7 @@
         </a>        
         <a class="historial" href="Historial.php">
             <span class="material-symbols-sharp" translate="no">history</span>
-            <h3>Historial</h3>
+            <h3 translate="no">Historial</h3>
         </a>
         <a class="calendario" href="Calendario.php">
             <span class="material-symbols-sharp" translate="no">calendar_month</span>
@@ -49,7 +52,7 @@
 -->
         <a class="privacidad" href="PoliticasSeguridad.php">
             <span class="material-symbols-sharp" translate="no">security</span>
-            <h3>Politcas y Privacidad</h3>
+            <h3>Políticas y Privacidad</h3>
         </a>
     </div>
     <div class="nav-menu-btn"></div>  

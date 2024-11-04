@@ -97,10 +97,10 @@ $(document).ready(function () {
     $("#Dni").on("keyup", function () {
         var Dni = $("#Dni").val();
         var longitudDni = $("#Dni").val().length;
-
+    
         if (longitudDni >= 3) {
             var dataString = 'Dni=' + Dni;
-
+    
             $.ajax({
                 url: '../Crud/Fetch/vereficardni.php',
                 type: "GET",
@@ -108,12 +108,12 @@ $(document).ready(function () {
                 dataType: "JSON",
                 success: function (datos) {
                     if (datos.success == 1) {
-                        $("#respuesta").html(datos.message);
+                        $("#respuesta").html(datos.message).css('display', 'block');
                         $("input").attr('disabled', true);
                         $("input#Dni").attr('disabled', false);
                         $("#submitButton").attr('disabled', true);
                     } else {
-                        $("#respuesta").html(datos.message);
+                        $("#respuesta").html(datos.message).css('display', 'block');
                         $("input").attr('disabled', false);
                         $("#submitButton").attr('disabled', false);
                     }

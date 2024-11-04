@@ -6,13 +6,12 @@ class UsuarioModel {
     private $username = CONFIG_DB['username'];
     private $password = CONFIG_DB['password'];
     private $database = CONFIG_DB['database'];
-private $dbname = "contigovoy3";
 
     private $conn;
 
     public function __construct() {
         // Crear la conexión
-        $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+        $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->database);
         // Verificar la conexión
         if ($this->conn->connect_error) {
             die("Conexión fallida: " . $this->conn->connect_error);
