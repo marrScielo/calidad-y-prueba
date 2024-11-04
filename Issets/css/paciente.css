@@ -205,6 +205,15 @@ td.additional-column {
     align-self: flex-start;
     gap: 1px;
 }
+
+.contenedorFormularios {
+    display: flex;
+    gap: 20px;
+    @media (max-width: 800px) {
+        flex-direction: column;
+    }
+}
+
 .checkout-information {
     background: #8fbbc8;
     width: 100%;
@@ -212,6 +221,7 @@ td.additional-column {
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: all 300ms ease;
+    padding: 20px 10px;
     @media (min-width: 768px) {
         flex: 1;
         align-self: flex-start;
