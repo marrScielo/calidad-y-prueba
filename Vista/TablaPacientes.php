@@ -9,8 +9,10 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         <link rel="stylesheet" href="../Issets/css/paciente.css">
         <link rel="stylesheet" href="../Issets/css/main.css">
         <link rel="icon" href="../img/favicon.png">
@@ -26,17 +28,28 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 .container {
                     width: 100%;
                 }
-                .center-divs{
+
+                <<<<<<< HEAD=======.center-divs {
                     min-width: 900px;
                 }
 
-                table{
+                >>>>>>>67eb039c15af50fcdd05148360e386384faa336c .center-divs {
                     min-width: 900px;
                 }
-                .animate__animated{
+
+                /* .contenedor-botones{
+                                                                                                                                        min-width: 900px;
+                                                                                                                                    } */
+
+                table {
+                    min-width: 900px;
+                }
+
+                .animate__animated {
                     overflow: auto;
                 }
             }
+
             .contenedor-botones {
                 .button-arriba {
                     flex-grow: 1;
@@ -46,9 +59,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
             #modalNewAppointment {
                 display: none;
             }
+
             #modalNewAppointment.active {
                 display: flex;
             }
+
             @media (max-width: 1200px) {
                 #modalNewAppointment {
                     width: 100%;
@@ -63,7 +78,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     border-radius: 0;
                 }
             }
-
         </style>
 
         <?php
@@ -114,7 +128,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <input type="text" id="buscarCodigo" placeholder="Buscar por Codigo" class="input" required>
                         </div>
                         <a class="button-arriba" style="padding:10px 30px;" href="RegPaciente.php">
-                            <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Paciente
+                            <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar
+                            Paciente
                         </a>
                         <a class="button-eliminar" id="eliminarSeleccionados">
                             <i id="search-icon" class="fas fa-trash" style="margin-right: 10px;"></i>Eliminar
@@ -143,41 +158,44 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                         <td>
                                             <input type="checkbox" class="checkbox"
                                                 id="checkbox<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>"
-                                                value="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>"
-                                            >
+                                                value="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>">
                                         </td>
-                                        <td style="font-weight:bold;padding: 10px;">
-                                            <a style="cursor:pointer" class="show-info" 
-                                            data-patient-id="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-codigo="<?= htmlspecialchars($patient['codigopac'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-nombres="<?= htmlspecialchars(($patient['NomPaciente'] ?? '') . ' ' . ($patient['ApPaterno'] ?? '') . ' ' . ($patient['ApMaterno'] ?? ''), ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-dni="<?= htmlspecialchars($patient['Dni'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-genero="<?= htmlspecialchars($patient['Genero'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-edad="<?= htmlspecialchars($patient['Edad'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-estadocivil="<?= htmlspecialchars($patient['EstadoCivil'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-email="<?= htmlspecialchars($patient['Email'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-celular="<?= htmlspecialchars($patient['Telefono'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-nombre-madre="<?= htmlspecialchars($patient['NomMadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-estado-madre="<?= htmlspecialchars($patient['EstadoMadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-nombre-padre="<?= htmlspecialchars($patient['NomPadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-estado-padre="<?= htmlspecialchars($patient['EstadoPadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-cant-hermanos="<?= htmlspecialchars($patient['CantHermanos'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
-                                            data-antecedentes-familiares="<?= htmlspecialchars($patient['HistorialFamiliar'] ?? '', ENT_QUOTES, 'UTF-8') ?>">
-                                                <?= htmlspecialchars($patient['NomPaciente'] ?? '', ENT_QUOTES, 'UTF-8') ?> <?= htmlspecialchars($patient['ApPaterno'] ?? '', ENT_QUOTES, 'UTF-8') ?>
+                                        <td style="text-align: start; font-weight:bold;padding: 14px;">
+                                            <a style="cursor:pointer" class="show-info"
+                                                data-patient-id="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>"
+                                                data-codigo="<?= htmlspecialchars($patient['codigopac'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                                data-nombres="<?= htmlspecialchars(($patient['NomPaciente'] ?? '') . ' ' . ($patient['ApPaterno'] ?? '') . ' ' . ($patient['ApMaterno'] ?? ''), ENT_QUOTES, 'UTF-8') ?>"
+                                                data-dni="<?= htmlspecialchars($patient['Dni'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                                data-genero="<?= htmlspecialchars($patient['Genero'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                                data-edad="<?= htmlspecialchars($patient['Edad'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                                data-estadocivil="<?= htmlspecialchars($patient['EstadoCivil'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                                data-email="<?= htmlspecialchars($patient['Email'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                                data-celular="<?= htmlspecialchars($patient['Telefono'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                                data-nombre-madre="<?= htmlspecialchars($patient['NomMadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                                data-estado-madre="<?= htmlspecialchars($patient['EstadoMadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                                data-nombre-padre="<?= htmlspecialchars($patient['NomPadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                                data-estado-padre="<?= htmlspecialchars($patient['EstadoPadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                                data-cant-hermanos="<?= htmlspecialchars($patient['CantHermanos'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+                                                data-antecedentes-familiares="<?= htmlspecialchars($patient['HistorialFamiliar'] ?? '', ENT_QUOTES, 'UTF-8') ?>">
+                                                <?= htmlspecialchars($patient['NomPaciente'] ?? '', ENT_QUOTES, 'UTF-8') ?>
+                                                <?= htmlspecialchars($patient['ApPaterno'] ?? '', ENT_QUOTES, 'UTF-8') ?>
                                             </a>
-                                            <a class="buttoncita" style="display:none; width: 110px; padding:6px; margin-top: 4.5%; margin-bottom: 0%;" href="RegCitas.php">
+                                            <button class="buttoncita"
+                                                style="display:none; width: 110px; padding:6px; margin-top: 4.5%; margin-bottom: 0%;"
+                                                data-patient-id="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>">
                                                 <div style="display: flex;">
                                                     <span class="material-symbols-sharp">add</span>Crear Cita
                                                 </div>
-                                            </a>
+                                            </button>
                                         </td>
                                         <td class="additional-column" style="font-weight:bold;">
-                                            <?= htmlspecialchars($patient['codigopac'] ?? '', ENT_QUOTES, 'UTF-8') ?>
+                                            <?= htmlspecialchars($patient['IdPaciente'] ?? '', ENT_QUOTES, 'UTF-8') ?>
                                         </td>
                                         <td class="additional-column" style="font-weight:bold;">
                                             <?= htmlspecialchars($patient['Dni'] ?? '', ENT_QUOTES, 'UTF-8') ?>
                                         </td>
-                                        <td class="additional-column" style="font-weight:bold;width:25%;text-align: center; margin-left:4%;">
+                                        <td class="additional-column"
+                                            style="font-weight:bold;width:25%;text-align: center; margin-left:4%;">
                                             <?= htmlspecialchars($patient['Email'] ?? '', ENT_QUOTES, 'UTF-8') ?>
                                         </td>
                                         <td class="additional-column" style="font-weight:bold;">
@@ -195,9 +213,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                         <td>
                                             <div id="dropdown-content-<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>"
                                                 style="display: flex; column-gap: 1rem; justify-content: space-evenly;">
-                                                <a type="button" class="btne"
-                                                    onclick="openModalEliminar('<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>')"
-                                                    href="../Crud/Paciente/eliminarPaciente.php?id=<?= $patient['Dni'] ?>">
+                                                <a type="button" class="btne" onclick="openModalEliminar('<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>')">
                                                     <span class="material-symbols-outlined" translate="no">delete</span>
                                                     <p>Eliminar</p>
                                                 </a>
@@ -246,14 +262,14 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         <div style="text-align: center; padding: 20px;">
                             <span style="font-size:50px; color: #56B9B3;" class="material-symbols-sharp">help_outline</span>
                             <h2 style="font-size:20px; margin-top: 10px;">¿Eliminar registro del paciente?</h2>
-                            <p>Se eliminará el registro del paciente <strong><?= $patient[2] . " " . $patient[3] ?></strong>. Esta
+                            <p>Se eliminará el registro del paciente <strong><?= $patient['NomPaciente'] . " " . $patient[3] ?></strong>. Esta
                                 acción no se puede deshacer.</p>
                         </div>
                         <div class="modal-button-container"
                             style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
                             <button class="button-modal button-cancel" onclick="closeModalEliminar('<?= $patient[0] ?>')"
                                 style="background-color: #F19294; border: none; padding: 10px 20px; color: white; cursor: pointer;">Cancelar</button>
-                            <a href="../Crud/Paciente/eliminarPaciente.php?id=<?= $patient[0] ?>" class="button-modal button-accept"
+                            <a href="../Crud/Paciente/eliminarPaciente.php?id=<?= $patient['Dni'] ?>" class="button-modal button-accept"
                                 style="background-color: #56B9B3; border: none; padding: 10px 20px; color: white; text-decoration: none; text-align: center; cursor: pointer;">Aceptar</a>
                         </div>
                     </div>
@@ -464,8 +480,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
         </script>
 
         <script>
-            $(document).ready(function () {
-                $('#Departamento').change(function () {
+            $(document).ready(function() {
+                $('#Departamento').change(function() {
                     var departamentoId = $(this).find(':selected').data('id');
                     obtenerProvincias(departamentoId);
                 });
@@ -478,7 +494,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             departamentoId: departamentoId
                         },
                         dataType: 'json',
-                        success: function (provincias) {
+                        success: function(provincias) {
                             // Llenar el select de provincias con los datos obtenidos
                             var selectProvincias = $('#Provincia');
                             selectProvincias.empty();
@@ -486,7 +502,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 value: '',
                                 text: 'Seleccionar'
                             }));
-                            provincias.forEach(function (provincia) {
+                            provincias.forEach(function(provincia) {
                                 selectProvincias.append($('<option>', {
                                     value: provincia.id,
                                     text: provincia.name
@@ -497,7 +513,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 }
             });
 
-            $('#Provincia').change(function () {
+            $('#Provincia').change(function() {
                 var provinciaId = $(this).val();
                 obtenerDistritos(provinciaId);
             });
@@ -510,7 +526,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         provinciaId: provinciaId
                     },
                     dataType: 'json',
-                    success: function (distritos) {
+                    success: function(distritos) {
                         // Llenar el select de distritos con los datos obtenidos
                         var selectDistritos = $('#Distrito');
                         selectDistritos.empty();
@@ -518,7 +534,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             value: '',
                             text: 'Seleccionar'
                         }));
-                        distritos.forEach(function (distrito) {
+                        distritos.forEach(function(distrito) {
                             selectDistritos.append($('<option>', {
                                 value: distrito.id,
                                 text: distrito.name
@@ -530,24 +546,24 @@ if (isset($_SESSION['NombrePsicologo'])) {
         </script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            $(document).ready(function () {
-                $('#buscarPaciente').on('keyup', function () {
+            $(document).ready(function() {
+                $('#buscarPaciente').on('keyup', function() {
                     var value = $(this).val().toLowerCase();
-                    $('#myTable tr').filter(function () {
+                    $('#myTable tr').filter(function() {
                         $(this).toggle($(this).find('td:eq(1)').text().toLowerCase().indexOf(value) > -1);
                     });
                 });
 
-                $('#buscarDni').on('keyup', function () {
+                $('#buscarDni').on('keyup', function() {
                     var value = $(this).val().toLowerCase();
-                    $('#myTable tr').filter(function () {
+                    $('#myTable tr').filter(function() {
                         $(this).toggle($(this).find('td:eq(3)').text().toLowerCase().indexOf(value) > -1);
                     });
                 });
 
-                $('#buscarCodigo').on('keyup', function () {
+                $('#buscarCodigo').on('keyup', function() {
                     var value = $(this).val().toLowerCase();
-                    $('#myTable tr').filter(function () {
+                    $('#myTable tr').filter(function() {
                         $(this).toggle($(this).find('td:eq(2)').text().toLowerCase().indexOf(value) > -1);
                     });
                 });
@@ -558,7 +574,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
     </body>
 
     </html>
-    <?php
+<?php
 } else {
     header("Location: ../Index.php");
 }
