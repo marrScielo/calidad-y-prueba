@@ -43,6 +43,27 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 }
             }
 
+            #modalNewAppointment {
+                display: none;
+            }
+            #modalNewAppointment.active {
+                display: flex;
+            }
+            @media (max-width: 1200px) {
+                #modalNewAppointment {
+                    width: 100%;
+                    height: 100%;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    z-index: 1000;
+                    background: rgba(0, 0, 0, 0.5);
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 0;
+                }
+            }
+
         </style>
 
         <?php
