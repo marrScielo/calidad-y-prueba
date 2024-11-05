@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['NombrePsicologo'])) {
-    ?>
+?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -9,10 +9,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         <link rel="stylesheet" href="../Issets/css/paciente.css">
         <link rel="stylesheet" href="../Issets/css/main.css">
         <link rel="icon" href="../img/favicon.png">
@@ -28,56 +26,23 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 .container {
                     width: 100%;
                 }
-
-                <<<<<<< HEAD=======.center-divs {
+                .center-divs{
                     min-width: 900px;
                 }
 
-                >>>>>>>67eb039c15af50fcdd05148360e386384faa336c .center-divs {
+                table{
                     min-width: 900px;
                 }
-
-                /* .contenedor-botones{
-                                                                                                                                        min-width: 900px;
-                                                                                                                                    } */
-
-                table {
-                    min-width: 900px;
-                }
-
-                .animate__animated {
+                .animate__animated{
                     overflow: auto;
                 }
             }
-
             .contenedor-botones {
                 .button-arriba {
                     flex-grow: 1;
                 }
             }
 
-            #modalNewAppointment {
-                display: none;
-            }
-
-            #modalNewAppointment.active {
-                display: flex;
-            }
-
-            @media (max-width: 1200px) {
-                #modalNewAppointment {
-                    width: 100%;
-                    height: 100%;
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    z-index: 1000;
-                    background: rgba(0, 0, 0, 0.5);
-                    justify-content: center;
-                    align-items: center;
-                    border-radius: 0;
-                }
-            }
         </style>
 
         <?php
@@ -128,8 +93,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <input type="text" id="buscarCodigo" placeholder="Buscar por Codigo" class="input" required>
                         </div>
                         <a class="button-arriba" style="padding:10px 30px;" href="RegPaciente.php">
-                            <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar
-                            Paciente
+                            <i id="search-icon" class="fas fa-plus-circle add-icon" style="margin-right: 10px;"></i>Agregar Paciente
                         </a>
                         <a class="button-eliminar" id="eliminarSeleccionados">
                             <i id="search-icon" class="fas fa-trash" style="margin-right: 10px;"></i>Eliminar
@@ -158,44 +122,41 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                         <td>
                                             <input type="checkbox" class="checkbox"
                                                 id="checkbox<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>"
-                                                value="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>">
+                                                value="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>"
+                                            >
                                         </td>
-                                        <td style="text-align: start; font-weight:bold;padding: 14px;">
-                                            <a style="cursor:pointer" class="show-info"
-                                                data-patient-id="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>"
-                                                data-codigo="<?= htmlspecialchars($patient['codigopac'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                                                data-nombres="<?= htmlspecialchars(($patient['NomPaciente'] ?? '') . ' ' . ($patient['ApPaterno'] ?? '') . ' ' . ($patient['ApMaterno'] ?? ''), ENT_QUOTES, 'UTF-8') ?>"
-                                                data-dni="<?= htmlspecialchars($patient['Dni'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                                                data-genero="<?= htmlspecialchars($patient['Genero'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                                                data-edad="<?= htmlspecialchars($patient['Edad'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                                                data-estadocivil="<?= htmlspecialchars($patient['EstadoCivil'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                                                data-email="<?= htmlspecialchars($patient['Email'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                                                data-celular="<?= htmlspecialchars($patient['Telefono'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                                                data-nombre-madre="<?= htmlspecialchars($patient['NomMadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                                                data-estado-madre="<?= htmlspecialchars($patient['EstadoMadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                                                data-nombre-padre="<?= htmlspecialchars($patient['NomPadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                                                data-estado-padre="<?= htmlspecialchars($patient['EstadoPadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                                                data-cant-hermanos="<?= htmlspecialchars($patient['CantHermanos'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                                                data-antecedentes-familiares="<?= htmlspecialchars($patient['HistorialFamiliar'] ?? '', ENT_QUOTES, 'UTF-8') ?>">
-                                                <?= htmlspecialchars($patient['NomPaciente'] ?? '', ENT_QUOTES, 'UTF-8') ?>
-                                                <?= htmlspecialchars($patient['ApPaterno'] ?? '', ENT_QUOTES, 'UTF-8') ?>
+                                        <td style="font-weight:bold;padding: 10px;">
+                                            <a style="cursor:pointer" class="show-info" 
+                                            data-patient-id="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-codigo="<?= htmlspecialchars($patient['codigopac'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-nombres="<?= htmlspecialchars(($patient['NomPaciente'] ?? '') . ' ' . ($patient['ApPaterno'] ?? '') . ' ' . ($patient['ApMaterno'] ?? ''), ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-dni="<?= htmlspecialchars($patient['Dni'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-genero="<?= htmlspecialchars($patient['Genero'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-edad="<?= htmlspecialchars($patient['Edad'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-estadocivil="<?= htmlspecialchars($patient['EstadoCivil'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-email="<?= htmlspecialchars($patient['Email'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-celular="<?= htmlspecialchars($patient['Telefono'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-nombre-madre="<?= htmlspecialchars($patient['NomMadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-estado-madre="<?= htmlspecialchars($patient['EstadoMadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-nombre-padre="<?= htmlspecialchars($patient['NomPadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-estado-padre="<?= htmlspecialchars($patient['EstadoPadre'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-cant-hermanos="<?= htmlspecialchars($patient['CantHermanos'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                                            data-antecedentes-familiares="<?= htmlspecialchars($patient['HistorialFamiliar'] ?? '', ENT_QUOTES, 'UTF-8') ?>">
+                                                <?= htmlspecialchars($patient['NomPaciente'] ?? '', ENT_QUOTES, 'UTF-8') ?> <?= htmlspecialchars($patient['ApPaterno'] ?? '', ENT_QUOTES, 'UTF-8') ?>
                                             </a>
-                                            <button class="buttoncita"
-                                                style="display:none; width: 110px; padding:6px; margin-top: 4.5%; margin-bottom: 0%;"
-                                                data-patient-id="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>">
+                                            <a class="buttoncita" style="display:none; width: 110px; padding:6px; margin-top: 4.5%; margin-bottom: 0%;" href="RegCitas.php">
                                                 <div style="display: flex;">
                                                     <span class="material-symbols-sharp">add</span>Crear Cita
                                                 </div>
-                                            </button>
+                                            </a>
                                         </td>
                                         <td class="additional-column" style="font-weight:bold;">
-                                            <?= htmlspecialchars($patient['IdPaciente'] ?? '', ENT_QUOTES, 'UTF-8') ?>
+                                            <?= htmlspecialchars($patient['codigopac'] ?? '', ENT_QUOTES, 'UTF-8') ?>
                                         </td>
                                         <td class="additional-column" style="font-weight:bold;">
                                             <?= htmlspecialchars($patient['Dni'] ?? '', ENT_QUOTES, 'UTF-8') ?>
                                         </td>
-                                        <td class="additional-column"
-                                            style="font-weight:bold;width:25%;text-align: center; margin-left:4%;">
+                                        <td class="additional-column" style="font-weight:bold;width:25%;text-align: center; margin-left:4%;">
                                             <?= htmlspecialchars($patient['Email'] ?? '', ENT_QUOTES, 'UTF-8') ?>
                                         </td>
                                         <td class="additional-column" style="font-weight:bold;">
