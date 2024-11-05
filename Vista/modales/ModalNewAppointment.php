@@ -1,5 +1,5 @@
-<div class="checkout-information" id="modalNewAppointment">
-    <form action="../Crud/Cita/guardarCita.php" method="post">
+<div class="checkout-information-modal" id="modalNewAppointment">
+    <form class="form-crearCita" action="../Crud/Cita/guardarCita.php" method="post">
         <a style="display: none"></a>
         <div class="input-group2">
             <div class="input-group" style="display: none">
