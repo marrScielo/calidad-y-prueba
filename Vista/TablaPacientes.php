@@ -262,7 +262,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         <div style="text-align: center; padding: 20px;">
                             <span style="font-size:50px; color: #56B9B3;" class="material-symbols-sharp">help_outline</span>
                             <h2 style="font-size:20px; margin-top: 10px;">¿Eliminar registro del paciente?</h2>
-                            <p>Se eliminará el registro del paciente <strong><?= $patient[2] . " " . $patient[3] ?></strong>. Esta
+                            <p>Se eliminará el registro del paciente <strong><?= $patient['NomPaciente'] . " " . $patient[3] ?></strong>. Esta
                                 acción no se puede deshacer.</p>
                         </div>
                         <div class="modal-button-container"
