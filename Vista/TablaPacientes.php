@@ -211,9 +211,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                             </div>
                                         </td>
                                         <td>
-                                            <div id="dropdown-content-<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>"
+                                            <div id="dropdown-content-<?= htmlspecialchars($patient['IdPaciente'], ENT_QUOTES, 'UTF-8') ?>"
                                                 style="display: flex; column-gap: 1rem; justify-content: space-evenly;">
-                                                <a type="button" class="btne" onclick="openModalEliminar('<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>')">
+                                                <a type="button" class="btne" onclick="openModalEliminar('<?= htmlspecialchars($patient['IdPaciente'], ENT_QUOTES, 'UTF-8') ?>')">
                                                     <span class="material-symbols-outlined" translate="no">delete</span>
                                                     <p>Eliminar</p>
                                                 </a>
@@ -256,18 +256,18 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <?php if (!empty($patients)): ?>
             <?php foreach ($patients as $patient): ?>
                 <!-- Modal de eliminación -->
-                <div id="modalEliminar<?= $patient[0] ?>" class="service-modal flex-center">
+                <div id="modalEliminar<?= $patient['IdPaciente'] ?>" class="service-modal flex-center">
                     <div class="service-modal-body">
-                        <a class="close" onclick="closeModalEliminar('<?= $patient[0] ?>')">&times;</a>
+                        <a class="close" onclick="closeModalEliminar('<?= $patient['IdPaciente'] ?>')">&times;</a>
                         <div style="text-align: center; padding: 20px;">
                             <span style="font-size:50px; color: #56B9B3;" class="material-symbols-sharp">help_outline</span>
                             <h2 style="font-size:20px; margin-top: 10px;">¿Eliminar registro del paciente?</h2>
-                            <p>Se eliminará el registro del paciente <strong><?= $patient['NomPaciente'] . " " . $patient[3] ?></strong>. Esta
+                            <p>Se eliminará el registro del paciente <strong><?= $patient['NomPaciente'] . " " . $patient['ApPaterno'] ?></strong>. Esta
                                 acción no se puede deshacer.</p>
                         </div>
                         <div class="modal-button-container"
                             style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
-                            <button class="button-modal button-cancel" onclick="closeModalEliminar('<?= $patient[0] ?>')"
+                            <button class="button-modal button-cancel" onclick="closeModalEliminar('<?= $patient['IdPaciente'] ?>')"
                                 style="background-color: #F19294; border: none; padding: 10px 20px; color: white; cursor: pointer;">Cancelar</button>
                             <a href="../Crud/Paciente/eliminarPaciente.php?id=<?= $patient['Dni'] ?>" class="button-modal button-accept"
                                 style="background-color: #56B9B3; border: none; padding: 10px 20px; color: white; text-decoration: none; text-align: center; cursor: pointer;">Aceptar</a>
@@ -450,10 +450,17 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 form.reset();
             }
 
-            function openModalEliminar(id) {
+            /*function openModalEliminar(id) {
                 var modal = document.getElementById('modalEliminar' + id);
                 modal.classList.add('active');
+            }*/
+
+            function openModalEliminar(id) {
+                var modal = document.getElementById('modalEliminar' + id);
+                modal.dataset.patientId = id; // Establecer el ID del paciente en el atributo data-patient-id
+                modal.classList.add('active'); // Mostrar el modal
             }
+
 
             function closeModalEliminar(id) {
                 var modal = document.getElementById('modalEliminar' + id);
