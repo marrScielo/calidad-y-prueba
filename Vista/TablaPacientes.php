@@ -13,8 +13,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" />
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-        <link rel="stylesheet" href="../Issets/css/paciente.css">
         <link rel="stylesheet" href="../Issets/css/main.css">
+        <link rel="stylesheet" href="../Issets/css/paciente.css">
         <link rel="icon" href="../img/favicon.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -28,18 +28,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 .container {
                     width: 100%;
                 }
-
-                <<<<<<< HEAD=======.center-divs {
-                    min-width: 900px;
-                }
-
-                >>>>>>>67eb039c15af50fcdd05148360e386384faa336c .center-divs {
-                    min-width: 900px;
-                }
-
-                /* .contenedor-botones{
-                                                                                                                                        min-width: 900px;
-                                                                                                                                    } */
 
                 table {
                     min-width: 900px;
@@ -160,7 +148,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                                 id="checkbox<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>"
                                                 value="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>">
                                         </td>
-                                        <td style="text-align: start; font-weight:bold;padding: 14px;">
+                                        <td style="font-weight:bold;padding: 10px;">
                                             <a style="cursor:pointer" class="show-info"
                                                 data-patient-id="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>"
                                                 data-codigo="<?= htmlspecialchars($patient['codigopac'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
@@ -189,7 +177,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                             </button>
                                         </td>
                                         <td class="additional-column" style="font-weight:bold;">
-                                            <?= htmlspecialchars($patient['IdPaciente'] ?? '', ENT_QUOTES, 'UTF-8') ?>
+                                            <?= htmlspecialchars($patient['codigopac'] ?? '', ENT_QUOTES, 'UTF-8') ?>
                                         </td>
                                         <td class="additional-column" style="font-weight:bold;">
                                             <?= htmlspecialchars($patient['Dni'] ?? '', ENT_QUOTES, 'UTF-8') ?>
@@ -418,8 +406,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 </div>
                                 <!-- -->
 
-
-                                <br>
                                 <div class="modal-button-container">
                                     <button class="button-modal button-cancelar"
                                         onclick="closeModalEditar('<?= $patient[0] ?>')">Cancelar</button>

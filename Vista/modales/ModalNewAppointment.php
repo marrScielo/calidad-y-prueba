@@ -4,24 +4,24 @@
         <div class="input-group2">
             <div class="input-group" style="display: none">
                 <h3 for="IdPaciente">Id Paciente <b style="color: red">*</b></h3>
-                <div style="display: flex; gap: 5px">
+                <div style="display: flex; gap: 1px">
                     <input id="IdPaciente" type="text" name="IdPaciente" required />
                     <a class="search id"><span style="font-size: 4em" class="material-symbols-sharp">search</span></a>
                 </div>
             </div>
-            <div class="input-group" style="width: 50%">
+            <div class="input-group">
                 <h3 for="codigopac">Codigo Paciente <b style="color: red">*</b></h3>
-                <div style="display: flex; gap: 5%">
+                <div style="display: flex; gap: 5px">
                     <input id="codigopac" type="text" name="codigopac" class="input" />
                     <a class="search codigoaa" translate="no"><span style="font-size: 4em"
                             class="material-symbols-sharp">search</span></a>
                 </div>
             </div>
-            <div class="input-group" style="width: 50%">
+            <div class="input-group">
                 <h3 for="NomPaciente">
                     Nombre Paciente <b style="color: red">*</b>
                 </h3>
-                <div style="display: flex; gap: 5%">
+                <div style="display: flex; gap: 5px">
                     <input id="NomPaciente" type="text" name="NomPaciente" />
                     <a class="search nom" translate="no"><span style="font-size: 4em"
                             class="material-symbols-sharp">search</span></a>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="input-group2">
-            <div class="input-group" style="width: 50%">
+            <div class="input-group">
                 <h3 for="EstadoCita">
                     Estado de la Cita <b style="color: red">*</b>
                 </h3>
@@ -72,10 +72,9 @@
                     </option>
                 </select>
             </div>
-            <div class="input-group" style="width: 50%">
+            <div class="input-group">
                 <h3 for="ColorFondo">Color de Cita <b style="color: red">*</b></h3>
-                <input type="color" value="#f38238" id="ColorFondo" name="ColorFondo" list="colorOptions"
-                    style="height: 33px; margin-top: 10px" />
+                <input type="color" value="#f38238" id="ColorFondo" name="ColorFondo" list="colorOptions"/>
                 <datalist id="colorOptions">
                     <option value="#b4d77b">Rojo</option>
                     <option value="#9274b3">Verde</option>
@@ -89,20 +88,20 @@
         $fechamin = date("Y-m-d")
             ?>
         <div class="input-group2">
-            <div class="input-group" style="width: 50%">
+            <div class="input-group">
                 <h3 for="FechaInicioCita">
                     Fecha de Cita<b style="color: red">*</b>
                 </h3>
                 <input type="date" id="FechaInicioCita" name="FechaInicioCita" min="<?= $fechamin ?>"
                     value="<?= $fechamin ?>" />
             </div>
-            <div class="input-group" style="width: 50%">
+            <div class="input-group">
                 <h3 for="HoraInicio">Hora de Cita <b style="color: red">*</b></h3>
                 <input type="time" id="HoraInicio" name="HoraInicio" oninput="validarHora()" />
             </div>
         </div>
         <div class="input-group2">
-            <div class="input-group" style="width: 50%">
+            <div class="input-group">
                 <h3 for="TipoCita">Tipo de Cita <b style="color: red">*</b></h3>
                 <select class="input" id="TipoCita" name="TipoCita" required>
                     <option value="">Seleccione un Tipo</option>
@@ -110,7 +109,7 @@
                     <option value="Visita de control" selected>Visita de control</option>
                 </select>
             </div>
-            <div class="input-group" style="width: 50%">
+            <div class="input-group">
                 <h3 for="DuracionCita" style="align-items: center">
                     Duracion <b style="color: red">*</b>
                 </h3>
@@ -134,7 +133,7 @@
             <input id="FechaFin" type="text" name="FechaFin" readonly />
         </div>
         <div class="input-group2">
-            <div class="input-group" style="width: 50%">
+            <div class="input-group">
                 <h3 for="CanalCita">
                     Canal de Atraccion <b style="color: red">*</b>
                 </h3>
@@ -145,7 +144,7 @@
                     <option value="Referidos">Referidos</option>
                 </select>
             </div>
-            <div class="input-group" style="width: 50%">
+            <div class="input-group">
                 <h3 for="EtiquetaCita">Etiqueta <b style="color: red">*</b></h3>
                 <select class="input" id="EtiquetaCita" name="EtiquetaCita" required>
                     <option value="">Seleccione una Etiqueta</option>
@@ -160,7 +159,6 @@
             <input type="text" id="IdPsicologo" name="IdPsicologo" value="<?= $_SESSION['IdPsicologo'] ?>"
                 placeholder="Ingrese algun Antecedente Medico" />
         </div>
-        <br />
         <div class="button-container">
             <button class="button" id="btnCloseModalNewAppointment">Cerrar</button>
             <button id="submitButton" class="button">Finalizar</button>
