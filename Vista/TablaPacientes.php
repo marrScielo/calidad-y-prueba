@@ -248,13 +248,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     <div class="service-modal-body">
                         <a class="close" onclick="closeModalEliminar('<?= $patient['IdPaciente'] ?>')">&times;</a>
                         <div style="text-align: center; padding: 20px;">
-                            <span style="font-size:50px; color: #56B9B3;" class="material-symbols-sharp">help_outline</span>
-                            <h2 style="font-size:20px; margin-top: 10px;">¿Eliminar registro del paciente?</h2>
-                            <p>Se eliminará el registro del paciente <strong><?= $patient['NomPaciente'] . " " . $patient['ApPaterno'] ?></strong>. Esta
+                            <span style="font-size:70px; color: #56B9B3;" class="material-symbols-sharp">help_outline</span>
+                            <h2 style="font-size:22px; margin-top: 10px; margin-bottom: 10px;">¿Eliminar registro del paciente?</h2>
+                            <p style="font-size:13px;">Se eliminará el registro del paciente <strong><?= $patient['NomPaciente'] . " " . $patient['ApPaterno'] ?></strong>. Esta
                                 acción no se puede deshacer.</p>
                         </div>
                         <div class="modal-button-container"
-                            style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                            style="display: flex; justify-content: center; gap: 25px;">
                             <button class="button-modal button-cancel" onclick="closeModalEliminar('<?= $patient['IdPaciente'] ?>')"
                                 style="background-color: #F19294; border: none; padding: 10px 20px; color: white; cursor: pointer;">Cancelar</button>
                             <a href="../Crud/Paciente/eliminarPaciente.php?id=<?= $patient['Dni'] ?>" class="button-modal button-accept"
