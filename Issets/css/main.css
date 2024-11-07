@@ -389,7 +389,7 @@ main .theme-toggler span.active {
     align-items: center;
 }
 
-.info > div {
+.info>div {
     height: 24px;
     width: 2px;
     background-color: #000;
@@ -639,6 +639,7 @@ aside .sidebar a:hover span {
 }
 
 @media (min-width: 900px) {
+
     .input-buscador,
     .button-eliminar,
     .button-arriba {
@@ -754,7 +755,7 @@ aside .sidebar a:hover span {
     border-color: #007bff;
 }
 
-.checkbox + label {
+.checkbox+label {
     font-size: 16px;
     /* Tamaño de fuente del texto */
     vertical-align: middle;
@@ -883,7 +884,7 @@ select {
     max-width: 600px;
     opacity: 1;
 
-    @media screen and (max-width: 1200px) {
+    @media screen {
         position: fixed;
         top: 0;
         left: 0;
