@@ -140,7 +140,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         <!-- Encabezado de la tabla -->
                         <thead>
                             <tr>
-                                <th><input type="checkbox" id="checkboxPrincipal" class="checkbox-principal"></th>
+                                <th><input type="checkbox" id="checkboxPrincipal" class="checkbox-principal" aria-label="Seleccionar todo"></th>
                                 <th>Paciente</th>
                                 <th>Codigo</th>
                                 <th>Motivo</th>
@@ -157,7 +157,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <?php foreach ($rows as $row): ?>
                                     <tr class="appointmentTuple">
                                         <td><input type="checkbox" class="checkbox" id="checkbox<?= $row['IdCita'] ?>"
-                                                value="<?= $row['IdCita'] ?>"></td>
+                                                value="<?= $row['IdCita'] ?>" aria-label="Seleccionar elemento"></td>
                                         <td><?= $row['NomPaciente'] ?></td>
                                         <td><?= $row['codigopac'] ?></td>
                                         <td><?= $row['MotivoCita'] ?></td>
