@@ -265,7 +265,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
 
                 <!-- Modal de edicion -->
-                <div id="modalEditar<?= $patient[0] ?>" class="service-modal flex-center">
+                <div id="modalEditar<?= $patient[0] ?>" class="service-modal flex-center" >
                     <div class="service-modal-body">
                         <a href="#" class="close" onclick="closeModalEditar('<?= $patient[0] ?>')">&times;</a>
                         <div class="message_dialog">
