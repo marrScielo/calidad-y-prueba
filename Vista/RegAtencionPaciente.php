@@ -273,6 +273,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
               // Actualizar los campos del formulario con los datos del paciente
               $('#Paciente').val(response.nombre);
               $('#IdPaciente').val(response.id);
+              $('#NomPaciente').val(response.nombre);
               $('#codigopac').val(codigopac); // Actualizar el campo de código paciente
               $('#Diagnostico').val(response.diagnostico);
               $('#Tratamiento').val(response.tratamiento);
