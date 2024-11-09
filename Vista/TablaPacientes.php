@@ -128,7 +128,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     <table>
                         <thead>
                             <tr>
-                                <th><input type="checkbox" id="checkboxPrincipal" class="checkbox-principal"></th>
+                                <th><input type="checkbox" id="checkboxPrincipal" class="checkbox-principal" aria-label="Seleccionar todos"></th>
                                 <th class="additional-column">Paciente</th>
                                 <th class="additional-column">Codigo</th>
                                 <th class="additional-column">DNI</th>
@@ -144,7 +144,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <?php foreach ($patients as $patient): ?>
                                     <tr>
                                         <td>
-                                            <input type="checkbox" class="checkbox"
+                                            <input type="checkbox" class="checkbox" aria-label="Seleccionar elemento"
                                                 id="checkbox<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>"
                                                 value="<?= htmlspecialchars($patient[0], ENT_QUOTES, 'UTF-8') ?>">
                                         </td>
@@ -265,7 +265,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
 
                 <!-- Modal de edicion -->
-                <div id="modalEditar<?= $patient[0] ?>" class="service-modal flex-center">
+                <div id="modalEditar<?= $patient[0] ?>" class="service-modal flex-center" >
                     <div class="service-modal-body">
                         <a href="#" class="close" onclick="closeModalEditar('<?= $patient[0] ?>')">&times;</a>
                         <div class="message_dialog">
@@ -282,53 +282,52 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                     <div class="input-group-modal">
                                         <h3 for="NomPaciente">Nombre</h3>
                                         <input id="NomPaciente" type="text" value="<?= $patient[2] ?>" name="NomPaciente"
-                                            class="input" required />
+                                            class="input" required aria-label="Nombre del paciente"/>
                                     </div>
                                     <div class="input-group-modal">
                                         <h3 for="Dni">DNI</h3>
-                                        <input id="Dni" type="text" value="<?= $patient[5] ?>" name="Dni" class="input" required />
+                                        <input id="Dni" type="text" value="<?= $patient[5] ?>" name="Dni" class="input" required aria-label="DNI"/>
                                     </div>
                                 </div>
                                 <div class="input-group2">
                                     <div class="input-group-modal">
                                         <h3 for="ApPaterno">Apellido Paterno</h3>
                                         <input id="ApPaterno" type="text" value="<?= $patient[3] ?>" name="ApPaterno" class="input"
-                                            required />
+                                            required aria-label="Apellido Paterno"/>
                                     </div>
                                     <div class="input-group-modal">
                                         <h3 for="ApMaterno">Apellido Materno</h3>
                                         <input id="ApMaterno" type="text" value="<?= $patient[4] ?>" name="ApMaterno" class="input"
-                                            required />
+                                            required aria-label="Apellido Materno"/>
                                     </div>
                                 </div>
                                 <div class="input-group2">
                                     <div style=" width:190px;" class="input-group-modal">
                                         <h3 for="FechaNacimiento">Fecha de nacimiento</h3>
                                         <input type="date" id="FechaNacimiento" value="<?= $patient[6] ?>" name="FechaNacimiento"
-                                            max="<?= $fechamin ?>" value="<?= $fechamin ?>" onchange="calcularEdad()" />
+                                            max="<?= $fechamin ?>" value="<?= $fechamin ?>" onchange="calcularEdad()" aria-label="Fecha de Nacimiento"/>
                                     </div>
                                     <div class="input-group-modal">
                                         <h3 for="Edad">Edad</h3>
-                                        <input type="text" id="Edad" value="<?= $patient[7] ?>" name="Edad" readonly />
+                                        <input type="text" id="Edad" value="<?= $patient[7] ?>" name="Edad" readonly aria-label="Edad"/>
                                     </div>
                                 </div>
                                 <div class="input-group2">
                                     <div class="input-group-modal">
                                         <h3 for="GradoInstruccion">Grado de instruccion</h3>
                                         <input id="GradoInstruccion" value="<?= $patient[8] ?>" type="text" name="GradoInstruccion"
-                                            class="input" required />
+                                            class="input" required aria-label="Grado de Instrucción"/>
                                     </div>
                                     <div class="input-group-modal">
                                         <h3 for="Ocupacion">Ocupacion</h3>
                                         <input type="text" id="Ocupacion" value="<?= $patient[9] ?>" class="input" name="Ocupacion"
-                                            required />
+                                            required aria-label="Ocupación"/>
                                     </div>
                                 </div>
                                 <div class="input-group2">
                                     <div style="width:190px" class="input-group-modal">
                                         <h3 for="EstadoCivil">Estado civil</h3>
-                                        <select style="text-align:center" class="input" id="EstadoCivil" name="EstadoCivil"
-                                            required>
+                                        <select style="text-align:center" class="input" id="EstadoCivil" name="EstadoCivil" aria-label= "Estado Civil" required>
                                             <option value="">Seleccionar</option>
                                             <option value="soltero" <?php echo ($patient[10] === 'soltero') ? 'selected' : ''; ?>>
                                                 Soltero/a</option>
@@ -343,7 +342,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                     </div>
                                     <div style=" width:190px;" class="input-group-modal">
                                         <h3 for="Genero">Género</h3>
-                                        <select style="text-align:center" class="input" id="Genero" name="Genero" required>
+                                        <select style="text-align:center" class="input" id="Genero" name="Genero" aria-label="Género" required>
                                             <option value="">Seleccionar</option>
                                             <option value="Masculino" <?php echo ($patient[11] === 'Masculino') ? 'selected' : ''; ?>>
                                                 Masculino</option>
@@ -364,22 +363,22 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <div class="input-group-modal">
                                     <h3 for="Email">Correo Electronico</h3>
                                     <input type="Email" id="Email" class="input" value="<?= $patient[13] ?>" name="Email"
-                                        style="color: #7B7C89;" required />
+                                        style="color: #7B7C89;" required aria-label="Correo Electrónico"/>
                                 </div>
                                 <div style="margin-left:2em" id="respuesta3"> </div>
                                 <div class="input-group-modal">
                                     <h3 for="Direccion">Direccion</h3>
-                                    <input type="text" id="Direccion" class="input" value="<?= $patient[14] ?>" name="Direccion" />
+                                    <input type="text" id="Direccion" class="input" value="<?= $patient[14] ?>" name="Direccion" aria-label="Dirección"/>
                                 </div>
                                 <div class="input-group-modal">
                                     <h3 for="AntecedentesMedicos">Antecedentes médicos</h3>
                                     <input type="text" id="AntecedentesMedicos" value="<?= $patient[15] ?>" class="input"
-                                        name="AntecedentesMedicos" style="color: #7B7C89;" required />
+                                        name="AntecedentesMedicos" style="color: #7B7C89;" required aria-label="Antecedentes Médicos"/>
                                 </div>
                                 <div class="input-group-modal">
                                     <h3 for="MedicamentosPrescritos">Medicamentos Prescritos</h3>
                                     <input type="text" id="MedicamentosPrescritos" class="input" value="<?= $patient[17] ?>"
-                                        name="MedicamentosPrescritos" style="color: #7B7C89;" required />
+                                        name="MedicamentosPrescritos" style="color: #7B7C89;" required aria-label="Medicamentos Prescritos"/>
                                 </div>
 
 
