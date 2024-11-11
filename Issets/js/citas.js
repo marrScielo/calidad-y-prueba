@@ -111,14 +111,16 @@ function createAppointmentRow(appointment) {
             <td>${appointment.MotivoCita}</td>
             <td>${appointment.EstadoCita}</td>
             <td>${appointment.FechaInicioCita}</td>
-            <td>${appointment.Duracioncita}</td>
+            <td style="color:#4CAF50">${appointment.Duracioncita}</td>
             <td id="appointmentId-${appointment.IdCita}">
                 <div class="appointmentTable__buttons">
-                    <button class="appointmentTuple__button appointmentTuple__button--edit">
-                        <span class="material-symbols-outlined">edit</span>
+                    <button class="appointmentTuple__button appointmentTuple__button--edit btnm">
+                        <span class="material-symbols-outlined" translate="no">edit</span>
+                        <p>Editar</p>
                     </button>
-                    <button class="appointmentTuple__button appointmentTuple__button--delete">
-                        <span class="material-symbols-outlined">delete</span>
+                    <button class="appointmentTuple__button appointmentTuple__button--delete btne">
+                        <span class="material-symbols-outlined" translate="no">delete</span>
+                        <p>Eliminar</p>
                     </button>
                 </div>
             </td>
