@@ -23,7 +23,7 @@
 		}
 
 		.form__error-message {
-			display: flex;
+			display: none;
 			align-items: center;
 			color: #dc2626;
 			background-color: #fee2e2;
@@ -32,6 +32,7 @@
 			padding: 10px;
 			margin-bottom: 15px;
 			font-size: 14px;
+			
 		}
 
 		.form__error-icon {
@@ -77,16 +78,14 @@
 					</button>
 				</div>
 				<br>
-				<?php
-				if (isset($_GET['error']) && $_GET['error'] == 1) {
-					echo "<p class='form__error-message'>
-            <svg class='form__error-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'>
-                <path fill-rule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z' clip-rule='evenodd' />
-            </svg>
-            <span>El usuario o la contraseña son inválidos. Por favor, inténtalo de nuevo.</span>
-          </p>";
-				}
-				?>
+				
+
+			<p class='form__error-message'>
+				<svg class='form__error-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'>
+					<path fill-rule='evenodd' d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z' clip-rule='evenodd' />
+				</svg>
+				<span>El usuario o la contraseña son inválidos. Por favor, inténtalo de nuevo.</span>
+			</p>
 				<button type="submit" class="form__button">Ingresar</button>
 				<!--			
 			<p class="form__switch">
@@ -115,6 +114,44 @@
 			});
 		});
 	</script>
+	<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.form');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); 
+
+      const usernameInput = form.querySelector('input[name="usu"]');
+      const passwordInput = form.querySelector('input[name="pass"]');
+
+      const formData = new FormData();
+      formData.append('usu', usernameInput.value);
+      formData.append('pass', passwordInput.value);
+
+		fetch('./Controlador/login/ControllerLogin.php', {
+		method: 'POST',
+		body: formData
+		})
+		.then(response => response.url)
+		.then(url => {
+		if (url.includes('error=1')) {
+			const errorMessage = document.querySelector('.form__error-message');
+			errorMessage.style.display = 'flex';
+			setTimeout(() => {
+				errorMessage.style.display = 'none';
+     		 }, 2000);
+		} else {
+			window.location.href = url;
+		}
+		})
+		.catch(error => {
+		console.error(error);
+		});
+
+    });
+  });
+</script>
+	
 </body>
 
 </html>
