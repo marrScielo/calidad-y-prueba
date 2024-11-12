@@ -147,7 +147,7 @@
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
 }
@@ -159,7 +159,6 @@
 
 .contact-form button {
     padding: 15px 50px;
-    margin-left: 30%;
     font-size: 16px;
     text-align: center;
     background-color: #fff;
@@ -169,6 +168,7 @@
     color: #524388;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: 100%;
 }
 
 .contact-form button:hover {

@@ -6,6 +6,7 @@ $email=filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
 $name=filter_var($_POST['nombre'],FILTER_SANITIZE_STRING);
 $lastname=filter_var($_POST['apellidos'],FILTER_SANITIZE_STRING);
 $message=filter_var($_POST['comentario'],FILTER_SANITIZE_STRING);
+$telefono=filter_var($_POST['phone'],FILTER_SANITIZE_STRING);
 
 if(!empty($email) && !empty($name) && !empty($message) && !empty($lastname)){
     $destino="luisdemaryori@gmail.com";
@@ -32,7 +33,6 @@ if(!empty($email) && !empty($name) && !empty($message) && !empty($lastname)){
     $headers.="Return-Path:  $destino\r\n";
     mail($destino,$assunto,$cuerpo,$headers);
     echo "Email sent successfully";
-
 }else{
     echo "Error al enviar el email";
 }

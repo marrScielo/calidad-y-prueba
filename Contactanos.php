@@ -52,16 +52,18 @@
             </div>
 
             <div>
-                <form class="contact-form" action="EnvioContacto.php" method="post">
+                <form class="contact-form" action="Controlador/ContactoController.php" method="post">
                     <label for="nombre">Nombre</label>
                     <div class="input-group">
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-                    <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+                    <input type="text" id="apellidos" name="apellidos" placeholder="Ingrese su apellido" required>
                     </div>
+                    <label for="email">Numero de telefono</label>
+                    <input type="text" id="phone" name="phone" placeholder="Ingrese su numero de telefono" required>
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Email" required>
                     <label for="comentario">Comentario o mensaje</label>
-                    <textarea id="comentario" name="comentario" placeholder="Comentario o mensaje" required></textarea>
+                    <textarea id="comentario" name="comentario" placeholder="Ingrese su comentario o mensaje" required></textarea>
                     <button type="submit">Enviar</button>
                 </form>
             </div>
