@@ -1,14 +1,13 @@
 <?php
 require_once __DIR__.'/../config/credenciales-db.php';
+
 class conexion
 {
-
     private $servername = CONFIG_DB['servername'];
     private $username = CONFIG_DB['username'];
     private $password = CONFIG_DB['password'];
     private $database = CONFIG_DB['database'];
     private $pdo;
-    
 
     public function __construct()
     {
@@ -20,17 +19,13 @@ class conexion
         }
     }
 
-    public function conexion()
+    // Método para obtener la conexión PDO
+    public function getPDO()
     {
-        try {
-            $PDO = new PDO("mysql:host=" . $this->servername . ";dbname=" . $this->database, $this->username, $this->password);
-            $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $PDO;
-        } catch (PDOException $e) {
-            return $e->getMessage();
-        }
+        return $this->pdo;
     }
 
+    // Método de ejemplo para obtener la clasificación de una enfermedad
     public function obtenerClasificacionEnfermedad($idEnfermedad)
     {
         try {
@@ -42,13 +37,8 @@ class conexion
             $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
             return $resultado['clasificacion'] ?? null;
         } catch (PDOException $e) {
-            return null; // Manejar errores según tu lógica de aplicación
+            // Puedes manejar el error aquí o retornar null
+            return null;
         }
     }
-
-    public function getPDO()
-    {
-        return $this->pdo;
-    }
-
 }

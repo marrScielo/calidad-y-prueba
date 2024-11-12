@@ -47,11 +47,21 @@ try {
             // Extraer el ID del video de YouTube de la URL
             preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $row["video"], $matches);
             $video_id = isset($matches[1]) ? $matches[1] : null;
+            $nombre=htmlspecialchars($row["NombrePsicologo"]);
+            $especialidad=htmlspecialchars($row["Especialidad"]);
+            $introduccion=htmlspecialchars($row["Introduccion"]);
+
+            //modal aca va
+            echo "<div class='psicologo_modal' style='display:none;width:100vw;height:100vh;background-color:rgba(0,0,0,0.3);top:0;left:0;z-index:999999;position:fixed;'>";
+                include "Modal.php";
+            echo "</div>";
+
+
 
             echo "<div class='psicologo-container'>";
             echo "<div class='psicologo-header'>";
-            echo "<h3 class='psicologo-nombre'>" . htmlspecialchars($row["NombrePsicologo"]) . "</h3>";
-            echo "<span class='psicologo-tag'>" . htmlspecialchars($row["Especialidad"]) . "</span>";
+            echo "<h3 class='psicologo-nombre'>" . $nombre . "</h3>";
+            echo "<span class='psicologo-tag'>" . $especialidad . "</span>";
             echo "</div>";
 
             if ($video_id) {
@@ -63,12 +73,12 @@ try {
                 echo "<p class='psicologo-video-not-found'>Video no disponible.</p>";
             }
 
-            echo "<p class='psicologo-introduction'>" . htmlspecialchars($row["introduccion"]) . "</p>";
+            echo "<p class='psicologo-introduction'>" . $introduccion . "</p>";
 
             // Botón de WhatsApp mejorado
             $whatsapp_number = preg_replace('/[^0-9]/', '', $row['celular']); // Limpia el número
             $whatsapp_url = "https://api.whatsapp.com/send?phone=51" . urlencode($whatsapp_number);
-            echo "<a href='" . htmlspecialchars($whatsapp_url, ENT_QUOTES, 'UTF-8') . "' target='_blank' rel='noopener noreferrer' class='wsp-button'>¡Contáctame!</a>";
+            echo "<a href='" . htmlspecialchars($whatsapp_url, ENT_QUOTES, 'UTF-8') . "' target='_blank' rel='noopener noreferrer' class='wsp-button'>Más Información!</a>";
             echo "</div>";
         }
     } else {
