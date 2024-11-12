@@ -126,8 +126,8 @@ body {
     border-color: #6c757d;
 }
 
-.wsp-button {
-    width: 100%;
+.wsp-button,
+.psicologo_button {
     background-color: #9897d1;
     color: white;
     padding: 10px 20px;
@@ -135,9 +135,24 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
     font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
-.wsp-button:hover {
+.psicologo_img_modal {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.psicologo_modal_date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.wsp-button:hover,
+.psicologo_button:hover {
     background-color: #7f7ebf;
 }
 
