@@ -9,7 +9,7 @@ class userModelPaciente
         //require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");
 
         $con = new conexion();
-        $this->PDO = $con->conexion();
+        $this->PDO = $con->getPDO();
     }
 
     // Genera codigo paciente 
