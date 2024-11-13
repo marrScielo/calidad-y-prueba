@@ -47,7 +47,7 @@ try {
         // Salida de datos de cada fila
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Extraer el ID del video de YouTube de la URL
-            preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $row["video"], $matches);
+            preg_match('/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $row["video"], $matches);
             $video_id = isset($matches[1]) ? $matches[1] : null;
             $nombre = htmlspecialchars($row["NombrePsicologo"]);
             $especialidad = htmlspecialchars($row["Especialidad"]);
@@ -80,14 +80,14 @@ try {
 
             if ($video_id) {
                 echo "<div class='psicologo-video-container' style='position:relative;cursor: pointer;'>";
-                echo "<iframe class='psicologo-video' width='100%' height='200' src='https://www.youtube.com/embed/$video_id' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+                echo "<iframe class='psicologo-video' width='100%' height='250' src='https://www.youtube.com/embed/$video_id' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
                 echo "<div class='psicologo-video-overlay' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent;'></div>";
                 echo "</div>";
             } else {
                 echo "<p class='psicologo-video-not-found'>Video no disponible.</p>";
             }
 
-            echo "<p class='psicologo-introduction'>" . $introduccion . "</p>";
+            // echo "<p class='psicologo-introduction'>" . $introduccion . "</p>";
 
             // Botón para abrir el modal
             echo "<button class='psicologo_button open_modal' data-modal-id='modal-$nombre'>Más Información</button>";
