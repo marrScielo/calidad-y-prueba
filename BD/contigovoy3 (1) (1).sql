@@ -2781,6 +2781,8 @@ CREATE TABLE `vista_psicologo_info` (
 ,`video` varchar(500)
 ,`Especialidad` varchar(100)
 ,`introduccion` varchar(100)
+,`usuario_id` bigint(20) DEFAULT NULL
+,`fotoPerfil` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -2790,8 +2792,22 @@ CREATE TABLE `vista_psicologo_info` (
 --
 DROP TABLE IF EXISTS `vista_psicologo_info`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_psicologo_info`  AS SELECT `p`.`NombrePsicologo` AS `NombrePsicologo`, `p`.`celular` AS `celular`, `p`.`email` AS `email`, `p`.`video` AS `video`, `e`.`nombre` AS `Especialidad`, `p`.`introduccion` AS `introduccion` FROM (`psicologo` `p` join `especialidad` `e` on(`p`.`especialidad_id` = `e`.`id`)) ;
-
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_psicologo_info` AS 
+SELECT 
+    `p`.`NombrePsicologo` AS `NombrePsicologo`, 
+    `p`.`celular` AS `celular`, 
+    `p`.`email` AS `email`, 
+    `p`.`video` AS `video`, 
+    `e`.`nombre` AS `Especialidad`, 
+    `p`.`introduccion` AS `introduccion`, 
+    `p`.`usuario_id` AS `usuario_id`, 
+    `u`.`fotoPerfil` AS `fotoPerfil`  -- Añadir el campo de foto de perfil
+FROM 
+    `psicologo` `p` 
+JOIN 
+    `especialidad` `e` ON (`p`.`especialidad_id` = `e`.`id`)
+JOIN 
+    `usuarios` `u` ON (`p`.`usuario_id` = `u`.`id`); 
 --
 -- Índices para tablas volcadas
 --
