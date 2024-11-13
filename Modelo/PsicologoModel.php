@@ -53,6 +53,7 @@ try {
             $especialidad = htmlspecialchars($row["Especialidad"]);
             $introduccion = htmlspecialchars($row["introduccion"]);
             $fotoPerfil = $row["fotoPerfil"];
+            $especialidad = htmlspecialchars($row["Especialidad"]);
             // Botón de WhatsApp mejorado
             $whatsapp_number = preg_replace('/[^0-9]/', '', $row['celular']); // Limpia el número
             $whatsapp_url = "https://api.whatsapp.com/send?phone=51" . urlencode($whatsapp_number);
@@ -62,8 +63,9 @@ try {
                 echo "<div class='modal-content' style='background: white; margin: 10% auto; padding: 20px; width: 80%;'>";
                 echo "<span class='close_modal' style='cursor:pointer; float:right; font-size:2rem;'>×</span>";
                 echo "<div class='psicologo_modal_date'>";
-                echo "<h3>$nombre</h3>";
                 echo "<img src='".$fotoPerfil ."' alt='psicologo' class='psicologo_img_modal'>";
+                echo "<h3>$nombre</h3>";
+                echo "<h3>$especialidad</h3>";
                 echo "<p>$introduccion</p>";
                 echo "<a href='" . htmlspecialchars($whatsapp_url, ENT_QUOTES, 'UTF-8') . "' target='_blank' rel='noopener noreferrer' class='wsp-button'>Contáctame por WhatsApp</a>";
                 echo "</div>";
