@@ -98,9 +98,11 @@
   .redes {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    /* justify-content: end; */
+    justify-content: center;
     align-items: center;
     border-bottom: 3px solid #fff;
+    padding-block: 10px;
   }
 
   .redes ul {
@@ -110,7 +112,7 @@
     align-items: center;
     list-style: none;
     margin-right: 5px;
-    gap: 5px;
+    gap: 20px;
     margin: 10px 0;
   }
 
