@@ -24,7 +24,7 @@ class ContactoController
             $apellidos = $_POST['apellidos'];
             $resultado = $this->contactoModel->create($nombre, $telefono, $email, $mensaje);
             if ($resultado === true) {
-                $destino="luisdemaryori@gmail.com";
+                $destino="contigovoyproject@gmail.com";
                 $assunto="Contact Form";
                 $cuerpo='
                 <html>
