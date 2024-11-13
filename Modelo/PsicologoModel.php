@@ -59,14 +59,14 @@ try {
             $whatsapp_url = "https://api.whatsapp.com/send?phone=51" . urlencode($whatsapp_number);
 
             // Modal
-            echo "<div class='psicologo_modal' style='display:none;width:100vw;height:100vh;background-color:rgba(0,0,0,0.3);top:0;left:0;z-index:999999;position:fixed;' id='modal-$nombre'>";
-                echo "<div class='modal-content' style='background: white; margin: 10% auto; padding: 20px; width: 80%;'>";
-                echo "<span class='close_modal' style='cursor:pointer; float:right; font-size:2rem;'>×</span>";
+            echo "<div class='psicologo_modal' style='display:none;width:100vw;height:100vh;background-color:rgba(0,0,0,0.3);top:0;left:0;z-index:999999;position:fixed; align-items: center;' id='modal-$nombre'>";
+                echo "<div class='modal-content' style='background: white; margin: 0 auto; padding: 20px; max-width: 80%; max-height: 80%;border-radius: 10px;position:relative;'>";
+                echo "<span class='close_modal' style='cursor:pointer; font-size:2rem;position:absolute;top:20px;right:20px;'>×</span>";
                 echo "<div class='psicologo_modal_date'>";
                 echo "<img src='".$fotoPerfil ."' alt='psicologo' class='psicologo_img_modal'>";
-                echo "<h3>$nombre</h3>";
-                echo "<h3>$especialidad</h3>";
-                echo "<p>$introduccion</p>";
+                echo "<h3 style='text-align:center;'>$nombre</h3>";
+                echo "<h3 style='text-align:center;'>$especialidad</h3>";
+                echo "<p style='text-align:center;'>$introduccion</p>";
                 echo "<a href='" . htmlspecialchars($whatsapp_url, ENT_QUOTES, 'UTF-8') . "' target='_blank' rel='noopener noreferrer' class='wsp-button'>Contáctame por WhatsApp</a>";
                 echo "</div>";
                 echo "</div>";
