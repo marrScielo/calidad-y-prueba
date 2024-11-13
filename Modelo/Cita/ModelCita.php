@@ -7,7 +7,8 @@ class UserModelCita
         require_once(__DIR__ . "/../../conexion/conexion.php");
 
         $con = new conexion();
-        $this->PDO = $con->conexion();
+        $this->PDO = $con->getPDO();
+        
     }
     // Guardar datos de la cita
     public function insertarCita($IdPaciente, $MotivoCita, $EstadoCita, $FechaInicioCita, $DuracionCita, $FechaFinCita, $TipoCita, $ColorFondo, $IdPsicologo, $CanalCita, $EtiquetaCita)
