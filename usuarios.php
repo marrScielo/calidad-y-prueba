@@ -121,9 +121,11 @@ if (isset($_SESSION['logeado'])) {
                     <?php endif; ?>
                     <input type="url" name="fotoPerfil" placeholder="Foto Perfil URL" required>
                     <select name="rol" required id="rol_new_user">
-                        <option value="paciente">Paciente</option>
-                        <option value="psicologo">Psicologo</option>
+                        <!-- <option value="paciente">Paciente</option> -->
+                         
                         <option value="administrador">Administrador</option>
+                        <option value="psicologo">Psicologo</option>
+                        <option value="marketing">Marketing</option>
                     </select>
                     <select name="speciality_new_user" id="speciality_new_user" style="display: none;">
                         <?php foreach ($especialidadesController->getEspecialidades() as $especialidad): ?>
