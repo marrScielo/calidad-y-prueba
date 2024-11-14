@@ -49,53 +49,59 @@ class Login
         //require_once CONEXION_PATH;
         $con = new DatabaseController();
         $this->PDO = $con->getConnection();
-
     }
 
     public function validarDatos($email, $password)
     {
-    if ($_POST) {
-        session_start();
-        $email = trim($_POST['usu']);
-        $password = trim($_POST['pass']);
+        if ($_POST) {
+            session_start();
+            $email = trim($_POST['usu']);
+            $password = trim($_POST['pass']);
 
-        // verify if the email exists in the database
-        $statement = $this->PDO->prepare("SELECT * FROM usuarios WHERE email = :email");
-        $statement->bindParam(":email", $email);
-        $statement->execute();
-        $user = $statement->fetch(PDO::FETCH_ASSOC);
+            // verify if the email exists in the database
+            $statement = $this->PDO->prepare("SELECT * FROM usuarios WHERE email = :email");
+            $statement->bindParam(":email", $email);
+            $statement->execute();
+            $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-        // compare the password with the hash stored in the database
-        if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['email'] = $user["email"];
-            $_SESSION['id'] = $user["id"];
-            $_SESSION['rol'] = $user["rol"];
+            // compare the password with the hash stored in the database
+            if ($user && password_verify($password, $user['password'])) {
+                $_SESSION['email'] = $user["email"];
+                $_SESSION['id'] = $user["id"];
+                $_SESSION['rol'] = $user["rol"];
 
-            // check the specific role 'psicologo'
-            if ($user['rol'] == 'psicologo') {
-                // search the IdPsicologo in the 'psicologo' table
-                $psicologoStatement = $this->PDO->prepare("SELECT IdPsicologo, NombrePsicologo FROM psicologo WHERE usuario_id = :usuario_id");
-                $psicologoStatement->bindParam(":usuario_id", $user["id"]);
-                $psicologoStatement->execute();
-                $psicologo = $psicologoStatement->fetch(PDO::FETCH_ASSOC);
+                // check the specific role 'psicologo'
+                if ($user['rol'] == 'psicologo') {
+                    // search the IdPsicologo in the 'psicologo' table
+                    $psicologoStatement = $this->PDO->prepare("SELECT IdPsicologo, NombrePsicologo FROM psicologo WHERE usuario_id = :usuario_id");
+                    $psicologoStatement->bindParam(":usuario_id", $user["id"]);
+                    $psicologoStatement->execute();
+                    $psicologo = $psicologoStatement->fetch(PDO::FETCH_ASSOC);
 
-                if ($psicologo) {
-                    $_SESSION['IdPsicologo'] = $psicologo["IdPsicologo"];
-                    $_SESSION['NombrePsicologo'] = $psicologo["NombrePsicologo"];
-                    $_SESSION['Usuario'] = $psicologo["Usuario"];
-                    $_SESSION['idPsicologo'] = $psicologo["IdPsicologo"];
-                    header("Location: ../../Vista/Dashboards.php");
+                    if ($psicologo) {
+                        $_SESSION['IdPsicologo'] = $psicologo["IdPsicologo"];
+                        $_SESSION['NombrePsicologo'] = $psicologo["NombrePsicologo"];
+                        $_SESSION['Usuario'] = $psicologo["Usuario"];
+                        $_SESSION['idPsicologo'] = $psicologo["IdPsicologo"];
+                        header("Location: ../../Vista/Dashboards.php");
+                        exit();
+                    } else {
+                        // Redirect to an error page if the corresponding psychologist is not found
+                        header("Location: ../../login.php?error=no_psicologo");
+                        exit();
+                    }
+                } elseif ($user['rol'] == 'administrador') {
+                    $_SESSION['logeado'] = true;
+                    //header("Location: /ContigoVoy/usuarios.php");
+                    header("Location: ../../usuarios.php");
                     exit();
-                } else {
-                    // Redirect to an error page if the corresponding psychologist is not found
-                    header("Location: ../../login.php?error=no_psicologo");
+                } elseif ($user['rol'] == 'marketing') {
+                    $_SESSION['logeado'] = true;
+                    header("Location: /ContigoVoy/gestion_contactanos.php");
+                    //header("Location: ../../Vista/Dashboards.php");
+                    //header("Location: ../../Vista/gestion_contactanos.php");
                     exit();
                 }
-            } elseif ($user['rol'] == 'administrador') {
-                $_SESSION['logeado'] = true;
-                //header("Location: /ContigoVoy/usuarios.php");
-                header("Location: ../../usuarios.php"); 
-                exit();
             } else {
                 // Redirect to a generic or error page if the role is not recognized
                 header("Location: ../../login.php?error=rol_no_reconocido");
@@ -106,6 +112,4 @@ class Login
             exit();
         }
     }
-    }
 }
-?>

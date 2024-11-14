@@ -4,7 +4,7 @@ if(isset($_SESSION['logeado'])){
 require_once 'conexion/conexion.php';
 
 $db = new conexion;
-$pdo = $db->conexion();
+$pdo = $db->getPDO();
 
 // Eliminar registro si se ha solicitado
 if (isset($_GET['delete'])) {

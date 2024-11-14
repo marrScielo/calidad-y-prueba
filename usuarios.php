@@ -77,7 +77,7 @@ if (isset($_SESSION['logeado'])) {
     } else {
         $usuarios = $usuariosController->mostrarUsuarios();
     }
-    ?>
+?>
 
     <!DOCTYPE html>
     <html lang="es">
@@ -126,7 +126,7 @@ if (isset($_SESSION['logeado'])) {
                     <input type="file" name="fotoPerfil" accept="image/*" id="fotoPerfil" required>
                     <select name="rol" required id="rol_new_user">
                         <!-- <option value="paciente">Paciente</option> -->
-                         
+
                         <option value="administrador">Administrador</option>
                         <option value="psicologo">Psicologo</option>
                         <option value="marketing">Marketing</option>
@@ -170,7 +170,7 @@ if (isset($_SESSION['logeado'])) {
                             $especialidad_id = $especialidadesController->getEspecialidadById($psicologo['especialidad_id'])['id'] ?? '';
                         }
                     }
-                    ?>
+                ?>
 
                     <tr class="user_data" id="<?= htmlspecialchars($usuario['id']) ?>">
                         <td><?= htmlspecialchars($usuario['id']) ?></td>
@@ -198,6 +198,8 @@ if (isset($_SESSION['logeado'])) {
                                     </option>
                                     <option value="administrador" <?= $usuario['rol'] == 'administrador' ? 'selected' : '' ?>>
                                         Administrador</option>
+                                    <option value="administrador" <?= $usuario['rol'] == 'marketing' ? 'selected' : '' ?>>
+                                        Marketing</option>
                                 </select>
 
                                 <!-- Campos específicos para Psicologo -->
@@ -247,7 +249,7 @@ if (isset($_SESSION['logeado'])) {
             }
 
             // Evento para el formulario de creación de usuarios
-            document.getElementById('rol_new_user').addEventListener('change', function () {
+            document.getElementById('rol_new_user').addEventListener('change', function() {
                 const selectedRole = this.value;
                 const elementsToShow = ['speciality_new_user', 'nombrePsicologo', 'video', 'celular', 'introduccion_new_user'];
 
