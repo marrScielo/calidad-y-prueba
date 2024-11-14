@@ -131,7 +131,7 @@
 
   .titulo {
     text-align: center;
-    margin: auto;
+    margin: .5rem auto;
     font-size: 18px;
     font-weight: bold;
   }
@@ -139,6 +139,7 @@
   .contacto {
     align-items: center;
     margin: auto;
+    margin-block-end: .5rem;
     list-style: none;
     display: flex;
     flex-direction: column;
