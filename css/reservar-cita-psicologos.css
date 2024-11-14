@@ -157,6 +157,31 @@ body {
     background-color: #7f7ebf;
 }
 
+.psicologo_modal_date {
+    position: relative; /* Asegura el contexto de posicionamiento */
+    max-height: 65vh; /* Altura máxima del modal */
+    overflow-y: auto; /* Agrega scroll vertical si el contenido excede la altura */
+}
+
+.modal_introduccion {
+    /* No es necesario establecer un max-height fijo */
+    max-height: 150px;
+    overflow-y: auto; /* Permite el scroll vertical dentro de .modal_introduccion */
+}
+
+.modal_introduccion::-webkit-scrollbar {
+    width: 8px;
+    background-color: #9897d1;
+    border-radius: 20px;
+}
+.modal_introduccion::-webkit-scrollbar:window-inactive {
+    display: none;
+}
+.modal_introduccion::-webkit-scrollbar-thumb {
+    background-color: #c0c0ef;
+    border-radius: 6px;
+}
+
 .testimonial-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -301,6 +326,9 @@ body {
 @media (min-width: 1025px) {
     .psicologo-row {
         grid-template-columns: repeat(3, minmax(250px, 1fr));
+    }
+    .modal-content {
+        width: 700px;
     }
 }
 
