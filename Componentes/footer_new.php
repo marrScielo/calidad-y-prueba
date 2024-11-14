@@ -5,35 +5,14 @@
     background: rgb(155, 150, 186);
     margin-bottom: 0%;
     background: linear-gradient(90deg, rgba(155, 150, 186, 1) 0%, rgba(108, 89, 182, 1) 100%);
-    display: grid;
-    grid-template-columns: 350px 1fr 350px;
     color: #fff;
     border-top: 1px solid #fff;
-  }
-
-  .footer .principal:first-child {
-    grid-column: 2/3;
-    grid-row: 1/2;
   }
 
   .principal {
     width: auto;
     margin-bottom: 0%;
-    max-height: 650px !important;
     height: auto;
-    display: grid;
-    /*grid-template-columns: repeat(8,1fr);
-    */
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: 1fr 1fr 2fr 3fr 3fr 1fr;
-    gap: 10px;
-    grid-template-areas:
-      'redes redes redes redes redes redes redes redes'
-      'atencion atencion atencion atencion atencion atencion atencion atencion'
-      'contacto1 contacto1 contacto2 contacto2 contacto3 contacto3 contacto4 contacto4'
-      'somos1 somos1 somos2 somos2 somos3 somos3 somos4 somos4'
-      '. links1 links1 links2 links2  links3 links3 .'
-      'copyright copyright copyright copyright copyright copyright copyright copyright'
 
   }
 
@@ -65,6 +44,7 @@
 
   .principal div:nth-child(7) {
     grid-area: somos1;
+    margin-top: 1rem;
   }
 
   .principal div:nth-child(8) {
@@ -85,10 +65,12 @@
 
   .principal div:nth-child(12) {
     grid-area: links2;
+    margin-top: -.5rem;
   }
 
   .principal div:nth-child(13) {
     grid-area: links3;
+    margin-top: -.5rem;
   }
 
   .principal div:nth-child(14) {
@@ -114,6 +96,9 @@
     margin-right: 5px;
     gap: 20px;
     margin: 10px 0;
+    @media (min-width: 768px) {
+        gap: 20px;
+    }
   }
 
   .redes ul li {
@@ -171,16 +156,27 @@
     flex-direction: column;
     gap: 10px;
     font-family: 'Montserrat';
+    width: 70%;
+    margin: 0 auto 1rem;
   }
 
   .nosotros .textosup {
     font-size: 20px;
     font-weight: bold;
-    border-bottom: 1px solid #fff;
+    border-bottom: 2px solid #fff;
+    text-align: center;
+    padding-block-end: .3rem;
   }
 
   .nosotros .textoinf {
-    font-size: 16px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+    p {
+      line-height: 1.5;
+    }
   }
 
   .logoo img {
@@ -198,8 +194,13 @@
   }
 
   .links {
-    margin-right: 15px;
-    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 70%;
+    margin: 0 auto 1rem;
+    /* margin-right: 15px; */
+    /* margin-bottom: 10px; */
   }
 
   .copy {
@@ -213,19 +214,23 @@
   .links .textosup {
     font-size: 18px;
     font-weight: bold;
-    border-bottom: 1px solid #fff;
-    margin-top: 5PX;
+    border-bottom: 2px solid #fff;
+    text-align: center;
+    padding-block-end: .3rem;
   }
 
   .links .borde {
-    border-bottom: 1px solid #fff;
-    margin-top: 5px;
-    font-size: 12px;
+    /* border-bottom: 1px solid #fff; */
+    text-align: center;
+    font-size: 14px;
   }
 
   .links .textoinf {
-    margin-top: 5px;
-    font-size: 12px;
+    font-size: 14px;
+    text-align: center;
+    p {
+      line-height: 1.5;
+    }
   }
 
   @media only screen and (min-width: 320px) and (max-width: 480px) {
@@ -261,7 +266,6 @@
         'links2 links2'
         'links1 links1'
         'copyright copyright '
-
     }
 
     .redes ul {
@@ -270,10 +274,6 @@
 
     .nosotros .textosup{
       font-size: 18px;
-    }
-
-    .nosotros .textoinf{
-      font-size: 12px;
     }
   }
 
@@ -437,29 +437,38 @@
     </div>
     <div class="nosotros">
       <div class="textosup">Quiénes somos</div>
-      <div class="textoinf">¿Qué es Contigo Voy?<br>
-        Es una marca que ofrece apoyo<br>
-        emocional y psicológico,<br>
-        proporcionando un entorno<br>
-        seguro y confiable para el<br>
-        bienestar de los clientes</div>
+      <div class="textoinf">
+        <p>¿Qué es Contigo Voy?</p>
+        <p>
+          Es una marca que ofrece apoyo emocional y psicológico, proporcionando un entorno seguro y confiable para el bienestar de los clientes
+        </p>
+      </div>
     </div>
     <div class="nosotros">
       <div class="textosup">¡Conéctate ya!</div>
-      <div class="textoinf">¡Afiliate a Contigo Voy!<br>
-        Psicolog@s afiliados<br>
-        Las empresa lider en Perú</div>
+      <div class="textoinf" style="gap: 0">
+        <p>¡Afiliate a Contigo Voy!</p>
+        <p>¡Conoce a nuestro equipo!</p>
+        <p>¡Conoce a nuestros psicólogos!</p>
+        <!-- <p>Psicologos afiliados</p> -->
+        <p>Empresa líder en Perú</p>
+      </div>
     </div>
     <div class="nosotros">
       <div class="textosup">Servicios</div>
-      <div class="textoinf">Herramientas de colaboración<br>
-        Gestión de proyectos<br>
-        Conectividad avanzada</div>
+      <div class="textoinf" style="gap: 0">
+        <p>Herramientas de colaboración</p>
+        <p>Herramientas de colaboración</p>
+        <p>Gestión de proyectos</p>
+        <p>Conectividad avanzada</p>
+      </div>
     </div>
     <div class="nosotros">
       <div class="textosup">Noticias y eventos</div>
-      <div class="textoinf">Noticias<br>
-        Eventos</div>
+      <div class="textoinf" style="gap: 0">
+        <p>Noticias</p>
+        <p>Eventos</p>
+      </div>
     </div>
     <div class="logoo">
       <img src="img/Recurso 13-8.png" alt="Logo">
@@ -467,17 +476,24 @@
     <div class="links">
       <div class="textosup">Intranet</div>
       <div class="borde">Blog Contigo Voy</div>
-      <div class="textosup">Contacto</div>
-      <div class="textoinf">Soporte <br>
-        Contactanos</div>
+      <div class="links">
+        <div class="textosup">Contacto</div>
+        <div class="textoinf">
+          <p>Contáctanos</p>
+          <p>Ubicación</p>
+          <p>Soporte</p>
+        </div>
+      </div>
     </div>
     <div class="links">
-      <div class="textosup">Colaboracion</div>
-      <div class="textoinf">Convocatorias<br>
-        Proyectos<br>
-        Pulicaciones<br>
-        Red de oportunidades<br>
-        Comunidad de salud digital</div>
+      <div class="textosup">Colaboración</div>
+      <div class="textoinf">
+        <p>Convocatorias</p>
+        <p>Proyectos</p>
+        <p>Pulicaciones</p>
+        <p>Red de oportunidades</p>
+        <p>Comunidad de salud digital</p>
+      </div>
     </div>
     <div class="copy">© Copyright All rights reserved 2024</div>
   </div>
