@@ -69,9 +69,7 @@
             </div>
     </section>
 
-    <footer>
-        <div>Copyright &copy; 2024 CONTIGO VOY</div>
-    </footer>
+    <?php include_once 'Componentes/footer_new.php'; ?>
     <script src="js/navabar.js"></script>
 </body>
 
