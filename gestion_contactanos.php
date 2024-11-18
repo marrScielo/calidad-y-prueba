@@ -74,32 +74,36 @@ if (isset($_SESSION['logeado'])) {
         <!-- Barra de búsqueda -->
         <div class="search-container">
             <form action="gestion_contactanos.php" method="GET">
-                <input type="text" name="search" class="search-input" placeholder="Buscar por nombre, email o teléfono" value="<?= htmlspecialchars($search) ?>">
+                <input id="searchContacto" type="text" name="search" class="search-input" placeholder="Buscar por nombre, email o teléfono" value="<?= htmlspecialchars($search) ?>">
                 <button type="submit" class="search-button">Buscar</button>
-            </form>
+            </form> 
         </div>
 
         <table>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Teléfono</th>
-                <th>Email</th>
-                <th>Mensaje</th>
-                <th>Acciones</th>
-            </tr>
-            <?php foreach ($contactos as $contacto): ?>
+            <thead>
                 <tr>
-                    <td><?= htmlspecialchars($contacto['id']) ?></td>
-                    <td><?= htmlspecialchars($contacto['nombre']) ?></td>
-                    <td><?= htmlspecialchars($contacto['telefono']) ?></td>
-                    <td><?= htmlspecialchars($contacto['email']) ?></td>
-                    <td><?= htmlspecialchars($contacto['mensaje']) ?></td>
-                    <td class="actions-delete">
-                        <a href="gestion_contactanos.php?delete=<?= $contacto['id'] ?>" onclick="return confirm('¿Está seguro de que desea eliminar este registro?')">Eliminar</a>
-                    </td>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Mensaje</th>
+                    <th>Acciones</th>
                 </tr>
-            <?php endforeach; ?>
+            </thead>
+            <tbody id="tableNomContacto">
+                <?php foreach ($contactos as $contacto): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($contacto['id']) ?></td>
+                        <td><?= htmlspecialchars($contacto['nombre']) ?></td>
+                        <td><?= htmlspecialchars($contacto['telefono']) ?></td>
+                        <td><?= htmlspecialchars($contacto['email']) ?></td>
+                        <td><?= htmlspecialchars($contacto['mensaje']) ?></td>
+                        <td class="actions-delete">
+                            <a href="gestion_contactanos.php?delete=<?= $contacto['id'] ?>" onclick="return confirm('¿Está seguro de que desea eliminar este registro?')">Eliminar</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
         <div class="pagination">
             <?php for ($i = 1; $i <= $total_pages; $i++): ?>
@@ -107,8 +111,26 @@ if (isset($_SESSION['logeado'])) {
             <?php endfor; ?>
         </div>
     </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#searchContacto').on('keyup', function() {
+                var value = $(this).val().toLowerCase();
+                $('#tableNomContacto tr').filter(function() {
+                    // No se filtra la fila del encabezado
+                    if ($(this).find('td:eq(1)').length > 0) {
+                        $(this).toggle($(this).find('td:eq(1)').text().toLowerCase().indexOf(value) > -1);
+                        
+                    }
+                });
+            });
+        });
+    </script>
 
     </html>
+
+
+
 <?php
 } else {
     header("Location: index.php");
