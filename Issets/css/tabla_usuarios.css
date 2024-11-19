@@ -36,7 +36,7 @@
     color: var(--color-warning);
 }
 
-.user-table__cell--actions {
+.user-table__cell-actions {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

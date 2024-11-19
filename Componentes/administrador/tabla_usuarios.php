@@ -15,11 +15,13 @@
                     <td class="user-table__cell"><?php echo htmlspecialchars($usuario['id']); ?></td>
                     <td class="user-table__cell"><?php echo htmlspecialchars($usuario['email']); ?></td>
                     <td class="user-table__cell">
-                        <figure class="user-table__cell-figure"><img src="<?php echo htmlspecialchars($usuario['fotoPerfil']); ?>" alt="Foto de perfil" class="user-table__profile-picture"></figure>
+                        <figure class="user-table__cell-figure">
+                            <img src="<?php echo htmlspecialchars($usuario['fotoPerfil']); ?>" alt="Foto de perfil" class="user-table__profile-picture">
+                        </figure>
                     </td>
                     <td class="user-table__cell"><?php echo htmlspecialchars($usuario['rol']); ?></td>
                     <td class="user-table__cell">
-                        <div class="user-table__cell--actions">
+                        <div class="user-table__cell-actions">
                             <button class="user-table__delete-button">
                                 <i class="fa-solid fa-trash-can"></i>
                                 <span>Eliminar</span>
