@@ -1,0 +1,77 @@
+.table-scroll {
+    overflow-x: auto;
+}
+
+.user-table {
+    width: 100%;
+    font-size: .875rem;
+    margin-top: 2rem;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.user-table__row {
+    background: var(--color-white);
+}
+
+.user-table__cell {
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    color: var(--color-dark);
+    padding: 10px 5px;
+}
+
+.user-table__cell:first-child {
+    border-left: 0 solid none;
+    border-radius: 8px 0 0 8px;
+}
+
+.user-table__cell:last-child {
+    border-right: 0 solid none;
+    border-radius: 0 8px 8px 0;
+}
+
+.user-table__cell--header {
+    color: var(--color-warning);
+}
+
+.user-table__cell--actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.user-table__cell-figure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-table__profile-picture {
+    width: 40px;
+    height: 40px;
+}
+
+.user-table__delete-button,
+.user-table__edit-button {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.user-table__delete-button {
+    color: var(--color-btne);
+}
+
+.user-table__edit-button {
+    color: var(--color-btnm);
+}
+
+.user-table__delete-button:hover,
+.user-table__edit-button:hover {
+    transform: scale(1.1);
+}

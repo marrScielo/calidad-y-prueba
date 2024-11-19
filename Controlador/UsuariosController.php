@@ -1,6 +1,6 @@
 <?php
 //local
-require_once 'Modelo/UsuarioModel.php';
+require_once __DIR__ . '/../Modelo/UsuarioModel.php';
 
 //require_once("/home3/ghxumdmy/public_html/website_1cf5dd5d/Modelo/UsuarioModel.php");
 
