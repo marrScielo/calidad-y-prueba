@@ -211,18 +211,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <script src="../Issets/js/dashboard.js"></script>
         <script src="../Issets/js/citas.js"></script>
         <script>
-            // Obtener elementos del formulario
-            // var fechaInicioInput = document.getElementById('FechaInicioCita');
-            // var horaInicioInput = document.getElementById('HoraInicio');
-            // var duracionInput = document.getElementById('DuracionCita');
-            // var fechaFinInput = document.getElementById('FechaFin');
-
-            // // Escuchar eventos de cambio en los campos relevantes
-            // fechaInicioInput.addEventListener('change', calcularFechaFin);
-            // horaInicioInput.addEventListener('change', calcularFechaFin);
-            // duracionInput.addEventListener('change', calcularFechaFin);
-
-            // Función para calcular la fecha y hora de finalización
             function calcularFechaFin() {
                 var fechaInicio = new Date(fechaInicioInput.value + 'T' + horaInicioInput.value);
                 var duracion = parseInt(duracionInput.value);
@@ -255,7 +243,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             }
             //Funciones del modal
             function openModalEliminar(id) {
-                var modal = document.getElementById('modalEliminar' + id);
+                var modal = document.getElementById(' ' + id);
                 modal.classList.add('active');
             }
 

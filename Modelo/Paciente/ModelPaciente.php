@@ -77,7 +77,7 @@ class userModelPaciente
     public function show($IdPaciente)
     {
         $statement = $this->PDO->prepare("SELECT p.IdPaciente,p.codigopac, p.NomPaciente, p.ApPaterno, p.ApMaterno, p.Dni, p.FechaNacimiento, p.Edad, p.GradoInstruccion, p.Ocupacion, p.EstadoCivil,p.Genero, p.Telefono,
-         p.Email, p.Direccion, p.AntecedentesMedicos, p.IdPsicologo, p.MedicamentosPrescritos, de.name, di.name, pr.name 
+         p.Email, p.Direccion, p.AntecedentesMedicos, p.IdPsicologo, p.MedicamentosPrescritos, p.IdProvincia, p.IdDepartamento, p.IdDistrito, de.name, di.name, pr.name 
          FROM paciente p 
          inner join departamento de on de.id = p.IdDepartamento
          inner join distrito di on di.id = p.IdDistrito
