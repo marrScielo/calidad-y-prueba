@@ -166,7 +166,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                         <td style="color:#4CAF50"><?= $row['Duracioncita'] ?></td>
                                         <td id="appointmentId-<?= $row['IdCita'] ?>">
                                             <div class="appointmentTable__buttons">
-
                                                 <button class="appointmentTuple__button appointmentTuple__button--edit btnm">
                                                     <span class="material-symbols-outlined" translate="no">edit</span>
                                                     <p>Editar</p>

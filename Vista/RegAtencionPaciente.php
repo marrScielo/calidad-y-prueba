@@ -160,6 +160,75 @@ if (isset($_SESSION['NombrePsicologo'])) {
   </body>
   <script src="../Issets/js/validationMessageGeneral.js"></script>
   <script>
+    
+    // Obtener el valor de un parámetro de la URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    // Obtener el ID del paciente de la URL 
+    const patientId = getQueryParam('id');
+    console.log('Patient ID:', patientId);
+
+    //* Si se obtiene un ID de paciente en la URL, realiza una solicitud AJAX para obtener los datos del paciente
+    if (patientId) {
+      $(document).ready(function() {
+        // Ejecutar el código solo si se obtiene un id en la URL
+        var codigopac = 'PA00' + patientId;
+        var idPsicologo = <?php echo $_SESSION['IdPsicologo']; ?>;
+
+        // Realizar la solicitud AJAX al servidor
+        $.ajax({
+          url: '../Crud/Fetch/fetch_paciente.php', // Archivo PHP que procesa la solicitud
+          method: 'POST',
+          data: {
+            codigopac: codigopac,
+            idPsicologo: idPsicologo
+          },
+          success: function(response) {
+            if (response.hasOwnProperty('error')) {
+              $('#Paciente').val(response.error);
+              $('#IdPaciente').val('');
+              $('#codigopac').val(codigopac);
+              $('#Diagnostico').val('');
+              $('#Tratamiento').val('');
+              $('#MotivoConsulta').val('');
+              $('#FormaContacto').val('');
+              $('#Observacion').val('');
+              $('#UltimosObjetivos').val('');
+            } else {
+              // Actualizar los campos del formulario con los datos del paciente
+              $('#Paciente').val(response.nombre);
+              $('#IdPaciente').val(response.id);
+              $('#NomPaciente').val(response.nombre);
+              $('#codigopac').val(codigopac); // Actualizar el campo de código paciente
+              $('#Diagnostico').val(response.diagnostico);
+              $('#Tratamiento').val(response.tratamiento);
+              $('#MotivoConsulta').val(response.motivoConsulta);
+              $('#FormaContacto').val(response.formaContacto);
+              $('#Observacion').val(response.observacion);
+              $('#UltimosObjetivos').val(response.ultimosObjetivos);
+            }
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            $('#Paciente').val('Error al procesar la solicitud');
+            $('#IdPaciente').val('');
+            $('#codigopac').val(codigopac);
+            $('#Diagnostico').val('');
+            $('#Tratamiento').val('');
+            $('#MotivoConsulta').val('');
+            $('#FormaContacto').val('');
+            $('#Observacion').val('');
+            $('#UltimosObjetivos').val('');
+            console.error('Error en la solicitud AJAX:', textStatus, errorThrown);
+          }
+        });
+      });
+    }
+
+
+
+
     // Llamada a la función que está en el archivo externo
     const fieldsConfig = {
       'codigopac': 'El código del paciente es obligatorio.',
