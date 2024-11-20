@@ -301,8 +301,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 ?>
                                     <tr style="cursor:pointer" class="show-info">
                                         <td>
-                                            <a data-patient-id="<?= $patient['IdPaciente'] ?>" data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>" data-edad="<?= $patient['Edad'] ?>"
-                                                data-dni="<?= $patient['Dni'] ?>" data-celular="<?= $patient['Telefono'] ?>"
+                                            <a
+                                                data-patient-id="<?= $patient['IdPaciente'] ?>"
+                                                data-nombres="<?= $patient['NomPaciente'] ?> <?= $patient['ApPaterno'] ?> <?= $patient['ApMaterno'] ?>"
+                                                data-edad="<?= $patient['Edad'] ?>"
+                                                data-dni="<?= $patient['Dni'] ?>"
+                                                data-celular="<?= $patient['Telefono'] ?>"
                                                 data-codigo="<?= $patient['codigopac'] ?>"
                                                 data-diagnostico="<?= $patient['Diagnostico'] ?>"
                                                 data-enfermedad="<?= $patient['IdEnfermedad'] ?>"
@@ -375,8 +379,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                             <button style="cursor: pointer;" id="update-btn">Actualizar</button>
                             <button style="cursor: pointer;" id="edit-note-btn">Editar Nota</button>
+                            
                             <div class="BUT">
-                                <a href="RegAtencionPaciente.php" class="green-button" id="patient-attention-btn">Atención
+                                <a class="green-button" id="patient-attention-btn">Atención
                                     Paciente</a>
                             </div>
 
@@ -428,11 +433,20 @@ if (isset($_SESSION['NombrePsicologo'])) {
             const patientDetails = document.querySelector('.patient-details');
             let currentPatientId = null; // Variable para rastrear el paciente actual
 
+
+
+
+
             showInfoLinks.forEach(link => {
                 link.addEventListener('click', function() {
 
                     // Obtener el ID del paciente desde el atributo data
                     const patientId = link.querySelector("td a").getAttribute('data-patient-id');
+
+                    console.log(patientId);
+
+
+
                     // Ocultar las columnas adicionales
                     additionalColumns.forEach(column => {
                         column.classList.add('hidden');
@@ -440,6 +454,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     });
 
                     // Obtener los datos del paciente
+                    const id = link.querySelector("td a").getAttribute('data-patient-id');
                     const nombres = link.querySelector("td a").getAttribute('data-nombres');
                     const edad = link.querySelector("td a").getAttribute('data-edad');
                     const dni = link.querySelector("td a").getAttribute('data-dni');
@@ -529,6 +544,14 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 document.getElementById('actualizarBtn').style.display = 'none';
                                 addNotaBtn.style.display = 'block';
                             });
+
+
+
+                    });
+
+                    // Ir a Registro de Atencion
+                    document.getElementById('patient-attention-btn').addEventListener('click', function() {
+                        window.location.href = 'RegAtencionPaciente.php?id=' + patientId;
                     });
 
                     // **************************************************************************************************
@@ -710,6 +733,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 });
             });
         </script>
+
 
     </body>
 

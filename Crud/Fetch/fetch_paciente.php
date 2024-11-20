@@ -24,7 +24,7 @@ $idPsicologo = $_POST['idPsicologo'];
 
 // Conectar a la base de datos
 $con = new conexion();
-$conn = $con->conexion();
+$conn = $con->getPDO();
 
 // Preparar la consulta SQL para obtener datos del paciente, incluyendo datos de atencionpaciente si es necesario
 $sql = "SELECT p.NomPaciente, p.ApPaterno, p.ApMaterno, p.Email, p.Telefono, p.IdPaciente,
@@ -66,4 +66,3 @@ if ($row) {
 // Devolver la respuesta en formato JSON
 header('Content-Type: application/json');
 echo json_encode($response);
-?>
