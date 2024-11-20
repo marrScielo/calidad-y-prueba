@@ -101,15 +101,16 @@ class Login
                     //header("Location: ../../Vista/Dashboards.php");
                     //header("Location: ../../Vista/gestion_contactanos.php");
                     exit();
+                } else {
+                    // Redirect to a generic or error page if the role is not recognized
+                    header("Location: ../../login.php?error=rol_no_reconocido");
+                    exit();
                 }
             } else {
-                // Redirect to a generic or error page if the role is not recognized
-                header("Location: ../../login.php?error=rol_no_reconocido");
+                header("Location: ../../login.php?error=1");
                 exit();
             }
-        } else {
-            header("Location: ../../login.php?error=1");
-            exit();
         }
     }
 }
+?>
