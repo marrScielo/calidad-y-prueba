@@ -19,7 +19,8 @@
     vertical-align: middle;
     font-weight: bold;
     color: var(--color-dark);
-    padding: 10px 5px;
+    padding: 12px 6px;
+    hyphens: none;
 }
 
 .user-table__cell:first-child {
@@ -34,12 +35,14 @@
 
 .user-table__cell--header {
     color: var(--color-warning);
+    white-space: nowrap;
 }
 
 .user-table__cell-actions {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    gap: 10px;
 }
 
 .user-table__cell-figure {
