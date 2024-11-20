@@ -1,4 +1,30 @@
-// JavaScript para habilitar la funcionalidad de selección de todos los checkboxes
+const $modalDeletePaciente = document.getElementById('modalDeletePaciente')
+const $closeModalDeletePaciente = document.getElementById(
+    'closeModalDeletePaciente'
+)
+const $modalEditPaciente = document.getElementById('modalEditarPaciente')
+const $tableContainerPaciente = document.querySelector('.recent-citas')
+const $closeModalEditPaciente = document.getElementById(
+    'closeModalEditPaciente'
+)
+const $btnCancelDeletePaciente = document.getElementById(
+    'btnCancelDeletePaciente'
+)
+const $btnCancelEditPaciente = document.getElementById('btnCancelEditPaciente')
+
+updateEventButtonListeners()
+$closeModalDeletePaciente.addEventListener('click', function () {
+    $modalDeletePaciente.classList.remove('active')
+})
+$btnCancelEditPaciente.addEventListener('click', closeModalEditPaciente)
+
+$closeModalEditPaciente.addEventListener('click', closeModalEditPaciente)
+function closeModalEditPaciente() {
+    $modalEditPaciente.classList.remove('active')
+}
+$btnCancelDeletePaciente.addEventListener('click', function () {
+    $modalDeletePaciente.classList.remove('active')
+})
 document
     .getElementById('checkboxPrincipal')
     .addEventListener('change', function () {
@@ -37,6 +63,114 @@ document
             alert('Por favor, selecciona al menos un paciente para eliminar.')
         }
     })
+
+//ELIMINAR PACIENTE
+async function getAppointmentById(id) {
+    return fetch(`../Crud/Paciente/pacienteService.php?idPaciente=${id}`)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Error al obtener la cita.')
+            }
+            const data = response.json()
+            return data
+        })
+        .catch((error) => console.error('Error:', error))
+}
+
+function updateDeleteAppointmentModal(appointment) {
+    console.log(appointment['IdPaciente'])
+    document.querySelector(
+        '#buttonDeletePacienteById'
+    ).href = `../Crud/Paciente/eliminarPaciente.php?id=${appointment['Dni']}`
+    document.querySelector(
+        '#namePaciente'
+    ).textContent = `${appointment.NomPaciente} ${appointment.ApPaterno} ${appointment.ApMaterno}`
+    $modalDeletePaciente.classList.add('active')
+}
+
+function updateEventButtonListeners() {
+    const appointmentsRowButtons = document.querySelectorAll(
+        '.appointmentTable__buttons'
+    )
+    appointmentsRowButtons.forEach((row) => {
+        row.addEventListener('click', async function (event) {
+            const idRow = row.parentElement.id.split('-')[1]
+            currentAppointmentSelectedId = idRow
+            const response = await getAppointmentById(idRow)
+            // Usar closest() para verificar si se hizo clic en el botón o dentro de él
+            if (event.target.closest('.appointmentTuple__button--edit')) {
+                updateEditPacienteModal(response)
+            } else if (
+                event.target.closest('.appointmentTuple__button--delete')
+            ) {
+                $modalDeletePaciente.classList.add('active')
+                updateDeleteAppointmentModal(response)
+            }
+        })
+    })
+}
+function calcularEdad(fechaNacimiento) {
+    const hoy = new Date()
+    const fechaNac = new Date(fechaNacimiento)
+    let edad = hoy.getFullYear() - fechaNac.getFullYear()
+    const mesActual = hoy.getMonth() + 1
+    const mesNacimiento = fechaNac.getMonth() + 1
+
+    if (
+        mesActual < mesNacimiento ||
+        (mesActual === mesNacimiento && hoy.getDate() < fechaNac.getDate())
+    ) {
+        edad--
+    }
+
+    return edad
+}
+
+//actualizar modal de editar paciente
+function updateEditPacienteModal(appointment) {
+    $modalEditPaciente.querySelector(
+        '#pacientetTitle'
+    ).textContent = `Modificar datos de ${appointment.NomPaciente}`
+    $modalEditPaciente.querySelector('#idCita').value = appointment.IdPaciente
+    $modalEditPaciente.querySelector('#IdPaciente').value =
+        appointment.IdPaciente
+    $modalEditPaciente.querySelector('#NomPaciente').value =
+        appointment.NomPaciente
+    $modalEditPaciente.querySelector('#Dni').value = appointment.Dni
+    $modalEditPaciente.querySelector('#ApPaterno').value = appointment.ApPaterno
+    $modalEditPaciente.querySelector('#ApMaterno').value = appointment.ApMaterno
+    $modalEditPaciente.querySelector('#FechaNacimiento').value = calcularEdad(
+        appointment.FechaNacimiento
+    )
+    //calcular automatico
+    $modalEditPaciente.querySelector('#Edad').value = appointment.Edad
+    $modalEditPaciente.querySelector('#GradoInstruccion').value =
+        appointment.GradoInstruccion
+    $modalEditPaciente.querySelector('#Ocupacion').value = appointment.Ocupacion
+    $modalEditPaciente.querySelector('#EstadoCivil').value =
+        appointment.EstadoCivil
+    $modalEditPaciente.querySelector('#Genero').value = appointment.Genero
+    $modalEditPaciente.querySelector('#Telefono').value = appointment.Telefono
+    $modalEditPaciente.querySelector('#Email').value = appointment.Email
+    $modalEditPaciente.querySelector('#Direccion').value = appointment.Direccion
+    $modalEditPaciente.querySelector('#AntecedentesMedicos').value =
+        appointment.AntecedentesMedicos
+    $modalEditPaciente.querySelector('#MedicamentosPrescritos').value =
+        appointment.MedicamentosPrescritos
+    $modalEditPaciente.querySelector('#IdPsicologo').value =
+        appointment.IdPsicologo
+    $modalEditPaciente.querySelector('#IdProvincia').value =
+        appointment.IdProvincia
+    $modalEditPaciente.querySelector('#IdDistrito').value =
+        appointment.IdDistrito
+    $modalEditPaciente.querySelector('#IdDepartamento').value =
+        appointment.IdDepartamento
+    $modalEditPaciente.classList.add('active')
+    $tableContainerPaciente.classList.add('active')
+    console.log(appointment)
+    console.log(appointment.IdDistrito)
+    console.log(appointment.IdProvincia)
+}
 
 // Función para eliminar registros desde la base de datos
 function eliminarRegistros(idsAEliminar) {

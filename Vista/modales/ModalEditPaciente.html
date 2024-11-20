@@ -1,0 +1,272 @@
+<div id="modalEditarPaciente" class="service-modal flex-center">
+    <div class="service-modal-body">
+        <a href="#" class="close" id="closeModalEditPaciente">&times;</a>
+        <div class="message_dialog">
+            <h2 id="pacientetTitle" style="font-size: 20px; color: #49c691">
+                Modificar datos de
+            </h2>
+            <form
+                action="../../contigovoy/Crud/Paciente/modificarPaciente.php"
+                method="POST"
+                class="modifica-form"
+                style="max-height: 90vh; overflow-y: auto"
+            >
+                <input type="hidden" name="id_cita" id="idCita" />
+                <!-- EDITAR MOTIVO ESTADO FECHA DE INICIO DURACION -->
+                <div class="input-group-modal" style="display: none">
+                    <h3 for="IdPsicologo">IdPsicologo</h3>
+                    <input
+                        type="text"
+                        id="IdPaciente"
+                        class="input"
+                        name="IdPaciente"
+                        required
+                        readonly
+                    />
+                </div>
+                <div class="input-group2">
+                    <div class="input-group-modal">
+                        <h3 for="NomPaciente">Nombre</h3>
+                        <input
+                            id="NomPaciente"
+                            type="text"
+                            name="NomPaciente"
+                            class="input"
+                            required
+                            aria-label="Nombre del paciente"
+                        />
+                    </div>
+                    <div class="input-group-modal">
+                        <h3 for="Dni">DNI</h3>
+                        <input
+                            id="Dni"
+                            type="text"
+                            name="Dni"
+                            class="input"
+                            required
+                            aria-label="DNI"
+                        />
+                    </div>
+                </div>
+                <div class="input-group2">
+                    <div class="input-group-modal">
+                        <h3 for="ApPaterno">Apellido Paterno</h3>
+                        <input
+                            id="ApPaterno"
+                            type="text"
+                            name="ApPaterno"
+                            class="input"
+                            required
+                            aria-label="Apellido Paterno"
+                        />
+                    </div>
+                    <div class="input-group-modal">
+                        <h3 for="ApMaterno">Apellido Materno</h3>
+                        <input
+                            id="ApMaterno"
+                            type="text"
+                            name="ApMaterno"
+                            class="input"
+                            required
+                            aria-label="Apellido Materno"
+                        />
+                    </div>
+                </div>
+                <div class="input-group2">
+                    <div style="width: 190px" class="input-group-modal">
+                        <h3 for="FechaNacimiento">Fecha de nacimiento</h3>
+                        <input
+                            type="date"
+                            id="FechaNacimiento"
+                            name="FechaNacimiento"
+                            aria-label="Fecha de Nacimiento"
+                        />
+                    </div>
+                    <div class="input-group-modal">
+                        <h3 for="Edad">Edad</h3>
+                        <input
+                            type="text"
+                            id="Edad"
+                            name="Edad"
+                            readonly
+                            aria-label="Edad"
+                        />
+                    </div>
+                </div>
+                <div class="input-group2">
+                    <div class="input-group-modal">
+                        <h3 for="GradoInstruccion">Grado de instruccion</h3>
+                        <input
+                            id="GradoInstruccion"
+                            type="text"
+                            name="GradoInstruccion"
+                            class="input"
+                            required
+                            aria-label="Grado de Instrucción"
+                        />
+                    </div>
+                    <div class="input-group-modal">
+                        <h3 for="Ocupacion">Ocupacion</h3>
+                        <input
+                            type="text"
+                            id="Ocupacion"
+                            class="input"
+                            name="Ocupacion"
+                            required
+                            aria-label="Ocupación"
+                        />
+                    </div>
+                </div>
+                <div class="input-group2">
+                    <div style="width: 190px" class="input-group-modal">
+                        <h3 for="EstadoCivil">Estado civil</h3>
+                        <select
+                            style="text-align: center"
+                            class="input"
+                            id="EstadoCivil"
+                            name="EstadoCivil"
+                            aria-label="Estado Civil"
+                            required
+                        >
+                            <option value="">Seleccionar</option>
+                            <option value="soltero">Soltero/a</option>
+                            <option value="casado">Casado/a</option>
+                            <option value="divorciado">Divorciado/a</option>
+                            <option value="viudo">Viudo/a</option>
+                        </select>
+                    </div>
+                    <div style="width: 190px" class="input-group-modal">
+                        <h3 for="Genero">Género</h3>
+                        <select
+                            style="text-align: center"
+                            class="input"
+                            id="Genero"
+                            name="Genero"
+                            aria-label="Género"
+                            required
+                        >
+                            <option value="">Seleccionar</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group-modal">
+                    <h3 for="Telefono">Celular</h3>
+                    <input
+                        type="text"
+                        id="Telefono"
+                        class="input"
+                        name="Telefono"
+                        placeholder="Ejemp. 955888222"
+                        required
+                    />
+                </div>
+                <div style="margin-left: 2em" id="respuesta2"></div>
+                <div class="input-group-modal">
+                    <h3 for="Email">Correo Electronico</h3>
+                    <input
+                        type="Email"
+                        id="Email"
+                        class="input"
+                        name="Email"
+                        style="color: #7b7c89"
+                        required
+                        aria-label="Correo Electrónico"
+                    />
+                </div>
+                <div style="margin-left: 2em" id="respuesta3"></div>
+                <div class="input-group-modal">
+                    <h3 for="Direccion">Direccion</h3>
+                    <input
+                        type="text"
+                        id="Direccion"
+                        class="input"
+                        name="Direccion"
+                        aria-label="Dirección"
+                    />
+                </div>
+                <div class="input-group-modal">
+                    <h3 for="AntecedentesMedicos">Antecedentes médicos</h3>
+                    <input
+                        type="text"
+                        id="AntecedentesMedicos"
+                        class="input"
+                        name="AntecedentesMedicos"
+                        style="color: #7b7c89"
+                        required
+                        aria-label="Antecedentes Médicos"
+                    />
+                </div>
+                <div class="input-group-modal">
+                    <h3 for="MedicamentosPrescritos">
+                        Medicamentos Prescritos
+                    </h3>
+                    <input
+                        type="text"
+                        id="MedicamentosPrescritos"
+                        class="input"
+                        name="MedicamentosPrescritos"
+                        style="color: #7b7c89"
+                        required
+                        aria-label="Medicamentos Prescritos"
+                    />
+                </div>
+
+                <div class="input-group-modal" style="display: none">
+                    <h3 for="IdPsicologo">IdPsicologo</h3>
+                    <input
+                        type="text"
+                        id="IdPsicologo"
+                        class="input"
+                        name="IdPsicologo"
+                        readonly
+                    />
+                </div>
+                <!-- CAMPOS ESCONDIDOS -->
+                <div class="input-group-modal" style="display: none">
+                    <h3 for="IdProvincia">Provincia</h3>
+                    <input
+                        type="text"
+                        id="IdProvincia"
+                        class="input"
+                        name="Provincia"
+                    />
+                </div>
+
+                <div class="input-group-modal" style="display: none">
+                    <h3 for="IdPsicologo">Departamento</h3>
+                    <input
+                        type="text"
+                        id="IdDepartamento"
+                        class="input"
+                        name="Departamento"
+                    />
+                </div>
+                <div class="input-group-modal" style="display: none">
+                    <h3 for="IdPsicologo">Distrito</h3>
+                    <input
+                        type="text"
+                        id="IdDistrito"
+                        class="input"
+                        name="Distrito"
+                    />
+                </div>
+                <!-- -->
+
+                <div class="modal-button-container">
+                    <div
+                        class="button-modal button-cancelar"
+                        id="btnCancelEditPaciente"
+                    >
+                        Cancelar
+                    </div>
+                    <button class="button-modal button-editar" type="submit">
+                        Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

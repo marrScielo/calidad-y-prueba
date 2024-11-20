@@ -138,6 +138,7 @@ function updateEventButtonListeners() {
             console.log('Id de la cita seleccionada:', idRow)
 
             const { citas: dataAppointment } = await getAppointmentById(idRow)
+            console.log(dataAppointment)
             // Usar closest() para verificar si se hizo clic en el botón o dentro de él
             if (event.target.closest('.appointmentTuple__button--edit')) {
                 updateEditAppointmentModal(dataAppointment[0])
@@ -190,6 +191,7 @@ function updateEditAppointmentModal(appointment) {
     $tableContainer.classList.add('active')
 }
 function updateDeleteAppointmentModal(appointment) {
+    console.log(appointment)
     document.querySelector(
         '#buttonDeleteAppointmentById'
     ).href = `../Crud/Cita/eliminarCita.php?id=${appointment.IdCita}`
