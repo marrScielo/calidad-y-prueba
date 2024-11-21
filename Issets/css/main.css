@@ -850,11 +850,12 @@ select {
     align-items: center;
 }
 
-.service-modal {
+.service-modal,
+.checkout-information-modal {
     opacity: 0;
     max-width: 0;
     overflow-x: hidden;
-    transition: all 0.6s ease;
+    transition: all 0.4s ease;
     background: none;
 }
 
@@ -879,7 +880,8 @@ select {
     visibility: visible;
 }
 
-.service-modal.active {
+.service-modal.active,
+.checkout-information-modal.active {
     position: relative;
     height: auto;
     max-width: 600px;

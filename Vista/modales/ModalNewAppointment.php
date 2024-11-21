@@ -160,7 +160,7 @@
                 placeholder="Ingrese algun Antecedente Medico" />
         </div>
         <div class="button-container">
-            <button class="button" id="btnCloseModalNewAppointment">Cerrar</button>
+            <div class="button" id="btnCloseModalNewAppointment">Cerrar</div>
             <button id="submitButton" class="button">Finalizar</button>
         </div>
     </form>
