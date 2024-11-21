@@ -225,6 +225,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     <?php
                     require_once './modales/ModalEditPaciente.html';
                     ?>
+                    <?php
+                    require_once './modales/ModalNewAppointment.php';
+                    ?>
                 </div>
 
                 <div class="pagination">
