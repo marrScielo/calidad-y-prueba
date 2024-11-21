@@ -45,13 +45,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 }
             }
 
-            #modalNewAppointment {
-                display: none;
-            }
-
-            #modalNewAppointment.active {
-                display: flex;
-            }
+           
 
             @media (max-width: 1200px) {
                 #modalNewAppointment {
