@@ -858,7 +858,8 @@ select {
     background: none;
 }
 
-#modalDeleteAppointment {
+#modalDeleteAppointment,
+#modalDeletePaciente {
     position: fixed;
     visibility: hidden;
     top: 0;
@@ -873,7 +874,8 @@ select {
     max-width: none;
 }
 
-#modalDeleteAppointment.active {
+#modalDeleteAppointment.active,
+#modalDeletePaciente.active {
     visibility: visible;
 }
 
@@ -882,17 +884,20 @@ select {
     height: auto;
     max-width: 600px;
     opacity: 1;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    max-width: none;
+
+    @media screen and (max-width: 1200px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        max-width: none;
+    }
 }
 
 .service-modal-body {

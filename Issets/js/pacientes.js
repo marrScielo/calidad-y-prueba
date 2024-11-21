@@ -25,6 +25,24 @@ function closeModalEditPaciente() {
 $btnCancelDeletePaciente.addEventListener('click', function () {
     $modalDeletePaciente.classList.remove('active')
 })
+
+const showInfoLinks = document.querySelectorAll('.show-info')
+const additionalColumns = document.querySelectorAll('.additional-column')
+const containerpacientetabla = document.querySelector(
+    '.container-paciente-tabla'
+)
+const modalNewAppointment = document.querySelector('#modalNewAppointment')
+const patientDetails = document.querySelector('.patient-details')
+const buttonAgregar = document.querySelector('.button_1')
+let currentPatientId = null // Variable para rastrear el paciente actual
+const buttonsCitas = document.querySelectorAll('.buttoncita')
+const btnCloseModalNewAppointment = document.querySelector(
+    '#btnCloseModalNewAppointment'
+)
+const cerrarModalCreateCita = () => {
+    modalNewAppointment.classList.remove('active')
+    containerpacientetabla.classList.remove('active')
+}
 document
     .getElementById('checkboxPrincipal')
     .addEventListener('change', function () {
@@ -165,11 +183,10 @@ function updateEditPacienteModal(appointment) {
         appointment.IdDistrito
     $modalEditPaciente.querySelector('#IdDepartamento').value =
         appointment.IdDepartamento
+
     $modalEditPaciente.classList.add('active')
     $tableContainerPaciente.classList.add('active')
-    console.log(appointment)
-    console.log(appointment.IdDistrito)
-    console.log(appointment.IdProvincia)
+    cerrarModalCreateCita()
 }
 
 // Función para eliminar registros desde la base de datos
@@ -225,19 +242,6 @@ checkboxPrincipal.addEventListener('change', function () {
         botonEliminar.style.display = 'none'
     }
 })
-const showInfoLinks = document.querySelectorAll('.show-info')
-const additionalColumns = document.querySelectorAll('.additional-column')
-const containerpacientetabla = document.querySelector(
-    '.container-paciente-tabla'
-)
-const modalNewAppointment = document.querySelector('#modalNewAppointment')
-const patientDetails = document.querySelector('.patient-details')
-const buttonAgregar = document.querySelector('.button_1')
-let currentPatientId = null // Variable para rastrear el paciente actual
-const buttonsCitas = document.querySelectorAll('.buttoncita')
-const btnCloseModalNewAppointment = document.querySelector(
-    '#btnCloseModalNewAppointment'
-)
 
 showInfoLinks.forEach((link) => {
     link.addEventListener('click', () => {
@@ -449,6 +453,7 @@ buttonsCitas.forEach((button) => {
         const codeSelected = button.getAttribute('data-patient-code')
         console.log('click', idSelected)
         console.log('click code', codeSelected)
+        closeModalEditPaciente()
         modalNewAppointment.classList.add('active')
         containerpacientetabla.classList.add('active')
         document.querySelector('#IdPaciente').value = idSelected
@@ -470,7 +475,4 @@ buttonsCitas.forEach((button) => {
     })
 })
 
-btnCloseModalNewAppointment.addEventListener('click', () => {
-    modalNewAppointment.classList.remove('active')
-    containerpacientetabla.classList.remove('active')
-})
+btnCloseModalNewAppointment.addEventListener('click', cerrarModalCreateCita)
