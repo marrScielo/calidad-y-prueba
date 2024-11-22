@@ -40,9 +40,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 }
 ?>
 <style>
+    .hidden {
+        display: none;
+    }
 
+    @media (max-width: 768px) {
+        #menu-btn {
+            display: block;
+        }
+
+        #mode-control,
+        #fixed_settings,
+        #profile_fixed,
+        #nom-user {
+            display: none;
+        }
+    }
+
+    @media (min-width: 769px) {
+        #menu-btn {
+            display: none;
+        }
+
+        #mode-control,
+        #fixed_settings,
+        #profile_fixed,
+        #nom-user {
+            display: flex;
+        }
+    }
+
+    #menu-btn {
+        display: none;
+        cursor: pointer;
+    }
+
+    #menu-content {
+        display: none;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    #menu-content li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #menu-content li:last-child {
+        border-bottom: none;
+    }
+
+    @media (max-width: 768px) {
+        #menu-btn {
+            display: block;
+        }
+
+        #mode-control,
+        #fixed_settings,
+        #profile_fixed,
+        #nom-user {
+            display: none;
+        }
+    }
 </style>
 <!-- El resto de tu código HTML y JavaScript -->
+
+
 <div class="top <?php echo ($theme === 'dark') ? 'dark-mode' : ''; ?>" id="top_fixed">
 
     <!-- Conflictos con el boton de cambio de tema
@@ -50,18 +118,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         <span class="material-symbols-sharp" translate="no">menu</span>
     </button> -->
 
-    <div class="theme-toggler">
+
+    <div class="theme-toggler" id="mode-control">
         <span class="material-symbols-sharp" data-theme="dark" translate="no">dark_mode</span>
         <span class="material-symbols-sharp active" data-theme="light" translate="no">light_mode</span>
     </div>
 
-    <div id="fixed_settings_container">
-        <div id="fixed_settings">
-            <a class="ajuste-info" id="menu-btn">
-                <span class="material-symbols-sharp" translate="no">settings</span>
-            </a>
-        </div>
+    <div id="fixed_settings">
+        <a class="ajuste-info">
+            <span class="material-symbols-sharp" translate="no">settings</span>
+        </a>
     </div>
+
     <div class="profile" id="profile_fixed">
         <div class="info">
             <div></div>
@@ -69,9 +137,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
             <div></div>
         </div>
     </div>
-    <a href="../Issets/views/Salir.php">
+    <a href="../Issets/views/Salir.php" id="nom-user">
         <h3 class="cerrar-info" translate="no">Cerrar Sesion</h3>
     </a>
+    <button id="menu-btn">
+        <span class="material-symbols-sharp" translate="no">menu</span>
+    </button>
+
+     
 </div>
 <div class="navigation">
     <div class="form-info">
@@ -138,6 +211,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         </form>
     </div>
 </div>
+
+<script>
+    document.getElementById('menu-btn').addEventListener('click', function() {
+        var menuContent = document.getElementById('menu-content');
+        menuContent.classList.toggle('hidden');
+    });
+</script>
+
 <script>
     function habilitarEdicion(inputId) {
         var input = document.getElementById(inputId);
