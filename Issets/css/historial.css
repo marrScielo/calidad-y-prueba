@@ -79,8 +79,8 @@
 .container-paciente-tabla {
     max-width: 900px;
     margin-inline: auto;
-    margin-top: 30px;   
-    padding: .5rem 1rem 1rem;
+    margin-top: 30px;
+    padding: 0.5rem 1rem 1rem;
     border-radius: 10px;
     background-color: var(--color-white);
     box-shadow: var(--box-shadow);
@@ -107,15 +107,14 @@
 }
 /*-Para cuando cambie a active-------*/
 .container-paciente-tabla.active {
-    background-color: red;
-    /* max-width: 100%;
+    max-width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     width: 100%;
-    grid-template-rows: auto; 
+    grid-template-rows: auto;
     padding-left: 2rem;
-    padding-right: 2rem; */
+    padding-right: 2rem;
 }
 /*---Container blanco de la izquierda (paciente/fecha)----*/
 .container-paciente-tabla.active .before-details {
