@@ -20,6 +20,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <!-- summernote -->
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+            </script>
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+        
     <title>Panel de Blogs</title>
     <style>
     /* Estilos para tablets (pantallas de hasta 768px de ancho) */
@@ -230,7 +237,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     </div>
                     <div>
                         <label for="editDescripcion">Descripción:</label>
-                        <textarea name="descripcion" id="editDescripcion"></textarea>
+                        <!-- NEW CODE -->
+                        <div id="summernote">
+                        </div>
+                            <textarea id="editDescripcion" name="descripcion" class="hidden" style="display: none;" ></textarea>
+                            <span class="error-message" id="error-description"></span>
                     </div>
                     <div>
                         <label for="editImagen">Imagen:</label>
@@ -244,6 +255,42 @@ if (isset($_SESSION['NombrePsicologo'])) {
             </div>
         </div>
     </div>
+        <script type="module" src="../Issets/js/textarea-function.js"></script>
+        <script>
+            $('#summernote').summernote({
+                placeholder: 'Ingrese la descripción del blog',
+                tabsize: 2,
+                height: 120,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });          
+
+            $("#summernote").on("summernote.change", function () {
+                var description = $('#summernote').summernote('code');
+                const texto = document.querySelector('#editDescripcion').value = description;
+                // console.log(texto);
+                validateDescription(description);
+            });
+
+            // Función para validar la descripción
+            function validateDescription(content) {
+                const cleanText = $('<div>').html(content).text().trim();
+                
+                if (cleanText === '') {
+                    $('#error-description').text('Por favor, ingrese una descripción.').show();
+                } else {
+                    $('#error-description').hide();
+                }
+            }
+        </script>
+
 
     <script>
     // JavaScript para manejar el modal de edición
@@ -252,6 +299,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         var modal = document.getElementById("editModal");
         var closeElements = document.getElementsByClassName("close");
         var editButtons = document.querySelectorAll('.edit-button');
+        const textDescription = document.querySelector('.note-editable');
 
         editButtons.forEach(button => {
             button.addEventListener('click', function(event) {
@@ -261,11 +309,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 var especialidad = this.getAttribute('data-especialidad');
                 var descripcion = this.getAttribute('data-descripcion');
                 var imagen = this.getAttribute('data-imagen');
-
+                console.log(descripcion)
                 document.getElementById('editId').value = id;
                 document.getElementById('editTema').value = tema;
                 document.getElementById('editEspecialidad').value = especialidad;
                 document.getElementById('editDescripcion').value = descripcion;
+                textDescription.innerHTML = descripcion;
                 document.getElementById('editImagen').value = imagen;
 
                 modal.style.display = "flex";
