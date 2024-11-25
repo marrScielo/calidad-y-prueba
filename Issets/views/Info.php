@@ -45,10 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title></title>
 </head>
 <style>
+    .top {
+        margin-right: 0 !important;
+    }
+
     .hidden {
         display: none;
     }
@@ -59,8 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         }
 
         #mode-control,
-        #fixed_settings,
-        #profile_fixed,
+
         #nom-user {
             display: none;
         }
@@ -80,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
     }
 
 
+
     #menu-content {
         list-style-type: none;
         padding: 20px;
@@ -95,18 +98,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         overflow-y: auto;
     }
 
-    #menu-content li {
+    #menu-content .menu-item {
         display: flex;
         align-items: center;
         padding: 10px;
         border-bottom: 1px solid #ccc;
     }
 
-    #menu-content li:last-child {
+    #menu-content .menu-item:last-child {
         border-bottom: none;
     }
 
-    #menu-content li .icon {
+    #menu-content .menu-item .icon {
         margin-right: 10px;
     }
 
@@ -122,6 +125,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         border: none;
         font-size: 20px;
         cursor: pointer;
+    }
+
+    #menu-btn {
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        background-color: transparent;
+        /* Fondo transparente */
+        color: #534489;
+        border: 2px solid #534489;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    #menu-btn:hover {
+        background-color: #534489;
+        color: white;
+    }
+
+    .nom-psicologo {
+        font-size: 20px;
+        font-weight: bold;
+        color: #534489;
+        margin-bottom: 10px;
+    }
+
+    .nom-opti {
+        font-size: 16px;
+        font-weight: semibold;
+        color: black;
+        margin-left: 5px;
     }
 </style>
 
@@ -161,21 +197,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         <button id="menu-btn">
             <span class="material-symbols-sharp" translate="no">menu</span>
         </button>
-        <ul id="menu-content" class="hidden">
+        <div id="menu-content" class="hidden">
             <button class="close-btn" onclick="toggleMenu()">✖</button>
-            <li id="fixed_settings">
+            <p class="nom-psicologo" translate="no"><?= $_SESSION['NombrePsicologo'] ?></p>
+            <div id="fixed_settings" class="menu-item">
                 <a class="ajuste-info">
                     <span class="material-symbols-sharp" translate="no">settings</span>
-                    <span translate="no">Ajustes</span>
+                    <a class="nom-opti">Ajustes</a>
                 </a>
-            </li>
-            <li>
+            </div>
+            <div class="menu-item">
                 <a href="../Issets/views/Salir.php" class="cerrar-info">
                     <span class="material-symbols-sharp" translate="no">logout</span>
-                    <span translate="no">Cerrar Sesion</span>
+                    <a class="nom-opti">Cerrar Sesion</a>
                 </a>
-            </li>
-        </ul>
+            </div>
+            <div class="menu-item">
+                <div class="theme-toggler" id="mode-control">
+                    <span class="material-symbols-sharp" data-theme="dark" translate="no">dark_mode</span>
+                    <span class="material-symbols-sharp active" data-theme="light" translate="no">light_mode</span>
+                </div>
+            </div>
+        </div>
 
 
 
