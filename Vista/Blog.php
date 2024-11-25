@@ -212,13 +212,15 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 tabsize: 2,
                 height: 120,
                 toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
+                    ['style', ['style','bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript','fontname']],
+                    ['fontsize', ['fontsize']],
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['table', ['table']],
                     ['insert', ['link', 'picture', 'video']],
                     ['view', ['fullscreen', 'codeview', 'help']]
+                    ['misc', ['undo', 'redo']]
                 ]
             });          
 
