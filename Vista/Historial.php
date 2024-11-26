@@ -23,7 +23,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
         try {
             $con = new conexion();
-            $conn = $con->conexion();
+            $conn = $con->getPDO();
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':patientId', $patientId, PDO::PARAM_INT);
             $stmt->bindParam(':observacion', $observacion, PDO::PARAM_STR);
@@ -45,7 +45,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             $dni = $_POST['dni'];
             $nota = $_POST['nota'];
             $con = new conexion();
-            $conn = $con->conexion();
+            $conn = $con->getPDO();
             $stmt = $conn->prepare("UPDATE paciente SET nota = :nota WHERE Dni = :dni");
             $stmt->bindParam(':dni', $dni, PDO::PARAM_INT);
             $stmt->bindParam(':nota', $nota, PDO::PARAM_STR);
@@ -59,7 +59,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
     if (isset($_GET['dni'])) {
         $dni = $_GET['dni'];
         $con = new conexion();
-        $conn = $con->conexion();
+        $conn = $con->getPDO();
         $stmt = $conn->prepare("SELECT nota FROM paciente WHERE Dni = :dni");
         $stmt->bindParam(':dni', $dni, PDO::PARAM_INT);
         $stmt->execute();

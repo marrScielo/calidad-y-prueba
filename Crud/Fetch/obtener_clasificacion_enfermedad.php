@@ -6,7 +6,7 @@ $idEnfermedad = $_GET['id'];
 
 // Instanciar la clase de conexión
 $conexion = new Conexion();
-$pdo = $conexion->conexion();
+$pdo = $conexion->getPDO();
 
 if (!$pdo) {
     // Manejar errores de conexión si es necesario

@@ -3,7 +3,7 @@
 require '../../conexion/conexion.php';
 
 $con = new conexion();
-$conn = $con->conexion();
+$conn = $con->getPDO();
 
 $NomPaciente = $_POST['NomPaciente'];
 $idPsicologo = $_POST['idPsicologo'];

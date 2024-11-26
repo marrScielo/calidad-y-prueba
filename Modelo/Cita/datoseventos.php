@@ -12,7 +12,7 @@ require_once("C:/xampp/htdocs/ContigoVoy/conexion/conexion.php");
 
 
 $con = new conexion();
-$PDO = $con->conexion();
+$PDO = $con->getPDO();
 
 switch ($_GET['accion']) {
 

@@ -50,7 +50,7 @@ $sql = "SELECT
 
 
 $con = new conexion();
-$conn = $con->conexion();
+$conn = $con->getPDO();
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':patientId', $patientId);
 $stmt->execute();

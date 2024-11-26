@@ -6,7 +6,7 @@ require '../../conexion/conexion.php';
 //require("/home3/ghxumdmy/public_html/website_1cf5dd5d/conexion/conexion.php");
 
 $con=new conexion();
-$conn=$con->conexion();
+$conn=$con->getPDO();
 
 $Dni = $_REQUEST['Dni'];
 $jsonData = array();

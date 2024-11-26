@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['ids'])) {
 
     try {
         // Obtener una conexión PDO
-        $PDO = $conexion->conexion();
+        $PDO = $conexion->getPDO();
 
         // Obtener los IDs de los registros a eliminar desde la solicitud POST
         $idsAEliminar = json_decode($_POST['ids']);
