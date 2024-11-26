@@ -78,15 +78,15 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     <input type="text" id="Edad" name="Edad" readonly />
                   </div>
                 </div>
-                <div class="input-group2">
+                <div class="input-group2" style="display: none;">
                   <div class="input-group">
                     <h3 for="GradoInstruccion">Grado de instruccion</h3>
-                    <input id="GradoInstruccion" type="text" name="GradoInstruccion" class="input" data-error-target="error-grado" />
+                    <input id="GradoInstruccion" type="text" name="GradoInstruccion" class="input" data-error-target="error-grado" value="null" />
                     <span class="error-message" id="error-grado"></span>
                   </div>
                   <div class="input-group">
                     <h3 for="Ocupacion">Ocupacion</h3>
-                    <input type="text" id="Ocupacion" class="input" name="Ocupacion" data-error-target="error-ocupacion" />
+                    <input type="text" id="Ocupacion" class="input" name="Ocupacion" data-error-target="error-ocupacion"  value="null" />
                     <span class="error-message" id="error-ocupacion"></span>
                   </div>
                 </div>
