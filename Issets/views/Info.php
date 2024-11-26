@@ -61,7 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
             display: flex;
         }
 
-        #mode-control,
+        #external-mode-control,
+        #fixed_settings,
+        #profile_fixed,
 
         #nom-user {
             display: none;
@@ -73,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
             display: none;
         }
 
-        #mode-control,
+        #external-mode-control,
         #fixed_settings,
         #profile_fixed,
         #nom-user {
@@ -88,6 +90,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         padding: 20px;
         margin: 0;
         position: fixed;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
         top: 0;
         right: 0;
         width: 50%;
@@ -150,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         font-size: 20px;
         font-weight: bold;
         color: #534489;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 
     .nom-opti {
@@ -167,13 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 
     <div class="top <?php echo ($theme === 'dark') ? 'dark-mode' : ''; ?>" id="top_fixed">
 
-        <!-- Conflictos con el boton de cambio de tema
-    <button id="menu-btn" style="display: flex;">
-        <span class="material-symbols-sharp" translate="no">menu</span>
-    </button> -->
-
-
-        <div class="theme-toggler" id="mode-control">
+        <div class="theme-toggler" id="external-mode-control">
             <span class="material-symbols-sharp" data-theme="dark" translate="no">dark_mode</span>
             <span class="material-symbols-sharp active" data-theme="light" translate="no">light_mode</span>
         </div>
@@ -194,35 +192,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         <a href="../Issets/views/Salir.php" id="nom-user">
             <h3 class="cerrar-info" translate="no">Cerrar Sesion</h3>
         </a>
+
         <button id="menu-btn">
             <span class="material-symbols-sharp" translate="no">menu</span>
         </button>
-        <div id="menu-content" class="hidden">
+
+        <!-- Contenido del listado de opciones para la vista movil -->
+
+        <div id="menu-content" class="hidden <?php echo ($theme === 'dark') ? 'dark-mode' : ''; ?>">
             <button class="close-btn" onclick="toggleMenu()">✖</button>
             <p class="nom-psicologo" translate="no"><?= $_SESSION['NombrePsicologo'] ?></p>
-            <div id="fixed_settings" class="menu-item">
-                <a class="ajuste-info">
-                    <span class="material-symbols-sharp" translate="no">settings</span>
-                    <a class="nom-opti">Ajustes</a>
-                </a>
-            </div>
             <div class="menu-item">
-                <a href="../Issets/views/Salir.php" class="cerrar-info">
-                    <span class="material-symbols-sharp" translate="no">logout</span>
-                    <a class="nom-opti">Cerrar Sesion</a>
-                </a>
-            </div>
-            <div class="menu-item">
-                <div class="theme-toggler" id="mode-control">
+                <div class="theme-toggler" id="internal-mode-control">
                     <span class="material-symbols-sharp" data-theme="dark" translate="no">dark_mode</span>
                     <span class="material-symbols-sharp active" data-theme="light" translate="no">light_mode</span>
                 </div>
             </div>
+            <div class="menu-item">
+                <a class="ajuste-info2">
+                    <span class="material-symbols-sharp" translate="no">settings</span>
+                    <a class="nom-opti">Ajustes</a>
+                </a>
+            </div>
+            <div class="menu-item" onclick="cerrarSesion()">
+                <a class="cerrar-info">
+                    <span class="material-symbols-sharp" translate="no">logout</span>
+                    <a class="nom-opti">Cerrar Sesion</a>
+                </a>
+            </div>
+
         </div>
-
-
-
     </div>
+
+    <!-- Formulario de settings -->
     <div class="navigation">
         <div class="form-info">
             <a href="#" class="closeaaa">&times;</a> <!-- La X para cerrar el modal o la sección -->
@@ -292,7 +294,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 </body>
 
 
+<script>
+    // Mover el botón de cambio de tema al menú en pantallas pequeñas
+    window.addEventListener('resize', function() {
+        const externalModeControl = document.getElementById('external-mode-control');
+        const internalModeControl = document.getElementById('internal-mode-control');
+        const menuContent = document.getElementById('menu-content');
 
+        if (window.innerWidth <= 768) {
+            if (!menuContent.contains(externalModeControl)) {
+                menuContent.appendChild(externalModeControl);
+            }
+        } else {
+            if (!document.body.contains(externalModeControl)) {
+                document.body.appendChild(externalModeControl);
+            }
+        }
+    });
+
+    // Ejecutar al cargar la página para asegurar que el botón esté en el lugar correcto
+    window.dispatchEvent(new Event('resize'));
+</script>
 
 
 <script>
@@ -305,6 +327,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
     function toggleMenu() {
         var menuContent = document.getElementById('menu-content');
         menuContent.classList.toggle('hidden');
+    }
+
+    function cerrarSesion() {
+        // Redirigir a la página de cierre de sesión
+        window.location.href = '../Issets/views/Salir.php';
     }
 </script>
 
