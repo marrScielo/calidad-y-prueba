@@ -856,7 +856,7 @@ select {
     max-width: 0;
     overflow-x: hidden;
     transition: all 0.4s ease;
-    background: none;
+    display: none;
 }
 
 #modalDeleteAppointment,
@@ -882,6 +882,7 @@ select {
 
 .service-modal.active,
 .checkout-information-modal.active {
+    display: block;
     position: relative;
     height: auto;
     max-width: 600px;

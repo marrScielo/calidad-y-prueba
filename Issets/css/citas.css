@@ -7,6 +7,7 @@ main .recent-citas {
     /* Agrega el scrollbar horizontal */
     scrollbar-width: thin;
     gap: 1rem;
+    
 }
 
 main .recent-citas.active {
