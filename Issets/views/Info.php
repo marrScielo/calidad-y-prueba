@@ -61,6 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
             display: flex;
         }
 
+        #internal-mode-control {
+            display: flex;
+        }
+
         #external-mode-control,
         #fixed_settings,
         #profile_fixed,
@@ -72,6 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 
     @media (min-width: 769px) {
         #menu-btn {
+            display: none;
+        }
+
+        #internal-mode-control {
             display: none;
         }
 
@@ -132,8 +140,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
     }
 
     #menu-btn {
-        align-items: center;
-        justify-content: center;
         padding: 5px;
         background-color: transparent;
         /* Fondo transparente */
@@ -143,7 +149,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         cursor: pointer;
         font-size: 18px;
         transition: background-color 0.3s, color 0.3s;
+        align-items: center;
     }
+
 
     #menu-btn:hover {
         background-color: #534489;
@@ -162,6 +170,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         font-weight: semibold;
         color: black;
         margin-left: 5px;
+
+
     }
 </style>
 
@@ -209,10 +219,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
                 </div>
             </div>
             <div class="menu-item">
-                <a class="ajuste-info2">
-                    <span class="material-symbols-sharp" translate="no">settings</span>
+                <div class="ajuste-info2">
+                    <a>
+                        <span class="material-symbols-sharp" translate="no">settings</span>
+
+                    </a>
                     <a class="nom-opti">Ajustes</a>
-                </a>
+                </div>
+
             </div>
             <div class="menu-item" onclick="cerrarSesion()">
                 <a class="cerrar-info">
@@ -300,14 +314,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         const externalModeControl = document.getElementById('external-mode-control');
         const internalModeControl = document.getElementById('internal-mode-control');
         const menuContent = document.getElementById('menu-content');
+        const originalParent = document.getElementById('top_fixed'); // Asegúrate de tener un contenedor original
 
         if (window.innerWidth <= 768) {
             if (!menuContent.contains(externalModeControl)) {
                 menuContent.appendChild(externalModeControl);
             }
         } else {
-            if (!document.body.contains(externalModeControl)) {
-                document.body.appendChild(externalModeControl);
+            if (!originalParent.contains(externalModeControl)) {
+                originalParent.appendChild(externalModeControl);
             }
         }
     });
