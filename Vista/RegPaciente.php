@@ -1,6 +1,10 @@
 <?php
 session_start();
 if (isset($_SESSION['NombrePsicologo'])) {
+$listDepartament = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/Proyecto/ContigoVoy/data/departamentos.json'), true);
+$listProvincias = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/Proyecto/ContigoVoy/data/provincias.json'), true);
+$listDistritos = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/Proyecto/ContigoVoy/data/distritos.json'), true);
+
 ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -70,7 +74,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                   ?>
                   <div class="input-group">
                     <h3 for="FechaNacimiento">Fecha de nacimiento</h3>
-                    <input type="date" id="FechaNacimiento" name="FechaNacimiento" onchange="calcularEdad()" data-error-target="error-fechaNac" />
+                    <input type="date" id="FechaNacimiento" name="FechaNacimiento"  data-error-target="error-fechaNac" />
                     <span class="error-message" id="error-fechaNac"></span>
                   </div>
                   <div class="input-group">
@@ -131,21 +135,19 @@ if (isset($_SESSION['NombrePsicologo'])) {
                   <div class="input-group">
                     <h3 for="Departamento">Departamento</h3>
                     <select style="text-align: center" class="input" id="Departamento" name="Departamento" data-error-target="error-departamento">
-                      <option value="">Seleccionar</option>
-                      <?php foreach ($departamentos as $departamento) : ?>
-                        <option value="<?php echo $departamento['id']; ?>" data-id="<?php echo $departamento['id']; ?>"><?php echo $departamento['name']; ?></option>
-                      <?php endforeach; ?>
+                    <option value="">Seleccione</option>
+                     <?php foreach ($listDepartament as $departamento): ?>
+                      <option value="<?php echo $departamento['name']; ?>" data-extra-info="<?php echo $departamento['id']; ?>">
+                        <?php echo $departamento['name']; ?>
+                      </option>
+                    <?php endforeach; ?>
                     </select>
                     <span class="error-message" id="error-departamento"></span>
                   </div>
                   <div class="input-group">
                     <h3 for="Provincia">Provincia</h3>
                     <select style="text-align: center" class="input" id="Provincia" name="Provincia" data-error-target="error-provincia">
-                      <option value="">Seleccionar</option>
-                      <option value="P">Prueba</option>
-                      <?php foreach ($provincias as $provincia) : ?>
-                        <option value="<?php echo $provincia['id']; ?>" data-id="<?php echo $provincia['id']; ?>"><?php echo $provincia['name']; ?></option>
-                      <?php endforeach; ?>
+                       <option value="">Seleccione</option>
                     </select>
                     <span class="error-message" id="error-provincia"></span>
                   </div>
@@ -154,8 +156,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                   <div class="input-group">
                     <h3 for="Distrito">Distrito</h3>
                     <select style="text-align:center" class="input" id="Distrito" name="Distrito" data-error-target="error-distrito">
-                      <option value="">Seleccionar</option>
-                      <option value="P">Prueba</option>
+                      <option value="">Seleccione</option>
                     </select>
                     <span class="error-message" id="error-distrito"></span>
                   </div>
@@ -227,6 +228,81 @@ if (isset($_SESSION['NombrePsicologo'])) {
         });
       </script>
       <script src="../Issets/js/validationMessageGeneral.js" defer></script>
+      <script>
+            
+            const provincias = <?php echo json_encode($listProvincias); ?>;
+            const distritos = <?php echo json_encode($listDistritos); ?>;
+
+            const departamentoSelect = document.getElementById('Departamento');
+            const provinciaSelect = document.getElementById('Provincia');
+            const distritoSelect = document.getElementById('Distrito');
+            const edad = document.getElementById('Edad');
+            const fechaNacimiento = document.getElementById('FechaNacimiento');
+
+            departamentoSelect.addEventListener('change', function () {
+                const selectedOption = this.options[this.selectedIndex];
+                const selectedDepartmentId = selectedOption.dataset.extraInfo;
+                provinciaSelect.innerHTML = '<option value="">Seleccione</option>'; 
+
+                const filteredProvincias = provincias.filter(provincia => provincia.department_id === selectedDepartmentId);
+                filteredProvincias.forEach(provincia => {
+                    const option = document.createElement('option');
+                    option.value = provincia.name;
+                    option.textContent = provincia.name;
+                    option.setAttribute('data-extra-info', provincia.id);
+                    provinciaSelect.appendChild(option);
+                });
+
+                if (filteredProvincias.length === 0) {
+                    const noOptions = document.createElement('option');
+                    noOptions.value = "";
+                    noOptions.textContent = "No hay provincias disponibles";
+                    provinciaSelect.appendChild(noOptions);
+                }
+            });
+            provinciaSelect.addEventListener('change', function () {
+                const selectedOption = this.options[this.selectedIndex];
+                const selectedProvinciaId = selectedOption.dataset.extraInfo;
+                distritoSelect.innerHTML = '<option value="">Seleccione</option>'; 
+
+                const filteredDistritos = distritos.filter(distrito => distrito.province_id === selectedProvinciaId);
+                filteredDistritos.forEach(distrito => {
+                    const option = document.createElement('option');
+                    option.value = distrito.name;
+                    option.textContent = distrito.name;
+                    distritoSelect.appendChild(option);
+                });
+
+                if (filteredDistritos.length === 0) {
+                    const noOptions = document.createElement('option');
+                    noOptions.value = "";
+                    noOptions.textContent = "No hay provincias disponibles";
+                    distritoSelect.appendChild(noOptions);
+                }
+            });
+            //edad
+
+            fechaNacimiento.addEventListener('change', function () {
+                edad.value = calcularEdad(this.value);
+            });
+
+            function calcularEdad(fechaNacimiento) {
+                const hoy = new Date()
+                const fechaNac = new Date(fechaNacimiento)
+                let edad = hoy.getFullYear() - fechaNac.getFullYear()
+                const mesActual = hoy.getMonth() + 1
+                const mesNacimiento = fechaNac.getMonth() + 1
+
+                if (
+                    mesActual < mesNacimiento ||
+                    (mesActual === mesNacimiento && hoy.getDate() < fechaNac.getDate())
+                ) {
+                    edad--
+                }
+
+                return edad
+            }
+      </script>
   </body>
 
   </html>
