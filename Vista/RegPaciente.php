@@ -1,9 +1,9 @@
 <?php
 session_start();
 if (isset($_SESSION['NombrePsicologo'])) {
-$listDepartament = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/Proyecto/ContigoVoy/data/departamentos.json'), true);
-$listProvincias = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/Proyecto/ContigoVoy/data/provincias.json'), true);
-$listDistritos = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/Proyecto/ContigoVoy/data/distritos.json'), true);
+$listDepartament = json_decode(file_get_contents('../data/departamentos.json'), true);
+$listProvincias = json_decode(file_get_contents('../data/provincias.json'), true);
+$listDistritos = json_decode(file_get_contents('../data/distritos.json'), true);
 
 ?>
   <!DOCTYPE html>
