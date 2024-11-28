@@ -118,5 +118,22 @@ class UsuarioModel {
         // Cerrar la conexión
         $this->conn->close();
     }
+
+    public function buscarPorId($id) {
+        $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function buscarUsuarios($query) {
+        $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE email LIKE ?");
+        $likeQuery = "%".$query."%";
+        $stmt->bind_param("s", $likeQuery);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>

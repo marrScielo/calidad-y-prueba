@@ -30,5 +30,20 @@ class UsuariosController {
     public function eliminarUsuario($id) {
         return $this->model->eliminarUsuario($id);
     }
+
+    public function buscarPorId($id) {
+        return $this->model->buscarPorId($id);
+    }
+
+    public function buscarUsuarios($query) {
+        return $this->model->buscarUsuarios($query);
+    }
 }
+
+if (isset($_GET['action']) && $_GET['action'] == 'search' && isset($_GET['query'])) {
+    $controller = new UsuariosController();
+    $resultados = $controller->buscarUsuarios($_GET['query']);
+    echo json_encode($resultados);
+}
+
 ?>

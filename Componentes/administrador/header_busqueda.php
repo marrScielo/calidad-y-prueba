@@ -1,6 +1,6 @@
 <!-- header_busqueda.php -->
 <div class="header-busqueda">
-    <form action="buscar.php" method="GET" class="search-form">
+    <form id="searchForm" class="search-form">
         <input type="text" name="query" placeholder="Buscar..." class="search-input" required>
         <button type="submit" class="search-button">
             <i class="fa-solid fa-search"></i>
@@ -48,3 +48,43 @@
         background-color: #0056b3;
     }
 </style>
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const query = document.querySelector('.search-input').value;
+        fetch(`../Controlador/UsuariosController.php?action=search&query=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                let resultsHtml = '';
+                if (data.length === 0) {
+                    resultsHtml = '<p>No se encontraron resultados.</p>';
+                } else {
+                    resultsHtml = '<div class="table-scroll">';
+                    resultsHtml += '<table class="user-table">';
+                    resultsHtml += '<thead class="user-table__header">';
+                    resultsHtml += '<tr class="user-table__row">';
+                    resultsHtml += '<th class="user-table__cell user-table__cell--header">ID</th>';
+                    resultsHtml += '<th class="user-table__cell user-table__cell--header">Email</th>';
+                    resultsHtml += '<th class="user-table__cell user-table__cell--header">Foto Perfil</th>';
+                    resultsHtml += '<th class="user-table__cell user-table__cell--header">Rol</th>';
+                    resultsHtml += '</tr>';
+                    resultsHtml += '</thead>';
+                    resultsHtml += '<tbody class="user-table__body">';
+                    data.forEach(usuario => {
+                        resultsHtml += '<tr class="user-table__row">';
+                        resultsHtml += `<td class="user-table__cell">${usuario.id}</td>`;
+                        resultsHtml += `<td class="user-table__cell">${usuario.email}</td>`;
+                        resultsHtml += `<td class="user-table__cell"><figure class="user-table__cell-figure"><img src="${usuario.fotoPerfil}" alt="Foto de perfil" class="user-table__profile-picture"></figure></td>`;
+                        resultsHtml += `<td class="user-table__cell">${usuario.rol}</td>`;
+                        resultsHtml += '</tr>';
+                    });
+                    resultsHtml += '</tbody>';
+                    resultsHtml += '</table>';
+                    resultsHtml += '</div>';
+                }
+                document.getElementById('searchResults').innerHTML = resultsHtml;
+                document.getElementById('searchModal').style.display = 'block';
+            });
+    });
+</script>

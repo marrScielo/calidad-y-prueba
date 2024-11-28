@@ -1,47 +1,62 @@
-<div id="userModal" class="modal">
-    <div class="modal-content" id="modalContent">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <!-- El contenido del modal se cargará aquí -->
-    </div>
-</div>
+<?php
+require_once __DIR__ . '/../../Controlador/UsuariosController.php';
 
-<style>
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
-    }
+$action = isset($_GET['action']) ? $_GET['action'] : null;
+$id = isset($_GET['id']) ? $_GET['id'] : null;
 
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        position: relative;
-    }
+if ($action && $id) {
+    $usuariosController = new UsuariosController();
+    $usuario = $usuariosController->buscarPorId($id);
 
-    .close {
-        position: absolute;
-        top: 10px;
-        right: 25px;
-        color: #aaa;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
+    if ($action == 'edit') {
+        ?>
+        <h2>Editar Usuario</h2>
+        <form id="editUserForm">
+            <input type="hidden" name="id" value="<?php echo htmlspecialchars($usuario['id']); ?>">
+            <label for="email">Email:</label>
+            <input type="email" name="email" value="<?php echo htmlspecialchars($usuario['email']); ?>" required>
+            <label for="rol">Rol:</label>
+            <input type="text" name="rol" value="<?php echo htmlspecialchars($usuario['rol']); ?>" required>
+            <!-- Add other fields as necessary -->
+            <button type="submit">Guardar Cambios</button>
+        </form>
+        <script>
+            document.getElementById('editUserForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                fetch('../Controlador/UsuariosController.php', {
+                    method: 'POST',
+                    body: formData
+                }).then(response => response.text())
+                  .then(data => {
+                      // Handle response
+                      closeModal();
+                  });
+            });
+        </script>
+        <?php
+    } elseif ($action == 'delete') {
+        ?>
+        <div id="deleteUserModal">
+            <h2>Confirmar Eliminación</h2>
+            <p>¿Estás seguro de que deseas eliminar al usuario con ID <?php echo htmlspecialchars($usuario['id']); ?>?</p>
+            <button class="confirm-button" onclick="confirmDelete(<?php echo $usuario['id']; ?>)">Confirmar</button>
+            <button class="cancel-button" onclick="closeModal()">Cancelar</button>
+        </div>
+        <script>
+            function confirmDelete(id) {
+                fetch(`../Controlador/UsuariosController.php?action=delete&id=${id}`, {
+                    method: 'POST'
+                }).then(response => response.text())
+                  .then(data => {
+                      // Handle response
+                      closeModal();
+                  });
+            }
+        </script>
+        <?php
     }
-
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
-</style>
+} else {
+    echo "";
+}
+?>
