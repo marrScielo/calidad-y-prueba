@@ -113,7 +113,6 @@ function updateEventButtonListeners() {
     appointmentsRowButtons.forEach((row) => {
         row.addEventListener('click', async function (event) {
             const idRow = row.parentElement.id.split('-')[1]
-            currentAppointmentSelectedId = idRow
             const response = await getAppointmentById(idRow)
             // Usar closest() para verificar si se hizo clic en el botón o dentro de él
             if (event.target.closest('.appointmentTuple__button--edit')) {
@@ -157,11 +156,12 @@ function updateEditPacienteModal(appointment) {
     $modalEditPaciente.querySelector('#Dni').value = appointment.Dni
     $modalEditPaciente.querySelector('#ApPaterno').value = appointment.ApPaterno
     $modalEditPaciente.querySelector('#ApMaterno').value = appointment.ApMaterno
-    $modalEditPaciente.querySelector('#FechaNacimiento').value = calcularEdad(
+    $modalEditPaciente.querySelector('#FechaNacimiento').value =
+        appointment.FechaNacimiento
+    //calcular automatico
+    $modalEditPaciente.querySelector('#Edad').value = calcularEdad(
         appointment.FechaNacimiento
     )
-    //calcular automatico
-    $modalEditPaciente.querySelector('#Edad').value = appointment.Edad
     $modalEditPaciente.querySelector('#GradoInstruccion').value =
         appointment.GradoInstruccion
     $modalEditPaciente.querySelector('#Ocupacion').value = appointment.Ocupacion

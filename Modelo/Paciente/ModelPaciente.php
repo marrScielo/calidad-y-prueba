@@ -76,12 +76,36 @@ class userModelPaciente
     // Mostrar datos del paciente seleccionado 
     public function show($IdPaciente)
     {
-        $statement = $this->PDO->prepare("SELECT p.IdPaciente,p.codigopac, p.NomPaciente, p.ApPaterno, p.ApMaterno, p.Dni, p.FechaNacimiento, p.Edad, p.GradoInstruccion, p.Ocupacion, p.EstadoCivil,p.Genero, p.Telefono,
-         p.Email, p.Direccion, p.AntecedentesMedicos, p.IdPsicologo, p.MedicamentosPrescritos, p.IdProvincia, p.IdDepartamento, p.IdDistrito, de.name, di.name, pr.name 
-         FROM paciente p 
-         inner join departamento de on de.id = p.IdDepartamento
-         inner join distrito di on di.id = p.IdDistrito
-         inner join provincia pr on pr.id = p.IdProvincia
+        $statement = $this->PDO->prepare("SELECT 
+  p.IdPaciente, 
+  p.codigopac, 
+  p.NomPaciente, 
+  p.ApPaterno, 
+  p.ApMaterno, 
+  p.Dni, 
+  p.FechaNacimiento, 
+  p.Edad, 
+  p.GradoInstruccion, 
+  p.Ocupacion, 
+  p.EstadoCivil,
+  p.Genero, 
+  p.Telefono,
+  p.Email, 
+  p.Direccion, 
+  p.AntecedentesMedicos, 
+  p.IdPsicologo, 
+  p.MedicamentosPrescritos, 
+  p.IdProvincia, 
+  p.IdDepartamento, 
+  p.IdDistrito, 
+  de.name AS DepartamentoName, 
+  di.name AS DistritoName, 
+  pr.name AS ProvinciaName
+FROM 
+  paciente p
+LEFT JOIN departamento de ON de.id = p.IdDepartamento
+LEFT JOIN distrito di ON di.id = p.IdDistrito
+LEFT JOIN provincia pr ON pr.id = p.IdProvincia
         where p.IdPaciente = :IdPaciente limit 1");
         $statement->bindParam(":IdPaciente", $IdPaciente);
         return ($statement->execute()) ? $statement->fetch() : false;
@@ -110,7 +134,16 @@ class userModelPaciente
     public function getAllAtencPatientsLimitOffset($IdPsicologo, $limit, $offset)
     {
         $query = "SELECT 
-                    p.*, ate.*
+                    p.*,
+                    ate.IdAtencion, 
+                    ate.IdEnfermedad, 
+                    ate.MotivoConsulta, 
+                    ate.FormaContacto,
+                    ate.Diagnostico,
+                    ate.Tratamiento,
+                    ate.Observacion,
+                    ate.UltimosObjetivos,
+                    ate.FechaRegistro
                   FROM 
                     paciente p
                   LEFT JOIN (
