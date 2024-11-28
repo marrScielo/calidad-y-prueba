@@ -61,11 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
             display: flex;
         }
 
-        #internal-mode-control {
-            display: flex;
-        }
-
-        #external-mode-control,
+        /* #external-mode-control, */
         #fixed_settings,
         #profile_fixed,
 
@@ -74,16 +70,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         }
     }
 
+
+
     @media (min-width: 769px) {
-        #menu-btn {
+
+        #menu-btn,
+        #menu-content {
             display: none;
         }
 
-        #internal-mode-control {
-            display: none;
-        }
 
-        #external-mode-control,
+        /* #external-mode-control, */
         #fixed_settings,
         #profile_fixed,
         #nom-user {
@@ -180,7 +177,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 
 
     <div class="top <?php echo ($theme === 'dark') ? 'dark-mode' : ''; ?>" id="top_fixed">
-
         <div class="theme-toggler" id="external-mode-control">
             <span class="material-symbols-sharp" data-theme="dark" translate="no">dark_mode</span>
             <span class="material-symbols-sharp active" data-theme="light" translate="no">light_mode</span>
@@ -213,10 +209,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
             <button class="close-btn" onclick="toggleMenu()">✖</button>
             <p class="nom-psicologo" translate="no"><?= $_SESSION['NombrePsicologo'] ?></p>
             <div class="menu-item">
-                <div class="theme-toggler" id="internal-mode-control">
+
+                <!-- <div class="theme-toggler" id="internal-mode-control">
                     <span class="material-symbols-sharp" data-theme="dark" translate="no">dark_mode</span>
                     <span class="material-symbols-sharp active" data-theme="light" translate="no">light_mode</span>
-                </div>
+                </div> -->
+
+                <!-- Debe aparecer aqui el external-mode-control -->
             </div>
             <div class="menu-item">
                 <div class="ajuste-info2">
@@ -309,26 +308,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 
 
 <script>
-    // Mover el botón de cambio de tema al menú en pantallas pequeñas
-    window.addEventListener('resize', function() {
+        document.addEventListener('DOMContentLoaded', function() {
         const externalModeControl = document.getElementById('external-mode-control');
-        const internalModeControl = document.getElementById('internal-mode-control');
-        const menuContent = document.getElementById('menu-content');
-        const originalParent = document.getElementById('top_fixed'); // Asegúrate de tener un contenedor original
-
-        if (window.innerWidth <= 768) {
-            if (!menuContent.contains(externalModeControl)) {
-                menuContent.appendChild(externalModeControl);
-            }
-        } else {
-            if (!originalParent.contains(externalModeControl)) {
-                originalParent.appendChild(externalModeControl);
+        const originalPosition = document.getElementById('original-position');
+        const menuItem = document.querySelector('#menu-content .menu-item');
+    
+        let lastWindowWidth = window.innerWidth;
+    
+        function moveControl() {
+            console.log('moveControl called');
+            if (window.innerWidth <= 768) { // Umbral para pantalla móvil
+                if (!menuItem.contains(externalModeControl)) {
+                    menuItem.appendChild(externalModeControl);
+                    console.log('Moved to menu-item');
+                }
+            } else {
+                if (!originalPosition.contains(externalModeControl)) {
+                    originalPosition.appendChild(externalModeControl);
+                    console.log('Moved to original position');
+                }
             }
         }
+    
+        function checkWindowSize() {
+            const currentWindowWidth = window.innerWidth;
+            if (lastWindowWidth > 768 && currentWindowWidth <= 768) {
+                console.log('Switching to mobile view, reloading...');
+                window.location.reload();
+            } else if (lastWindowWidth <= 769 && currentWindowWidth > 769) {
+                console.log('Switching to desktop view, reloading...');
+                window.location.reload();
+            }
+            lastWindowWidth = currentWindowWidth;
+        }
+    
+        // Mover el control al cargar la página
+        console.log('Page loaded');
+        moveControl();
+    
+        // Verificar el tamaño de la ventana al cambiar el tamaño
+        window.addEventListener('resize', function() {
+            console.log('Window resized');
+            checkWindowSize();
+        });
+    
+        // Verificar el tamaño de la ventana al cambiar la orientación del dispositivo
+        window.addEventListener('orientationchange', function() {
+            console.log('Orientation changed');
+            checkWindowSize();
+        });
     });
-
-    // Ejecutar al cargar la página para asegurar que el botón esté en el lugar correcto
-    window.dispatchEvent(new Event('resize'));
 </script>
 
 
@@ -349,6 +378,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         window.location.href = '../Issets/views/Salir.php';
     }
 </script>
+
 
 <script>
     function habilitarEdicion(inputId) {
@@ -381,6 +411,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         // ... (Restablece otros campos a solo lectura)
     });
 </script>
+
+
 
 <script>
     function setTheme(theme) {
@@ -421,5 +453,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
         setTheme('dark');
     });
 </script>
+
+
 
 </html>
