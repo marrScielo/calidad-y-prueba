@@ -455,7 +455,7 @@ buttonsCitas.forEach((button) => {
         console.log('click code', codeSelected)
         closeModalEditPaciente()
         modalNewAppointment.classList.add('active')
-        containerpacientetabla.classList.add('active')
+        // containerpacientetabla.classList.add('active')
         document.querySelector('#IdPaciente').value = idSelected
         document.querySelector('#codigopac').value = codeSelected
         // get info paciente
@@ -471,6 +471,10 @@ buttonsCitas.forEach((button) => {
                     data.ApMaterno +
                     ' ' +
                     data.ApPaterno
+                modalNewAppointment.querySelector('#NomPaciente').value =
+                    data.NomPaciente
+                modalNewAppointment.querySelector('#IdPaciente').value =
+                    data.IdPaciente
             })
     })
 })

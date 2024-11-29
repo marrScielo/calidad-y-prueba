@@ -9,7 +9,7 @@
                     <a class="search id"><span style="font-size: 4em" class="material-symbols-sharp">search</span></a>
                 </div>
             </div>
-            <div class="input-group">
+            <div class="input-group" style="display: none;">
                 <h3 for="codigopac">Codigo Paciente <b style="color: red">*</b></h3>
                 <div style="display: flex; gap: 5px">
                     <input id="codigopac" type="text" name="codigopac" class="input" />
@@ -17,7 +17,7 @@
                             class="material-symbols-sharp">search</span></a>
                 </div>
             </div>
-            <div class="input-group">
+            <div class="input-group" style="display: none;">
                 <h3 for="NomPaciente">
                     Nombre Paciente <b style="color: red">*</b>
                 </h3>
@@ -29,19 +29,19 @@
             </div>
         </div>
 
-        <div class="input-group2">
+        <div class="input-group2" style="display: flex; flex-direction: column; gap: 1rem;">
             <div class="input-group">
                 <h3 for="Paciente">Paciente <b style="color: red">*</b></h3>
-                <input id="Paciente" type="text" name="Paciente" readonly />
+                <input id="Paciente" type="text" name="Paciente"  readonly/>
             </div>
             <div class="input-group">
                 <h3 for="MotivoCita">
                     Motivo de la Consutla <b style="color: red">*</b>
                 </h3>
-                <input style="
+                <textarea style="
                 font-family: 'Montserrat', sans-serif;
                 font-size: 14px;
-            " type="text" id="MotivoCita" name="MotivoCita" required />
+            " id="MotivoCita" name="MotivoCita" required ></textarea>
 
             </div>
         </div>
