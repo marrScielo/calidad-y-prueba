@@ -308,13 +308,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
 
 
 <script>
+    //* Código JavaScript para mover el control
+
+    // Mover el control según el tamaño de la ventana
         document.addEventListener('DOMContentLoaded', function() {
         const externalModeControl = document.getElementById('external-mode-control');
         const originalPosition = document.getElementById('original-position');
         const menuItem = document.querySelector('#menu-content .menu-item');
     
         let lastWindowWidth = window.innerWidth;
-    
+
+    // Mover el control según el tamaño de la ventana
         function moveControl() {
             console.log('moveControl called');
             if (window.innerWidth <= 768) { // Umbral para pantalla móvil
@@ -329,22 +333,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
                 }
             }
         }
-    
+
+    // Verificar el tamaño de la ventana al cargar la página
         function checkWindowSize() {
             const currentWindowWidth = window.innerWidth;
-            if (lastWindowWidth > 768 && currentWindowWidth <= 768) {
+            if (lastWindowWidth <= 769 && currentWindowWidth > 769)  {
                 console.log('Switching to mobile view, reloading...');
                 window.location.reload();
-            } else if (lastWindowWidth <= 769 && currentWindowWidth > 769) {
+                
+            } else if (lastWindowWidth > 768 && currentWindowWidth <= 768) {
                 console.log('Switching to desktop view, reloading...');
                 window.location.reload();
+                
             }
             lastWindowWidth = currentWindowWidth;
         }
-    
-        // Mover el control al cargar la página
-        console.log('Page loaded');
-        moveControl();
     
         // Verificar el tamaño de la ventana al cambiar el tamaño
         window.addEventListener('resize', function() {
@@ -357,6 +360,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardarCambios'])) {
             console.log('Orientation changed');
             checkWindowSize();
         });
+
+        // Mover el control al cargar la página
+        console.log('Page loaded');
+        moveControl();
     });
 </script>
 
