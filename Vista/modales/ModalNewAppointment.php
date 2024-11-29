@@ -41,6 +41,10 @@
                 <textarea style="
                 font-family: 'Montserrat', sans-serif;
                 font-size: 14px;
+                resize: vertical;
+                max-height: 100px;
+                height: auto;
+                min-height: 42px;
             " id="MotivoCita" name="MotivoCita" required ></textarea>
 
             </div>
