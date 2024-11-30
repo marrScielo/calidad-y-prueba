@@ -24,10 +24,15 @@ themeToggler.addEventListener('click', () =>{
 */
 
 const btnajuste = document.querySelector(".ajuste-info");
+const btnajuste2 = document.querySelector(".ajuste-info2");
 const closea = document.querySelector(".closeaaa");
 const navigation = document.querySelector(".navigation");
 
 btnajuste.addEventListener("click", () => {
+    navigation.classList.add("active");
+});
+
+btnajuste2.addEventListener("click", () => {
     navigation.classList.add("active");
 });
 
