@@ -195,6 +195,21 @@
           "HoraInicio": "La hora de inicio de la cita es obligatoria.",
           "CanalCita": "El canal de atraccion es obligatorio.",
           "EtiquetaCita": "La etiqueta de la cita es obligatoria.",
+        //   'ApPaterno': 'El apellido paterno es obligatorio.',
+        //   'ApMaterno': 'El apellido materno es obligatorio.',
+        //   'FechaNacimiento': 'La fecha de nacimiento es obligatoria.',
+        //   'GradoInstruccion': 'El grado de instrucción es obligatorio.',
+        //   'Ocupacion': 'La ocupación es obligatoria.',
+        //   'EstadoCivil': 'El estado civil es obligatorio.',
+        //   'Genero': 'El género es obligatorio.',
+        //   'Telefono': 'El teléfono es obligatorio.',
+        //   'Email': 'El correo electrónico es obligatorio.',
+        //   'Departamento': 'El departamento es obligatorio.',
+        //   'Provincia': 'La provincia es obligatoria.',
+        //   'Distrito': 'El distrito es obligatorio.',
+        //   'Direccion': 'La dirección es obligatoria.',
+        //   'AntecedentesMedicos': 'Los antecedentes médicos son obligatorios.',
+        //   'MedicamentosPrescritos': 'Los medicamentos prescritos son obligatorios.'
         };
 
         document.getElementById('miFormulario').addEventListener('submit', function(e) {
