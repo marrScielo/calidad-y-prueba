@@ -379,7 +379,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                             <button style="cursor: pointer;" id="update-btn">Actualizar</button>
                             <button style="cursor: pointer;" id="edit-note-btn">Editar Nota</button>
-                            
+
                             <div class="BUT">
                                 <a class="green-button" id="patient-attention-btn">Atención
                                     Paciente</a>
@@ -579,6 +579,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 if ('error' in response) {
                                     modalBody.innerHTML = '<p>' + response.error + '</p>';
                                 } else {
+                                    
+                                    //* Limpiar el contenido del modalBody antes de agregar un nuevo patient-div
+
+                                    modalBody.innerHTML = '';
+
                                     var patientDiv = document.createElement('div');
                                     patientDiv.className = 'patient-div';
                                     var tableContainer = document.createElement('div');
@@ -587,9 +592,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
                                     // Agregar subtítulos a la tabla
                                     var headerRow = table.createTHead().insertRow(0);
-                                    var headers = ['#', 'Paciente', 'Fecha De Atencion',
-                                        'Enfermedad', 'Actualizar', 'Acciones'
-                                    ]; // Cambiado a 'Nombre Completo'
+                                    var headers = ['#', 'Paciente', 'Fecha De Atencion', 'Enfermedad', 'Actualizar', 'Acciones'];
                                     headers.forEach(function(headerText) {
                                         var th = document.createElement('th');
                                         th.appendChild(document.createTextNode(headerText));
@@ -603,82 +606,58 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                         var cell1 = row.insertCell(1);
                                         var cell2 = row.insertCell(2);
                                         var cell3 = row.insertCell(3);
-                                        // Set the row number in cell0
                                         cell0.innerHTML = index + 1;
-                                        // Combina nombre y apellido en un solo campo
-                                        cell1.innerHTML =
-                                            `${registro.NomPaciente} ${registro.ApPaterno}`;
+                                        cell1.innerHTML = `${registro.NomPaciente} ${registro.ApPaterno}`;
                                         cell2.innerHTML = registro.FechaRegistro;
                                         cell3.innerHTML = registro.Clasificacion;
-                                        // Crear botón para cada registro
-                                        var cell4 = row.insertCell(
-                                            4); // Agregada esta línea para la nueva columna
+
+                                        // Crear botón "Actualizar Enfermedad"
+                                        var cell4 = row.insertCell(4);
                                         var button = document.createElement('button');
-                                        button.className =
-                                            'ver-detalles-button'; // Agrega esta línea para asignar una clase
+                                        button.className = 'ver-detalles-button';
                                         button.innerHTML = 'Actualizar Enfermedad';
                                         button.onclick = function() {
-                                            // Abre el modal de historial
-                                            var historyModal = document.getElementById(
-                                                'historyModal');
+                                            var historyModal = document.getElementById('historyModal');
                                             historyModal.style.display = 'flex';
-
-                                            // Muestra los detalles del historial en el cuerpo del modal
-                                            var historyModalBody = document
-                                                .getElementById('historyModalBody');
+                                            var historyModalBody = document.getElementById('historyModalBody');
                                             historyModalBody.innerHTML = `
-        <p>Motivo de la Cita: ${registro.MotivoCita || 'N/A'}</p>
-        <p>Tipo de Cita: ${registro.TipoCita || 'N/A'}</p>
-        <p>Duración de la Cita: ${registro.DuracionCita || 'N/A'}</p>
-        <p>Canal de la Cita: ${registro.CanalCita || 'N/A'}</p>
-    `;
+                            <p>Motivo de la Cita: ${registro.MotivoCita || 'N/A'}</p>
+                            <p>Tipo de Cita: ${registro.TipoCita || 'N/A'}</p>
+                            <p>Duración de la Cita: ${registro.DuracionCita || 'N/A'}</p>
+                            <p>Canal de la Cita: ${registro.CanalCita || 'N/A'}</p>
+                        `;
                                         };
-
-
-
-                                        // Agregar botón a la columna de acciones
                                         cell4.appendChild(button);
 
                                         // Crear botón "Actualizar Nota" en la columna acciones
-                                        var cell5 = row.insertCell(4);
-                                        var actualizarNotaButton = document.createElement(
-                                            'button');
-                                        actualizarNotaButton.className =
-                                            'actualizar-nota-button';
+                                        var cell5 = row.insertCell(5);
+                                        var actualizarNotaButton = document.createElement('button');
+                                        actualizarNotaButton.className = 'actualizar-nota-button';
                                         actualizarNotaButton.innerHTML = 'Actualizar Notas';
                                         actualizarNotaButton.onclick = function() {
-                                            // Aquí puedes agregar el código para actualizar la nota
-                                            // Abre el modal de historial
-                                            var historyModal = document.getElementById(
-                                                'historyModal');
+                                            var historyModal = document.getElementById('historyModal');
                                             historyModal.style.display = 'flex';
-
-                                            // Muestra los detalles del historial en el cuerpo del modal
-                                            var historyModalBody = document
-                                                .getElementById('historyModalBody');
+                                            var historyModalBody = document.getElementById('historyModalBody');
                                             historyModalBody.innerHTML = `
-                                                <form action="Historial.php" method="POST">
-                                                    <input type="hidden" name="patientId" value="${registro.IdAtencion}" />
-
-                                                    <p>Diagnostico: </p>
-                                                    <textarea name="diagnostico" id="notaTextArea">${registro.Diagnostico}</textarea>
-                                                    <p>Tratamiento: </p>
-                                                    <textarea name="tratamiento" id="notaTextArea">${registro.Tratamiento}</textarea>
-                                                    <p>Observacion: </p>
-                                                    <textarea name="observacion" id="notaTextArea">${registro.Observacion}</textarea>
-                                                    <p>Objetivos Alcanzados: </p>
-                                                    <textarea name="objetivos" id="notaTextArea">${registro.UltimosObjetivos}</textarea>
-
-                                                    <input type="submit" value="Actualizar Nota" class="button_update_note">
-                                                </form>
-                                            `;
+                            <form action="Historial.php" method="POST">
+                                <input type="hidden" name="patientId" value="${registro.IdAtencion}" />
+                                <p>Diagnostico: </p>
+                                <textarea name="diagnostico" id="notaTextArea">${registro.Diagnostico}</textarea>
+                                <p>Tratamiento: </p>
+                                <textarea name="tratamiento" id="notaTextArea">${registro.Tratamiento}</textarea>
+                                <p>Observacion: </p>
+                                <textarea name="observacion" id="notaTextArea">${registro.Observacion}</textarea>
+                                <p>Objetivos Alcanzados: </p>
+                                <textarea name="objetivos" id="notaTextArea">${registro.UltimosObjetivos}</textarea>
+                                <input type="submit" value="Actualizar Nota" class="button_update_note">
+                            </form>
+                        `;
                                         };
                                         cell5.appendChild(actualizarNotaButton);
                                     });
 
                                     tableContainer.appendChild(table);
                                     patientDiv.appendChild(tableContainer);
-
                                     modalBody.appendChild(patientDiv);
                                 }
                             } else {
