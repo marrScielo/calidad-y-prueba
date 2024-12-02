@@ -51,9 +51,9 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
           min-width: 800px;
         } */
 
-        .contenedor_dsh {
+        /* .contenedor_dsh {
           min-width: 800px;
-        }
+        } */
 
         .animate__animated {
           overflow: auto;

@@ -96,7 +96,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             }
 
             .center-divs {
-                min-width: 800px;
+                /* min-width: 800px; */
             }
         }
 
@@ -270,7 +270,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             <!----------- end of aside -------->
             <main class="animate_animated animate_fadeIn">
                 <div class="center-divs">
-                    <h4 style="color: #49c691;">Historial de Pacientes</h4>
+                    <h4 style="color: #534489;">Historial de Pacientes</h4>
                     <?php
                     require_once '../Issets/views/Info.php';
                     ?>

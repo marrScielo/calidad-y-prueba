@@ -89,7 +89,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     display: grid;
                     grid-template-columns: repeat(4, 1fr);
                     gap: 5px;
-                    margin-top: 8px;
                 }
 
                 #profile_fixed {
@@ -111,10 +110,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 .modal-content-detail {
                     width: 80%;
                     padding: 15px;
-                }
-
-                #top_fixed {
-                    margin-top: 8px;
                 }
 
                 #profile_fixed {

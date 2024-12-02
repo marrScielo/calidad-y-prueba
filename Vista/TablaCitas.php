@@ -25,15 +25,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
     <body>
         <style>
             @media (max-width: 900px) {
-                body {}
-
-                .container {
-                    width: 100%;
-                }
-
-                .center-divs {
-                    min-width: 900px;
-                }
 
                 .contenedor-botones {
                     min-width: 900px;
