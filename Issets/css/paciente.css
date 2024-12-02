@@ -198,7 +198,7 @@ td.additional-column {
 
 /*=========================== Formulario ==========================*/
 #miFormulario {
-    padding: 25px 0;
+    /* padding: 25px 0; */
     width: 100%;
     max-width: 900px;
     margin-inline: auto;
