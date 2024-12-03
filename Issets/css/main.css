@@ -841,7 +841,6 @@ select {
     border-radius: 8px;
     background-color: var(--color-background);
     color: #7b7c89;
-    margin-top: 10px;
 }
 
 .flex-center {
@@ -906,19 +905,25 @@ select {
 
 .service-modal-body {
     position: relative;
-    background: var(--modal-bg-color);
+    background: #8fbbc8;
     max-width: 600px;
     margin: 10px;
     padding: 20px;
     text-align: center;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
+    color: white;
+    font-size: 0.8rem;
+}
+
+.service-modal-body h3 {
+    margin: 8px 0;
 }
 
 .close {
-    color: #aaa;
+    color: rgb(80, 79, 79);
     float: right;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     margin: 0 !important;
 }
@@ -1008,7 +1013,8 @@ select {
 .modal-button-container {
     display: flex;
     gap: 15px;
-    justify-content: end;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 .message_dialog {
