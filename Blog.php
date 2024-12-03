@@ -69,6 +69,9 @@ $especialidades = [
     .dropdown-content.open {
         display: block;
     }
+    
+}
+
 </style>
 
 <body>
