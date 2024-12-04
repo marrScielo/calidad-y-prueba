@@ -223,13 +223,13 @@ $especialidades = [
             function ocultarMensajeNoBlogs() {
                 document.getElementById("mensaje-no-blogs").style.display = "none";
             }
-            const searchInput = document.getElementById('search-input'); // Input de búsqueda
-    const blogPosts = document.querySelectorAll('.blog-post');  // Todos los blogs
+         const searchInput = document.getElementById('search-input'); // Input de búsqueda
+         const blogPosts = document.querySelectorAll('.blog-post');  // Todos los blogs
 
-    searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase(); // Texto ingresado en minúsculas
+         searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase(); // Texto ingresado en minúsculas
 
-        blogPosts.forEach(post => {
+         blogPosts.forEach(post => {
             const title = post.querySelector('h2').textContent.toLowerCase(); // Título del blog en minúsculas
 
             // Si el título incluye el texto ingresado, mostrar el blog; si no, ocultarlo
@@ -247,7 +247,7 @@ $especialidades = [
         noResultsMessage.style.display = visiblePosts ? 'none' : 'block';
     });
 
-});
+   });
     </script>
 
     <script src="js/navabar.js"></script>
