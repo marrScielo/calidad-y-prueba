@@ -381,13 +381,15 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                     <button style="cursor: pointer;" id="update-btn">Actualizar</button>
                                     <button style="cursor: pointer;" id="edit-note-btn">Editar Nota</button>
                                 </div>
-                                <div class="BUT">
-                                    <a class="green-button" id="patient-attention-btn">Atención Paciente</a>
-                                </div>
+
                             </div>
 
                             <!-- Aquí se mostrarán que el paciente no cuenta con atenciones-->
                             <h1 id="no-attention-message" style="display: none; margin-top: 50px">Este paciente no cuenta con atenciones anteriores</h1>
+
+                            <div class="BUT">
+                                <a class="green-button" id="patient-attention-btn">Atención Paciente</a>
+                            </div>
 
                             <!-- Aquí se mostrarán los detalles del paciente -->
                             <form id="patientForm" style="display:none;">
