@@ -118,6 +118,9 @@ $especialidades = [
         </div>
 
         <div class="container-left">
+        <div id="mensaje-no-blogs-search" class="mensaje-no-blogs">
+            No se encontró ningún blog en la búsqueda.
+            </div>
             <div id="mensaje-no-blogs" class="mensaje-no-blogs">
                 No se encontraron blogs con la especialidad seleccionada.
             </div>
@@ -220,7 +223,31 @@ $especialidades = [
             function ocultarMensajeNoBlogs() {
                 document.getElementById("mensaje-no-blogs").style.display = "none";
             }
+            const searchInput = document.getElementById('search-input'); // Input de búsqueda
+    const blogPosts = document.querySelectorAll('.blog-post');  // Todos los blogs
+
+    searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase(); // Texto ingresado en minúsculas
+
+        blogPosts.forEach(post => {
+            const title = post.querySelector('h2').textContent.toLowerCase(); // Título del blog en minúsculas
+
+            // Si el título incluye el texto ingresado, mostrar el blog; si no, ocultarlo
+            if (title.includes(query)) {
+                post.style.display = 'block';
+            } else {
+                post.style.display = 'none';
+            }
         });
+
+        // Mostrar el mensaje si no hay resultados
+        const noResultsMessage = document.getElementById('mensaje-no-blogs');
+        const visiblePosts = Array.from(blogPosts).some(post => post.style.display === 'block');
+
+        noResultsMessage.style.display = visiblePosts ? 'none' : 'block';
+    });
+
+});
     </script>
 
     <script src="js/navabar.js"></script>
