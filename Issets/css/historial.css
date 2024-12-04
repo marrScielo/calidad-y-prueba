@@ -307,6 +307,8 @@ table {
 }
 #update-btn,
 #edit-note-btn {
+    margin: 5px;
+    width: 70%;
     margin-left: 14px;
     background-color: var(--color-dark-variant);
     color: var(--color-white);
@@ -318,6 +320,7 @@ table {
 @media (min-width: 1700px) {
     #update-btn,
     #edit-note-btn {
+        margin: 5px;
         width: 70%;
         font-size: 16px;
         padding: 10px 15px;
