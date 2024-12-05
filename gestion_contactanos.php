@@ -53,6 +53,7 @@ if (isset($_SESSION['logeado'])) {
         <title>Gestionar Contactenos</title>
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="./Issets/css/gestion_contactanos.css">
+        <link rel="icon" href="img/favicon.png">
     </head>
 
     <body>
