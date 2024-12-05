@@ -181,73 +181,51 @@ $especialidades = [
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const dropdownContent = document.querySelector('.dropdown-content');
-            const containerRight = document.querySelector('.container-right'); // Asegúrate de que este selector sea correcto
+          const searchInput = document.getElementById('search-input');
+          const blogPosts = document.querySelectorAll('.blog-post');
+          const noMessage = document.getElementById('mensaje-no-blogs-search');
+           const especialidadCheckboxes = document.querySelectorAll('.especialidad-checkbox');
 
-            // Mostrar el contenido desplegable al cargar la página
-            dropdownContent.style.display = 'block';
-            containerRight.style.height = `calc(100% - ${dropdownContent.clientHeight}px)`;
+         // Filtrar los posts según los filtros seleccionados
+        function filterPosts() {
+           const query = searchInput.value.toLowerCase();
 
-            document.querySelector('.dropbtn').addEventListener('click', function() {
-                if (dropdownContent.style.display === 'block') {
-                    dropdownContent.style.display = 'none';
-                    containerRight.style.height = '100%';
-                } else {
-                    dropdownContent.style.display = 'block';
-                    containerRight.style.height = `calc(100% - ${dropdownContent.clientHeight}px)`;
-                }
-            });
+        // Obtener las especialidades seleccionadas
+        const selectedEspecialidades = Array.from(especialidadCheckboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.value.toLowerCase());
 
-            document.getElementById('filter-form').addEventListener('change', function() {
-                const checkboxes = document.querySelectorAll('.especialidad-checkbox');
-                const selectedEspecialidades = Array.from(checkboxes)
-                    .filter(checkbox => checkbox.checked)
-                    .map(checkbox => checkbox.value);
-                const searchTerm = document.getElementById('search-input').value.toLowerCase();
-                // Construir la query string
-                let queryString = `?page=1`;
-                if (selectedEspecialidades.length > 0) {
-                    queryString += `&especialidades=${selectedEspecialidades.join(',')}`;
-                }
-                if (searchTerm) {
-                    queryString += `&search=${encodeURIComponent(searchTerm)}`;
-                }
-                // Recargar la página con los filtros aplicados
-                window.location.href = window.location.pathname + queryString;
-            });
+        let hasVisiblePosts = false;
 
-            function mostrarMensajeNoBlogs() {
-                document.getElementById("mensaje-no-blogs").style.display = "block";
-            }
+        // Filtrar los posts por especialidad
+        blogPosts.forEach(post => {
+            const title = post.querySelector('h2').textContent.toLowerCase();
+            const especialidad = post.getAttribute('data-especialidad').toLowerCase();
 
-            function ocultarMensajeNoBlogs() {
-                document.getElementById("mensaje-no-blogs").style.display = "none";
-            }
-         const searchInput = document.getElementById('search-input'); // Input de búsqueda
-         const blogPosts = document.querySelectorAll('.blog-post');  // Todos los blogs
+            // Verificar si el post coincide con los filtros
+            const matchesEspecialidad = selectedEspecialidades.length === 0 || selectedEspecialidades.includes(especialidad);
+            const matchesSearch = title.includes(query);
 
-         searchInput.addEventListener('input', () => {
-            const query = searchInput.value.toLowerCase(); // Texto ingresado en minúsculas
-
-         blogPosts.forEach(post => {
-            const title = post.querySelector('h2').textContent.toLowerCase(); // Título del blog en minúsculas
-
-            // Si el título incluye el texto ingresado, mostrar el blog; si no, ocultarlo
-            if (title.includes(query)) {
+            // Mostrar u ocultar el post según los filtros
+            if (matchesEspecialidad && matchesSearch) {
                 post.style.display = 'block';
+                hasVisiblePosts = true;
             } else {
                 post.style.display = 'none';
             }
         });
 
-        // Mostrar el mensaje si no hay resultados
-        const noResultsMessage = document.getElementById('mensaje-no-blogs');
-        const visiblePosts = Array.from(blogPosts).some(post => post.style.display === 'block');
+        // Mostrar o ocultar el mensaje si no se encontraron resultados
+        noMessage.style.display = hasVisiblePosts ? 'none' : 'block';
+    }
 
-        noResultsMessage.style.display = visiblePosts ? 'none' : 'block';
-    });
+    // Agregar eventos para escuchar los cambios en la búsqueda y los filtros
+    searchInput.addEventListener('input', filterPosts);
+    document.getElementById('filter-form').addEventListener('change', filterPosts);
 
-   });
+    // Filtrar los posts al cargar la página, para aplicar los filtros iniciales
+    filterPosts();
+});
     </script>
 
     <script src="js/navabar.js"></script>
