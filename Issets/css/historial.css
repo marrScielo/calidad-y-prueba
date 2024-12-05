@@ -199,7 +199,7 @@ table {
     border-top-left-radius: 20px !important;
 }
 .container-paciente-tabla.active table td {
-    text-align: start;
+    /* text-align: start; */
     padding-bottom: 1rem;
     padding-top: 1rem;
 }
@@ -307,6 +307,7 @@ table {
 }
 #update-btn,
 #edit-note-btn {
+    margin: 5px;
     margin-left: 14px;
     background-color: var(--color-dark-variant);
     color: var(--color-white);
@@ -318,6 +319,7 @@ table {
 @media (min-width: 1700px) {
     #update-btn,
     #edit-note-btn {
+        margin: 5px;
         width: 70%;
         font-size: 16px;
         padding: 10px 15px;
