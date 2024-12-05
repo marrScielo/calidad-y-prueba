@@ -182,6 +182,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
         /* Agrega estilos a la tabla */
         .table-container {
+
             background-color: var(--color-white);
             /*box-shadow: var(--box-shadow);*/
             border-radius: 30px;
@@ -190,6 +191,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
             overflow: auto;
             /* Agrega desplazamiento si la tabla es larga */
         }
+
+
+
 
         /* Estilos para la tabla */
         table {
@@ -201,6 +205,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
         td {
             text-align: center;
         }
+
+
 
         /* Estilos para el botón "Ver Detalles" dentro del modal de historial */
         .ver-detalles-button,
@@ -377,12 +383,14 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <div class="ci-input-group">
                                     <textarea id="notes-textarea">${nota || 'Aun no hay comentarios'}</textarea>
                                 </div>
-                                <div>
-                                    <button style="cursor: pointer;" id="update-btn">Actualizar</button>
-                                    <button style="cursor: pointer;" id="edit-note-btn">Editar Nota</button>
-                                </div>
-
                             </div>
+
+                            <div>
+                                <button style="cursor: pointer; " id="update-btn">Actualizar</button>
+                                <button style="cursor: pointer; " id="edit-note-btn">Editar Nota</button>
+                            </div>
+
+
 
                             <!-- Aquí se mostrarán que el paciente no cuenta con atenciones-->
                             <h1 id="no-attention-message" style="display: none; margin-top: 50px">Este paciente no cuenta con atenciones anteriores</h1>
@@ -511,12 +519,20 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     // Condicional para ocultar el elemento si no hay atenciones anteriores
                     const ultimaAtencionComponent = document.querySelector('.component-ultima-atencion');
                     const noAttentionMessage = document.getElementById('no-attention-message');
+                    const updateBtn = document.getElementById('update-btn');
+                    const editNoteBtn = document.getElementById('edit-note-btn');
+                    
+                    
                     if (!FechaInicioCita) {
                         ultimaAtencionComponent.style.display = 'none';
                         noAttentionMessage.style.display = 'block';
+                        updateBtn.style.display = 'none';
+                        editNoteBtn.style.display = 'none';
                     } else {
                         ultimaAtencionComponent.style.display = 'block';
                         noAttentionMessage.style.display = 'none';
+                        updateBtn.style.display = 'block';
+                        editNoteBtn.style.display = 'block';
                     }
 
                     patientDetails.style.display = 'block';
