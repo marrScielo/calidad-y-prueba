@@ -200,7 +200,6 @@ td.additional-column {
 #miFormulario {
     /* padding: 25px 0; */
     width: 100%;
-    max-width: 900px;
     margin-inline: auto;
 }
 
@@ -319,7 +318,7 @@ select {
     @media (min-width: 768px) {
         width: 100%;
         flex-direction: row;
-        justify-content: right;
+        justify-content: center;
     }
 }
 

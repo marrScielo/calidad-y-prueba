@@ -143,12 +143,22 @@ function calcularEdad(fechaNacimiento) {
     return edad
 }
 
-//actualizar modal de editar paciente
+function limpiarFormulario() {
+    const formulario = document.getElementById('miFormulario')
+    const mensajesError = formulario.querySelectorAll('.error-message')
+    mensajesError.forEach((mensaje) => {
+        mensaje.textContent = ''
+    })
+
+    formulario.reset()
+}
 function updateEditPacienteModal(appointment) {
+    limpiarFormulario()
     $modalEditPaciente.querySelector(
         '#pacientetTitle'
     ).textContent = `Modificar datos de ${appointment.NomPaciente}`
     $modalEditPaciente.querySelector('#idCita').value = appointment.IdPaciente
+
     $modalEditPaciente.querySelector('#IdPaciente').value =
         appointment.IdPaciente
     $modalEditPaciente.querySelector('#NomPaciente').value =

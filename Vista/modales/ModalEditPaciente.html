@@ -2,19 +2,20 @@
     <div class="service-modal-body">
         <a href="#" class="close" id="closeModalEditPaciente">&times;</a>
         <div class="message_dialog">
-            <h2 id="pacientetTitle" style="font-size: 20px; color: #49c691">
+            <h2 id="pacientetTitle" style="font-size: 20px; color: #534489">
                 Modificar datos de
             </h2>
             <form
                 action="../../contigovoy/Crud/Paciente/modificarPaciente.php"
                 method="POST"
                 class="modifica-form"
-                style="max-height: 90vh; overflow-y: auto"
+                style="max-height: 90vh; overflow-y: auto; max-width: 500px"
+                id="miFormulario"
             >
                 <input type="hidden" name="id_cita" id="idCita" />
                 <!-- EDITAR MOTIVO ESTADO FECHA DE INICIO DURACION -->
                 <div class="input-group-modal" style="display: none">
-                    <h3 for="IdPsicologo">IdPsicologo</h3>
+                    <h3 for="IdPaciente">IdPaciente</h3>
                     <input
                         type="text"
                         id="IdPaciente"
@@ -32,9 +33,13 @@
                             type="text"
                             name="NomPaciente"
                             class="input"
-                            required
                             aria-label="Nombre del paciente"
+                            data-error-target="error-NomPaciente"
                         />
+                        <span
+                            class="error-message"
+                            id="error-NomPaciente"
+                        ></span>
                     </div>
                     <div class="input-group-modal">
                         <h3 for="Dni">DNI</h3>
@@ -43,9 +48,10 @@
                             type="text"
                             name="Dni"
                             class="input"
-                            required
                             aria-label="DNI"
+                            data-error-target="error-Dni"
                         />
+                        <span class="error-message" id="error-Dni"></span>
                     </div>
                 </div>
                 <div class="input-group2">
@@ -56,9 +62,10 @@
                             type="text"
                             name="ApPaterno"
                             class="input"
-                            required
                             aria-label="Apellido Paterno"
+                            data-error-target="error-ApPaterno"
                         />
+                        <span class="error-message" id="error-ApPaterno"></span>
                     </div>
                     <div class="input-group-modal">
                         <h3 for="ApMaterno">Apellido Materno</h3>
@@ -67,9 +74,10 @@
                             type="text"
                             name="ApMaterno"
                             class="input"
-                            required
                             aria-label="Apellido Materno"
+                            data-error-target="error-ApMaterno"
                         />
+                        <span class="error-message" id="error-ApMaterno"></span>
                     </div>
                 </div>
                 <div class="input-group2">
@@ -80,7 +88,12 @@
                             id="FechaNacimiento"
                             name="FechaNacimiento"
                             aria-label="Fecha de Nacimiento"
+                            data-error-target="error-FechaNacimiento"
                         />
+                        <span
+                            class="error-message"
+                            id="error-FechaNacimiento"
+                        ></span>
                     </div>
                     <div class="input-group-modal">
                         <h3 for="Edad">Edad</h3>
@@ -90,7 +103,9 @@
                             name="Edad"
                             readonly
                             aria-label="Edad"
+                            data-error-target="error-Edad"
                         />
+                        <span class="error-message" id="error-Edad"></span>
                     </div>
                 </div>
                 <div class="input-group2" style="display: none">
@@ -101,7 +116,6 @@
                             type="text"
                             name="GradoInstruccion"
                             class="input"
-                            required
                             aria-label="Grado de Instrucción"
                         />
                     </div>
@@ -112,7 +126,6 @@
                             id="Ocupacion"
                             class="input"
                             name="Ocupacion"
-                            required
                             aria-label="Ocupación"
                         />
                     </div>
@@ -126,7 +139,7 @@
                             id="EstadoCivil"
                             name="EstadoCivil"
                             aria-label="Estado Civil"
-                            required
+                            data-error-target="error-EstadoCivil"
                         >
                             <option value="">Seleccionar</option>
                             <option value="soltero">Soltero/a</option>
@@ -134,6 +147,10 @@
                             <option value="divorciado">Divorciado/a</option>
                             <option value="viudo">Viudo/a</option>
                         </select>
+                        <span
+                            class="error-message"
+                            id="error-EstadoCivil"
+                        ></span>
                     </div>
                     <div style="width: 190px" class="input-group-modal">
                         <h3 for="Genero">Género</h3>
@@ -143,13 +160,14 @@
                             id="Genero"
                             name="Genero"
                             aria-label="Género"
-                            required
+                            data-error-target="error-Genero"
                         >
                             <option value="">Seleccionar</option>
                             <option value="Masculino">Masculino</option>
                             <option value="Femenino">Femenino</option>
                             <option value="Otro">Otro</option>
                         </select>
+                        <span class="error-message" id="error-Genero"></span>
                     </div>
                 </div>
                 <div class="input-group-modal">
@@ -160,8 +178,9 @@
                         class="input"
                         name="Telefono"
                         placeholder="Ejemp. 955888222"
-                        required
+                        data-error-target="error-Telefono"
                     />
+                    <span class="error-message" id="error-Telefono"></span>
                 </div>
                 <div style="margin-left: 2em" id="respuesta2"></div>
                 <div class="input-group-modal">
@@ -172,9 +191,10 @@
                         class="input"
                         name="Email"
                         style="color: #7b7c89"
-                        required
                         aria-label="Correo Electrónico"
+                        data-error-target="error-Email"
                     />
+                    <span class="error-message" id="error-Email"></span>
                 </div>
                 <div style="margin-left: 2em" id="respuesta3"></div>
                 <div class="input-group-modal">
@@ -185,7 +205,9 @@
                         class="input"
                         name="Direccion"
                         aria-label="Dirección"
+                        data-error-target="error-Direccion"
                     />
+                    <span class="error-message" id="error-Direccion"></span>
                 </div>
                 <div class="input-group-modal">
                     <h3 for="AntecedentesMedicos">Antecedentes médicos</h3>
@@ -195,9 +217,13 @@
                         class="input"
                         name="AntecedentesMedicos"
                         style="color: #7b7c89"
-                        required
                         aria-label="Antecedentes Médicos"
+                        data-error-target="error-AntecedentesMedicos"
                     />
+                    <span
+                        class="error-message"
+                        id="error-AntecedentesMedicos"
+                    ></span>
                 </div>
                 <div class="input-group-modal">
                     <h3 for="MedicamentosPrescritos">
@@ -209,9 +235,13 @@
                         class="input"
                         name="MedicamentosPrescritos"
                         style="color: #7b7c89"
-                        required
                         aria-label="Medicamentos Prescritos"
+                        data-error-target="error-MedicamentosPrescritos"
                     />
+                    <span
+                        class="error-message"
+                        id="error-MedicamentosPrescritos"
+                    ></span>
                 </div>
 
                 <div class="input-group-modal" style="display: none">
@@ -270,3 +300,34 @@
         </div>
     </div>
 </div>
+
+<!-- Script en línea -->
+<script src="../Issets/js/validationMessageGeneral.js" defer></script>
+<script src="../js/ubicacion.js"></script>
+<script>
+    // Llamada a la función que está en el archivo externo
+    const fieldsConfig = {
+        NomPaciente: 'El nombre del paciente es obligatorio.',
+        Dni: 'El DNI es obligatorio.',
+        ApPaterno: 'El apellido paterno es obligatorio.',
+        ApMaterno: 'El apellido materno es obligatorio.',
+        FechaNacimiento: 'La fecha de nacimiento es obligatoria.',
+        Edad: 'La edad es obligatoria.',
+        EstadoCivil: 'El estado civil es obligatorio.',
+        Genero: 'El género es obligatorio.',
+        Telefono: 'El teléfono es obligatorio.',
+        Email: 'El correo electrónico es obligatorio.',
+        Direccion: 'La dirección es obligatoria.',
+        AntecedentesMedicos: 'Los antecedentes médicos son obligatorios.',
+        MedicamentosPrescritos: 'Los medicamentos prescritos son obligatorios.'
+    }
+
+    document
+        .getElementById('miFormulario')
+        .addEventListener('submit', function (e) {
+            e.preventDefault()
+            if (validateForm(fieldsConfig)) {
+                e.target.submit()
+            }
+        })
+</script>
