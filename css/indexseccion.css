@@ -59,7 +59,7 @@ main {
     margin-inline: auto;
     display: flex;
     justify-content: flex-end;
-    border: 2px solid var(--color-light-pink);
+    border: 5px solid var(--color-light-pink);
     text-decoration: none;
     color: #ffffff;
     background-color: transparent;
@@ -72,6 +72,7 @@ main {
 }
 
 .info:hover {
+    border: 2px solid var(--color-light-pink);
     color: var(--color-light-pink);
     background-color: var(--color-light);
     transform: scale(1.05);
