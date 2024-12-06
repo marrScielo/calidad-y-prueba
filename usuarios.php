@@ -89,280 +89,398 @@ if (isset($_SESSION['logeado'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Usuarios</title>
+    <title>Contigo Voy: Gestión de Usuarios</title>
     <link rel="icon" href="img/favicon.png">
     <style>
-        body {
-            font-family: Montserrat, sans-serif;
-            background-color: #D9D9D9;
+        :root {
+            --primary-color: #7A5BA6;
+            --secondary-color: #4F468C;
+            --background-color: #F5F5F5;
+            --text-color: #333333;
+            --border-color: #9D8EBF;
+            --success-color: #4CAF50;
+            --error-color: #FF5252;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
         }
+
         .header {
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+            padding: 1em;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #7A5BA6;
-            padding: 10px 20px;
-            color: #FFFFFF;
+            flex-wrap: wrap;
         }
+
         .header img {
             height: 50px;
         }
-        .header .actions {
+
+        .header-marca {
             display: flex;
             align-items: center;
+            flex-direction: row;
+            gap: 1em;
         }
-        .header .actions form {
-            margin-left: 20px;
+
+        .search-form {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
         }
+
+        .search-form input {
+            padding: 10px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+        }
+
+        .search-form button {
+            background-color: var(--secondary-color);
+            color: #FFFFFF;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-form button:hover {
+            background-color: #3A3266;
+        }
+
         .content-wrapper {
+            margin-top: 100px;
             display: flex;
             flex-wrap: wrap;
+            gap: 20px;
         }
-        .sidebar, .main-content {
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .sidebar {
-            flex: 1 1 300px;
-            background-color: #A6A3BF;
-            margin-right: 20px;
-        }
-        .main-content {
-            flex: 3 1 600px;
-            background-color: #FFFFFF;
-        }
+
         .card {
             background-color: #FFFFFF;
-            border: 1px solid #9D8EBF;
             border-radius: 8px;
-            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
         .card h2 {
-            color: #4F468C;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 24px;
         }
+
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
-            color: #4F468C;
+            color: var(--secondary-color);
+            font-weight: 600;
         }
-        .form-group input, .form-group select, .form-group textarea {
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 10px;
-            border: 1px solid #9D8EBF;
+            border: 1px solid var(--border-color);
             border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
         }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
         .btn {
-            background-color: #7A5BA6;
+            background-color: var(--primary-color);
             color: #FFFFFF;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
         .btn-danger {
-            background-color: #FF4C4C;
+            background-color: var(--error-color);
         }
+
+        .btn-danger:hover {
+            background-color: #D32F2F;
+        }
+
         .error, .success {
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 4px;
+            font-weight: bold;
         }
+
         .error {
-            background-color: #FFCCCC;
-            color: #CC0000;
+            background-color: #FFEBEE;
+            color: var(--error-color);
         }
+
         .success {
-            background-color: #CCFFCC;
-            color: #006600;
+            background-color: #E8F5E9;
+            color: var(--success-color);
         }
+
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0 10px;
         }
+
         table th, table td {
-            padding: 10px;
-            border: 1px solid #9D8EBF;
+            padding: 15px;
             text-align: left;
+            background-color: #FFFFFF;
         }
+
         table th {
-            background-color: #A6A3BF;
+            background-color: var(--secondary-color);
             color: #FFFFFF;
+            font-weight: 600;
         }
+
+        table tr {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        table tr:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
         .user-image {
             width: 50px;
             height: 50px;
             border-radius: 50%;
+            object-fit: cover;
         }
+
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 1001;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .modal-content {
             background-color: #FFFFFF;
-            margin: 15% auto;
+            margin: 1em auto;
             padding: 20px;
-            border: 1px solid #9D8EBF;
-            width: 80%;
+            border: 1px solid var(--border-color);
+            width: 90%;
             max-width: 500px;
             border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: slideIn 0.3s;
         }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
         .close {
             color: #AAAAAA;
             float: right;
             font-size: 28px;
             font-weight: bold;
-        }
-        .close:hover, .close:focus {
-            color: #000000;
-            text-decoration: none;
             cursor: pointer;
+            transition: color 0.3s ease;
         }
+
+        .close:hover {
+            color: #000000;
+        }
+
         @media (max-width: 768px) {
-            .content-wrapper {
+            .header-content {
                 flex-direction: column;
             }
-            .sidebar {
-                margin-right: 0;
-                margin-bottom: 20px;
+
+            .search-form {
+                margin-top: 10px;
+            }
+
+            .content-wrapper {
+                margin-top: 150px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            table th, table td {
+                padding: 10px;
+            }
+
+            .user-image {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <header class="header">
-        <img src="img/favicon.png" alt="Logo">
-
-        <div class="actions">
+<header class="header">
+        <div class="container header-content">
+            <div class="header-marca">
+                <img src="img/favicon.png" alt="Logo">
+                <h2>Contigo Voy</h2>
+            </div>
+            <form id="searchForm" method="GET" class="search-form">
+                <input type="text" placeholder="Buscar por email" name="email" id="searchEmail">
+                <button type="submit" class="btn">Buscar</button>
+            </form>
             <form action="usuarios.php" method="POST">
                 <input type="hidden" name="accion" value="cerrar_sesion">
                 <button type="submit" class="btn">Cerrar sesión</button>
             </form>
         </div>
     </header>
-    <div class="content-wrapper">
-        <aside class="sidebar">
-            <div class="card">
-                <h2>Buscar Usuario</h2>
-                <form id="searchForm" method="GET">
-                    <div class="form-group">
-                        <input type="text" placeholder="Buscar por email" name="email" id="searchEmail">
-                    </div>
-                </form>
-            </div>
-        </aside>
 
-        <main class="main-content">
-            <?php if ($error): ?>
-                <div class="error"><?php echo $error; ?></div>
-            <?php endif; ?>
+    <div class="container">
+        <div class="content-wrapper">
+            <main class="main-content">
+                <?php if ($error): ?>
+                    <div class="error"><?php echo $error; ?></div>
+                <?php endif; ?>
 
-            <?php if ($success): ?>
-                <div class="success"><?php echo $success; ?></div>
-            <?php endif; ?>
+                <?php if ($success): ?>
+                    <div class="success"><?php echo $success; ?></div>
+                <?php endif; ?>
 
-            <div class="card">
-                <h2>Agregar Nuevo Usuario</h2>
-                <form action="usuarios.php" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="accion" value="agregar">
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Contraseña</label>
-                        <input type="password" id="password" name="password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="fotoPerfil">Foto de Perfil</label>
-                        <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="rol_new_user">Rol</label>
-                        <select name="rol" id="rol_new_user" required>
-                            <option value="administrador">Administrador</option>
-                            <option value="psicologo">Psicólogo</option>
-                            <option value="marketing">Marketing</option>
-                        </select>
-                    </div>
-                    <div id="psicologo_fields" style="display:none;">
+                <div class="card">
+                    <h2>Agregar Nuevo Usuario</h2>
+                    <form action="usuarios.php" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="accion" value="agregar">
                         <div class="form-group">
-                            <label for="speciality_new_user">Especialidad</label>
-                            <select name="speciality_new_user" id="speciality_new_user">
-                                <?php foreach ($especialidadesController->getEspecialidades() as $especialidad): ?>
-                                    <option value="<?= $especialidad['id'] ?>"><?= $especialidad['nombre'] ?></option>
-                                <?php endforeach; ?>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fotoPerfil">Foto de Perfil</label>
+                            <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rol_new_user">Rol</label>
+                            <select name="rol" id="rol_new_user" required>
+                                <option value="administrador">Administrador</option>
+                                <option value="psicologo">Psicólogo</option>
+                                <option value="marketing">Marketing</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="nombrePsicologo">Nombre del Psicólogo</label>
-                            <input type="text" id="nombrePsicologo" name="nombrePsicologo">
+                        <div id="psicologo_fields" style="display:none;">
+                            <!-- Campos específicos para psicólogos -->
                         </div>
-                        <div class="form-group">
-                            <label for="video">URL del Video</label>
-                            <input type="url" id="video" name="video">
-                        </div>
-                        <div class="form-group">
-                            <label for="celular">Celular</label>
-                            <input type="tel" id="celular" name="celular">
-                        </div>
-                        <div class="form-group">
-                            <label for="introduccion_new_user">Introducción</label>
-                            <textarea id="introduccion_new_user" name="introduccion_new_user"></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn">Agregar Usuario</button>
-                </form>
-            </div>
+                        <button type="submit" class="btn">Agregar Usuario</button>
+                    </form>
+                </div>
 
-            <div class="card">
-                <h2>Lista de Usuarios</h2>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Email</th>
-                        <th>Foto Perfil</th>
-                        <th>Rol</th>
-                        <th>Acciones</th>
-                    </tr>
-                    </thead>
-                    <tbody id="userList">
-                    <?php foreach ($usuarios as $usuario): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($usuario['id']) ?></td>
-                            <td><?= htmlspecialchars($usuario['email']) ?></td>
-                            <td><img src="<?= htmlspecialchars($usuario['fotoPerfil']) ?>" alt="Foto Perfil" class="user-image"></td>
-                            <td><?= htmlspecialchars($usuario['rol']) ?></td>
-                            <td>
-                                <button onclick="openEditModal(<?= htmlspecialchars(json_encode($usuario)) ?>)" class="btn">Editar</button>
-                                <button onclick="openDeleteModal(<?= htmlspecialchars($usuario['id']) ?>)" class="btn btn-danger">Eliminar</button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        </main>
+                <div class="card">
+                    <h2>Lista de Usuarios</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Foto Perfil</th>
+                                <th>Rol</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userList">
+                            <?php foreach ($usuarios as $usuario): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($usuario['id']) ?></td>
+                                    <td><?= htmlspecialchars($usuario['email']) ?></td>
+                                    <td><img src="<?= htmlspecialchars($usuario['fotoPerfil']) ?>" alt="Foto Perfil" class="user-image"></td>
+                                    <td><?= htmlspecialchars($usuario['rol']) ?></td>
+                                    <td>
+                                        <button onclick="openEditModal(<?= htmlspecialchars(json_encode($usuario)) ?>)" class="btn">Editar</button>
+                                        <button onclick="openDeleteModal(<?= htmlspecialchars($usuario['id']) ?>)" class="btn btn-danger">Eliminar</button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
     </div>
-</div>
+
 
 <!-- Modal de Edición -->
 <div id="editModal" class="modal">
