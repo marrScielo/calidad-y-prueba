@@ -201,7 +201,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         }
 
         /* Estilos para las celdas de la tabla */
-        .table-container table td {
+        .table-container table th, .table-container table td {
             text-align: center !important;
         }
 
