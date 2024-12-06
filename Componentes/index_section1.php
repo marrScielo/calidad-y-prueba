@@ -9,7 +9,7 @@
             y bienestar emocional aquí
         </h2>
         <a href="psicologos.php" class="hero__cta">Solicitar Servicio</a>
-        <a href="psicologos.php" class="info">Mas información aqui..</a>
+        <a href="Contactanos.php" class="info">Más información aquí..</a>
     </div>
 
 </section>
