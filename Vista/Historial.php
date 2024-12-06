@@ -182,7 +182,6 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
         /* Agrega estilos a la tabla */
         .table-container {
-
             background-color: var(--color-white);
             /*box-shadow: var(--box-shadow);*/
             border-radius: 30px;
@@ -202,8 +201,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
         }
 
         /* Estilos para las celdas de la tabla */
-        td {
-            text-align: center;
+        .table-container table td {
+            text-align: center !important;
         }
 
 
@@ -417,6 +416,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             </div>
                         </div>
                     </div>
+
                     <div class="modal" id="historyModal">
                         <div class="modal-content-detail">
                             <span class="close" id="closeHistoryModal" onclick="closeHistoryModal()">&times;</span>
@@ -521,8 +521,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     const noAttentionMessage = document.getElementById('no-attention-message');
                     const updateBtn = document.getElementById('update-btn');
                     const editNoteBtn = document.getElementById('edit-note-btn');
-                    
-                    
+
+
                     if (!FechaInicioCita) {
                         ultimaAtencionComponent.style.display = 'none';
                         noAttentionMessage.style.display = 'block';
@@ -637,6 +637,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                         var cell1 = row.insertCell(1);
                                         var cell2 = row.insertCell(2);
                                         var cell3 = row.insertCell(3);
+
                                         cell0.innerHTML = index + 1;
                                         cell1.innerHTML = `${registro.NomPaciente} ${registro.ApPaterno}`;
                                         cell2.innerHTML = registro.FechaRegistro;
