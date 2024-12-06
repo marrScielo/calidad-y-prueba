@@ -180,12 +180,17 @@ $especialidades = [
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function(e) {
+        
           const searchInput = document.getElementById('search-input');
           const blogPosts = document.querySelectorAll('.blog-post');
           const noMessage = document.getElementById('mensaje-no-blogs-search');
-           const especialidadCheckboxes = document.querySelectorAll('.especialidad-checkbox');
+          const especialidadCheckboxes = document.querySelectorAll('.especialidad-checkbox');
 
+          searchInput.addEventListener('keydown', (e) => {
+           if (e.key === 'Enter') e.preventDefault();
+           });
+          
          // Filtrar los posts según los filtros seleccionados
         function filterPosts() {
            const query = searchInput.value.toLowerCase();
@@ -219,7 +224,6 @@ $especialidades = [
         noMessage.style.display = hasVisiblePosts ? 'none' : 'block';
     }
 
-    // Agregar eventos para escuchar los cambios en la búsqueda y los filtros
     searchInput.addEventListener('input', filterPosts);
     document.getElementById('filter-form').addEventListener('change', filterPosts);
 
