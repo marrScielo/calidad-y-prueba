@@ -86,7 +86,7 @@ main {
 }
 
 .nav-links a.active {
-    background-color: #9897d1; /* Color de fondo para la sección activa */
+    background-color: #9986d9;
     color: white; /* Color del texto de la sección activa */
     border-radius: 5px; /* Puedes ajustar este valor según tu diseño */
 }

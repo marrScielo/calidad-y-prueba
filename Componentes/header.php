@@ -1,3 +1,58 @@
+<style>
+.nav-links {
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+    display: flex; 
+}
+
+.nav-item {
+    position: relative; 
+    margin-right: 2rem; 
+    overflow: hidden;
+}
+
+.nav-link {
+    text-decoration: none; 
+    color: #6c757d; 
+    padding: 0.5rem 1rem; 
+    position: relative; 
+    z-index: 1; 
+    transition: color 0.3s ease; 
+}
+
+.hover-bg {
+    content: ''; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #524388; 
+    border-radius: 5px; 
+    transform: scale(0); 
+    transition: transform 0.3s ease; 
+    z-index: -1;
+}
+
+.nav-item:hover .hover-bg {
+    transform: scale(1); 
+}
+
+.nav-item:hover .nav-link {
+    color: #ffffff; 
+}
+
+</style>
+<?php
+$navItems = [
+    ['name' => 'Inicio', 'link' => 'index.php'],
+    ['name' => 'Blog', 'link' => 'Blog.php'],
+    ['name' => 'Reservar Cita', 'link' => 'psicologos.php'],
+    ['name' => 'Contáctanos', 'link' => 'Contactanos.php'],
+    ['name' => 'Iniciar Sesión', 'link' => './login.php'],
+];
+?>
 <header id="main-header">
     <!-- main-header-navigation -->
     <nav class="main-header-navigation">
@@ -12,18 +67,20 @@
             <span></span>
         </div>
         <div class="header-bar">
-            <ul class="nav-links" id="nav-links">
-                <li><a href="index.php">Inicio</a></li>
-                <li><a href="Blog.php">Blog</a></li>
-                <li><a href="psicologos.php">Reservar Cita</a></li>
-                <li><a href="Contactanos.php">Contáctanos</a></li>
-                <li class="">
-                    <a href="./login.php">Iniciar Sesión </a>
-                </li>
+            <ul class="nav-links">
+                <?php foreach ($navItems as $idx => $navItem): ?>
+                    <li class="nav-item">
+                        <a href="<?php echo $navItem['link']; ?>" class="nav-link">
+                            <span><?php echo $navItem['name']; ?></span>
+                            <div class="hover-bg"></div>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </nav>
 </header>
+
 <script>
 // script.js
 window.addEventListener('scroll', function() {
@@ -53,3 +110,4 @@ navLinks.forEach(link => {
     }
 });
 </script>
+

@@ -8,8 +8,12 @@
             Encuentra equilibrio<br>
             y bienestar emocional aquí
         </h2>
-        <a href="psicologos.php" class="hero__cta">Solicitar Servicio</a>
-        <a href="psicologos.php" class="info">Mas información aqui..</a>
+        <?php include_once 'button1.php';?>
+        
+        <!-- <a href="psicologos.php" class="hero__cta">Solicitar Servicio</a> -->
+        <!-- <a href="psicologos.php" class="info">Mas información aqui..</a> -->
+        <?php include_once 'button2.php';?>
+
     </div>
 
 </section>
