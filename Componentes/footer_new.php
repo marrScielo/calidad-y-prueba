@@ -279,15 +279,10 @@
 
 <footer class="footer">
   <div class="principal">
-    <div class="redes">
-      <ul>
-        <li><a href="https://www.facebook.com/profile.php?id=61559259927318&_rdr" target="_blank"><img src="img/icons/facebook.png" alt="Facebook"></a></li>
-        <li><a href="https://x.com/ContigoVoy_pe" target="_blank"><img src="img/icons/twitter.png" alt="Twitter"></a></li>
-        <li><a href="https://www.instagram.com/contigovoy.pe/" target="_blank"><img src="img/icons/instagram.png" alt="Instagram"></a></li>
-        <li><a href="https://www.youtube.com/@contigovoype" target="_blank"><img src="img/icons/youtube.png" alt="YouTube"></a></li>
-        <li><a href="" target="_blank"><img src="img/icons/whatsapp.png" alt="Whatsapp"></a></li>
-        <li><a href="https://www.tiktok.com/@contigovoy.pe" target="_blank"><img src="img/icons/tiktok.png" alt="TikTok"></a></li>
-      </ul>
+    <div >
+    <?php include_once 'redesSociales.php'; ?>
+
+     
     </div>
     <div class="titulo">Atención al usuario</div>
     <div class="contacto-contenedor">
