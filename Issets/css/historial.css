@@ -199,7 +199,7 @@ table {
     border-top-left-radius: 20px !important;
 }
 .container-paciente-tabla.active table td {
-    /* text-align: start; */
+    text-align: start;
     padding-bottom: 1rem;
     padding-top: 1rem;
 }
@@ -214,6 +214,8 @@ table {
         color: white;
     }
 }
+
+
 /*---------------Container de detalles paciente-------------*/
 .patient-details {
     display: none;
@@ -307,6 +309,7 @@ table {
 }
 #update-btn,
 #edit-note-btn {
+    width: 100%;
     margin: 5px;
     margin-left: 14px;
     background-color: var(--color-dark-variant);

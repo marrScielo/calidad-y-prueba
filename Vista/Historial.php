@@ -191,6 +191,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
             /* Agrega desplazamiento si la tabla es larga */
         }
 
+
+
+
         /* Estilos para la tabla */
         table {
             width: 100%;
@@ -198,9 +201,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
         }
 
         /* Estilos para las celdas de la tabla */
-        td {
-            text-align: center;
+        .table-container table th, .table-container table td {
+            text-align: center !important;
         }
+
+
 
         /* Estilos para el botón "Ver Detalles" dentro del modal de historial */
         .ver-detalles-button,
@@ -377,12 +382,14 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <div class="ci-input-group">
                                     <textarea id="notes-textarea">${nota || 'Aun no hay comentarios'}</textarea>
                                 </div>
-                                <div>
-                                    <button style="cursor: pointer;" id="update-btn">Actualizar</button>
-                                    <button style="cursor: pointer;" id="edit-note-btn">Editar Nota</button>
-                                </div>
-
                             </div>
+
+                            <div>
+                                <button style="cursor: pointer; " id="update-btn">Actualizar</button>
+                                <button style="cursor: pointer; " id="edit-note-btn">Editar Nota</button>
+                            </div>
+
+
 
                             <!-- Aquí se mostrarán que el paciente no cuenta con atenciones-->
                             <h1 id="no-attention-message" style="display: none; margin-top: 50px">Este paciente no cuenta con atenciones anteriores</h1>
@@ -409,6 +416,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             </div>
                         </div>
                     </div>
+
                     <div class="modal" id="historyModal">
                         <div class="modal-content-detail">
                             <span class="close" id="closeHistoryModal" onclick="closeHistoryModal()">&times;</span>
@@ -511,12 +519,20 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     // Condicional para ocultar el elemento si no hay atenciones anteriores
                     const ultimaAtencionComponent = document.querySelector('.component-ultima-atencion');
                     const noAttentionMessage = document.getElementById('no-attention-message');
+                    const updateBtn = document.getElementById('update-btn');
+                    const editNoteBtn = document.getElementById('edit-note-btn');
+
+
                     if (!FechaInicioCita) {
                         ultimaAtencionComponent.style.display = 'none';
                         noAttentionMessage.style.display = 'block';
+                        updateBtn.style.display = 'none';
+                        editNoteBtn.style.display = 'none';
                     } else {
                         ultimaAtencionComponent.style.display = 'block';
                         noAttentionMessage.style.display = 'none';
+                        updateBtn.style.display = 'block';
+                        editNoteBtn.style.display = 'block';
                     }
 
                     patientDetails.style.display = 'block';
@@ -621,6 +637,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                         var cell1 = row.insertCell(1);
                                         var cell2 = row.insertCell(2);
                                         var cell3 = row.insertCell(3);
+
                                         cell0.innerHTML = index + 1;
                                         cell1.innerHTML = `${registro.NomPaciente} ${registro.ApPaterno}`;
                                         cell2.innerHTML = registro.FechaRegistro;
