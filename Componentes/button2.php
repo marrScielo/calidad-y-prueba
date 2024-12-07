@@ -74,6 +74,6 @@
 }
 
 </style>
-<button class="btnInformacion" onclick="window.location.href='psicologos.php';">
+<button class="btnInformacion" onclick="window.location.href='Contactanos.php';">
 Mas información aqui..
 </button>
