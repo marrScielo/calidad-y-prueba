@@ -38,7 +38,7 @@
   border-radius: var(--border_radius);
   box-shadow: inset 0 0.5px hsl(0, 0%, 100%), inset 0 -1px 2px 0 hsl(0, 0%, 0%),
     0px 4px 10px -4px hsla(0 0% 0% / calc(1 - var(--active, 0))),
-    0 0 0 calc(var(--active, 0) * 0.2rem) hsl(260 97% 50% / 0.75);
+    0 0 0 calc(var(--active, 0) * 0.2rem) #524388;
 
   transition: all var(--transtion);
   z-index: 0;
@@ -53,7 +53,7 @@
 
   width: 100%;
   height: 100%;
-  background-color: hsla(260 97% 61% / 0.75);
+  background-color:#9986d9;
   background-image: radial-gradient(
       at 51% 89%,
       hsla(266, 45%, 74%, 1) 0px,
