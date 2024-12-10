@@ -56,6 +56,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     align-items: center;
                     border-radius: 0;
                 }
+                #miFormulario {
+                    max-width: 500px;
+                }
             }
         </style>
 
