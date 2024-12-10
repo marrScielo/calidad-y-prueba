@@ -69,6 +69,9 @@ $especialidades = [
     .dropdown-content.open {
         display: block;
     }
+    
+}
+
 </style>
 
 <body>
@@ -115,6 +118,9 @@ $especialidades = [
         </div>
 
         <div class="container-left">
+        <div id="mensaje-no-blogs-search" class="mensaje-no-blogs">
+            No se encontró ningún blog en la búsqueda.
+            </div>
             <div id="mensaje-no-blogs" class="mensaje-no-blogs">
                 No se encontraron blogs con la especialidad seleccionada.
             </div>
@@ -174,50 +180,56 @@ $especialidades = [
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdownContent = document.querySelector('.dropdown-content');
-            const containerRight = document.querySelector('.container-right'); // Asegúrate de que este selector sea correcto
+        document.addEventListener('DOMContentLoaded', function(e) {
+        
+          const searchInput = document.getElementById('search-input');
+          const blogPosts = document.querySelectorAll('.blog-post');
+          const noMessage = document.getElementById('mensaje-no-blogs-search');
+          const especialidadCheckboxes = document.querySelectorAll('.especialidad-checkbox');
 
-            // Mostrar el contenido desplegable al cargar la página
-            dropdownContent.style.display = 'block';
-            containerRight.style.height = `calc(100% - ${dropdownContent.clientHeight}px)`;
+          searchInput.addEventListener('keydown', (e) => {
+           if (e.key === 'Enter') e.preventDefault();
+           });
+          
+         // Filtrar los posts según los filtros seleccionados
+        function filterPosts() {
+           const query = searchInput.value.toLowerCase();
 
-            document.querySelector('.dropbtn').addEventListener('click', function() {
-                if (dropdownContent.style.display === 'block') {
-                    dropdownContent.style.display = 'none';
-                    containerRight.style.height = '100%';
-                } else {
-                    dropdownContent.style.display = 'block';
-                    containerRight.style.height = `calc(100% - ${dropdownContent.clientHeight}px)`;
-                }
-            });
+        // Obtener las especialidades seleccionadas
+        const selectedEspecialidades = Array.from(especialidadCheckboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.value.toLowerCase());
 
-            document.getElementById('filter-form').addEventListener('change', function() {
-                const checkboxes = document.querySelectorAll('.especialidad-checkbox');
-                const selectedEspecialidades = Array.from(checkboxes)
-                    .filter(checkbox => checkbox.checked)
-                    .map(checkbox => checkbox.value);
-                const searchTerm = document.getElementById('search-input').value.toLowerCase();
-                // Construir la query string
-                let queryString = `?page=1`;
-                if (selectedEspecialidades.length > 0) {
-                    queryString += `&especialidades=${selectedEspecialidades.join(',')}`;
-                }
-                if (searchTerm) {
-                    queryString += `&search=${encodeURIComponent(searchTerm)}`;
-                }
-                // Recargar la página con los filtros aplicados
-                window.location.href = window.location.pathname + queryString;
-            });
+        let hasVisiblePosts = false;
 
-            function mostrarMensajeNoBlogs() {
-                document.getElementById("mensaje-no-blogs").style.display = "block";
-            }
+        // Filtrar los posts por especialidad
+        blogPosts.forEach(post => {
+            const title = post.querySelector('h2').textContent.toLowerCase();
+            const especialidad = post.getAttribute('data-especialidad').toLowerCase();
 
-            function ocultarMensajeNoBlogs() {
-                document.getElementById("mensaje-no-blogs").style.display = "none";
+            // Verificar si el post coincide con los filtros
+            const matchesEspecialidad = selectedEspecialidades.length === 0 || selectedEspecialidades.includes(especialidad);
+            const matchesSearch = title.includes(query);
+
+            // Mostrar u ocultar el post según los filtros
+            if (matchesEspecialidad && matchesSearch) {
+                post.style.display = 'block';
+                hasVisiblePosts = true;
+            } else {
+                post.style.display = 'none';
             }
         });
+
+        // Mostrar o ocultar el mensaje si no se encontraron resultados
+        noMessage.style.display = hasVisiblePosts ? 'none' : 'block';
+    }
+
+    searchInput.addEventListener('input', filterPosts);
+    document.getElementById('filter-form').addEventListener('change', filterPosts);
+
+    // Filtrar los posts al cargar la página, para aplicar los filtros iniciales
+    filterPosts();
+});
     </script>
 
     <script src="js/navabar.js"></script>

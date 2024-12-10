@@ -147,7 +147,7 @@ a {
 .blog-post img {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  height: 170px;
+  height: 195px;
   width: 100%;
   background-size: cover;
   margin-bottom: 10px;
@@ -169,7 +169,6 @@ a {
 }
 
 .blog-post p {
-    color: #777a7c;
     margin-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
@@ -178,6 +177,7 @@ a {
 .mensaje-no-blogs {
     display: none;
     text-align: center;
+    color: #777a7c ;
 }
 
 .pagination {
