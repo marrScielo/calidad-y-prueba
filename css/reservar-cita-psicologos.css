@@ -78,6 +78,9 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2rem;
     margin: 2.5rem 0 3rem;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 380px));
+    justify-content: center;
 }
 
 .testimonial {
@@ -277,10 +280,6 @@ body {
         padding: 1rem;
     }
 
-    .psicologo-row {
-        grid-template-columns: 1fr;
-    }
-
     .search-container {
         margin: 10px;
     }
@@ -310,10 +309,6 @@ body {
         margin: 10px;
     }
 
-    .psicologo-row {
-        grid-template-columns: repeat(2, minmax(250px, 1fr));
-    }
-
     .search-container {
         margin: 15px;
     }
@@ -324,9 +319,6 @@ body {
 }
 
 @media (min-width: 1025px) {
-    .psicologo-row {
-        grid-template-columns: repeat(3, minmax(250px, 1fr));
-    }
     .modal-content {
         width: 700px;
     }

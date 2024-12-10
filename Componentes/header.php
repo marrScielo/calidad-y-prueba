@@ -8,7 +8,6 @@
 
 .nav-item {
     position: relative; 
-    margin-right: 2rem; 
     overflow: hidden;
 }
 
@@ -67,7 +66,7 @@ $navItems = [
             <span></span>
         </div>
         <div class="header-bar">
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <?php foreach ($navItems as $idx => $navItem): ?>
                     <li class="nav-item">
                         <a href="<?php echo $navItem['link']; ?>" class="nav-link">
