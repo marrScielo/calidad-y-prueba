@@ -63,7 +63,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
 
               </div>
-              <img src="../Issets/images/confide.avif" alt="">
+              <img src="../Issets/images/confide.webp" alt="">
             </div>
           </section>
           <section class="info-last contenedor">
