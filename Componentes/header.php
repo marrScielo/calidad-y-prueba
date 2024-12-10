@@ -3,7 +3,9 @@
     <nav class="main-header-navigation">
         <div class="main-header-navigation__container u-container logo1">
             <a href="https://contigo-voy.com/" class="main-header-logo">
-                <img src="img/logo.gif" alt="Contigo Voy" class="main-header-logo__image ">
+                <video autoplay loop muted>
+                    <source src="img/logo.webm" alt="Contigo Voy" class="main-header-logo__image ">
+                </video>
             </a>
         </div>
         <div class="header-menu-icon" id="menu-icon">
@@ -25,31 +27,31 @@
     </nav>
 </header>
 <script>
-// script.js
-window.addEventListener('scroll', function() {
-    const header = document.getElementById('main-header');
-    if (window.scrollY > 50) { // Puedes ajustar el valor a tu gusto
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
+    // script.js
+    window.addEventListener('scroll', function() {
+        const header = document.getElementById('main-header');
+        if (window.scrollY > 50) { // Puedes ajustar el valor a tu gusto
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Obtiene la URL actual
+    const currentLocation = window.location.pathname;
+    const fileName = currentLocation.substring(currentLocation.lastIndexOf('/') + 1);
+
+    // Obtiene todos los elementos <a> dentro de la navegación
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    if (fileName === '') {
+        navLinks[0].classList.add('active');
     }
-});
 
-// Obtiene la URL actual
-const currentLocation = window.location.pathname;
-const fileName = currentLocation.substring(currentLocation.lastIndexOf('/') + 1);
-
-// Obtiene todos los elementos <a> dentro de la navegación
-const navLinks = document.querySelectorAll('.nav-links a');
-
-if (fileName === '') {
-    navLinks[0].classList.add('active');
-}
-
-// Recorre todos los enlaces y compara su href con la URL actual
-navLinks.forEach(link => {
-    if (link.href.includes(fileName) && fileName !== '') {
-        link.classList.add('active');
-    }
-});
+    // Recorre todos los enlaces y compara su href con la URL actual
+    navLinks.forEach(link => {
+        if (link.href.includes(fileName) && fileName !== '') {
+            link.classList.add('active');
+        }
+    });
 </script>

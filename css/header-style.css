@@ -41,7 +41,7 @@ main {
     display: block;
     height: 64px;
 }
-.main-header-logo img {
+.main-header-logo video {
     height: 100%;
     margin: 0;
 }
