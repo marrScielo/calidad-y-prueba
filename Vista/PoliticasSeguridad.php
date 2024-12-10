@@ -34,12 +34,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <section class="seguridad-section">
           <section class="wave-contenedor website">
             <div class="contenedor-textos-main">
-              <h2 class="titulo left"><strong>Seguridad</strong></h2>
+              <h2 class="titulo left"><strong>Seguridad </strong></h2>
               <p class="parrafo">Nuestra prioridad número uno es la seguridad de los datos de pacientes,médicos y clínica. Protegemos toda la información de modo que sus datos estén completamente a salvo de tipos sin escrúpulos que tratarán de invadir su privacidad o la de sus pacientes.</p>
               <!-- <a href="" class="cta">Registrate gratis</a> -->
             </div>
             <div class="contenedor-img">
-              <img src="../Issets/images/1img.jpeg" alt="Imagen Seguridad">
+              <img src="../Issets/images/1img.avif" alt="Imagen Seguridad">
             </div>
           </section>
           <section class="info-last contenedor">
@@ -63,7 +63,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
 
               </div>
-              <img src="../Issets/images/confide.svg" alt="">
+              <img src="../Issets/images/confide.avif" alt="">
             </div>
           </section>
           <section class="info-last contenedor">
@@ -84,6 +84,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
           </section>
         </section>
       </main>
+   </div>
   </body>
   <script src="../Issets/js/dashboard.js"></script>
 

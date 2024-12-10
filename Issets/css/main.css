@@ -7,7 +7,7 @@
     --color-white: #fff;
     --color-info-dark: #7d8da1;
     --color-info-light: #dce1eb;
-    --color-dark: #363949;
+    --color-dark: #363949 ;
     --color-light: rgba(132, 139, 200, 0.18);
     --color-primary-variant: #534489;
     --color-dark-variant: #677483;
@@ -37,7 +37,7 @@
 .dark-theme-variables {
     --color-background: #181a1e;
     --color-white: #202528;
-    --color-dark: #edeffd;
+    --color-dark: #edeffd ;
     --color-dark-variant: #a3bdcc;
     --color-light: rgba(0, 0, 0, 0.4);
     --box-shadow: 0 2rem 3rem var(--color-light);
@@ -71,7 +71,7 @@ body {
     background: var(--color-background);
     user-select: none;
     overflow-x: hidden;
-    color: var(--color-dark);
+    color: var(--color-dark) ;
 }
 
 a {
