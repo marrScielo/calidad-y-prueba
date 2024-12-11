@@ -177,7 +177,7 @@ $navItems = [
         <div class="modal_header_options">
             <div class="modal_header_principal_container">
                 <div class="modal_header_options__container">
-                    <img src="img/logo.gif" alt="Contigo Voy" class="modal_header_logo__image">
+                    <img src="https://ik.imagekit.io/m5f5k3axy/logo.gif?updatedAt=1733936878099" alt="Contigo Voy" class="modal_header_logo__image">
                     <div class="close_modal_header_options">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
