@@ -34,7 +34,7 @@
 <div class="container_plus">
     <div class="content-wrapper container-section">
         <div class="column image-column">
-            <img src="img/confia-nosotros.jpg" alt="Psicologo Plus">
+            <img src="img/confia-nosotros.webp" alt="Psicologo Plus">
         </div>
         <div class="column text-column column_Info">
             <h2>¿Por qué confiar en ContigoVoy?</h2>

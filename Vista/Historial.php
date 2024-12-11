@@ -395,7 +395,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <h1 id="no-attention-message" style="display: none; margin-top: 50px">Este paciente no cuenta con atenciones anteriores</h1>
 
                             <div class="BUT">
-                                <a class="green-button" id="patient-attention-btn">Agegar atención</a>
+                                <a class="green-button" id="patient-attention-btn">Agregar atención</a>
                             </div>
 
                             <!-- Aquí se mostrarán los detalles del paciente -->

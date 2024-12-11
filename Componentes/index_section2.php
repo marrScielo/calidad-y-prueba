@@ -8,7 +8,7 @@
                         agrupando los mejores psicólogos en una misma plataforma.</p>
                 </div>
                 <div class="service__image">
-                    <img class="service__image-content" src="ContigoVoyAssets/recursos/2.png"
+                    <img class="service__image-content" src="ContigoVoyAssets/recursos/2.webp"
                         alt="Representación de servicio eficiente" />
                 </div>
             </div>
