@@ -3,9 +3,10 @@
     <nav class="main-header-navigation">
         <div class="main-header-navigation__container u-container logo1">
             <a href="https://contigo-voy.com/" class="main-header-logo">
-                <video autoplay loop muted>
+                <img src="https://ik.imagekit.io/m5f5k3axy/logo.gif?updatedAt=1733936878099" class="main-header-logo__image" alt="">
+                <!-- <video autoplay loop muted>
                     <source src="img/logo.webm" alt="Contigo Voy" class="main-header-logo__image ">
-                </video>
+                </video> -->
             </a>
         </div>
         <div class="header-menu-icon" id="menu-icon">
