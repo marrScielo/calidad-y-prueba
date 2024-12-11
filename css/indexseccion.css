@@ -48,7 +48,7 @@ main {
     position: relative;
     place-items: center;
     height: calc(100vh - 80px);
-    background-image: url('../ContigoVoyAssets/recursos/Recursonuevo.jpg');
+    background-image: url('../ContigoVoyAssets/recursos/Recursonuevo.webp');
     background-position: center;
     background-size: cover;
     display: grid;
@@ -161,7 +161,7 @@ SECCION SERVICIO EFICIENTE
 .sectionService {
     width: 100%;
     margin: 0 auto;
-    background-image: url('../ContigoVoyAssets/fondos/servicio-eficiente.jpg');
+    background-image: url('../ContigoVoyAssets/fondos/servicio-eficiente.webp');
     background-size: 100% 100%;
     padding-block: 3rem;
 }
@@ -288,7 +288,7 @@ SECCION SERVICIO EFICIENTE
 .section-help-you {
     max-width: 1900px;
     margin: 0 auto;
-    background-image: url('../ContigoVoyAssets/fondos/comopodemosrecursonuevo.jpg');
+    background-image: url('../ContigoVoyAssets/fondos/comopodemosrecursonuevo.webp');
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -418,7 +418,7 @@ SECCION SERVICIO EFICIENTE
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
-    background-image: url('../ContigoVoyAssets/fondos/porque-confiar.jpg');
+    background-image: url('../ContigoVoyAssets/fondos/porque-confiar.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
