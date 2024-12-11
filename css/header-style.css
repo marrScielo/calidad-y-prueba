@@ -31,11 +31,12 @@ main {
 .main-header-navigation {
     max-width: 1980px;
     height: 100%;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 16px;
 }
 .main-header-logo {
     display: block;
@@ -51,7 +52,7 @@ main {
     flex-direction: column;
     gap: 8px;
     cursor: pointer;
-    margin-right: 16px;
+    /* margin-right: 16px; */
 }
 
 .header-menu-icon span {
@@ -140,10 +141,7 @@ header.scrolled {
 }
 
 @media (max-width: 768px) {
-    .header-menu-icon {
-        display: flex; /* Mostrar el icono del menú en pantallas pequeñas */
-    }
-
+    
     .nav-links {
         position: fixed;
         display: none;

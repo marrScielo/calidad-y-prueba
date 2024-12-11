@@ -10,6 +10,9 @@
     position: relative; 
     overflow: hidden;
 }
+.nav-item:last-child {
+    margin-right: 0;
+}
 
 .nav-link {
     text-decoration: none; 
@@ -42,6 +45,109 @@
     color: #ffffff; 
 }
 
+
+.header-menu-icon{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+.modal_header_options{
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.modal_header_options {
+    transform: translateX(-100%); 
+    transition: opacity 0.3s ease, transform 0.3s ease; 
+    visibility: hidden; 
+    opacity: 0; 
+}
+
+.modal_header_options.active {
+    opacity: 1; 
+    transform: translateX(0); 
+    visibility: visible; 
+}
+
+.modal_header_options.closing {
+    opacity: 0; 
+    transform: translateX(-100%);
+}
+
+.modal_header_logo__image{
+    height: 55px;
+    object-fit: fill;
+}
+.close_modal_header_options{
+    width: 30px;
+    height: 30px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+.modal_header_options__container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+.modal_header_principal_container{
+    background-color: white;
+    width: 70%;
+    height: 100%;
+    max-width: 450px;
+    @media (min-width: 425px) {
+        width: 80%;
+    }
+}
+.header_menu_options{
+    color: white;
+    width: 100%;
+    padding: 0 20px;
+    a{
+        display: flex;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        font-size: 1rem;
+        width: 100%;
+        padding: 15px 0;
+        background-color: #9986d9;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+        justify-content: center;
+        &:hover{
+            background-color: var(--text-color);
+        }
+        span{
+            text-align: center;
+        }
+        margin-top: 20px;
+        @media (min-width: 425px) {
+            font-size: 1.2rem;
+        }
+    }
+
+}
+
+
+@media (max-width: 768px) {
+    .header-bar{
+        display: none;
+    }
+    .header-menu-icon {
+        display: flex; 
+    }
+}
+
+
 </style>
 <?php
 $navItems = [
@@ -61,9 +167,36 @@ $navItems = [
             </a>
         </div>
         <div class="header-menu-icon" id="menu-icon">
-            <span></span>
-            <span></span>
-            <span></span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </div>
+        <div class="modal_header_options">
+            <div class="modal_header_principal_container">
+                <div class="modal_header_options__container">
+                    <img src="img/logo.gif" alt="Contigo Voy" class="modal_header_logo__image">
+                    <div class="close_modal_header_options">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <ul class="">
+                        <?php foreach ($navItems as $idx => $navItem): ?>
+                            <li class="header_menu_options">
+                                <a href="<?php echo $navItem['link']; ?>" class="">
+                                    <span><?php echo $navItem['name']; ?></span>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+
+            </div>
+
         </div>
         <div class="header-bar">
             <ul class="nav-links" id="nav-links">
@@ -79,6 +212,41 @@ $navItems = [
         </div>
     </nav>
 </header>
+<script>
+    const hamburger = document.querySelector('.header-menu-icon');
+    const modal= document.querySelector('.modal_header_options');
+    const closeModal= document.querySelector('.close_modal_header_options');
+    hamburger.addEventListener('click', () => {
+        modal.classList.remove('closing'); 
+        modal.classList.toggle('active');
+    });
+    const cerrarModal=()=>{
+        if (modal.classList.contains('active')) {
+        modal.classList.add('closing'); // Añade clase de cierre
+        setTimeout(() => {
+            modal.classList.remove('active', 'closing'); 
+        }, 300); 
+    } else {
+        modal.classList.remove('closing'); 
+        modal.classList.add('active'); 
+    }
+    }
+    closeModal.addEventListener('click', () => {
+        cerrarModal();
+        
+         }
+    );
+    window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        modal.classList.remove('active');
+    }
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            cerrarModal()
+        }
+    });
+});
+</script>
 
 <script>
 // script.js
