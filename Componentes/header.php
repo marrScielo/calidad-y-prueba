@@ -101,9 +101,12 @@
 }
 .modal_header_principal_container{
     background-color: white;
-    width: 80%;
+    width: 70%;
     height: 100%;
     max-width: 450px;
+    @media (min-width: 425px) {
+        width: 80%;
+    }
 }
 .header_menu_options{
     color: white;
@@ -114,7 +117,7 @@
         color: white;
         text-decoration: none;
         text-align: center;
-        font-size: 1.2rem;
+        font-size: 1rem;
         width: 100%;
         padding: 15px 0;
         background-color: #9986d9;
@@ -128,12 +131,15 @@
             text-align: center;
         }
         margin-top: 20px;
+        @media (min-width: 425px) {
+            font-size: 1.2rem;
+        }
     }
 
 }
 
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .header-bar{
         display: none;
     }
@@ -232,7 +238,7 @@ $navItems = [
          }
     );
     window.addEventListener('resize', () => {
-    if (window.innerWidth > 900) {
+    if (window.innerWidth > 768) {
         modal.classList.remove('active');
     }
     modal.addEventListener('click', (event) => {
