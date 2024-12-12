@@ -32,23 +32,10 @@
                     <p>Luana farela</p>
                 </div>
                 <div class="email-name">
-                    <img src="img/email.png" alt="email">
-                    <p>Luana farela@outlook.com</p>
+                    <img src="img/mensaje.svg" alt="email">
+                    <p>CONTIGO.VOY@gmail.com</p>
                 </div>
-                <div class="redes">
-                    <ul>
-                        <li><a href=""><img src="img/icons/facebook.png"
-                                    alt="Facebook"></a></li>
-                        <li><a href=""><img src="img/icons/twitter.png"
-                                    alt="Twitter"></a></li>
-                        <li><a href=""><img src="img/icons/instagram.png"
-                                    alt="Instagram"></a></li>
-                        <li><a href=""><img src="img/icons/youtube.png"
-                                    alt="YouTube"></a></li>
-                        <li><a href=""><img src="img/icons/tiktok.png"
-                                    alt="TikTok"></a></li>
-                    </ul>
-                </div>
+                
             </div>
 
             <div>
