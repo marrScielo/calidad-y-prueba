@@ -87,7 +87,7 @@
 }
 @media (min-width: 768px) {
     .container-paciente-tabla {
-        padding: 1rem 2rem 2rem;
+        padding: 1rem 2rem 1rem;
         margin-top: 40px;
     }
 }

@@ -297,6 +297,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 </tr>
                             </thead>
                             <tbody id="tableNomPaciente" class="table-body">
+                                <?php if(!empty($patients)):?>
                                 <?php foreach ($patients as $index => $patient) :
                                 ?>
                                     <tr style="cursor:pointer" class="show-info">
@@ -325,6 +326,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                             data-patient-id="<?= $patient[0] ?>"></td>
                                     </tr>
                                 <?php endforeach; ?>
+                                <?php else: ?>
+                                   <tr >
+                                    <td colspan="8" style="padding-top:20px;">No hay registrados .</td>
+                                  </tr>
+                                <?php endif; ?>
                             </tbody>
                         </table>
 
