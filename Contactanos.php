@@ -32,7 +32,7 @@
                     <p>Luana farela</p>
                 </div>
                 <div class="email-name">
-                    <img src="img/email.png" alt="email">
+                    <img style="height" src="img/mensaje.png" alt="email">
                     <p>CONTIGO.VOY@gmail.com</p>
                 </div>
                 
