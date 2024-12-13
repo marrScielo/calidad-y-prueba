@@ -206,7 +206,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <tr >
-                                    <td colspan="8">No hay pacientes registrados .</td>
+                                    <td colspan="8">No hay pacientes registrados.</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>
