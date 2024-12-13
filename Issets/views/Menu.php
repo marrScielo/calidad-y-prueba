@@ -12,8 +12,8 @@
 <aside>
     <div class="top">
         <div class="">
-            <img src="../Issets/images/logo.gif" alt="" class="logo">
-           
+            <img src="https://ik.imagekit.io/contigovoy/logo.gif?updatedAt=1734027014919" alt="icono_logo" class="logo">
+        
         </div>
         <div class="close" id="close-btn">
             <span class="material-symbols-sharp" translate="no">close</span>

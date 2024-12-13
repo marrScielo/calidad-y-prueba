@@ -39,7 +39,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
               <!-- <a href="" class="cta">Registrate gratis</a> -->
             </div>
             <div class="contenedor-img">
-              <img src="../Issets/images/1img.avif" alt="Imagen Seguridad">
+              <img src="https://ik.imagekit.io/contigovoy/cybersecurity-39.svg?updatedAt=1734097281652" alt="Imagen Seguridad">
             </div>
           </section>
           <section class="info-last contenedor">
