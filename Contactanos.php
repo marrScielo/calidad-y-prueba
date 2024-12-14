@@ -193,13 +193,14 @@
         border-radius: 5px;
         }
     .error-message {
-    color: red !important;
+    color:rgb(255, 42, 0) !important;
     font-size: 12px;
     font-weight: bold;
     margin: 5px 0 10px;
     display: none;
     text-align: center;
 }
+
 
     </style>
 </head>
@@ -252,7 +253,7 @@
                     <span class="error-message" id="error-Email"></span>
                     <label>Email</label>
                     </div>
-                    <div class="user-box">
+                    <div class="user-box" style="margin-bottom: 0;">
                     <input  name="comentario" type="text" autocomplete="off" id="Comentario" data-error-target="error-comentario">
                     <span class="error-message" id="error-comentario"></span>
                     <!-- <textarea name="comentario"></textarea> -->
