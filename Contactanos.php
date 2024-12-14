@@ -36,6 +36,7 @@
 
         .login-box .user-box {
         position: relative;
+        margin-bottom: 30px;
         }
 
         .login-box .user-box input {
@@ -43,7 +44,7 @@
         padding: 10px 0;
         font-size: 16px;
         color: #fff;
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
         border: none;
         border-bottom: 1px solid #fff;
         outline: none;
@@ -62,11 +63,11 @@
         }
 
         .login-box .user-box input:focus ~ label,
-        .login-box .user-box input:valid ~ label {
-        top: -20px;
-        left: 0;
-        color: #fff;
-        font-size: 12px;
+        .login-box .user-box input.has-value ~ label {
+            top: -20px;
+            left: 0;
+            color: #fff;
+            font-size: 12px;
         }
 
         .login-box form a {
@@ -191,6 +192,15 @@
         color: #aaa;
         border-radius: 5px;
         }
+    .error-message {
+    color: red !important;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px 0 10px;
+    display: none;
+    text-align: center;
+}
+
     </style>
 </head>
 
@@ -222,23 +232,29 @@
                 <div class="login-box">
                 <form id="myForm" action="Controlador/ContactoController.php" method="post">
                     <div class="user-box">
-                    <input required="" name="nombre" type="text" autocomplete="off">
+                    <input name="nombre" type="text" autocomplete="off" id="Nombre" data-error-target="error-nombre">
+                    <span class="error-message" id="error-nombre"></span>
                     <label>Nombres</label>
                     </div>
                     <div class="user-box">
-                    <input required="" name="apellidos" type="text" autocomplete="off">
+                    <input name="apellidos" type="text" autocomplete="off" id="Apellidos" data-error-target="error-apellidos">
+                    <span class="error-message" id="error-apellidos"></span>
                     <label>Apellidos</label>
                     </div>
                     <div class="user-box">
-                    <input required="" name="phone" type="text" autocomplete="off">
+                    <input  name="phone" type="text" autocomplete="off" id="TelefonoContacto" data-error-target="error-telefono">
+                    <span class="error-message" id="error-telefono"></span>
                     <label>Número de telefono</label>
                     </div>
                     <div class="user-box">
-                    <input required="" name="email" type="email" autocomplete="off">
+                    <input  name="email" type="text" autocomplete="off" data-error-target="error-Email" id="Email"
+                    >
+                    <span class="error-message" id="error-Email"></span>
                     <label>Email</label>
                     </div>
                     <div class="user-box">
-                    <input required="" name="comentario" type="text" autocomplete="off">
+                    <input  name="comentario" type="text" autocomplete="off" id="Comentario" data-error-target="error-comentario">
+                    <span class="error-message" id="error-comentario"></span>
                     <!-- <textarea name="comentario"></textarea> -->
                     <label>Comentario</label>
                     </div>
@@ -260,6 +276,46 @@
 
     <?php include_once 'Componentes/footer_new.php'; ?>
     <script src="js/navabar.js"></script>
+    <!-- Script en línea -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./Issets/js/validationMessageGeneral.js" defer></script>
+<script src="./js/ubicacion.js"></script>
+<script>
+    // Llamada a la función que está en el archivo externo
+    const fieldsConfig = {
+        TelefonoContacto: 'El teléfono es obligatorio.',
+        Email: 'El correo electrónico es obligatorio.',
+        Comentario: 'El comentario es obligatorio.',
+        Nombre: 'El nombre es obligatorio.',
+        Apellidos: 'El apellido es obligatorio.',
+        
+    }
+
+    document
+        .getElementById('myForm')
+        .addEventListener('submit', function (e) {
+            e.preventDefault()
+            if (validateForm(fieldsConfig)) {
+                e.target.submit()
+            }
+        })
+</script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('#myForm input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    input.classList.add('has-value');
+                });
+
+                input.addEventListener('blur', () => {
+                    if (!input.value) {
+                        input.classList.remove('has-value');
+                    }
+                });
+            });
+        });
+    </script>
     
 </body>
 

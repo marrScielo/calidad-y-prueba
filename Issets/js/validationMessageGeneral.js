@@ -8,6 +8,30 @@ function initializeValidation(inputElement, errorMessage) {
             ? inputElement.innerHTML.trim()
             : inputElement.value.trim()
 
+    // Validación específica para el campo de Email
+    if (inputElement.id === 'Email') {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ // Expresión regular para validar email
+        if (value !== '' && !emailPattern.test(value)) {
+            if (errorElement) {
+                errorElement.style.display = 'block'
+                errorElement.textContent = 'Email inválido'
+            }
+            return false
+        }
+    }
+
+    // Validación específica para el campo de Teléfono
+    if (inputElement.id === 'TelefonoContacto') {
+        if (value !== '' && value.length !== 9) {
+            if (errorElement) {
+                errorElement.style.display = 'block'
+                errorElement.textContent = 'El teléfono debe tener 9 dígitos'
+            }
+            return false
+        }
+    }
+
+    // Validación general para campos vacíos
     if (
         value === '' ||
         (inputElement.tagName === 'SELECT' && inputElement.value === '')
@@ -31,10 +55,8 @@ function initializeValidation(inputElement, errorMessage) {
 
 // Función para inicializar los eventos de validación
 function initializeValidationEvents(fields) {
-    // Recorrer los campos y añadir eventos de validación
     for (const [fieldId, errorMessage] of Object.entries(fields)) {
         const fieldElement = document.getElementById(fieldId)
-        // Asegurar que el campo existe antes de agregar los eventos
         if (fieldElement) {
             fieldElement.addEventListener('input', () =>
                 initializeValidation(fieldElement, errorMessage)
@@ -58,17 +80,14 @@ function validateForm(fields) {
 
     let isValid = true
 
-    // Validar cada campo al enviar el formulario
     for (const [fieldId, errorMessage] of Object.entries(fields)) {
         const fieldElement = document.getElementById(fieldId)
 
         if (fieldElement) {
-            // Validar el campo actual
             isValid =
                 initializeValidation(fieldElement, errorMessage) && isValid
         }
     }
 
-    // Si todos los campos son válidos, enviar el formulario
     return isValid
 }

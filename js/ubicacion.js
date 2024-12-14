@@ -80,18 +80,28 @@ $(document).ready(function () {
     })
 
     // Validar Teléfono: solo permite 9 dígitos numéricos y que empiece con 9
-    $('input#Telefono').keypress(function (event) {
-        var keyCode = event.which
-        var inputValue = String.fromCharCode(keyCode)
+    // Función para validar el input de teléfono
+    function validatePhoneInput(selector) {
+        $(selector).keypress(function (event) {
+            var keyCode = event.which
+            var inputValue = String.fromCharCode(keyCode)
+            console.log(inputValue)
 
-        if (keyCode < 48 || keyCode > 57 || this.value.length === 9) {
-            return false
-        }
+            // Validar que solo se permitan números y que la longitud no exceda 9
+            if (keyCode < 48 || keyCode > 57 || this.value.length === 9) {
+                return false
+            }
 
-        if (this.value.length === 0 && inputValue !== '9') {
-            return false
-        }
-    })
+            // Validar que el primer dígito sea 9
+            if (this.value.length === 0 && inputValue !== '9') {
+                return false
+            }
+        })
+    }
+
+    // Aplicar la validación a ambos inputs
+    validatePhoneInput('input#Telefono')
+    validatePhoneInput('input#TelefonoContacto')
 
     // Verificar DNI en tiempo real y deshabilitar campos si ya existe
     $('#Dni').on('keyup', function () {
