@@ -243,7 +243,7 @@
                     <label>Apellidos</label>
                     </div>
                     <div class="user-box">
-                    <input  name="phone" type="text" autocomplete="off" id="TelefonoContacto" data-error-target="error-telefono">
+                    <input  name="phone" type="text" autocomplete="off" id="TelefonoContacto" data-error-target="error-telefono" onpaste="return false">
                     <span class="error-message" id="error-telefono"></span>
                     <label>Número de telefono</label>
                     </div>
