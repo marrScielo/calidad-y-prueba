@@ -540,6 +540,20 @@ if (isset($_SESSION['logeado'])) {
                     <label for="edit_nombrePsicologo">Nombre del Psicólogo</label>
                     <input type="text" id="edit_nombrePsicologo" name="nombrePsicologo" value="<?= $user['nombrePsicologo'] ?? '' ?>">
                 </div>
+                <div class="form-group">
+                    <label for="edit_video">URL del Video</label>
+                    <input type="url" id="edit_video" name="video">
+                </div>
+                <div class="form-group">
+                    <label for="edit_celular">Celular</label>
+                    <input type="tel" id="edit_celular" name="celular">
+                </div>
+                <div class="form-group">
+                    <label for="edit_introduccion_user">Introducción</label>
+                    <textarea id="edit_introduccion_user" name="introduccion_user"></textarea>
+                </div>
+                </div>
+                <button type="submit" class="btn">Actualizar Usuario</button>
             </div>
         </form>
     </div>
