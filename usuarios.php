@@ -410,13 +410,23 @@ if (isset($_SESSION['logeado'])) {
     <div class="container">
         <div class="content-wrapper">
             <main class="main-content">
-                <?php if ($error): ?>
-                    <div class="error"><?php echo $error; ?></div>
-                <?php endif; ?>
+            <?php if ($error): ?>
+                <div id="errorModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('errorModal')">&times;</span>
+                        <div class="error"><?php echo $error; ?></div>
+                    </div>
+                </div>
+            <?php endif; ?>
 
-                <?php if ($success): ?>
-                    <div class="success"><?php echo $success; ?></div>
-                <?php endif; ?>
+            <?php if ($success): ?>
+                <div id="successModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('successModal')">&times;</span>
+                        <div class="success"><?php echo $success; ?></div>
+                    </div>
+                </div>
+            <?php endif; ?>
 
                 <div class="card">
                     <h2>Agregar Nuevo Usuario</h2>
@@ -486,13 +496,19 @@ if (isset($_SESSION['logeado'])) {
 <div id="editModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
+        <?php
+        if (isset($_GET['edit_id'])) {
+            $userId = $_GET['edit_id'];
+            $user = $userController->getUserById($userId);
+        }
+        ?>
         <h2>Editar Usuario</h2>
-        <form id="editForm" action="usuarios.php" method="POST">
+        <form id="editForm" action="usuarios.php" method="POST" onsubmit="return validateForm()">
             <input type="hidden" name="accion" value="actualizar">
-            <input type="hidden" name="id" id="edit_id">
+            <input type="hidden" name="id" id="edit_id" value="<?= $user['id'] ?? '' ?>">
             <div class="form-group">
                 <label for="edit_email">Email</label>
-                <input type="email" id="edit_email" name="email" required>
+                <input type="email" id="edit_email" name="email" value="<?= $user['email'] ?? '' ?>" required>
             </div>
             <div class="form-group">
                 <label for="edit_password">Nueva Contraseña (dejar en blanco para mantener la actual)</label>
@@ -500,44 +516,31 @@ if (isset($_SESSION['logeado'])) {
             </div>
             <div class="form-group">
                 <label for="edit_fotoPerfil">URL Foto de Perfil</label>
-                <input type="url" id="edit_fotoPerfil" name="fotoPerfil" required>
+                <input type="url" id="edit_fotoPerfil" name="fotoPerfil" value="<?= $user['fotoPerfil'] ?? '' ?>" required>
             </div>
             <div class="form-group">
                 <label for="edit_rol">Rol</label>
                 <select name="rol" id="edit_rol" required>
-                    <option value="administrador">Administrador</option>
-                    <option value="psicologo">Psicólogo</option>
-                    <option value="marketing">Marketing</option>
-                    <option value="paciente">Paciente</option>
+                    <option value="administrador" <?= isset($user['rol']) && $user['rol'] == 'administrador' ? 'selected' : '' ?>>Administrador</option>
+                    <option value="psicologo" <?= isset($user['rol']) && $user['rol'] == 'psicologo' ? 'selected' : '' ?>>Psicólogo</option>
+                    <option value="marketing" <?= isset($user['rol']) && $user['rol'] == 'marketing' ? 'selected' : '' ?>>Marketing</option>
+                    <option value="paciente" <?= isset($user['rol']) && $user['rol'] == 'paciente' ? 'selected' : '' ?>>Paciente</option>
                 </select>
             </div>
-            <div id="edit_psicologo_fields" style="display:none;">
+            <div id="edit_psicologo_fields" style="display: <?= isset($user['rol']) && $user['rol'] == 'psicologo' ? 'block' : 'none' ?>;">
                 <div class="form-group">
                     <label for="edit_especialidad_user">Especialidad</label>
                     <select name="especialidad_user" id="edit_especialidad_user">
                         <?php foreach ($especialidadesController->getEspecialidades() as $especialidad): ?>
-                            <option value="<?= $especialidad['id'] ?>"><?= $especialidad['nombre'] ?></option>
+                            <option value="<?= $especialidad['id'] ?>" <?= isset($user['especialidad_user']) && $user['especialidad_user'] == $especialidad['id'] ? 'selected' : '' ?>><?= $especialidad['nombre'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="edit_nombrePsicologo">Nombre del Psicólogo</label>
-                    <input type="text" id="edit_nombrePsicologo" name="nombrePsicologo">
-                </div>
-                <div class="form-group">
-                    <label for="edit_video">URL del Video</label>
-                    <input type="url" id="edit_video" name="video">
-                </div>
-                <div class="form-group">
-                    <label for="edit_celular">Celular</label>
-                    <input type="tel" id="edit_celular" name="celular">
-                </div>
-                <div class="form-group">
-                    <label for="edit_introduccion_user">Introducción</label>
-                    <textarea id="edit_introduccion_user" name="introduccion_user"></textarea>
+                    <input type="text" id="edit_nombrePsicologo" name="nombrePsicologo" value="<?= $user['nombrePsicologo'] ?? '' ?>">
                 </div>
             </div>
-            <button type="submit" class="btn">Actualizar Usuario</button>
         </form>
     </div>
 </div>
@@ -558,6 +561,19 @@ if (isset($_SESSION['logeado'])) {
 </div>
 
 <script>
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    }
+
+    window.onload = function() {
+        if (document.getElementById('errorModal')) {
+            document.getElementById('errorModal').style.display = 'block';
+        }
+        if (document.getElementById('successModal')) {
+            document.getElementById('successModal').style.display = 'block';
+        }
+    }
     document.getElementById('searchEmail').addEventListener('input', function() {
         const email = this.value;
         const xhr = new XMLHttpRequest();
