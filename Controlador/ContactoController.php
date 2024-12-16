@@ -26,20 +26,23 @@ class ContactoController
             if ($resultado === true) {
                 $destino="contigovoyproject@gmail.com";
                 $assunto="Contact Form";
-                $cuerpo='
+                $nombre_limpio = strip_tags($nombre);
+                $apellido_limpio = strip_tags($apellidos);
+                $email_limpio = strip_tags($email);
+                $mensaje_limpio = strip_tags($mensaje);
+
+                $cuerpo = '
                 <html>
                     <head>
                         <title>Contact Form</title>
                     </head>
                     <body>
                         <h1>Contact Form</h1>
-                        <p>Name: '.$nombre. ' '.$apellidos.'</p>
-                        <p>Email: '.$email.'</p>
-                        <p>Message: '.$mensaje.'</p>
+                        <p>Name: <strong>' . $nombre_limpio . ' ' . $apellido_limpio . '</strong></p>
+                        <p>Email: ' . $email_limpio . '</p>
+                        <p>Message:  <strong>' . $mensaje_limpio . '</strong></p>
                     </body>
-                
                 </html>
-                
                 ';
 
                 $headers="MIME-Version: 1.0\r\n";
