@@ -33,12 +33,30 @@
     <meta property="og:locale" content="es_ES">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <style>
+        #open-chat {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #open-chat:hover {
+            background-color: #3a7bc8;
+        }
+
+    </style>
 </head>
 
 <body>
     <?php include_once 'Componentes/header.php'; ?>
     <main class="">
-        <?php include_once 'Componentes/index_section1.php';
+        <?php 
+        include_once 'Componentes/index_section1.php';
         include_once 'Componentes/index_section2.php';
         include_once 'Componentes/index_section3.php';
         // include_once 'Componentes/especialidades.php';
@@ -49,7 +67,13 @@
     <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+    <button style="position: fixed; bottom: 120px; right: 30px; z-index: 102; background-color: #4a90e2; color: white; border: none; padding: 15px 30px; font-size: 18px; cursor: pointer; border-radius: 5px; transition: background-color 0.3s;" id="open-chat">
+        <i class="fas fa-robot"></i>
+    </button>
+    <?php
+        include_once 'modales/chatbot.php';
+    ?>
     <script src="js/navabar.js"></script>
+    <script src="js/chatbot.js"></script>
 </body>
-
 </html>

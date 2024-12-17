@@ -1,4 +1,21 @@
-
+.chatbot-float {
+    position: fixed;
+    width: 60px; /* Ajustamos el ancho */
+    height: 60px; /* Ajustamos la altura */
+    bottom: 60px;
+    right: 40px;
+    background-color: rgb(37, 211, 102); /* Cambiamos el color de fondo */
+    color: #FFF;
+    border-radius: 50%; /* Hacemos el botón circular */
+    text-align: center;
+    font-size: 36px; /* Ajustamos el tamaño del icono */
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none; /* Eliminamos subrayado en el icono */
+}
 .whatsapp-float {
     position: fixed;
     width: 60px; /* Ajustamos el ancho */
