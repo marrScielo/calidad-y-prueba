@@ -24,6 +24,14 @@ if (isset($_SESSION['logeado'])) {
                         break;
                     }
 
+                    //valida si gmail ya existe
+                    $email = $_POST['email'];
+                    $stmt = $usuariosController->buscarPorEmail($email);
+                    if ($stmt) {
+                        $error = "El correo ya esta registrado, intenta con otro.";
+                        break;
+                    }
+                    
                     $urlNewImage = $fileManager->uploadImage($_FILES['fotoPerfil']);
 
                     $result = $usuariosController->agregarUsuario(
