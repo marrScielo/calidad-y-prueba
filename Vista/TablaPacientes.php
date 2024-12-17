@@ -208,8 +208,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else: ?>
-                                <tr colspan="11">
-                                    <td>No hay pacientes registrados.</td>
+                                <tr >
+                                    <td colspan="8">No hay pacientes registrados.</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>
