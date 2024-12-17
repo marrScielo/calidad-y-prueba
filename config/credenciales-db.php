@@ -1,7 +1,7 @@
 <?php
 // localhost
 const CONFIG_DB = [
-    'servername' => 'localhost:3316',
+    'servername' => 'localhost',
     'username' => 'root',
     'password' => '',
     'database' => 'contigovoy3'
