@@ -51,29 +51,43 @@ class UsuarioModel {
 
         return $usuarios;
     }
-
     public function agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion = '', $speciality_id = 0, $NombrePsicologo = '', $video = '', $celular = '') {
+        $this->conn->begin_transaction(); // Inicia una transacción
+    
+        // Verificar si el correo ya existe
+        $stmt = $this->conn->prepare("SELECT id FROM usuarios WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+    
+        if ($result->num_rows > 0) {
+            $this->conn->rollback(); // Revertir la transacción si ya existe el correo
+            return "email_exists";
+        }
+    
+        // Encriptar la contraseña
         $hashPassword = password_hash($password, PASSWORD_DEFAULT);
-        
-        // Preparar y ejecutar la consulta para insertar un nuevo usuario
+    
+        // Insertar en la tabla usuarios
         $stmt = $this->conn->prepare("INSERT INTO usuarios (email, password, fotoPerfil, rol) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $email, $hashPassword, $fotoPerfil, $rol);
         $stmt->execute();
-    
-        // Obtener el ID del usuario recién creado
-        $usuarioId = $stmt->insert_id;
+        $usuarioId = $stmt->insert_id; // Obtener el ID del usuario recién creado
         $stmt->close();
     
-        // Si el rol es psicologo, agregar un nuevo registro en la tabla psicologo
+        // Si el rol es psicólogo, insertar en la tabla psicólogo
         if ($rol === 'psicologo') {
             $stmt = $this->conn->prepare("INSERT INTO psicologo (usuario_id, Passwords, email, introduccion, especialidad_id, NombrePsicologo, video, celular) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("isssisss", $usuarioId, $hashPassword, $email, $introduccion, $speciality_id, $NombrePsicologo, $video, $celular);
             $stmt->execute();
             $stmt->close();
         }
+    
+        $this->conn->commit(); // Confirmar la transacción
+        return true; // Indicar éxito
     }
     
-
     public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion = '', $speciality_id = 0, $NombrePsicologo = '', $video = '', $celular = '') {
         $hashPassword = password_hash($password, PASSWORD_DEFAULT);
     
@@ -83,11 +97,8 @@ class UsuarioModel {
         $stmt->execute();
         $stmt->close();
     
-        // Agregar depuración para verificar el valor antes de la consulta
-        error_log("especialidad_id: " . $speciality_id);
-    
+        // Actualizar si el rol es psicólogo
         if ($rol === 'psicologo') {
-            // Actualizar la tabla psicologo con los nuevos campos
             $stmt = $this->conn->prepare("UPDATE psicologo SET email = ?, Passwords = ?, introduccion = ?, especialidad_id = ?, NombrePsicologo = ?, video = ?, celular = ? WHERE usuario_id = ?");
             if ($stmt === false) {
                 die("Error en la preparación de la consulta: " . $this->conn->error);
@@ -98,21 +109,28 @@ class UsuarioModel {
             }
             $stmt->close();
         }
+    
+        // Retornar true indicando éxito
+        return true;
     }    
 
     public function eliminarUsuario($id) {
-            // Primero eliminar el registro en la tabla psicologo si el usuario es un psicologo
-            $stmt = $this->conn->prepare("DELETE FROM psicologo WHERE usuario_id = ?");
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-            $stmt->close();
-
-            // Preparar y ejecutar la consulta para eliminar un usuario
-            $stmt = $this->conn->prepare("DELETE FROM usuarios WHERE id = ?");
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-            $stmt->close();
+        // Primero eliminar el registro en la tabla psicologo si el usuario es un psicologo
+        $stmt = $this->conn->prepare("DELETE FROM psicologo WHERE usuario_id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+    
+        // Preparar y ejecutar la consulta para eliminar un usuario
+        $stmt = $this->conn->prepare("DELETE FROM usuarios WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+    
+        // Retornar true si la operación fue exitosa
+        return true;
     }
+    
 
     public function __destruct() {
         // Cerrar la conexión

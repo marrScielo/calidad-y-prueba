@@ -9,8 +9,12 @@ if (isset($_SESSION['logeado'])) {
     $especialidadesController = new EspecialidadController();
     $usuariosController = new UsuariosController();
 
-    $error = '';
-    $success = '';
+    $error = $_SESSION['error'] ?? '';
+    $success = $_SESSION['success'] ?? '';
+
+    // Limpiar mensajes de sesión
+    unset($_SESSION['error']);
+    unset($_SESSION['success']);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['accion'])) {
@@ -20,10 +24,18 @@ if (isset($_SESSION['logeado'])) {
                     $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$/';
 
                     if (!preg_match($pattern, $password)) {
-                        $error = "La contraseña debe contener al menos una letra mayúscula, un símbolo, un número y tener al menos 8 caracteres.";
+                        $_SESSION['error'] = "La contraseña debe contener al menos una letra mayúscula, un símbolo, un número y tener al menos 8 caracteres.";
                         break;
                     }
 
+                    //valida si gmail ya existe
+                    $email = $_POST['email'];
+                    $stmt = $usuariosController->buscarPorEmail($email);
+                    if ($stmt) {
+                        $_SESSION['error'] = "El correo ya esta registrado, intenta con otro.";
+                        break;
+                    }
+                    
                     $urlNewImage = $fileManager->uploadImage($_FILES['fotoPerfil']);
 
                     $result = $usuariosController->agregarUsuario(
@@ -39,9 +51,9 @@ if (isset($_SESSION['logeado'])) {
                     );
 
                     if ($result) {
-                        $success = "Usuario agregado exitosamente.";
+                        $_SESSION['success'] = "Usuario agregado exitosamente.";
                     } else {
-                        $error = "Error al agregar usuario.";
+                        $_SESSION['error'] = "Error al agregar usuario.";
                     }
                     break;
                 case 'actualizar':
@@ -59,17 +71,17 @@ if (isset($_SESSION['logeado'])) {
                     );
 
                     if ($result) {
-                        $success = "Usuario actualizado exitosamente.";
+                        $_SESSION['success'] = "Usuario actualizado exitosamente.";
                     } else {
-                        $error = "Error al actualizar usuario.";
+                        $_SESSION['error'] = "Error al actualizar usuario.";
                     }
                     break;
                 case 'eliminar':
                     $result = $usuariosController->eliminarUsuario($_POST['id']);
                     if ($result) {
-                        $success = "Usuario eliminado exitosamente.";
+                        $_SESSION['success'] = "Usuario eliminado exitosamente.";
                     } else {
-                        $error = "Error al eliminar usuario.";
+                        $_SESSION['error'] = "Error al eliminar usuario.";
                     }
                     break;
                 case 'cerrar_sesion':
@@ -78,6 +90,8 @@ if (isset($_SESSION['logeado'])) {
                     exit();
                     break;
             }
+            header("Location: usuarios.php");
+            exit();
         }
     }
 
@@ -453,7 +467,30 @@ if (isset($_SESSION['logeado'])) {
                             </select>
                         </div>
                         <div id="psicologo_fields" style="display:none;">
-                            <!-- Campos específicos para psicólogos -->
+                            <div class="form-group">
+                                <label for="speciality_new_user">Especialidad</label>
+                                <select name="speciality_new_user" id="speciality_new_user">
+                                    <?php foreach ($especialidadesController->getEspecialidades() as $especialidad): ?>
+                                        <option value="<?= $especialidad['id'] ?>"><?= $especialidad['nombre'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nombrePsicologo">Nombre del Psicólogo</label>
+                                <input type="text" id="nombrePsicologo" name="nombrePsicologo">
+                            </div>
+                            <div class="form-group">
+                                <label for="video">URL del Video</label>
+                                <input type="url" id="video" name="video">
+                            </div>
+                            <div class="form-group">
+                                <label for="celular">Celular</label>
+                                <input type="tel" id="celular" name="celular">
+                            </div>
+                            <div class="form-group">
+                                <label for="introduccion_new_user">Introducción</label>
+                                <textarea id="introduccion_new_user" name="introduccion_new_user"></textarea>
+                            </div>
                         </div>
                         <button type="submit" class="btn">Agregar Usuario</button>
                     </form>
@@ -518,6 +555,7 @@ if (isset($_SESSION['logeado'])) {
                 <label for="edit_fotoPerfil">URL Foto de Perfil</label>
                 <input type="url" id="edit_fotoPerfil" name="fotoPerfil" value="<?= $user['fotoPerfil'] ?? '' ?>" required>
             </div>
+            
             <div class="form-group">
                 <label for="edit_rol">Rol</label>
                 <select name="rol" id="edit_rol" required>
@@ -587,7 +625,17 @@ if (isset($_SESSION['logeado'])) {
         if (document.getElementById('successModal')) {
             document.getElementById('successModal').style.display = 'block';
         }
+
+        // Mostrar campos de psicólogo si el rol es psicólogo al cargar la página
+        const rolSelect = document.getElementById('rol_new_user');
+        const psicologoFields = document.getElementById('psicologo_fields');
+        if (rolSelect.value === 'psicologo') {
+            psicologoFields.style.display = 'block';
+        } else {
+            psicologoFields.style.display = 'none';
+        }
     }
+
     document.getElementById('searchEmail').addEventListener('input', function() {
         const email = this.value;
         const xhr = new XMLHttpRequest();
@@ -602,6 +650,17 @@ if (isset($_SESSION['logeado'])) {
         };
         xhr.send();
     });
+
+    // Mostrar/ocultar campos de psicólogo según el rol seleccionado
+    document.getElementById('rol_new_user').addEventListener('change', function() {
+        const psicologoFields = document.getElementById('psicologo_fields');
+        if (this.value === 'psicologo') {
+            psicologoFields.style.display = 'block';
+        } else {
+            psicologoFields.style.display = 'none';
+        }
+    });
+
 
     // Funciones para el modal de edición
     function openEditModal(usuario) {
