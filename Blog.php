@@ -70,8 +70,6 @@ $especialidades = [
         display: block;
     }
     
-}
-
 </style>
 
 <body>
