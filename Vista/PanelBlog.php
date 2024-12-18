@@ -198,7 +198,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Editar Post</h2>
-                <span class="close">&times;</span>
+                <span class="close salir" >&times;</span>
             </div>
             <div class="modal-body">
                 <form id="editForm" action="edit_blog_process.php" method="post">

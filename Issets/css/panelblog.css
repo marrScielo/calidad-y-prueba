@@ -79,7 +79,7 @@
 }
 .modal-content {
     background-color: #fff;
-    padding: 20px;
+    padding: 12px 20px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     width: 90%;
@@ -92,6 +92,12 @@
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.salir{
+    font-size:30px !important;
+    margin-right: 10px !important;
+
 }
 .close:hover,
 .close:focus {
