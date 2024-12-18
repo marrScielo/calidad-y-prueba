@@ -105,303 +105,7 @@ if (isset($_SESSION['logeado'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contigo Voy: Gestión de Usuarios</title>
     <link rel="icon" href="img/favicon.png">
-    <style>
-        :root {
-            --primary-color: #7A5BA6;
-            --secondary-color: #4F468C;
-            --background-color: #F5F5F5;
-            --text-color: #333333;
-            --border-color: #9D8EBF;
-            --success-color: #4CAF50;
-            --error-color: #FF5252;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .header {
-            background-color: var(--primary-color);
-            color: #FFFFFF;
-            padding: 1em;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .header img {
-            height: 50px;
-        }
-
-        .header-marca {
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-            gap: 1em;
-        }
-
-        .search-form {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
-        }
-
-        .search-form input {
-            padding: 10px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            font-size: 16px;
-        }
-
-        .search-form button {
-            background-color: var(--secondary-color);
-            color: #FFFFFF;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        .search-form button:hover {
-            background-color: #3A3266;
-        }
-
-        .content-wrapper {
-            margin-top: 100px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .card {
-            background-color: #FFFFFF;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .card h2 {
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: var(--secondary-color);
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .btn {
-            background-color: var(--primary-color);
-            color: #FFFFFF;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .btn-danger {
-            background-color: var(--error-color);
-        }
-
-        .btn-danger:hover {
-            background-color: #D32F2F;
-        }
-
-        .error, .success {
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-
-        .error {
-            background-color: #FFEBEE;
-            color: var(--error-color);
-        }
-
-        .success {
-            background-color: #E8F5E9;
-            color: var(--success-color);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 10px;
-        }
-
-        table th, table td {
-            padding: 15px;
-            text-align: left;
-            background-color: #FFFFFF;
-        }
-
-        table th {
-            background-color: var(--secondary-color);
-            color: #FFFFFF;
-            font-weight: 600;
-        }
-
-        table tr {
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        table tr:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-
-        .user-image {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.3s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background-color: #FFFFFF;
-            margin: 1em auto;
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            width: 90%;
-            max-width: 500px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            animation: slideIn 0.3s;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .close {
-            color: #AAAAAA;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close:hover {
-            color: #000000;
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-            }
-
-            .search-form {
-                margin-top: 10px;
-            }
-
-            .content-wrapper {
-                margin-top: 150px;
-            }
-
-            table {
-                font-size: 14px;
-            }
-
-            table th, table td {
-                padding: 10px;
-            }
-
-            .user-image {
-                width: 40px;
-                height: 40px;
-            }
-        }
-    </style>
+   <link rel="stylesheet" href="css/usuarios.css">
 </head>
 <body>
 <header class="header">
@@ -456,7 +160,8 @@ if (isset($_SESSION['logeado'])) {
                         </div>
                         <div class="form-group">
                             <label for="fotoPerfil">Foto de Perfil</label>
-                            <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" required>
+                            <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" required onchange="previewImage(event, 'preview')">
+                            <img id="preview" src="#" alt="Vista previa de la imagen" style="display:none; max-width: 200px; margin-top: 10px;">
                         </div>
                         <div class="form-group">
                             <label for="rol_new_user">Rol</label>
@@ -510,13 +215,14 @@ if (isset($_SESSION['logeado'])) {
                         </thead>
                         <tbody id="userList">
                             <?php foreach ($usuarios as $usuario): ?>
+                                <?php $usuarioCompleto = $usuariosController->buscarPorId($usuario['id']); ?>
                                 <tr>
                                     <td><?= htmlspecialchars($usuario['id']) ?></td>
                                     <td><?= htmlspecialchars($usuario['email']) ?></td>
                                     <td><img src="<?= htmlspecialchars($usuario['fotoPerfil']) ?>" alt="Foto Perfil" class="user-image"></td>
                                     <td><?= htmlspecialchars($usuario['rol']) ?></td>
                                     <td>
-                                        <button onclick="openEditModal(<?= htmlspecialchars(json_encode($usuario)) ?>)" class="btn">Editar</button>
+                                        <button onclick="openEditModal(<?= htmlspecialchars(json_encode($usuarioCompleto)) ?>)" class="btn">Editar</button>
                                         <button onclick="openDeleteModal(<?= htmlspecialchars($usuario['id']) ?>)" class="btn btn-danger">Eliminar</button>
                                     </td>
                                 </tr>
@@ -532,51 +238,45 @@ if (isset($_SESSION['logeado'])) {
 <!-- Modal de Edición -->
 <div id="editModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
-        <?php
-        if (isset($_GET['edit_id'])) {
-            $userId = $_GET['edit_id'];
-            $user = $userController->getUserById($userId);
-        }
-        ?>
+        <span class="close" onclick="closeEditModal()">&times;</span>
         <h2>Editar Usuario</h2>
-        <form id="editForm" action="usuarios.php" method="POST" onsubmit="return validateForm()">
+        <form id="editForm" action="usuarios.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="accion" value="actualizar">
-            <input type="hidden" name="id" id="edit_id" value="<?= $user['id'] ?? '' ?>">
+            <input type="hidden" name="id" id="edit_id">
+            <input type="hidden" name="fotoPerfilActual" id="fotoPerfilActual">
             <div class="form-group">
                 <label for="edit_email">Email</label>
-                <input type="email" id="edit_email" name="email" value="<?= $user['email'] ?? '' ?>" required>
+                <input type="email" id="edit_email" name="email" required>
             </div>
             <div class="form-group">
                 <label for="edit_password">Nueva Contraseña (dejar en blanco para mantener la actual)</label>
                 <input type="password" id="edit_password" name="password">
             </div>
             <div class="form-group">
-                <label for="edit_fotoPerfil">URL Foto de Perfil</label>
-                <input type="url" id="edit_fotoPerfil" name="fotoPerfil" value="<?= $user['fotoPerfil'] ?? '' ?>" required>
+                <label for="edit_fotoPerfil">Foto de Perfil</label>
+                <input type="file" id="edit_fotoPerfil" name="fotoPerfil" accept="image/*" onchange="previewImage(event, 'edit_preview')">
+                <img id="edit_preview" src="#" alt="Vista previa de la imagen" style="display:none; max-width: 200px; margin-top: 10px;">
             </div>
-            
             <div class="form-group">
                 <label for="edit_rol">Rol</label>
-                <select name="rol" id="edit_rol" required>
-                    <option value="administrador" <?= isset($user['rol']) && $user['rol'] == 'administrador' ? 'selected' : '' ?>>Administrador</option>
-                    <option value="psicologo" <?= isset($user['rol']) && $user['rol'] == 'psicologo' ? 'selected' : '' ?>>Psicólogo</option>
-                    <option value="marketing" <?= isset($user['rol']) && $user['rol'] == 'marketing' ? 'selected' : '' ?>>Marketing</option>
-                    <option value="paciente" <?= isset($user['rol']) && $user['rol'] == 'paciente' ? 'selected' : '' ?>>Paciente</option>
+                <select name="rol" id="edit_rol" required onchange="toggleEditPsychologistFields(this.value)">
+                    <option value="administrador">Administrador</option>
+                    <option value="psicologo">Psicólogo</option>
+                    <option value="marketing">Marketing</option>
                 </select>
             </div>
-            <div id="edit_psicologo_fields" style="display: <?= isset($user['rol']) && $user['rol'] == 'psicologo' ? 'block' : 'none' ?>;">
+            <div id="edit_psicologo_fields" style="display:none;">
                 <div class="form-group">
                     <label for="edit_especialidad_user">Especialidad</label>
                     <select name="especialidad_user" id="edit_especialidad_user">
                         <?php foreach ($especialidadesController->getEspecialidades() as $especialidad): ?>
-                            <option value="<?= $especialidad['id'] ?>" <?= isset($user['especialidad_user']) && $user['especialidad_user'] == $especialidad['id'] ? 'selected' : '' ?>><?= $especialidad['nombre'] ?></option>
+                            <option value="<?= $especialidad['id'] ?>"><?= $especialidad['nombre'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="edit_nombrePsicologo">Nombre del Psicólogo</label>
-                    <input type="text" id="edit_nombrePsicologo" name="nombrePsicologo" value="<?= $user['nombrePsicologo'] ?? '' ?>">
+                    <input type="text" id="edit_nombrePsicologo" name="nombrePsicologo">
                 </div>
                 <div class="form-group">
                     <label for="edit_video">URL del Video</label>
@@ -590,12 +290,12 @@ if (isset($_SESSION['logeado'])) {
                     <label for="edit_introduccion_user">Introducción</label>
                     <textarea id="edit_introduccion_user" name="introduccion_user"></textarea>
                 </div>
-                </div>
-                <button type="submit" class="btn">Actualizar Usuario</button>
             </div>
+            <button type="submit" class="btn">Actualizar Usuario</button>
         </form>
     </div>
 </div>
+
 
 <!-- Modal de Eliminación -->
 <div id="deleteModal" class="modal">
@@ -661,17 +361,37 @@ if (isset($_SESSION['logeado'])) {
         }
     });
 
+    // Función para previsualizar la imagen seleccionada
+    function previewImage(event, previewId) {
+        const preview = document.getElementById(previewId);
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function() {
+            preview.src = reader.result;
+            preview.style.display = 'block';
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
+        }
+    }
 
     // Funciones para el modal de edición
     function openEditModal(usuario) {
         document.getElementById('edit_id').value = usuario.id;
         document.getElementById('edit_email').value = usuario.email;
-        document.getElementById('edit_fotoPerfil').value = usuario.fotoPerfil;
         document.getElementById('edit_rol').value = usuario.rol;
+        document.getElementById('edit_preview').src = usuario.fotoPerfil;
+        document.getElementById('edit_preview').style.display = 'block';
+        document.getElementById('fotoPerfilActual').value = usuario.fotoPerfil;
         toggleEditPsychologistFields(usuario.rol);
         if (usuario.rol === 'psicologo') {
             document.getElementById('edit_especialidad_user').value = usuario.especialidad_id || '';
-            document.getElementById('edit_nombrePsicologo').value = usuario.nombrePsicologo || '';
+            document.getElementById('edit_nombrePsicologo').value = usuario.NombrePsicologo || '';
             document.getElementById('edit_video').value = usuario.video || '';
             document.getElementById('edit_celular').value = usuario.celular || '';
             document.getElementById('edit_introduccion_user').value = usuario.introduccion || '';

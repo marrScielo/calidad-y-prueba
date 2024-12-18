@@ -89,21 +89,34 @@ class UsuarioModel {
     }
     
     public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion = '', $speciality_id = 0, $NombrePsicologo = '', $video = '', $celular = '') {
-        $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+        // Si la contraseña está vacía, no actualizarla
+        if (!empty($password)) {
+            $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+        }
     
         // Preparar y ejecutar la consulta para actualizar un usuario existente
-        $stmt = $this->conn->prepare("UPDATE usuarios SET email = ?, password = ?, fotoPerfil = ?, rol = ? WHERE id = ?");
-        $stmt->bind_param("ssssi", $email, $hashPassword, $fotoPerfil, $rol, $id);
+        if (!empty($password)) {
+            $stmt = $this->conn->prepare("UPDATE usuarios SET email = ?, password = ?, fotoPerfil = ?, rol = ? WHERE id = ?");
+            $stmt->bind_param("ssssi", $email, $hashPassword, $fotoPerfil, $rol, $id);
+        } else {
+            $stmt = $this->conn->prepare("UPDATE usuarios SET email = ?, fotoPerfil = ?, rol = ? WHERE id = ?");
+            $stmt->bind_param("sssi", $email, $fotoPerfil, $rol, $id);
+        }
         $stmt->execute();
         $stmt->close();
     
         // Actualizar si el rol es psicólogo
         if ($rol === 'psicologo') {
-            $stmt = $this->conn->prepare("UPDATE psicologo SET email = ?, Passwords = ?, introduccion = ?, especialidad_id = ?, NombrePsicologo = ?, video = ?, celular = ? WHERE usuario_id = ?");
+            if (!empty($password)) {
+                $stmt = $this->conn->prepare("UPDATE psicologo SET email = ?, Passwords = ?, introduccion = ?, especialidad_id = ?, NombrePsicologo = ?, video = ?, celular = ? WHERE usuario_id = ?");
+                $stmt->bind_param("sssisssi", $email, $hashPassword, $introduccion, $speciality_id, $NombrePsicologo, $video, $celular, $id);
+            } else {
+                $stmt = $this->conn->prepare("UPDATE psicologo SET email = ?, introduccion = ?, especialidad_id = ?, NombrePsicologo = ?, video = ?, celular = ? WHERE usuario_id = ?");
+                $stmt->bind_param("ssisssi", $email, $introduccion, $speciality_id, $NombrePsicologo, $video, $celular, $id);
+            }
             if ($stmt === false) {
                 die("Error en la preparación de la consulta: " . $this->conn->error);
             }
-            $stmt->bind_param("sssisssi", $email, $hashPassword, $introduccion, $speciality_id, $NombrePsicologo, $video, $celular, $id);
             if ($stmt->execute() === false) {
                 die("Error en la ejecución de la consulta: " . $stmt->error);
             }
@@ -112,7 +125,7 @@ class UsuarioModel {
     
         // Retornar true indicando éxito
         return true;
-    }    
+    }
 
     public function eliminarUsuario($id) {
         // Primero eliminar el registro en la tabla psicologo si el usuario es un psicologo
@@ -137,12 +150,29 @@ class UsuarioModel {
         $this->conn->close();
     }
 
+    // Buscar un usuario por su ID y retornar sus datos de usuario y psicólogo.
     public function buscarPorId($id) {
         $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE id = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_assoc();
+        $usuario = $result->fetch_assoc();
+        $stmt->close();
+    
+        if ($usuario['rol'] === 'psicologo') {
+            $stmt = $this->conn->prepare("SELECT * FROM psicologo WHERE usuario_id = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $psicologo = $result->fetch_assoc();
+            $stmt->close();
+    
+            if ($psicologo) {
+                $usuario = array_merge($usuario, $psicologo);
+            }
+        }
+    
+        return $usuario;
     }
 
     public function buscarUsuarios($query) {

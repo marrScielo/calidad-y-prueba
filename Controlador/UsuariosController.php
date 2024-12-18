@@ -23,14 +23,23 @@ class UsuariosController {
         return $this->model->agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id, $nombrePsicologo, $video, $celular);
     }
     
-    public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id, $nombrePsicologo, $video, $celular) {
-        return $this->model->actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion, $speciality_id, $nombrePsicologo, $video, $celular);
+    public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion, $especialidad, $nombrePsicologo, $video, $celular) {
+        // Manejar la actualización de la imagen de perfil
+        if (!empty($_FILES['fotoPerfil']['name'])) {
+            $fileManager = new FileManager();
+            $fotoPerfil = $fileManager->uploadImage($_FILES['fotoPerfil']);
+        } else {
+            $fotoPerfil = $_POST['fotoPerfilActual'];
+        }
+    
+        return $this->model->actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion, $especialidad, $nombrePsicologo, $video, $celular);
     }
     
     public function eliminarUsuario($id) {
         return $this->model->eliminarUsuario($id);
     }
 
+    // Método para buscar un usuario por su ID
     public function buscarPorId($id) {
         return $this->model->buscarPorId($id);
     }
