@@ -98,36 +98,37 @@ if (isset($_SESSION['logeado'])) {
     $emailBuscar = $_GET['email'] ?? '';
     $usuarios = !empty($emailBuscar) ? $usuariosController->buscarPorEmail($emailBuscar) : $usuariosController->mostrarUsuarios();
     ?>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestión de usuarios en Contigo Voy">
     <title>Contigo Voy: Gestión de Usuarios</title>
     <link rel="icon" href="img/favicon.png">
-   <link rel="stylesheet" href="css/usuarios.css">
+    <link rel="stylesheet" href="css/usuarios.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 <header class="header">
-        <div class="container header-content">
-            <div class="header-marca">
-                <img src="img/favicon.png" alt="Logo">
-                <h2>Contigo Voy</h2>
-            </div>
-            <form id="searchForm" method="GET" class="search-form">
-                <input type="text" placeholder="Buscar por email" name="email" id="searchEmail">
-                <button type="submit" class="btn">Buscar</button>
-            </form>
-            <form action="usuarios.php" method="POST">
-                <input type="hidden" name="accion" value="cerrar_sesion">
-                <button type="submit" class="btn">Cerrar sesión</button>
-            </form>
+    <div class="container header-content">
+        <div class="header-marca">
+            <img src="img/favicon.png" alt="Logo" width="40" height="40">
+            <h2>Contigo Voy</h2>
         </div>
-    </header>
-
-    <div class="container">
-        <div class="content-wrapper">
-            <main class="main-content">
+        <form id="searchForm" method="GET" class="search-form">
+            <input type="text" placeholder="Buscar por email" name="email" id="searchEmail">
+            <button type="submit" class="btn" aria-label="Buscar">Buscar</button>
+        </form>
+        <form action="usuarios.php" method="POST">
+            <input type="hidden" name="accion" value="cerrar_sesion">
+            <button type="submit" class="btn" aria-label="Cerrar sesión">Cerrar sesión</button>
+        </form>
+    </div>
+</header>
+<div class="container">
+    <div class="content-wrapper">
+        <main class="main-content">
             <?php if ($error): ?>
                 <div id="errorModal" class="modal">
                     <div class="modal-content">
@@ -146,94 +147,93 @@ if (isset($_SESSION['logeado'])) {
                 </div>
             <?php endif; ?>
 
-                <div class="card">
-                    <h2>Agregar Nuevo Usuario</h2>
-                    <form action="usuarios.php" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="accion" value="agregar">
+            <div class="card">
+                <h2>Agregar Nuevo Usuario</h2>
+                <form action="usuarios.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="accion" value="agregar">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fotoPerfil">Foto de Perfil</label>
+                        <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" required onchange="previewImage(event, 'preview')">
+                        <img id="preview" src="#" alt="Vista previa de la imagen" style="display:none; max-width: 200px; margin-top: 10px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="rol_new_user">Rol</label>
+                        <select name="rol" id="rol_new_user" required>
+                            <option value="administrador">Administrador</option>
+                            <option value="psicologo">Psicólogo</option>
+                            <option value="marketing">Marketing</option>
+                        </select>
+                    </div>
+                    <div id="psicologo_fields" style="display:none;">
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Contraseña</label>
-                            <input type="password" id="password" name="password" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="fotoPerfil">Foto de Perfil</label>
-                            <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" required onchange="previewImage(event, 'preview')">
-                            <img id="preview" src="#" alt="Vista previa de la imagen" style="display:none; max-width: 200px; margin-top: 10px;">
-                        </div>
-                        <div class="form-group">
-                            <label for="rol_new_user">Rol</label>
-                            <select name="rol" id="rol_new_user" required>
-                                <option value="administrador">Administrador</option>
-                                <option value="psicologo">Psicólogo</option>
-                                <option value="marketing">Marketing</option>
+                            <label for="speciality_new_user">Especialidad</label>
+                            <select name="speciality_new_user" id="speciality_new_user">
+                                <?php foreach ($especialidadesController->getEspecialidades() as $especialidad): ?>
+                                    <option value="<?= $especialidad['id'] ?>"><?= $especialidad['nombre'] ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
-                        <div id="psicologo_fields" style="display:none;">
-                            <div class="form-group">
-                                <label for="speciality_new_user">Especialidad</label>
-                                <select name="speciality_new_user" id="speciality_new_user">
-                                    <?php foreach ($especialidadesController->getEspecialidades() as $especialidad): ?>
-                                        <option value="<?= $especialidad['id'] ?>"><?= $especialidad['nombre'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="nombrePsicologo">Nombre del Psicólogo</label>
-                                <input type="text" id="nombrePsicologo" name="nombrePsicologo">
-                            </div>
-                            <div class="form-group">
-                                <label for="video">URL del Video</label>
-                                <input type="url" id="video" name="video">
-                            </div>
-                            <div class="form-group">
-                                <label for="celular">Celular</label>
-                                <input type="tel" id="celular" name="celular">
-                            </div>
-                            <div class="form-group">
-                                <label for="introduccion_new_user">Introducción</label>
-                                <textarea id="introduccion_new_user" name="introduccion_new_user"></textarea>
-                            </div>
+                        <div class="form-group">
+                            <label for="nombrePsicologo">Nombre del Psicólogo</label>
+                            <input type="text" id="nombrePsicologo" name="nombrePsicologo">
                         </div>
-                        <button type="submit" class="btn">Agregar Usuario</button>
-                    </form>
-                </div>
+                        <div class="form-group">
+                            <label for="video">URL del Video</label>
+                            <input type="url" id="video" name="video">
+                        </div>
+                        <div class="form-group">
+                            <label for="celular">Celular</label>
+                            <input type="tel" id="celular" name="celular">
+                        </div>
+                        <div class="form-group">
+                            <label for="introduccion_new_user">Introducción</label>
+                            <textarea id="introduccion_new_user" name="introduccion_new_user"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn" aria-label="Agregar Usuario"><i class="fas fa-user-plus"></i> Agregar Usuario</button>
+                </form>
+            </div>
 
-                <div class="card">
-                    <h2>Lista de Usuarios</h2>
-                    <table>
-                        <thead>
+            <div class="card">
+                <h2>Lista de Usuarios</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Foto Perfil</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userList">
+                        <?php foreach ($usuarios as $usuario): ?>
+                            <?php $usuarioCompleto = $usuariosController->buscarPorId($usuario['id']); ?>
                             <tr>
-                                <th>ID</th>
-                                <th>Email</th>
-                                <th>Foto Perfil</th>
-                                <th>Rol</th>
-                                <th>Acciones</th>
+                                <td><?= htmlspecialchars($usuario['id']) ?></td>
+                                <td><?= htmlspecialchars($usuario['email']) ?></td>
+                                <td><img src="<?= htmlspecialchars($usuario['fotoPerfil']) ?>" alt="Foto Perfil" class="user-image" width="40" height="40"></td>
+                                <td><?= htmlspecialchars($usuario['rol']) ?></td>
+                                <td>
+                                    <button onclick="openEditModal(<?= htmlspecialchars(json_encode($usuarioCompleto)) ?>)" class="btn" aria-label="Editar Usuario"><i class="fas fa-edit"></i></button>
+                                    <button onclick="openDeleteModal(<?= htmlspecialchars($usuario['id']) ?>)" class="btn btn-danger" aria-label="Eliminar Usuario"><i class="fas fa-trash-alt"></i></button>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody id="userList">
-                            <?php foreach ($usuarios as $usuario): ?>
-                                <?php $usuarioCompleto = $usuariosController->buscarPorId($usuario['id']); ?>
-                                <tr>
-                                    <td><?= htmlspecialchars($usuario['id']) ?></td>
-                                    <td><?= htmlspecialchars($usuario['email']) ?></td>
-                                    <td><img src="<?= htmlspecialchars($usuario['fotoPerfil']) ?>" alt="Foto Perfil" class="user-image"></td>
-                                    <td><?= htmlspecialchars($usuario['rol']) ?></td>
-                                    <td>
-                                        <button onclick="openEditModal(<?= htmlspecialchars(json_encode($usuarioCompleto)) ?>)" class="btn">Editar</button>
-                                        <button onclick="openDeleteModal(<?= htmlspecialchars($usuario['id']) ?>)" class="btn btn-danger">Eliminar</button>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </main>
-        </div>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </main>
     </div>
-
+</div>
 
 <!-- Modal de Edición -->
 <div id="editModal" class="modal">
@@ -291,29 +291,27 @@ if (isset($_SESSION['logeado'])) {
                     <textarea id="edit_introduccion_user" name="introduccion_user"></textarea>
                 </div>
             </div>
-            <button type="submit" class="btn">Actualizar Usuario</button>
+            <button type="submit" class="btn" aria-label="Actualizar Usuario">Actualizar Usuario</button>
         </form>
     </div>
 </div>
 
-
 <!-- Modal de Eliminación -->
 <div id="deleteModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Confirmar Eliminación</h2>
-        <p>¿Está seguro de que desea eliminar este usuario?</p>
-        <form id="deleteForm" action="usuarios.php" method="POST">
+        <span class="close" onclick="closeDeleteModal()">&times;</span>
+        <h2 style="text-align: center;">Confirmar Eliminación</h2>
+        <p style="text-align: center;">¿Está seguro de que desea eliminar este usuario?</p>
+        <form id="deleteForm" action="usuarios.php" method="POST" style="text-align: center;">
             <input type="hidden" name="accion" value="eliminar">
             <input type="hidden" name="id" id="delete_id">
-            <button type="submit" class="btn btn-danger">Eliminar</button>
-            <button type="button" onclick="closeDeleteModal()" class="btn">Cancelar</button>
+            <button type="submit" class="btn btn-danger" style="margin: 10px;" aria-label="Eliminar Usuario"><i class="fas fa-trash-alt"></i> Eliminar</button>
+            <button type="button" onclick="closeDeleteModal()" class="btn" style="margin: 10px;" aria-label="Cancelar Eliminación"><i class="fas fa-times"></i> Cancelar</button>
         </form>
     </div>
 </div>
 
 <script>
-
     function closeModal(modalId) {
         document.getElementById(modalId).style.display = 'none';
     }
@@ -430,9 +428,8 @@ if (isset($_SESSION['logeado'])) {
 </script>
 </body>
 </html>
-    <?php
+<?php
 } else {
     header("Location: index.php");
     exit();
 }
-?>
