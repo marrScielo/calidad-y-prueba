@@ -126,7 +126,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
 
     }
-    </style>
+  </style>
 </head>
 
 <body>
@@ -142,7 +142,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <!----------- end of aside -------->
         <main class="animate_animated animate_fadeIn">
             <div class="center-divs">
-                <h4 style="color: #49c691;">Panel de Blogs</h4>
+                <h4 style="color: #534489;">Panel de Blogs</h4>
                 <?php
                     require_once '../Issets/views/Info.php';
                     ?>
@@ -203,11 +203,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
             <div class="modal-body">
                 <form id="editForm" action="edit_blog_process.php" method="post">
                     <input type="hidden" name="id" id="editId">
-                    <div>
+                    <div class="margen">
                         <label for="editTema">Tema:</label>
                         <input type="text" name="tema" id="editTema">
                     </div>
-                    <div>
+                    <div class="margen">
                         <label for="editEspecialidad">Especialidad:</label>
                         <select type="text" name="especialidad" id="editEspecialidad">
                             <option value="Adicciones">Selecciona la Especialidad</option>
@@ -233,20 +233,20 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <option value="Relaciones Interpersonales">Relaciones Interpersonales</option>
                         </select>
                     </div>
-                    <div>
+                    <div class="margen">
                         <label for="editDescripcion">Descripción:</label>
                         <!-- NEW CODE -->
-                        <div id="summernote">
+                        <div   id="summernote" >
                         </div>
                             <textarea id="editDescripcion" name="descripcion" class="hidden" style="display: none;" ></textarea>
                             <span class="error-message" id="error-description"></span>
                     </div>
-                    <div>
+                    <div class="margen">
                         <label for="editImagen">Imagen:</label>
                         <input type="text" name="imagen" id="editImagen">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn-cancel close">Cancelar</button>
+                        <button type="button" class="btn-cancel close"></button>
                         <button type="submit" class="btn-save">Guardar cambios</button>
                     </div>
                 </form>

@@ -43,7 +43,7 @@
 }
 
 .modal-content h2 {
-  color: #52c291;
+  color: #534489;
 }
 
 .modal-content-detail h2 {
@@ -53,9 +53,9 @@
 /* Estilo para el botón de cerrar el modal (la 'x') */
 .close {
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 10px;
-  font-size: 20px;
+  font-size: 30px;
   cursor: pointer;
   z-index: 1;
   /* Añade esta línea para que la 'x' aparezca sobre el contenido del modal */
@@ -118,7 +118,13 @@ td {
 
 /* Resto de tu estilo para el modal */
 /* ... */
+.margen{
+  margin-top: 10px;
+}
 
+.margen label{
+  font-size: 14px;
+}
 .form-container {
   margin-top: 20px;
   border-radius: 10px;
