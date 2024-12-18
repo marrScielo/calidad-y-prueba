@@ -78,6 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
             userForm.style.display = 'block';
         } else if (lowerMessage.includes('gracias')) {
             addMessage('bot', 'De nada. Estamos aquí para ayudarte. ¿Hay algo más en lo que pueda asistirte?');
+        } else if (lowerMessage.includes('servicios')) {
+            addMessage('bot', 'Ofrecemos una variedad de servicios para ayudarte a encontrar equilibrio y bienestar emocional. Algunos de nuestros servicios incluyen apoyo para adicciones, ansiedad, depresión, estrés, y más.');
+        } else if (lowerMessage.includes('contacto')) {
+            addMessage('bot', 'Puedes contactarnos a través de nuestro correo electrónico CONTIGO.VOY@gmail.com o llamarnos al (+51) 666 666 666 Ext. 1111.');
         } else {
             addMessage('bot', 'Entiendo. ¿Podrías decirme más sobre cómo te sientes o qué tipo de apoyo estás buscando?');
         }
