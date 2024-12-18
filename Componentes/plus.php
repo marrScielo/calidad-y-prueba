@@ -101,16 +101,16 @@
 
 <?php
 $psicilogos = [
-    ['id' => 0, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 1, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 2, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 3, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 4, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 5, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 6, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 7, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 8, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 9, 'src' => 'img/confia-nosotros.jpg'],
+    ['id' => 0, 'src' => 'img/confia-nosotros.webp'],
+    ['id' => 1, 'src' => 'img/confia-nosotros.webp'],
+    ['id' => 2, 'src' => 'img/confia-nosotros.webp'],
+    ['id' => 3, 'src' => 'img/confia-nosotros.webp'],
+    ['id' => 4, 'src' => 'img/confia-nosotros.webp'],
+    ['id' => 5, 'src' => 'img/confia-nosotros.webp'],
+    ['id' => 6, 'src' => 'img/confia-nosotros.webp'],
+    ['id' => 7, 'src' => 'img/confia-nosotros.webp'],
+    ['id' => 8, 'src' => 'img/confia-nosotros.webp'],
+    ['id' => 9, 'src' => 'img/confia-nosotros.webp'],
 ];
 ?>
 <div class="container_plus">
