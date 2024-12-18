@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/indexseccion.css">
     <link rel="stylesheet" href="css/estilos-footer.css">
     <!-- Iconos de Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="ContigoVoy - Psicólogos en Perú">
     <meta property="og:description" content="ContigoVoy ofrece apoyo emocional y psicológico con psicólogos profesionales en Perú. Terapia online y presencial para tu bienestar.">

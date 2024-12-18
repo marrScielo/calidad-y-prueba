@@ -185,15 +185,16 @@
   }
 
   .logoo img {
-    width: 90%;
+    width: 100%;
     height: auto;
     border-radius: 20px;
-    @media (min-width: 420px) {
+    object-fit: contain;
+    /* @media (min-width: 420px) {
         width: 60%;
     }
     @media (min-width: 768px) {
         width: 100%;
-    }
+    } */
   }
 
   .links-contenedor {

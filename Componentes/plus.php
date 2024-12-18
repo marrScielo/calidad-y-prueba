@@ -98,71 +98,33 @@
 
 
 </style>
+
+<?php
+$psicilogos = [
+    ['id' => 0, 'src' => 'img/confia-nosotros.jpg'],
+    ['id' => 1, 'src' => 'img/confia-nosotros.jpg'],
+    ['id' => 2, 'src' => 'img/confia-nosotros.jpg'],
+    ['id' => 3, 'src' => 'img/confia-nosotros.jpg'],
+    ['id' => 4, 'src' => 'img/confia-nosotros.jpg'],
+    ['id' => 5, 'src' => 'img/confia-nosotros.jpg'],
+    ['id' => 6, 'src' => 'img/confia-nosotros.jpg'],
+    ['id' => 7, 'src' => 'img/confia-nosotros.jpg'],
+    ['id' => 8, 'src' => 'img/confia-nosotros.jpg'],
+    ['id' => 9, 'src' => 'img/confia-nosotros.jpg'],
+];
+?>
 <div class="container_plus">
     <div class="content-wrapper container-section">
         <div class="column image-column" style="width: 100%;">
-            <!-- <img src="https://ik.imagekit.io/contigovoy/confia-nosotros.jpg?updatedAt=1734098459938" alt="Psicologo Plus"> -->
             <div class="wrapper_card">
               <div class="inner" style="--quantity: 10;">
-                <div class="card_psicologo" style="--index: 0;--color-card: 142, 249, 252;">
-                  <div class="img">
-                    <img src="https://ik.imagekit.io/contigovoy/confia-nosotros.jpg?updatedAt=1734098459938" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;">
-                  </div>
-                </div>
-                <div class="card_psicologo" style="--index: 1;--color-card: 142, 252, 204;">
-                  <div class="img">
-                  <img src="https://ik.imagekit.io/contigovoy/confia-nosotros.jpg?updatedAt=1734098459938" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;">
-
-                  </div>
-                </div>
-                <div class="card_psicologo" style="--index: 2;--color-card: 142, 252, 157;">
-                  <div class="img">
-                  <img src="https://ik.imagekit.io/contigovoy/confia-nosotros.jpg?updatedAt=1734098459938" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;">
-
-                  </div>
-                </div>
-                <div class="card_psicologo" style="--index: 3;--color-card: 215, 252, 142;">
-                  <div class="img">
-                  <img src="https://ik.imagekit.io/contigovoy/confia-nosotros.jpg?updatedAt=1734098459938" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;">
-
-                  </div>
-                </div>
-                <div class="card_psicologo" style="--index: 4;--color-card: 252, 252, 142;">
-                  <div class="img">
-                  <img src="https://ik.imagekit.io/contigovoy/confia-nosotros.jpg?updatedAt=1734098459938" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;">
-
-                  </div>
-                </div>
-                <div class="card_psicologo" style="--index: 5;--color-card: 252, 208, 142;">
-                  <div class="img">
-                  <img src="https://ik.imagekit.io/contigovoy/confia-nosotros.jpg?updatedAt=1734098459938" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;">
-
-                  </div>
-                </div>
-                <div class="card_psicologo" style="--index: 6;--color-card: 252, 142, 142;">
-                  <div class="img">
-                  <img src="https://ik.imagekit.io/contigovoy/confia-nosotros.jpg?updatedAt=1734098459938" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;">
-
-                  </div>
-                </div>
-                <div class="card_psicologo" style="--index: 7;--color-card: 252, 142, 239;">
-                  <div class="img">
-                  <img src="https://ik.imagekit.io/contigovoy/confia-nosotros.jpg?updatedAt=1734098459938" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;">
-
-                  </div>
-                </div>
-                <div class="card_psicologo" style="--index: 8;--color-card: 204, 142, 252;">
-                  <div class="img">
-                  <img src="https://ik.imagekit.io/contigovoy/confia-nosotros.jpg?updatedAt=1734098459938" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;">
-
-                  </div>
-                </div>
-                <div class="card_psicologo" style="--index: 9;--color-card: 142, 202, 252;">
-                  <div class="img">
-                  <img src="https://ik.imagekit.io/contigovoy/confia-nosotros.jpg?updatedAt=1734098459938" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;">
-
-                  </div>
-                </div>
+                   <?php foreach ($psicilogos as $idx => $psicilogo): ?>
+                    <div class="card_psicologo" style="--index: <?php echo $psicilogo['id']; ?>;">
+                      <div class="img">
+                        <img src="<?php echo $psicilogo['src']; ?>" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;">
+                      </div>
+                    </div>
+                   <?php endforeach; ?>
               </div>
             </div>
 
