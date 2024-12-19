@@ -79,7 +79,7 @@
 }
 .modal-content {
     background-color: #fff;
-    padding: 20px;
+    padding: 15px 20px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     width: 90%;
@@ -93,6 +93,12 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.salir{
+    font-size:30px !important;
+    margin-right: 10px !important;
+
+}
 .close:hover,
 .close:focus {
     color: black;
@@ -101,7 +107,7 @@
 .modal-header,
 .modal-body,
 .modal-footer {
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 .modal-header {
     display: flex;
@@ -115,10 +121,11 @@
     font-size: 24px;
 }
 .modal-body input,
-.modal-body textarea {
+.modal-body textarea,
+.modal-body select {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 6px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -147,7 +154,7 @@
     padding: 20px;
     border-radius: 10px;
     max-width: 1000px;
-    margin: 20px auto;
+    margin: 50px auto;
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 .form-container .button-arriba {
