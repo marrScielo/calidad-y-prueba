@@ -118,14 +118,7 @@ td {
 
 /* Resto de tu estilo para el modal */
 /* ... */
-.margen{
-  margin-top: 10px;
-}
 
-.margen label{
-  font-size: 14px;
-  font-weight: 700;
-}
 .form-container {
   margin-top: 20px;
   border-radius: 10px;

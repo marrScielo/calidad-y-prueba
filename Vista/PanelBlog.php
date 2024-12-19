@@ -201,13 +201,13 @@ if (isset($_SESSION['NombrePsicologo'])) {
                 <span class="close salir" >&times;</span>
             </div>
             <div class="modal-body">
-                <form id="editForm" action="edit_blog_process.php" method="post">
+                <form style="gap:1rem;" id="editForm" action="edit_blog_process.php" method="post" class="form__blog">
                     <input type="hidden" name="id" id="editId">
-                    <div class="margen">
+                    <div class="form-group">
                         <label for="editTema">Tema:</label>
                         <input type="text" name="tema" id="editTema">
                     </div>
-                    <div class="margen">
+                    <div class="form-group">
                         <label for="editEspecialidad">Especialidad:</label>
                         <select type="text" name="especialidad" id="editEspecialidad">
                             <option value="Adicciones">Selecciona la Especialidad</option>
@@ -233,7 +233,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <option value="Relaciones Interpersonales">Relaciones Interpersonales</option>
                         </select>
                     </div>
-                    <div class="margen">
+                    <div class=" form-group">
                         <label for="editDescripcion">Descripción:</label>
                         <!-- NEW CODE -->
                         <div   id="summernote" >
@@ -241,7 +241,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                             <textarea id="editDescripcion" name="descripcion" class="hidden" style="display: none;" ></textarea>
                             <span class="error-message" id="error-description"></span>
                     </div>
-                    <div class="margen">
+                    <div class="form-group">
                         <label for="editImagen">Imagen:</label>
                         <input type="text" name="imagen" id="editImagen">
                     </div>
