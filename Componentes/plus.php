@@ -102,15 +102,16 @@
 <?php
 $psicilogos = [
     ['id' => 0, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 1, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 2, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 3, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 4, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 5, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 6, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 7, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 8, 'src' => 'img/confia-nosotros.jpg'],
-    ['id' => 9, 'src' => 'img/confia-nosotros.jpg'],
+    ['id' => 1, 'src' => 'img/beneficio1.webp'],
+    ['id' => 2, 'src' => 'img/beneficio2.webp'],
+    ['id' => 3, 'src' => 'img/beneficio3.webp'],
+    ['id' => 4, 'src' => 'img/beneficio4.webp'],
+    ['id' => 5, 'src' => 'https://i.postimg.cc/9f62Pz0Z/download.webp'],
+    ['id' => 6, 'src' => 'https://i.postimg.cc/jSkt5Mr8/download-2.webp'],
+    ['id' => 7, 'src' => 'https://i.postimg.cc/qv7p49Wh/download-3.webp'],
+    ['id' => 8, 'src' => 'https://i.postimg.cc/KvfZXZph/download-4.webp'],
+    ['id' => 9, 'src' => 'https://i.postimg.cc/Y21r3N19/download-5.webp'],
+    // ['id' => 9, 'src' => 'img/confia-nosotros.jpg'],
 ];
 ?>
 <div class="container_plus">
@@ -121,7 +122,7 @@ $psicilogos = [
                    <?php foreach ($psicilogos as $idx => $psicilogo): ?>
                     <div class="card_psicologo" style="--index: <?php echo $psicilogo['id']; ?>;">
                       <div class="img">
-                        <img src="<?php echo $psicilogo['src']; ?>" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;">
+                        <img src="<?php echo $psicilogo['src']; ?>" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;height: 100%;">
                       </div>
                     </div>
                    <?php endforeach; ?>
