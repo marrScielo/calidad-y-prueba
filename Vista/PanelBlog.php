@@ -27,105 +27,111 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
     <title>Panel de Blogs</title>
     <style>
-    /* Estilos para tablets (pantallas de hasta 768px de ancho) */
-    @media (max-width: 768px) {
-        th,
-        td {
-            font-size: 14px;
-            padding: 8px;
+        #editForm {
+            padding-block: 10px;
+        }
+        .modal-footer {
+            margin-bottom: 0;
+        }
+        /* Estilos para tablets (pantallas de hasta 768px de ancho) */
+        @media (max-width: 768px) {
+            th,
+            td {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .action-buttons a {
+                padding: 5px;
+                font-size: 14px;
+            }
+
+            .modal-content {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .modal-body input,
+            .modal-body textarea {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .modal-footer button {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+
+            #profile_fixed {
+                display: none;
+            }
         }
 
-        .action-buttons {
-            flex-direction: column;
-            gap: 5px;
+        /* Media queries para dispositivos móviles */
+        @media only screen and (max-width: 600px) {
+            th,
+            td {
+                font-size: 12px;
+                padding: 5px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .action-buttons a {
+                padding: 3px;
+                font-size: 12px;
+            }
+
+            .modal-content {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .modal-body input,
+            .modal-body textarea {
+                font-size: 12px;
+                padding: 5px;
+            }
+
+            .modal-footer button {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+
+
+            .center-divs h4 {
+                font-size: 25px;
+                width: 250px;
+            }
+
+            #top_fixed {
+                margin-left: -25px;
+                font-size: 10px;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 5px;
+            }
+
+            #profile_fixed {
+                display: none;
+            }
+
+            .cerrar-info {
+                width: 130px;
+                margin-left: -20px;
+                margin-right: 5px;
+            }
+
+
         }
-
-        .action-buttons a {
-            padding: 5px;
-            font-size: 14px;
-        }
-
-        .modal-content {
-            width: 100%;
-            padding: 15px;
-        }
-
-        .modal-body input,
-        .modal-body textarea {
-            font-size: 14px;
-            padding: 8px;
-        }
-
-        .modal-footer button {
-            font-size: 14px;
-            padding: 8px 15px;
-        }
-
-        #profile_fixed {
-            display: none;
-        }
-    }
-
-    /* Media queries para dispositivos móviles */
-    @media only screen and (max-width: 600px) {
-        th,
-        td {
-            font-size: 12px;
-            padding: 5px;
-        }
-
-        .action-buttons {
-            flex-direction: column;
-            gap: 3px;
-        }
-
-        .action-buttons a {
-            padding: 3px;
-            font-size: 12px;
-        }
-
-        .modal-content {
-            width: 100%;
-            padding: 10px;
-        }
-
-        .modal-body input,
-        .modal-body textarea {
-            font-size: 12px;
-            padding: 5px;
-        }
-
-        .modal-footer button {
-            font-size: 12px;
-            padding: 5px 10px;
-        }
-
-
-        .center-divs h4 {
-            font-size: 25px;
-            width: 250px;
-        }
-
-        #top_fixed {
-            margin-left: -25px;
-            font-size: 10px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-        }
-
-        #profile_fixed {
-            display: none;
-        }
-
-        .cerrar-info {
-            width: 130px;
-            margin-left: -20px;
-            margin-right: 5px;
-        }
-
-
-    }
   </style>
 </head>
 
