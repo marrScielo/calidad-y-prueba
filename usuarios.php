@@ -149,24 +149,25 @@ if (isset($_SESSION['logeado'])) {
 
             <div class="card">
                 <h2>Agregar Nuevo Usuario</h2>
-                <form action="usuarios.php" method="POST" enctype="multipart/form-data">
+                <form action="usuarios.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
                     <input type="hidden" name="accion" value="agregar">
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email<span style="color: red;">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="Example@gmail.com">
                     </div>
                     <div class="form-group">
-                        <label for="password">Contraseña</label>
-                        <input type="password" id="password" name="password" required>
+                        <label for="password">Contraseña<span style="color: red;">*</span></label>
+                        <input type="password" id="password" name="password" placeholder="Introduce una contraseña de 8 digitos" >
                     </div>
                     <div class="form-group">
-                        <label for="fotoPerfil">Foto de Perfil</label>
-                        <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*" required onchange="previewImage(event, 'preview')">
+                        <label for="fotoPerfil">Foto de Perfil<span style="color: red;">*</span></label>
+                        <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*"  onchange="previewImage(event, 'preview')">
                         <img id="preview" src="#" alt="Vista previa de la imagen" style="display:none; max-width: 200px; margin-top: 10px;">
                     </div>
                     <div class="form-group">
-                        <label for="rol_new_user">Rol</label>
-                        <select name="rol" id="rol_new_user" required>
+                        <label for="rol_new_user">Rol<span style="color: red;">*</span></label>
+                        <select name="rol" id="rol_new_user" >
+                            <option value="" disabled selected>Seleccione un rol</option>
                             <option value="administrador">Administrador</option>
                             <option value="psicologo">Psicólogo</option>
                             <option value="marketing">Marketing</option>
@@ -174,28 +175,29 @@ if (isset($_SESSION['logeado'])) {
                     </div>
                     <div id="psicologo_fields" style="display:none;">
                         <div class="form-group">
-                            <label for="speciality_new_user">Especialidad</label>
+                            <label for="speciality_new_user">Especialidad<span style="color: red;">*</span></label>
                             <select name="speciality_new_user" id="speciality_new_user">
+                                <option value="" disabled selected>Seleccione una especialidad</option>
                                 <?php foreach ($especialidadesController->getEspecialidades() as $especialidad): ?>
-                                    <option value="<?= $especialidad['id'] ?>"><?= $especialidad['nombre'] ?></option>
+                                    <option value="<?= htmlspecialchars($especialidad['id']) ?>"><?= htmlspecialchars($especialidad['nombre']) ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="nombrePsicologo">Nombre del Psicólogo</label>
-                            <input type="text" id="nombrePsicologo" name="nombrePsicologo">
+                            <label for="nombrePsicologo">Nombre del Psicólogo<span style="color: red;">*</span></label>
+                            <input type="text" id="nombrePsicologo" name="nombrePsicologo" placeholder="Introduce el nombre del psicólogo">
                         </div>
                         <div class="form-group">
-                            <label for="video">URL del Video</label>
-                            <input type="url" id="video" name="video">
+                            <label for="video">URL del Video<span style="color: red;">*</span></label>
+                            <input type="url" id="video" name="video" placeholder="Introduce la URL del video">
                         </div>
                         <div class="form-group">
-                            <label for="celular">Celular</label>
-                            <input type="tel" id="celular" name="celular">
+                            <label for="celular">Celular<span style="color: red;">*</span></label>
+                            <input type="tel" id="celular" name="celular" placeholder="Introduce el número de celular">
                         </div>
                         <div class="form-group">
-                            <label for="introduccion_new_user">Introducción</label>
-                            <textarea id="introduccion_new_user" name="introduccion_new_user"></textarea>
+                            <label for="introduccion_new_user">Introducción<span style="color: red;">*</span></label>
+                            <textarea id="introduccion_new_user" name="introduccion_new_user" placeholder="Escribe una breve introducción"></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn" aria-label="Agregar Usuario"><i class="fas fa-user-plus"></i> Agregar Usuario</button>
@@ -312,6 +314,81 @@ if (isset($_SESSION['logeado'])) {
 </div>
 
 <script>
+
+    // Validar los campos de formulario
+    function validateForm() {
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const fotoPerfil = document.getElementById('fotoPerfil');
+    const rol = document.getElementById('rol_new_user').value;
+    const nombrePsicologo = document.getElementById('nombrePsicologo');
+    const video = document.getElementById('video');
+    const celular = document.getElementById('celular');
+    const introduccion = document.getElementById('introduccion_new_user');
+
+    let isValid = true;
+
+    if (email.value === '') {
+        email.placeholder = 'Email es obligatorio';
+        email.classList.add('error-placeholder');
+        isValid = false;
+    } else {
+        email.classList.remove('error-placeholder');
+    }
+
+    if (password.value === '') {
+        password.placeholder = 'Contraseña es obligatoria';
+        password.classList.add('error-placeholder');
+        isValid = false;
+    } else {
+        password.classList.remove('error-placeholder');
+    }
+
+    if (fotoPerfil.value === '') {
+        fotoPerfil.classList.add('error-placeholder');
+        isValid = false;
+    } else {
+        fotoPerfil.classList.remove('error-placeholder');
+    }
+
+    if (rol === 'psicologo') {
+        if (nombrePsicologo.value === '') {
+            nombrePsicologo.placeholder = 'Nombre del psicólogo es obligatorio';
+            nombrePsicologo.classList.add('error-placeholder');
+            isValid = false;
+        } else {
+            nombrePsicologo.classList.remove('error-placeholder');
+        }
+
+        if (video.value === '') {
+            video.placeholder = 'URL del video es obligatoria';
+            video.classList.add('error-placeholder');
+            isValid = false;
+        } else {
+            video.classList.remove('error-placeholder');
+        }
+
+        if (celular.value === '') {
+            celular.placeholder = 'Celular es obligatorio';
+            celular.classList.add('error-placeholder');
+            isValid = false;
+        } else {
+            celular.classList.remove('error-placeholder');
+        }
+
+        if (introduccion.value === '') {
+            introduccion.placeholder = 'Introducción es obligatoria';
+            introduccion.classList.add('error-placeholder');
+            isValid = false;
+        } else {
+            introduccion.classList.remove('error-placeholder');
+        }
+    }
+
+        return isValid;
+    }
+
+
     function closeModal(modalId) {
         document.getElementById(modalId).style.display = 'none';
     }

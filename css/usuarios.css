@@ -1,3 +1,15 @@
+.error-placeholder::-webkit-input-placeholder {
+    color: red;
+}
+.error-placeholder::-moz-placeholder {
+    color: red;
+}
+.error-placeholder:-ms-input-placeholder {
+    color: red;
+}
+.error-placeholder::placeholder {
+    color: red;
+}
 :root {
     --primary-color: #7A5BA6;
     --secondary-color: #4F468C;
@@ -382,3 +394,4 @@ table tr:hover {
         margin-top: 125px;
     }
 }
+
