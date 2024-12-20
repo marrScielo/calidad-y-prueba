@@ -46,9 +46,12 @@
         include_once 'Componentes/plus.php'; ?>
     </main>
     <?php include_once 'Componentes/footer_new.php'; ?>
+    <?php include_once 'Componentes/chatbot.php'; ?>
+   
     <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+
     <script src="js/navabar.js"></script>
 </body>
 

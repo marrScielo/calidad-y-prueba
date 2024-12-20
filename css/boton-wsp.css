@@ -1,9 +1,9 @@
 .whatsapp-float {
     position: fixed;
-    width: 60px; /* Ajustamos el ancho */
-    height: 60px; /* Ajustamos la altura */
-    bottom: 40px;
-    right: 40px;
+    width: 55px; /* Ajustamos el ancho */
+    height: 55px; /* Ajustamos la altura */
+    bottom: 90px;
+    right: 1rem;
     background-color: rgb(37, 211, 102); /* Cambiamos el color de fondo */
     color: #fff;
     border-radius: 50%; /* Hacemos el botón circular */

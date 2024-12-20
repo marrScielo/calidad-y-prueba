@@ -30,11 +30,105 @@
   transition: 100ms;
 }
 
+.wrapper_card {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.inner {
+  --w: 120px;
+  --h: 170px;
+  --translateZ: calc((var(--w) + var(--h)) + 0px);
+  --rotateX: -15deg;
+  --perspective: 1000px;
+  position: absolute;
+  width: var(--w);
+  height: var(--h);
+  top: 25%;
+  left: calc(50% - (var(--w) / 2) - 2.5px);
+  z-index: 2;
+  transform-style: preserve-3d;
+  transform: perspective(var(--perspective));
+  animation: rotating 20s linear infinite; /* */
+}
+@keyframes rotating {
+  from {
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX))
+      rotateY(0);
+  }
+  to {
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX))
+      rotateY(1turn);
+  }
+}
+
+.card_psicologo {
+  position: absolute;
+  border: 2px solid #483285;
+  border-radius: 12px;
+  overflow: hidden;
+  inset: 0;
+  transform: rotateY(calc((360deg / var(--quantity)) * var(--index)))
+    translateZ(var(--translateZ));
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+  padding: 10px;
+  /* background: #0000
+    radial-gradient(
+      circle,
+      rgba(var(--color-card), 0.2) 0%,
+      rgba(var(--color-card), 0.6) 80%,
+      rgba(var(--color-card), 0.9) 100%
+    ); */
+  background-color: #9897d1;
+}
+
+
 </style>
+
+<?php
+$psicilogos = [
+  ['id' => 0, 'src' => 'img/confia-nosotros.jpg'],
+  ['id' => 1, 'src' => 'img/beneficio1.webp'],
+  ['id' => 2, 'src' => 'img/beneficio2.webp'],
+  ['id' => 3, 'src' => 'img/beneficio3.webp'],
+  ['id' => 4, 'src' => 'img/beneficio4.webp'],
+  ['id' => 5, 'src' => 'https://i.postimg.cc/9f62Pz0Z/download.webp'],
+  ['id' => 6, 'src' => 'https://i.postimg.cc/jSkt5Mr8/download-2.webp'],
+  ['id' => 7, 'src' => 'https://i.postimg.cc/qv7p49Wh/download-3.webp'],
+  ['id' => 8, 'src' => 'https://i.postimg.cc/KvfZXZph/download-4.webp'],
+  ['id' => 9, 'src' => 'https://i.postimg.cc/Y21r3N19/download-5.webp'],
+  // ['id' => 9, 'src' => 'img/confia-nosotros.jpg'],
+];
+?>
 <div class="container_plus">
     <div class="content-wrapper container-section">
-        <div class="column image-column">
-            <img src="https://ik.imagekit.io/contigovoy/confia-nosotros.jpg?updatedAt=1734098459938" alt="Psicologo Plus">
+        <div class="column image-column" style="width: 100%;height: 100%;">
+            <div class="wrapper_card">
+              <div class="inner" style="--quantity: 10;">
+                   <?php foreach ($psicilogos as $idx => $psicilogo): ?>
+                    <div class="card_psicologo" style="--index: <?php echo $psicilogo['id']; ?>;">
+                      <div class="img">
+                        <img src="<?php echo $psicilogo['src']; ?>" alt="Psicologo Plus" style="border-radius: 10px;width: 100%;height: 100%;">
+                      </div>
+                    </div>
+                   <?php endforeach; ?>
+              </div>
+            </div>
+
         </div>
         <div class="column text-column column_Info">
             <h2>¿Por qué confiar en ContigoVoy?</h2>
