@@ -111,6 +111,7 @@ if (isset($_SESSION['logeado'])) {
 </head>
 <body>
 <header class="header">
+    <!--Utiliza narbar-->
     <div class="container header-content">
         <div class="header-marca">
             <img src="img/favicon.png" alt="Logo" width="40" height="40">
@@ -118,11 +119,15 @@ if (isset($_SESSION['logeado'])) {
         </div>
         <form id="searchForm" method="GET" class="search-form">
             <input type="text" placeholder="Buscar por email" name="email" id="searchEmail">
-            <button type="submit" class="btn" aria-label="Buscar">Buscar</button>
+            <button type="submit" class="btn" aria-label="Buscar">
+                <i class="fa fa-search"></i> Buscar 
+            </button>
         </form>
         <form action="usuarios.php" method="POST">
             <input type="hidden" name="accion" value="cerrar_sesion">
-            <button type="submit" class="btn" aria-label="Cerrar sesión">Cerrar sesión</button>
+            <button type="submit" class="btn btn-logout" aria-label="Cerrar sesión">
+                <i class="fa fa-sign-out-alt"></i> Cerrar sesión
+            </button>
         </form>
     </div>
 </header>
@@ -149,7 +154,7 @@ if (isset($_SESSION['logeado'])) {
 
             <div class="card">
                 <h2>Agregar Nuevo Usuario</h2>
-                <form action="usuarios.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <form action="usuarios.php" method="POST" enctype="multipart/form-data" onsubmit="return validateUserForm()">
                     <input type="hidden" name="accion" value="agregar">
                     <div class="form-group">
                         <label for="email">Email<span style="color: red;">*</span></label>
@@ -242,7 +247,7 @@ if (isset($_SESSION['logeado'])) {
     <div class="modal-content">
         <span class="close" onclick="closeEditModal()">&times;</span>
         <h2>Editar Usuario</h2>
-        <form id="editForm" action="usuarios.php" method="POST" enctype="multipart/form-data">
+        <form id="editForm" action="usuarios.php" method="POST" enctype="multipart/form-data" onsubmit="return validateUserForm(true)">
             <input type="hidden" name="accion" value="actualizar">
             <input type="hidden" name="id" id="edit_id">
             <input type="hidden" name="fotoPerfilActual" id="fotoPerfilActual">
@@ -293,7 +298,9 @@ if (isset($_SESSION['logeado'])) {
                     <textarea id="edit_introduccion_user" name="introduccion_user"></textarea>
                 </div>
             </div>
-            <button type="submit" class="btn" aria-label="Actualizar Usuario">Actualizar Usuario</button>
+            <button type="submit" class="btn" aria-label="Actualizar Usuario">
+                <i class="fa fa-refresh"></i> Actualizar Usuario
+            </button>
         </form>
     </div>
 </div>
@@ -314,194 +321,224 @@ if (isset($_SESSION['logeado'])) {
 </div>
 
 <script>
-
-    // Validar los campos de formulario
-    function validateForm() {
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
-    const fotoPerfil = document.getElementById('fotoPerfil');
-    const rol = document.getElementById('rol_new_user').value;
-    const nombrePsicologo = document.getElementById('nombrePsicologo');
-    const video = document.getElementById('video');
-    const celular = document.getElementById('celular');
-    const introduccion = document.getElementById('introduccion_new_user');
+function validateUserForm(isEdit = false) {
+    const email = document.getElementById(isEdit ? 'edit_email' : 'email');
+    const password = document.getElementById(isEdit ? 'edit_password' : 'password');
+    const fotoPerfil = document.getElementById(isEdit ? 'edit_fotoPerfil' : 'fotoPerfil');
+    const rol = document.getElementById(isEdit ? 'edit_rol' : 'rol_new_user').value;
+    const nombrePsicologo = document.getElementById(isEdit ? 'edit_nombrePsicologo' : 'nombrePsicologo');
+    const video = document.getElementById(isEdit ? 'edit_video' : 'video');
+    const celular = document.getElementById(isEdit ? 'edit_celular' : 'celular');
+    const introduccion = document.getElementById(isEdit ? 'edit_introduccion_user' : 'introduccion_new_user');
+    const speciality = document.getElementById(isEdit ? 'edit_especialidad_user' : 'speciality_new_user').value;
 
     let isValid = true;
 
-    if (email.value === '') {
-        email.placeholder = 'Email es obligatorio';
-        email.classList.add('error-placeholder');
-        isValid = false;
-    } else {
-        email.classList.remove('error-placeholder');
-    }
-
-    if (password.value === '') {
-        password.placeholder = 'Contraseña es obligatoria';
-        password.classList.add('error-placeholder');
-        isValid = false;
-    } else {
-        password.classList.remove('error-placeholder');
-    }
-
-    if (fotoPerfil.value === '') {
-        fotoPerfil.classList.add('error-placeholder');
-        isValid = false;
-    } else {
-        fotoPerfil.classList.remove('error-placeholder');
-    }
-
-    if (rol === 'psicologo') {
-        if (nombrePsicologo.value === '') {
-            nombrePsicologo.placeholder = 'Nombre del psicólogo es obligatorio';
-            nombrePsicologo.classList.add('error-placeholder');
+        // Validacion de email
+        if (email.value === '') {
+            email.placeholder = 'Email es obligatorio';
+            email.classList.add('error-placeholder');
             isValid = false;
         } else {
-            nombrePsicologo.classList.remove('error-placeholder');
+            email.classList.remove('error-placeholder');
         }
 
-        if (video.value === '') {
-            video.placeholder = 'URL del video es obligatoria';
-            video.classList.add('error-placeholder');
-            isValid = false;
-        } else {
-            video.classList.remove('error-placeholder');
+         // Validacion de contraseña solo para agregar usuario
+        if (!isEdit || (isEdit && password.value !== '')) {
+            if (password.value === '') {
+                password.placeholder = 'Contraseña es obligatoria';
+                password.classList.add('error-placeholder');
+                isValid = false;
+            } else if (password.value.length < 8) {
+                password.placeholder = 'Contraseña debe tener al menos 8 caracteres';
+                password.classList.add('error-placeholder');
+                isValid = false;
+            } else {
+                password.classList.remove('error-placeholder');
+            }
         }
 
-        if (celular.value === '') {
-            celular.placeholder = 'Celular es obligatorio';
-            celular.classList.add('error-placeholder');
-            isValid = false;
-        } else {
-            celular.classList.remove('error-placeholder');
-        }
 
-        if (introduccion.value === '') {
-            introduccion.placeholder = 'Introducción es obligatoria';
-            introduccion.classList.add('error-placeholder');
-            isValid = false;
-        } else {
-            introduccion.classList.remove('error-placeholder');
+        if (rol === 'psicologo') {
+            // Validacion de campos de psicologo
+            if (nombrePsicologo.value === '') {
+                nombrePsicologo.placeholder = 'Nombre del psicólogo es obligatorio';
+                nombrePsicologo.classList.add('error-placeholder');
+                isValid = false;
+            } else {
+                nombrePsicologo.classList.remove('error-placeholder');
+            }
+
+            // Validacion de video
+            if (video.value === '') {
+                video.placeholder = 'URL del video es obligatoria';
+                video.classList.add('error-placeholder');
+                isValid = false;
+            } else {
+                video.classList.remove('error-placeholder');
+            }
+
+            // Validacion de celular
+            if (celular.value === '') {
+                celular.placeholder = 'Celular es obligatorio';
+                celular.classList.add('error-placeholder');
+                isValid = false;
+            } else {
+                celular.classList.remove('error-placeholder');
+            }
+
+            // Validacion de introduccion
+            if (introduccion.value === '') {
+                introduccion.placeholder = 'Introducción es obligatoria';
+                introduccion.classList.add('error-placeholder');
+                isValid = false;
+            } else {
+                introduccion.classList.remove('error-placeholder');
+            }
+
+        
         }
-    }
 
         return isValid;
     }
 
+function clearValidationMessages(isEdit = false) {
+    const email = document.getElementById(isEdit ? 'edit_email' : 'email');
+    const password = document.getElementById(isEdit ? 'edit_password' : 'password');
+    const nombrePsicologo = document.getElementById(isEdit ? 'edit_nombrePsicologo' : 'nombrePsicologo');
+    const video = document.getElementById(isEdit ? 'edit_video' : 'video');
+    const celular = document.getElementById(isEdit ? 'edit_celular' : 'celular');
+    const introduccion = document.getElementById(isEdit ? 'edit_introduccion_user' : 'introduccion_new_user');
 
-    function closeModal(modalId) {
-        document.getElementById(modalId).style.display = 'none';
+    email.classList.remove('error-placeholder');
+    password.classList.remove('error-placeholder');
+    nombrePsicologo.classList.remove('error-placeholder');
+    video.classList.remove('error-placeholder');
+    celular.classList.remove('error-placeholder');
+    introduccion.classList.remove('error-placeholder');
+
+    email.placeholder = 'Example@gmail.com';
+    password.placeholder = 'Introduce una contraseña de 8 digitos';
+    nombrePsicologo.placeholder = 'Introduce el nombre del psicólogo';
+    video.placeholder = 'Introduce la URL del video';
+    celular.placeholder = 'Introduce el número de celular';
+    introduccion.placeholder = 'Escribe una breve introducción';
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+function openEditModal(usuario) {
+    clearValidationMessages(true);
+    document.getElementById('edit_id').value = usuario.id;
+    document.getElementById('edit_email').value = usuario.email;
+    document.getElementById('edit_rol').value = usuario.rol;
+    document.getElementById('edit_preview').src = usuario.fotoPerfil;
+    document.getElementById('edit_preview').style.display = 'block';
+    document.getElementById('fotoPerfilActual').value = usuario.fotoPerfil;
+    toggleEditPsychologistFields(usuario.rol);
+    if (usuario.rol === 'psicologo') {
+        document.getElementById('edit_especialidad_user').value = usuario.especialidad_id || '';
+        document.getElementById('edit_nombrePsicologo').value = usuario.NombrePsicologo || '';
+        document.getElementById('edit_video').value = usuario.video || '';
+        document.getElementById('edit_celular').value = usuario.celular || '';
+        document.getElementById('edit_introduccion_user').value = usuario.introduccion || '';
+    }
+    document.getElementById('editModal').style.display = 'block';
+}
+
+function closeEditModal() {
+    document.getElementById('editModal').style.display = 'none';
+    clearValidationMessages(true);
+}
+
+function openDeleteModal(id) {
+    document.getElementById('delete_id').value = id;
+    document.getElementById('deleteModal').style.display = 'block';
+}
+
+function closeDeleteModal() {
+    document.getElementById('deleteModal').style.display = 'none';
+}
+
+function toggleEditPsychologistFields(rol) {
+    const fields = document.getElementById('edit_psicologo_fields');
+    if (rol === 'psicologo') {
+        fields.style.display = 'block';
+    } else {
+        fields.style.display = 'none';
+    }
+}
+
+window.onload = function() {
+    if (document.getElementById('errorModal')) {
+        document.getElementById('errorModal').style.display = 'block';
+    }
+    if (document.getElementById('successModal')) {
+        document.getElementById('successModal').style.display = 'block';
     }
 
-    window.onload = function() {
-        if (document.getElementById('errorModal')) {
-            document.getElementById('errorModal').style.display = 'block';
-        }
-        if (document.getElementById('successModal')) {
-            document.getElementById('successModal').style.display = 'block';
-        }
-
-        // Mostrar campos de psicólogo si el rol es psicólogo al cargar la página
-        const rolSelect = document.getElementById('rol_new_user');
-        const psicologoFields = document.getElementById('psicologo_fields');
-        if (rolSelect.value === 'psicologo') {
-            psicologoFields.style.display = 'block';
-        } else {
-            psicologoFields.style.display = 'none';
-        }
+    // Mostrar campos de psicólogo si el rol es psicólogo al cargar la página
+    const rolSelect = document.getElementById('rol_new_user');
+    const psicologoFields = document.getElementById('psicologo_fields');
+    if (rolSelect.value === 'psicologo') {
+        psicologoFields.style.display = 'block';
+    } else {
+        psicologoFields.style.display = 'none';
     }
+}
 
-    document.getElementById('searchEmail').addEventListener('input', function() {
-        const email = this.value;
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'usuarios.php?email=' + email, true);
-        xhr.onload = function() {
-            if (this.status === 200) {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(this.responseText, 'text/html');
-                const userList = doc.getElementById('userList').innerHTML;
-                document.getElementById('userList').innerHTML = userList;
-            }
-        };
-        xhr.send();
+document.getElementById('searchEmail').addEventListener('input', function() {
+    const email = this.value;
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'usuarios.php?email=' + email, true);
+    xhr.onload = function() {
+        if (this.status === 200) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(this.responseText, 'text/html');
+            const userList = doc.getElementById('userList').innerHTML;
+            document.getElementById('userList').innerHTML = userList;
+        }
+    };
+    xhr.send();
+});
+
+// Mostrar/ocultar campos de psicólogo según el rol seleccionado
+document.getElementById('rol_new_user').addEventListener('change', function() {
+    const psicologoFields = document.getElementById('psicologo_fields');
+    if (this.value === 'psicologo') {
+        psicologoFields.style.display = 'block';
+    } else {
+        psicologoFields.style.display = 'none';
+    }
+});
+
+// Función para previsualizar la imagen seleccionada
+function previewImage(event, previewId) {
+    const preview = document.getElementById(previewId);
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function() {
+        preview.src = reader.result;
+        preview.style.display = 'block';
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = '';
+        preview.style.display = 'none';
+    }
+}
+
+document.querySelectorAll('.close').forEach(function(element) {
+    element.addEventListener('click', function() {
+        closeEditModal();
+        closeDeleteModal();
     });
-
-    // Mostrar/ocultar campos de psicólogo según el rol seleccionado
-    document.getElementById('rol_new_user').addEventListener('change', function() {
-        const psicologoFields = document.getElementById('psicologo_fields');
-        if (this.value === 'psicologo') {
-            psicologoFields.style.display = 'block';
-        } else {
-            psicologoFields.style.display = 'none';
-        }
-    });
-
-    // Función para previsualizar la imagen seleccionada
-    function previewImage(event, previewId) {
-        const preview = document.getElementById(previewId);
-        const file = event.target.files[0];
-        const reader = new FileReader();
-
-        reader.onload = function() {
-            preview.src = reader.result;
-            preview.style.display = 'block';
-        };
-
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            preview.src = '';
-            preview.style.display = 'none';
-        }
-    }
-
-    // Funciones para el modal de edición
-    function openEditModal(usuario) {
-        document.getElementById('edit_id').value = usuario.id;
-        document.getElementById('edit_email').value = usuario.email;
-        document.getElementById('edit_rol').value = usuario.rol;
-        document.getElementById('edit_preview').src = usuario.fotoPerfil;
-        document.getElementById('edit_preview').style.display = 'block';
-        document.getElementById('fotoPerfilActual').value = usuario.fotoPerfil;
-        toggleEditPsychologistFields(usuario.rol);
-        if (usuario.rol === 'psicologo') {
-            document.getElementById('edit_especialidad_user').value = usuario.especialidad_id || '';
-            document.getElementById('edit_nombrePsicologo').value = usuario.NombrePsicologo || '';
-            document.getElementById('edit_video').value = usuario.video || '';
-            document.getElementById('edit_celular').value = usuario.celular || '';
-            document.getElementById('edit_introduccion_user').value = usuario.introduccion || '';
-        }
-        document.getElementById('editModal').style.display = 'block';
-    }
-
-    function closeEditModal() {
-        document.getElementById('editModal').style.display = 'none';
-    }
-
-    function openDeleteModal(id) {
-        document.getElementById('delete_id').value = id;
-        document.getElementById('deleteModal').style.display = 'block';
-    }
-
-    function closeDeleteModal() {
-        document.getElementById('deleteModal').style.display = 'none';
-    }
-
-    function toggleEditPsychologistFields(rol) {
-        const fields = document.getElementById('edit_psicologo_fields');
-        if (rol === 'psicologo') {
-            fields.style.display = 'block';
-        } else {
-            fields.style.display = 'none';
-        }
-    }
-
-    document.querySelectorAll('.close').forEach(function(element) {
-        element.addEventListener('click', function() {
-            closeEditModal();
-            closeDeleteModal();
-        });
-    });
+});
 </script>
 </body>
 </html>
