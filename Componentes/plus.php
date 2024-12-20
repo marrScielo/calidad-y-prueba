@@ -101,7 +101,7 @@
 
 <?php
 $psicilogos = [
-  ['id' => 0, 'src' => 'img/confia-nosotros.jpg'],
+  ['id' => 0, 'src' => 'img/confia-nosotros.webp'],
   ['id' => 1, 'src' => 'img/beneficio1.webp'],
   ['id' => 2, 'src' => 'img/beneficio2.webp'],
   ['id' => 3, 'src' => 'img/beneficio3.webp'],

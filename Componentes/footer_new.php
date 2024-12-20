@@ -397,7 +397,7 @@
           </div>
       </div>
       <div class="logoo">
-        <img src="img/Recurso 13-8.png" alt="Logo">
+        <img src="img/RecursoFooter.webp" height="50px" width="100px" alt="Logo">
       </div>
     </div>
     <div class="copy">© Copyright All rights reserved 2024</div>
