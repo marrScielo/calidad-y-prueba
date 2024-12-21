@@ -177,6 +177,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         </div>
                         <div class="form-group">
                             <label for="specialty">Especialidad:</label>
+                            <div class="icon" >
+                                <img src="../Issets/images/icon.svg" id="arrowIcon">
+                            </div>
                             <select id="specialty" name="specialty" >
                                 <option value="">Selecciona la Especialidad</option>
                                 <option value="Adicciones">Adicciones</option>
