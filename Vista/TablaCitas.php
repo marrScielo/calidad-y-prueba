@@ -16,7 +16,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <link rel="stylesheet" href="../Issets/css/citas.css">
         <link rel="stylesheet" href="../Issets/css/main.css">
         <link rel="icon" href="../img/favicon.png">
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <title>Citas</title>
