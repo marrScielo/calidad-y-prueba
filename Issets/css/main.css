@@ -187,6 +187,26 @@ select {
     font-weight: bold;
     color: #000;
 }
+.icon {
+    position: absolute; 
+    right: 10px; 
+    top: 51%; 
+    transform: translateY(-50%); 
+    pointer-events: none; 
+    z-index:10;
+}
+
+.icon img{
+    width: 14px;
+    transition: transform 0.5s ease;
+}
+
+.icon img.rotated {
+    transform: rotate(180deg); 
+}
+
+
+
 
 form {
     margin-inline: auto;
@@ -1042,7 +1062,14 @@ select {
     color: red !important;
     font-size: 12px;
     font-weight: bold;
-    margin: 5px 0 10px;
+    margin-top: 5px ;
     display: none;
     text-align: center;
+    visibility: hidden;
+    height: 1em;
+    display: block;
+}
+
+.error-message.show {
+    visibility: visible; /* Muestra el mensaje cuando sea necesario */
 }

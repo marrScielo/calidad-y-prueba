@@ -39,11 +39,12 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <link rel="stylesheet" href="../Issets/css/blogpsico.css">
         <link rel="stylesheet" href="../Issets/css/summernote.css">
         <link rel="icon" href="../img/favicon.png">
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        
         <!-- summernote -->
         <link href="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-lite.min.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-lite.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-lite.min.js"></script>
         <title>Blog</title>
         <style>
             #form-group input {
@@ -176,13 +177,31 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         </div>
                         <div class="form-group">
                             <label for="specialty">Especialidad:</label>
-                            <select id="specialty" name="specialty" required>
-                                <option value="" disabled selected>Selecciona la Especialidad</option>
-                                <?php foreach ($especialidades as $especialidad): ?>
-                                    <option value="<?php echo htmlspecialchars($especialidad); ?>"><?php echo htmlspecialchars($especialidad); ?></option>
-                                <?php endforeach; ?>
+                            <select id="specialty" name="specialty" >
+                                <option value="">Selecciona la Especialidad</option>
+                                <option value="Adicciones">Adicciones</option>
+                                <option value="Ansiedad">Ansiedad</option>
+                                <option value="Atención">Atención</option>
+                                <option value="Autoestima">Autoestima</option>
+                                <option value="Crianza">Crianza</option>
+                                <option value="Depresión">Depresión</option>
+                                <option value="Enfermedades Cronicas">Enfermedades Cronicas</option>
+                                <option value="Estrés">Estrés</option>
+                                <option value="Impulsividad">Impulsividad</option>
+                                <option value="Top">Top</option>
+                                <option value="Ira">Ira</option>
+                                <option value="Terapia de Pareja">Terapia de Pareja</option>
+                                <option value="Sexualidad">Sexualidad</option>
+                                <option value="Traumas">Traumas</option>
+                                <option value="Riesgo Suicida">Riesgo Suicida</option>
+                                <option value="Sentido de vida">Sentido de vida</option>
+                                <option value="Orientación Vocacional">Orientación Vocacional</option>
+                                <option value="Problemas de sueño">Problemas de sueño</option>
+                                <option value="Problemas alimenticios">Problemas alimenticios</option>
+                                <option value="Relaciones Interpersonales">Relaciones Interpersonales</option>
                             </select>
                             <span class="error-message" id="error-specialty"></span>
+                            
                         </div>
                         <div style="text-align: start;" id="formtext" class="form-group">
                             <label style="text-align: center;" for="description">Descripción:</label>
@@ -239,6 +258,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     $('#error-description').hide();
                 }
             }
+
+            
         </script>
         <script src="../Issets/js/validationMessage.js"></script>
     </body>

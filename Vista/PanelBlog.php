@@ -131,7 +131,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
             }
 
 
-        }
+    }
   </style>
 </head>
 
@@ -215,6 +215,9 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     </div>
                     <div class="form-group">
                         <label for="editEspecialidad">Especialidad:</label>
+                        <div class="icon" >
+                                <img src="../Issets/images/icon.svg" id="arrowIcon" style="margin-top:25px;">
+                       </div>
                         <select type="text" name="especialidad" id="editEspecialidad">
                             <option value="Adicciones">Selecciona la Especialidad</option>
                             <option value="Adicciones">Adicciones</option>
@@ -259,63 +262,59 @@ if (isset($_SESSION['NombrePsicologo'])) {
             </div>
         </div>
     </div>
-        <script type="module" src="../Issets/js/textarea-function.js"></script>
-        <script>
-            $('#summernote').summernote({
-                placeholder: 'Ingrese la descripción del blog',
-                tabsize: 2,
-                height: 120,
-                toolbar: [
-                    ['style', ['style','bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript','fontname']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                    ['misc', ['undo', 'redo']]
-                ]
-            });          
+    <script type="module" src="../Issets/js/textarea-function.js"></script>
+<script>
+    $(document).ready(function () {
+        
+        $('#summernote').summernote({
+            placeholder: 'Ingrese la descripción del blog',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript', 'fontname']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']],
+                ['misc', ['undo', 'redo']]
+            ]
+        });
 
-            $("#summernote").on("summernote.change", function () {
-                var description = $('#summernote').summernote('code');
-                const texto = document.querySelector('#editDescripcion').value = description;
-                // console.log(texto);
-                validateDescription(description);
-            });
+        // Evento para manejar cambios en el contenido de Summernote
+        $("#summernote").on("summernote.change", function () {
+            const description = $('#summernote').summernote('code');
+            document.querySelector('#editDescripcion').value = description;
+            validateDescription(description);
+        });
 
-            // Función para validar la descripción
-            function validateDescription(content) {
-                const cleanText = $('<div>').html(content).text().trim();
-                
-                if (cleanText === '') {
-                    $('#error-description').text('Por favor, ingrese una descripción.').show();
-                } else {
-                    $('#error-description').hide();
-                }
+        // Función para validar la descripción
+        function validateDescription(content) {
+            const cleanText = $('<div>').html(content).text().trim();
+            if (cleanText === '') {
+                $('#error-description').text('Por favor, ingrese una descripción.').show();
+            } else {
+                $('#error-description').hide();
             }
-        </script>
+        }
 
-
-    <script>
-    // JavaScript para manejar el modal de edición
-
-    document.addEventListener("DOMContentLoaded", function() {
-        var modal = document.getElementById("editModal");
-        var closeElements = document.getElementsByClassName("close");
-        var editButtons = document.querySelectorAll('.edit-button');
+        // Manejo del modal de edición
+        const modal = document.getElementById("editModal");
+        const closeElements = document.getElementsByClassName("close");
+        const editButtons = document.querySelectorAll('.edit-button');
         const textDescription = document.querySelector('.note-editable');
 
         editButtons.forEach(button => {
-            button.addEventListener('click', function(event) {
+            button.addEventListener('click', function (event) {
                 event.preventDefault();
-                var id = this.getAttribute('data-id');
-                var tema = this.getAttribute('data-tema');
-                var especialidad = this.getAttribute('data-especialidad');
-                var descripcion = this.getAttribute('data-descripcion');
-                var imagen = this.getAttribute('data-imagen');
-                console.log(descripcion)
+                const id = this.getAttribute('data-id');
+                const tema = this.getAttribute('data-tema');
+                const especialidad = this.getAttribute('data-especialidad');
+                const descripcion = this.getAttribute('data-descripcion');
+                const imagen = this.getAttribute('data-imagen');
+
                 document.getElementById('editId').value = id;
                 document.getElementById('editTema').value = tema;
                 document.getElementById('editEspecialidad').value = especialidad;
@@ -328,18 +327,38 @@ if (isset($_SESSION['NombrePsicologo'])) {
         });
 
         Array.from(closeElements).forEach(element => {
-            element.addEventListener('click', function() {
+            element.addEventListener('click', function () {
                 modal.style.display = "none";
             });
         });
 
-        window.addEventListener('click', function(event) {
-            if (event.target == modal) {
+        window.addEventListener('click', function (event) {
+            if (event.target === modal) {
                 modal.style.display = "none";
             }
         });
+
+        // Rotación del ícono
+        const especialidad = document.querySelector('#editEspecialidad');
+        const icon = document.querySelector('#arrowIcon');
+
+
+        if (especialidad && icon) {
+            especialidad.addEventListener('click', () => {
+                icon.classList.toggle('rotated');
+            });
+
+            especialidad.addEventListener('blur', () => {
+                icon.classList.remove('rotated'); 
+            });
+
+            especialidad.addEventListener('change', () => {
+                icon.classList.add('rotated'); 
+            });
+        }
     });
-    </script>
+</script>
+
 
     <script src="../Issets/js/dashboard.js"></script>
 </body>
