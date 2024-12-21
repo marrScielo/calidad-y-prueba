@@ -86,7 +86,7 @@ if (isset($_SESSION['rol'], $_SESSION['IdPsicologo']) && $_SESSION['rol'] == 'ps
       <main class="animate__animated animate__fadeIn">
         <div class="contenedor_dsh">
           <div>
-            <h4>¡Buenos días, <?= $nombrePsicologo ?>!</h4>
+              <h4>¡Buenos días, <?= htmlspecialchars($nombrePsicologo, ENT_QUOTES, 'UTF-8') ?>!</h4>
             <h1>Tienes <span
                 style="color:#416cd8; font-weight: bold; font-size:20px"><?= count($totalRegistrosEnCitasHora) ?>
                 citas</span> programadas para hoy</h1>

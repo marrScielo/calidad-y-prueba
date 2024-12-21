@@ -53,26 +53,28 @@ class UsuarioModel {
     }
 
     public function agregarUsuario($email, $password, $fotoPerfil, $rol, $introduccion = '', $speciality_id = 0, $NombrePsicologo = '', $video = '', $celular = '') {
-        $hashPassword = password_hash($password, PASSWORD_DEFAULT);
-        
-        // Preparar y ejecutar la consulta para insertar un nuevo usuario
-        $stmt = $this->conn->prepare("INSERT INTO usuarios (email, password, fotoPerfil, rol) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $email, $hashPassword, $fotoPerfil, $rol);
-        $stmt->execute();
-    
-        // Obtener el ID del usuario recién creado
-        $usuarioId = $stmt->insert_id;
-        $stmt->close();
-    
-        // Si el rol es psicologo, agregar un nuevo registro en la tabla psicologo
-        if ($rol === 'psicologo') {
-            $stmt = $this->conn->prepare("INSERT INTO psicologo (usuario_id, Passwords, email, introduccion, especialidad_id, NombrePsicologo, video, celular) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("isssisss", $usuarioId, $hashPassword, $email, $introduccion, $speciality_id, $NombrePsicologo, $video, $celular);
+            $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+            
+            // Formatear el nombre del psicólogo
+            $NombrePsicologo = ucwords(strtolower($NombrePsicologo));
+            
+            // Preparar y ejecutar la consulta para insertar un nuevo usuario
+            $stmt = $this->conn->prepare("INSERT INTO usuarios (email, password, fotoPerfil, rol) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $email, $hashPassword, $fotoPerfil, $rol);
             $stmt->execute();
+        
+            // Obtener el ID del usuario recién creado
+            $usuarioId = $stmt->insert_id;
             $stmt->close();
+        
+            // Si el rol es psicologo, agregar un nuevo registro en la tabla psicologo
+            if ($rol === 'psicologo') {
+                $stmt = $this->conn->prepare("INSERT INTO psicologo (usuario_id, Passwords, email, introduccion, especialidad_id, NombrePsicologo, video, celular) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt->bind_param("isssisss", $usuarioId, $hashPassword, $email, $introduccion, $speciality_id, $NombrePsicologo, $video, $celular);
+                $stmt->execute();
+                $stmt->close();
+            }
         }
-    }
-    
 
     public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion = '', $speciality_id = 0, $NombrePsicologo = '', $video = '', $celular = '') {
         $hashPassword = password_hash($password, PASSWORD_DEFAULT);
