@@ -1,35 +1,32 @@
 // Función para inicializar la validación de un formulario
 function initializeValidation(inputElement, errorMessage) {
     let errorElement = inputElement.nextElementSibling;
-    
+
     const value = inputElement.tagName === 'P' ? inputElement.innerHTML.trim() : inputElement.value.trim();
-    
+
     if (value === '' || (inputElement.tagName === 'SELECT' && inputElement.value === '')) {
         if (errorElement) {
-            errorElement.style.display = 'block';
+            errorElement.classList.add('show'); // Muestra el mensaje
             errorElement.textContent = errorMessage;
-        } else {
-            console.error('No se encontró un elemento hermano para mostrar el mensaje de error.');
-            console.log(inputElement);
         }
         return false;
     } else {
         if (errorElement) {
-            errorElement.style.display = 'none';
+            errorElement.classList.remove('show'); // Oculta el mensaje
         }
         return true;
     }
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    event.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('.form__blog');
-
     const topic = document.querySelector('#topic');
     const specialty = document.querySelector('#specialty');
     const descriptionElement = document.querySelector('#description');
     const image = document.querySelector('#image');
+    const icon = document.querySelector('#arrowIcon');
 
+    // Validación del formulario al enviar
     form.addEventListener('submit', (e) => {
         e.preventDefault(); // Previene el envío del formulario para pruebas
 
@@ -45,9 +42,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 
-    // Agregar eventos de entrada para eliminar mensajes de error cuando el usuario corrija el campo
+    // Validación en tiempo real
     topic.addEventListener('input', () => initializeValidation(topic, 'Por favor, llene el campo de tema'));
     specialty.addEventListener('change', () => initializeValidation(specialty, 'Por favor, seleccione una especialidad'));
-    // descriptionElement.addEventListener('input', () => initializeValidation(descriptionElement, 'Por favor, ingrese una descripción'));
     image.addEventListener('input', () => initializeValidation(image, 'Por favor, ingrese url válida donde esta la imagen'));
+
+    // Rotación del ícono
+    specialty.addEventListener('click', () => {
+        if (icon.classList.contains('rotated')) {
+            icon.classList.remove('rotated');
+        } else {
+            icon.classList.add('rotated');
+        }
+    });
+
+    
 });

@@ -18,10 +18,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <link rel="stylesheet" href="../Issets/css/summernote.css">
         <link rel="icon" href="../img/favicon.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        
         <!-- summernote -->
         <link href="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-lite.min.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-lite.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/summernote/dist/summernote-lite.min.js"></script>
         <title>Blog</title>
         <style>
             #form-group input {
@@ -154,8 +155,11 @@ if (isset($_SESSION['NombrePsicologo'])) {
                         </div>
                         <div class="form-group">
                             <label for="specialty">Especialidad:</label>
+                            <div class="icon" >
+                                <img src="../Issets/images/icon.svg" id="arrowIcon">
+                            </div>
                             <select id="specialty" name="specialty" >
-                                <option value="">Selecciona la Especialidad</option>
+                                <option  value="">Selecciona la Especialidad</option>
                                 <option value="Adicciones">Adicciones</option>
                                 <option value="Ansiedad">Ansiedad</option>
                                 <option value="Atención">Atención</option>
@@ -178,6 +182,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                                 <option value="Relaciones Interpersonales">Relaciones Interpersonales</option>
                             </select>
                             <span class="error-message" id="error-specialty"></span>
+                            
                         </div>
                         <div style="text-align: start;" id="formtext" class="form-group">
                             <label style="text-align: center;" for="description">Descripción:</label>
@@ -234,6 +239,8 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     $('#error-description').hide();
                 }
             }
+
+            
         </script>
         <script src="../Issets/js/validationMessage.js"></script>
     </body>
