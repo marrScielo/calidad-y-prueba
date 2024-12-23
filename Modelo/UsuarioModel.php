@@ -89,12 +89,25 @@ class UsuarioModel {
     }
     
     public function actualizarUsuario($id, $email, $password, $fotoPerfil, $rol, $introduccion = '', $speciality_id = 0, $NombrePsicologo = '', $video = '', $celular = '') {
-        // Si la contraseña está vacía, no actualizarla
-        if (!empty($password)) {
-            $hashPassword = password_hash($password, PASSWORD_DEFAULT);
-        }
+        // Iniciar transacción
+        $this->conn->begin_transaction();
     
-        // Preparar y ejecutar la consulta para actualizar un usuario existente
+        // Obtener rol y contraseña actual
+        $stmt = $this->conn->prepare("SELECT rol, password FROM usuarios WHERE id = ?");
+        if (!$stmt) { $this->conn->rollback(); return false; }
+        $stmt->bind_param("i", $id);
+        if (!$stmt->execute()) { $stmt->close(); $this->conn->rollback(); return false; }
+        $result = $stmt->get_result();
+        if ($result->num_rows === 0) { $stmt->close(); $this->conn->rollback(); return false; }
+        $row = $result->fetch_assoc();
+        $currentRole = $row['rol'];
+        $currentPassword = $row['password'];
+        $stmt->close();
+    
+        // Hash de la nueva contraseña si se proporciona
+        $hashPassword = !empty($password) ? password_hash($password, PASSWORD_DEFAULT) : $currentPassword;
+    
+        // Actualizar tabla usuarios
         if (!empty($password)) {
             $stmt = $this->conn->prepare("UPDATE usuarios SET email = ?, password = ?, fotoPerfil = ?, rol = ? WHERE id = ?");
             $stmt->bind_param("ssssi", $email, $hashPassword, $fotoPerfil, $rol, $id);
@@ -102,31 +115,51 @@ class UsuarioModel {
             $stmt = $this->conn->prepare("UPDATE usuarios SET email = ?, fotoPerfil = ?, rol = ? WHERE id = ?");
             $stmt->bind_param("sssi", $email, $fotoPerfil, $rol, $id);
         }
-        $stmt->execute();
+        if (!$stmt->execute()) { $stmt->close(); $this->conn->rollback(); return false; }
         $stmt->close();
     
-        // Actualizar si el rol es psicólogo
-        if ($rol === 'psicologo') {
-            if (!empty($password)) {
-                $stmt = $this->conn->prepare("UPDATE psicologo SET email = ?, Passwords = ?, introduccion = ?, especialidad_id = ?, NombrePsicologo = ?, video = ?, celular = ? WHERE usuario_id = ?");
-                $stmt->bind_param("sssisssi", $email, $hashPassword, $introduccion, $speciality_id, $NombrePsicologo, $video, $celular, $id);
-            } else {
-                $stmt = $this->conn->prepare("UPDATE psicologo SET email = ?, introduccion = ?, especialidad_id = ?, NombrePsicologo = ?, video = ?, celular = ? WHERE usuario_id = ?");
-                $stmt->bind_param("ssisssi", $email, $introduccion, $speciality_id, $NombrePsicologo, $video, $celular, $id);
-            }
-            if ($stmt === false) {
-                die("Error en la preparación de la consulta: " . $this->conn->error);
-            }
-            if ($stmt->execute() === false) {
-                die("Error en la ejecución de la consulta: " . $stmt->error);
-            }
+        // Manejar cambios de rol
+        if ($currentRole === 'psicologo' && $rol !== 'psicologo') {
+            // Eliminar datos de psicólogo
+            $stmt = $this->conn->prepare("DELETE FROM psicologo WHERE usuario_id = ?");
+            if (!$stmt) { $this->conn->rollback(); return false; }
+            $stmt->bind_param("i", $id);
+            if (!$stmt->execute()) { $stmt->close(); $this->conn->rollback(); return false; }
             $stmt->close();
         }
     
-        // Retornar true indicando éxito
+        if ($rol === 'psicologo') {
+            // Verificar existencia de registro en psicologo
+            $stmt = $this->conn->prepare("SELECT usuario_id FROM psicologo WHERE usuario_id = ?");
+            if (!$stmt) { $this->conn->rollback(); return false; }
+            $stmt->bind_param("i", $id);
+            if (!$stmt->execute()) { $stmt->close(); $this->conn->rollback(); return false; }
+            $result = $stmt->get_result();
+            $exists = ($result->num_rows > 0);
+            $stmt->close();
+    
+            if ($exists) {
+                // Actualizar registro existente incluyendo email y passwords
+                $stmt = $this->conn->prepare("UPDATE psicologo SET email = ?, passwords = ?, introduccion = ?, especialidad_id = ?, NombrePsicologo = ?, video = ?, celular = ? WHERE usuario_id = ?");
+                if (!$stmt) { $this->conn->rollback(); return false; }
+                $stmt->bind_param("sssssssi", $email, $hashPassword, $introduccion, $speciality_id, $NombrePsicologo, $video, $celular, $id);
+            } else {
+                // Insertar nuevo registro incluyendo email y passwords
+                $stmt = $this->conn->prepare("INSERT INTO psicologo (usuario_id, email, passwords, introduccion, especialidad_id, NombrePsicologo, video, celular) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                if (!$stmt) { $this->conn->rollback(); return false; }
+                $stmt->bind_param("isssisss", $id, $email, $hashPassword, $introduccion, $speciality_id, $NombrePsicologo, $video, $celular);
+            }
+    
+            if (!$stmt->execute()) { $stmt->close(); $this->conn->rollback(); return false; }
+            $stmt->close();
+        }
+    
+        // Confirmar transacción
+        if (!$this->conn->commit()) { $this->conn->rollback(); return false; }
+    
         return true;
     }
-
+    
     public function eliminarUsuario($id) {
         // Primero eliminar el registro en la tabla psicologo si el usuario es un psicologo
         $stmt = $this->conn->prepare("DELETE FROM psicologo WHERE usuario_id = ?");

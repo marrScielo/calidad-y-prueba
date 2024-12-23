@@ -20,6 +20,7 @@ if (isset($_SESSION['logeado'])) {
         if (isset($_POST['accion'])) {
             switch ($_POST['accion']) {
                 case 'agregar':
+                    //Validacion de contraseña
                     $password = $_POST['password'];
                     $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$/';
 
@@ -28,12 +29,20 @@ if (isset($_SESSION['logeado'])) {
                         break;
                     }
 
-                    //valida si gmail ya existe
+                    //validacion si gmail ya existe
                     $email = $_POST['email'];
                     $stmt = $usuariosController->buscarPorEmail($email);
                     if ($stmt) {
                         $_SESSION['error'] = "El correo ya esta registrado, intenta con otro.";
                         break;
+                    }
+
+                    //Validacion de celular solo para psicologos
+                    if ($_POST['rol'] == 'psicologo') {
+                        if (!is_numeric($_POST['celular']) || strlen($_POST['celular']) != 9) {
+                            $_SESSION['error'] = "El campo celular debe ser un número de 9 dígitos.";
+                            break;
+                        }
                     }
                     
                     $urlNewImage = $fileManager->uploadImage($_FILES['fotoPerfil']);
@@ -57,6 +66,24 @@ if (isset($_SESSION['logeado'])) {
                     }
                     break;
                 case 'actualizar':
+                    //Validacion de contraseña , cuando esta vacio el campo, se mantendra la contraseña actual, pero si se llena se validara.
+                    if (!empty($_POST['password'])) {
+                        $password = $_POST['password'];
+                        $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$/';
+
+                        if (!preg_match($pattern, $password)) {
+                            $_SESSION['error'] = "La contraseña debe contener al menos una letra mayúscula, un símbolo, un número y tener al menos 8 caracteres.";
+                            break;
+                        }
+                    }
+                    
+                      //Validacion de celular solo para psicologos
+                      if ($_POST['rol'] == 'psicologo') {
+                        if (!is_numeric($_POST['celular']) || strlen($_POST['celular']) != 9) {
+                            $_SESSION['error'] = "El campo celular debe ser un número de 9 dígitos.";
+                            break;
+                        }
+                    }
                     $result = $usuariosController->actualizarUsuario(
                         $_POST['id'],
                         $_POST['email'],
@@ -111,7 +138,6 @@ if (isset($_SESSION['logeado'])) {
 </head>
 <body>
 <header class="header">
-    <!--Utiliza narbar-->
     <div class="container header-content">
         <div class="header-marca">
             <img src="img/favicon.png" alt="Logo" width="40" height="40">
