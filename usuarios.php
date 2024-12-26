@@ -8,6 +8,7 @@ if (isset($_SESSION['logeado'])) {
     $psicologoController = new PsicologoController();
     $especialidadesController = new EspecialidadController();
     $usuariosController = new UsuariosController();
+    $fileManager = new FileManager();
 
     $error = $_SESSION['error'] ?? '';
     $success = $_SESSION['success'] ?? '';
@@ -15,6 +16,10 @@ if (isset($_SESSION['logeado'])) {
     // Limpiar mensajes de sesión
     unset($_SESSION['error']);
     unset($_SESSION['success']);
+
+    // Obtener filtros
+    $emailBuscar = $_GET['email'] ?? '';
+    $selectedRol = $_POST['filtro_rol'] ?? '';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['accion'])) {
@@ -119,11 +124,17 @@ if (isset($_SESSION['logeado'])) {
             }
             header("Location: usuarios.php");
             exit();
+        } elseif (isset($_POST['filtro_rol'])) {
+            $selectedRol = $_POST['filtro_rol'];
         }
     }
 
-    $emailBuscar = $_GET['email'] ?? '';
-    $usuarios = !empty($emailBuscar) ? $usuariosController->buscarPorEmail($emailBuscar) : $usuariosController->mostrarUsuarios();
+     // Obtener usuarios filtrados
+     if ($selectedRol) {
+        $usuarios = $usuariosController->obtenerUsuariosPorRol($selectedRol);
+    } else {
+        $usuarios = !empty($emailBuscar) ? $usuariosController->buscarPorEmail($emailBuscar) : $usuariosController->mostrarUsuarios();
+    }
     ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -236,7 +247,18 @@ if (isset($_SESSION['logeado'])) {
             </div>
 
             <div class="card">
-                <h2>Lista de Usuarios</h2>
+            <h2>Lista de Usuarios</h2>
+                <form method="POST" action="usuarios.php">
+                    <div class="form-group-filtro">
+                        <label for="filtro_rol">Filtrar por Rol:</label>
+                        <select name="filtro_rol" id="filtro_rol" onchange="this.form.submit()">
+                            <option value="">Todos</option>
+                            <option value="administrador" <?= $selectedRol === 'administrador' ? 'selected' : '' ?>>Administrador</option>
+                            <option value="psicologo" <?= $selectedRol === 'psicologo' ? 'selected' : '' ?>>Psicólogo</option>
+                            <option value="marketing" <?= $selectedRol === 'marketing' ? 'selected' : '' ?>>Marketing</option>
+                        </select>
+                    </div>
+                </form>
                 <table>
                     <thead>
                         <tr>
@@ -248,19 +270,25 @@ if (isset($_SESSION['logeado'])) {
                         </tr>
                     </thead>
                     <tbody id="userList">
-                        <?php foreach ($usuarios as $usuario): ?>
-                            <?php $usuarioCompleto = $usuariosController->buscarPorId($usuario['id']); ?>
+                        <?php if (is_array($usuarios) && !empty($usuarios)): ?>
+                            <?php foreach ($usuarios as $usuario): ?>
+                                <?php $usuarioCompleto = $usuariosController->buscarPorId($usuario['id']); ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($usuario['id']) ?></td>
+                                    <td><?= htmlspecialchars($usuario['email']) ?></td>
+                                    <td><img src="<?= htmlspecialchars($usuario['fotoPerfil']) ?>" alt="Foto Perfil" class="user-image" width="40" height="40"></td>
+                                    <td><?= htmlspecialchars($usuario['rol']) ?></td>
+                                    <td>
+                                        <button onclick="openEditModal(<?= htmlspecialchars(json_encode($usuarioCompleto)) ?>)" class="btn" aria-label="Editar Usuario"><i class="fas fa-edit"></i></button>
+                                        <button onclick="openDeleteModal(<?= htmlspecialchars($usuario['id']) ?>)" class="btn btn-danger" aria-label="Eliminar Usuario"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
                             <tr>
-                                <td><?= htmlspecialchars($usuario['id']) ?></td>
-                                <td><?= htmlspecialchars($usuario['email']) ?></td>
-                                <td><img src="<?= htmlspecialchars($usuario['fotoPerfil']) ?>" alt="Foto Perfil" class="user-image" width="40" height="40"></td>
-                                <td><?= htmlspecialchars($usuario['rol']) ?></td>
-                                <td>
-                                    <button onclick="openEditModal(<?= htmlspecialchars(json_encode($usuarioCompleto)) ?>)" class="btn" aria-label="Editar Usuario"><i class="fas fa-edit"></i></button>
-                                    <button onclick="openDeleteModal(<?= htmlspecialchars($usuario['id']) ?>)" class="btn btn-danger" aria-label="Eliminar Usuario"><i class="fas fa-trash-alt"></i></button>
-                                </td>
+                                <td colspan="5">No se encontraron usuarios.</td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
@@ -573,3 +601,4 @@ document.querySelectorAll('.close').forEach(function(element) {
     header("Location: index.php");
     exit();
 }
+?>

@@ -47,6 +47,11 @@ class UsuariosController {
     public function buscarUsuarios($query) {
         return $this->model->buscarUsuarios($query);
     }
+
+    // Agregar este método
+    public function obtenerUsuariosPorRol($rol) {
+        return $this->model->obtenerUsuariosPorRol($rol);
+    }
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'search' && isset($_GET['query'])) {

@@ -216,5 +216,21 @@ class UsuarioModel {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    // Método para obtener usuarios por rol
+    public function obtenerUsuariosPorRol($rol) {
+        $rol = $this->conn->real_escape_string($rol);
+        $sql = "SELECT id, email, fotoPerfil, rol FROM usuarios WHERE rol = '$rol'";
+        $result = $this->conn->query($sql);
+
+        $usuarios = [];
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $usuarios[] = $row;
+            }
+        }
+
+        return $usuarios;
+    }
 }
 ?>

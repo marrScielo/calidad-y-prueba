@@ -1,3 +1,4 @@
+/* Placeholder rojo para inputs con clase .error-placeholder */
 .error-placeholder::-webkit-input-placeholder {
     color: red;
 }
@@ -10,6 +11,8 @@
 .error-placeholder::placeholder {
     color: red;
 }
+
+/* Variables CSS */
 :root {
     --primary-color: #7A5BA6;
     --secondary-color: #4F468C;
@@ -20,6 +23,7 @@
     --error-color: #FF5252;
 }
 
+/* Reset y estilos globales */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -74,6 +78,7 @@ body {
     gap: 1em;
 }
 
+/* Formulario de búsqueda */
 .search-form {
     display: flex;
     align-items: center;
@@ -129,6 +134,7 @@ body {
     font-size: 20px;
 }
 
+/* Form grupos */
 .form-group {
     margin-bottom: 15px;
 }
@@ -159,6 +165,7 @@ body {
     border-color: var(--primary-color);
 }
 
+/* Botones */
 .btn {
     background-color: var(--primary-color);
     color: #FFFFFF;
@@ -182,6 +189,7 @@ body {
     background-color: #D32F2F;
 }
 
+/* Mensajes de error y éxito */
 .error, .success {
     padding: 8px;
     margin-bottom: 15px;
@@ -200,6 +208,7 @@ body {
     color: var(--success-color);
 }
 
+/* Tabla de usuarios */
 table {
     width: 100%;
     border-collapse: separate;
@@ -236,6 +245,7 @@ table tr:hover {
     object-fit: cover;
 }
 
+/* Modales */
 .modal {
     display: none;
     position: fixed;
@@ -284,6 +294,50 @@ table tr:hover {
     color: #000000;
 }
 
+/* Estilos específicos para el filtro de roles */
+.form-group-filtro {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.form-group-filtro label {
+    font-weight: 600;
+    color: var(--secondary-color);
+    font-size: 14px;
+}
+
+#filtro_rol {
+    width: 220px;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: var(--text-color);
+    font-size: 15px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5"><path fill="%23333333" d="M0 0l5 5 5-5H0z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px 5px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#filtro_rol:hover {
+    border-color: var(--primary-color);
+}
+
+#filtro_rol:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(122, 91, 166, 0.5);
+}
+
+/* Media Queries */
 @media (max-width: 1024px) {
     body {
         font-size: 15px;
@@ -314,6 +368,16 @@ table tr:hover {
     .user-image {
         width: 35px;
         height: 35px;
+    }
+
+    /* Hacer que el filtro de roles ocupe el 100% del ancho */
+    .form-group-filtro {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #filtro_rol {
+        width: 100%;
     }
 }
 
@@ -357,6 +421,16 @@ table tr:hover {
         width: 30px;
         height: 30px;
     }
+
+    /* Asegurar que el filtro de roles se alinee correctamente */
+    .form-group-filtro {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #filtro_rol {
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -393,5 +467,14 @@ table tr:hover {
     .content-wrapper {
         margin-top: 125px;
     }
-}
 
+    /* Ajustes adicionales para el filtro de roles */
+    .form-group-filtro {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #filtro_rol {
+        width: 100%;
+    }
+}
