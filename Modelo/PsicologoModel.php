@@ -1,3 +1,50 @@
+<style>
+.open_modal {
+  --color: #560bad;
+  font-family: inherit;
+  display: inline-block;
+  margin: 20px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 17px;
+  border-radius: 6px;
+  color: var(--color);
+}
+
+.open_modal:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 110px;
+  width: 200%;
+  border-radius: 50%;
+}
+
+.open_modal:hover {
+  color: #fff;
+}
+
+.open_modal:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.open_modal:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+.open_modal:active:before {
+  background: #3a0ca3;
+  transition: background 0s;
+}
+</style>
 <?php
 // Incluir el controlador de la base de datos
 include 'Controlador/DatabaseController.php';
