@@ -1,177 +1,480 @@
-/* Estilos para el contenedor principal */
+/* Placeholder rojo para inputs con clase .error-placeholder */
+.error-placeholder::-webkit-input-placeholder {
+    color: red;
+}
+.error-placeholder::-moz-placeholder {
+    color: red;
+}
+.error-placeholder:-ms-input-placeholder {
+    color: red;
+}
+.error-placeholder::placeholder {
+    color: red;
+}
+
+/* Variables CSS */
+:root {
+    --primary-color: #7A5BA6;
+    --secondary-color: #4F468C;
+    --background-color: #F5F5F5;
+    --text-color: #333333;
+    --border-color: #9D8EBF;
+    --success-color: #4CAF50;
+    --error-color: #FF5252;
+}
+
+/* Reset y estilos globales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
 .container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
 }
 
-/* Estilos para el formulario de búsqueda */
-.search-container {
-    text-align: center;
-    margin-bottom: 30px;
+.header {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    padding: 1em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.search-container input[type='text'] {
-    padding: 10px;
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.search-container input[type='submit'] {
-    background-color: #4caf50;
-    color: white;
+.header img {
+    height: 40px;
+    width: auto;
+}
+
+.header-marca {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1em;
+}
+
+/* Formulario de búsqueda */
+.search-form {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.search-form input {
+    padding: 8px;
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+}
+
+.search-form button {
+    background-color: var(--secondary-color);
+    color: #FFFFFF;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 0 4px 4px 0;
     cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
-.search-container input[type='submit']:hover {
-    background-color: #45a049;
+.search-form button:hover {
+    background-color: #3A3266;
 }
 
-/* Estilos para la tabla de usuarios */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-table,
-th,
-td {
-    border: 1px solid #ccc;
-}
-
-th,
-td {
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #f4f4f4;
-}
-
-table .user_data_pass {
-    max-width: 170px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-/* 
-    Estilos para el formulario de CRUD 
-*/
-.form-container {
-    margin-bottom: 30px;
-}
-
-.form-container form {
+.content-wrapper {
+    margin-top: 100px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 20px;
 }
 
-.form-container form input[type='text'],
-.form-container form input[type='password'],
-.form-container form input[type='url'],
-.form-container form input[type='tel'],
-.form-container form select,
-.form-container form textarea {
-    padding: 10px;
-    width: 48%;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+.card {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.card h2 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+/* Form grupos */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
-    box-sizing: border-box;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
 }
 
-.form-container form input[type='submit'] {
-    background-color: #4caf50;
-    color: white;
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Botones */
+.btn {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    padding: 8px 16px;
     border: none;
-    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    width: 100%;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
-.form-container form input[type='submit']:hover {
-    background-color: #45a049;
+.btn:hover {
+    background-color: var(--secondary-color);
 }
 
-/*
-    Estilos para las acciones
-*/
-.acciones {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.btn-danger {
+    background-color: var(--error-color);
 }
 
-.acciones form {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+.btn-danger:hover {
+    background-color: #D32F2F;
 }
 
-.acciones form input[type='submit'] {
-    width: auto;
-    padding: 5px 10px;
-    margin-top: 5px;
-}
-
-.acciones form input[type='submit']:hover {
-    background-color: #45a049;
-}
-
-.acciones form select,
-.acciones form input[type='text'],
-.acciones form input[type='password'],
-.acciones form input[type='url'],
-.acciones form textarea {
-    padding: 5px;
-    margin-top: 5px;
-    width: 100%;
-    border: 1px solid #ccc;
+/* Mensajes de error y éxito */
+.error, .success {
+    padding: 8px;
+    margin-bottom: 15px;
     border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
 }
 
-.logout-button {
+.error {
+    background-color: #FFEBEE;
+    color: var(--error-color);
+}
+
+.success {
+    background-color: #E8F5E9;
+    color: var(--success-color);
+}
+
+/* Tabla de usuarios */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    background-color: #FFFFFF;
+    font-size: 14px;
+}
+
+table th {
+    background-color: var(--secondary-color);
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+table tr {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+table tr:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.user-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Modales */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background-color: #FFFFFF;
+    margin: 1em auto;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    width: 90%;
+    max-width: 450px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    animation: slideIn 0.3s;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close {
+    color: #AAAAAA;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #000000;
+}
+
+/* Estilos específicos para el filtro de roles */
+.form-group-filtro {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
-.logout-button form input[type='submit'] {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
+.form-group-filtro label {
+    font-weight: 600;
+    color: var(--secondary-color);
+    font-size: 14px;
 }
 
-.logout-button form input[type='submit']:hover {
-    background-color: #c0392b;
+#filtro_rol {
+    width: 220px;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: var(--text-color);
+    font-size: 15px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5"><path fill="%23333333" d="M0 0l5 5 5-5H0z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px 5px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.gestion-contactenos-btn {
-    background-color: #f45231; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+#filtro_rol:hover {
+    border-color: var(--primary-color);
+}
+
+#filtro_rol:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(122, 91, 166, 0.5);
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    body {
+        font-size: 15px;
+    }
+    .header img {
+        height: 35px;
+    }
+    .card h2 {
+        font-size: 18px;
+    }
+    .btn {
+        font-size: 13px;
+        padding: 7px 14px;
+    }
+    .form-group label {
+        font-size: 13px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 13px;
+        padding: 7px;
+    }
+    table th, table td {
+        padding: 9px;
+        font-size: 13px;
+    }
+    .user-image {
+        width: 35px;
+        height: 35px;
+    }
+
+    /* Hacer que el filtro de roles ocupe el 100% del ancho */
+    .form-group-filtro {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #filtro_rol {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    .header-content {
+        flex-direction: column;
+    }
+    .search-form {
+        margin-top: 10px;
+    }
+    .content-wrapper {
+        margin-top: 120px;
+    }
+    .header img {
+        height: 30px;
+    }
+    .card h2 {
+        font-size: 16px;
+    }
+    .btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    .form-group label {
+        font-size: 12px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 12px;
+        padding: 6px;
+    }
+    table th, table td {
+        padding: 8px;
+        font-size: 12px;
+    }
+    .user-image {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Asegurar que el filtro de roles se alinee correctamente */
+    .form-group-filtro {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #filtro_rol {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 13px;
+    }
+    .header img {
+        height: 25px;
+    }
+    .card h2 {
+        font-size: 14px;
+    }
+    .btn {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+    .form-group label {
+        font-size: 11px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 11px;
+        padding: 5px;
+    }
+    table th, table td {
+        padding: 7px;
+        font-size: 11px;
+    }
+    .user-image {
+        width: 25px;
+        height: 25px;
+    }
+    .content-wrapper {
+        margin-top: 125px;
+    }
+
+    /* Ajustes adicionales para el filtro de roles */
+    .form-group-filtro {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #filtro_rol {
+        width: 100%;
+    }
 }

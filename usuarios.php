@@ -1,7 +1,6 @@
 <?php
 session_start();
 if (isset($_SESSION['logeado'])) {
-    // Incluir el controlador
     require_once 'Controlador/UsuariosController.php';
     include_once 'Controlador/Psicologo/PsicologoController.php';
     include_once 'Controlador/EspecialidadesController.php';
@@ -9,41 +8,88 @@ if (isset($_SESSION['logeado'])) {
     $psicologoController = new PsicologoController();
     $especialidadesController = new EspecialidadController();
     $usuariosController = new UsuariosController();
+    $fileManager = new FileManager();
 
-    // Verificar las acciones CRUD
-    $error = ''; // Variable para almacenar el mensaje de error
+    $error = $_SESSION['error'] ?? '';
+    $success = $_SESSION['success'] ?? '';
+
+    // Limpiar mensajes de sesión
+    unset($_SESSION['error']);
+    unset($_SESSION['success']);
+
+    // Obtener filtros
+    $emailBuscar = $_GET['email'] ?? '';
+    $selectedRol = $_POST['filtro_rol'] ?? '';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
         if (isset($_POST['accion'])) {
             switch ($_POST['accion']) {
                 case 'agregar':
-                    // Validar la contraseña
+                    //Validacion de contraseña
                     $password = $_POST['password'];
                     $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$/';
 
                     if (!preg_match($pattern, $password)) {
-                        $error = "La contraseña debe contener al menos una letra mayúscula, un símbolo, un número y tener al menos 8 caracteres.";
+                        $_SESSION['error'] = "La contraseña debe contener al menos una letra mayúscula, un símbolo, un número y tener al menos 8 caracteres.";
                         break;
                     }
 
+                    //validacion si gmail ya existe
+                    $email = $_POST['email'];
+                    $stmt = $usuariosController->buscarPorEmail($email);
+                    if ($stmt) {
+                        $_SESSION['error'] = "El correo ya esta registrado, intenta con otro.";
+                        break;
+                    }
+
+                    //Validacion de celular solo para psicologos
+                    if ($_POST['rol'] == 'psicologo') {
+                        if (!is_numeric($_POST['celular']) || strlen($_POST['celular']) != 9) {
+                            $_SESSION['error'] = "El campo celular debe ser un número de 9 dígitos.";
+                            break;
+                        }
+                    }
+                    
                     $urlNewImage = $fileManager->uploadImage($_FILES['fotoPerfil']);
 
-                    // Si la contraseña es válida, proceder con el agregar usuario
-                    $usuariosController->agregarUsuario(
+                    $result = $usuariosController->agregarUsuario(
                         $_POST['email'],
                         $password,
                         $urlNewImage,
                         $_POST['rol'],
                         $_POST['introduccion_new_user'],
                         $_POST['speciality_new_user'],
-                        isset($_POST['nombrePsicologo']) ? $_POST['nombrePsicologo'] : '', // Verificar si está definido
-                        isset($_POST['video']) ? $_POST['video'] : '', // Verificar si está definido
-                        isset($_POST['celular']) ? $_POST['celular'] : '' // Verificar si está definido
+                        $_POST['nombrePsicologo'] ?? '',
+                        $_POST['video'] ?? '',
+                        $_POST['celular'] ?? ''
                     );
+
+                    if ($result) {
+                        $_SESSION['success'] = "Usuario agregado exitosamente.";
+                    } else {
+                        $_SESSION['error'] = "Error al agregar usuario.";
+                    }
                     break;
                 case 'actualizar':
-                    $usuariosController->actualizarUsuario(
+                    //Validacion de contraseña , cuando esta vacio el campo, se mantendra la contraseña actual, pero si se llena se validara.
+                    if (!empty($_POST['password'])) {
+                        $password = $_POST['password'];
+                        $pattern = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$/';
+
+                        if (!preg_match($pattern, $password)) {
+                            $_SESSION['error'] = "La contraseña debe contener al menos una letra mayúscula, un símbolo, un número y tener al menos 8 caracteres.";
+                            break;
+                        }
+                    }
+                    
+                      //Validacion de celular solo para psicologos
+                      if ($_POST['rol'] == 'psicologo') {
+                        if (!is_numeric($_POST['celular']) || strlen($_POST['celular']) != 9) {
+                            $_SESSION['error'] = "El campo celular debe ser un número de 9 dígitos.";
+                            break;
+                        }
+                    }
+                    $result = $usuariosController->actualizarUsuario(
                         $_POST['id'],
                         $_POST['email'],
                         $_POST['password'],
@@ -51,13 +97,24 @@ if (isset($_SESSION['logeado'])) {
                         $_POST['rol'],
                         $_POST['introduccion_user'],
                         $_POST['especialidad_user'],
-                        isset($_POST['nombrePsicologo']) ? $_POST['nombrePsicologo'] : '', // Verificar si está definido
-                        isset($_POST['video']) ? $_POST['video'] : '', // Verificar si está definido
-                        isset($_POST['celular']) ? $_POST['celular'] : '' // Verificar si está definido
+                        $_POST['nombrePsicologo'] ?? '',
+                        $_POST['video'] ?? '',
+                        $_POST['celular'] ?? ''
                     );
+
+                    if ($result) {
+                        $_SESSION['success'] = "Usuario actualizado exitosamente.";
+                    } else {
+                        $_SESSION['error'] = "Error al actualizar usuario.";
+                    }
                     break;
                 case 'eliminar':
-                    $usuariosController->eliminarUsuario($_POST['id']);
+                    $result = $usuariosController->eliminarUsuario($_POST['id']);
+                    if ($result) {
+                        $_SESSION['success'] = "Usuario eliminado exitosamente.";
+                    } else {
+                        $_SESSION['error'] = "Error al eliminar usuario.";
+                    }
                     break;
                 case 'cerrar_sesion':
                     session_destroy();
@@ -65,204 +122,483 @@ if (isset($_SESSION['logeado'])) {
                     exit();
                     break;
             }
+            header("Location: usuarios.php");
+            exit();
+        } elseif (isset($_POST['filtro_rol'])) {
+            $selectedRol = $_POST['filtro_rol'];
         }
     }
 
-    // Verificar si se ha enviado un email para buscar
-    $emailBuscar = isset($_GET['email']) ? $_GET['email'] : '';
-
-    // Llamar al método del controlador según si se busca por email o no
-    if (!empty($emailBuscar)) {
-        $usuarios = $usuariosController->buscarPorEmail($emailBuscar);
+     // Obtener usuarios filtrados
+     if ($selectedRol) {
+        $usuarios = $usuariosController->obtenerUsuariosPorRol($selectedRol);
     } else {
-        $usuarios = $usuariosController->mostrarUsuarios();
+        $usuarios = !empty($emailBuscar) ? $usuariosController->buscarPorEmail($emailBuscar) : $usuariosController->mostrarUsuarios();
     }
-?>
+    ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestión de usuarios en Contigo Voy">
+    <title>Contigo Voy: Gestión de Usuarios</title>
+    <link rel="icon" href="img/favicon.png">
+    <link rel="stylesheet" href="css/usuarios.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<header class="header">
+    <div class="container header-content">
+        <div class="header-marca">
+            <img src="img/favicon.png" alt="Logo" width="40" height="40">
+            <h2>Contigo Voy</h2>
+        </div>
+        <form id="searchForm" method="GET" class="search-form">
+            <input type="text" placeholder="Buscar por email" name="email" id="searchEmail">
+            <button type="submit" class="btn" aria-label="Buscar">
+                <i class="fa fa-search"></i> Buscar 
+            </button>
+        </form>
+        <form action="usuarios.php" method="POST">
+            <input type="hidden" name="accion" value="cerrar_sesion">
+            <button type="submit" class="btn btn-logout" aria-label="Cerrar sesión">
+                <i class="fa fa-sign-out-alt"></i> Cerrar sesión
+            </button>
+        </form>
+    </div>
+</header>
+<div class="container">
+    <div class="content-wrapper">
+        <main class="main-content">
+            <?php if ($error): ?>
+                <div id="errorModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('errorModal')">&times;</span>
+                        <div class="error"><?php echo $error; ?></div>
+                    </div>
+                </div>
+            <?php endif; ?>
 
-    <!DOCTYPE html>
-    <html lang="es">
+            <?php if ($success): ?>
+                <div id="successModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('successModal')">&times;</span>
+                        <div class="success"><?php echo $success; ?></div>
+                    </div>
+                </div>
+            <?php endif; ?>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Lista de Usuarios</title>
-        <link rel="icon" href="img/favicon.png">
-        <link rel="stylesheet" href="css/styles.css">
-        <link rel="stylesheet" href="css/usuarios.css">
-        <style>
-            .error {
-                color: red;
-                font-size: 0.875em;
-                margin-top: 0.25em;
-            }
-        </style>
-    </head>
-
-    <body>
-        <div class="container">
-            <div class="logout-button">
-                <form action="usuarios.php" method="POST">
-                    <input type="hidden" name="accion" value="cerrar_sesion">
-                    <input type="submit" value="Cerrar sesión">
-                </form>
-            </div>
-            <a href="gestion_contactanos.php" class="gestion-contactenos-btn">Gestionar Contactenos</a>
-            <div class="search-container">
-                <form action="usuarios.php" method="GET">
-                    <input type="text" placeholder="Buscar por email" name="email">
-                    <input type="submit" value="Buscar">
-                </form>
-            </div>
-
-            <div class="form-container">
-                <form action="usuarios.php" method="POST" enctype="multipart/form-data">
+            <div class="card">
+                <h2>Agregar Nuevo Usuario</h2>
+                <form action="usuarios.php" method="POST" enctype="multipart/form-data" onsubmit="return validateUserForm()">
                     <input type="hidden" name="accion" value="agregar">
-                    <input type="text" name="email" placeholder="Email" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <?php if ($error): ?>
-                        <span class="error"><?php echo $error; ?></span>
-                    <?php endif; ?>
-                    <!-- <input type="url" name="fotoPerfil" placeholder="Foto Perfil URL" required> -->
-                    <input type="file" name="fotoPerfil" accept="image/*" id="fotoPerfil" required>
-                    <select name="rol" required id="rol_new_user">
-                        <!-- <option value="paciente">Paciente</option> -->
+                    <div class="form-group">
+                        <label for="email">Email<span style="color: red;">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="Example@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña<span style="color: red;">*</span></label>
+                        <input type="password" id="password" name="password" placeholder="Introduce una contraseña de 8 digitos" >
+                    </div>
+                    <div class="form-group">
+                        <label for="fotoPerfil">Foto de Perfil<span style="color: red;">*</span></label>
+                        <input type="file" id="fotoPerfil" name="fotoPerfil" accept="image/*"  onchange="previewImage(event, 'preview')">
+                        <img id="preview" src="#" alt="Vista previa de la imagen" style="display:none; max-width: 200px; margin-top: 10px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="rol_new_user">Rol<span style="color: red;">*</span></label>
+                        <select name="rol" id="rol_new_user" >
+                            <option value="" disabled selected>Seleccione un rol</option>
+                            <option value="administrador">Administrador</option>
+                            <option value="psicologo">Psicólogo</option>
+                            <option value="marketing">Marketing</option>
+                        </select>
+                    </div>
+                    <div id="psicologo_fields" style="display:none;">
+                        <div class="form-group">
+                            <label for="speciality_new_user">Especialidad<span style="color: red;">*</span></label>
+                            <select name="speciality_new_user" id="speciality_new_user">
+                                <option value="" disabled selected>Seleccione una especialidad</option>
+                                <?php foreach ($especialidadesController->getEspecialidades() as $especialidad): ?>
+                                    <option value="<?= htmlspecialchars($especialidad['id']) ?>"><?= htmlspecialchars($especialidad['nombre']) ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombrePsicologo">Nombre del Psicólogo<span style="color: red;">*</span></label>
+                            <input type="text" id="nombrePsicologo" name="nombrePsicologo" placeholder="Introduce el nombre del psicólogo">
+                        </div>
+                        <div class="form-group">
+                            <label for="video">URL del Video<span style="color: red;">*</span></label>
+                            <input type="url" id="video" name="video" placeholder="Introduce la URL del video">
+                        </div>
+                        <div class="form-group">
+                            <label for="celular">Celular<span style="color: red;">*</span></label>
+                            <input type="tel" id="celular" name="celular" placeholder="Introduce el número de celular">
+                        </div>
+                        <div class="form-group">
+                            <label for="introduccion_new_user">Introducción<span style="color: red;">*</span></label>
+                            <textarea id="introduccion_new_user" name="introduccion_new_user" placeholder="Escribe una breve introducción"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn" aria-label="Agregar Usuario"><i class="fas fa-user-plus"></i> Agregar Usuario</button>
+                </form>
+            </div>
 
-                        <option value="administrador">Administrador</option>
-                        <option value="psicologo">Psicologo</option>
-                        <option value="marketing">Marketing</option>
-                    </select>
-                    <select name="speciality_new_user" id="speciality_new_user" style="display: none;">
+            <div class="card">
+            <h2>Lista de Usuarios</h2>
+                <form method="POST" action="usuarios.php">
+                    <div class="form-group-filtro">
+                        <label for="filtro_rol">Filtrar por Rol:</label>
+                        <select name="filtro_rol" id="filtro_rol" onchange="this.form.submit()">
+                            <option value="">Todos</option>
+                            <option value="administrador" <?= $selectedRol === 'administrador' ? 'selected' : '' ?>>Administrador</option>
+                            <option value="psicologo" <?= $selectedRol === 'psicologo' ? 'selected' : '' ?>>Psicólogo</option>
+                            <option value="marketing" <?= $selectedRol === 'marketing' ? 'selected' : '' ?>>Marketing</option>
+                        </select>
+                    </div>
+                </form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Foto Perfil</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userList">
+                        <?php if (is_array($usuarios) && !empty($usuarios)): ?>
+                            <?php foreach ($usuarios as $usuario): ?>
+                                <?php $usuarioCompleto = $usuariosController->buscarPorId($usuario['id']); ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($usuario['id']) ?></td>
+                                    <td><?= htmlspecialchars($usuario['email']) ?></td>
+                                    <td><img src="<?= htmlspecialchars($usuario['fotoPerfil']) ?>" alt="Foto Perfil" class="user-image" width="40" height="40"></td>
+                                    <td><?= htmlspecialchars($usuario['rol']) ?></td>
+                                    <td>
+                                        <button onclick="openEditModal(<?= htmlspecialchars(json_encode($usuarioCompleto)) ?>)" class="btn" aria-label="Editar Usuario"><i class="fas fa-edit"></i></button>
+                                        <button onclick="openDeleteModal(<?= htmlspecialchars($usuario['id']) ?>)" class="btn btn-danger" aria-label="Eliminar Usuario"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="5">No se encontraron usuarios.</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Modal de Edición -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeEditModal()">&times;</span>
+        <h2>Editar Usuario</h2>
+        <form id="editForm" action="usuarios.php" method="POST" enctype="multipart/form-data" onsubmit="return validateUserForm(true)">
+            <input type="hidden" name="accion" value="actualizar">
+            <input type="hidden" name="id" id="edit_id">
+            <input type="hidden" name="fotoPerfilActual" id="fotoPerfilActual">
+            <div class="form-group">
+                <label for="edit_email">Email</label>
+                <input type="email" id="edit_email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="edit_password">Nueva Contraseña (dejar en blanco para mantener la actual)</label>
+                <input type="password" id="edit_password" name="password">
+            </div>
+            <div class="form-group">
+                <label for="edit_fotoPerfil">Foto de Perfil</label>
+                <input type="file" id="edit_fotoPerfil" name="fotoPerfil" accept="image/*" onchange="previewImage(event, 'edit_preview')">
+                <img id="edit_preview" src="#" alt="Vista previa de la imagen" style="display:none; max-width: 200px; margin-top: 10px;">
+            </div>
+            <div class="form-group">
+                <label for="edit_rol">Rol</label>
+                <select name="rol" id="edit_rol" required onchange="toggleEditPsychologistFields(this.value)">
+                    <option value="administrador">Administrador</option>
+                    <option value="psicologo">Psicólogo</option>
+                    <option value="marketing">Marketing</option>
+                </select>
+            </div>
+            <div id="edit_psicologo_fields" style="display:none;">
+                <div class="form-group">
+                    <label for="edit_especialidad_user">Especialidad</label>
+                    <select name="especialidad_user" id="edit_especialidad_user">
                         <?php foreach ($especialidadesController->getEspecialidades() as $especialidad): ?>
                             <option value="<?= $especialidad['id'] ?>"><?= $especialidad['nombre'] ?></option>
                         <?php endforeach; ?>
                     </select>
-                    <input type="text" name="nombrePsicologo" placeholder="Nombre Psicologo" style="display: none;">
-                    <input type="url" name="video" placeholder="Video URL" style="display: none;">
-                    <input type="tel" name="celular" placeholder="Celular" style="display: none;">
-                    <textarea name="introduccion_new_user" id="introduccion_new_user" placeholder="Introducción"
-                        style="display: none;"></textarea>
-                    <input type="submit" value="Agregar Usuario">
-                </form>
+                </div>
+                <div class="form-group">
+                    <label for="edit_nombrePsicologo">Nombre del Psicólogo</label>
+                    <input type="text" id="edit_nombrePsicologo" name="nombrePsicologo">
+                </div>
+                <div class="form-group">
+                    <label for="edit_video">URL del Video</label>
+                    <input type="url" id="edit_video" name="video">
+                </div>
+                <div class="form-group">
+                    <label for="edit_celular">Celular</label>
+                    <input type="tel" id="edit_celular" name="celular">
+                </div>
+                <div class="form-group">
+                    <label for="edit_introduccion_user">Introducción</label>
+                    <textarea id="edit_introduccion_user" name="introduccion_user"></textarea>
+                </div>
             </div>
+            <button type="submit" class="btn" aria-label="Actualizar Usuario">
+                <i class="fa fa-refresh"></i> Actualizar Usuario
+            </button>
+        </form>
+    </div>
+</div>
 
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Foto Perfil</th>
-                    <th>Rol</th>
-                    <th>Acciones</th>
-                </tr>
-                <?php foreach ($usuarios as $usuario):
-                    $nombrePsicologo = '';
-                    $video = '';
-                    $celular = '';
-                    $especialidad_id = '';
-                    $introduccion = '';
+<!-- Modal de Eliminación -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeDeleteModal()">&times;</span>
+        <h2 style="text-align: center;">Confirmar Eliminación</h2>
+        <p style="text-align: center;">¿Está seguro de que desea eliminar este usuario?</p>
+        <form id="deleteForm" action="usuarios.php" method="POST" style="text-align: center;">
+            <input type="hidden" name="accion" value="eliminar">
+            <input type="hidden" name="id" id="delete_id">
+            <button type="submit" class="btn btn-danger" style="margin: 10px;" aria-label="Eliminar Usuario"><i class="fas fa-trash-alt"></i> Eliminar</button>
+            <button type="button" onclick="closeDeleteModal()" class="btn" style="margin: 10px;" aria-label="Cancelar Eliminación"><i class="fas fa-times"></i> Cancelar</button>
+        </form>
+    </div>
+</div>
 
-                    if ($usuario['rol'] == 'psicologo') {
-                        $psicologo = $psicologoController->getPsicologoByIdUser($usuario['id']);
-                        if ($psicologo != null) {
-                            $nombrePsicologo = $psicologo['NombrePsicologo'] ?? '';
-                            $video = $psicologo['video'] ?? '';
-                            $celular = $psicologo['celular'] ?? '';
-                            $introduccion = $psicologo['introduccion'] ?? '';
-                            $especialidad_id = $especialidadesController->getEspecialidadById($psicologo['especialidad_id'])['id'] ?? '';
-                        }
-                    }
-                ?>
+<script>
+function validateUserForm(isEdit = false) {
+    const email = document.getElementById(isEdit ? 'edit_email' : 'email');
+    const password = document.getElementById(isEdit ? 'edit_password' : 'password');
+    const fotoPerfil = document.getElementById(isEdit ? 'edit_fotoPerfil' : 'fotoPerfil');
+    const rol = document.getElementById(isEdit ? 'edit_rol' : 'rol_new_user').value;
+    const nombrePsicologo = document.getElementById(isEdit ? 'edit_nombrePsicologo' : 'nombrePsicologo');
+    const video = document.getElementById(isEdit ? 'edit_video' : 'video');
+    const celular = document.getElementById(isEdit ? 'edit_celular' : 'celular');
+    const introduccion = document.getElementById(isEdit ? 'edit_introduccion_user' : 'introduccion_new_user');
+    const speciality = document.getElementById(isEdit ? 'edit_especialidad_user' : 'speciality_new_user').value;
 
-                    <tr class="user_data" id="<?= htmlspecialchars($usuario['id']) ?>">
-                        <td><?= htmlspecialchars($usuario['id']) ?></td>
-                        <td><?= htmlspecialchars($usuario['email']) ?></td>
-                        <td><img src="<?= htmlspecialchars($usuario['fotoPerfil']) ?>" alt="Foto Perfil" width="50"></td>
-                        <td><?= htmlspecialchars($usuario['rol']) ?></td>
-                        <td class="acciones">
-                            <form action="usuarios.php" method="POST">
-                                <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['id']) ?>">
-                                <input type="hidden" name="accion" value="eliminar">
-                                <input type="submit" value="Eliminar" style="background-color: #e74c3c; color: white;">
-                            </form>
-                            <form action="usuarios.php" method="POST">
-                                <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['id']) ?>">
-                                <input type="hidden" name="accion" value="actualizar">
-                                <input type="text" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" required>
-                                <input type="password" name="password" value="<?= htmlspecialchars($usuario['password']) ?>"
-                                    required>
-                                <input type="url" name="fotoPerfil" value="<?= htmlspecialchars($usuario['fotoPerfil']) ?>"
-                                    required>
-                                <select name="rol" required onchange="toggleShowLabelsPyscho(this)">
-                                    <option value="psicologo" <?= $usuario['rol'] == 'psicologo' ? 'selected' : '' ?>>Psicologo
-                                    </option>
-                                    <option value="paciente" <?= $usuario['rol'] == 'paciente' ? 'selected' : '' ?>>Paciente
-                                    </option>
-                                    <option value="administrador" <?= $usuario['rol'] == 'administrador' ? 'selected' : '' ?>>
-                                        Administrador</option>
-                                    <option value="administrador" <?= $usuario['rol'] == 'marketing' ? 'selected' : '' ?>>
-                                        Marketing</option>
-                                </select>
+    let isValid = true;
 
-                                <!-- Campos específicos para Psicologo -->
-                                <textarea name="introduccion_user"
-                                    id="introduccion_user_<?= htmlspecialchars($usuario['id']) ?>" placeholder="Introducción"
-                                    style="display: <?= $usuario['rol'] == 'psicologo' ? 'block' : 'none' ?>;"><?= htmlspecialchars(trim($introduccion)) ?></textarea>
+        // Validacion de email
+        if (email.value === '') {
+            email.placeholder = 'Email es obligatorio';
+            email.classList.add('error-placeholder');
+            isValid = false;
+        } else {
+            email.classList.remove('error-placeholder');
+        }
 
-                                <select name="especialidad_user" id="especialidad_user_<?= htmlspecialchars($usuario['id']) ?>"
-                                    style="display: <?= $usuario['rol'] == 'psicologo' ? 'block' : 'none' ?>;">
-                                    <?php foreach ($especialidadesController->getEspecialidades() as $especialidad): ?>
-                                        <option value="<?= $especialidad['id'] ?>" <?= $especialidad_id == $especialidad['id'] ? 'selected' : '' ?>><?= $especialidad['nombre'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+         // Validacion de contraseña solo para agregar usuario
+        if (!isEdit || (isEdit && password.value !== '')) {
+            if (password.value === '') {
+                password.placeholder = 'Contraseña es obligatoria';
+                password.classList.add('error-placeholder');
+                isValid = false;
+            } else if (password.value.length < 8) {
+                password.placeholder = 'Contraseña debe tener al menos 8 caracteres';
+                password.classList.add('error-placeholder');
+                isValid = false;
+            } else {
+                password.classList.remove('error-placeholder');
+            }
+        }
 
-                                <input type="text" name="nombrePsicologo"
-                                    id="nombrePsicologo_<?= htmlspecialchars($usuario['id']) ?>"
-                                    value="<?= htmlspecialchars($nombrePsicologo) ?>" placeholder="Nombre Psicologo"
-                                    style="display: <?= $usuario['rol'] == 'psicologo' ? 'block' : 'none' ?>;">
-                                <input type="url" name="video" id="video_<?= htmlspecialchars($usuario['id']) ?>"
-                                    value="<?= htmlspecialchars($video) ?>" placeholder="Video URL"
-                                    style="display: <?= $usuario['rol'] == 'psicologo' ? 'block' : 'none' ?>;">
-                                <input type="tel" name="celular" id="celular_<?= htmlspecialchars($usuario['id']) ?>"
-                                    value="<?= htmlspecialchars($celular) ?>" placeholder="Celular"
-                                    style="display: <?= $usuario['rol'] == 'psicologo' ? 'block' : 'none' ?>;">
-                                <input type="submit" value="Actualizar" style="background-color: #3498db; color: white;">
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-        </div>
 
-        <script>
-            // Función para mostrar u ocultar campos basados en el rol seleccionado
-            function toggleShowLabelsPyscho(selectElement) {
-                const parentForm = selectElement.parentNode;
-                const selectedRole = selectElement.value;
-                const psychoSpecificFields = parentForm.querySelectorAll("[id^='nombrePsicologo'], [id^='video'], [id^='celular'], [id^='especialidad_user'], [id^='introduccion_user']");
-
-                psychoSpecificFields.forEach(field => {
-                    if (selectedRole === 'psicologo') {
-                        field.style.display = 'block';
-                    } else {
-                        field.style.display = 'none';
-                    }
-                });
+        if (rol === 'psicologo') {
+            // Validacion de campos de psicologo
+            if (nombrePsicologo.value === '') {
+                nombrePsicologo.placeholder = 'Nombre del psicólogo es obligatorio';
+                nombrePsicologo.classList.add('error-placeholder');
+                isValid = false;
+            } else {
+                nombrePsicologo.classList.remove('error-placeholder');
             }
 
-            // Evento para el formulario de creación de usuarios
-            document.getElementById('rol_new_user').addEventListener('change', function() {
-                const selectedRole = this.value;
-                const elementsToShow = ['speciality_new_user', 'nombrePsicologo', 'video', 'celular', 'introduccion_new_user'];
+            // Validacion de video
+            if (video.value === '') {
+                video.placeholder = 'URL del video es obligatoria';
+                video.classList.add('error-placeholder');
+                isValid = false;
+            } else {
+                video.classList.remove('error-placeholder');
+            }
 
-                elementsToShow.forEach(id => {
-                    document.querySelector(`[name=${id}]`).style.display = selectedRole === 'psicologo' ? 'block' : 'none';
-                });
-            });
-        </script>
-    </body>
+            // Validacion de celular
+            if (celular.value === '') {
+                celular.placeholder = 'Celular es obligatorio';
+                celular.classList.add('error-placeholder');
+                isValid = false;
+            } else {
+                celular.classList.remove('error-placeholder');
+            }
 
-    </html>
-<?php } else { ?>
-    <script>
-        window.location.href = 'index.php';
-    </script>
-<?php } ?>
+            // Validacion de introduccion
+            if (introduccion.value === '') {
+                introduccion.placeholder = 'Introducción es obligatoria';
+                introduccion.classList.add('error-placeholder');
+                isValid = false;
+            } else {
+                introduccion.classList.remove('error-placeholder');
+            }
+
+        
+        }
+
+        return isValid;
+    }
+
+function clearValidationMessages(isEdit = false) {
+    const email = document.getElementById(isEdit ? 'edit_email' : 'email');
+    const password = document.getElementById(isEdit ? 'edit_password' : 'password');
+    const nombrePsicologo = document.getElementById(isEdit ? 'edit_nombrePsicologo' : 'nombrePsicologo');
+    const video = document.getElementById(isEdit ? 'edit_video' : 'video');
+    const celular = document.getElementById(isEdit ? 'edit_celular' : 'celular');
+    const introduccion = document.getElementById(isEdit ? 'edit_introduccion_user' : 'introduccion_new_user');
+
+    email.classList.remove('error-placeholder');
+    password.classList.remove('error-placeholder');
+    nombrePsicologo.classList.remove('error-placeholder');
+    video.classList.remove('error-placeholder');
+    celular.classList.remove('error-placeholder');
+    introduccion.classList.remove('error-placeholder');
+
+    email.placeholder = 'Example@gmail.com';
+    password.placeholder = 'Introduce una contraseña de 8 digitos';
+    nombrePsicologo.placeholder = 'Introduce el nombre del psicólogo';
+    video.placeholder = 'Introduce la URL del video';
+    celular.placeholder = 'Introduce el número de celular';
+    introduccion.placeholder = 'Escribe una breve introducción';
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+function openEditModal(usuario) {
+    clearValidationMessages(true);
+    document.getElementById('edit_id').value = usuario.id;
+    document.getElementById('edit_email').value = usuario.email;
+    document.getElementById('edit_rol').value = usuario.rol;
+    document.getElementById('edit_preview').src = usuario.fotoPerfil;
+    document.getElementById('edit_preview').style.display = 'block';
+    document.getElementById('fotoPerfilActual').value = usuario.fotoPerfil;
+    toggleEditPsychologistFields(usuario.rol);
+    if (usuario.rol === 'psicologo') {
+        document.getElementById('edit_especialidad_user').value = usuario.especialidad_id || '';
+        document.getElementById('edit_nombrePsicologo').value = usuario.NombrePsicologo || '';
+        document.getElementById('edit_video').value = usuario.video || '';
+        document.getElementById('edit_celular').value = usuario.celular || '';
+        document.getElementById('edit_introduccion_user').value = usuario.introduccion || '';
+    }
+    document.getElementById('editModal').style.display = 'block';
+}
+
+function closeEditModal() {
+    document.getElementById('editModal').style.display = 'none';
+    clearValidationMessages(true);
+}
+
+function openDeleteModal(id) {
+    document.getElementById('delete_id').value = id;
+    document.getElementById('deleteModal').style.display = 'block';
+}
+
+function closeDeleteModal() {
+    document.getElementById('deleteModal').style.display = 'none';
+}
+
+function toggleEditPsychologistFields(rol) {
+    const fields = document.getElementById('edit_psicologo_fields');
+    if (rol === 'psicologo') {
+        fields.style.display = 'block';
+    } else {
+        fields.style.display = 'none';
+    }
+}
+
+window.onload = function() {
+    if (document.getElementById('errorModal')) {
+        document.getElementById('errorModal').style.display = 'block';
+    }
+    if (document.getElementById('successModal')) {
+        document.getElementById('successModal').style.display = 'block';
+    }
+
+    // Mostrar campos de psicólogo si el rol es psicólogo al cargar la página
+    const rolSelect = document.getElementById('rol_new_user');
+    const psicologoFields = document.getElementById('psicologo_fields');
+    if (rolSelect.value === 'psicologo') {
+        psicologoFields.style.display = 'block';
+    } else {
+        psicologoFields.style.display = 'none';
+    }
+}
+
+document.getElementById('searchEmail').addEventListener('input', function() {
+    const email = this.value;
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'usuarios.php?email=' + email, true);
+    xhr.onload = function() {
+        if (this.status === 200) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(this.responseText, 'text/html');
+            const userList = doc.getElementById('userList').innerHTML;
+            document.getElementById('userList').innerHTML = userList;
+        }
+    };
+    xhr.send();
+});
+
+// Mostrar/ocultar campos de psicólogo según el rol seleccionado
+document.getElementById('rol_new_user').addEventListener('change', function() {
+    const psicologoFields = document.getElementById('psicologo_fields');
+    if (this.value === 'psicologo') {
+        psicologoFields.style.display = 'block';
+    } else {
+        psicologoFields.style.display = 'none';
+    }
+});
+
+// Función para previsualizar la imagen seleccionada
+function previewImage(event, previewId) {
+    const preview = document.getElementById(previewId);
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function() {
+        preview.src = reader.result;
+        preview.style.display = 'block';
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = '';
+        preview.style.display = 'none';
+    }
+}
+
+document.querySelectorAll('.close').forEach(function(element) {
+    element.addEventListener('click', function() {
+        closeEditModal();
+        closeDeleteModal();
+    });
+});
+</script>
+</body>
+</html>
+<?php
+} else {
+    header("Location: index.php");
+    exit();
+}
+?>
