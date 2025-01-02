@@ -14,6 +14,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
   if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
   }
+
 ?>
   <!DOCTYPE html>
   <html lang="es">
@@ -44,6 +45,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
         <div class="container-form">
           <div class="recent-updates">
             <form id="miFormulario" action="../Crud/Paciente/guardarAtencPaciente.php" method="post">
+        
               <h4>
                 Atencion al Paciente
               </h4>
@@ -119,16 +121,22 @@ if (isset($_SESSION['NombrePsicologo'])) {
                     <div class="input-group">
                       <h3 for="dsm5 ">DSM5</h3>
                       <div style="display: flex;gap:5px;">
-                        <input id="dsm5" type="text" name="dsm5" class="input" data-error-target="error-dsm5" />
-                        <a class="search btndsm5"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
+                        <!-- <input id="dsm5" type="text" name="dsm5" class="input" data-error-target="error-dsm5" />
+                        <a class="search btndsm5"><span style="font-size:4em" class="material-symbols-sharp">search</span></a> -->
+                        <select id="dsm5" name="dsm5" class="input" data-error-target="error-dsm5">
+                          <option value="">Seleccione una opción</option>
+                        </select>
                       </div>
                       <span class="error-message-RegAP" id="error-dsm5"></span>
                     </div>
                     <div class="input-group">
                       <h3 for="cea10">CEA10</h3>
                       <div style="display: flex;gap:5px;">
-                        <input id="cea10" type="text" name="cea10" class="input" data-error-target="error-cea10" />
-                        <a class="search btncea10"><span style="font-size:4em" class="material-symbols-sharp">search</span></a>
+                        <!-- <input id="cea10" type="text" name="cea10" class="input" data-error-target="error-cea10" />
+                        <a class="search btncea10"><span style="font-size:4em" class="material-symbols-sharp">search</span></a> -->
+                        <select id="cea10" name="cea10" class="input" data-error-target="error-cea10">
+                          <option value="">Seleccione una opción</option>
+                        </select>
                       </div>
                       <span class="error-message-RegAP" id="error-cea10"></span>
                     </div>
@@ -136,7 +144,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
                   <div class="input-group" style="flex-direction: column;   width: 100%;">
                     <h3 for="DescripcionEnfermedad">Clasificacion</h3>
                     <div style="display: flex; gap:5px; ">
-                      <input style="width: 100%;" id="DescripcionEnfermedad" type="text" name="DescripcionEnfermedad" class="input" data-error-target="error-enfermedad" />
+                      <input style="width: 100%;" id="DescripcionEnfermedad" type="text" name="DescripcionEnfermedad" class="input" data-error-target="error-enfermedad" disabled />
                     </div>
                     <span class="error-message-RegAP" id="error-enfermedad"></span>
                   </div>
@@ -253,9 +261,51 @@ if (isset($_SESSION['NombrePsicologo'])) {
     });
   </script>
   <script>
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('../Crud/Fetch/fetch_valores_enfermedad.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la red: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const enfermedadesSelect = document.getElementById('cea10');
+            const enfermedadesSelectDSM5 = document.getElementById('dsm5');
+
+            enfermedadesSelect.innerHTML = '';
+            enfermedadesSelectDSM5.innerHTML = '';
+            const defaultOption = document.createElement('option');
+            const defaultOptionDSM5 = document.createElement('option');
+            defaultOptionDSM5.value = '';
+            defaultOptionDSM5.textContent = 'Seleccione una opción';
+            enfermedadesSelectDSM5.appendChild(defaultOptionDSM5);
+            defaultOption.value = '';
+            defaultOption.textContent = 'Seleccione una opción';
+            enfermedadesSelect.appendChild(defaultOption);
+            data["data"].forEach(function(item) {
+                const option = document.createElement('option');
+                option.value = item.CEA10;
+                option.textContent = item.CEA10;
+                enfermedadesSelect.appendChild(option);
+                // Agregar opciones a la lista de opciones de la select de DSM5
+                const optionDSM5 = document.createElement('option');
+                optionDSM5.value = item.DSM5;
+                optionDSM5.textContent = item.DSM5;
+                enfermedadesSelectDSM5.appendChild(optionDSM5);
+            });
+           
+        })
+        .catch(error => {
+            console.error('Error al obtener los datos:', error);
+        });
+});
+</script>
+
+  <script>
     // Buscador de la dsm5
     $(document).ready(function() {
-      $('.btndsm5').click(function() {
+      $('#dsm5').change(function() {
         var dsm5 = $('#dsm5').val();
         $.ajax({
           url: '../Crud/Fetch/fetch_dsm5.php',
@@ -266,7 +316,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
           success: function(response) {
             if (response.error) {
               $('#DescripcionEnfermedad').val('No existe esa enfermedad');
-              $('#cea10').val('');
+              $('#').val('');
               $('#IdEnfermedad').val('');
             } else {
               $('#DescripcionEnfermedad').val(response.nombre);
@@ -285,7 +335,7 @@ if (isset($_SESSION['NombrePsicologo'])) {
 
     // Buscador de la cea10
     $(document).ready(function() {
-      $('.btncea10').click(function() {
+      $('#cea10').change(function() {
         var cea10 = $('#cea10').val();
         $.ajax({
           url: '../Crud/Fetch/fetch_cea10.php',
