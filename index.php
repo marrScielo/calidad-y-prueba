@@ -69,7 +69,7 @@
     <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-    <button style="position: fixed; bottom: 120px; right: 30px; z-index: 102; background-color: #4a90e2; color: white; border: none; padding: 15px 30px; font-size: 18px; cursor: pointer; border-radius: 5px; transition: background-color 0.3s;" id="open-chat">
+    <button style="position: fixed; bottom: 165px; right: 1rem; z-index: 102; background-color: #4a90e2; color: white; border: none; padding: 15px 30px; font-size: 18px; cursor: pointer; border-radius: 5px; transition: background-color 0.3s;" id="open-chat">
         <i class="fas fa-robot"></i>
     </button>
     <?php
