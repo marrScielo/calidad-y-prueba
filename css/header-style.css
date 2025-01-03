@@ -91,7 +91,7 @@ main {
 }
 
 .nav-links a.active {
-    background-color: #9986d9;
+    background-color: #483285;
     color: white; /* Color del texto de la sección activa */
     border-radius: 5px; /* Puedes ajustar este valor según tu diseño */
 }
@@ -142,7 +142,6 @@ header.scrolled {
 }
 
 @media (max-width: 768px) {
-    
     .nav-links {
         position: fixed;
         display: none;
