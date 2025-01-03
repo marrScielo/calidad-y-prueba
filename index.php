@@ -65,11 +65,11 @@
     </main>
     <?php include_once 'Componentes/footer_new.php'; ?>
     <?php include_once 'Componentes/chatbot.php'; ?>
-   
-    <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    <button style="position: fixed; bottom: 165px; right: 1rem; z-index: 102; background-color: #4a90e2; color: white; border: none; padding: 15px 30px; font-size: 18px; cursor: pointer; border-radius: 5px; transition: background-color 0.3s;" id="open-chat">
+    <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank" aria-label="Contáctanos por WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+</a>
+
+    <button style="position: fixed; bottom: 165px; right: 1rem; z-index: 102; background-color: #4a90e2; color: white; border: none; padding: 15px 30px; font-size: 18px; cursor: pointer; border-radius: 5px; transition: background-color 0.3s;" id="open-chat" aria-label="button-open-chat">
         <i class="fas fa-robot"></i>
     </button>
     <?php
