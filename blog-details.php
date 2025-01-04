@@ -112,12 +112,17 @@ if (isset($_GET['id'])) {
         <div class="recommended-articles">
             <?php foreach ($recommendedPosts as $recommendedPost): ?>
                 <div class="article">
-                    <h4><a
-                            href="blog-details.php?id=<?php echo intval($recommendedPost['id']); ?>"><?php echo htmlspecialchars($recommendedPost['tema']); ?></a>
+                    <h4>
+                        <a href="blog-details.php?id=<?php echo intval($recommendedPost['id']); ?>">
+                            <?php echo htmlspecialchars($recommendedPost['tema']); ?>
+                        </a>
                     </h4>
-                    <img class="image-post" src="<?php echo htmlspecialchars($recommendedPost['imagen']); ?>"
-                        alt="<?php echo htmlspecialchars($recommendedPost['tema']); ?>">
+                    <a href="blog-details.php?id=<?php echo intval($recommendedPost['id']); ?>">
+                        <img class="image-post" src="<?php echo htmlspecialchars($recommendedPost['imagen']); ?>"
+                            alt="<?php echo htmlspecialchars($recommendedPost['tema']); ?>">
+                    </a>
                 </div>
+
             <?php endforeach; ?>
         </div>
     </div>
