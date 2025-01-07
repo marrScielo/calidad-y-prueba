@@ -163,7 +163,7 @@ $navItems = [
     <nav class="main-header-navigation">
         <div class="main-header-navigation__container u-container logo1">
             <a href="https://contigo-voy.com/" class="main-header-logo">
-                <img src="https://i.postimg.cc/52Y4WSM8/logo.gif" class="main-header-logo__image" alt="icono de logo">
+                <img src="img/logo_intento.png" class="main-header-logo__image" alt="icono de logo">
                 <!-- <video autoplay loop muted>
                     <source src="img/logo.webm" alt="Contigo Voy" class="main-header-logo__image ">
                 </video> -->

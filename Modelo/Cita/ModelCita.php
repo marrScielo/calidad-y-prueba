@@ -260,10 +260,11 @@ class UserModelCita
     }
 
     // Contar el total de citas de la fecha actual
+
     public function obtenerFechasCitasConFechaActual($id)
     {
         $fechaActual = date("Y-m-d");
-        $statement = $this->PDO->prepare("SELECT FechaRegistro FROM cita WHERE IdPsicologo = :idPsicologo AND DATE(FechaRegistro) = :fechaActual");
+        $statement = $this->PDO->prepare("SELECT FechaInicioCita FROM cita WHERE IdPsicologo = :idPsicologo AND DATE(FechaInicioCita) = :fechaActual");
         $statement->bindParam(":idPsicologo", $id, PDO::PARAM_INT);
         $statement->bindParam(":fechaActual", $fechaActual, PDO::PARAM_STR);
         $result = $statement->execute();
@@ -272,7 +273,7 @@ class UserModelCita
             $fechas = array();
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                $fechas[] = $row["FechaRegistro"];
+                $fechas[] = $row["FechaInicioCita"];
             }
 
             return $fechas;
